@@ -89,9 +89,47 @@ def perturbed(mech: Mechanism, params: Sequence[float], rel: float,
         yield np.clip(p * f, lo, hi)
 
 
+def robust_violation_corners(mech: Mechanism, params, task, omega,
+                            rel: float = 0.10) -> float:
+    """Worst-case violation over the 2^d CORNERS of the perturbation box.
+
+    This is the correct instrument and robust_violation below is not.  A relative box has
+    2^d corners - four for two parameters - and the constraints here (band attenuation,
+    peak transmissibility, static deflection, actuator force) are monotone in the
+    parameters, so the extremes live at corners.  Sampling interior points returns a LOWER
+    bound on the true worst case, which means a design can be certified robust when it is
+    not.
+
+    Measured on the passive SDOF at +-10 percent: the 12-draw sampling accepted designs
+    whose true worst corner violates by 5.6e-03 to 1.6e-02, and the threshold it produced,
+    239.72 Hz, is 19 Hz below the corner-based value of 258.76 Hz.
+    """
+    import itertools
+    p = np.asarray(params, dtype=float)
+    lo = np.array([b[0] for b in mech.param_bounds], dtype=float)
+    hi = np.array([b[1] for b in mech.param_bounds], dtype=float)
+    worst = -np.inf
+    for signs in itertools.product((-1.0, 1.0), repeat=p.size):
+        q = np.clip(p * (1.0 + rel * np.asarray(signs)), lo, hi)
+        T = np.abs(mech.transmissibility(omega, q))
+        band = omega >= task.omega_low
+        v = [float(T[band].max() / task.T_iso - 1.0),
+             float(T.max() / task.A_max - 1.0),
+             float(mech.static_deflection(q) / task.delta_max - 1.0)]
+        if task.force_per_disp_max is not None:
+            F = np.abs(mech.actuator_force_per_disp(omega, q))
+            v.append(float(F.max() / task.force_per_disp_max - 1.0))
+        worst = max(worst, max(v))
+    return float(worst)
+
+
 def robust_violation(mech: Mechanism, params, task, omega, rel: float = 0.10,
                      n: int = 24, seed: int = 0) -> float:
-    """Worst-case constraint violation over a perturbation box.
+    """Worst-case violation over n RANDOM points in a perturbation box.
+
+    DEPRECATED for certification: this returns a lower bound on the true worst case, so a
+    design can pass it and still fail the box.  Kept so the original results remain
+    reproducible.  Use robust_violation_corners.
 
     Because this is a maximum of violations, a design that passes here also passes
     at nominal parameters.  The constraint set is therefore a superset of L0's, so

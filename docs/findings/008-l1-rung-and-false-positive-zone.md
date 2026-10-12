@@ -72,7 +72,7 @@ reader might expect.
 |---|---|---|
 | L0 (no perturbation) | **172.34 Hz** (exact) | - |
 | L1, plus or minus 5 percent | 203.10 Hz | +30.76 Hz |
-| L1, plus or minus 10 percent | **239.72 Hz** | **+67.38 Hz** |
+| L1, plus or minus 10 percent | ~~239.72 Hz~~ **258.76 Hz** | **+86.42 Hz** |
 
 Requiring a design to hold across a 10 percent parameter perturbation moves the
 threshold by 39 percent.  The L0-feasible designs near the boundary are therefore

@@ -201,11 +201,24 @@ are therefore permanently in the second row, however sound and however easy to p
 | resource bound (needs >= m components) | vanishing | 1 or 2 |
 | threshold on a **balanced** structural attribute | roughly constant | 3 |
 
-**So the design rule for the certificate layer is not "find something provable".** It is:
-find a **sound invariant whose predicate is a threshold on a balanced structural
-attribute**, because only those can occupy row 3. Provability is necessary and not
-sufficient, and the census (Finding 010) shows both a case that fails on shape alone and
-a case that succeeds.
+**Findings 011 and 012 supersede the "balanced structural attribute" rule above**, which
+was a symptom rather than the cause. The corrected rule is:
+
+> **Prefer invariants whose bound is a CONTINUOUS physical quantity.**
+
+Coverage is a property of the triple (invariant, ensemble, requirement), not of the
+predicate alone: Finding 012 measured the same invariant giving coverage that sweeps
+continuously through (0,1) on one ensemble and is pinned at 0 on another. A continuous
+bound - sag, bandwidth, time constant, energy - is always calibratable. A discrete or
+combinatorial bound jumps unless the ensemble spreads that attribute, which is a fragile
+coincidence. This is a **relaxation**: physical bounds are naturally continuous, so the
+"shape" obstacle largely dissolves, and Finding 010's failure of mode counting is re-read
+as a consequence of its bound being a small integer.
+
+**And calibration is a benchmark constraint, not a certificate one.** Coverage being
+tunable by moving the requirement is nearly circular - in a real problem the requirement is
+given. What matters is whether the given requirement lands in the marginal region of the
+ensemble's capability distribution, and that must be checked when the benchmark is chosen.
 
 This also retro-explains the earlier failure: the Lambda certificate rules out a fixed
 low-dimensional region, so g(N) = O(1) as the structure space grows, which predicts no

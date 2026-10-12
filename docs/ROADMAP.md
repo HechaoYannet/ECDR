@@ -217,6 +217,17 @@ coincidence. This is a **relaxation**: physical bounds are naturally continuous,
 "shape" obstacle largely dissolves, and Finding 010's failure of mode counting is re-read
 as a consequence of its bound being a small integer.
 
+**SUPERSEDED BY FINDING 019: the split that matters is TOPOLOGY vs VALUE, not structure
+vs performance.** Two independently chosen cut lists reproduce the same two numbers -
+value-value 0.8274 against Finding 013's 0.8210, and topology-topology 1.1330 against
+Finding 015's 1.1110 - so Finding 015 was measuring topology against value and calling it
+structure against performance. **A cut composes only if it is keyed to a part of the
+structure that varies independently of the parts the other cuts use.** Both candidate
+certificates (the payload ground-damping law and the waterbed) are value-derived and
+therefore do NOT compose with each other (ratio 0.6066, rho -0.4976). And this is exactly
+the draft's notion of structural capability: a statement holding for all theta in
+Theta(S) is a statement about S.
+
 **And the axes must be structurally distinct, not merely metrically distinct.**
 Finding 013 measured the composition of the three requirement axes (static deflection,
 peak transmissibility, in-band attenuation). Each cuts a substantial share of what the

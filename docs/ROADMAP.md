@@ -215,6 +215,15 @@ coincidence. This is a **relaxation**: physical bounds are naturally continuous,
 "shape" obstacle largely dissolves, and Finding 010's failure of mode counting is re-read
 as a consequence of its bound being a small integer.
 
+**And the axes must be structurally distinct, not merely metrically distinct.**
+Finding 013 measured the composition of the three requirement axes (static deflection,
+peak transmissibility, in-band attenuation). Each cuts a substantial share of what the
+previous ones leave - 0.59, 0.49, 0.76 - so they are not nested. But the observed joint
+survival is 0.0500 against 0.1143 for independent marginals, a ratio of **0.437**: the
+failures are positively correlated, because a heavy, softly supported, lightly damped
+structure is bad on all three at once. **Independent coverage must come from certificates
+keyed to different STRUCTURAL FEATURES, not to different performance metrics.**
+
 **And calibration is a benchmark constraint, not a certificate one.** Coverage being
 tunable by moving the requirement is nearly circular - in a real problem the requirement is
 given. What matters is whether the given requirement lands in the marginal region of the

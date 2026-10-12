@@ -1,7 +1,7 @@
 # Research roadmap
 
-Status: proposed. Naming is deliberately deferred (it is a consequence of the method,
-not a wrapper around it).
+Status: proposed, revised after review. Naming deliberately deferred - it is a
+consequence of the method, not a wrapper around it.
 
 ---
 
@@ -19,11 +19,10 @@ and decomposes the error of a design attempt as
                      structural   search has not closed it yet
                      gap
 
-with delta(S) = inf_theta L( F(S, theta; z), y* ) the best error the structure can ever
-achieve, and a capability gap being delta(S) > epsilon.
+with delta(S) = inf_theta L( F(S, theta; z), y* ) and a capability gap being
+delta(S) > epsilon.
 
-**The whole research lives in that decomposition.** Everything else is machinery for
-computing, bounding, or revising one of its two terms.
+**The whole research lives in that decomposition.**
 
 ---
 
@@ -33,48 +32,50 @@ Search can only ever produce an upper bound:
 
     search finds theta_hat   =>   delta(S) <= ell(S, theta_hat)
 
-The decision problem needs a lower bound:
+The decision needs a lower bound:
 
     should I abandon S ?     <=>   delta(S) > epsilon ?
 
-**These are different questions, and no amount of search converts one into the other.**
-Search can show delta(S) <= epsilon by exhibiting a witness. Search can never show
-delta(S) > epsilon, because *every* negative result it produces is equally consistent
-with "the structure is inadequate" and "my search is inadequate".
-
-So an agent whose only instrument is search cannot perform the attribution the draft
-asks for in sub-challenge 1. Not "performs it poorly" - cannot, in principle. It can
-only ever report ell(S, theta_hat), and it has no way to know which term dominates.
-
-This is the reason the research needs something other than better search, and it is a
-structural argument, not an appeal to any paper.
+**No amount of search converts one into the other.** Every negative result search
+produces is equally consistent with "the structure is inadequate" and "my search is
+inadequate". So an agent whose only instrument is search cannot perform the attribution
+of sub-challenge 1 - not poorly, but in principle. This is a structural fact and
+section 5 turns it into a theorem.
 
 ---
 
-## 2. What we have actually established, and what follows
+## 2. What we have established, and the epistemic status of it
 
-### 2.1 Established
+### 2.1 Results
 
 | result | status |
 |---|---|
-| A closed-form infeasibility certificate exists for one mechanism class (passive SDOF: two incompatible bounds on omega_n, Lambda = 0.2903, independently falsified on 7 tasks) | exact, verified |
-| That certificate **transfers upward** through a fidelity ladder built so each level only ADDS constraints | exact, verified |
-| A certificate's **feasibility** verdict does NOT transfer upward; the 172-240 Hz zone is where the L0 verdict is crossed by L1 | measured |
-| Score/threshold/streak/surrogate pruning is cheap and, on small problems, competitive with certification | measured |
-| Where the certificate can prune, a plain heuristic observing the same verdict prunes identically | measured |
+| Closed-form infeasibility certificate for one mechanism class (passive SDOF; two incompatible bounds on omega_n; Lambda = 0.2903; independently falsified on 7 tasks) | exact, verified |
+| Certificates **transfer upward** through a fidelity ladder built so each level only ADDS constraints | exact, verified |
+| A certificate's **feasibility** verdict does NOT transfer upward (the 172-240 Hz zone) | measured |
+| On small problems, score/streak/surrogate pruning is competitive with certification | measured |
+| Where a certificate can prune, a plain heuristic reading the same verdict prunes identically | measured |
 
-### 2.2 What that implies
+### 2.2 The epistemic status of the vibration benchmark
 
-1. A certificate works by being **class-level**: one derivation, a whole region removed,
-   cost independent of the region's size.
-2. A certificate is a **statement**, and like every statement it holds on an assumption
-   set. The assumption set is what makes it revocable when a higher fidelity crosses it.
-   The danger is never "provable"; it is **"provable with the domain left unsaid"**,
-   which degrades into a hard gate.
-3. On problems small enough that sampling is cheap, certification buys nothing. That is
-   not a defect of certification, it is a statement about the problem size.
-4. **The current bottleneck is the size of the design space, not the number of
-   certificates.**
+Stated plainly because it governs how the results may be used: **the certificate, the
+three mechanisms, the heuristics, the task family, the metric and the baselines were all
+authored by us.** What the vibration work establishes is therefore
+
+  * **soundness** - a class-level certificate can be derived, is exact, survives brute-force
+    falsification, and transfers up a fidelity ladder;
+  * **feasibility** - the machinery runs end to end and the accounting is honest.
+
+It does **not** establish superiority over existing practice, because we also chose the
+problem, the baselines and the metric. A self-authored benchmark can make a theory stand
+up; it cannot make the case for it.
+
+The case has to come from two places that are not ours to choose:
+
+  1. the **mathematical analysis** of section 5, whose statements are true or false
+     independently of what we would prefer;
+  2. the **real-scenario orchestrator** of M6, where the structure space and the
+     requirement come from outside the project entirely.
 
 ---
 
@@ -82,8 +83,8 @@ structural argument, not an appeal to any paper.
 
 > **A capability gap should be certified, not searched for.**
 
-A **capability-gap certificate** for a structure family F, a behaviour requirement
-(C, epsilon) and conditions z is a statement
+A **capability-gap certificate** for a structure family F, a requirement (C, epsilon) and
+conditions z is a statement
 
     for all S in F :  delta_z(S) > epsilon
 
@@ -92,192 +93,297 @@ carrying three things:
 | component | role |
 |---|---|
 | a **soundness argument** | checkable by a third party, independent of the search that motivated it |
-| a **domain tag** | the assumptions (linearity, passivity, single ground path, ...) under which it holds; this is what makes it revocable rather than a gate |
-| a **cost independent of abs(F)** | the property that makes it different in kind from sampling |
+| a **domain tag** | the assumptions under which it holds; this is what makes it revocable rather than a gate |
+| a **cost growing slower than abs(F)** | the property that makes it different in kind from sampling (section 5 makes "slower" precise) |
 
-and it is used as a **confidence operator**, not a filter:
-
-  * no certificate: confidence in "S can do it" accumulates by sampling; the cost per
-    unit of confidence grows with the size of the space; and the conclusion is always
-    "not found yet", never "cannot be done"
-  * certificate: **one derivation sets the confidence of the entire family to zero**,
-    at a cost that does not depend on how large the family is, and the derivation can be
-    re-checked by someone who does not trust the agent
+and it is used as a **confidence operator**, not a filter: without a certificate,
+confidence accumulates by sampling and the conclusion is always "not found yet"; with
+one, a single derivation sets the confidence of an entire family to zero.
 
 ---
 
-## 4. Why a proof is cheaper, argued structurally
+## 4. Why a proof is cheaper - the structural argument
 
-This must be argued from the structure of the two methods, not cited:
+    sampling:  cost ~ (candidates that must be examined) x (cost per evaluation)
+    proof:     cost ~ (deriving the invariant) + (checking it)
 
-    sampling:  cost  ~  (number of candidates that must be examined)
-                       x (cost of one evaluation)
-                       -> grows with the size of the structure space
-
-    proof:     cost  ~  (cost of deriving the invariant)
-                       + (cost of checking it)
-                       -> depends on the invariant, not on the space
-
-The two are not on the same axis at all, so they must cross. **The deliverable is the
-crossing point**, measured, as a function of a design-space size measure.
-
-A crossing that is asserted is worthless; a crossing that is measured is the paper.
+The second does not contain the size of the space. Section 5 proves that this is not a
+matter of degree.
 
 ---
 
-## 5. The method: three layers
+## 5. The mathematical analysis of the crossing
+
+The crossing must be a theorem, not a plot. Experimental curves alone can always be
+attributed to a badly tuned baseline; a theorem cannot.
+
+### 5.1 Setup
+
+Let the structure space at size N be S_N, abs(S_N) = N. Let P : S_N -> {0,1} be the
+feasibility predicate for the requirement (C, epsilon). Write c_s for the cost of one
+evaluation and c_p for the cost of deriving and checking a certificate.
+
+### 5.2 Certainty about an unexamined member is impossible by observation
+
+**Proposition 1 (query lower bound).** Any procedure that correctly decides
+"does there exist x in F with P(x) = 1" using only evaluations of P has worst-case query
+complexity at least abs(F).
+
+*Proof.* Adversary answers P = 0 to every query. A procedure that stops after fewer than
+abs(F) queries has left some x* unqueried; the instance with P(x*) = 1 and P = 0
+elsewhere is consistent with every answer received, but the correct answers differ.
+Hence no procedure with fewer than abs(F) queries is correct on both. (Standard; stated
+because it is the load-bearing step.)
+
+**Consequence.** Ruling out a region of K structures *with certainty* costs Omega(K)
+evaluations. **Escaping that bound requires an argument about the class, not more
+observations.** So the real choice for the negative conclusion is not "certificate versus
+heuristic" but "certificate versus nothing".
+
+### 5.3 The cost theorem and the crossing
+
+**Proposition 2.** If a certificate establishes P = 0 on a subfamily C_N with
+abs(C_N) = g(N) at cost c_p, then
+
+    cost to certainly rule out C_N by evaluation  =  Theta(g(N) * c_s)
+    cost to certainly rule out C_N by certificate =  c_p + c_v
+
+and certification is cheaper exactly when
+
+    g(N)  >  Theta( (c_p + c_v) / c_s )
+
+**This is where the design criterion comes from.** Everything depends on g(N), the NUMBER
+of structures the certificate rules out, and not at all on the fraction.
+
+### 5.4 The coverage growth condition
+
+**Corollary (design criterion).** A certificate family is useful only if
+
+    g(N) -> infinity     as N -> infinity
+
+and the speedup grows like g(N). Three regimes:
+
+| g(N) | outcome |
+|---|---|
+| Theta(1) - a constant number of structures, however large the fraction | **no crossing ever**; the certificate is decoration |
+| Theta(N^alpha), 0 < alpha < 1 | crossing exists; speedup grows polynomially |
+| Theta(N) - a constant fraction | crossing exists; speedup grows linearly |
+
+This replaces the earlier, vaguer instruction "coverage must be non-degenerate" with a
+condition that can be checked by counting. It also explains the earlier failure: the
+Lambda certificate rules out a fixed low-dimensional region, so g(N) = O(1) as the
+structure space grows, which predicts no crossing - and none was observed.
+
+### 5.5 The statistical regime, and the boundary of the method
+
+If certainty is relaxed to confidence, the picture changes completely.
+
+**Proposition 3.** Under uniform sampling without replacement, M failed draws bound the
+feasible fraction by O(1/M) with high probability. M = Theta(1/delta) for a confidence
+target delta, **independent of N**.
+
+**Consequence - and this is a delimitation, not a caveat.** In the regime where a
+*probabilistic* negative conclusion is acceptable, there is no crossing at all and
+sampling is the correct tool. The method's domain is exactly the regime where a
+**certain** negative conclusion is required: when the cost of a wrong "this structure
+cannot do it" is high, when the space cannot be enumerated, or when the same conclusion
+must be reused across many problems without re-sampling. Stating this boundary is part
+of the contribution; a method that claims a regime it does not own is not credible.
+
+### 5.6 Proved versus measured
+
+| claim | status |
+|---|---|
+| Proposition 1 (Omega(K) query lower bound) | provable, short adversary argument |
+| Proposition 2 (cost comparison given an invariant) | provable algebra |
+| Proposition 3 (statistical regime, no crossing) | provable from sampling theory |
+| Corollary (g(N) -> infinity is necessary) | follows from Proposition 2 |
+| **Does a given physical requirement admit a certificate with g(N) -> infinity and c_p independent of N?** | **empirical, per invariant. This is the research.** |
+
+So the mathematics fixes the *shape* of the answer and the empirical work must fill in
+whether any physical invariant actually achieves it. If none does, the programme fails,
+and section 5 says exactly where it would fail.
+
+---
+
+## 6. The method: three layers
 
 ### Layer A - structure representation
 
-    S = (component inventory, connection topology, boundary relations)
-    theta in Theta(S)
+    S = (component inventory, connection topology, boundary relations),  theta in Theta(S)
 
-Requirements:
-  1. a **size measure** that can be swept (number of components, number of topologies,
-     number of discrete choices)
-  2. **emittable as a simulation model** - if S cannot be turned into a Modelica model
-     it is the wrong representation, because L2 must be able to check it
-  3. **compositional**: adding a component must be a local operation, or the space
-     cannot grow
+  1. a **size measure** that can be swept
+  2. **emittable as a simulation model** - if S cannot become a Modelica model it is the
+     wrong representation, because L2 must be able to check it
+  3. **compositional** - adding a component is a local operation
 
 ### Layer B - the certificate layer
 
-A library of **physical invariants of structure classes**, each with the three
-components of section 3. Not a fixed taxonomy to be filled in: the research question is
-which invariants are (i) sound, (ii) cheap, (iii) **cover an interesting fraction** of
-the space, and (iv) **name a structural remedy**.
-
-The last point is the bridge to sub-challenge 2 and is easy to miss. A certificate that
-says only "impossible" is a gate. A certificate that says *which invariant* is violated
-tells the agent what to build:
+A library of physical invariants of structure classes. The research question is which
+invariants are (i) sound, (ii) cheap, (iii) **have g(N) -> infinity**, and (iv) **name a
+structural remedy** - because a certificate that says only "impossible" is a gate, while
+one that says which invariant is violated tells the agent what to build.
 
 | invariant | rules out | names the remedy |
 |---|---|---|
-| mode / state dimension | structures with too few independent modes | add degrees of freedom (components) |
-| energy / passivity | behaviours needing more energy transfer than a passive structure allows | add a source or an active element |
-| time-scale / relaxation | responses at a rate the structure's storage and conductance cannot produce | add storage or a conductance path |
+| mode / state dimension | too few independent modes | add degrees of freedom |
+| energy / passivity | energy transfer a passive structure cannot supply | add a source or active element |
+| time-scale / relaxation | rates the storage and conductance cannot produce | add storage or a conductance path |
 | band-tradeoff (waterbed type) | isolation in one band without amplification elsewhere | change the ground coupling topology |
 
-### Layer C - confidence bookkeeping and budget allocation
+### Layer C - confidence bookkeeping
 
-  * proved regions: budget **zero**, no sampling, retained as a revocation-able statement
-  * unproved regions: budget by sampling, and the fallback when a certificate is
-    unavailable is ordinary non-chronological backtracking
-  * the two must live on **one cost axis** so that "cheaper" means something
-  * a proof that has been crossed by a higher fidelity is **revoked**, not edited
+Proved regions take budget **zero**; unproved regions take sampling budget; the fallback
+when no certificate exists is ordinary non-chronological backtracking; both live on one
+cost axis; a certificate crossed by a higher fidelity is **revoked**, not edited.
 
 ---
 
-## 6. The first certificate, worked
+## 7. The first certificate, worked
 
-The draft already contains it, which is a good sign: it is the right kind of statement.
+The draft already contains it, which is a good sign - it is the right kind of statement.
 
-**Target** y*(t) = 0.7 cos 2t + 0.3 cos 5t, to be produced as the free response of a
-passive linear mechanical structure.
+**Target** y*(t) = 0.7 cos 2t + 0.3 cos 5t, as the free response of a passive linear
+mechanical structure.
 
-**Invariant.** The free response of an n-degree-of-freedom linear time-invariant system
-is a sum of at most n harmonics, at the system's natural frequencies. The draft proves
-the n = 1 case directly (substitution forces omega^2 = 4 and omega^2 = 25 at once).
+**Invariant.** The free response of an n-degree-of-freedom LTI system is a sum of at
+most n harmonics at the natural frequencies. The draft proves n = 1 directly
+(substitution forces omega^2 = 4 and omega^2 = 25 simultaneously).
 
-**Certificate.**
-    for all S with fewer than m degrees of freedom :  delta(S) > epsilon
+**Certificate.** For all S with fewer than m degrees of freedom, delta(S) > epsilon,
 where m is the number of distinct frequencies in y*.
 
-**Cost**: O(1) given the target's spectrum. **Coverage**: every topology with fewer than
-m components - a combinatorial class.
+**Cost** O(1) in the target's spectrum. **Coverage** every topology with fewer than m
+components - and crucially, **g(N) grows like the number of such topologies**, which for
+a compositional inventory is exponential in m. This is the first candidate with
+g(N) -> infinity, so section 5 predicts a crossing here.
 
-**Domain tag**: linear, time-invariant, passive, free response (no external forcing),
-output a linear functional of the state. Each of those assumptions is a *prediction*
-that a higher fidelity can refute, which is precisely the draft's own capability
-criterion.
+**Domain tag** linear, time-invariant, passive, free response, output a linear functional
+of the state. Each assumption is a *prediction* a higher fidelity can refute - which is
+the draft's own capability criterion.
 
-**One precision that decides whether the certificate is sound at all**, and it must be
-fixed before the certificate is used: does "produce y*" mean *exact* generation or
-generation *within tolerance over a time window*? An exact statement is clean (a damped
-system cannot emit an undamped two-tone signal asymptotically), while a windowed
-tolerance statement is a different and harder theorem. Lambda_2 died precisely because a
-direction-of-approach question was left unstated, so this one is stated here as the
-first thing M1 must settle rather than the last.
-
-**This is small mathematics.** That is not the point. The point is that it is (i) sound,
-(ii) free, (iii) covers a combinatorially large class, and (iv) names the remedy: *add
-degrees of freedom*. The research is not "prove hard theorems"; it is **what an agent
-must do to produce, tag, check, use and revoke statements of this kind, and whether
-doing so beats sampling.**
+**One precision that decides soundness, and which M1 must settle first**: does "produce
+y*" mean exact generation or generation within tolerance over a time window? An exact
+statement is clean; a windowed tolerance statement is a different and harder theorem.
+Lambda_2 died of an unstated direction-of-approach question, so this one is settled
+first rather than last.
 
 ---
 
-## 7. The central experiment
+## 8. The central experiment
 
-**Measure**: at fixed evidence strength, the cost of **ruling out a region** of the
-structure space, as a function of the space's size.
+**Measure**: at fixed evidence strength, the cost of **ruling out a region**, as a
+function of the design-space size.
 
-    x-axis:  size measure of the structure space (number of topologies / components)
-    y-axis:  cost to rule out (model evaluations at L0, simulations at L1/L2)
-    curves:  (a) sampling only
-             (b) sampling + certificate layer
-             (c) certificate only
-    fixed:   required behaviour, evidence strength (tolerance, confidence), budget unit
+    x-axis:  size measure (number of topologies / components)
+    y-axis:  cost to rule out (evaluations at L0, simulations at L1/L2)
+    curves:  (a) evaluation only   (b) evaluation + certificates   (c) certificates only
+    fixed:   requirement, tolerance, confidence, cost unit
 
-Expected: (a) grows with the size measure, (c) flat, (b) tracks (a) below the crossing
-and (c) above it. **The deliverable is the crossing point and its scaling.**
+The theory (section 5) predicts (a) grows as Theta(g(N)) and (c) is flat. **The
+experiment's job is to locate the crossing and measure the exponent, and to test the
+prediction that a certificate with g(N) = O(1) produces no crossing at all** - a
+falsifiable prediction the theory already makes about the existing Lambda certificate.
 
-Design constraints that make it a real experiment:
-  * the x-axis must genuinely grow - a parameter box will not do, the growth must be
-    combinatorial in components
-  * the certificate must cover a **fraction** of the space, and that fraction must vary
-    with size; all-or-nothing coverage makes the curve trivial
-  * the cost unit must be physical and shared (evaluations, then simulations)
-  * the fidelity ladder L0 -> L1 -> L2 is the **cost ladder**, and L2 is where
-    independent checking happens
+Design constraints:
+  * the x-axis must grow **combinatorially** in components; a parameter box cannot
+  * the certificate must have **g(N) -> infinity**; report g(N), not the fraction
+  * the cost unit must be physical and shared across arms
+  * L0 -> L1 -> L2 is the **cost ladder**; L2 is where independent checking happens
 
 ---
 
-## 8. Milestones, each with a falsifier
+## 9. Milestones, each with a falsifier
 
 | # | milestone | falsified if |
 |---|---|---|
-| M1 | one certificate that is sound, cheap, class-level, with an explicit domain tag | the direction of approach or the domain cannot be pinned down (this is where Lambda_2 failed) |
-| M2 | a structure representation with a genuine size knob, emittable to Modelica | the space cannot be made to grow combinatorially, or cannot be emitted |
-| M3 | the crossing curve at L0, measured | the curves do not cross in the reachable range, or the certificate covers 0% or 100% |
-| M4 | the crossing reproduced at L1 and L2 with OpenModelica | the crossing moves so far that it is out of reach, or OpenModelica cannot express S |
-| M5 | certificate names an invariant, and acting on that name constructs a working structure | the named invariant does not determine a useful repair |
-| M6 | the method transfers to a second physical domain (thermal / energy path) | no invariant of the same character exists there |
+| M1 | one certificate that is sound, cheap, class-level, with an explicit domain tag **and g(N) -> infinity** | the direction of approach cannot be pinned down (where Lambda_2 died), or g(N) turns out bounded |
+| M2 | a structure representation with a genuine size knob, emittable to Modelica | the space cannot grow combinatorially, or cannot be emitted |
+| M3 | the crossing at L0, measured, with the exponent | no crossing in reach, or the measured exponent contradicts section 5 |
+| M4 | the crossing reproduced at L1 and L2 with OpenModelica | it moves out of reach, or Modelica cannot express S |
+| M5 | the certificate names an invariant, and acting on that name constructs a working structure | the named invariant does not determine a useful repair |
+| **M6** | **the real thing, below** | the method does not transfer to a scenario we did not author |
 
-M5 is the one that connects diagnosis to construction and is therefore the one that
-makes this the draft's research rather than a search paper.
+### M6 - a real orchestrator, a real scenario, the whole research flow
+
+The vibration work is ours from end to end (section 2.2), so it can show that the theory
+stands up but not that the method works. M6 is where that changes:
+
+  * an orchestrator built on **Cordis**, whose revertible effects and reactive coeffects
+    are exactly what a revocable certificate knowledge base needs, and whose hot module
+    replacement makes the component inventory pluggable;
+  * an **LLM in the loop**, doing the actual work rather than executing a script;
+  * the agent runs the **whole research flow** itself - proposing structures, deriving and
+    tagging certificates, allocating budget, revoking when a domain is crossed;
+  * the **scenario comes from outside**: the structure space and the requirement are given
+    by a domain we did not design. Suggested domain: **heat-engine improvement**, where
+    the time-scale and energy-path invariants have clean physical counterparts and where
+    the target is set by thermodynamics rather than by us.
+
+Success criterion for M6 is not a benchmark number. It is: **the agent produces a
+certificate that is sound, domain-tagged, and that a domain expert accepts as
+non-obvious, together with a structural change that acts on what the certificate names.**
 
 ---
 
-## 9. Risks, stated plainly
+## 10. Risks
 
 1. **The certificates may be shallow.** Mode counting is linear algebra. If every usable
-   invariant is of that character, the method reduces to "a few special-case proofs
-   plus search". Mitigation: the claim is about the *agent's behaviour*, not the depth
-   of the mathematics, and the crossing experiment measures behaviour. But this is the
-   most serious risk and it should be attacked early.
-2. **Coverage may be degenerate.** If certificates rule out almost everything, the
-   problem is trivial; if almost nothing, they are useless. The interesting regime is
-   intermediate and it must be checked before building the full apparatus.
-3. **The size axis may not grow fast enough** to push the crossing into reach at a
-   fidelity we can afford. This is exactly the failure the current repository suffers,
-   one level up.
+   invariant is of that character, the method reduces to "a few special-case proofs plus
+   search". **Most serious risk; attack it first.** Note the mitigation is now sharper
+   than before: section 5 says what has to be true (g(N) -> infinity, c_p flat), and
+   counting settles it quickly for a candidate invariant.
+2. **g(N) may be bounded for every invariant we can find.** Then section 5 predicts no
+   crossing and there is nothing to show. This is a real possibility and it is the
+   fastest thing to check.
+3. **The size axis may not grow fast enough** to put the crossing inside an affordable
+   fidelity - the present failure, one level up.
 4. **The structure representation may not survive the Modelica boundary**, which would
-   force L2 to be a second Python model, which is not independent, which would remove
-   the strongest evidence the method can offer.
+   make L2 a second Python model, i.e. not independent, removing the strongest evidence.
 
 ---
 
-## 10. What this programme will not do
+## 11. Scale-up: parallel agents and annotation data
 
-  * It will not train any model, including a verifier. Training belongs to the agent's
-    self-evolution, not to a component that is supposed to be an independent check.
-  * It will not insert the researcher's prior into the loop as predicates. The prior is
-    frequently the thing that is wrong, and a gate built from it misleads.
-  * It will not treat a certificate as a decision. A certificate is a statement with a
-    domain; crossing the domain revokes it, and revocation is a normal event, not a
-    failure.
-  * It will not argue from cited authority. The case for certification over sampling is
-    structural (section 4) and the case for the method is experimental (section 7).
-  * It will not report a result from a design space small enough that the crossing is
-    out of reach. That is the mistake the first six rounds made.
+Placed late on purpose; flagged now so it is designed rather than accreted.
+
+Two things must not be conflated:
+
+  * **Training a component of the method.** Excluded. A trained adjudicator is the same
+    gate in harder-to-inspect material, and it would make the independent check depend on
+    the thing it is supposed to check.
+  * **The agent's own self-evolution**, which is a different thing and is explicitly in
+    scope.
+
+What large-scale parallel agents plausibly buy:
+
+  1. **Parallel exploration of the structure space**, with the shared certificate
+     knowledge base as the coordination substrate: a certificate derived once by one agent
+     removes the region for every agent. This is the natural place for the g(N) argument
+     to become a systems argument - **the value of a certificate scales with the number of
+     agents that would otherwise have had to sample the region.**
+  2. **Annotation data as a by-product**, not as a goal: traces of (structure, requirement,
+     evidence, verdict, revocation) that are produced anyway, and that can later serve the
+     agent's self-evolution. Consistent with the earlier retraction - the data is not the
+     purpose of the harness.
+
+Open questions to settle before building any of it: what exactly is annotated; what the
+data would be used for if not for training a verifier; how parallel agents avoid
+duplicating derivation work; and how revocation propagates across agents without becoming
+a consensus protocol. **Detailed analysis deferred - recorded here so the roadmap has a
+place for it.**
+
+---
+
+## 12. What this programme will not do
+
+  * Train any model, including a verifier.
+  * Insert the researcher's prior into the loop as predicates. The prior is frequently the
+    thing that is wrong, and a gate built from it misleads.
+  * Treat a certificate as a decision. A certificate is a statement with a domain;
+    crossing the domain revokes it, and **revocation is a normal event, not a failure**.
+  * Argue from cited authority. The case for certification is structural (sections 4-5).
+  * Claim a regime it does not own. Section 5.5 states where sampling is the right tool.
+  * Report results from a design space small enough that the crossing is out of reach -
+    the mistake of the first six rounds.
+  * Treat a self-authored benchmark as evidence of superiority. Section 2.2.

@@ -217,6 +217,18 @@ coincidence. This is a **relaxation**: physical bounds are naturally continuous,
 "shape" obstacle largely dissolves, and Finding 010's failure of mode counting is re-read
 as a consequence of its bound being a small integer.
 
+**AND AGAIN BY FINDING 021, which withdraws Finding 020's pessimistic conclusion.** The
+capability space has an **effective dimension of 4.62** (leading eigenvalue share 0.36,
+7 components for 90 percent of variance, 14 of 66 pairs below abs(rho) = 0.1). Finding 020
+had measured a set of cuts **all taken on one axis** - sag, peak, in-band, g0/m0, W are
+every one a monotone measure of how well the structure isolates - and generalised to the
+whole space. The correct rule is: **no two cuts on the SAME axis compose; cuts on
+different axes do.** A composing pair now exists - the modal bound (sound, topology-keyed)
+against isolation performance gives abs(rho) <= 0.17 across three seeds, against 0.81 for
+two performance bounds. This also softens Finding 010: mode counting is eliminated only
+when the requirement is fixed while the space grows, which is Finding 012's calibration
+condition rather than a defect of the invariant.
+
 **CORRECTED AGAIN BY FINDING 020.** Finding 019's "topology vs value" explanation is
 refuted by a controlled test: cuts on single component values with controlled overlaps show
 no separation (disjoint-draw mean 0.976, shared-draw 1.000, all within two standard errors

@@ -217,6 +217,18 @@ coincidence. This is a **relaxation**: physical bounds are naturally continuous,
 "shape" obstacle largely dissolves, and Finding 010's failure of mode counting is re-read
 as a consequence of its bound being a small integer.
 
+**CORRECTED AGAIN BY FINDING 020.** Finding 019's "topology vs value" explanation is
+refuted by a controlled test: cuts on single component values with controlled overlaps show
+no separation (disjoint-draw mean 0.976, shared-draw 1.000, all within two standard errors
+of 1.0). What Finding 019 actually measured is that **every performance cut is a monotone
+function of one scalar - how well the structure isolates** - with pairwise |Spearman rho|
+between 0.39 and 0.82. The separation is real (TOP minus VAL = 0.2477, 95% CI
+[0.1786, 0.3185]) but the cause is **common-scalar redundancy**, and the consequence is
+worse: every physical performance bound is such a monotone measure, so **no two such
+certificates will compose**. The operational test is now the rank correlation between the
+certificates' BOUNDS: |rho| near 0 is worth having, |rho| near 0.5 or above is one
+certificate wearing two hats.
+
 **SUPERSEDED BY FINDING 019: the split that matters is TOPOLOGY vs VALUE, not structure
 vs performance.** Two independently chosen cut lists reproduce the same two numbers -
 value-value 0.8274 against Finding 013's 0.8210, and topology-topology 1.1330 against

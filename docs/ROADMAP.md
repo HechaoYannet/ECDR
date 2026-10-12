@@ -169,6 +169,21 @@ So the corollary splits in two, and the second half is the one that matters.
   2. The crossing is **persistent** - a speedup that does not decay toward 1 - iff
      g(N) = Theta(N), i.e. iff the certificate rules out a constant FRACTION.
 
+**But condition 2 is not the right target, and Finding 011 supersedes it.** A single
+certificate satisfying condition 2 still caps the speedup at 1/(1-f), so covering half the
+space buys a factor of two. What produces a real separation is a **library**:
+
+    certificate i rules out a fraction f_i of the space remaining after 1..i-1
+    => remaining <= prod(1 - f_i)
+    => k = O( log N / log(1/(1-f)) ) certificates suffice
+
+and the count grows ADDITIVELY per decade of N while sampling grows MULTIPLICATIVELY. At
+N = 6.4e10, a per-step coverage of one part in a thousand gives k = 24,876 certificates
+against 6.4e10 evaluations: a separation of 2.6e6. **The requirement therefore relaxes
+from "cover a constant fraction" to "cover a constant, arbitrarily small, fraction per
+step"**, and the thing to look for is a FAMILY of scale-free, mutually independent,
+physically sound invariants - not one deep theorem.
+
 | g(N) | absolute saving | relative saving | verdict |
 |---|---|---|---|
 | Theta(1) | bounded | -> 1 | **no crossing ever**; decoration |

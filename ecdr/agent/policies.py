@@ -120,6 +120,79 @@ def certificate_verdict(task, mechanism_class: str):
     return "unknown", {"status": "no certificate exists for this class"}
 
 
+def certificate_verdict_l1(task, mechanism_class: str):
+    """The same L0 certificate, interpreted with its DOMAIN OF VALIDITY respected.
+
+    Finding 008 established that L1 only adds constraints, so:
+
+        L0 says INFEASIBLE  ->  sound at L1, hard prune
+        L0 says FEASIBLE    ->  DOES NOT TRANSFER to L1, so it is UNKNOWN there
+
+    Treating an L0 feasibility verdict as a licence to keep searching at L1 is
+    exactly the violation of pruning rule P7 that the false-positive zone punishes.
+    """
+    v, ev = certificate_verdict(task, mechanism_class)
+    if v == "infeasible":
+        return "infeasible", ev
+    if v == "feasible":
+        return "feasible_at_l0_only", ev
+    return "unknown", ev
+
+
+class CertificateNaiveL1(Policy):
+    """Ignores P7: treats an L0 feasibility verdict as valid at L1, so it keeps M1.
+
+    In the false-positive zone this arm is confidently wrong and never escapes.
+    It is included precisely because it is the plausible mistake.
+    """
+
+    name = "certificate_naive_L1"
+
+    def __init__(self, task, mechanism_class: str, fallback=None):
+        self.task = task
+        self.mechanism_class = mechanism_class
+        self.fallback = fallback or Surrogate()
+        self._v = None
+
+    def should_abandon(self, state):
+        if self._v is None:
+            self._v = certificate_verdict_l1(self.task, self.mechanism_class)
+        v = self._v[0]
+        if v == "infeasible":
+            return True
+        if v == "feasible_at_l0_only":
+            return False          # <-- the mistake
+        return self.fallback.should_abandon(state)
+
+
+class CertificateHybridL1(Policy):
+    """Respects P7: hard prune on a transferred proof, soft guidance otherwise.
+
+    The fallback matters and the first version got it wrong.  Pairing the
+    certificate with the WEAKEST soft heuristic (surrogate) made the hybrid score
+    exactly what surrogate scores, which measures the fallback rather than the
+    certificate.  The fair comparison gives every arm the BEST soft heuristic
+    available and lets the certificate add hard pruning on top; that is the
+    marginal value of the certificate, which is the quantity of interest.
+    """
+
+    name = "certificate_hybrid_L1"
+
+    def __init__(self, task, mechanism_class: str, fallback=None):
+        self.task = task
+        self.mechanism_class = mechanism_class
+        self.fallback = fallback or Plateau()
+        self._v = None
+
+    def should_abandon(self, state):
+        if self._v is None:
+            self._v = certificate_verdict_l1(self.task, self.mechanism_class)
+        v = self._v[0]
+        if v == "infeasible":
+            return True
+        return self.fallback.should_abandon(state)
+
+
 class CertificatePure(Policy):
     """Tier 1 only: prune on a proof, keep on a proof, otherwise never stop.
 
@@ -202,6 +275,8 @@ POLICY_FACTORY = {
     "surrogate": lambda task, mech, minimal: Surrogate(),
     "certificate_pure": lambda task, mech, minimal: CertificatePure(task, mech),
     "certificate_hybrid": lambda task, mech, minimal: CertificateHybrid(task, mech),
+    "certificate_naive_L1": lambda task, mech, feasibility: CertificateNaiveL1(task, mech),
+    "certificate_hybrid_L1": lambda task, mech, feasibility: CertificateHybridL1(task, mech),
     "oracle": lambda task, mech, feasibility: Oracle(task, mech, feasibility),
 }
 

@@ -152,13 +152,28 @@ Heuresis（arXiv 2606.25198）3,222 次评分运行、六种主流开放式/质�
 
 ```
 ECDR/
+├─ README.md
+├─ ecdr/
+│  ├─ l0/            解析层（线性频域）：机制模型、闭式不可行性证书、waterbed 不变量、精确峰值
+│  └─ bench/         带真值标签的任务族、BOCoDe 式问题接口、机制内局部优化基线
+├─ scripts/          step1..step11，每步可独立复现
+├─ tools/            arXiv 检索与全文抓取
+├─ runs/             运行产物（JSON）
 └─ docs/
-   └─ reference/
-      ├─ seed-conversation.md              种子讨论原文（恢复自 ChatGPT 分享链接）
-      ├─ seed-conversation.messages.json   同上的结构化版本
-      ├─ seed-conversation.raw.html.gz     原始 SSR 页面（证据留档）
-      └─ competitive-landscape.md          已核实的相关工作与竞争格局
+   ├─ reference/     种子对话原文、已核实的竞争格局
+   ├─ findings/      001..006 逐条结论（含两次自我更正）
+   └─ decisions/     Q4 等架构决策记录
 ```
+
+### 逃生阶梯（[findings/006](docs/findings/006-labelled-task-family.md)）
+
+| 频带边缘 | M1 无源单自由度 | M2 调谐质量阻尼器 | M3 sky-hook 主动 | 最小可解机制 |
+|---|---|---|---|---|
+| < 132.43 Hz | **可证不可行** | 无见证 | 可行 | M3 |
+| 132.43–172.24 Hz | **可证不可行** | 可行 | 可行 | M2 |
+| > 172.24 Hz | 可行 | 可行 | 可行 | M1 |
+
+两个阈值：M1→M2 = **172.237063 Hz（精确）**，M2→M3 = **132.4253 Hz（数值）**。
 
 ## 10. Q1 / Q2：已由文献证据裁定（详见 [docs/findings/003](docs/findings/003-q1-q2-evidence-synthesis.md)）
 

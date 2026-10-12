@@ -217,6 +217,16 @@ coincidence. This is a **relaxation**: physical bounds are naturally continuous,
 "shape" obstacle largely dissolves, and Finding 010's failure of mode counting is re-read
 as a consequence of its bound being a small integer.
 
+**AND FINDING 024 REPLICATES IT AND ADDS A FOURTH MEMBER.** A fourth sound certificate - the
+FAST time scale, omega_n^2 <= max_i (K_ii + sum abs K_ij)/m_i, from the infinity norm
+dominating the spectral radius, 0 violations in 300 and tightest of the four at 1.33 - joins
+modal, statics and slow-time-scale. The four compose with sequential conditionals
+**0.564 / 0.760 / 0.389**, and on a genuinely different family (tree **plus two extra edges**,
+**uniform** values, n in 2..7) the same figure is **0.547 / 0.794 / 0.368**, agreeing to
+within 0.035. Round survival 0.0367 against 0.0400; **28 and 29 certificates** for 1e10. One
+calibration was found to deplete the space before the library finishes its members, and the
+reading there is flagged as vacuous rather than reported.
+
 **AND FINDING 023 CORRECTS A DIRECTION ERROR RUNNING FROM FINDING 013 TO 022.** The ratio
 P(notA and notB)/(P(notA)P(notB)) was read as "above 1 is complementary". It is the
 reverse: identical cuts give 2.0 and disjoint cuts give 0.0. The numbers are unaffected -

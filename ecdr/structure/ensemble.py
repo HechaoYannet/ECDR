@@ -24,7 +24,8 @@ def _loguniform_scalar(rng, lo, hi) -> float:
     return float(np.exp(rng.uniform(np.log(lo), np.log(hi))))
 
 
-def random_structure(rng, n: int, ground_count=None) -> Structure:
+def random_structure(rng, n: int, ground_count=None, extra_edges: int = 0,
+                     value_dist: str = "log") -> Structure:
     """A random tree on n masses, log-spread component values.
 
     ground_count = None draws the number of ground ties uniformly on 1..ceil(n/2).
@@ -42,17 +43,36 @@ def random_structure(rng, n: int, ground_count=None) -> Structure:
         springs[(parent, k)] = _loguniform_scalar(rng, 1e3, 1e5)
         dampers[(parent, k)] = _loguniform_scalar(rng, 1.0, 100.0)
 
+    def draw(lo, hi):
+        if value_dist == "uniform":
+            return float(rng.uniform(lo, hi))
+        return _loguniform_scalar(rng, lo, hi)
+
+    # extra edges create loops, so the topology family is not just trees
+    # A bounded attempt loop.  A small n has few possible non-edges - for n = 2 there is
+    # exactly one - so an unbounded "while added < extra_edges" spins forever.
+    added = 0
+    attempts = 0
+    while added < extra_edges and attempts < 20 * max(extra_edges, 1):
+        attempts += 1
+        i, j = sorted(rng.choice(n, size=2, replace=False).tolist())
+        if (i, j) in springs:
+            continue
+        springs[(i, j)] = draw(1e3, 1e5)
+        dampers[(i, j)] = draw(1.0, 100.0)
+        added += 1
+
     if ground_count is None:
         ground_count = int(rng.integers(1, max(2, (n + 1) // 2 + 1)))
     g_nodes = rng.choice(n, size=min(ground_count, n), replace=False)
-    ground_k = {int(g): _loguniform_scalar(rng, 1e3, 1e5) for g in g_nodes}
-    ground_c = {int(g): _loguniform_scalar(rng, 1.0, 100.0) for g in g_nodes}
+    ground_k = {int(g): draw(1e3, 1e5) for g in g_nodes}
+    ground_c = {int(g): draw(1.0, 100.0) for g in g_nodes}
     return Structure(masses=masses, springs=springs, dampers=dampers,
                      ground_k=ground_k, ground_c=ground_c)
 
 
 def ensemble(seed: int, count: int, n_lo: int = 2, n_hi: int = 8, fixed_n=None,
-             ground_count=None):
+             ground_count=None, extra_edges: int = 0, value_dist: str = "log"):
     """Draw a batch of structures.
 
     fixed_n = None  -> n uniform on [n_lo, n_hi]      (size-spread)
@@ -62,7 +82,8 @@ def ensemble(seed: int, count: int, n_lo: int = 2, n_hi: int = 8, fixed_n=None,
     out = []
     for _ in range(count):
         n = int(fixed_n) if fixed_n is not None else int(rng.integers(n_lo, n_hi + 1))
-        out.append(random_structure(rng, n, ground_count=ground_count))
+        out.append(random_structure(rng, n, ground_count=ground_count,
+                                    extra_edges=extra_edges, value_dist=value_dist))
     return out
 
 

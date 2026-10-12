@@ -19,7 +19,16 @@ Reproduce: the calls are in this finding; the reference is at reference/ (gitign
 M6's "an LLM in the loop, doing the actual work rather than executing a script" now has a real
 LLM behind it.
 
-## 2. The trap
+## 2. The trap - RETRACTED, see Finding 040
+
+**The section below is wrong.** The empty-content response was caused by my own max_tokens cap,
+not by the model. With the cap removed the model terminates normally at finish_reason "stop",
+and the answer it gives is correct. Worse, the "fix" recommended below - disabling thinking -
+produced an answer with the direction of the effect REVERSED on the question Finding 037 had
+settled by enumeration. Read [Finding 040](040-correction-thinking-was-my-cap.md) instead; the
+text is kept only as the record of the error.
+
+### the original, incorrect text
 
 Three calls, same question, differing only in how thinking is configured:
 

@@ -1,5 +1,9 @@
-# ECDR orchestrator composition. Order does not matter: Cordis starts a plugin when the
-# services it injects exist, not when its line appears.
 - name: './src/physics.ts'
 - name: './src/certificates.ts'
-- name: './src/demo.ts'
+- name: './src/checker.ts'
+- name: './src/llm.ts'
+  config:
+    keyFile: '../SECRETS/DEEPSEEK-API.txt'
+    model: deepseek-flash
+- name: './src/loop.ts'
+- name: './src/run.ts'

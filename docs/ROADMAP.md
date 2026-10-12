@@ -50,6 +50,7 @@ section 5 turns it into a theorem.
 
 | result | status |
 |---|---|
+| **L1 robustness labels** | **CORRECTED by Finding 029.** MechanismProblemL1 and verify_l1 sampled the perturbation box, so their worst case is a lower bound; 33 designs certified robust across the task sweep actually fail, 6 of 7 at f_low = 280 Hz and rel = 0.10. Both now take use_corners=True. The task stratification also moves - 240 Hz is INSIDE the corrected zone - and the L1 ablation turns out to have been run at rel = 0.06 while the zone is drawn at rel = 0.10, so it was not measuring the zone it claimed to |
 | **Waterbed closed form** | **CORRECTED by Finding 018: W = pi * sum over RHP zeros of Re(1/z)**, verified to 4e-07 where roots are computable and exact on the 85 networks with no RHP zero. The coefficient form was invalid: |
 | ~~Waterbed coefficient form (originally Finding 004)~~ | **DOWNGRADED by Finding 016.** The identity p1/p0 = q1/q0 is exact (6.9e-18, resting on C 1 = g), so the closed form predicts zero for every passive network - but the integral is non-zero and converged for about one network in ten. The formula is not valid in general |
 | Closed-form infeasibility certificate for one mechanism class (passive SDOF; two incompatible bounds on omega_n; Lambda = 0.2903; independently falsified on 7 tasks) | exact, verified |

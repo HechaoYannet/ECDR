@@ -21,7 +21,7 @@ class MechanismProblemL1:
     """One (task, mechanism) pair at L1, in BOCoDe canonical form."""
 
     def __init__(self, task: IsolationTask, mechanism: Mechanism, rel: float = 0.06,
-                 n_pert: int = 5, grid=None, seed: int = 0):
+                 n_pert: int = 5, grid=None, seed: int = 0, use_corners: bool = False):
         self.task = task
         self.mechanism = mechanism
         self.rel = rel
@@ -36,10 +36,21 @@ class MechanismProblemL1:
         lo = np.array([b[0] for b in self.bounds], dtype=float)
         hi = np.array([b[1] for b in self.bounds], dtype=float)
         self._lo, self._hi = lo, hi
-        # perturbation directions are FIXED per problem so the objective is a
-        # deterministic function of x; otherwise the searcher optimises noise
-        self._dirs = 1.0 + rel * (2.0 * np.random.default_rng(12345 + seed).random(
-            (n_pert, self.dim)) - 1.0)
+        # Perturbation directions are FIXED per problem so the objective is a deterministic
+        # function of x; otherwise the searcher optimises noise.
+        #
+        # use_corners=True uses the 2^d CORNERS of the box instead of n_pert random points.
+        # A maximum over samples is only a LOWER bound on the maximum over the box, so the
+        # sampled version can call a design robust when it is not - the same defect Finding
+        # 028 found in robust_violation.  The constraints are monotone in the parameters, so
+        # the extremes live at corners; for d up to 5 that is at most 32 points.
+        if use_corners:
+            import itertools
+            self._dirs = np.array(list(itertools.product(
+                (1.0 - rel, 1.0 + rel), repeat=self.dim)), dtype=float)
+        else:
+            self._dirs = 1.0 + rel * (2.0 * np.random.default_rng(12345 + seed).random(
+                (n_pert, self.dim)) - 1.0)
 
     def sample(self, n: int, seed: int = 0) -> np.ndarray:
         rng = np.random.default_rng(seed)
@@ -86,7 +97,7 @@ class MechanismProblemL1:
 
 
 def verify_l1(mechanism: Mechanism, params, task, rel: float = 0.06, n_pert: int = 24,
-              grid=None, seed: int = 909) -> dict:
+              grid=None, seed: int = 909, use_corners: bool = False) -> dict:
     """Independent L1 verification: more perturbation samples, finer grid.
 
     Kept separate from the search objective on purpose (Finding 003 integrity rule 5).
@@ -97,12 +108,17 @@ def verify_l1(mechanism: Mechanism, params, task, rel: float = 0.06, n_pert: int
     lo = np.array([b[0] for b in mechanism.param_bounds], dtype=float)
     hi = np.array([b[1] for b in mechanism.param_bounds], dtype=float)
     band = g >= task.omega_low
+    if use_corners:
+        import itertools
+        dirs = [np.asarray(d, dtype=float) for d in
+                itertools.product((1.0 - rel, 1.0 + rel), repeat=p.size)]
+    else:
+        dirs = [1.0 + rel * (2.0 * rng.random(p.shape) - 1.0) for _ in range(n_pert)]
     worst_in = -np.inf
     worst_peak = -np.inf
     worst_sag = -np.inf
     worst_force = -np.inf
-    for _ in range(n_pert):
-        d = 1.0 + rel * (2.0 * rng.random(p.shape) - 1.0)
+    for d in dirs:
         q = np.clip(p * d, lo, hi)
         T = np.abs(mechanism.transmissibility(g, q))
         worst_in = max(worst_in, float(T[band].max()))

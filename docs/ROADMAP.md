@@ -157,22 +157,44 @@ of structures the certificate rules out, and not at all on the fraction.
 
 ### 5.4 The coverage growth condition
 
-**Corollary (design criterion).** A certificate family is useful only if
+Two different quantities must not be confused:
 
-    g(N) -> infinity     as N -> infinity
+    ABSOLUTE saving  =  g(N) * c_s  -  c_p        grows whenever g(N) -> infinity
+    RELATIVE saving  =  N / (N - g(N))            tends to 1 unless g(N) = Theta(N)
 
-and the speedup grows like g(N). Three regimes:
+So the corollary splits in two, and the second half is the one that matters.
 
-| g(N) | outcome |
-|---|---|
-| Theta(1) - a constant number of structures, however large the fraction | **no crossing ever**; the certificate is decoration |
-| Theta(N^alpha), 0 < alpha < 1 | crossing exists; speedup grows polynomially |
-| Theta(N) - a constant fraction | crossing exists; speedup grows linearly |
+**Corollary (design criterion).**
+  1. A crossing exists iff g(N) -> infinity.
+  2. The crossing is **persistent** - a speedup that does not decay toward 1 - iff
+     g(N) = Theta(N), i.e. iff the certificate rules out a constant FRACTION.
 
-This replaces the earlier, vaguer instruction "coverage must be non-degenerate" with a
-condition that can be checked by counting. It also explains the earlier failure: the
-Lambda certificate rules out a fixed low-dimensional region, so g(N) = O(1) as the
-structure space grows, which predicts no crossing - and none was observed.
+| g(N) | absolute saving | relative saving | verdict |
+|---|---|---|---|
+| Theta(1) | bounded | -> 1 | **no crossing ever**; decoration |
+| -> inf but o(N) | grows | -> 1 | crossing exists but the advantage **decays away** |
+| Theta(N) | grows | constant > 1 | **persistent advantage** |
+
+**A structural consequence, which is the real content.** In a space whose size grows
+super-exponentially in the number of components, any predicate of the form "this
+structure has too few of a bounded resource" - too few masses, too few components, too
+few ground paths - is satisfied by a **vanishing fraction** of the space. Such predicates
+are therefore permanently in the second row, however sound and however easy to prove.
+
+| predicate shape | fraction | row |
+|---|---|---|
+| resource bound (needs >= m components) | vanishing | 1 or 2 |
+| threshold on a **balanced** structural attribute | roughly constant | 3 |
+
+**So the design rule for the certificate layer is not "find something provable".** It is:
+find a **sound invariant whose predicate is a threshold on a balanced structural
+attribute**, because only those can occupy row 3. Provability is necessary and not
+sufficient, and the census (Finding 010) shows both a case that fails on shape alone and
+a case that succeeds.
+
+This also retro-explains the earlier failure: the Lambda certificate rules out a fixed
+low-dimensional region, so g(N) = O(1) as the structure space grows, which predicts no
+crossing - and none was observed.
 
 ### 5.5 The statistical regime, and the boundary of the method
 

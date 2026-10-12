@@ -51,6 +51,21 @@ def available() -> bool:
         return False
 
 
+def state_space_amplitude(A, B1, B2, crow, omegas, **kw):
+    """Steady-state amplitude of crow' y for a general first-order state space."""
+    jl = _julia()
+    res = jl.state_space_amplitude(
+        jl.Array(np.asarray(A, dtype=float)),
+        jl.Array(np.asarray(B1, dtype=float)),
+        jl.Array(np.asarray(B2, dtype=float)),
+        jl.Array(np.asarray(crow, dtype=float)),
+        jl.Array(np.asarray(omegas, dtype=float)),
+        periods=int(kw.get("periods", 120)),
+        samples_per_period=int(kw.get("samples_per_period", 800)),
+    )
+    return np.array([float(v) for v in res])
+
+
 def transmissibility_time_domain(structure, omegas, **kw):
     """Steady-state |T| at each omega, by time-domain integration."""
     jl = _julia()

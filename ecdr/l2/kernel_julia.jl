@@ -22,6 +22,53 @@
 using DifferentialEquations
 using LinearAlgebra
 
+# Generic first-order state space driven by a unit sinusoidal ground displacement and
+# its derivative.  Everything the project integrates reduces to this form, so one kernel
+# serves the mechanical networks AND any hand-derived model written as an ODE.
+#
+#     y' = A y + B1 * x_g + B2 * x_g',      x_g(t) = sin(w t)
+#
+# Returns, for each omega, the largest absolute value of crow' * y over the last period -
+# that is the steady-state amplitude of the chosen output for a unit-amplitude input.
+function state_space_amplitude(A, B1, B2, crow, omegas; periods = 60,
+                               samples_per_period = 400, reltol = 1e-11,
+                               abstol = 1e-13)
+    n = size(A, 1)
+    out = zeros(length(omegas))
+    for (k, w) in enumerate(omegas)
+        Tp = 2 * pi / w
+        function rhs!(dy, y, p, t)
+            xg = sin(w * t)
+            dxg = w * cos(w * t)
+            @inbounds for i in 1:n
+                s = 0.0
+                for j in 1:n
+                    s += A[i, j] * y[j]
+                end
+                dy[i] = s + B1[i] * xg + B2[i] * dxg
+            end
+        end
+        prob = ODEProblem(rhs!, zeros(n), (0.0, periods * Tp))
+        sol = solve(prob, Tsit5(); reltol = reltol, abstol = abstol, maxiters = 10^8)
+        SciMLBase.successful_retcode(sol) ||
+            error("integration failed at omega = " * string(w))
+        ts = range((periods - 1) * Tp, periods * Tp; length = samples_per_period)
+        best = 0.0
+        for t in ts
+            y = sol(t)
+            s = 0.0
+            for i in 1:n
+                s += crow[i] * y[i]
+            end
+            v = abs(s)
+            v > best && (best = v)
+        end
+        out[k] = best
+    end
+    return out
+end
+
+
 function transmissibility_time_domain(Mv, Cv, Kv, fv, gv, omegas; periods = 60,
                                       samples_per_period = 400, reltol = 1e-11,
                                       abstol = 1e-13)

@@ -77,11 +77,19 @@ print(line)
 agree = all(abs(r["network_all"] - r["certificate"]) < 1e-6 for r in rows)
 sound = all(r["best_network"] >= r["certificate"] - 1e-6 for r in rows)
 tight = all(abs(r["best_network"] - r["certificate"]) < 1e-6 for r in rows)
-ruled = all(r["certificate_rules_out"] and not r["network_meets"] for r in rows)
+# Property 4 is only testable where the certificate is POSITIVE.  A certificate of zero means
+# no hot utility is needed at all, so there is no Q* below it to rule out - the case is
+# VACUOUS for this property, not a failure of it.  Finding 025 met the same distinction when
+# the calibration sweep drove the survivor count to zero.  Conflating the two here would have
+# reported a working certificate as broken.
+testable = [r for r in rows if r["certificate"] > 1e-9]
+ruled = all(r["certificate_rules_out"] and not r["network_meets"] for r in testable)
 print("  1. network LP reproduces the problem table (same physics) : " + str(agree))
 print("  2. no enumerated network beats the certificate           : " + str(sound))
 print("  3. some network ACHIEVES it, so the bound is tight       : " + str(tight))
-print("  4. the certificate rules out Q* while search cannot      : " + str(ruled))
+print("  4. the certificate rules out Q* while search cannot      : " + str(ruled)
+      + "   (" + str(len(testable)) + " of " + str(len(rows))
+      + " cases testable; the rest have Q_H_min = 0 and are VACUOUS, not failing)")
 print()
 if agree and sound and tight and ruled:
     print("  This is the ECDR shape, in a domain we did not author:")

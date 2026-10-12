@@ -1,5 +1,10 @@
 # Finding 035 - M6 opens: the certificate is sound in a second domain, and my network model is wrong
 
+SUPERSEDED IN PART BY FINDING 036: the missing mechanism was the per-stream residual chain,
+and with it added the network model reproduces the problem table to the last digit, the bound
+is tight, and all four properties hold. Sections 3, 4 and 5 below stand as the record of the
+error and of how it was found.
+
 Status: the heat-exchanger domain is established and the minimum-utility certificate is
 computed two independent ways that agree EXACTLY. But the network model built to test
 ACHIEVABILITY understates what a network can do by 53 percent, because it forbids heat from

@@ -1,0 +1,702 @@
+{
+ "query": "abs:\"Lean\" AND abs:\"proof\" AND abs:\"agent\"",
+ "hits": [
+  {
+   "id": "2607.17352v1",
+   "title": "Self-Modifying Lean Proof Agents with Verifier-Grounded Benchmark Coevolution",
+   "abstract": "Designing effective Lean proof agents is a central challenge in formal mathematical reasoning. Beyond building stronger provers, recent work emphasizes the workflow around Lean: how an agent decomposes proof obligations, uses tools and compiler feedback, diagnoses failures, repairs proofs, and maintains structured proof context. Motivated by code-level self-evolving agents, we study whether such workflows can be evolved rather than hand-designed. We present a self-evolving Lean proof agent in which a small fixed, trusted runtime wraps a fully mutable workspace: the proof workflow, prompts, and tools. Unlike most self-evolving systems, which optimize against a fixed external benchmark, our system coevolves the agent and its benchmark. Between generations, the highest-scoring agent (the champion) revises the active task distribution through a mastery-throttled curriculum update that introduces harder proof obligations only after the current level is mastered, and a single-anchor recalibration re-runs the champion on the updated benchmark to keep scores comparable as difficulty rises. All evolution stays inside a Lean-grounded verification loop: however the agent rewrites itself, a success counts only when its behavior yields Lean-verified proofs under a trusted snapshot, and each attempt must emit a machine-readable, Lean-grounded proof context whose representation may evolve but whose groundedness is enforced. We run the coevolving trajectory and a fixed-benchmark baseline for 15 active generations and compare them on a held-out miniF2F test split. The best coevolving agent reaches a 45.1% held-out solve rate, versus 12.7% for the seed and 32.0% for the best fixed-benchmark agent, showing that verifier-grounded self-evolution can improve Lean proof workflows under a coevolving benchmark.",
+   "published": "2026-07-19",
+   "updated": "2026-07-19",
+   "authors": [
+    "Yuqing Li",
+    "Zeguan Wu",
+    "Yu Gan",
+    "Junyu Liu"
+   ],
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI",
+    "cs.LG",
+    "quant-ph"
+   ],
+   "url": "https://arxiv.org/abs/2607.17352v1",
+   "pdf": "https://arxiv.org/pdf/2607.17352v1",
+   "comment": "22 pages, 2 figures, 3 tables"
+  },
+  {
+   "id": "2605.17283v1",
+   "title": "OProver: A Unified Framework for Agentic Formal Theorem Proving",
+   "abstract": "Recent progress in formal theorem proving has benefited from large-scale proof generation and verifier-aware training, but agentic proving is rarely integrated into prover training, appearing only at inference time. We present OProver, a unified framework for agentic formal theorem proving in Lean 4, in which failed proof attempts are iteratively revised using retrieved compiler verified proofs and Lean compiler feedback. OProver is trained through continued pretraining followed by iterative post-training: each iteration runs agentic proving, indexes newly verified proofs into OProofs and the retrieval memory, uses repair trajectories as SFT data, and uses unresolved hard cases for RL. OProofs is built from public Lean resources, large-scale proof synthesis, and agentic proving traces, containing 1.77M Lean statements, 6.86M compiler-verified proofs, and serialized trajectories with retrieved context, failed attempts, feedback, and repairs. Across five benchmarks, OProver-32B attains the best Pass@32 on MiniF2F (93.3%), ProverBench (58.2%), and PutnamBench (11.3%), and ranks second on MathOlympiad (22.8%) and ProofNet (33.2%) more top placements than any prior open-weight whole-proof prover.",
+   "published": "2026-05-17",
+   "updated": "2026-05-17",
+   "authors": [
+    "David Ma",
+    "Kaijing Ma",
+    "Shawn Guo",
+    "Yunfeng Shi",
+    "Enduo Zhao",
+    "Jiajun Shi",
+    "Zhaoxiang Zhang",
+    "Gavin Cheung",
+    "Jiaheng Liu",
+    "Zili Wang"
+   ],
+   "primary_category": "cs.CL",
+   "categories": [
+    "cs.CL",
+    "cs.AI"
+   ],
+   "url": "https://arxiv.org/abs/2605.17283v1",
+   "pdf": "https://arxiv.org/pdf/2605.17283v1",
+   "comment": ""
+  },
+  {
+   "id": "2605.20244v2",
+   "title": "Lean Refactor: Multi-Objective Controllable Proof Optimization via Agentic Strategy Search",
+   "abstract": "We present Lean Refactor, a plug-and-play retrieval-augmented agentic framework for multi-objective, controllable, and version-robust refactoring of Lean proofs. LLM-generated proofs are notoriously correct-but-verbose and brittle across library versions, yet existing refactoring works overlook three practical challenges: 1) Lean refactoring is natively multi-objective (proof length, compilation cost, and version compatibility are often in tension); 2) Lean repositories have fragile compatibility, whereas LLM releases are unaware of Lean/Mathlib versions; 3) Training-based pipelines require repeated fine-tuning with each new LLM release, scaling neither with model churn nor with Lean's release cycle. Lean Refactor steers a frozen agentic LLM with retrievals from a curated database of multi-objective refactoring strategies, each densely annotated with metadata such as supported Lean/Mathlib versions and expected compilation-cost reduction. Experiments show over $70\\%$ token-level compression on competition benchmarks, over $20\\%$ on research repositories, and up to $60\\%$ compilation-time reduction, outperforming prior work and Claude Code. Version-filtered retrieval further improves compression on the target Lean version, and refactored miniF2F proofs exhibit stronger zero-shot version transfer to future Lean releases than their unrefactored counterparts.",
+   "published": "2026-05-18",
+   "updated": "2026-08-04",
+   "authors": [
+    "Jialin Lu",
+    "Soonho Kong",
+    "Rodrigo Stehling",
+    "Kaiyu Yang",
+    "Zhangyang Wang",
+    "Weiran Sun",
+    "Wuyang Chen"
+   ],
+   "primary_category": "cs.LO",
+   "categories": [
+    "cs.LO",
+    "cs.AI",
+    "cs.CL",
+    "cs.LG",
+    "cs.SE"
+   ],
+   "url": "https://arxiv.org/abs/2605.20244v2",
+   "pdf": "https://arxiv.org/pdf/2605.20244v2",
+   "comment": ""
+  },
+  {
+   "id": "2606.22997v1",
+   "title": "A Greatest Common Divisor Criterion of Certain Binomial Coefficients",
+   "abstract": "The binomial greatest common divisor (gcd) criterion recorded as OEIS A080170 is proven. The criterion also appears as conjecture (17) in Ralf Stephan's list of OEIS conjectures. For $k\\geq 2$, put \\[ D(k)=\\gcd_{2\\leq q\\leq k+1}\\binom{qk}{k}, \\qquad n=k+1. \\] If $P$ is the largest prime-power component $p^a$ exactly dividing $n$, then the criterion asserts \\[ D(k)=1 \\quad\\Longleftrightarrow\\quad \\frac{n}{P}>P. \\] The proof is formalized in Lean and the Lean artifact is accepted as part of the Formal Conjectures project. Both the natural-language proof and the Lean formalization are generated by the MechMath Agent Team, an AI agent developed by the authors.",
+   "published": "2026-06-22",
+   "updated": "2026-06-22",
+   "authors": [
+    "Dakai Guo",
+    "Ruichen Qiu",
+    "Yichuan Cao",
+    "Ruyong Feng",
+    "Xiao-Shan Gao"
+   ],
+   "primary_category": "math.NT",
+   "categories": [
+    "math.NT",
+    "cs.LO"
+   ],
+   "url": "https://arxiv.org/abs/2606.22997v1",
+   "pdf": "https://arxiv.org/pdf/2606.22997v1",
+   "comment": "13 pages"
+  },
+  {
+   "id": "2012.09388v1",
+   "title": "Formalization of PAL$\\cdot$S5 in Proof Assistant",
+   "abstract": "As an experiment to the application of proof assistant for logic research, we formalize the model and proof system for multi-agent modal logic S5 with PAL-style dynamic modality in Lean theorem prover. We provide a formal proof for the reduction axiom of public announcement, and the soundness and completeness of modal logic S5, which can be typechecked with Lean 3.19.0. The complete proof is now available at Github.",
+   "published": "2020-12-17",
+   "updated": "2020-12-17",
+   "authors": [
+    "Jiatu Li"
+   ],
+   "primary_category": "cs.LO",
+   "categories": [
+    "cs.LO"
+   ],
+   "url": "https://arxiv.org/abs/2012.09388v1",
+   "pdf": "https://arxiv.org/pdf/2012.09388v1",
+   "comment": "For proof codes, see https://github.com/ljt12138/Formalization-PAL"
+  },
+  {
+   "id": "2610.00885v1",
+   "title": "FORALL-LEAN-AGENT for Auditable Reasoning in Formal Mathematics and Software Verification",
+   "abstract": "Coding agents increasingly automate Lean proof development, but successful compilation alone does not establish that a candidate proves the intended statement under acceptable assumptions. We present FORALL-LEAN-AGENT, a frontend-agnostic framework for auditable reasoning in formal mathematics and software verification. The framework combines isolated workspaces, Lean tools, and fresh review with statement comparison, axiom audits, and independent proof checking where supported. Verification evidence and reviewer decisions are bound to the same candidate artifact, making acceptance traceable. We evaluate the framework on VeriSoftBench, PutnamBench, and both problems in the Lean Eval softwareverification track. On the 100-task VeriSoftBench subset, integration with FORALLLEAN-AGENT raises benchmark-rule success from 93 to 100 for GPT-5.6 Sol at low effort while reducing cost from $69 to $62. The PutnamBench evaluation accepts all 672 problems at an average of $4.72 each. These results show that agent harness design can improve correctness and efficiency while providing evidence beyond aggregate solve counts.",
+   "published": "2026-10-01",
+   "updated": "2026-10-01",
+   "authors": [
+    "Naing Oo Lwin"
+   ],
+   "primary_category": "cs.SE",
+   "categories": [
+    "cs.SE",
+    "cs.AI",
+    "cs.LO"
+   ],
+   "url": "https://arxiv.org/abs/2610.00885v1",
+   "pdf": "https://arxiv.org/pdf/2610.00885v1",
+   "comment": "Accepted to NeurIPS 2026 VeriCodeGen"
+  },
+  {
+   "id": "2506.19923v5",
+   "title": "Prover Agent: An Agent-Based Framework for Formal Mathematical Proofs",
+   "abstract": "We present Prover Agent, a novel AI agent for automated theorem proving that integrates large language models (LLMs) with a formal proof assistant, Lean. Prover Agent coordinates an informal reasoning LLM, a formal prover model, and feedback from Lean while also generating auxiliary lemmas. These auxiliary lemmas are not limited to subgoals in the formal proof but can also include special cases or potentially useful facts derived from the assumptions, which help in discovering a viable proof strategy. It achieves an 88.1% success rate on MiniF2F and solves 25 problems on the PutnamBench with a smaller sample budget than previous approaches, establishing a new state-of-the-art on both benchmarks among methods using small language models (SLMs). We also present theoretical analyses and case studies that illustrate how these generated lemmas contribute to solving challenging problems. Our code is publicly available at https://github.com/kAIto47802/Prover-Agent.",
+   "published": "2025-06-24",
+   "updated": "2026-02-17",
+   "authors": [
+    "Kaito Baba",
+    "Chaoran Liu",
+    "Shuhei Kurita",
+    "Akiyoshi Sannai"
+   ],
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI",
+    "cs.LG"
+   ],
+   "url": "https://arxiv.org/abs/2506.19923v5",
+   "pdf": "https://arxiv.org/pdf/2506.19923v5",
+   "comment": "49 pages, 4 figures"
+  },
+  {
+   "id": "2609.39544v3",
+   "title": "Growing an Agent/Prover Interface: Evolutionary Tool Design for Cost-Efficient Theorem Proving in Rocq and Lean",
+   "abstract": "Recent achievements in AI-assisted mathematics require intensive interaction of agents with proof assistants to generate machine-checked proof certificates. Agents interact with proof assistants such as Rocq or Lean through an interface that controls what the agent receives from the prover and the cost of these interactions. Today, these interfaces are adapted from tools designed for humans and not optimized for agents. We propose an evolutionary method where a frontier model incrementally proposes new features and only keeps the ones that improve the overall performance of smaller models. We demonstrate the effectiveness of our method by growing, on a curated set of mathematical problems, ROCQ-MCP-EVOLVE, a new MCP server for the Rocq prover. On the held-out test split of miniF2F-Rocq, an agent equipped with ROCQ-MCP-EVOLVE outperforms both the baseline that only exposes the Rocq compiler and an established MCP server, across four models from two families, in success rate, cost per solve, and time per solve. Although evolved for Rocq, the resulting server transfers to Lean, improving cost and time per solve on a subset of PutnamBench. We release ROCQ-MCP-EVOLVE and its port to Lean.",
+   "published": "2026-09-30",
+   "updated": "2026-10-08",
+   "authors": [
+    "Jules Viennot",
+    "Guillaume Baudart",
+    "Marc Lelarge"
+   ],
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI"
+   ],
+   "url": "https://arxiv.org/abs/2609.39544v3",
+   "pdf": "https://arxiv.org/pdf/2609.39544v3",
+   "comment": ""
+  },
+  {
+   "id": "2607.27259v1",
+   "title": "CircuitProver: Agentic Lean 4 Theorem Proving with Reusable Circuit Proof Library for Hardware Verification",
+   "abstract": "Modern integrated circuits (ICs) are becoming increasingly complex, making functional verification a major bottleneck. The dominant hardware formal verification methodology, model checking, verifies each design instance separately and exposes only pass/fail results, so the reasoning behind a proof stays locked inside solver heuristics and is repeatedly reconstructed across related designs. Interactive theorem proving instead yields explicit, reusable proof artifacts, but applying it to hardware remains largely manual, demanding expert effort for formalization, invariant discovery, and proof development. In this paper, we present CircuitProver, an agentic Lean 4-based verification framework supporting proof-accumulation and parameterized verification. CircuitProver automatically translates parameterized hardware designs and their natural language specifications into executable Lean 4 models. It then iteratively constructs machine-checked proofs through Lean feedback to establish that the hardware code complies with the specification. The proving traces and verified theorems are distilled into reusable libraries, where proving strategies guide future agent reasoning and verified lemmas support formal proof reuse across related hardware verification tasks. We further introduce the first benchmark suite for evaluating agentic hardware theorem proving, covering diverse parameterized hardware designs, specifications, proof tasks, and evaluation metrics. Across 63 tasks, CircuitProver successfully proves all benchmarks, while a vanilla agent solves 92.1% of them and requires twice as many proof rounds on average. Ablation studies show that accumulated proof knowledge reduces redundant proof construction across related verification tasks, reducing proof length by 16.3% and verification time by 23.2%.",
+   "published": "2026-07-29",
+   "updated": "2026-07-29",
+   "authors": [
+    "Ziyi Yang",
+    "Wenji Fang",
+    "Chen Chen",
+    "Zhiyao Xie",
+    "Hongce Zhang"
+   ],
+   "primary_category": "cs.LO",
+   "categories": [
+    "cs.LO",
+    "cs.AR"
+   ],
+   "url": "https://arxiv.org/abs/2607.27259v1",
+   "pdf": "https://arxiv.org/pdf/2607.27259v1",
+   "comment": ""
+  },
+  {
+   "id": "2606.04883v3",
+   "title": "Optimizing the Cost-Quality Tradeoff of Agentic Theorem Provers in Lean",
+   "abstract": "Large language models (LLMs) are increasingly used in workflows for generating formal proofs in Lean. These workflows often decompose problems into smaller lemmas, sample many proof attempts, and use compiler feedback to guide search. However, they can be prohibitively expensive, often spending substantial compute on attempts that ultimately fail. In this work, we address this problem with an action routing agent that consists of a data plane and a control plane. The data plane generates natural-language lemma decompositions, formalizes them in Lean, and samples proof attempts for the resulting theorem and lemma targets. The control plane observes previous failed Lean attempts, estimates both the likelihood of success and the cost of another attempt, and decides whether to continue proving the current target or restart from a new breakdown. On a subset of PutnamBench, our agent decreases the cost by 28.9% over a fixed-step baseline on average, preserving performance while using substantially less compute. These results suggest that failed Lean trajectories provide actionable signals for cost-aware resource allocation in agentic theorem proving.",
+   "published": "2026-06-03",
+   "updated": "2026-06-23",
+   "authors": [
+    "Kári Rögnvaldsson",
+    "Chenhao Sun",
+    "Jasper Dekoninck",
+    "Martin Vechev"
+   ],
+   "primary_category": "cs.CL",
+   "categories": [
+    "cs.CL",
+    "cs.LO"
+   ],
+   "url": "https://arxiv.org/abs/2606.04883v3",
+   "pdf": "https://arxiv.org/pdf/2606.04883v3",
+   "comment": ""
+  },
+  {
+   "id": "2605.22763v2",
+   "title": "Advancing Mathematics Research with AI-Driven Formal Proof Search",
+   "abstract": "Large language models (LLMs) increasingly excel at mathematical reasoning, but their unreliability limits their utility in mathematics research. A mitigation is using LLMs to generate formal proofs in languages like Lean. We perform the first large-scale evaluation of this method's ability to solve open problems. Our most capable agent autonomously resolved 9 of 353 open Erdős problems at the per-problem cost of a few hundred dollars, proved 44/492 OEIS conjectures, and is being deployed in combinatorics, optimization, graph theory, algebraic geometry, and quantum optics research. A basic agent alternating LLM-based generation with Lean-based verification replicated the Erdős successes but proved costlier on the hardest problems. These findings demonstrate the power of AI-aided formal proof search and shed light on the agent designs that enable it.",
+   "published": "2026-05-21",
+   "updated": "2026-06-08",
+   "authors": [
+    "George Tsoukalas",
+    "Anton Kovsharov",
+    "Sergey Shirobokov",
+    "Anja Surina",
+    "Moritz Firsching",
+    "Gergely Bérczi",
+    "Francisco J. R. Ruiz",
+    "Arun Suggala",
+    "Adam Zsolt Wagner",
+    "Eric Wieser",
+    "Lei Yu",
+    "Aja Huang",
+    "Miklós Z. Horváth",
+    "Andrew Ferraiuolo",
+    "Henryk Michalewski",
+    "Edward Lockhart",
+    "Codrut Grosu",
+    "Thomas Hubert",
+    "Matej Balog",
+    "Pushmeet Kohli",
+    "Swarat Chaudhuri"
+   ],
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI"
+   ],
+   "url": "https://arxiv.org/abs/2605.22763v2",
+   "pdf": "https://arxiv.org/pdf/2605.22763v2",
+   "comment": ""
+  },
+  {
+   "id": "2606.20642v1",
+   "title": "Hypothesis-Disciplined Multi-Agent Automated Formalization of Asymptotic Statistical Theory",
+   "abstract": "Asymptotic statistical theory is a challenging domain for AI-assisted formalization: its central results mix convergence statements, asymptotic expansions, functional analysis, and regularity conditions that have a large gap from existing infrastructure in Lean 4 formalization. To address these challenges, we propose a hypothesis-disciplined Lean 4 formalization pipeline built from multiple agents: a manager that coordinates seven specialist roles for proof planning, skeleton scaffolding, Mathlib reconnaissance, proof construction, integration, independent review, and audit. The main methodological discipline is the hypothesis-disciplined audit, implemented by the Auditor agent: every main-theorem hypothesis and concept-layer field must be anchored in the source mathematical prose, justified as a Lean encoding adapter, marked as source-implied, or rejected as an unsupported strengthening. Using this workflow, we build a systematic formalization of asymptotic statistical theory, especially the parametric and semi-parametric models' asymptotic distribution and efficiency results. The resulting Lean development is axiom-clean and source-faithful, with Lean-checked and human-audited proofs of core parametric and semi-parametric theorems organized so that theorem-agnostic infrastructure and statistical concept definitions are separated from theorem-specific assembly. The formalization results are available at https://github.com/junwei-lu/Lean-Asymptotic-Statistical-Theory.",
+   "published": "2026-06-03",
+   "updated": "2026-06-03",
+   "authors": [
+    "Tingzhou Wei",
+    "Zeyu Zheng",
+    "Ethan X. Fang",
+    "Junwei Lu"
+   ],
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI",
+    "cs.LG",
+    "cs.LO",
+    "math.ST"
+   ],
+   "url": "https://arxiv.org/abs/2606.20642v1",
+   "pdf": "https://arxiv.org/pdf/2606.20642v1",
+   "comment": ""
+  },
+  {
+   "id": "2610.05367v1",
+   "title": "AIProver: Agentic Auto-Formalization of Mathematical Research via Certificate-Driven Evolving Harness",
+   "abstract": "Proof auto-formalization translates natural-language (NL) theorems and proofs into a formal language (FL) such as Lean, enabling mechanical verification. Despite rapid progress, research-level proofs often depend on concepts missing from leading proof assistant libraries (e.g., Lean's Mathlib), and successful compilation does not guarantee that a translation preserves the theorem's meaning or the proof's reasoning. Furthermore, aligned NL-FL training data are scarce, and leading agents often rely on costly frontier models and manually engineered harnesses. To address the above issues, we present AIProver, an agentic framework for autonomous proof auto-formalization and proof synthesis (AFPS) that jointly post-trains a 119B open-weight language model and evolves its agentic, tool-calling harness with HarnessEvolve. Verifiers assess type correctness, proof completeness, and semantic correctness, returning rewards and diagnostic certificates that drive model fine-tuning and alternating reinforcement learning via symbolic feedback and HarnessEvolve, a certificate-driven evolutionary search over the whole harness control flow that re-tailors the harness to the updated model. For research-level training and evaluation, we introduce LoCoBench, 58.9k instances from Mathlib, CSLib, Mizar Math Library, and a bounded-arithmetic textbook, with a 771-instance validation split whose theorem-proof pairs have no public Lean formalization. Against 39 frameworks spanning AFPS agents, frontier LLMs, and coding agents, AIProver lifts pass@4 semantic correctness over its Leanstral-1.5 base from 15.7% to 36.7% and outperforms every other open-weight system and Aristotle. As a Claude Code and Codex skill, it lifts their semantic correctness from 41.9% and 34.1% to 79.8% and 62.4%, respectively. Further, it is also 24% cheaper than Numina-Lean-Agent, pushing the accuracy-cost frontier of research-level AFPS.",
+   "published": "2026-10-04",
+   "updated": "2026-10-04",
+   "authors": [
+    "Prithwish Jana",
+    "Viet Bach Hoang",
+    "Logan Luna",
+    "Viresh Pati",
+    "Akash Singirikonda",
+    "Cy Xie",
+    "Lisa Carbone",
+    "Wuyang Chen",
+    "Walter Moreira",
+    "Joe Stubbs",
+    "Sriram Vishwanath",
+    "Vijay Ganesh"
+   ],
+   "primary_category": "cs.LO",
+   "categories": [
+    "cs.LO",
+    "cs.AI",
+    "cs.LG"
+   ],
+   "url": "https://arxiv.org/abs/2610.05367v1",
+   "pdf": "https://arxiv.org/pdf/2610.05367v1",
+   "comment": ""
+  },
+  {
+   "id": "2606.26035v1",
+   "title": "Every Nonnegative Integer Is a Sum of a Triangular, a Pentagonal, and a Heptagonal Number",
+   "abstract": "In this paper, it is proved that any nonnegative integer can be written in the following form $$ x(x+1)/2 + y(3y+1)/2 + z(5z+1)/2, \\qquad x,y,z \\in \\mathbb{N}. $$ This settles the conjecture recorded as OEIS A287616. All parts of the proof have been formalized in Lean 4, with the exception of two results: one externally cited theorem and one statement verified by symbolic computation. Both the natural-language proof and the Lean formalization were generated by the MechMath Agent Team developed by the authors.",
+   "published": "2026-06-24",
+   "updated": "2026-06-24",
+   "authors": [
+    "Yichuan Cao",
+    "Dakai Guo",
+    "Ruichen Qiu",
+    "Ruyong Feng",
+    "Xiao-Shan Gao"
+   ],
+   "primary_category": "math.NT",
+   "categories": [
+    "math.NT",
+    "cs.SC"
+   ],
+   "url": "https://arxiv.org/abs/2606.26035v1",
+   "pdf": "https://arxiv.org/pdf/2606.26035v1",
+   "comment": "23 pages"
+  },
+  {
+   "id": "2606.26442v1",
+   "title": "AXLE: A Cloud Infrastructure for Lean 4 Theorem Proving Utilities",
+   "abstract": "We present AXLE (Axiom Lean Engine), a cloud service for Lean 4 proof manipulation, extraction, and verification. Recent progress in AI for mathematics -- reinforcement learning pipelines, agentic proving workflows, dataset curation -- demands Lean 4 tooling that scales to millions of requests while remaining correct and robust; existing infrastructure offers parallel compilation but not scalable proof verification, higher-level proof manipulation, multi-version support, or per-request isolation at the throughput modern AI workflows require. AXLE provides 14 Lean 4 metaprogramming tools spanning strict proof verification, declaration metadata extraction, semantic source manipulation, deterministic proof repair and simplification, and lemma extraction. The service runs as a multi-tenant cloud deployment with per-request isolation and concurrent support for multiple Lean 4 and Mathlib versions, accessible via a Python SDK, command-line interface, web UI, MCP server, and raw HTTP API. AXLE is publicly available and free to use at https://axle.axiommath.ai and via the axiom-axle PyPI package, with no local Lean 4 installation required. It has served over 500 million requests to date and is the underlying infrastructure for Axiom Math's proving efforts, including its 12/12 score on the 2025 Putnam competition.",
+   "published": "2026-06-24",
+   "updated": "2026-06-24",
+   "authors": [
+    "Jimmy Xin",
+    "Alex Schneidman",
+    "Chris Cummins",
+    "Karun Ram",
+    "Srihari Ganesh",
+    "Jannis Limperg"
+   ],
+   "primary_category": "cs.LO",
+   "categories": [
+    "cs.LO",
+    "cs.AI"
+   ],
+   "url": "https://arxiv.org/abs/2606.26442v1",
+   "pdf": "https://arxiv.org/pdf/2606.26442v1",
+   "comment": "Accepted at the 3rd AI for Math Workshop, ICML 2026"
+  },
+  {
+   "id": "2507.15225v1",
+   "title": "Solving Formal Math Problems by Decomposition and Iterative Reflection",
+   "abstract": "General-purpose Large Language Models (LLMs) have achieved remarkable success in intelligence, performing comparably to human experts on complex reasoning tasks such as coding and mathematical reasoning. However, generating formal proofs in specialized languages like Lean 4 remains a significant challenge for these models, limiting their application in complex theorem proving and automated verification. Current approaches typically require specializing models through fine-tuning on dedicated formal corpora, incurring high costs for data collection and training. In this work, we introduce \\textbf{Delta Prover}, an agent-based framework that orchestrates the interaction between a general-purpose LLM and the Lean 4 proof environment. Delta Prover leverages the reflection and reasoning capabilities of general-purpose LLMs to interactively construct formal proofs in Lean 4, circumventing the need for model specialization. At its core, the agent integrates two novel, interdependent components: an algorithmic framework for reflective decomposition and iterative proof repair, and a custom Domain-Specific Language (DSL) built upon Lean 4 for streamlined subproblem management. \\textbf{Delta Prover achieves a state-of-the-art 95.9\\% success rate on the miniF2F-test benchmark, surpassing all existing approaches, including those requiring model specialization.} Furthermore, Delta Prover exhibits a significantly stronger test-time scaling law compared to standard Best-of-N proof strategies. Crucially, our findings demonstrate that general-purpose LLMs, when guided by an effective agentic structure, possess substantial untapped theorem-proving capabilities. This presents a computationally efficient alternative to specialized models for robust automated reasoning in formal environments.",
+   "published": "2025-07-21",
+   "updated": "2025-07-21",
+   "authors": [
+    "Yichi Zhou",
+    "Jianqiu Zhao",
+    "Yongxin Zhang",
+    "Bohan Wang",
+    "Siran Wang",
+    "Luoxin Chen",
+    "Jiahui Wang",
+    "Haowei Chen",
+    "Allan Jie",
+    "Xinbo Zhang",
+    "Haocheng Wang",
+    "Luong Trung",
+    "Rong Ye",
+    "Phan Nhat Hoang",
+    "Huishuai Zhang",
+    "Peng Sun",
+    "Hang Li"
+   ],
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI",
+    "cs.LG",
+    "cs.LO"
+   ],
+   "url": "https://arxiv.org/abs/2507.15225v1",
+   "pdf": "https://arxiv.org/pdf/2507.15225v1",
+   "comment": ""
+  },
+  {
+   "id": "2510.15700v1",
+   "title": "ProofOptimizer: Training Language Models to Simplify Proofs without Human Demonstrations",
+   "abstract": "Neural theorem proving has advanced rapidly in the past year, reaching IMO gold-medalist capabilities and producing formal proofs that span thousands of lines. Although such proofs are mechanically verified by formal systems like Lean, their excessive length renders them difficult for humans to comprehend and limits their usefulness for mathematical insight. Proof simplification is therefore a critical bottleneck. Yet, training data for this task is scarce, and existing methods -- mainly agentic scaffolding with off-the-shelf LLMs -- struggle with the extremely long proofs generated by RL-trained provers. We introduce ProofOptimizer, the first language model trained to simplify Lean proofs without requiring additional human supervision. ProofOptimizer is trained via expert iteration and reinforcement learning, using Lean to verify simplifications and provide training signal. At inference time, it operates within an iterative proof-shortening workflow, progressively reducing proof length. Experiments show that ProofOptimizer substantially compresses proofs generated by state-of-the-art RL-trained provers on standard benchmarks, reducing proof length by 87% on miniF2F, 57% on PutnamBench, and 49% on Seed-Prover's IMO 2025 proofs. Beyond conciseness, the simplified proofs check faster in Lean and further improve downstream prover performance when reused as training data for supervised finetuning.",
+   "published": "2025-10-17",
+   "updated": "2025-10-17",
+   "authors": [
+    "Alex Gu",
+    "Bartosz Piotrowski",
+    "Fabian Gloeckle",
+    "Kaiyu Yang",
+    "Aram H. Markosyan"
+   ],
+   "primary_category": "cs.LG",
+   "categories": [
+    "cs.LG",
+    "cs.AI",
+    "cs.PL"
+   ],
+   "url": "https://arxiv.org/abs/2510.15700v1",
+   "pdf": "https://arxiv.org/pdf/2510.15700v1",
+   "comment": "52 pages, 16 figures, website: http://proof-optimizer.github.io/"
+  },
+  {
+   "id": "2606.01008v4",
+   "title": "FVSpec: Real-World Property-Based Tests as Lean Challenges",
+   "abstract": "As AI systems generate an ever-growing share of the world's code, formal verification offers a principled way to ensure that code is correct, and AI itself may be able to shoulder much of the verification burden. Yet we lack a clear picture of how well today's models and agents perform on verification tasks drawn from real-world software, since existing benchmarks rely largely on curated or synthetic problems, or focus on math rather than program verification. To close this gap, we present a benchmark for evaluating AI on real-world formal software verification tasks. We first scrape 7,413 distinct property-based tests (PBTs) from real-world Python repositories, then automatically translate 2,623 of them (35%) into 9,415 Lean 4 specifications with sorry placeholders (3.5 formalizations/PBT). Translating PBTs to Lean specs is challenging: it requires modeling Python in Lean, inferring the property encoded in a PBT, and handling side effects. We describe an agentic pipeline for transpiling PBTs into Lean, evaluate coverage and quality metrics, and provide baselines for proof generation using several approaches. All code (scraper and agents) and data (PBTs and Lean specs) are open source.",
+   "published": "2026-05-31",
+   "updated": "2026-09-14",
+   "authors": [
+    "Quinn Dougherty",
+    "Max von Hippel",
+    "Simon Henniger",
+    "Hazel Shackleton",
+    "Mike Dodds"
+   ],
+   "primary_category": "cs.SE",
+   "categories": [
+    "cs.SE",
+    "cs.AI"
+   ],
+   "url": "https://arxiv.org/abs/2606.01008v4",
+   "pdf": "https://arxiv.org/pdf/2606.01008v4",
+   "comment": ""
+  },
+  {
+   "id": "2606.09674v1",
+   "title": "(Auto)formalization is supposed to be easy: Trellis process semantics for spelling out rigorous proofs",
+   "abstract": "We present Trellis: an autoformalization system that leverages LLM agents in a deterministically constrained workflow to enforce incremental progress in Lean autoformalization tasks through iterative refinement of natural language proofs. Our approach is motivated by the common mathematician's notion of what it means to have a rigorous proof in the first place: namely, that it would be routine to elaborate any part of the proof in further detail. The result is a system which aims to achieve reliable autoformalization on a modest budget and with generalist agents, with specialization to autoformalization coming not from any task-specific agent training but instead from a meaning-of-rigor inspired workflow enforced by process semantics. We link to an end-to-end Lean formalization of a recent Ramsey theory breakthrough produced by the process.",
+   "published": "2026-06-08",
+   "updated": "2026-06-08",
+   "authors": [
+    "Wesley Pegden"
+   ],
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI",
+    "cs.LO",
+    "math.CO"
+   ],
+   "url": "https://arxiv.org/abs/2606.09674v1",
+   "pdf": "https://arxiv.org/pdf/2606.09674v1",
+   "comment": "15 pages, 7 figures, 5 tables"
+  },
+  {
+   "id": "2609.19814v2",
+   "title": "Long-horizon autoformalization of a core theorem underlying MIP* = RE",
+   "abstract": "Landmark mathematical formalizations have taken specialist teams years to complete. We present FormalFlow, a system that coordinates AI proving agents under human supervision to address statement drift and proof composition in long-horizon formalization. Drawing on software engineering principles and practices, it uses a shared blueprint to guide nested planning, proving and review loops. Agents strengthen verification and review throughout formalization. We completed a machine-checked Lean 4 proof of the quantum soundness of the classical low individual-degree test, a core theorem underlying MIP* = RE. Developing the proof took 63 days; greater parallelism could further reduce this time. The final library contains 126,367 lines of Lean code, all generated by agents. The formalization corrects side conditions and intermediate errors while preserving the published final error bound under corrected assumptions. This work provides a verified foundation for quantum complexity and demonstrates a route to affordable verification of major research proofs by small teams.",
+   "published": "2026-09-17",
+   "updated": "2026-09-24",
+   "authors": [
+    "Sirui Lu",
+    "Ruixuan Deng",
+    "David Zhu",
+    "Zhengfeng Ji"
+   ],
+   "primary_category": "quant-ph",
+   "categories": [
+    "quant-ph",
+    "cs.AI",
+    "cs.LO"
+   ],
+   "url": "https://arxiv.org/abs/2609.19814v2",
+   "pdf": "https://arxiv.org/pdf/2609.19814v2",
+   "comment": "72 pages. Main text 13 pages with 4 figures and 1 table, followed by supplementary appendices (57 pages, 9 figures, 17 tables) and references. Lean 4 library: https://github.com/LionSR/MIPStarRE"
+  },
+  {
+   "id": "2609.34960v1",
+   "title": "ProofLoom: Proof-Obligation-Driven Theory Construction for Autoformalizing Research-Level Stochastic Optimization",
+   "abstract": "Formalizing research-level stochastic optimization in Lean requires both an algorithm model and domain theory connecting foundational libraries to convergence proofs. Revising a model to restore provability can change the mathematical claim. We introduce ProofLoom, a fully automated LLM-agent system for Proof-Obligation-Driven Theory Construction. Given a published algorithm, target theorem, and source proof, ProofLoom autonomously constructs the Lean model and supporting theory. Open proof obligations drive the development of definitions, interfaces, lemmas, and proof plans. Signature contracts record evidence and obligations for model revisions; an independent Judge rejects unsupported assumptions and weakened conclusions. Planner expands the published argument into intermediate claims, and Audit checks whether the Lean proof follows it. Across tasks, SOptLib accumulates verified mathematics and construction experience: reusable results are extracted, generalized, and verified, while modeling decisions and failed proof routes are recorded. Later tasks retrieve these results and records and contribute new developments, forming a cycle of construction, accumulation, and reuse. On fifteen textbook and research-paper tasks, ProofLoom obtains mean human ratings of 6.3/7 and 6.4/7, compared with 4.9/7 and 5.0/7 for the strongest of six baselines. Across 33 developments, it produces 490,693 lines of algorithm-local Lean code with no sorry. The formalizations also expose 28 incorrect formulas, proof gaps, and algorithm-analysis mismatches in published sources across 22 developments, each with checked evidence.",
+   "published": "2026-09-28",
+   "updated": "2026-09-28",
+   "authors": [
+    "Feiming Wang",
+    "Daibo Li",
+    "Kun Yuan"
+   ],
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI",
+    "math.OC"
+   ],
+   "url": "https://arxiv.org/abs/2609.34960v1",
+   "pdf": "https://arxiv.org/pdf/2609.34960v1",
+   "comment": "38 pages, 5 figures. Code and supplementary materials: https://github.com/Trace231/ProofLoom"
+  },
+  {
+   "id": "2609.31903v1",
+   "title": "Choir: An Open Protocol for Distributed Multi-Agent Autoformalization",
+   "abstract": "AI agents can now formalize entire textbooks and major theorems in proof assistants such as Lean, but current efforts are typically centralized: a single team runs all agents and bears the full computational cost. We introduce Choir, an open protocol for distributed formalization. Choir decomposes a project into tasks that can be completed by independent contributors, each running their own agent with their own LLM subscription, while coordinating entirely through the project's GitHub repository. To support open participation, every contribution is checked by a deterministic gate before merge. Choir supports Lean 4, Isabelle, and Rocq, and is open source and modular, allowing projects to replace individual components or extend the protocol.",
+   "published": "2026-09-25",
+   "updated": "2026-09-25",
+   "authors": [
+    "Yidi Qi",
+    "Melanie Weber"
+   ],
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI",
+    "cs.CL",
+    "cs.LO",
+    "cs.MA"
+   ],
+   "url": "https://arxiv.org/abs/2609.31903v1",
+   "pdf": "https://arxiv.org/pdf/2609.31903v1",
+   "comment": ""
+  },
+  {
+   "id": "2608.28433v2",
+   "title": "Prove2Me: An Open Collaborative Platform for Scaling Math Formalization",
+   "abstract": "Proof assistants such as Lean 4 promise the paradigm of formally verified mathematics, but large-scale formalization projects have faced major barriers to entry, including the need for expertise in formal verification (as well as the underlying mathematics) and the significant time required for writing formal proofs. AI coding agents have dramatically reduced these barriers; human users can now use natural language to prompt agents to write complex proofs in Lean. This opens up the intriguing possibility of internet-scale mathematical collaboration involving both humans and AI agents, where correctness is machine-checked. To realize this possibility, we introduce Prove2Me (https://prove2.me), an open collaborative platform for formalizing mathematics. Users launch formalization \"missions\", to which AI agents contribute formal proofs toward completion. We designed mechanisms and a specialized harness in Prove2Me that enable large-scale collaboration so that agents can build on one another's work and freely reuse existing results. In doing so, Prove2Me aims to turn math formalization into a scalable, crowd-sourced effort open to anyone with an agent.",
+   "published": "2026-08-28",
+   "updated": "2026-08-31",
+   "authors": [
+    "Shuze Chen",
+    "Kunal Marwaha",
+    "Xiaoyang Lu",
+    "Henry Yuen",
+    "Tianyi Peng"
+   ],
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI",
+    "cs.LO",
+    "cs.MA"
+   ],
+   "url": "https://arxiv.org/abs/2608.28433v2",
+   "pdf": "https://arxiv.org/pdf/2608.28433v2",
+   "comment": "https://prove2.me"
+  },
+  {
+   "id": "2602.02285v2",
+   "title": "AI4SLT: Empirical Processes in Lean 4 for Formal Statistical Learning Theory",
+   "abstract": "We present the first comprehensive Lean 4 formalization of statistical learning theory (SLT) grounded in empirical process theory. Our en-to-end formal infrastructure implement the missing contents in latest Lean library, including a complete development of Gaussian Lipschitz concentration, Dudley's entropy integral theorem for sub-Gaussian processes, and an application to least-squares (sparse) regression with a sharp rate. The project was carried out using a human-AI collaborative workflow, in which humans design proof strategies and AI agents execute tactical proof construction, leading to the human-verified Lean 4 toolbox for SLT. Beyond implementation, the formalization process exposes and resolves implicit assumptions and missing details in standard SLT textbooks, enforcing a granular, line-by-line understanding of the theory. This work establishes a reusable formal foundation and opens the door for future developments in machine learning theory. The code is provided in https://github.com/YuanheZ/lean-stat-learning-theory.",
+   "published": "2026-02-02",
+   "updated": "2026-06-10",
+   "authors": [
+    "Yuanhe Zhang",
+    "Jason D. Lee",
+    "Fanghui Liu"
+   ],
+   "primary_category": "cs.LG",
+   "categories": [
+    "cs.LG",
+    "cs.CL",
+    "math.ST"
+   ],
+   "url": "https://arxiv.org/abs/2602.02285v2",
+   "pdf": "https://arxiv.org/pdf/2602.02285v2",
+   "comment": "Accepted by ICML 2026"
+  },
+  {
+   "id": "2410.04753v2",
+   "title": "ImProver: Agent-Based Automated Proof Optimization",
+   "abstract": "Large language models (LLMs) have been used to generate formal proofs of mathematical theorems in proofs assistants such as Lean. However, we often want to optimize a formal proof with respect to various criteria, depending on its downstream use. For example, we may want a proof to adhere to a certain style, or to be readable, concise, or modularly structured. Having suitably optimized proofs is also important for learning tasks, especially since human-written proofs may not optimal for that purpose. To this end, we study a new problem of automated proof optimization: rewriting a proof so that it is correct and optimizes for an arbitrary criterion, such as length or readability. As a first method for automated proof optimization, we present ImProver, a large-language-model agent that rewrites proofs to optimize arbitrary user-defined metrics in Lean. We find that naively applying LLMs to proof optimization falls short, and we incorporate various improvements into ImProver, such as the use of symbolic Lean context in a novel Chain-of-States technique, as well as error-correction and retrieval. We test ImProver on rewriting real-world undergraduate, competition, and research-level mathematics theorems, finding that ImProver is capable of rewriting proofs so that they are substantially shorter, more modular, and more readable.",
+   "published": "2024-10-07",
+   "updated": "2026-05-21",
+   "authors": [
+    "Riyaz Ahuja",
+    "Jeremy Avigad",
+    "Prasad Tetali",
+    "Sean Welleck"
+   ],
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI",
+    "cs.CL",
+    "cs.LG",
+    "cs.LO"
+   ],
+   "url": "https://arxiv.org/abs/2410.04753v2",
+   "pdf": "https://arxiv.org/pdf/2410.04753v2",
+   "comment": "Published as a conference paper at ICLR 2025"
+  },
+  {
+   "id": "2603.15929v2",
+   "title": "Semi-Autonomous Formalization of the Vlasov-Maxwell-Landau Equilibrium",
+   "abstract": "We present a complete Lean 4 formalization of the equilibrium characterization in the Vlasov-Maxwell-Landau (VML) system, which describes the motion of charged plasma. The project demonstrates the full AI-assisted mathematical research loop: an AI reasoning model (Gemini DeepThink) generated the proof from a conjecture, an agentic coding tool (Claude Code) translated it into Lean from natural-language prompts, a specialized prover (Aristotle) closed 111 lemmas, and the Lean kernel verified the result. A single mathematician supervised the process over 10 days at a cost of \\$200, writing zero lines of code. The entire development process is public: all 229 human prompts, and 213 git commits are archived in the repository. We report detailed lessons on AI failure modes -- hypothesis creep, definition-alignment bugs, agent avoidance behaviors -- and on what worked: the abstract/concrete proof split, adversarial self-review, and the critical role of human review of key definitions and theorem statements. Notably, the formalization was completed before the final draft of the corresponding math paper was finished.",
+   "published": "2026-03-16",
+   "updated": "2026-03-31",
+   "authors": [
+    "Vasily Ilin"
+   ],
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI",
+    "math.AP",
+    "math.LO"
+   ],
+   "url": "https://arxiv.org/abs/2603.15929v2",
+   "pdf": "https://arxiv.org/pdf/2603.15929v2",
+   "comment": "11 figures"
+  },
+  {
+   "id": "2606.13306v2",
+   "title": "EconCSLib: AI-Assisted Lean Formalization for Economics & Computation research",
+   "abstract": "This paper presents EconCSLib, a Lean 4 library and workflow for formalizing research papers in applied modeling fields such as Economics and Computation, with language-model assistance. The goal of EconCSLib is to enable researchers to formalize their papers in Lean without knowing Lean themselves. The central design principle is a human-AI-Lean formalization workflow: an LLM writes Lean code, Lean checks formal statements and proofs, and both humans and LLM-as-judge processes can verify that the paper's statements were translated into Lean correctly. We develop agent skills, human-facing reporting, a review dashboard, and auditing procedures to support this workflow. The current public repository contains 20 formalized papers and 4 partially formalized papers, along with shared libraries for probability (including stochastic processes), auctions, matching markets, social choice, and graph tools, totaling 986,391 lines of Lean code. To our knowledge, we are also among the first applied math researchers to systematically pursue Lean formalization of one's own publications in the process of building such a community library. We welcome users and contributors to the project. The library and workflow are available at https://github.com/nikhgarg/EconCSLib, with corresponding project webpage at https://gargnikhil.com/EconCSLib/.",
+   "published": "2026-06-11",
+   "updated": "2026-07-02",
+   "authors": [
+    "Nikhil Garg"
+   ],
+   "primary_category": "cs.GT",
+   "categories": [
+    "cs.GT"
+   ],
+   "url": "https://arxiv.org/abs/2606.13306v2",
+   "pdf": "https://arxiv.org/pdf/2606.13306v2",
+   "comment": "Accepted to EC'26 Workshop on AI-Driven Research in EconCS (AI-EconCS '26)"
+  },
+  {
+   "id": "2604.03789v2",
+   "title": "Automated Conjecture Resolution with Formal Verification",
+   "abstract": "Recent advances in large language models have significantly improved their ability to perform mathematical reasoning, extending from elementary problem solving to increasingly capable performance on research-level problems. However, reliably solving and verifying such problems remains challenging due to the inherent ambiguity of natural language reasoning. In this paper, we propose an automated framework that integrates natural language reasoning with formal verification to tackle research-level mathematical problems. Our framework consists of two components: an informal reasoning agent, Rethlas, and a formal verification agent, Archon. Rethlas combines reasoning primitives with our theorem search engine, Matlas, to explore solution strategies and construct candidate proofs. Archon, equipped with LeanSearch, translates informal arguments into formalized Lean 4 projects through task decomposition, iterative refinement, and automated proof synthesis, ensuring machine-checkable correctness. Using this framework, we resolve an open problem in commutative algebra and formally verify the resulting proof in Lean 4 with essentially no human involvement. Additional case studies illustrate the capabilities of Rethlas in informal mathematical reasoning and discovery, as well as the ability of Archon to formalize research-level proofs in Lean 4. Our experiments demonstrate that strong theorem retrieval tools enable the discovery and application of cross-domain mathematical techniques, while the formal agent can autonomously fill nontrivial gaps in informal arguments. More broadly, our work illustrates a promising paradigm for mathematical research in which informal and formal reasoning systems, equipped with theorem retrieval tools, operate in tandem to produce verifiable results, reduce human effort, and support human-AI collaborative mathematical research.",
+   "published": "2026-04-04",
+   "updated": "2026-05-30",
+   "authors": [
+    "Haocheng Ju",
+    "Guoxiong Gao",
+    "Jiedong Jiang",
+    "Bin Wu",
+    "Zeming Sun",
+    "Shurui Liu",
+    "Leheng Chen",
+    "Yutong Wang",
+    "Yuefeng Wang",
+    "Zichen Wang",
+    "Wanyi He",
+    "Peihao Wu",
+    "Liang Xiao",
+    "Ruochuan Liu",
+    "Bryan Dai",
+    "Bin Dong"
+   ],
+   "primary_category": "cs.LG",
+   "categories": [
+    "cs.LG",
+    "cs.AI"
+   ],
+   "url": "https://arxiv.org/abs/2604.03789v2",
+   "pdf": "https://arxiv.org/pdf/2604.03789v2",
+   "comment": "Code and resources are available at: Rethlas (https://github.com/frenzymath/Rethlas), Rethlas Results (https://github.com/frenzymath/Rethlas_results), Archon (https://github.com/frenzymath/Archon), and the formalization results (https://github.com/frenzymath/Anderson-Conjecture)"
+  },
+  {
+   "id": "2602.02990v2",
+   "title": "Learning to Repair Lean Proofs from Compiler Feedback",
+   "abstract": "As neural theorem provers become increasingly agentic, the ability to interpret and act on compiler feedback is critical. However, existing Lean datasets consist almost exclusively of correct proofs, offering little supervision for understanding and repairing failures. We study Lean proof repair as a supervised learning problem: given an erroneous proof and compiler feedback, predict both a corrected proof and a natural-language diagnosis grounded in the same feedback. We introduce APRIL (Automated Proof Repair in Lean), a dataset of 260,000 supervised tuples pairing systematically generated proof failures with compiler diagnostics and aligned repair and explanation targets. Training language models on APRIL substantially improves repair accuracy and feedback-conditioned reasoning; in our single-shot repair evaluation setting, a finetuned 4B-parameter model outperforms the strongest open-source baseline. We view diagnostic-conditioned supervision as a complementary training signal for feedback-using provers. Our dataset is available at https://huggingface.co/datasets/uw-math-ai/APRIL.",
+   "published": "2026-02-03",
+   "updated": "2026-03-13",
+   "authors": [
+    "Evan Wang",
+    "Simon Chess",
+    "Daniel Lee",
+    "Siyuan Ge",
+    "Ajit Mallavarapu",
+    "Jarod Alper",
+    "Vasily Ilin"
+   ],
+   "primary_category": "cs.LG",
+   "categories": [
+    "cs.LG"
+   ],
+   "url": "https://arxiv.org/abs/2602.02990v2",
+   "pdf": "https://arxiv.org/pdf/2602.02990v2",
+   "comment": "15 pages, 6 figures"
+  },
+  {
+   "id": "2606.29687v1",
+   "title": "A Machine-Verified Proof of a Quantum-Optimization Conjecture",
+   "abstract": "We report a machine-verified resolution of a problem open for over a decade in quantum optimization: the Farhi, Goldstone and Gutmann (FGG) conjecture that depth-$p$ Quantum Approximate Optimization Algorithm (QAOA) on the ring of disagrees attains approximation ratio $(2p+1)/(2p+2)$ exactly. We found the proof using a large language model, Claude Fable 5, and verified its correctness end-to-end by the Lean 4 proof assistant. Our methodology includes several ingredients: building on a substantial Lean library of quantum information, we formalized the QAOA components and the known parts of the problem, and reduced the conjecture to a single open mathematical statement. The model was then handed the library and our agentic toolkit, and tasked with closing that gap by constructing a proof in Lean. The resulting process is a feedback loop between the model's natural-language reasoning and Lean's mechanical verification, which converged to a machine-verified proof. Human verification is required only for the structural scaffolding - that the formal statement faithfully encodes the intended claim - while the proof itself is supplied by the model and certified mechanically by Lean. The proof is nevertheless striking - the model uncovered a hidden dynamical symmetry of the problem and exploited it, borrowing tools and machinery from an adjacent field to turn a hard existence problem into an explicit construction. This work paves the way for resolving open conjectures in quantum information science and beyond.",
+   "published": "2026-06-29",
+   "updated": "2026-06-29",
+   "authors": [
+    "Uri Kol",
+    "Maor Ben-Shahar",
+    "Kfir Sulimany",
+    "Dirk Englund"
+   ],
+   "primary_category": "quant-ph",
+   "categories": [
+    "quant-ph",
+    "cs.AI",
+    "cs.LG",
+    "cs.LO",
+    "math.OC"
+   ],
+   "url": "https://arxiv.org/abs/2606.29687v1",
+   "pdf": "https://arxiv.org/pdf/2606.29687v1",
+   "comment": ""
+  }
+ ]
+}

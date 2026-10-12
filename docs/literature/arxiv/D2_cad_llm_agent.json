@@ -1,0 +1,670 @@
+{
+ "query": "abs:\"CAD\" AND abs:\"large language model\" AND abs:\"design\"",
+ "hits": [
+  {
+   "id": "2409.17457v1",
+   "title": "CadVLM: Bridging Language and Vision in the Generation of Parametric CAD Sketches",
+   "abstract": "Parametric Computer-Aided Design (CAD) is central to contemporary mechanical design. However, it encounters challenges in achieving precise parametric sketch modeling and lacks practical evaluation metrics suitable for mechanical design. We harness the capabilities of pre-trained foundation models, renowned for their successes in natural language processing and computer vision, to develop generative models specifically for CAD. These models are adept at understanding complex geometries and design reasoning, a crucial advancement in CAD technology. In this paper, we propose CadVLM, an end-to-end vision language model for CAD generation. Our approach involves adapting pre-trained foundation models to manipulate engineering sketches effectively, integrating both sketch primitive sequences and sketch images. Extensive experiments demonstrate superior performance on multiple CAD sketch generation tasks such as CAD autocompletion, CAD autoconstraint, and image conditional generation. To our knowledge, this is the first instance of a multimodal Large Language Model (LLM) being successfully applied to parametric CAD generation, representing a pioneering step in the field of computer-aided mechanical design.",
+   "published": "2024-09-26",
+   "updated": "2024-09-26",
+   "authors": [
+    "Sifan Wu",
+    "Amir Khasahmadi",
+    "Mor Katz",
+    "Pradeep Kumar Jayaraman",
+    "Yewen Pu",
+    "Karl Willis",
+    "Bang Liu"
+   ],
+   "primary_category": "cs.CV",
+   "categories": [
+    "cs.CV",
+    "cs.AI"
+   ],
+   "url": "https://arxiv.org/abs/2409.17457v1",
+   "pdf": "https://arxiv.org/pdf/2409.17457v1",
+   "comment": ""
+  },
+  {
+   "id": "2412.13810v3",
+   "title": "CAD-Assistant: Tool-Augmented VLLMs as Generic CAD Task Solvers",
+   "abstract": "We propose CAD-Assistant, a general-purpose CAD agent for AI-assisted design. Our approach is based on a powerful Vision and Large Language Model (VLLM) as a planner and a tool-augmentation paradigm using CAD-specific tools. CAD-Assistant addresses multimodal user queries by generating actions that are iteratively executed on a Python interpreter equipped with the FreeCAD software, accessed via its Python API. Our framework is able to assess the impact of generated CAD commands on geometry and adapts subsequent actions based on the evolving state of the CAD design. We consider a wide range of CAD-specific tools including a sketch image parameterizer, rendering modules, a 2D cross-section generator, and other specialized routines. CAD-Assistant is evaluated on multiple CAD benchmarks, where it outperforms VLLM baselines and supervised task-specific methods. Beyond existing benchmarks, we qualitatively demonstrate the potential of tool-augmented VLLMs as general-purpose CAD solvers across diverse workflows.",
+   "published": "2024-12-18",
+   "updated": "2025-08-26",
+   "authors": [
+    "Dimitrios Mallis",
+    "Ahmet Serdar Karadeniz",
+    "Sebastian Cavada",
+    "Danila Rukhovich",
+    "Niki Foteinopoulou",
+    "Kseniya Cherenkova",
+    "Anis Kacem",
+    "Djamila Aouada"
+   ],
+   "primary_category": "cs.CV",
+   "categories": [
+    "cs.CV",
+    "cs.AI",
+    "cs.LG",
+    "cs.RO"
+   ],
+   "url": "https://arxiv.org/abs/2412.13810v3",
+   "pdf": "https://arxiv.org/pdf/2412.13810v3",
+   "comment": ""
+  },
+  {
+   "id": "2509.21150v2",
+   "title": "CAD-Tokenizer: Towards Text-based CAD Prototyping via Modality-Specific Tokenization",
+   "abstract": "Computer-Aided Design (CAD) is a foundational component of industrial prototyping, where models are defined not by raw coordinates but by construction sequences such as sketches and extrusions. This sequential structure enables both efficient prototype initialization and subsequent editing. Text-guided CAD prototyping, which unifies Text-to-CAD generation and CAD editing, has the potential to streamline the entire design pipeline. However, prior work has not explored this setting, largely because standard large language model (LLM) tokenizers decompose CAD sequences into natural-language word pieces, failing to capture primitive-level CAD semantics and hindering attention modules from modeling geometric structure. We conjecture that a multimodal tokenization strategy, aligned with CAD's primitive and structural nature, can provide more effective representations. To this end, we propose CAD-Tokenizer, a framework that represents CAD data with modality-specific tokens using a sequence-based VQ-VAE with primitive-level pooling and constrained decoding. This design produces compact, primitive-aware representations that align with CAD's structural nature. Applied to unified text-guided CAD prototyping, CAD-Tokenizer significantly improves instruction following and generation quality, achieving better quantitative and qualitative performance over both general-purpose LLMs and task-specific baselines.",
+   "published": "2025-09-25",
+   "updated": "2026-03-03",
+   "authors": [
+    "Ruiyu Wang",
+    "Shizhao Sun",
+    "Weijian Ma",
+    "Jiang Bian"
+   ],
+   "primary_category": "cs.LG",
+   "categories": [
+    "cs.LG"
+   ],
+   "url": "https://arxiv.org/abs/2509.21150v2",
+   "pdf": "https://arxiv.org/pdf/2509.21150v2",
+   "comment": "ICLR2026 Camera-ready version"
+  },
+  {
+   "id": "2602.22284v3",
+   "title": "BrepCoder: A Unified Multimodal Large Language Model for Multi-task B-rep Reasoning",
+   "abstract": "Recent advancements in deep learning have actively addressed complex challenges within the Computer-Aided Design (CAD) domain.However, most existing approaches rely on task-specifi c models requiring structural modifi cations for new tasks, and they predominantly focus on point clouds or images rather than the industry-standard Boundary Representation (B-rep) format. To address these limitations, we propose BrepCoder, a unifi ed Multimodal Large Language Model (MLLM) that performs diverse CAD tasks from B-rep inputs. By leveraging the code generation capabilities of Large Language Models (LLMs), we convert CAD modeling sequences into Python-like code and align them with B-rep. We then adopt a two-stage training strategy: First, pre-training on reverse engineering to learn geometric features and design logic. Second, eff ectively extending the model to various downstream tasks such as completion, error correction, and CAD-QA. Consequently, by interpreting B-rep as structural code, BrepCoder achieves superior generalization across diverse tasks, demonstrating its potential as a general-purpose CAD agent.",
+   "published": "2026-02-25",
+   "updated": "2026-06-25",
+   "authors": [
+    "Mingi Kim",
+    "Yongjun Kim",
+    "Jungwoo Kang",
+    "Hyungki Kim"
+   ],
+   "primary_category": "cs.LG",
+   "categories": [
+    "cs.LG"
+   ],
+   "url": "https://arxiv.org/abs/2602.22284v3",
+   "pdf": "https://arxiv.org/pdf/2602.22284v3",
+   "comment": ""
+  },
+  {
+   "id": "2412.14042v2",
+   "title": "CAD-Recode: Reverse Engineering CAD Code from Point Clouds",
+   "abstract": "Computer-Aided Design (CAD) models are typically constructed by sequentially drawing parametric sketches and applying CAD operations to obtain a 3D model. The problem of 3D CAD reverse engineering consists of reconstructing the sketch and CAD operation sequences from 3D representations such as point clouds. In this paper, we address this challenge through novel contributions across three levels: CAD sequence representation, network design, and training dataset. In particular, we represent CAD sketch-extrude sequences as Python code. The proposed CAD-Recode translates a point cloud into Python code that, when executed, reconstructs the CAD model. Taking advantage of the exposure of pre-trained Large Language Models (LLMs) to Python code, we leverage a relatively small LLM as a decoder for CAD-Recode and combine it with a lightweight point cloud projector. CAD-Recode is trained on a procedurally generated dataset of one million CAD sequences. CAD-Recode significantly outperforms existing methods across the DeepCAD, Fusion360 and real-world CC3D datasets. Furthermore, we show that our CAD Python code output is interpretable by off-the-shelf LLMs, enabling CAD editing and CAD-specific question answering from point clouds.",
+   "published": "2024-12-18",
+   "updated": "2025-03-11",
+   "authors": [
+    "Danila Rukhovich",
+    "Elona Dupont",
+    "Dimitrios Mallis",
+    "Kseniya Cherenkova",
+    "Anis Kacem",
+    "Djamila Aouada"
+   ],
+   "primary_category": "cs.CV",
+   "categories": [
+    "cs.CV"
+   ],
+   "url": "https://arxiv.org/abs/2412.14042v2",
+   "pdf": "https://arxiv.org/pdf/2412.14042v2",
+   "comment": ""
+  },
+  {
+   "id": "2411.04954v3",
+   "title": "CAD-MLLM: Unifying Multimodality-Conditioned CAD Generation With MLLM",
+   "abstract": "This paper aims to design a unified Computer-Aided Design (CAD) generation system that can easily generate CAD models based on the user's inputs in the form of textual description, images, point clouds, or even a combination of them. Towards this goal, we introduce the CAD-MLLM, the first system capable of generating parametric CAD models conditioned on the multimodal input. Specifically, within the CAD-MLLM framework, we leverage the command sequences of CAD models and then employ advanced large language models (LLMs) to align the feature space across these diverse multi-modalities data and CAD models' vectorized representations. To facilitate the model training, we design a comprehensive data construction and annotation pipeline that equips each CAD model with corresponding multimodal data. Our resulting dataset, named Omni-CAD, is the first multimodal CAD dataset that contains textual description, multi-view images, points, and command sequence for each CAD model. It contains approximately 450K instances and their CAD construction sequences. To thoroughly evaluate the quality of our generated CAD models, we go beyond current evaluation metrics that focus on reconstruction quality by introducing additional metrics that assess topology quality and surface enclosure extent. Extensive experimental results demonstrate that CAD-MLLM significantly outperforms existing conditional generative methods and remains highly robust to noises and missing points. The project page and more visualizations can be found at: https://cad-mllm.github.io/",
+   "published": "2024-11-07",
+   "updated": "2025-08-04",
+   "authors": [
+    "Jingwei Xu",
+    "Chenyu Wang",
+    "Zibo Zhao",
+    "Wen Liu",
+    "Yi Ma",
+    "Shenghua Gao"
+   ],
+   "primary_category": "cs.CV",
+   "categories": [
+    "cs.CV"
+   ],
+   "url": "https://arxiv.org/abs/2411.04954v3",
+   "pdf": "https://arxiv.org/pdf/2411.04954v3",
+   "comment": "Project page: https://cad-mllm.github.io/"
+  },
+  {
+   "id": "2505.22304v1",
+   "title": "CADReview: Automatically Reviewing CAD Programs with Error Detection and Correction",
+   "abstract": "Computer-aided design (CAD) is crucial in prototyping 3D objects through geometric instructions (i.e., CAD programs). In practical design workflows, designers often engage in time-consuming reviews and refinements of these prototypes by comparing them with reference images. To bridge this gap, we introduce the CAD review task to automatically detect and correct potential errors, ensuring consistency between the constructed 3D objects and reference images. However, recent advanced multimodal large language models (MLLMs) struggle to recognize multiple geometric components and perform spatial geometric operations within the CAD program, leading to inaccurate reviews. In this paper, we propose the CAD program repairer (ReCAD) framework to effectively detect program errors and provide helpful feedback on error correction. Additionally, we create a dataset, CADReview, consisting of over 20K program-image pairs, with diverse errors for the CAD review task. Extensive experiments demonstrate that our ReCAD significantly outperforms existing MLLMs, which shows great potential in design applications.",
+   "published": "2025-05-28",
+   "updated": "2025-05-28",
+   "authors": [
+    "Jiali Chen",
+    "Xusen Hei",
+    "HongFei Liu",
+    "Yuancheng Wei",
+    "Zikun Deng",
+    "Jiayuan Xie",
+    "Yi Cai",
+    "Li Qing"
+   ],
+   "primary_category": "cs.CV",
+   "categories": [
+    "cs.CV"
+   ],
+   "url": "https://arxiv.org/abs/2505.22304v1",
+   "pdf": "https://arxiv.org/pdf/2505.22304v1",
+   "comment": "ACL 2025 main conference"
+  },
+  {
+   "id": "2505.19490v1",
+   "title": "Automated CAD Modeling Sequence Generation from Text Descriptions via Transformer-Based Large Language Models",
+   "abstract": "Designing complex computer-aided design (CAD) models is often time-consuming due to challenges such as computational inefficiency and the difficulty of generating precise models. We propose a novel language-guided framework for industrial design automation to address these issues, integrating large language models (LLMs) with computer-automated design (CAutoD).Through this framework, CAD models are automatically generated from parameters and appearance descriptions, supporting the automation of design tasks during the detailed CAD design phase. Our approach introduces three key innovations: (1) a semi-automated data annotation pipeline that leverages LLMs and vision-language large models (VLLMs) to generate high-quality parameters and appearance descriptions; (2) a Transformer-based CAD generator (TCADGen) that predicts modeling sequences via dual-channel feature aggregation; (3) an enhanced CAD modeling generation model, called CADLLM, that is designed to refine the generated sequences by incorporating the confidence scores from TCADGen. Experimental results demonstrate that the proposed approach outperforms traditional methods in both accuracy and efficiency, providing a powerful tool for automating industrial workflows and generating complex CAD models from textual prompts. The code is available at https://jianxliao.github.io/cadllm-page/",
+   "published": "2025-05-26",
+   "updated": "2025-05-26",
+   "authors": [
+    "Jianxing Liao",
+    "Junyan Xu",
+    "Yatao Sun",
+    "Maowen Tang",
+    "Sicheng He",
+    "Jingxian Liao",
+    "Shui Yu",
+    "Yun Li",
+    "Hongguan Xiao"
+   ],
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI"
+   ],
+   "url": "https://arxiv.org/abs/2505.19490v1",
+   "pdf": "https://arxiv.org/pdf/2505.19490v1",
+   "comment": "Accepted by ACL 2025 Main Conference"
+  },
+  {
+   "id": "2606.21378v1",
+   "title": "Enhancing Creativity in 3D Generative Design via a TRIZ-Inspired Text-to-CAD Framework",
+   "abstract": "Recent advances in large language models (LLMs) have demonstrated significant potential in supporting engineering design tasks, including computer-aided design (CAD) automation. However, most existing LLM-based 3D CAD generation approaches primarily focus on geometric precision and instruction-following performance, often overlooking the fundamental aspect of creative design exploration. This study presents a TRIZ-inspired text-to-CAD framework that leverages LLMs to generate high-quality, editable CAD models while systematically exploring creative design alternatives. The framework integrates the Theory of Inventive Problem Solving (TRIZ)-embedding deep human insights from extensive patent records-into LLM prompting strategies, enabling autonomous generation of innovative CAD variants that address technical contradictions. Through a comprehensive three-stage pipeline of design generation, enhancement, and optimization, the framework produces structurally diverse CAD models from well-crafted prompts. The present study implements and evaluates the first two stages, while positioning the design optimization stage as future work. A product design case study (chair) demonstrates that the TRIZ-inspired text-to-CAD framework generates multiple creative design alternatives by systematically applying TRIZ inventive principles such as segmentation, anti-weight, dynamics, and composite materials, achieving 4.0-14.7% mass reduction across all enhanced designs while maintaining structural integrity. The key findings suggest that integrating systematic innovation methodologies with LLM-based 3D CAD generation bridges the gap between precision-focused synthesis and creativity-focused exploration, advancing toward autonomous design systems where AI makes design decisions independently, supporting human decision-making in human-AI collaborative design for engineering applications.",
+   "published": "2026-06-19",
+   "updated": "2026-06-19",
+   "authors": [
+    "Dongeon Lee",
+    "Leekyo Jeong",
+    "Soyoung Yoo",
+    "Sunwoong Yang",
+    "Namwoo Kang"
+   ],
+   "primary_category": "cs.LG",
+   "categories": [
+    "cs.LG"
+   ],
+   "url": "https://arxiv.org/abs/2606.21378v1",
+   "pdf": "https://arxiv.org/pdf/2606.21378v1",
+   "comment": "10 pages, 6 figures"
+  },
+  {
+   "id": "2603.06894v1",
+   "title": "Learning From Design Procedure To Generate CAD Programs for Data Augmentation",
+   "abstract": "Large Language Models (LLMs) have demonstrated impressive capabilities in a wide range of code generation tasks. However, generating code for certain domains remains challenging. One such domain is Computer-Aided Design (CAD) program, where the goal is to produce scripted parametric models that define object geometry for precise design and manufacturing applications. A key challenge in LLM-based CAD program generation is the limited geometric complexity of generated shapes compared to those found in real-world industrial designs. This shortfall is in part due to the lack of diversity in the available CAD program training data. To address this, we propose a novel data augmentation paradigm that prompts an LLM to generate CAD programs conditioned on a reference surface program and a modeling procedure - an idea inspired by practices in industrial design. By varying the reference surface using a collection of organic shapes, our method enriches the geometric distribution of generated CAD models. In particular, it introduces edges and faces defined by spline-based curvature, which are typically missing or underrepresented in existing open-source CAD program datasets. Experiments show that our method produces CAD samples with significantly greater geometric diversity and a higher resemblance to industry-grade CAD designs in terms of the proportion of organic shape primitives. This enhancement makes our CAD data augmentation approach a useful tool for training LLMs and other deep learning models in CAD generation.",
+   "published": "2026-03-06",
+   "updated": "2026-03-06",
+   "authors": [
+    "Yan-Ying Chen",
+    "Dule Shu",
+    "Matthew Hong",
+    "Andrew Taber",
+    "Jonathan Li",
+    "Matthew Klenk"
+   ],
+   "primary_category": "cs.LG",
+   "categories": [
+    "cs.LG",
+    "cs.CV"
+   ],
+   "url": "https://arxiv.org/abs/2603.06894v1",
+   "pdf": "https://arxiv.org/pdf/2603.06894v1",
+   "comment": "Accepted by NeurIPS 2025 Workshop: Deep Learning for Code in the Agentic Era"
+  },
+  {
+   "id": "2508.00843v1",
+   "title": "Generative AI for CAD Automation: Leveraging Large Language Models for 3D Modelling",
+   "abstract": "Large Language Models (LLMs) are revolutionizing industries by enhancing efficiency, scalability, and innovation. This paper investigates the potential of LLMs in automating Computer-Aided Design (CAD) workflows, by integrating FreeCAD with LLM as CAD design tool. Traditional CAD processes are often complex and require specialized sketching skills, posing challenges for rapid prototyping and generative design. We propose a framework where LLMs generate initial CAD scripts from natural language descriptions, which are then executed and refined iteratively based on error feedback. Through a series of experiments with increasing complexity, we assess the effectiveness of this approach. Our findings reveal that LLMs perform well for simple to moderately complex designs but struggle with highly constrained models, necessitating multiple refinements. The study highlights the need for improved memory retrieval, adaptive prompt engineering, and hybrid AI techniques to enhance script robustness. Future directions include integrating cloud-based execution and exploring advanced LLM capabilities to further streamline CAD automation. This work underscores the transformative potential of LLMs in design workflows while identifying critical areas for future development.",
+   "published": "2025-07-05",
+   "updated": "2025-07-05",
+   "authors": [
+    "Sumit Kumar",
+    "Sarthak Kapoor",
+    "Harsh Vardhan",
+    "Yao Zhao"
+   ],
+   "primary_category": "cs.HC",
+   "categories": [
+    "cs.HC",
+    "cs.AI",
+    "cs.SE"
+   ],
+   "url": "https://arxiv.org/abs/2508.00843v1",
+   "pdf": "https://arxiv.org/pdf/2508.00843v1",
+   "comment": ""
+  },
+  {
+   "id": "2504.13893v1",
+   "title": "Semantic Direct Modeling",
+   "abstract": "Current direct modeling systems limit users to low-level interactions with vertices, edges, and faces, forcing designers to manage detailed geometric elements rather than focusing on high-level design intent. This paper introduces semantic direct modeling (SDM), a novel approach that lifts direct modeling from low-level geometric modifications to high-level semantic interactions. This is achieved by utilizing a large language model (LLM) fine-tuned with CAD-specific prompts, which can guide the LLM to reason through design intent and accurately interpret CAD commands, thereby allowing designers to express their intent using natural language. Additionally, SDM maps design intent to the corresponding geometric features in the CAD model through a new conditional, context-sensitive feature recognition method, which uses generative AI to dynamically assign feature labels based on design intent. Together, they enable a seamless flow from high-level design intent to low-level geometric modifications, bypassing tedious software interactions. The effectiveness of SDM has been validated through real mechanical design cases.",
+   "published": "2025-04-05",
+   "updated": "2025-04-05",
+   "authors": [
+    "Qiang Zou",
+    "Shuo Liu"
+   ],
+   "primary_category": "cs.HC",
+   "categories": [
+    "cs.HC",
+    "cs.GR"
+   ],
+   "url": "https://arxiv.org/abs/2504.13893v1",
+   "pdf": "https://arxiv.org/pdf/2504.13893v1",
+   "comment": ""
+  },
+  {
+   "id": "2502.03997v2",
+   "title": "CAD-Editor: A Locate-then-Infill Framework with Automated Training Data Synthesis for Text-Based CAD Editing",
+   "abstract": "Computer Aided Design (CAD) is indispensable across various industries. \\emph{Text-based CAD editing}, which automates the modification of CAD models based on textual instructions, holds great potential but remains underexplored. Existing methods primarily focus on design variation generation or text-based CAD generation, either lacking support for text-based control or neglecting existing CAD models as constraints. We introduce \\emph{CAD-Editor}, the first framework for text-based CAD editing. To address the challenge of demanding triplet data with accurate correspondence for training, we propose an automated data synthesis pipeline. This pipeline utilizes design variation models to generate pairs of original and edited CAD models and employs Large Vision-Language Models (LVLMs) to summarize their differences into editing instructions. To tackle the composite nature of text-based CAD editing, we propose a locate-then-infill framework that decomposes the task into two focused sub-tasks: locating regions requiring modification and infilling these regions with appropriate edits. Large Language Models (LLMs) serve as the backbone for both sub-tasks, leveraging their capabilities in natural language understanding and CAD knowledge. Experiments show that CAD-Editor achieves superior performance both quantitatively and qualitatively. The code is available at \\url {https://github.com/microsoft/CAD-Editor}.",
+   "published": "2025-02-06",
+   "updated": "2025-07-03",
+   "authors": [
+    "Yu Yuan",
+    "Shizhao Sun",
+    "Qi Liu",
+    "Jiang Bian"
+   ],
+   "primary_category": "cs.CV",
+   "categories": [
+    "cs.CV"
+   ],
+   "url": "https://arxiv.org/abs/2502.03997v2",
+   "pdf": "https://arxiv.org/pdf/2502.03997v2",
+   "comment": ""
+  },
+  {
+   "id": "2606.05058v1",
+   "title": "UniCAD: A Unified Benchmark and Universal Model for Multi-Modal Multi-Task CAD",
+   "abstract": "Computer-Aided Design (CAD) underpins modern engineering and manufacturing by enabling the creation of precise, editable 3D models. However, CAD research typically studies tasks in isolation, and multi-modal, multi-task learning for CAD is hindered by the absence of a unified benchmark. To address this gap, we introduce UniCAD, a comprehensive benchmark for multi-modal CAD learning that covers point-to-CAD reconstruction, text/image-to-CAD generation, and CAD question answering across diverse input modalities. Alongside the benchmark, we present UniCAD-MLLM, a universal multi-modal large language model that ingests text, images, sketches, and point clouds and performs these heterogeneous tasks in an end-to-end fashion within a single framework. Extensive experiments on the UniCAD and Fusion360 benchmarks demonstrate that UniCAD-MLLM achieves state-of-the-art performance across all tasks, outperforming existing task-specific and multi-task baselines. We will release the dataset, code, and pretrained models to accelerate future research.",
+   "published": "2026-06-03",
+   "updated": "2026-06-03",
+   "authors": [
+    "Jingyuan Chen",
+    "Sheng Jin",
+    "Haopeng Sun",
+    "Wentao Liu",
+    "Chen Qian"
+   ],
+   "primary_category": "cs.CV",
+   "categories": [
+    "cs.CV",
+    "cs.AI"
+   ],
+   "url": "https://arxiv.org/abs/2606.05058v1",
+   "pdf": "https://arxiv.org/pdf/2606.05058v1",
+   "comment": ""
+  },
+  {
+   "id": "2607.27558v1",
+   "title": "Drawing-Recode: Annotation Grounding for Parametric CAD Code Generation from Raster 2D CAD Drawings",
+   "abstract": "Recovering Parametric CAD sequences from raster-format 2D Computer-Aided Design (CAD) drawings accumulated prior to digital transformation is important for part reproduction and manufacturing process automation. However, existing studies either process only vector drawings or are limited to specific domains, and fail to explicitly connect dimensional annotations to geometric information, limiting their use of dimensional information for 3D Parametric CAD sequences recovery. We propose Drawing-Recode, a framework that generates Parametric CAD sequences as CAD code from raster 2D CAD drawings. Drawing-Recode extracts geometric features via an image encoder and recognizes annotations through a separate text recognition module, then explicitly grounds annotations to geometric information using cross-attention and our proposed Annotation Grounding Loss (AGL). The resulting features are fed into a Large Language Model (LLM) to generate CAD code in the Structured Parametric CAD Code (SPCC) format. Experiments show that Drawing-Recode outperforms existing baselines and remains robust on scanned drawings resembling industrial conditions. We expect Drawing-Recode contributes to digitizing raster 2D CAD drawings in industrial settings and to part reproduction and manufacturing automation.",
+   "published": "2026-07-30",
+   "updated": "2026-07-30",
+   "authors": [
+    "Mingi Kim",
+    "Yongjun Kim",
+    "Hyungki Kim"
+   ],
+   "primary_category": "cs.CV",
+   "categories": [
+    "cs.CV",
+    "cs.AI"
+   ],
+   "url": "https://arxiv.org/abs/2607.27558v1",
+   "pdf": "https://arxiv.org/pdf/2607.27558v1",
+   "comment": ""
+  },
+  {
+   "id": "2604.24479v1",
+   "title": "Zero-to-CAD: Agentic Synthesis of Interpretable CAD Programs at Million-Scale Without Real Data",
+   "abstract": "Computer-Aided Design (CAD) models are defined by their construction history: a parametric recipe that encodes design intent. However, existing large-scale 3D datasets predominantly consist of boundary representations (B-Reps) or meshes, stripping away this critical procedural information. To address this scarcity, we introduce Zero-to-CAD, a scalable framework for synthesizing executable CAD construction sequences. We frame synthesis as an agentic search problem: by embedding a large language model (LLM) within a feedback-driven CAD environment, our system iteratively generates, executes, and validates code using tools and documentation lookup to promote geometric validity and operation diversity. This agentic approach enables the synthesis of approximately one million executable, readable, editable CAD sequences, covering a rich vocabulary of operations beyond sketch-and-extrude workflows. We also release a curated subset of 100,000 high-quality models selected for geometric diversity. To demonstrate the dataset's utility, we fine-tune a vision-language model on our synthetic data to reconstruct editable CAD programs from multi-view images, outperforming strong baselines, including GPT-5.2, and effectively bootstrapping sequence generation capabilities without real construction-history training data. Zero-to-CAD bridges the gap between geometric scale and parametric interpretability, offering a vital resource for the next generation of CAD AI.",
+   "published": "2026-04-27",
+   "updated": "2026-04-27",
+   "authors": [
+    "Mohammadmehdi Ataei",
+    "Farzaneh Askari",
+    "Kamal Rahimi Malekshan",
+    "Pradeep Kumar Jayaraman"
+   ],
+   "primary_category": "cs.CV",
+   "categories": [
+    "cs.CV"
+   ],
+   "url": "https://arxiv.org/abs/2604.24479v1",
+   "pdf": "https://arxiv.org/pdf/2604.24479v1",
+   "comment": ""
+  },
+  {
+   "id": "2609.26229v1",
+   "title": "Reducing Hallucinations in Large Language Models Through Integrated Self-Verification and Retrieval-Augmented Generation",
+   "abstract": "Large Language Models (LLMs) are progressively used for advanced engineering tasks, includes Computer-Aided Design (CAD) documentation, standards compliance verification, and knowledge retrieval. Still, they are prone to produce hallucinations, outputs that seem convincing but aren't based on context that limit their trustworthiness in high-end engineering applications where precision and compliance are crucial. The paper introduces CoVe-RAG+, a unified framework that integrates Chain-of-Verification (CoVe) with Retrieval-Augmented Generation (RAG) to mitigate hallucinations in the results generated by large language models (LLMs). CoVe-RAG+ supports LLM verification in external sources of authority, such as engineering standards, CAD information, and simulation reports, while applying an iterative self-verification process to validate important claims. CoVe-RAG+ is assessed on engineering activities such as CAD model documentation, standards compliance verification, and the reutilization of historical design data. Experimental findings indicate a 28% improvement in factual accuracy relative to baseline CoVe and RAG methodologies. Moreover, CoVe-RAG+ strengthens user confidence by providing elucidative verification reports and source traceability. The findings indicate that CoVe-RAG+ provides a scalable and reliable option for implementing LLMs in engineering design processes where factual accuracy is critical.",
+   "published": "2026-08-12",
+   "updated": "2026-08-12",
+   "authors": [
+    "Ashly Joseph"
+   ],
+   "primary_category": "cs.SE",
+   "categories": [
+    "cs.SE",
+    "cs.AI"
+   ],
+   "url": "https://arxiv.org/abs/2609.26229v1",
+   "pdf": "https://arxiv.org/pdf/2609.26229v1",
+   "comment": ""
+  },
+  {
+   "id": "2609.22325v1",
+   "title": "ReliCAD: From Uncertain LLM Generation to Reliable Parametric CAD Modeling",
+   "abstract": "Large language models have shown considerable potential for natural-language-driven parametric CAD modeling. However, a fundamental contradiction exists between their probabilistic generation and the deterministic requirements of CAD modeling, resulting in limitations in reliability, design-intent preservation, and geometric validity. Existing methods typically rely on large-scale annotated datasets, lack explicit modeling of design intent, and underutilize the deterministic capabilities of CAD kernels. To address these limitations, we propose ReliCAD, a unified framework that transforms uncertain LLM generation into reliable parametric CAD modeling. Through explicit design-intent modeling, ReliCAD converts user requirements into structured design specifications and explicitly models geometric relations, topological dependencies, and feature construction order. It then generates constraint-aware parametric instructions and invokes the CAD kernel through an Agent-ready API to perform geometric construction and constraint solving. ReliCAD further records runtime evidence and employs a verification-feedback mechanism to assess consistency between the generated model and the design specifications, enabling error localization and iterative repair. Experiments on the public HistCAD generation dataset and our multi-granularity CAD editing dataset demonstrate that ReliCAD significantly outperforms baseline methods, achieving 99.8\\% validity rate and 0.8753 IoU. ReliCAD provides a verifiable, repairable, and generalizable approach to natural-language-interactive CAD modeling.",
+   "published": "2026-09-16",
+   "updated": "2026-09-16",
+   "authors": [
+    "Peng Zheng",
+    "Xintong Dong",
+    "Chuanyang Li",
+    "Jiaxin Jing",
+    "Chuqi Han",
+    "Hailong Shen",
+    "Yanzhi Song",
+    "Zhouwang Yang"
+   ],
+   "primary_category": "cs.RO",
+   "categories": [
+    "cs.RO"
+   ],
+   "url": "https://arxiv.org/abs/2609.22325v1",
+   "pdf": "https://arxiv.org/pdf/2609.22325v1",
+   "comment": ""
+  },
+  {
+   "id": "2507.09792v3",
+   "title": "CADmium: Fine-Tuning Code Language Models for Text-Driven Sequential CAD Design",
+   "abstract": "Computer-aided design (CAD) is the digital construction of 2D and 3D objects, and is central to a wide range of engineering and manufacturing applications like automobile and aviation. Despite its importance, CAD modeling remains largely a time-intensive, manual task. Recent works have attempted to automate this process with small transformer-based models and handcrafted CAD sequence representations. However, there has been little effort to leverage the potential of large language models (LLMs) for sequential CAD design. In this work, we introduce a new large-scale dataset of more than 170k CAD models annotated with high-quality, human-like descriptions generated with our pipeline based on GPT-4.1. Using this dataset, we fine-tune powerful code-LLMs to generate CAD sequences represented in a JSON-based format from natural language descriptions, demonstrating the viability and effectiveness of this approach for text-conditioned CAD generation. Because simple metrics often fail to reflect the quality of generated objects, we introduce geometric and topological metrics based on sphericity, mean curvature, and Euler characteristic to provide richer structural insights. Our experiments and ablation studies on both synthetic and human-annotated data demonstrate that CADmium is able to automate CAD design, drastically speeding up the design of new objects. The dataset, code, and fine-tuned models are available online.",
+   "published": "2025-07-13",
+   "updated": "2026-01-08",
+   "authors": [
+    "Prashant Govindarajan",
+    "Davide Baldelli",
+    "Jay Pathak",
+    "Quentin Fournier",
+    "Sarath Chandar"
+   ],
+   "primary_category": "cs.GR",
+   "categories": [
+    "cs.GR",
+    "cs.AI",
+    "cs.CV"
+   ],
+   "url": "https://arxiv.org/abs/2507.09792v3",
+   "pdf": "https://arxiv.org/pdf/2507.09792v3",
+   "comment": "Published in Transactions on Machine Learning Research (TMLR) 01/2026"
+  },
+  {
+   "id": "2505.08137v2",
+   "title": "Large Language Models for Computer-Aided Design: A Survey",
+   "abstract": "Large Language Models (LLMs) have seen rapid advancements in recent years, with models like ChatGPT and DeepSeek, showcasing their remarkable capabilities across diverse domains. While substantial research has been conducted on LLMs in various fields, a comprehensive review focusing on their integration with Computer-Aided Design (CAD) remains notably absent. CAD is the industry standard for 3D modeling and plays a vital role in the design and development of products across different industries. As the complexity of modern designs increases, the potential for LLMs to enhance and streamline CAD workflows presents an exciting frontier. This article presents the first systematic survey exploring the intersection of LLMs and CAD. We begin by outlining the industrial significance of CAD, highlighting the need for AI-driven innovation. Next, we provide a detailed overview of the foundation of LLMs. We also examine both closed-source LLMs as well as publicly available models. The core of this review focuses on the various applications of LLMs in CAD, providing a taxonomy of six key areas where these models are making considerable impact. Finally, we propose several promising future directions for further advancements, which offer vast opportunities for innovation and are poised to shape the future of CAD technology. Github: https://github.com/lichengzhanguom/LLMs-CAD-Survey-Taxonomy",
+   "published": "2025-05-13",
+   "updated": "2026-03-30",
+   "authors": [
+    "Licheng Zhang",
+    "Bach Le",
+    "Naveed Akhtar",
+    "Siew-Kei Lam",
+    "Tuan Ngo"
+   ],
+   "primary_category": "cs.LG",
+   "categories": [
+    "cs.LG",
+    "cs.CL",
+    "cs.GR",
+    "cs.MM"
+   ],
+   "url": "https://arxiv.org/abs/2505.08137v2",
+   "pdf": "https://arxiv.org/pdf/2505.08137v2",
+   "comment": ""
+  },
+  {
+   "id": "2602.12561v1",
+   "title": "PLLM: Pseudo-Labeling Large Language Models for CAD Program Synthesis",
+   "abstract": "Recovering Computer-Aided Design (CAD) programs from 3D geometries is a widely studied problem. Recent advances in large language models (LLMs) have enabled progress in CAD program synthesis, but existing methods rely on supervised training with paired shape-program data, which is often unavailable. We introduce PLLM, a self-training framework for CAD program synthesis from unlabeled 3D shapes. Given a pre-trained CAD-capable LLM and a shape dataset, PLLM iteratively samples candidate programs, selects high-fidelity executions, and augments programs to construct synthetic program-shape pairs for fine-tuning. We experiment on adapting CAD-Recode from DeepCAD to the unlabeled ABC dataset show consistent improvements in geometric fidelity and program diversity.",
+   "published": "2026-02-13",
+   "updated": "2026-02-13",
+   "authors": [
+    "Yuanbo Li",
+    "Dule Shu",
+    "Yanying Chen",
+    "Matt Klenk",
+    "Daniel Ritchie"
+   ],
+   "primary_category": "cs.CV",
+   "categories": [
+    "cs.CV"
+   ],
+   "url": "https://arxiv.org/abs/2602.12561v1",
+   "pdf": "https://arxiv.org/pdf/2602.12561v1",
+   "comment": ""
+  },
+  {
+   "id": "2510.13883v1",
+   "title": "Large Language Model Agents Enable Autonomous Design and Image Analysis of Microwell Microfluidics",
+   "abstract": "Microwell microfluidics has been utilized for single-cell analysis to reveal heterogeneity in gene expression, signaling pathways, and phenotypic responses for identifying rare cell types, understanding disease progression, and developing more precise therapeutic strategies. However, designing microwell microfluidics is a considerably complex task, requiring knowledge, experience, and CAD software, as well as manual intervention, which often fails initial designs, demanding multiple costly and time-consuming iterations. In this study, we establish an autonomous large language model (LLM)-driven microwell design framework to generate code-based computer-aided design (CAD) scripts, that enables the rapid and reproducible creation of microwells with diverse geometries and imaging-based analysis. We propose a multimodal large language model (MLLM)-logistic regression framework based on integrating high-level semantic descriptions generated by MLLMs with image embeddings for image classification tasks, aiming to identify microwell occupancy and microwell shape. The fused multimodal representation is input to a logistic regression model, which is both interpretable and computationally efficient. We achieved significant improvements, exceeding 0.92 for occupancy classification and 0.99 for shape classification, across all evaluated MLLMs, compared with 0.50 and 0.55, respectively, when relying solely on direct classification. The MLLM-logistic regression framework is a scalable, efficient solution for high-throughput microwell image analysis. Our study demonstrates an autonomous design microwell platform by translating natural language prompts into optimized device geometries, CAD scripts and image analysis, facilitating the development of next-generation digital discovery by integration of literature mining, autonomous design and experimental data analysis.",
+   "published": "2025-10-14",
+   "updated": "2025-10-14",
+   "authors": [
+    "Dinh-Nguyen Nguyen",
+    "Sadia Shakil",
+    "Raymond Kai-Yu Tong",
+    "Ngoc-Duy Dinh"
+   ],
+   "primary_category": "q-bio.NC",
+   "categories": [
+    "q-bio.NC",
+    "cs.MA"
+   ],
+   "url": "https://arxiv.org/abs/2510.13883v1",
+   "pdf": "https://arxiv.org/pdf/2510.13883v1",
+   "comment": ""
+  },
+  {
+   "id": "2604.07960v2",
+   "title": "TOOLCAD: Exploring Tool-Using Large Language Models in Text-to-CAD Generation with Reinforcement Learning",
+   "abstract": "Computer-Aided Design (CAD) is an expert-level task that relies on long-horizon reasoning and coherent modeling actions. Large Language Models (LLMs) have shown remarkable advancements in enabling language agents to tackle real-world tasks. Notably, there has been no investigation into how tool-using LLMs optimally interact with CAD engines, hindering the emergence of LLM-based agentic text-to-CAD modeling systems. We propose ToolCAD, a novel agentic CAD framework deploying LLMs as tool-using agents for text-to-CAD generation. Furthermore, we introduce an interactive CAD modeling gym to rollout reasoning and tool-augmented interaction trajectories with the CAD engine, incorporating hybrid feedback and human supervision. Meanwhile, an end-to-end post-training strategy is presented to enable the LLM agent to elicit refined CAD Modeling Chain of Thought (CAD-CoT) and evolve into proficient CAD tool-using agents via online curriculum reinforcement learning. Our findings demonstrate ToolCAD fills the gap in adopting and training open-source LLMs for CAD tool-using agents, enabling them to perform comparably to proprietary models, paving the way for more accessible and robust autonomous text-to-CAD modeling systems.",
+   "published": "2026-04-09",
+   "updated": "2026-04-20",
+   "authors": [
+    "Yifei Gong",
+    "Xing Wu",
+    "Wenda Liu",
+    "Kang Tu"
+   ],
+   "primary_category": "cs.CV",
+   "categories": [
+    "cs.CV",
+    "cs.AI",
+    "cs.CL"
+   ],
+   "url": "https://arxiv.org/abs/2604.07960v2",
+   "pdf": "https://arxiv.org/pdf/2604.07960v2",
+   "comment": "ACL2026"
+  },
+  {
+   "id": "2508.10118v2",
+   "title": "From Intent to Execution: Multimodal Chain-of-Thought Reinforcement Learning for Precise CAD Code Generation",
+   "abstract": "Computer-Aided Design (CAD) plays a vital role in engineering and manufacturing, yet current CAD workflows require extensive domain expertise and manual modeling effort. Recent advances in large language models (LLMs) have made it possible to generate code from natural language, opening new opportunities for automating parametric 3D modeling. However, directly translating human design intent into executable CAD code remains highly challenging, due to the need for logical reasoning, syntactic correctness, and numerical precision. In this work, we propose CAD-RL, a multimodal Chain-of-Thought (CoT) guided reinforcement learning post training framework for CAD modeling code generation. Our method combines CoT-based Cold Start with goal-driven reinforcement learning post training using three task-specific rewards: executability reward, geometric accuracy reward, and external evaluation reward. To ensure stable policy learning under sparse and high-variance reward conditions, we introduce three targeted optimization strategies: Trust Region Stretch for improved exploration, Precision Token Loss for enhanced dimensions parameter accuracy, and Overlong Filtering to reduce noisy supervision. To support training and benchmarking, we release ExeCAD, a noval dataset comprising 16,540 real-world CAD examples with paired natural language and structured design language descriptions, executable CADQuery scripts, and rendered 3D models. Experiments demonstrate that CAD-RL achieves significant improvements in reasoning quality, output precision, and code executability over existing VLMs.",
+   "published": "2025-08-13",
+   "updated": "2025-08-18",
+   "authors": [
+    "Ke Niu",
+    "Haiyang Yu",
+    "Zhuofan Chen",
+    "Mengyang Zhao",
+    "Teng Fu",
+    "Bin Li",
+    "Xiangyang Xue"
+   ],
+   "primary_category": "cs.LG",
+   "categories": [
+    "cs.LG",
+    "cs.CV"
+   ],
+   "url": "https://arxiv.org/abs/2508.10118v2",
+   "pdf": "https://arxiv.org/pdf/2508.10118v2",
+   "comment": ""
+  },
+  {
+   "id": "2607.11339v1",
+   "title": "HierCAD: Hierarchical Text-to-CAD Design via Structure Alignment and Parameter Grounding",
+   "abstract": "Recent text-to-CAD approaches have shown promising results by leveraging large language models, but they often struggle with maintaining structural consistency in complex designs and accurately grounding geometric parameters. To address these issues, we propose HierCAD, a hierarchical text-to-CAD framework that improves both structural reasoning and parameter prediction. HierCAD reformulates CAD generation as progressive reasoning by decomposing CAD construction trees into object-level procedural reasoning and part-level topology reasoning trajectories. To further improve generation fidelity, we introduce a unified Structure Alignment and Parameter Grounding (SAPG) learning strategy. Structure alignment aligns topology reasoning trajectories with their corresponding parametric CAD spans, while parameter grounding mitigates shortcut learning through structure-preserving parameter perturbations and ranking-based supervision. Experiments demonstrate that HierCAD outperforms prior state-of-the-art methods on both CAD sequence generation and reconstructed CAD model evaluation. Our code is available at https://github.com/Collab-Gen/HierCAD.",
+   "published": "2026-07-13",
+   "updated": "2026-07-13",
+   "authors": [
+    "Jimin Xu",
+    "Tianbao Wang",
+    "Tao Jin",
+    "Zhou Zhao"
+   ],
+   "primary_category": "cs.CV",
+   "categories": [
+    "cs.CV"
+   ],
+   "url": "https://arxiv.org/abs/2607.11339v1",
+   "pdf": "https://arxiv.org/pdf/2607.11339v1",
+   "comment": ""
+  },
+  {
+   "id": "2412.14203v1",
+   "title": "BlenderLLM: Training Large Language Models for Computer-Aided Design with Self-improvement",
+   "abstract": "The application of Large Language Models (LLMs) in Computer-Aided Design (CAD) remains an underexplored area, despite their remarkable advancements in other domains. In this paper, we present BlenderLLM, a novel framework for training LLMs specifically for CAD tasks leveraging a self-improvement methodology. To support this, we developed a bespoke training dataset, BlendNet, and introduced a comprehensive evaluation suite, CADBench. Our results reveal that existing models demonstrate significant limitations in generating accurate CAD scripts. However, through minimal instruction-based fine-tuning and iterative self-improvement, BlenderLLM significantly surpasses these models in both functionality and accuracy of CAD script generation. This research establishes a strong foundation for the application of LLMs in CAD while demonstrating the transformative potential of self-improving models in advancing CAD automation. We encourage further exploration and adoption of these methodologies to drive innovation in the field. The dataset, model, benchmark, and source code are publicly available at https://github.com/FreedomIntelligence/BlenderLLM",
+   "published": "2024-12-16",
+   "updated": "2024-12-16",
+   "authors": [
+    "Yuhao Du",
+    "Shunian Chen",
+    "Wenbo Zan",
+    "Peizhao Li",
+    "Mingxuan Wang",
+    "Dingjie Song",
+    "Bo Li",
+    "Yan Hu",
+    "Benyou Wang"
+   ],
+   "primary_category": "cs.HC",
+   "categories": [
+    "cs.HC",
+    "cs.AI"
+   ],
+   "url": "https://arxiv.org/abs/2412.14203v1",
+   "pdf": "https://arxiv.org/pdf/2412.14203v1",
+   "comment": ""
+  },
+  {
+   "id": "2609.07434v2",
+   "title": "CIT-CAD: Constraint Intent Tree-based CAD Code Generation and Verification",
+   "abstract": "Natural-language Computer-Aided Design (CAD) code generation aims to turn design intent into executable and editable parametric programs. Large language models (LLMs) make this goal increasingly practical, but useful systems must preserve the construction process behind the rendered geometry. Existing benchmarks and methods mostly focus on how closely the generated CAD model matches the reference geometry, often using metrics such as Intersection over Union (IoU). Such metrics can miss errors in part decomposition, construction hierarchy, Boolean operations, sketch structure, and geometric relations. This gap calls for a representation that makes design intent explicit and lets a system check generated code against that intent. We propose CIT-CAD, a framework that infers a Constraint Intent Tree (CIT) from the input description to represent the intended entities, hierarchy, operations, and relations. The tree has two roles: it guides CAD code generation and defines expected constraints for verification. The framework extracts actual constraints from the generated program, compares them with the expected constraints, and uses mismatches to localize and repair design violations. Experiments show that the framework improves CAD generation performance, with larger gains on more complex multi-entity designs. By turning design intent into an explicit and checkable object, this work is the first attempt to move text-to-CAD generation beyond rendered-geometry matching toward construction-aware synthesis, verification, and repair.",
+   "published": "2026-09-07",
+   "updated": "2026-09-13",
+   "authors": [
+    "Yali Du",
+    "Hui Sun",
+    "San-Zhuo Xi",
+    "Ming Li"
+   ],
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI",
+    "cs.SE"
+   ],
+   "url": "https://arxiv.org/abs/2609.07434v2",
+   "pdf": "https://arxiv.org/pdf/2609.07434v2",
+   "comment": ""
+  },
+  {
+   "id": "2505.17702v3",
+   "title": "Seek-CAD: A Self-refined Generative Modeling for 3D Parametric CAD Using Local Inference via DeepSeek",
+   "abstract": "The advent of Computer-Aided Design (CAD) generative modeling will significantly transform the design of industrial products. The recent research endeavor has extended into the realm of Large Language Models (LLMs). In contrast to fine-tuning methods, training-free approaches typically utilize the advanced closed-source LLMs, thereby offering enhanced flexibility and efficiency in the development of AI agents for generating CAD parametric models. However, the substantial cost and limitations of local deployment of the top-tier closed-source LLMs pose challenges in practical applications. The Seek-CAD is the pioneer exploration of locally deployed open-source inference LLM DeepSeek-R1 for CAD parametric model generation with a training-free methodology. This study is the first investigation to incorporate both visual and Chain-of-Thought (CoT) feedback within the self-refinement mechanism for generating CAD models. Specifically, the initial generated parametric CAD model is rendered into a sequence of step-wise perspective images, which are subsequently processed by a Vision Language Model (VLM) alongside the corresponding CoTs derived from DeepSeek-R1 to assess the CAD model generation. Then, the feedback is utilized by DeepSeek-R1 to refine the initial generated model for the next round of generation. Moreover, we present an innovative 3D CAD model dataset structured around the SSR (Sketch, Sketch-based feature, and Refinements) triple design paradigm. This dataset encompasses a wide range of CAD commands, thereby aligning effectively with industrial application requirements and proving suitable for the generation of LLMs. Extensive experiments validate the effectiveness of Seek-CAD under various metrics.",
+   "published": "2025-05-23",
+   "updated": "2026-02-28",
+   "authors": [
+    "Xueyang Li",
+    "Jiahao Li",
+    "Yu Song",
+    "Yunzhong Lou",
+    "Xiangdong Zhou"
+   ],
+   "primary_category": "cs.CV",
+   "categories": [
+    "cs.CV",
+    "cs.AI"
+   ],
+   "url": "https://arxiv.org/abs/2505.17702v3",
+   "pdf": "https://arxiv.org/pdf/2505.17702v3",
+   "comment": "Accepted to ICLR 2026. The datatset has been released publicly and can be acessed in https://github.com/Sunny-Hack/Seek-CAD"
+  },
+  {
+   "id": "2603.11831v2",
+   "title": "Towards High-Fidelity CAD Generation via LLM-Driven Program Generation and Text-Based B-Rep Primitive Grounding",
+   "abstract": "The field of Computer-Aided Design (CAD) generation has made significant progress in recent years. Existing methods typically fall into two separate categories: parametric CAD modeling and direct boundary representation (B-Rep) synthesis. In modern feature-based CAD systems, parametric modeling and B-Rep are inherently intertwined, as advanced parametric operations (e.g., fillet and chamfer) require explicit selection of B-Rep geometric primitives, and the B-Rep itself is derived from parametric operations. Consequently, this paradigm gap remains a critical factor limiting AI-driven CAD modeling for complex industrial product design. This paper presents FutureCAD, a novel text-to-CAD framework that leverages large language models (LLMs) and a B-Rep grounding transformer (BRepGround) for high-fidelity CAD generation. Our method generates executable CadQuery scripts, and introduces a text-based query mechanism that enables the LLM to specify geometric selections via natural language, which BRepGround then grounds to the target primitives. To train our framework, we construct a new dataset comprising real-world CAD models. For the LLM, we apply supervised fine-tuning (SFT) to establish fundamental CAD generation capabilities, followed by reinforcement learning (RL) to improve generalization. Experiments show that FutureCAD achieves state-of-the-art CAD generation performance. Code and dataset are available at: https://github.com/JohanStackk/FutureCAD",
+   "published": "2026-03-12",
+   "updated": "2026-04-26",
+   "authors": [
+    "Jiahao Li",
+    "Qingwang Zhang",
+    "Qiuyu Chen",
+    "Guozhan Qiu",
+    "Yunzhong Lou",
+    "Xiangdong Zhou"
+   ],
+   "primary_category": "cs.CV",
+   "categories": [
+    "cs.CV"
+   ],
+   "url": "https://arxiv.org/abs/2603.11831v2",
+   "pdf": "https://arxiv.org/pdf/2603.11831v2",
+   "comment": "preprint"
+  },
+  {
+   "id": "2604.19773v1",
+   "title": "PR-CAD: Progressive Refinement for Unified Controllable and Faithful Text-to-CAD Generation with Large Language Models",
+   "abstract": "The construction of CAD models has traditionally relied on labor-intensive manual operations and specialized expertise. Recent advances in large language models (LLMs) have inspired research into text-to-CAD generation. However, existing approaches typically treat generation and editing as disjoint tasks, limiting their practicality. We propose PR-CAD, a progressive refinement framework that unifies generation and editing for controllable and faithful text-to-CAD modeling. To support this, we curate a high-fidelity interaction dataset spanning the full CAD lifecycle, encompassing multiple CAD representations as well as both qualitative and quantitative descriptions. The dataset systematically defines the types of edit operations and generates highly human-like interaction data. Building on a CAD representation tailored for LLMs, we propose a reinforcement learning-enhanced reasoning framework that integrates intent understanding, parameter estimation, and precise edit localization into a single agent. This enables an \"all-in-one\" solution for both design creation and refinement. Extensive experiments demonstrate strong mutual reinforcement between generation and editing tasks, and across qualitative and quantitative modalities. On public benchmarks, PR-CAD achieves state-of-the-art controllability and faithfulness in both generation and refinement scenarios, while also proving user-friendly and significantly improving CAD modeling efficiency.",
+   "published": "2026-03-27",
+   "updated": "2026-03-27",
+   "authors": [
+    "Jiyuan An",
+    "Jiachen Zhao",
+    "Fan Chen",
+    "Liner Yang",
+    "Zhenghao Liu",
+    "Hongyan Wang",
+    "Weihua An",
+    "Meishan Zhang",
+    "Erhong Yang"
+   ],
+   "primary_category": "cs.CL",
+   "categories": [
+    "cs.CL",
+    "cs.AI"
+   ],
+   "url": "https://arxiv.org/abs/2604.19773v1",
+   "pdf": "https://arxiv.org/pdf/2604.19773v1",
+   "comment": ""
+  }
+ ]
+}

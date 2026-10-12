@@ -1,0 +1,610 @@
+{
+ "query": "abs:\"design fixation\" OR abs:\"creative ideation\" AND abs:\"large language model\"",
+ "hits": [
+  {
+   "id": "2601.07121v3",
+   "title": "ReMIND: Orchestrating Modular Large Language Models for Controllable Serendipity A REM-Inspired System Design for Emergent Creative Ideation",
+   "abstract": "Large language models (LLMs) are increasingly used not only for problem solving but also for creative ideation; however, generating ideas that are both novel and coherent remains challenging. While high-temperature sampling can promote originality, it often compromises consistency and usefulness. Here, we propose ReMIND, a four-stage framework comprising wake, which establishes a stable semantic baseline through low-temperature generation; dream, which performs high-temperature exploratory generation; judge, which evaluates candidate outputs for consistency and extracts salient novel ideas; and rewake, which consolidates selected ideas into coherent final outputs. By assigning these functions to independent LLM modules, ReMIND explicitly separates exploration from stabilization. We systematically evaluated diverse model configurations using multiple creative ideation tasks. External evaluations showed that novelty enhancement could emerge through two separable stages: first from the wake to the dream phase through high-temperature exploration, and subsequently from the dream to the rewake phase through judge-mediated selection and consolidation. Notably, different LLM families exhibited distinct functional tendencies. These findings suggest that serendipitous ideation in LLMs is not solely a property of individual models but emerges from interactions among models assigned to specialized cognitive roles. ReMIND provides a general framework for investigating computational creativity and demonstrates how modular LLM orchestration can bridge exploratory generation and coherent idea formation.",
+   "published": "2026-01-12",
+   "updated": "2026-08-10",
+   "authors": [
+    "Makoto Sato"
+   ],
+   "primary_category": "cs.CL",
+   "categories": [
+    "cs.CL",
+    "cs.AI"
+   ],
+   "url": "https://arxiv.org/abs/2601.07121v3",
+   "pdf": "https://arxiv.org/pdf/2601.07121v3",
+   "comment": ""
+  },
+  {
+   "id": "2405.17837v3",
+   "title": "Enabling Generative Design Tools with LLM Agents for Mechanical Computation Devices: A Case Study",
+   "abstract": "In the field of Human-Computer Interaction (HCI), interactive devices with embedded mechanical computation are gaining attention. The rise of these cutting-edge devices has created a need for specialized design tools that democratize the prototyping process. While current tools streamline prototyping through parametric design and simulation, they often come with a steep learning curve and may not fully support creative ideation. In this study, we use fluidic computation interfaces as a case study to explore how design tools for such devices can be augmented by Large Language Model agents (LLMs). Integrated with LLMs, the Generative Design Tool (GDT) better understands the capabilities and limitations of new technologies, proposes diverse and practical applications, and suggests designs that are technically and contextually appropriate. Additionally, it generates design parameters for visualizing results and producing fabrication-ready support files. This paper details the GDT's framework, implementation, and performance while addressing its potential and challenges.",
+   "published": "2024-05-28",
+   "updated": "2024-10-29",
+   "authors": [
+    "Qiuyu Lu",
+    "Jiawei Fang",
+    "Zhihao Yao",
+    "Yue Yang",
+    "Shiqing Lyu",
+    "Haipeng Mi",
+    "Lining Yao"
+   ],
+   "primary_category": "cs.HC",
+   "categories": [
+    "cs.HC"
+   ],
+   "url": "https://arxiv.org/abs/2405.17837v3",
+   "pdf": "https://arxiv.org/pdf/2405.17837v3",
+   "comment": "38 pages, 12 figures"
+  },
+  {
+   "id": "2506.19644v1",
+   "title": "Varif.ai to Vary and Verify User-Driven Diversity in Scalable Image Generation",
+   "abstract": "Diversity in image generation is essential to ensure fair representations and support creativity in ideation. Hence, many text-to-image models have implemented diversification mechanisms. Yet, after a few iterations of generation, a lack of diversity becomes apparent, because each user has their own diversity goals (e.g., different colors, brands of cars), and there are diverse attributions to be specified. To support user-driven diversity control, we propose Varif.ai that employs text-to-image and Large Language Models to iteratively i) (re)generate a set of images, ii) verify if user-specified attributes have sufficient coverage, and iii) vary existing or new attributes. Through an elicitation study, we uncovered user needs for diversity in image generation. A pilot validation showed that Varif.ai made achieving diverse image sets easier. In a controlled evaluation with 20 participants, Varif.ai proved more effective than baseline methods across various scenarios. Thus, this supports user control of diversity in image generation for creative ideation and scalable image generation.",
+   "published": "2025-06-24",
+   "updated": "2025-06-24",
+   "authors": [
+    "M. Michelessa",
+    "J. Ng",
+    "C. Hurter",
+    "B. Y. Lim"
+   ],
+   "primary_category": "cs.HC",
+   "categories": [
+    "cs.HC"
+   ],
+   "url": "https://arxiv.org/abs/2506.19644v1",
+   "pdf": "https://arxiv.org/pdf/2506.19644v1",
+   "comment": "DIS2025, code available at github.com/mario-michelessa/varifai"
+  },
+  {
+   "id": "2502.07128v2",
+   "title": "Cardiverse: Harnessing LLMs for Novel Card Game Prototyping",
+   "abstract": "The prototyping of computer games, particularly card games, requires extensive human effort in creative ideation and gameplay evaluation. Recent advances in Large Language Models (LLMs) offer opportunities to automate and streamline these processes. However, it remains challenging for LLMs to design novel game mechanics beyond existing databases, generate consistent gameplay environments, and develop scalable gameplay AI for large-scale evaluations. This paper addresses these challenges by introducing a comprehensive automated card game prototyping framework. The approach highlights a graph-based indexing method for generating novel game variations, an LLM-driven system for consistent game code generation validated by gameplay records, and a gameplay AI constructing method that uses an ensemble of LLM-generated heuristic functions optimized through self-play. These contributions aim to accelerate card game prototyping, reduce human labor, and lower barriers to entry for game developers. For code repo visit this http URL https://github.com/danruili/Cardiverse",
+   "published": "2025-02-10",
+   "updated": "2025-09-09",
+   "authors": [
+    "Danrui Li",
+    "Sen Zhang",
+    "Sam S. Sohn",
+    "Kaidong Hu",
+    "Muhammad Usman",
+    "Mubbasir Kapadia"
+   ],
+   "primary_category": "cs.CL",
+   "categories": [
+    "cs.CL",
+    "cs.AI",
+    "cs.MM"
+   ],
+   "url": "https://arxiv.org/abs/2502.07128v2",
+   "pdf": "https://arxiv.org/pdf/2502.07128v2",
+   "comment": "37 pages, 13 figures, 8 tables. Accepted by EMNLP 2025"
+  },
+  {
+   "id": "2502.05870v1",
+   "title": "Understanding Design Fixation in Generative AI",
+   "abstract": "Generative AI (GenAI) provides new opportunities for creativity support, but the phenomenon of GenAI design fixation remains underexplored. While human design fixation typically constrains ideas to familiar or existing solutions, our findings reveal that GenAI similarly experience design fixation, limiting its ability to generate novel and diverse design outcomes. To advance understanding of GenAI design fixation, we propose a theoretical framework includes the definition, causes, manifestations, and impacts of GenAI design fixation for creative design. We also conducted an experimental study to investigate the characteristics of GenAI design fixation in practice. We summarize how GenAI design fixation manifests in text generation model and image generation model respectively. Furthermore, we propose methods for mitigating GenAI design fixation for future creativity support tool design. We recommend adopting the lens of GenAI design fixation for creativity-oriented HCI research, as the unique perspectives and insights it provides.",
+   "published": "2025-02-09",
+   "updated": "2025-02-09",
+   "authors": [
+    "Liuqing Chen",
+    "Yaxuan Song",
+    "Chunyuan Zheng",
+    "Qianzhi Jing",
+    "Preben Hansen",
+    "Lingyun Sun"
+   ],
+   "primary_category": "cs.HC",
+   "categories": [
+    "cs.HC"
+   ],
+   "url": "https://arxiv.org/abs/2502.05870v1",
+   "pdf": "https://arxiv.org/pdf/2502.05870v1",
+   "comment": ""
+  },
+  {
+   "id": "2407.11984v1",
+   "title": "Mimetic Poet",
+   "abstract": "This paper presents the design and initial assessment of a novel device that uses generative AI to facilitate creative ideation, inspiration, and reflective thought. Inspired by magnetic poetry, which was originally designed to help overcome writer's block, the device allows participants to compose short poetic texts from a limited vocabulary by physically placing words on the device's surface. Upon composing the text, the system employs a large language model (LLM) to generate a response, displayed on an e-ink screen. We explored various strategies for internally sequencing prompts to foster creative thinking, including analogy, allegorical interpretations, and ideation. We installed the device in our research laboratory for two weeks and held a focus group at the conclusion to evaluate the design. The design choice to limit interactions with the LLM to poetic text, coupled with the tactile experience of assembling the poem, fostered a deeper and more enjoyable engagement with the LLM compared to traditional chatbot or screen-based interactions. This approach gives users the opportunity to reflect on the AI-generated responses in a manner conducive to creative thought.",
+   "published": "2024-06-04",
+   "updated": "2024-06-04",
+   "authors": [
+    "Jon McCormack",
+    "Elliott Wilson",
+    "Nina Rajcic",
+    "Maria Teresa Llano"
+   ],
+   "primary_category": "cs.HC",
+   "categories": [
+    "cs.HC",
+    "cs.AI",
+    "cs.CL"
+   ],
+   "url": "https://arxiv.org/abs/2407.11984v1",
+   "pdf": "https://arxiv.org/pdf/2407.11984v1",
+   "comment": "Paper accepted at the International Conference on Computational Creativity, (ICCC 2024), Jönköping, Sweden"
+  },
+  {
+   "id": "2401.12586v2",
+   "title": "C2Ideas: Supporting Creative Interior Color Design Ideation with Large Language Model",
+   "abstract": "Interior color design is a creative process that endeavors to allocate colors to furniture and other elements within an interior space. While much research focuses on generating realistic interior designs, these automated approaches often misalign with user intention and disregard design rationales. Informed by a need-finding preliminary study, we develop C2Ideas, an innovative system for designers to creatively ideate color schemes enabled by an intent-aligned and domain-oriented large language model. C2Ideas integrates a three-stage process: Idea Prompting stage distills user intentions into color linguistic prompts; Word-Color Association stage transforms the prompts into semantically and stylistically coherent color schemes; and Interior Coloring stage assigns colors to interior elements complying with design principles. We also develop an interactive interface that enables flexible user refinement and interpretable reasoning. C2Ideas has undergone a series of indoor cases and user studies, demonstrating its effectiveness and high recognition of interactive functionality by designers.",
+   "published": "2024-01-23",
+   "updated": "2024-01-27",
+   "authors": [
+    "Yihan Hou",
+    "Manling Yang",
+    "Hao Cui",
+    "Lei Wang",
+    "Jie Xu",
+    "Wei Zeng"
+   ],
+   "primary_category": "cs.HC",
+   "categories": [
+    "cs.HC"
+   ],
+   "url": "https://arxiv.org/abs/2401.12586v2",
+   "pdf": "https://arxiv.org/pdf/2401.12586v2",
+   "comment": "26 pages, 11 figures"
+  },
+  {
+   "id": "2608.26152v2",
+   "title": "AI Models Can Predict and Collaboratively Modulate Human Memory Search",
+   "abstract": "Large language models (LLMs) exhibit unprecedented natural language generation and many text-based problem-solving capabilities. Indeed, in many language-based tasks, for example routine coding, these artificial intelligence models have reduced, or even eliminated, the need for human input. But rather than replacing human cognitive effort, LLMs may instead serve as cognitive tools to extend human abilities, particularly when they are engaged in a task requiring open-ended conceptual exploration and creative ideation. However, we are yet to understand how these models may enhance such generative human cognitive abilities in human--AI interactions. In this study, we explore and evaluate the ability of LLMs to follow and enhance human mental trajectories during semantic memory search. To test this, we use the semantic fluency task (SFT), a classic cognitive paradigm requiring generative semantic memory retrieval that has long served to characterize convergent and divergent thinking in humans. We demonstrate that an LLM's abilities to track and predict human memory trajectories in this task exceed those of other humans.",
+   "published": "2026-07-03",
+   "updated": "2026-08-28",
+   "authors": [
+    "Eric Lacosse",
+    "Mariana Duarte",
+    "Graham Todd",
+    "Peter M. Todd",
+    "Daniel C. McNamee"
+   ],
+   "primary_category": "cs.CL",
+   "categories": [
+    "cs.CL",
+    "cs.AI",
+    "cs.HC"
+   ],
+   "url": "https://arxiv.org/abs/2608.26152v2",
+   "pdf": "https://arxiv.org/pdf/2608.26152v2",
+   "comment": "18 pages, 5 figures; includes Supplementary Information"
+  },
+  {
+   "id": "2604.10575v1",
+   "title": "NexusAI: Enabling Design Space Exploration of Ideas through Cognitive Abstraction and Functional Decomposition",
+   "abstract": "Large Language Models (LLMs) offer vast potential for creative ideation; however, their standard interaction paradigm often produces unstructured textual outputs that lead users to prematurely converge on sub-optimal ideas-a phenomenon known as fixation. While recent creativity tools have begun to structure these outputs, they remain compositionally opaque: ideas are organized as monolithic units that cannot be decomposed, abstracted, or recombinable at a sub-idea level. To address this, we propose Cognitive Abstraction (CA), a computational pipeline that transforms raw LLM-generated inspiration into a navigable and transformable design space. We implement this pipeline in NexusAI, a prototype diagramming system that supports (I) decomposition of inspiration into typed functional fragments, (II) multi-level abstraction to externalize mental scaling, and (III) cross-dimensional recombination to spark novel design directions. A within-subject user study (N=14) demonstrates that NexusAI significantly improves design space exploration, reduces cognitive overhead, and facilitates perspective reframing compared to a baseline. Our work contributes: (1) a characterization of \"compositional opacity\" as a barrier in human-AI co-creation; (2) the CA pipeline for operationalizing creative cognitive primitives at scale; and (3) empirical evidence that structured, multi-level representations can effectively mitigate fixation and support divergent exploration.",
+   "published": "2026-04-12",
+   "updated": "2026-04-12",
+   "authors": [
+    "Anqi Wang",
+    "Bingqian Wang",
+    "Huiyang Chen",
+    "Keqing Jiao",
+    "Lei Han",
+    "Xin Tong",
+    "Pan Hui"
+   ],
+   "primary_category": "cs.HC",
+   "categories": [
+    "cs.HC"
+   ],
+   "url": "https://arxiv.org/abs/2604.10575v1",
+   "pdf": "https://arxiv.org/pdf/2604.10575v1",
+   "comment": ""
+  },
+  {
+   "id": "2508.06591v1",
+   "title": "Generative Artificial Intelligence Extracts Structure-Function Relationships from Plants for New Materials",
+   "abstract": "Large language models (LLMs) have reshaped the research landscape by enabling new approaches to knowledge retrieval and creative ideation. Yet their application in discipline-specific experimental science, particularly in highly multi-disciplinary domains like materials science, remains limited. We present a first-of-its-kind framework that integrates generative AI with literature from hitherto-unconnected fields such as plant science, biomimetics, and materials engineering to extract insights and design experiments for materials. We focus on humidity-responsive systems such as pollen-based materials and Rhapis excelsa (broadleaf lady palm) leaves, which exhibit self-actuation and adaptive performance. Using a suite of AI tools, including a fine-tuned model (BioinspiredLLM), Retrieval-Augmented Generation (RAG), agentic systems, and a Hierarchical Sampling strategy, we extract structure-property relationships and translate them into new classes of bioinspired materials. Structured inference protocols generate and evaluate hundreds of hypotheses from a single query, surfacing novel and experimentally tractable ideas. We validate our approach through real-world implementation: LLM-generated procedures, materials designs, and mechanical predictions were tested in the laboratory, culminating in the fabrication of a novel pollen-based adhesive with tunable morphology and measured shear strength, establishing a foundation for future plant-derived adhesive design. This work demonstrates how AI-assisted ideation can drive real-world materials design and enable effective human-AI collaboration.",
+   "published": "2025-08-08",
+   "updated": "2025-08-08",
+   "authors": [
+    "Rachel K. Luu",
+    "Jingyu Deng",
+    "Mohammed Shahrudin Ibrahim",
+    "Nam-Joon Cho",
+    "Ming Dao",
+    "Subra Suresh",
+    "Markus J. Buehler"
+   ],
+   "primary_category": "cs.LG",
+   "categories": [
+    "cs.LG",
+    "cond-mat.dis-nn",
+    "cond-mat.mtrl-sci",
+    "cond-mat.other",
+    "cs.AI",
+    "cs.CL"
+   ],
+   "url": "https://arxiv.org/abs/2508.06591v1",
+   "pdf": "https://arxiv.org/pdf/2508.06591v1",
+   "comment": ""
+  },
+  {
+   "id": "2503.08549v2",
+   "title": "GoAI: Enhancing AI Students' Learning Paths and Idea Generation via Graph of AI Ideas",
+   "abstract": "With the rapid advancement of artificial intelligence technology, AI students are confronted with a significant \"information-to-innovation\" gap: they must navigate through the rapidly expanding body of literature, trace the development of a specific research field, and synthesize various techniques into feasible innovative concepts. An additional critical step for students is to identify the necessary prerequisite knowledge and learning paths. Although many approaches based on large language models (LLMs) can summarize the content of papers and trace the development of a field through citations, these methods often overlook the prerequisite knowledge involved in the papers and the rich semantic information embedded in the citation relationships between papers. Such information reveals how methods are interrelated, built upon, extended, or challenged. To address these limitations, we propose GoAI, a tool for constructing educational knowledge graphs from AI research papers that leverages these graphs to plan personalized learning paths and support creative ideation. The nodes in the knowledge graph we have built include papers and the prerequisite knowledge, such as concepts, skills, and tools, that they involve; the edges record the semantic information of citations. When a student queries a specific paper, a beam search-based path search method can trace the current development trends of the field from the queried paper and plan a learning path toward cutting-edge objectives. The integrated Idea Studio guides students to clarify problem statements, compare alternative designs, and provide formative feedback on novelty, clarity, feasibility, and alignment with learning objectives.",
+   "published": "2025-03-11",
+   "updated": "2025-08-19",
+   "authors": [
+    "Xian Gao",
+    "Zongyun Zhang",
+    "Ting Liu",
+    "Yuzhuo Fu"
+   ],
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI",
+    "cs.CL"
+   ],
+   "url": "https://arxiv.org/abs/2503.08549v2",
+   "pdf": "https://arxiv.org/pdf/2503.08549v2",
+   "comment": "Work in progress"
+  },
+  {
+   "id": "2108.06451v1",
+   "title": "Fixation and Creativity in Data Visualization Design: Experiences and Perspectives of Practitioners",
+   "abstract": "Data visualization design often requires creativity, and research is needed to understand its nature and means for promoting it. The current visualization literature on creativity is not well developed, especially with respect to the experiences of professional data visualization designers. We conducted semi-structured interviews with 15 data visualization practitioners, focusing on a specific aspect of creativity known as design fixation. Fixation occurs when designers adhere blindly or prematurely to a set of ideas that limit creative outcomes. We present practitioners' experiences and perspectives from their own design practice, specifically focusing on their views of (i) the nature of fixation, (ii) factors encouraging fixation, and (iii) factors discouraging fixation. We identify opportunities for future research related to chart recommendations, inspiration, and perspective shifts in data visualization design.",
+   "published": "2021-08-14",
+   "updated": "2021-08-14",
+   "authors": [
+    "Paul Parsons",
+    "Prakash Shukla",
+    "Chorong Park"
+   ],
+   "primary_category": "cs.HC",
+   "categories": [
+    "cs.HC"
+   ],
+   "url": "https://arxiv.org/abs/2108.06451v1",
+   "pdf": "https://arxiv.org/pdf/2108.06451v1",
+   "comment": "IEEE 2021 Visualization Conference (VIS), short papers"
+  },
+  {
+   "id": "2406.11125v1",
+   "title": "Conversational Agents as Catalysts for Critical Thinking: Challenging Design Fixation in Group Design",
+   "abstract": "This paper investigates the potential of LLM-based conversational agents (CAs) to enhance critical reflection and mitigate design fixation in group design work. By challenging AI-generated recommendations and prevailing group opinions, these agents address issues such as groupthink and promote a more dynamic and inclusive design process. Key design considerations include optimizing intervention timing, ensuring clarity in counterarguments, and balancing critical thinking with designers' satisfaction. CAs can also adapt to various roles, supporting individual and collective reflection. Our work aligns with the \"Death of the Design Researcher?\" workshop's goals, emphasizing the transformative potential of generative AI in reshaping design practices and promoting ethical considerations. By exploring innovative uses of generative AI in group design contexts, we aim to stimulate discussion and open new pathways for future research and development, ultimately contributing to practical tools and resources for design researchers.",
+   "published": "2024-06-17",
+   "updated": "2024-06-17",
+   "authors": [
+    "Soohwan Lee",
+    "Seoyeong Hwang",
+    "Kyungho Lee"
+   ],
+   "primary_category": "cs.HC",
+   "categories": [
+    "cs.HC"
+   ],
+   "url": "https://arxiv.org/abs/2406.11125v1",
+   "pdf": "https://arxiv.org/pdf/2406.11125v1",
+   "comment": "7 pages, 2 figures, DIS2024 Workshop on 'Death of Design Researcher'"
+  },
+  {
+   "id": "2001.02746v1",
+   "title": "Spinneret: Aiding Creative Ideation through Non-Obvious Concept Associations",
+   "abstract": "Mind mapping is a popular way to explore a design space in creative thinking exercises, allowing users to form associations between concepts. Yet, most existing digital tools for mind mapping focus on authoring and organization, with little support for addressing the challenges of mind mapping such as stagnation and design fixation. We present Spinneret, a functional approach to aid mind mapping by providing suggestions based on a knowledge graph. Spinneret uses biased random walks to explore the knowledge graph in the neighborhood of an existing concept node in the mind map, and provides \"suggestions\" for the user to add to the mind map. A comparative study with a baseline mind-mapping tool reveals that participants created more diverse and distinct concepts with Spinneret, and reported that the suggestions inspired them to think of ideas they would otherwise not have explored.",
+   "published": "2020-01-08",
+   "updated": "2020-01-08",
+   "authors": [
+    "Suyun \"Sandra\" Bae",
+    "Oh-Hyun Kwon",
+    "Senthil Chandrasegaran",
+    "Kwan-Liu Ma"
+   ],
+   "primary_category": "cs.HC",
+   "categories": [
+    "cs.HC",
+    "cs.SI"
+   ],
+   "url": "https://arxiv.org/abs/2001.02746v1",
+   "pdf": "https://arxiv.org/pdf/2001.02746v1",
+   "comment": "ACM CHI 2020"
+  },
+  {
+   "id": "2403.11164v1",
+   "title": "The Effects of Generative AI on Design Fixation and Divergent Thinking",
+   "abstract": "Generative AI systems have been heralded as tools for augmenting human creativity and inspiring divergent thinking, though with little empirical evidence for these claims. This paper explores the effects of exposure to AI-generated images on measures of design fixation and divergent thinking in a visual ideation task. Through a between-participants experiment (N=60), we found that support from an AI image generator during ideation leads to higher fixation on an initial example. Participants who used AI produced fewer ideas, with less variety and lower originality compared to a baseline. Our qualitative analysis suggests that the effectiveness of co-ideation with AI rests on participants' chosen approach to prompt creation and on the strategies used by participants to generate ideas in response to the AI's suggestions. We discuss opportunities for designing generative AI systems for ideation support and incorporating these AI tools into ideation workflows.",
+   "published": "2024-03-17",
+   "updated": "2024-03-17",
+   "authors": [
+    "Samangi Wadinambiarachchi",
+    "Ryan M. Kelly",
+    "Saumya Pareek",
+    "Qiushi Zhou",
+    "Eduardo Velloso"
+   ],
+   "primary_category": "cs.HC",
+   "categories": [
+    "cs.HC"
+   ],
+   "url": "https://arxiv.org/abs/2403.11164v1",
+   "pdf": "https://arxiv.org/pdf/2403.11164v1",
+   "comment": "Accepted at the CHI Conference on Human Factors in Computing Systems (CHI 24),18 pages, 15 figures,"
+  },
+  {
+   "id": "1805.10852v1",
+   "title": "A Pragmatic AI Approach to Creating Artistic Visual Variations by Neural Style Transfer",
+   "abstract": "On a constant quest for inspiration, designers can become more effective with tools that facilitate their creative process and let them overcome design fixation. This paper explores the practicality of applying neural style transfer as an emerging design tool for generating creative digital content. To this aim, the present work explores a well-documented neural style transfer algorithm (Johnson 2016) in four experiments on four relevant visual parameters: number of iterations, learning rate, total variation, content vs. style weight. The results allow a pragmatic recommendation of parameter configuration (number of iterations: 200 to 300, learning rate: 2e-1 to 4e-1, total variation: 1e-4 to 1e-8, content weights vs. style weights: 50:100 to 200:100) that saves extensive experimentation time and lowers the technical entry barrier. With this rule-of-thumb insight, visual designers can effectively apply deep learning to create artistic visual variations of digital content. This could enable designers to leverage AI for creating design works as state-of-the-art.",
+   "published": "2018-05-28",
+   "updated": "2018-05-28",
+   "authors": [
+    "Chaehan So"
+   ],
+   "primary_category": "cs.CY",
+   "categories": [
+    "cs.CY",
+    "cs.AI"
+   ],
+   "url": "https://arxiv.org/abs/1805.10852v1",
+   "pdf": "https://arxiv.org/pdf/1805.10852v1",
+   "comment": ""
+  },
+  {
+   "id": "2106.01592v1",
+   "title": "Data-Driven Design-by-Analogy: State of the Art and Future Directions",
+   "abstract": "Design-by-Analogy (DbA) is a design methodology wherein new solutions, opportunities or designs are generated in a target domain based on inspiration drawn from a source domain; it can benefit designers in mitigating design fixation and improving design ideation outcomes. Recently, the increasingly available design databases and rapidly advancing data science and artificial intelligence technologies have presented new opportunities for developing data-driven methods and tools for DbA support. In this study, we survey existing data-driven DbA studies and categorize individual studies according to the data, methods, and applications in four categories, namely, analogy encoding, retrieval, mapping, and evaluation. Based on both nuanced organic review and structured analysis, this paper elucidates the state of the art of data-driven DbA research to date and benchmarks it with the frontier of data science and AI research to identify promising research opportunities and directions for the field. Finally, we propose a future conceptual data-driven DbA system that integrates all propositions.",
+   "published": "2021-06-03",
+   "updated": "2021-06-03",
+   "authors": [
+    "Shuo Jiang",
+    "Jie Hu",
+    "Kristin L. Wood",
+    "Jianxi Luo"
+   ],
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI",
+    "cs.CE"
+   ],
+   "url": "https://arxiv.org/abs/2106.01592v1",
+   "pdf": "https://arxiv.org/pdf/2106.01592v1",
+   "comment": "A Preprint Version"
+  },
+  {
+   "id": "2210.11603v2",
+   "title": "3DALL-E: Integrating Text-to-Image AI in 3D Design Workflows",
+   "abstract": "Text-to-image AI are capable of generating novel images for inspiration, but their applications for 3D design workflows and how designers can build 3D models using AI-provided inspiration have not yet been explored. To investigate this, we integrated DALL-E, GPT-3, and CLIP within a CAD software in 3DALL-E, a plugin that generates 2D image inspiration for 3D design. 3DALL-E allows users to construct text and image prompts based on what they are modeling. In a study with 13 designers, we found that designers saw great potential in 3DALL-E within their workflows and could use text-to-image AI to produce reference images, prevent design fixation, and inspire design considerations. We elaborate on prompting patterns observed across 3D modeling tasks and provide measures of prompt complexity observed across participants. From our findings, we discuss how 3DALL-E can merge with existing generative design workflows and propose prompt bibliographies as a form of human-AI design history.",
+   "published": "2022-10-20",
+   "updated": "2023-07-31",
+   "authors": [
+    "Vivian Liu",
+    "Jo Vermeulen",
+    "George Fitzmaurice",
+    "Justin Matejka"
+   ],
+   "primary_category": "cs.HC",
+   "categories": [
+    "cs.HC",
+    "cs.AI",
+    "cs.CY",
+    "cs.LG",
+    "cs.MM"
+   ],
+   "url": "https://arxiv.org/abs/2210.11603v2",
+   "pdf": "https://arxiv.org/pdf/2210.11603v2",
+   "comment": ""
+  },
+  {
+   "id": "2203.03827v1",
+   "title": "GANSpiration: Balancing Targeted and Serendipitous Inspiration in User Interface Design with Style-Based Generative Adversarial Network",
+   "abstract": "Inspiration from design examples plays a crucial role in the creative process of user interface design. However, current tools and techniques that support inspiration usually only focus on example browsing with limited user control or similarity-based example retrieval, leading to undesirable design outcomes such as focus drift and design fixation. To address these issues, we propose the GANSpiration approach that suggests design examples for both targeted and serendipitous inspiration, leveraging a style-based Generative Adversarial Network. A quantitative evaluation revealed that the outputs of GANSpiration-based example suggestion approaches are relevant to the input design, and at the same time include diverse instances. A user study with professional UI/UX practitioners showed that the examples suggested by our approach serve as viable sources of inspiration for overall design concepts and specific design elements. Overall, our work paves the road of using advanced generative machine learning techniques in supporting the creative design practice.",
+   "published": "2022-03-08",
+   "updated": "2022-03-08",
+   "authors": [
+    "Mohammad Amin Mozaffari",
+    "Xinyuan Zhang",
+    "Jinghui Cheng",
+    "Jin L. C. Guo"
+   ],
+   "primary_category": "cs.HC",
+   "categories": [
+    "cs.HC",
+    "cs.SE"
+   ],
+   "url": "https://arxiv.org/abs/2203.03827v1",
+   "pdf": "https://arxiv.org/pdf/2203.03827v1",
+   "comment": "15 pages, 9 figures, CHI Conference on Human Factors in Computing Systems (CHI '22)"
+  },
+  {
+   "id": "2501.18588v1",
+   "title": "Inkspire: Supporting Design Exploration with Generative AI through Analogical Sketching",
+   "abstract": "With recent advancements in the capabilities of Text-to-Image (T2I) AI models, product designers have begun experimenting with them in their work. However, T2I models struggle to interpret abstract language and the current user experience of T2I tools can induce design fixation rather than a more iterative, exploratory process. To address these challenges, we developed Inkspire, a sketch-driven tool that supports designers in prototyping product design concepts with analogical inspirations and a complete sketch-to-design-to-sketch feedback loop. To inform the design of Inkspire, we conducted an exchange session with designers and distilled design goals for improving T2I interactions. In a within-subjects study comparing Inkspire to ControlNet, we found that Inkspire supported designers with more inspiration and exploration of design ideas, and improved aspects of the co-creative process by allowing designers to effectively grasp the current state of the AI to guide it towards novel design intentions.",
+   "published": "2025-01-30",
+   "updated": "2025-01-30",
+   "authors": [
+    "David Chuan-En Lin",
+    "Hyeonsu B. Kang",
+    "Nikolas Martelaro",
+    "Aniket Kittur",
+    "Yan-Ying Chen",
+    "Matthew K. Hong"
+   ],
+   "primary_category": "cs.HC",
+   "categories": [
+    "cs.HC",
+    "cs.AI",
+    "cs.CV",
+    "cs.MM"
+   ],
+   "url": "https://arxiv.org/abs/2501.18588v1",
+   "pdf": "https://arxiv.org/pdf/2501.18588v1",
+   "comment": "Accepted to CHI 2025"
+  },
+  {
+   "id": "2602.09423v1",
+   "title": "Beyond Input-Output: Rethinking Creativity through Design-by-Analogy in Human-AI Collaboration",
+   "abstract": "While the proliferation of foundation models has significantly boosted individual productivity, it also introduces a potential challenge: the homogenization of creative content. In response, we revisit Design-by-Analogy (DbA), a cognitively grounded approach that fosters novel solutions by mapping inspiration across domains. However, prevailing perspectives often restrict DbA to early ideation or specific data modalities, while reducing AI-driven design to simplified input-output pipelines. Such conceptual limitations inadvertently foster widespread design fixation. To address this, we expand the understanding of DbA by embedding it into the entire creative process, thereby demonstrating its capacity to mitigate such fixation. Through a systematic review of 85 studies, we identify six forms of representation and classify techniques across seven stages of the creative process. We further discuss three major application domains: creative industries, intelligent manufacturing, and education and services, demonstrating DbA's practical relevance. Building on this synthesis, we frame DbA as a mediating technology for human-AI collaboration and outline the potential opportunities and inherent risks for advancing creativity support in HCI and design research.",
+   "published": "2026-02-10",
+   "updated": "2026-02-10",
+   "authors": [
+    "Xuechen Li",
+    "Shuai Zhang",
+    "Nan Cao",
+    "Qing Chen"
+   ],
+   "primary_category": "cs.HC",
+   "categories": [
+    "cs.HC",
+    "cs.AI"
+   ],
+   "url": "https://arxiv.org/abs/2602.09423v1",
+   "pdf": "https://arxiv.org/pdf/2602.09423v1",
+   "comment": "20 pages, 9 figures. Accepted to the 2026 CHI Conference on Human Factors in Computing Systems"
+  },
+  {
+   "id": "2603.27550v1",
+   "title": "Drag or Traction: Understanding How Designers Appropriate Friction in AI Ideation Outputs",
+   "abstract": "Seamless AI presents output as a finished, polished product that users consume rather than shape. This risks design fixation: users anchor on AI suggestions rather than generating their own ideas. We propose Generative Friction, which introduces intentional disruptions to AI output (fragmentation, delay, ambiguity) designed to transform it from finished product into semi-finished material, inviting human contribution rather than passive acceptance. In a qualitative study with six designers, we identified the different ways in which designers appropriated the different types of friction: users mined keywords from broken text, used delays as workspace for independent thought, and solved metaphors as creative puzzles. However, this transformation was not universal, motivating the concept of Friction Disposition, a user's propensity to interpret resistance as invitation rather than obstruction. Grounded in tolerance for ambiguity and pre-existing workflow orientation, Friction Disposition emerged as a potential moderator: high-disposition users treated friction as \"liberating,\" while low-disposition users experienced drag. We contribute the concept of Generative Friction as distinct from Protective Friction, with design implications for AI tools that counter fixation while preserving agency.",
+   "published": "2026-03-29",
+   "updated": "2026-03-29",
+   "authors": [
+    "A. Baki Kocaballi",
+    "Joseph Kizana",
+    "Sharon Stein",
+    "Simon Buckingham Shum"
+   ],
+   "primary_category": "cs.HC",
+   "categories": [
+    "cs.HC",
+    "cs.AI"
+   ],
+   "url": "https://arxiv.org/abs/2603.27550v1",
+   "pdf": "https://arxiv.org/pdf/2603.27550v1",
+   "comment": "Paper accepted to ACM CHI Workshop on Tools for Thought, 2026"
+  },
+  {
+   "id": "2512.18388v2",
+   "title": "Exploration vs. Fixation: Scaffolding Divergent and Convergent Thinking for Human-AI Co-Creation with Generative Models",
+   "abstract": "Generative AI has democratized content creation, but popular chatbot-based interfaces often prioritize execution, generating fully rendered artifacts right away. This issue can lead to premature convergence and design fixation, where users are being anchored to initial outputs. Recent works have proposed new interfaces to address this issue by supporting exploration, though typically constrained to be semantically close to a user's initial task framing, potentially limiting the creativity of the outcomes. We examine an approach grounded in the Geneplore model of creative cognition and instantiate it in a human-AI co-creation system, HAICo, for creative image generation. HAICo explicitly structures the creative process into two switchable modes: DIVERGENT mode scaffolds the broad exploration of remote conceptual ideas; CONVERGENT mode supports a targeted refinement of selected ideas. Through a within-subjects study (N=24) on a poster image creation task, we demonstrate that HAICo outperforms ChatGPT across multiple dimensions of creativity and usability. Our results highlight the critical need to shift from pure execution-focused chatbots to scaffolded co-creation systems that actively guide exploration and foster the creative process.",
+   "published": "2025-12-20",
+   "updated": "2026-04-06",
+   "authors": [
+    "Chao Wen",
+    "Tung Phung",
+    "Pronita Mehrotra",
+    "Sumit Gulwani",
+    "Roger E. Beaty",
+    "Tomohiro Nagashima",
+    "Adish Singla"
+   ],
+   "primary_category": "cs.HC",
+   "categories": [
+    "cs.HC",
+    "cs.AI"
+   ],
+   "url": "https://arxiv.org/abs/2512.18388v2",
+   "pdf": "https://arxiv.org/pdf/2512.18388v2",
+   "comment": "Preprint"
+  },
+  {
+   "id": "2404.18479v1",
+   "title": "ChatGPT as an inventor: Eliciting the strengths and weaknesses of current large language models against humans in engineering design",
+   "abstract": "This study compares the design practices and performance of ChatGPT 4.0, a large language model (LLM), against graduate engineering students in a 48-hour prototyping hackathon, based on a dataset comprising more than 100 prototypes. The LLM participated by instructing two participants who executed its instructions and provided objective feedback, generated ideas autonomously and made all design decisions without human intervention. The LLM exhibited similar prototyping practices to human participants and finished second among six teams, successfully designing and providing building instructions for functional prototypes. The LLM's concept generation capabilities were particularly strong. However, the LLM prematurely abandoned promising concepts when facing minor difficulties, added unnecessary complexity to designs, and experienced design fixation. Communication between the LLM and participants was challenging due to vague or unclear descriptions, and the LLM had difficulty maintaining continuity and relevance in answers. Based on these findings, six recommendations for implementing an LLM like ChatGPT in the design process are proposed, including leveraging it for ideation, ensuring human oversight for key decisions, implementing iterative feedback loops, prompting it to consider alternatives, and assigning specific and manageable tasks at a subsystem level.",
+   "published": "2024-04-29",
+   "updated": "2024-04-29",
+   "authors": [
+    "Daniel Nygård Ege",
+    "Henrik H. Øvrebø",
+    "Vegar Stubberud",
+    "Martin Francis Berg",
+    "Christer Elverum",
+    "Martin Steinert",
+    "Håvard Vestad"
+   ],
+   "primary_category": "cs.HC",
+   "categories": [
+    "cs.HC"
+   ],
+   "url": "https://arxiv.org/abs/2404.18479v1",
+   "pdf": "https://arxiv.org/pdf/2404.18479v1",
+   "comment": ""
+  },
+  {
+   "id": "2506.24085v2",
+   "title": "Imagine for Me: Creative Conceptual Blending of Real Images and Text via Blended Attention",
+   "abstract": "Blending visual and textual concepts into a new visual concept is a unique and powerful trait of human beings that can fuel creativity. However, in practice, cross-modal conceptual blending for humans is prone to cognitive biases, like design fixation, which leads to local minima in the design space. In this paper, we propose a T2I diffusion adapter \"IT-Blender\" that can automate the blending process to enhance human creativity. Prior works related to cross-modal conceptual blending are limited in encoding a real image without loss of details or in disentangling the image and text inputs. To address these gaps, IT-Blender leverages pretrained diffusion models (SD and FLUX) to blend the latent representations of a clean reference image with those of the noisy generated image. Combined with our novel blended attention, IT-Blender encodes the real reference image without loss of details and blends the visual concept with the object specified by the text in a disentangled way. Our experiment results show that IT-Blender outperforms the baselines by a large margin in blending visual and textual concepts, shedding light on the new application of image generative models to augment human creativity.",
+   "published": "2025-06-30",
+   "updated": "2025-07-14",
+   "authors": [
+    "Wonwoong Cho",
+    "Yanxia Zhang",
+    "Yan-Ying Chen",
+    "David I. Inouye"
+   ],
+   "primary_category": "cs.CV",
+   "categories": [
+    "cs.CV",
+    "cs.AI"
+   ],
+   "url": "https://arxiv.org/abs/2506.24085v2",
+   "pdf": "https://arxiv.org/pdf/2506.24085v2",
+   "comment": "Project website is available at https://imagineforme.github.io/"
+  },
+  {
+   "id": "2601.18759v2",
+   "title": "UI Remix: Supporting UI Design Through Interactive Example Retrieval and Remixing",
+   "abstract": "Designing user interfaces (UIs) is a critical step when launching products, building portfolios, or personalizing projects, yet end users without design expertise often struggle to articulate their intent and to trust design choices. Existing example-based tools either promote broad exploration, which can cause overwhelm and design drift, or require adapting a single example, risking design fixation. We present UI Remix, an interactive system that supports mobile UI design through an example-driven design workflow. Powered by a multimodal retrieval-augmented generation (MMRAG) model, UI Remix enables iterative search, selection, and adaptation of examples at both the global (whole interface) and local (component) level. To foster trust, it presents source transparency cues such as ratings, download counts, and developer information. In an empirical study with 24 end users, UI Remix significantly improved participants' ability to achieve their design goals, facilitated effective iteration, and encouraged exploration of alternative designs. Participants also reported that source transparency cues enhanced their confidence in adapting examples. Our findings suggest new directions for AI-assisted, example-driven systems that empower end users to design with greater control, trust, and openness to exploration.",
+   "published": "2026-01-26",
+   "updated": "2026-01-28",
+   "authors": [
+    "Junling Wang",
+    "Hongyi Lan",
+    "Xiaotian Su",
+    "Mustafa Doga Dogan",
+    "April Yi Wang"
+   ],
+   "primary_category": "cs.HC",
+   "categories": [
+    "cs.HC"
+   ],
+   "url": "https://arxiv.org/abs/2601.18759v2",
+   "pdf": "https://arxiv.org/pdf/2601.18759v2",
+   "comment": "Accepted at the 31st International Conference on Intelligent User Interfaces (IUI 2026)"
+  },
+  {
+   "id": "2603.24768v2",
+   "title": "Supervising Ralph Wiggum: Exploring a Metacognitive Co-Regulation Agentic AI Loop for Engineering Design",
+   "abstract": "The engineering design research community has studied agentic AI systems that use Large Language Model (LLM) agents to automate the engineering design process. However, these systems are prone to some of the same pathologies that plague humans. Just as human designers, LLM design agents can fixate on existing paradigms and fail to explore alternatives when solving design challenges, potentially leading to suboptimal solutions. In this work, we propose (1) a novel Self-Regulation Loop (SRL), in which the Design Agent self-regulates and explicitly monitors its own metacognition, and (2) a novel Co-Regulation Design Agentic Loop (CRDAL), in which a Metacognitive Co-Regulation Agent assists the Design Agent in metacognition to mitigate design fixation, thereby improving system performance for engineering design tasks. In the battery pack design problem examined here, we found that the novel SRL and CRDAL systems generate designs with better performance, without significantly increasing the computational cost, compared to a plain Ralph Wiggum Loop (RWL) Further, the novel CRDAL generates designs with significantly better performance than SRL. Also, we found that the CRDAL system navigated through the latent design space more effectively than both SRL and RWL. The proposed system architectures and findings of this work provide practical implications for future development of agentic AI systems for engineering design.",
+   "published": "2026-03-25",
+   "updated": "2026-05-07",
+   "authors": [
+    "Zeda Xu",
+    "Nikolas Martelaro",
+    "Christopher McComb"
+   ],
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI"
+   ],
+   "url": "https://arxiv.org/abs/2603.24768v2",
+   "pdf": "https://arxiv.org/pdf/2603.24768v2",
+   "comment": ""
+  },
+  {
+   "id": "2507.15559v1",
+   "title": "FlowForge: Guiding the Creation of Multi-agent Workflows with Design Space Visualization as a Thinking Scaffold",
+   "abstract": "Multi-agent workflows have become an effective strategy for tackling complicated tasks by decomposing them into multiple sub-tasks and assigning them to specialized agents. However, designing optimal workflows remains challenging due to the vast and intricate design space. Current practices rely heavily on the intuition and expertise of practitioners, often resulting in design fixation or an unstructured, time-consuming exploration of trial-and-error. To address these challenges, this work introduces FLOWFORGE, an interactive visualization tool to facilitate the creation of multi-agent workflow through i) a structured visual exploration of the design space and ii) in-situ guidance informed by established design patterns. Based on formative studies and literature review, FLOWFORGE organizes the workflow design process into three hierarchical levels (i.e., task planning, agent assignment, and agent optimization), ranging from abstract to concrete. This structured visual exploration enables users to seamlessly move from high-level planning to detailed design decisions and implementations, while comparing alternative solutions across multiple performance metrics. Additionally, drawing from established workflow design patterns, FLOWFORGE provides context-aware, in-situ suggestions at each level as users navigate the design space, enhancing the workflow creation process with practical guidance. Use cases and user studies demonstrate the usability and effectiveness of FLOWFORGE, while also yielding valuable insights into how practitioners explore design spaces and leverage guidance during workflow development.",
+   "published": "2025-07-21",
+   "updated": "2025-07-21",
+   "authors": [
+    "Pan Hao",
+    "Dongyeop Kang",
+    "Nicholas Hinds",
+    "Qianwen Wang"
+   ],
+   "primary_category": "cs.HC",
+   "categories": [
+    "cs.HC"
+   ],
+   "url": "https://arxiv.org/abs/2507.15559v1",
+   "pdf": "https://arxiv.org/pdf/2507.15559v1",
+   "comment": "9 pages, 10 figures, accepted by IEEE VIS 2025"
+  }
+ ]
+}

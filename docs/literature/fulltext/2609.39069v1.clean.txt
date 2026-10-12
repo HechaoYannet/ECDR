@@ -1,0 +1,859 @@
+Core: Conflict-Oriented Reasoning Elimination forVerifiable Language-Model Search 
+ Title: 
+ Content selection saved. Describe the issue below:
+ Description: 
+ arXiv is now an independent nonprofit! 
+ Learn more 
+ × 
+ License: CC BY 4.0
+arXiv:2609.39069v1 [cs.CL] 30 Sep 2026
+## Core : Conflict-Oriented Reasoning Elimination for
+ Verifiable Language-Model Search
+ Siyu Song
+ Affiliation: School of Computer Science and Technology, School of Computer Science and Engineering
+ Rui Xu
+ Affiliation: School of Information Science and Engineering, Sun Yat-sen University
+ Jia Lin
+ Affiliation: College of Computer Science, College of Computer Science
+ Kai Liu
+ Affiliation: School of Computer Science and Technology, School of Computer Science and Engineering
+ Weifang Wang
+ Affiliation: School of Computer Science and Technology, School of Computer Science and Engineering
+## Abstract
+ Test-time reasoning systems often respond to failure by restarting or revising
+the latest step, even when an earlier decision caused the error. We introduce
+ Core , a search controller that requests a certified conflict core from
+a verifier, backjumps to the latest decision in that core, and caches the
+conflict to avoid repeating it. Under sound verification, finite branching
+and depth, and exhaustive proposals, the uncapped search is complete and
+never prunes a valid solution. On 2,000 planted graph-coloring instances with matched
+proposals and an exact verifier, Core reduces median verifier calls by
+39.8% at 30 variables and 35.0% at 36 variables relative to chronological
+repair; caching further improves on backjumping alone. Across five reasoning
+tasks, Core achieves 75.9% mean success with Qwen2.5-7B-Instruct and 84.2%
+with Qwen3-8B, compared with 72.5% and 81.8% for Tree of Thoughts. It
+also uses fewer verifier calls and generated tokens on both backbones. These
+results show the value of using certified failure explanations to direct
+language-model search.
+## 1 Introduction
+ Chain-of-thought exposes intermediate computation ( Wei et al., 2022 ) .
+Test-time methods improve reasoning by sampling traces ( Wang et al., 2023 ) ,
+decomposing problems ( Zhou et al., 2023 ) , or searching over thoughts
+ ( Yao et al., 2023 ; Besta et al., 2024 ) . Yet after failure, systems usually restart,
+edit the latest step, or reflect and retry
+ ( Madaan et al., 2023 ; Shinn et al., 2023 ) . If the error was introduced
+earlier, such local repair revisits irrelevant decisions.
+ Problem + state [MATH] and retained prefix [MATH] 
+ LLM proposer [MATH] [MATH] [MATH] 
+ External verifier solver [MATH] tests [MATH] tools 
+ Decision trajectory 
+ pass [MATH] append [MATH] [MATH] [MATH] [MATH] [MATH] [MATH] 
+ fail [MATH] [MATH] : unrelated 
+ cache [MATH] / prune 
+ backjump to [MATH] [MATH] 
+ Figure 1: Illustration of Core . A proposer extends a decision trajectory and
+an external verifier checks it. The highlighted decisions [MATH] and [MATH] 
+form a conflict core, while gray decisions are irrelevant to this failure.
+The controller learns the core, backjumps to [MATH] , and rejects future
+candidates that contain both conflicting decisions. 
+ Classical solvers instead use conflict-directed search : identify the
+responsible decisions, jump over unrelated ones, and cache the conflict
+ ( Dechter, 1990 ; Prosser, 1993 ; Marques-Silva and Sakallah, 1999 ) . Transferring
+this principle to language models is nontrivial: natural-language “thoughts”
+are not solver literals, critiques need not be logically sufficient, and
+approximate verifiers may reject valid reasoning. A precise interface among
+the proposer, verifier, and search controller is therefore required.
+ We propose Core ( C onflict- O riented
+ R easoning E limination), a test-time algorithm for tasks whose
+partial decisions can be checked. The model proposes structured decisions
+with stable identifiers. On rejection, the verifier returns a conflict
+core : a subset of active decisions that cannot occur together in any valid
+completion. Core learns this core, backjumps to its most recent member, and
+continues from there. A core may come from a symbolic checker, an unsatisfiable
+core, a failed program test with dynamic dependencies, or a learned verifier.
+Only sound cores receive the paper’s formal guarantee.
+Figure 1 summarizes the separation between generation,
+checking, and conflict-directed control.
+ Our contributions are:
+ • 
+ We introduce a conflict-producing reasoning interface and Core ,
+combining non-chronological backjumping with semantic nogood memoization.
+ • 
+ We prove conditional safety, completeness, and termination under
+explicit assumptions on verifier and conflict-core soundness.
+ • 
+ We provide a deterministic controlled testbed that isolates search
+under matched proposals and measures verifier calls, backtracks, and core
+reuse.
+ • 
+ We evaluate an LLM instantiation across five reasoning tasks and
+two backbones, comparing task success and inference cost with four baselines.
+## 2 Related Work
+## Reasoning by sampling and search.
+ Self-consistency aggregates independent traces ( Wang et al., 2023 ) , while
+Tree of Thoughts, Graph of Thoughts, RAP, and LATS organize branching search
+ ( Yao et al., 2023 ; Besta et al., 2024 ; Hao et al., 2023 ; Zhou et al., 2024 ) . MLR separates plan
+descriptors from step execution ( Xiong et al., 2026 ) .
+These methods structure generation, choose states
+to expand, or aggregate plans and answers; Core instead determines
+ where to return 
+after a verified failure and which combinations to forbid thereafter. The
+methods are complementary: a best-first or tree-of-thought frontier can use
+ Core ’s learned constraints.
+## Verification and refinement.
+ Process supervision scores intermediate steps
+ ( Uesato et al., 2022 ; Lightman et al., 2024 ) , and ProcessBench evaluates error
+localization ( Zheng et al., 2025 ) . Self-Refine, Reflexion, and CRITIC
+use feedback for revision
+ ( Madaan et al., 2023 ; Shinn et al., 2023 ; Gou et al., 2024 ) . Reasoning traces may be
+unfaithful ( Turpin et al., 2023 ; Lanham et al., 2023 ) , so Core does not
+assume that prose explanations reveal the model’s internal computation. It
+requires only that accepted structured decisions and returned cores satisfy an
+external contract.
+## Solver–LLM collaboration.
+ LLM-Modulo systems separate candidate generation from reliable checking
+ ( Kambhampati et al., 2024 ) . SWAP represents dependencies with
+entailment graphs and verifies intermediate steps
+ ( Xiong et al., 2025 ) , while PAL executes model-generated programs
+ ( Gao et al., 2023 ) . Recent work also combines an LLM with
+a solver and chronological backtracking for multi-constraint planning
+ ( Stechly et al., 2025 ) . Core contributes a different search rule:
+conflicts name responsible decisions, enabling non-chronological backjumping
+and persistent pruning. Its lineage is conflict-directed backjumping and
+constraint learning ( Dechter, 1990 ; Marques-Silva and Sakallah, 1999 ) , reformulated
+for a proposer whose actions are generated in language.
+## 3 Problem Formulation
+ Let a problem instance be [MATH] . A reasoning state
+ [MATH] is an ordered sequence of decisions. A decision is a
+record
+ [MATH] 
+ where the identifier is stable within a run and dependencies refer to prior
+decisions. Examples include assigning a value to a variable, selecting a
+planning action, asserting a lemma, or choosing an API argument. The proposer
+ [MATH] returns an ordered finite list of candidates. It may
+be an LLM, a policy model, or a deterministic heuristic.
+ Let [MATH] be a canonical decision–value key that preserves the
+decision’s type, dependency context, and resource or occurrence identity
+when repeated choices must remain distinct. The active keys of a state are
+ [MATH] 
+ This representation lets the controller compare decisions across trajectories
+while keeping choices with different dependencies distinct. Figures abbreviate
+ [MATH] as [MATH] .
+ The search-time verifier has three outputs:
+ [MATH] 
+ where [MATH] is a set of canonical decision–value keys drawn from the proposed
+state.
+ [MATH] is reserved for a certified sound core; heuristic
+feedback cannot enter the hard cache.
+ Unknown means that the checker cannot establish either a valid step
+or a sound conflict; search may retain the decision provisionally, but it
+cannot learn a hard core from that outcome. A separate
+ [MATH] scores a complete state against the task’s final
+criterion.
+## Definition 1 (Sound conflict core) . 
+ Let [MATH] be the valid complete states for [MATH] . A set [MATH] 
+is a sound conflict core for [MATH] exactly when 
+ [MATH] 
+ The definition is stronger than “these steps look suspicious.” It makes a
+core a semantic nogood. A direct constraint violation may yield a two-decision
+core; a failed unit test may yield the decisions in its dynamic slice; a
+symbolic solver may return an unsatisfiable core. A learned verifier can
+approximate this interface, but its cores are not covered by exact guarantees.
+ The objective is to find a complete state accepted by [MATH] within a
+budget of proposer and verifier calls. We count verifier calls because they
+can involve tool execution, a second model, or a solver and frequently
+dominate orchestration cost.
+## 4 Core 
+ (a) Chronological repair (b) Core : learn and backjump [MATH] [MATH] [MATH] [MATH] 
+ 1 2 3 
+ repeated checks [MATH] [MATH] [MATH] [MATH] 
+ skip [MATH] 
+ [MATH] direct jump 
+ cache [MATH] 
+ prune supersets 
+ Figure 2: The same failure under matched decision order. Chronological repair
+retreats through [MATH] and [MATH] before reconsidering [MATH] . Core uses
+ [MATH] to jump directly to [MATH] and caches the conflict to prune
+its supersets. Gray decisions are absent from the core. 
+## 4.1 Algorithm
+ Algorithm 1 Core search 
+ 1: 
+ instance [MATH] , proposer [MATH] , verifier [MATH] ,
+final scorer [MATH] 
+ 2: 
+ [MATH] ; [MATH] 
+ 3: 
+ while budget remains do 
+ 4: 
+    if [MATH] is complete then 
+ 5: 
+     if [MATH] then 
+ 6: 
+       return [MATH] 
+ 7: 
+     end if 
+ 8: 
+     [MATH] RejectLeaf ( [MATH] ); continue 
+ 9: 
+    end if 
+ 10: 
+    [MATH] 
+ 11: 
+    [MATH] first untried [MATH] such that
+ [MATH] 
+ 12: 
+    if no such [MATH] exists then 
+ 13: 
+     [MATH] ExplainExhaustion ( [MATH] )
+ 14: 
+     if [MATH] is certified then 
+ 15: 
+       [MATH] 
+ LearnAndJump ( [MATH] , [MATH] , [MATH] )
+ 16: 
+     else 
+ 17: 
+       [MATH] Backtrack ( [MATH] )
+ 18: 
+     end if 
+ 19: 
+     continue 
+ 20: 
+    end if 
+ 21: 
+    [MATH] 
+ 22: 
+    if [MATH] or [MATH] then 
+ 23: 
+     [MATH] 
+ 24: 
+    else 
+ 25: 
+     [MATH] 
+ LearnAndJump ( [MATH] , [MATH] , [MATH] )
+ 26: 
+    end if 
+ 27: 
+ end while 
+ 28: 
+ return BudgetExceeded 
+ Core maintains a stack of active decisions and a set [MATH] of learned
+cores. Before verifying a candidate, it checks whether the resulting state
+contains a learned core. Such a candidate is skipped without another verifier
+call. A new failure core is minimized when possible, stored, and used to
+choose a backjump target. An unknown result can extend the stack,
+but only the final scorer can accept a complete state.
+ LearnAndJump first removes redundant members if the verifier supports
+core minimization. It inserts the remaining core into [MATH] , deleting
+stored supersets. For a nonempty core [MATH] in [MATH] , the backjump level and
+retained state are
+ [MATH] 
+ [MATH] 
+ [MATH] 
+ [MATH] 
+ The state is thus truncated to the level immediately before
+ [MATH] , and the offending value at [MATH] is marked tried. Decisions
+newer than [MATH] are skipped:
+they cannot resolve a conflict that does not mention them. If all candidates
+at a level are exhausted, their individual explanations are resolved into an
+exhaustion core, analogous to eliminating the current variable in constraint
+search ( Robinson, 1965 ; Dechter, 1990 ) .
+Figure 2 contrasts this operation with chronological repair:
+the conflict excludes an intermediate decision, so Core skips that level and
+records a reusable nogood.
+## Candidate and core bookkeeping.
+ The controller keeps a tried-candidate ledger for each retained prefix.
+A candidate key includes its decision type, canonical value, dependencies,
+and any identity needed to distinguish repeated choices; changing a dependency
+changes the key even if the surface text is identical.
+Within an instance, the cache test is
+ [MATH] 
+ A cached
+core therefore rejects later supersets regardless of the order of decisions
+outside [MATH] , without treating an unverified critique as a constraint.
+## Certifying a jump.
+ Before learning [MATH] , the checker must establish that no valid completion
+contains all of [MATH] . Reproducing a failure on one complete trajectory is
+insufficient: another continuation might succeed. If core minimization is
+available, each removed member is accepted only after the smaller core is
+certified again; otherwise the last certified core is kept. An exhaustion
+core also requires coverage of every legal alternative at that decision
+level. If the complete alternative set is [MATH] , and each [MATH] has a
+certified core [MATH] containing [MATH] , a candidate exhaustion core is
+ [MATH] 
+ Any completion retaining [MATH] must choose an [MATH] and
+therefore contain [MATH] . Running out of sampled candidates in one proposal
+batch does not
+establish exhaustion, so the controller falls back to chronological repair
+when the checker cannot certify it.
+Under finite token or verifier-call budgets, the loop may instead return
+ BudgetExceeded ; the completeness result below applies only when the
+budget does not interrupt the search.
+## Worked 24-Game example.
+ Consider the cards [MATH] . The proposer first chooses
+ [MATH] , leaving the new [MATH] , the original [MATH] , and [MATH] .
+It then chooses [MATH] and
+ [MATH] . Before accepting [MATH] , an illustrative
+search-time verifier rejects the terminal value 14 and uses exact
+rational-arithmetic replay to explain the failure. Exhaustive completion
+from [MATH] cannot yield 24, so the checker certifies
+ [MATH] : retaining [MATH] makes every completion invalid,
+regardless of [MATH] and [MATH] . Core caches this core and jumps from [MATH] 
+to [MATH] , skipping [MATH] . A new first choice can then produce
+ [MATH] , [MATH] , and [MATH] .
+This illustrates how a certified prefix conflict identifies an earlier
+decision to change, while the skipped decision is irrelevant to that
+failure.
+## 4.2 Prompt and verifier contract
+ An LLM instantiation should ask for one decision at a time in a machine-readable
+schema, not an unrestricted replacement trace. A minimal response contains
+ id , value , and depends_on ; optional prose remains
+non-binding. The controller, rather than the model, owns the stack, candidate
+ledger, and learned cores. On backjump, the prompt contains the retained
+prefix and only the cores relevant to the next decision. This avoids an
+ever-growing transcript.
+ RejectLeaf marks a complete state rejected by the final scorer as
+tried and retreats chronologically; it does not cache a conflict without a
+sound explanation. Likewise, exhaustion uses chronological backtracking
+when no certified exhaustion core is available.
+ Conflict production has three practical tiers:
+ 1. 
+ Exact: SAT/SMT/CSP solvers, parsers, type checkers, and
+deterministic task constraints can return certified cores.
+ 2. 
+ Replay-certified: a proposed core is accepted only if a
+sound checker rules out every completion containing that subset.
+ 3. 
+ Heuristic: an LLM or learned process model names likely
+causes. These may guide search but should be soft constraints with
+expiration or confirmation, because hard pruning can destroy completeness.
+## 4.3 Guarantees
+## Theorem 1 (Safety and completeness) . 
+ Assume (i) every learned core is sound, (ii) branching and maximum reasoning
+depth are finite,
+(iii) the proposer eventually enumerates every legal candidate at a revisited
+state, (iv) the search-time verifier never rejects a prefix of a valid
+solution, (v) the final scorer accepts exactly the valid complete states, and
+(vi) the run is not stopped by a finite budget before search completes.
+Then Core never prunes a valid complete solution and returns a solution
+whenever one exists. 
+## Proof.
+ A partial branch is pruned by a learned core only when it contains that core.
+By core soundness, no valid solution contains the core. A complete state
+rejected by the final scorer is also invalid under the stated assumption.
+A backjump removes only decisions newer than the latest member of the conflict;
+changing any removed decision while retaining the whole core cannot produce a
+solution. Thus backjumping skips only invalid subtrees. Finite branching and
+eventual enumeration imply that every unpruned candidate is eventually tried.
+If a solution exists, none of its prefixes contains a sound core, so its branch
+is eventually reached and accepted by the final scorer. Unknown partial
+checks and chronological retreat without a certified core cannot remove it.
+∎ 
+## Proposition 1 (Termination) . 
+ Under the assumptions of Theorem 1 , Core terminates with a
+solution or exhaustion. 
+## Proof.
+ There are finitely many decision sequences. Candidate ledgers prevent retrying
+the same decision at the same retained state, and learning can only remove
+additional sequences. Therefore the loop cannot visit infinitely many
+distinct untried candidates.
+∎ 
+## Why cores can save exponential work.
+ Suppose a conflict depends on decisions at levels [MATH] but is discovered at
+depth [MATH] . Chronological repair may enumerate combinations of levels
+ [MATH] before changing [MATH] . A core that excludes those levels skips
+their Cartesian product immediately. Memoization also prunes the same
+conflict when reached through a different ordering of irrelevant decisions.
+This is a structural benefit, not a claim that every instance improves:
+uninformative cores containing the full prefix reduce Core to chronological
+backtracking plus bookkeeping.
+ Figure 3: Median verifier calls over 500 paired instances per size. All
+methods use the same proposal order and exact verifier. 
+ [MATH] 
+ Chron. 
+ CORE-BJ 
+ Core 
+ [MATH] 
+ 18 
+ 32.0 
+ 31.0 
+ 31.0 
+ [MATH] 
+ 24 
+ 95.0 
+ 70.0 
+ 69.0 
+ [MATH] 
+ 30 
+ 223.5 
+ 147.0 
+ 134.5 
+ [MATH] 
+ 36 
+ 267.0 
+ 189.0 
+ 173.5 
+ [MATH] 
+ Table 1: Median verifier calls. [MATH] compares Core with chronological
+repair. Every method solved every main-test instance within budget. 
+## 5 Search Mechanism Analysis
+ We use a controlled graph-coloring testbed to isolate the effect of the
+search controller. The evaluation on language-model reasoning tasks follows
+in Section 6 .
+ Method 
+ GSM8K 
+ (500) 
+ MATH-500 
+ (500) 
+ 24-Game 
+ (200) 
+ Blocks 
+ (200) 
+ HumanEval 
+ (164) 
+ Mean 
+ Verifier calls 
+ Tokens (k) 
+ Qwen2.5-7B-Instruct 
+ Direct CoT 
+ 72.4 
+ 42.8 
+ 61.0 
+ 41.0 
+ 58.5 
+ 55.1 
+ 1.0 
+ 1.3 
+ Self-Consistency-8 
+ 80.6 
+ 51.2 
+ 78.0 
+ 48.0 
+ 64.0 
+ 64.4 
+ 8.0 
+ 9.6 
+ Self-Refine-4 
+ 78.1 
+ 49.6 
+ 75.0 
+ 55.0 
+ 67.7 
+ 65.1 
+ 3.2 
+ 4.9 
+ Tree of Thoughts 
+ 82.0 
+ 55.4 
+ 88.0 
+ 67.0 
+ 70.1 
+ 72.5 
+ 18.6 
+ 14.2 
+ Core 
+ 83.8 
+ 58.6 
+ 92.0 
+ 73.0 
+ 72.0 
+ 75.9 
+ 10.9 
+ 9.1 
+ Qwen3-8B 
+ Direct CoT 
+ 87.8 
+ 73.8 
+ 64.5 
+ 50.5 
+ 68.3 
+ 69.0 
+ 1.0 
+ 1.5 
+ Self-Consistency-8 
+ 92.2 
+ 79.8 
+ 79.5 
+ 54.5 
+ 72.0 
+ 75.6 
+ 8.0 
+ 6.5 
+ Self-Refine-4 
+ 89.8 
+ 78.2 
+ 76.5 
+ 59.5 
+ 72.0 
+ 75.2 
+ 3.0 
+ 4.8 
+ Tree of Thoughts 
+ 93.2 
+ 82.8 
+ 88.5 
+ 69.5 
+ 75.0 
+ 81.8 
+ 19.0 
+ 7.0 
+ Core 
+ 93.8 
+ 85.2 
+ 91.5 
+ 74.5 
+ 76.2 
+ 84.2 
+ 12.0 
+ 6.0 
+ Table 2: End-to-end task success rates (%) for both backbones. Calls and
+generated tokens are per-problem means. Mean success averages the five task
+columns; sample counts are shown in the headers. 
+## 5.1 Testbed
+ We use planted 3-coloring because it exposes all relevant algorithmic objects
+without an ambiguous learned judge. For each size
+ [MATH] , we generate 500 graphs. Each vertex receives a planted
+color; edges are sampled with probability [MATH] only between differently
+colored vertices, guaranteeing at least one solution. Variables are ordered
+by decreasing degree. A deterministic noisy proposer ranks the planted color
+first with probability [MATH] and otherwise uses a seeded random order. All
+methods receive exactly the same candidate ordering.
+ The verifier accepts a color when it differs from every assigned neighbor.
+Upon failure it returns the conflicting vertex assignments. When every color
+for a vertex fails, the search procedure resolves those explanations into the
+set of prior assignments that block its domain. These are exact conflict
+cores.
+## Systems.
+ Chronological is depth-first repair that returns one level after an
+exhausted decision. CORE-BJ uses conflict-directed backjumping but
+does not cache cores. Core adds core memoization. The primary metric is the
+number of verifier calls until the first solution; we also record expansions,
+backtracks, jump distance, and learned cores. Runs are capped at 100,000 calls.
+All random choices are derived from recorded instance seeds.
+## 5.2 Results
+ Figure 4: End-to-end results. Left: mean task success against mean verifier
+calls for both backbones. Right: Qwen2.5-7B-Instruct ablations of core
+memory, backjumping, and conflict precision. 
+## Backjumping reduces verification.
+ All three methods solve all 2,000 main instances. Figure 3 and
+Table 1 show that the methods are similar on the smallest graphs,
+where most runs encounter little backtracking. The gap grows with deeper
+search. At 30 variables, Core reduces the median from 223.5 to 134.5 calls
+(39.8%); at 36 variables, it reduces 267.0 to 173.5 (35.0%). Mean calls at
+ [MATH] fall from 546.0 to 235.4, indicating that conflict information is
+especially useful on the heavy tail.
+## Memory adds value beyond jumping.
+ CORE-BJ already improves substantially over chronological repair.
+Memoization lowers median calls further at [MATH] by 5.7%, 8.5%, and
+8.2%, respectively. At [MATH] , little search repeats and the two variants
+tie. This pattern is consistent with the intended mechanism: learned cores
+matter only after search begins to revisit a failed combination under
+irrelevant surrounding decisions.
+## Sensitivity to proposal quality.
+ At [MATH] , we rerun 200 paired instances with planted-first probabilities
+ [MATH] and [MATH] . With the weaker proposer, median calls are 236.0 for
+chronological repair, 149.5 for backjumping, and 135.0 for Core . With the
+stronger proposer, they are 133.5, 92.0, and 90.5. Conflict-directed search
+helps in both regimes, while the incremental value of memory shrinks when a
+good proposal reaches a solution before conflicts recur.
+## 6 Experiments
+## 6.1 Experimental setup
+## Backbone and decoding.
+ We report results with Qwen2.5-7B-Instruct and Qwen3-8B as proposers, both
+served with vLLM using bfloat16 weights and the same decoding configuration.
+Candidate decisions are sampled at temperature [MATH] and
+ [MATH] , with at most 128 generated tokens per candidate. The
+controller requests four candidates per decision and permits at most 24
+accepted decisions. Per-problem budgets are 16,384 generated tokens and
+32 verifier calls.
+## State and cache representation.
+ The proposer emits JSON records with
+ id , decision_type , value , and
+ depends_on . The controller canonicalizes numbers, variable names,
+API arguments, and commutative expressions before hashing a decision together
+with its type and dependencies.
+Learned cores are stored as sorted sets of canonical decision–value hashes.
+Subset lookup uses an inverted index from hashes to core identifiers. Core
+minimization performs deletion-based replay for at most eight additional
+checker calls; if the cap is reached, the non-minimal sound core is retained.
+Heuristic cores are never inserted into the hard cache.
+ Variant 
+ Success 
+ Calls 
+ Core size 
+ Jump 
+ Core 
+ 75.9 
+ 10.9 
+ 2.7 
+ 3.8 
+ No core memory 
+ 73.8 
+ 12.7 
+ 2.7 
+ 3.6 
+ No backjumping 
+ 72.9 
+ 15.4 
+ 2.8 
+ 1.0 
+ Full-prefix conflicts 
+ 71.8 
+ 16.1 
+ 8.9 
+ 1.2 
+ Soft heuristic cores 
+ 74.9 
+ 14.3 
+ 3.4 
+ 2.9 
+ Table 3: Qwen2.5-7B-Instruct ablations. Success is mean task accuracy (%);
+other columns are per-problem means. “Jump” is the number of decision levels
+removed per repair. 
+## Tasks and sampling.
+ For GSM8K ( Cobbe et al., 2021 ) , we sample 500 problems from the official
+test split with fixed seed 1729 and retain the selected problem IDs. We use
+all 500 MATH-500 problems ( Lightman et al., 2024 ) . For 24-Game, we select
+200 fixed puzzles from the Tree of Thoughts collection ( Yao et al., 2023 ) ,
+confirm solvability with an exhaustive solver, and retain each puzzle’s four
+cards and ID. We select 200 Blocksworld instances from PlanBench
+ ( Valmeekam et al., 2023 ) , stratified by plan length. We use all 164
+HumanEval problems ( Chen et al., 2021 ) .
+## Search-time checks and final scoring.
+ GSM8K: Search checks arithmetic in structured equations and
+consistency with declared dependencies. Textual inferences that cannot be
+checked mechanically return unknown . Final scoring extracts the
+numeric answer and compares it with the dataset answer.
+ MATH-500: Search checks explicit algebraic transformations and
+substitution equalities; parsing failures return unknown . Final
+answers are compared using a fixed version of Math-Verify
+ ( Hugging Face, 2025 ) , with disputed parses reviewed manually.
+ 24-Game: Exact rational arithmetic checks operands, operators,
+results, and card-use counts during search. Final scoring requires each of
+the four cards exactly once and a value of 24.
+ Blocksworld: A deterministic state-transition checker verifies
+action preconditions and successor states. Final scoring executes the full
+plan from the initial state and tests the goal.
+ HumanEval: Search checks syntax and runs a fixed set of public tests.
+Test failures on unfinished programs return unknown . Only the final
+program is run against held-out evaluation tests, with generated code
+executed in an isolated environment.
+## Baselines and budget matching.
+ Direct CoT receives one 16,384-token attempt. Self-Consistency samples eight
+complete traces and votes over normalized answers. Self-Refine performs up to
+four critique–revision rounds. Tree of Thoughts uses branching factor four,
+beam width five, and the same verifier-call cap as Core . Within each
+backbone, all methods use the same proposer, prompt examples, answer parser,
+and final verifier. We report
+realized token and verifier-call usage alongside task success because the
+methods consume these resources differently.
+## 6.2 Results and analysis
+## Main comparison.
+ In Table 2 , Core has the highest success rate on all five
+tasks with both backbones. With Qwen2.5-7B-Instruct, mean success is 75.9%,
+versus 72.5% for Tree of Thoughts. With Qwen3-8B, it is 84.2%, versus
+81.8%. Blocksworld gives the largest gain over Tree of Thoughts for both
+backbones ( [MATH] and [MATH] points, respectively), where failed
+preconditions identify earlier causal decisions.
+## Efficiency.
+ Figure 4 shows the success–call tradeoff for both backbones.
+Compared with Tree of Thoughts, Core uses 10.9 versus 18.6 calls and 9.1k
+versus 14.2k generated tokens with Qwen2.5-7B-Instruct. With Qwen3-8B, the
+corresponding counts are 12.0 versus 19.0 calls and 6.0k versus 7.0k tokens.
+Verifier calls alone do not measure wall-clock cost: structured generation
+and core replay add work beyond a baseline answer check.
+## Ablations.
+ The Qwen2.5-7B-Instruct ablations in Table 3 show that
+removing core memory lowers mean task
+success from 75.9% to 73.8% and raises mean verifier calls from 10.9 to
+12.7. Removing backjumping lowers success to 72.9% and raises calls to 15.4.
+Full-prefix conflicts yield the lowest success of the listed variants at
+71.8%. Soft heuristic cores reach 74.9%, but uncertified cores do not
+provide the guarantee of hard, reusable nogoods.
+## Task-level failure modes.
+ In GSM8K , a misused quantity propagates through later arithmetic.
+In MATH-500 , a sign, algebra, or substitution error can implicate
+an earlier equation. In 24-Game , an early operation can leave no
+solution, and card reuse violates the rules. In Blocksworld , an
+early move can occupy a block or location needed later, with unrelated
+actions in between. In HumanEval , an interface choice can conflict
+with a later function assumption. These cases motivate revising the causal
+decision instead of only the latest step.
+## 7 Conclusion
+ Core treats a failed reasoning trajectory as more than a negative score. A
+small, valid explanation of failure is reusable search information: it says
+which decision must change, which later decisions are irrelevant, and which
+combination should never be tried again. The resulting algorithm imports
+conflict-directed backjumping and learning into a model-agnostic reasoning
+interface, with guarantees that are explicit about verifier soundness.
+Controlled experiments show reduced verification work under matched
+proposals, and the five-task evaluation with both Qwen2.5-7B-Instruct and
+Qwen3-8B reports higher task success and lower verifier-call use than Tree of
+Thoughts. Measuring latency and auditing core soundness are the next steps
+for assessing these gains.
+## References
+ Besta et al. (2024) 
+ M. Besta, N. Blach, A. Kubicek, R. Gerstenberger, M. Podstawski, L. Gianinazzi, J. Gajda, T. Lehmann, H. Niewiadomski, P. Nyczyk, and T. Hoefler 
+ Graph of thoughts: solving elaborate problems with large language models .
+ In Proceedings of the AAAI Conference on Artificial Intelligence ,
+ Vol. 38 , pp. 17682–17690 .
+ Cited by: §1 ,
+ §2 .
+ Chen et al. (2021) 
+ M. Chen, J. Tworek, H. Jun, et al. 
+ Evaluating large language models trained on code .
+ arXiv preprint arXiv:2107.03374 .
+ Cited by: §6.1 .
+ Cobbe et al. (2021) 
+ K. Cobbe, V. Kosaraju, M. Bavarian, M. Chen, H. Jun, L. Kaiser, M. Plappert, J. Tworek, J. Hilton, R. Nakano, C. Hesse, and J. Schulman 
+ Training verifiers to solve math word problems .
+ arXiv preprint arXiv:2110.14168 .
+ Cited by: §6.1 .
+ Dechter (1990) 
+ R. Dechter 
+ Enhancement schemes for constraint processing: backjumping, learning, and cutset decomposition .
+ Artificial Intelligence 41 ( 3 ), pp. 273–312 .
+ Cited by: §1 ,
+ §2 ,
+ §4.1 .
+ Gao et al. (2023) 
+ L. Gao, A. Madaan, S. Zhou, U. Alon, P. Liu, Y. Yang, J. Callan, and G. Neubig 
+ PAL: program-aided language models .
+ In Proceedings of the 40th International Conference on Machine Learning ,
+ Vol. 202 , pp. 10764–10799 .
+ Cited by: §2 .
+ Gou et al. (2024) 
+ Z. Gou, Z. Shao, Y. Gong, Y. Shen, Y. Yang, N. Duan, and W. Chen 
+ CRITIC: large language models can self-correct with tool-interactive critiquing .
+ In International Conference on Learning Representations ,
+ Cited by: §2 .
+ Hao et al. (2023) 
+ S. Hao, Y. Gu, H. Ma, J. Hong, Z. Wang, D. Wang, and Z. Hu 
+ Reasoning with language model is planning with world model .
+ In Proceedings of the 2023 Conference on Empirical Methods in Natural Language Processing ,
+ pp. 8154–8173 .
+ External Links: Document 
+ Cited by: §2 .
+ Hugging Face (2025) 
+ Hugging Face 
+ Math-Verify: mathematical answer parsing and equivalence checking .
+ Note: https://github.com/huggingface/Math-Verify 
+ Cited by: §6.1 .
+ Kambhampati et al. (2024) 
+ S. Kambhampati, K. Valmeekam, L. Guan, K. Stechly, M. Verma, S. Bhambri, and L. Saldyt 
+ LLMs can’t plan, but can help planning in LLM-modulo frameworks .
+ arXiv preprint arXiv:2402.01817 .
+ Cited by: §2 .
+ Lanham et al. (2023) 
+ T. Lanham, A. Chen, A. Radhakrishnan, B. Steiner, C. Denison, D. Hernandez, D. Li, E. Durmus, E. Hubinger, J. Kernion, et al. 
+ Measuring faithfulness in chain-of-thought reasoning .
+ arXiv preprint arXiv:2307.13702 .
+ Cited by: §2 .
+ Lightman et al. (2024) 
+ H. Lightman, V. Kosaraju, Y. Burda, H. Edwards, B. Baker, T. Lee, J. Leike, J. Schulman, I. Sutskever, and K. Cobbe 
+ Let’s verify step by step .
+ In International Conference on Learning Representations ,
+ Cited by: §2 ,
+ §6.1 .
+ Madaan et al. (2023) 
+ A. Madaan, N. Tandon, P. Gupta, S. Hallinan, L. Gao, S. Wiegreffe, U. Alon, N. Dziri, S. Prabhumoye, Y. Yang, et al. 
+ Self-refine: iterative refinement with self-feedback .
+ In Advances in Neural Information Processing Systems ,
+ Vol. 36 , pp. 46534–46594 .
+ Cited by: §1 ,
+ §2 .
+ Marques-Silva and Sakallah (1999) 
+ J. P. Marques-Silva and K. A. Sakallah 
+ GRASP: a search algorithm for propositional satisfiability .
+ IEEE Transactions on Computers 48 ( 5 ), pp. 506–521 .
+ Cited by: §1 ,
+ §2 .
+ Prosser (1993) 
+ P. Prosser 
+ Hybrid algorithms for the constraint satisfaction problem .
+ Computational Intelligence 9 ( 3 ), pp. 268–299 .
+ Cited by: §1 .
+ Robinson (1965) 
+ J. A. Robinson 
+ A machine-oriented logic based on the resolution principle .
+ Journal of the ACM 12 ( 1 ), pp. 23–41 .
+ Cited by: §4.1 .
+ Shinn et al. (2023) 
+ N. Shinn, F. Cassano, A. Gopinath, K. Narasimhan, and S. Yao 
+ Reflexion: language agents with verbal reinforcement learning .
+ In Advances in Neural Information Processing Systems ,
+ Vol. 36 , pp. 8634–8652 .
+ Cited by: §1 ,
+ §2 .
+ Stechly et al. (2025) 
+ K. Stechly, M. Marquez, and S. Kambhampati 
+ An LLM-solver collaboration framework for multi-constraint planning .
+ In International Conference on Learning Representations ,
+ Cited by: §2 .
+ Turpin et al. (2023) 
+ M. Turpin, J. Michael, E. Perez, and S. R. Bowman 
+ Language models don’t always say what they think: unfaithful explanations in chain-of-thought prompting .
+ In Advances in Neural Information Processing Systems ,
+ Vol. 36 , pp. 74952–74965 .
+ Cited by: §2 .
+ Uesato et al. (2022) 
+ J. Uesato, N. Kushman, R. Kumar, F. Song, N. Siegel, L. Wang, A. Creswell, G. Irving, and I. Higgins 
+ Solving math word problems with process- and outcome-based feedback .
+ arXiv preprint arXiv:2211.14275 .
+ Cited by: §2 .
+ Valmeekam et al. (2023) 
+ K. Valmeekam, M. Marquez, A. Olmo, S. Sreedharan, and S. Kambhampati 
+ PlanBench: an extensible benchmark for evaluating large language models on planning and reasoning about change .
+ In Advances in Neural Information Processing Systems ,
+ Vol. 36 , pp. 38975–38987 .
+ Cited by: §6.1 .
+ Wang et al. (2023) 
+ X. Wang, J. Wei, D. Schuurmans, Q. V. Le, E. H. Chi, S. Narang, A. Chowdhery, and D. Zhou 
+ Self-consistency improves chain of thought reasoning in language models .
+ In International Conference on Learning Representations ,
+ Cited by: §1 ,
+ §2 .
+ Wei et al. (2022) 
+ J. Wei, X. Wang, D. Schuurmans, M. Bosma, F. Xia, E. Chi, Q. V. Le, and D. Zhou 
+ Chain-of-thought prompting elicits reasoning in large language models .
+ In Advances in Neural Information Processing Systems ,
+ Vol. 35 , pp. 24824–24837 .
+ Cited by: §1 .
+ Xiong et al. (2026) 
+ S. Xiong, A. Payani, and F. Fekri 
+ Enhancing language model reasoning with structured multi-level modeling .
+ In International Conference on Learning Representations ,
+ Vol. 2026 , pp. 36557–36610 .
+ Cited by: §2 .
+ Xiong et al. (2025) 
+ S. Xiong, A. Payani, Y. Yang, and F. Fekri 
+ Deliberate reasoning in language models as structure-aware planning with an accurate world model .
+ In Proceedings of the 63rd Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers) ,
+ pp. 31900–31931 .
+ Cited by: §2 .
+ Yao et al. (2023) 
+ S. Yao, D. Yu, J. Zhao, I. Shafran, T. L. Griffiths, Y. Cao, and K. Narasimhan 
+ Tree of thoughts: deliberate problem solving with large language models .
+ In Advances in Neural Information Processing Systems ,
+ Vol. 36 , pp. 11809–11822 .
+ Cited by: §1 ,
+ §2 ,
+ §6.1 .
+ Zheng et al. (2025) 
+ C. Zheng, Z. Zhang, B. Zhang, R. Lin, K. Lu, B. Yu, D. Liu, J. Zhou, and J. Lin 
+ ProcessBench: identifying process errors in mathematical reasoning .
+ In Proceedings of the 63rd Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers) ,
+ pp. 1009–1024 .
+ External Links: Document 
+ Cited by: §2 .
+ Zhou et al. (2024) 
+ A. Zhou, K. Yan, M. Shlapentokh-Rothman, H. Wang, and Y. Wang 
+ Language agent tree search unifies reasoning, acting, and planning in language models .
+ In Proceedings of the 41st International Conference on Machine Learning ,
+ Vol. 235 , pp. 62138–62160 .
+ Cited by: §2 .
+ Zhou et al. (2023) 
+ D. Zhou, N. Schärli, L. Hou, J. Wei, N. Scales, X. Wang, D. Schuurmans, C. Cui, O. Bousquet, Q. V. Le, and E. H. Chi 
+ Least-to-most prompting enables complex reasoning in large language models .
+ In International Conference on Learning Representations ,
+ Cited by: §1 .

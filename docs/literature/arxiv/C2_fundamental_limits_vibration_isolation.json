@@ -1,0 +1,4 @@
+{
+ "query": "abs:\"vibration isolation\" AND (abs:\"fundamental limit\" OR abs:\"trade-off\" OR abs:\"Bode\")",
+ "hits": []
+}

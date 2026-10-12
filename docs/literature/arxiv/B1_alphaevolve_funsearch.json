@@ -1,0 +1,701 @@
+{
+ "query": "all:\"AlphaEvolve\" OR all:\"FunSearch\" OR all:\"evolutionary search\" AND abs:\"large language model\"",
+ "hits": [
+  {
+   "id": "2506.13131v1",
+   "title": "AlphaEvolve: A coding agent for scientific and algorithmic discovery",
+   "abstract": "In this white paper, we present AlphaEvolve, an evolutionary coding agent that substantially enhances capabilities of state-of-the-art LLMs on highly challenging tasks such as tackling open scientific problems or optimizing critical pieces of computational infrastructure. AlphaEvolve orchestrates an autonomous pipeline of LLMs, whose task is to improve an algorithm by making direct changes to the code. Using an evolutionary approach, continuously receiving feedback from one or more evaluators, AlphaEvolve iteratively improves the algorithm, potentially leading to new scientific and practical discoveries. We demonstrate the broad applicability of this approach by applying it to a number of important computational problems. When applied to optimizing critical components of large-scale computational stacks at Google, AlphaEvolve developed a more efficient scheduling algorithm for data centers, found a functionally equivalent simplification in the circuit design of hardware accelerators, and accelerated the training of the LLM underpinning AlphaEvolve itself. Furthermore, AlphaEvolve discovered novel, provably correct algorithms that surpass state-of-the-art solutions on a spectrum of problems in mathematics and computer science, significantly expanding the scope of prior automated discovery methods (Romera-Paredes et al., 2023). Notably, AlphaEvolve developed a search algorithm that found a procedure to multiply two $4 \\times 4$ complex-valued matrices using $48$ scalar multiplications; offering the first improvement, after 56 years, over Strassen's algorithm in this setting. We believe AlphaEvolve and coding agents like it can have a significant impact in improving solutions of problems across many areas of science and computation.",
+   "published": "2025-06-16",
+   "updated": "2025-06-16",
+   "authors": [
+    "Alexander Novikov",
+    "Ngân Vũ",
+    "Marvin Eisenberger",
+    "Emilien Dupont",
+    "Po-Sen Huang",
+    "Adam Zsolt Wagner",
+    "Sergey Shirobokov",
+    "Borislav Kozlovskii",
+    "Francisco J. R. Ruiz",
+    "Abbas Mehrabian",
+    "M. Pawan Kumar",
+    "Abigail See",
+    "Swarat Chaudhuri",
+    "George Holland",
+    "Alex Davies",
+    "Sebastian Nowozin",
+    "Pushmeet Kohli",
+    "Matej Balog"
+   ],
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI",
+    "cs.LG",
+    "cs.NE"
+   ],
+   "url": "https://arxiv.org/abs/2506.13131v1",
+   "pdf": "https://arxiv.org/pdf/2506.13131v1",
+   "comment": ""
+  },
+  {
+   "id": "2505.16105v1",
+   "title": "Sums and differences of sets (improvement over AlphaEvolve)",
+   "abstract": "On May 14, 2025, DeepMind announced that AlphaEvolve, a large language model applied to a set of mathematical problems, had matched or exceeded the best known bounds on several problems. In the case of the sum and difference of sets problem, AlphaEvolve, using a set of $54265$ integers, improved the known lower bound of $θ=1.14465$ to $θ=1.1584$. In this paper, we present an improved bound $θ=1.173050$ using an explicit construction of a U set that contains more than $10^{43546}$ elements. For fast integer and floating-point arithmetic, we used the (free) GMP library.",
+   "published": "2025-05-22",
+   "updated": "2025-05-22",
+   "authors": [
+    "Robert Gerbicz"
+   ],
+   "primary_category": "math.NT",
+   "categories": [
+    "math.NT"
+   ],
+   "url": "https://arxiv.org/abs/2505.16105v1",
+   "pdf": "https://arxiv.org/pdf/2505.16105v1",
+   "comment": "4 pages"
+  },
+  {
+   "id": "2605.14718v1",
+   "title": "Adapting AlphaEvolve to Optimize Fully Homomorphic Encryption on TPUs",
+   "abstract": "The deployment of Fully Homomorphic Encryption (FHE) at scale is hindered due to its heavy computational overhead. While specialized hardware accelerators like Google Tensor Processing Units (TPUs) can help, mapping complex cryptographic kernels onto such architectures remains a challenge. Efficient execution requires co-optimization between the systolic array-based Matrix Multiplication Unit (MXU) and Vector Processing Units (VPUs), as well as the orchestration of data movement across the vector register files. Existing compiler stacks often abstract low-level hardware utilization, requiring developers to adopt a manual trial-and-error process that often results in fragmented execution and underutilized resources. To accelerate this development process, we use AlphaEvolve to automate the exploration of hardware-aware cryptographic-kernel optimizations. We frame optimization as an evolutionary search problem, utilizing the closed-loop system provided by AlphaEvolve, that leverages LLM-driven code generation. We use real-world feedback from hardware execution and rigorous correctness testing to guide the evolution process. We evaluate AlphaEvolve optimization on primitives for both the TFHE (Jaxite) and CKKS (CROSS) FHE schemes on Google Cloud TPUv5e, a contemporary TPU architecture. Within 24 hours of automated exploration, AlphaEvolve discovered implementation-level optimizations that improve TFHE bootstrap latency by 2.5x and CKKS rotation and multiplication latency by 1.31x and 1.18x, respectively, relative to human-engineered state of the art. These results demonstrate that AlphaEvolve can be used to enable researchers to navigate the optimization trade-offs between cryptography, compilers, and hardware accelerators.",
+   "published": "2026-05-14",
+   "updated": "2026-05-14",
+   "authors": [
+    "Shruthi Gorantala",
+    "Jianming Tong",
+    "Asra Ali",
+    "Baiyu Li",
+    "Jonathan Katz",
+    "Jeremy Kun",
+    "Thomas Steinke",
+    "Abhradeep Thakurta",
+    "Julian Walker",
+    "Amir Yazdanbakhsh"
+   ],
+   "primary_category": "cs.CR",
+   "categories": [
+    "cs.CR"
+   ],
+   "url": "https://arxiv.org/abs/2605.14718v1",
+   "pdf": "https://arxiv.org/pdf/2605.14718v1",
+   "comment": ""
+  },
+  {
+   "id": "2504.05108v4",
+   "title": "Algorithm Discovery With LLMs: Evolutionary Search Meets Reinforcement Learning",
+   "abstract": "Discovering efficient algorithms for solving complex problems has been an outstanding challenge in mathematics and computer science, requiring substantial human expertise over the years. Recent advancements in evolutionary search with large language models (LLMs) have shown promise in accelerating the discovery of algorithms across various domains, particularly in mathematics and optimization. However, existing approaches treat the LLM as a static generator, missing the opportunity to update the model with the signal obtained from evolutionary exploration. In this work, we propose to augment LLM-based evolutionary search by continuously refining the search operator - the LLM - through reinforcement learning (RL) fine-tuning. Our method leverages evolutionary search as an exploration strategy to discover improved algorithms, while RL optimizes the LLM policy based on these discoveries. Our experiments on combinatorial optimization tasks demonstrate that integrating RL with evolutionary search accelerates the discovery of superior algorithms, showcasing the potential of RL-enhanced evolutionary strategies for algorithm design.",
+   "published": "2025-04-07",
+   "updated": "2025-08-04",
+   "authors": [
+    "Anja Surina",
+    "Amin Mansouri",
+    "Lars Quaedvlieg",
+    "Amal Seddas",
+    "Maryna Viazovska",
+    "Emmanuel Abbe",
+    "Caglar Gulcehre"
+   ],
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI",
+    "cs.LG",
+    "cs.NE"
+   ],
+   "url": "https://arxiv.org/abs/2504.05108v4",
+   "pdf": "https://arxiv.org/pdf/2504.05108v4",
+   "comment": "34 pages"
+  },
+  {
+   "id": "2610.02361v1",
+   "title": "SEDIMA: Cross-Run Hierarchical Insight Memory for Evolutionary Search Agents",
+   "abstract": "Large language model (LLM)-driven evolutionary search is a powerful paradigm for automated program and algorithm discovery, yet existing systems are largely memoryless: each run explores from scratch, so agents repeatedly rediscover the same improvements and re-encounter the same dead ends. We introduce SEDIMA, a persistent hierarchical insight memory for evolutionary search agents. SEDIMA distills raw traces into natural-language insights, clusters them by semantic similarity using attention-weighted centroids, and retrieves relevant guidance to condition future mutations, accumulating transferable knowledge across runs and problems rather than within a single trajectory. As a drop-in module that leaves the search operators unmodified, SEDIMA improves average final performance by 5.5% on AlgoTune and 6.6% on ALE-Bench LITE under a fixed budget of 100 evaluated candidates. Under OpenEvolve, SEDIMA requires 32.3% fewer iterations on average to reach baseline-best performance across the five evaluated backbones.",
+   "published": "2026-10-01",
+   "updated": "2026-10-01",
+   "authors": [
+    "Amirhossein Abaskohi",
+    "Mahdi Mostajabdaveh",
+    "Zirui Zhou"
+   ],
+   "primary_category": "cs.NE",
+   "categories": [
+    "cs.NE",
+    "cs.CL"
+   ],
+   "url": "https://arxiv.org/abs/2610.02361v1",
+   "pdf": "https://arxiv.org/pdf/2610.02361v1",
+   "comment": ""
+  },
+  {
+   "id": "2506.01896v1",
+   "title": "Sums and differences of sets: a further improvement over AlphaEvolve",
+   "abstract": "We present a new advancement in the sum and difference of sets problem, which improves upon recent results by both DeepMind's AlphaEvolve ($θ= 1.1584$) and subsequent explicit constructions ($θ= 1.173050$). In this work, we construct a sequence of $U$ sets which in the limit establishes a new lower bound of $θ= 1.173077$.",
+   "published": "2025-06-02",
+   "updated": "2025-06-02",
+   "authors": [
+    "Fan Zheng"
+   ],
+   "primary_category": "math.CO",
+   "categories": [
+    "math.CO",
+    "math.NT"
+   ],
+   "url": "https://arxiv.org/abs/2506.01896v1",
+   "pdf": "https://arxiv.org/pdf/2506.01896v1",
+   "comment": "11 pages"
+  },
+  {
+   "id": "2405.05767v1",
+   "title": "Large Language Model-Aided Evolutionary Search for Constrained Multiobjective Optimization",
+   "abstract": "Evolutionary algorithms excel in solving complex optimization problems, especially those with multiple objectives. However, their stochastic nature can sometimes hinder rapid convergence to the global optima, particularly in scenarios involving constraints. In this study, we employ a large language model (LLM) to enhance evolutionary search for solving constrained multi-objective optimization problems. Our aim is to speed up the convergence of the evolutionary population. To achieve this, we finetune the LLM through tailored prompt engineering, integrating information concerning both objective values and constraint violations of solutions. This process enables the LLM to grasp the relationship between well-performing and poorly performing solutions based on the provided input data. Solution's quality is assessed based on their constraint violations and objective-based performance. By leveraging the refined LLM, it can be used as a search operator to generate superior-quality solutions. Experimental evaluations across various test benchmarks illustrate that LLM-aided evolutionary search can significantly accelerate the population's convergence speed and stands out competitively against cutting-edge evolutionary algorithms.",
+   "published": "2024-05-09",
+   "updated": "2024-05-09",
+   "authors": [
+    "Zeyi Wang",
+    "Songbai Liu",
+    "Jianyong Chen",
+    "Kay Chen Tan"
+   ],
+   "primary_category": "cs.NE",
+   "categories": [
+    "cs.NE"
+   ],
+   "url": "https://arxiv.org/abs/2405.05767v1",
+   "pdf": "https://arxiv.org/pdf/2405.05767v1",
+   "comment": "15 pages, 6 figures, 2024 International Conference on Intelligent Computing"
+  },
+  {
+   "id": "2605.01794v1",
+   "title": "Discover Fast Power Allocation Solution for Multi-Target Tracking via AlphaEvolve Evolution",
+   "abstract": "Efficient radar resource allocation is a fundamental yet computationally challenging problem, as optimal solutions typically require iterative optimization with high complexity. Motivated by the need for real-time scheduling, robust generalization, and low data dependency, this paper proposes a novel paradigm that leverages large language model (LLM)-guided evolutionary search (AlphaEvolve) to autonomously discover a closed-form power allocation solution for multi-target tracking. The approach encodes high-dimensional radar states into physically inspired features, then evolves a compact and interpretable scoring function, which is transformed to feasible power allocations via a deterministic constraint-satisfying transformation. Extensive experiments demonstrate that the discovered closed-form solution achieves near-optimal tracking accuracy (average relative performance loss of only $1.51\\%$), reliable generalization across diverse scenarios and target counts, and over three orders of magnitude speedup compared to conventional iterative solvers. These results highlight the potential of LLM-guided symbolic search to revolutionize not only radar resource management but also broader classes of engineering optimization problems.",
+   "published": "2026-05-03",
+   "updated": "2026-05-03",
+   "authors": [
+    "Zhenkang Hou",
+    "Wenqiang Pu",
+    "Junkun Yan",
+    "Rui Zhou",
+    "Hongwei Liu"
+   ],
+   "primary_category": "eess.SP",
+   "categories": [
+    "eess.SP",
+    "cs.AI"
+   ],
+   "url": "https://arxiv.org/abs/2605.01794v1",
+   "pdf": "https://arxiv.org/pdf/2605.01794v1",
+   "comment": ""
+  },
+  {
+   "id": "2508.05433v3",
+   "title": "Multimodal LLM-assisted Evolutionary Search for Programmatic Control Policies",
+   "abstract": "Deep reinforcement learning has achieved impressive success in control tasks. However, its policies, represented as opaque neural networks, are often difficult for humans to understand, verify, and debug, which undermines trust and hinders real-world deployment. This work addresses this challenge by introducing a novel approach for programmatic control policy discovery, called Multimodal Large Language Model-assisted Evolutionary Search (MLES). MLES utilizes multimodal large language models as programmatic policy generators, combining them with evolutionary search to automate policy generation. It integrates visual feedback-driven behavior analysis within the policy generation process to identify failure patterns and guide targeted improvements, thereby enhancing policy discovery efficiency and producing adaptable, human-aligned policies. Experimental results demonstrate that MLES achieves performance comparable to Proximal Policy Optimization (PPO) across two standard control tasks while providing transparent control logic and traceable design processes. This approach also overcomes the limitations of predefined domain-specific languages, facilitates knowledge transfer and reuse, and is scalable across various tasks, showing promise as a new paradigm for developing transparent and verifiable control policies. Code is publicly available at https://github.com/QingL2000/MLES.",
+   "published": "2025-08-07",
+   "updated": "2026-03-10",
+   "authors": [
+    "Qinglong Hu",
+    "Xialiang Tong",
+    "Mingxuan Yuan",
+    "Fei Liu",
+    "Zhichao Lu",
+    "Qingfu Zhang"
+   ],
+   "primary_category": "cs.LG",
+   "categories": [
+    "cs.LG",
+    "cs.NE"
+   ],
+   "url": "https://arxiv.org/abs/2508.05433v3",
+   "pdf": "https://arxiv.org/pdf/2508.05433v3",
+   "comment": ""
+  },
+  {
+   "id": "2406.04824v2",
+   "title": "FunBO: Discovering Acquisition Functions for Bayesian Optimization with FunSearch",
+   "abstract": "The sample efficiency of Bayesian optimization algorithms depends on carefully crafted acquisition functions (AFs) guiding the sequential collection of function evaluations. The best-performing AF can vary significantly across optimization problems, often requiring ad-hoc and problem-specific choices. This work tackles the challenge of designing novel AFs that perform well across a variety of experimental settings. Based on FunSearch, a recent work using Large Language Models (LLMs) for discovery in mathematical sciences, we propose FunBO, an LLM-based method that can be used to learn new AFs written in computer code by leveraging access to a limited number of evaluations for a set of objective functions. We provide the analytic expression of all discovered AFs and evaluate them on various global optimization benchmarks and hyperparameter optimization tasks. We show how FunBO identifies AFs that generalize well in and out of the training distribution of functions, thus outperforming established general-purpose AFs and achieving competitive performance against AFs that are customized to specific function types and are learned via transfer-learning algorithms.",
+   "published": "2024-06-07",
+   "updated": "2024-07-01",
+   "authors": [
+    "Virginia Aglietti",
+    "Ira Ktena",
+    "Jessica Schrouff",
+    "Eleni Sgouritsa",
+    "Francisco J. R. Ruiz",
+    "Alan Malek",
+    "Alexis Bellot",
+    "Silvia Chiappa"
+   ],
+   "primary_category": "cs.LG",
+   "categories": [
+    "cs.LG",
+    "stat.ML"
+   ],
+   "url": "https://arxiv.org/abs/2406.04824v2",
+   "pdf": "https://arxiv.org/pdf/2406.04824v2",
+   "comment": ""
+  },
+  {
+   "id": "2605.07039v1",
+   "title": "PACEvolve++: Improving Test-time Learning for Evolutionary Search Agents",
+   "abstract": "Large language models have become drivers of evolutionary search, but most systems rely on a fixed, prompt-elicited policy to sample next candidates. This limits adaptation in practical engineering and research tasks, where evaluations are expensive, and progress depends on learning task-specific search dynamics. We introduce PACEvolve++, an advisor-model reinforcement learning framework for test-time policy adaptation in evolutionary search agents. PACEvolve++ decouples strategic search decisions from implementation: a trainable advisor generates, assesses, and selects hypotheses, while a stronger frontier model translates selected hypotheses into executable candidates. To train the advisor under non-stationary feedback, we propose a phase-adaptive approach that adapts its optimization strategy to different phases of the evolutionary process. Early in evolution, it uses group-relative feedback to learn broad search preferences; later, as reward gaps compress, it emphasizes best-of-$k$ frontier contribution to support stable refinement. Across expert-parallel load balancing, sequential recommendation, and protein fitness extrapolation, PACEvolve++ outperforms the state-of-the-art evolutionary search framework with frontier models, achieving faster convergence and stabilizing test-time training during evolutionary search.",
+   "published": "2026-05-07",
+   "updated": "2026-05-07",
+   "authors": [
+    "Minghao Yan",
+    "Bo Peng",
+    "Benjamin Coleman",
+    "Ziqi Chen",
+    "Zhouhang Xie",
+    "Shuo Chen",
+    "Zhankui He",
+    "Noveen Sachdeva",
+    "Weili Wang",
+    "Ed H. Chi",
+    "Shivaram Venkataraman",
+    "Wang-Cheng Kang",
+    "Derek Zhiyuan Cheng",
+    "Beidou Wang"
+   ],
+   "primary_category": "cs.LG",
+   "categories": [
+    "cs.LG"
+   ],
+   "url": "https://arxiv.org/abs/2605.07039v1",
+   "pdf": "https://arxiv.org/pdf/2605.07039v1",
+   "comment": ""
+  },
+  {
+   "id": "2103.16196v2",
+   "title": "AlphaEvolve: A Learning Framework to Discover Novel Alphas in Quantitative Investment",
+   "abstract": "Alphas are stock prediction models capturing trading signals in a stock market. A set of effective alphas can generate weakly correlated high returns to diversify the risk. Existing alphas can be categorized into two classes: Formulaic alphas are simple algebraic expressions of scalar features, and thus can generalize well and be mined into a weakly correlated set. Machine learning alphas are data-driven models over vector and matrix features. They are more predictive than formulaic alphas, but are too complex to mine into a weakly correlated set. In this paper, we introduce a new class of alphas to model scalar, vector, and matrix features which possess the strengths of these two existing classes. The new alphas predict returns with high accuracy and can be mined into a weakly correlated set. In addition, we propose a novel alpha mining framework based on AutoML, called AlphaEvolve, to generate the new alphas. To this end, we first propose operators for generating the new alphas and selectively injecting relational domain knowledge to model the relations between stocks. We then accelerate the alpha mining by proposing a pruning technique for redundant alphas. Experiments show that AlphaEvolve can evolve initial alphas into the new alphas with high returns and weak correlations.",
+   "published": "2021-03-30",
+   "updated": "2021-04-01",
+   "authors": [
+    "Can Cui",
+    "Wei Wang",
+    "Meihui Zhang",
+    "Gang Chen",
+    "Zhaojing Luo",
+    "Beng Chin Ooi"
+   ],
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI",
+    "cs.DB"
+   ],
+   "url": "https://arxiv.org/abs/2103.16196v2",
+   "pdf": "https://arxiv.org/pdf/2103.16196v2",
+   "comment": "Accepted by SIGMOD 2021 Data Science and Engineering Track"
+  },
+  {
+   "id": "2608.16884v1",
+   "title": "Improving the matrix multiplication exponent with modern optimization and AlphaEvolve",
+   "abstract": "The current best bounds on the matrix multiplication exponent $ω$ are obtained through a refinement of the laser method called combination loss analysis (Duan et al., 2022; Williams et al., 2024; Alman et al., 2025). In this note, we address the optimization problem at the core of this approach and propose several improvements. First, we reformulate the optimization problem allowing us to solve it in a larger setting than was previously possible. Second, we leverage recent advances in machine learning to design a new optimization algorithm for this problem. Finally, we refine the resulting optimization algorithm with AlphaEvolve. Our combined approach yields an upper bound of $ω$ < 2.371177, improving the previous best bound of 2.371339.",
+   "published": "2026-08-17",
+   "updated": "2026-08-17",
+   "authors": [
+    "Emilien Dupont",
+    "Marvin Eisenberger",
+    "Borislav Kozlovskii",
+    "Abbas Mehrabian",
+    "Francisco J. R. Ruiz",
+    "Abigail See",
+    "Renfei Zhou",
+    "Josh Alman",
+    "Virginia Vassilevska Williams",
+    "Matej Balog"
+   ],
+   "primary_category": "cs.DS",
+   "categories": [
+    "cs.DS",
+    "cs.AI",
+    "cs.CC",
+    "cs.LG"
+   ],
+   "url": "https://arxiv.org/abs/2608.16884v1",
+   "pdf": "https://arxiv.org/pdf/2608.16884v1",
+   "comment": ""
+  },
+  {
+   "id": "2512.24077v1",
+   "title": "LoongFlow: Directed Evolutionary Search via a Cognitive Plan-Execute-Summarize Paradigm",
+   "abstract": "The transition from static Large Language Models (LLMs) to self-improving agents is hindered by the lack of structured reasoning in traditional evolutionary approaches. Existing methods often struggle with premature convergence and inefficient exploration in high-dimensional code spaces. To address these challenges, we introduce LoongFlow, a self-evolving agent framework that achieves state-of-the-art solution quality with significantly reduced computational costs. Unlike \"blind\" mutation operators, LoongFlow integrates LLMs into a cognitive \"Plan-Execute-Summarize\" (PES) paradigm, effectively mapping the evolutionary search to a reasoning-heavy process. To sustain long-term architectural coherence, we incorporate a hybrid evolutionary memory system. By synergizing Multi-Island models with MAP-Elites and adaptive Boltzmann selection, this system theoretically balances the exploration-exploitation trade-off, maintaining diverse behavioral niches to prevent optimization stagnation. We instantiate LoongFlow with a General Agent for algorithmic discovery and an ML Agent for pipeline optimization. Extensive evaluations on the AlphaEvolve benchmark and Kaggle competitions demonstrate that LoongFlow outperforms leading baselines (e.g., OpenEvolve, ShinkaEvolve) by up to 60% in evolutionary efficiency while discovering superior solutions. LoongFlow marks a substantial step forward in autonomous scientific discovery, enabling the generation of expert-level solutions with reduced computational overhead.",
+   "published": "2025-12-30",
+   "updated": "2025-12-30",
+   "authors": [
+    "Chunhui Wan",
+    "Xunan Dai",
+    "Zhuo Wang",
+    "Minglei Li",
+    "Yanpeng Wang",
+    "Yinan Mao",
+    "Yu Lan",
+    "Zhiwen Xiao"
+   ],
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI"
+   ],
+   "url": "https://arxiv.org/abs/2512.24077v1",
+   "pdf": "https://arxiv.org/pdf/2512.24077v1",
+   "comment": ""
+  },
+  {
+   "id": "2510.06056v1",
+   "title": "Scientific Algorithm Discovery by Augmenting AlphaEvolve with Deep Research",
+   "abstract": "Large language models hold promise as scientific assistants, yet existing agents either rely solely on algorithm evolution or on deep research in isolation, both of which face critical limitations. Pure algorithm evolution, as in AlphaEvolve, depends only on the internal knowledge of LLMs and quickly plateaus in complex domains, while pure deep research proposes ideas without validation, resulting in unrealistic or unimplementable solutions. We present DeepEvolve, an agent that integrates deep research with algorithm evolution, uniting external knowledge retrieval, cross-file code editing, and systematic debugging under a feedback-driven iterative loop. Each iteration not only proposes new hypotheses but also refines, implements, and tests them, avoiding both shallow improvements and unproductive over-refinements. Across nine benchmarks in chemistry, mathematics, biology, materials, and patents, DeepEvolve consistently improves the initial algorithm, producing executable new algorithms with sustained gains. By bridging the gap between unguided evolution and research without grounding, DeepEvolve provides a reliable framework for advancing scientific algorithm discovery. Our code is available at https://github.com/liugangcode/deepevolve.",
+   "published": "2025-10-07",
+   "updated": "2025-10-07",
+   "authors": [
+    "Gang Liu",
+    "Yihan Zhu",
+    "Jie Chen",
+    "Meng Jiang"
+   ],
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI"
+   ],
+   "url": "https://arxiv.org/abs/2510.06056v1",
+   "pdf": "https://arxiv.org/pdf/2510.06056v1",
+   "comment": "25 pages, 17 figures, 4 tables"
+  },
+  {
+   "id": "2604.03473v1",
+   "title": "Evolutionary Search for Automated Design of Uncertainty Quantification Methods",
+   "abstract": "Uncertainty quantification (UQ) methods for large language models are predominantly designed by hand based on domain knowledge and heuristics, limiting their scalability and generality. We apply LLM-powered evolutionary search to automatically discover unsupervised UQ methods represented as Python programs. On the task of atomic claim verification, our evolved methods outperform strong manually-designed baselines, achieving up to 6.7% relative ROC-AUC improvement across 9 datasets while generalizing robustly out-of-distribution. Qualitative analysis reveals that different LLMs employ qualitatively distinct evolutionary strategies: Claude models consistently design high-feature-count linear estimators, while Gpt-oss-120B gravitates toward simpler and more interpretable positional weighting schemes. Surprisingly, only Sonnet 4.5 and Opus 4.5 reliably leverage increased method complexity to improve performance -- Opus 4.6 shows an unexpected regression relative to its predecessor. Overall, our results indicate that LLM-powered evolutionary search is a promising paradigm for automated, interpretable hallucination detector design.",
+   "published": "2026-04-03",
+   "updated": "2026-04-03",
+   "authors": [
+    "Mikhail Seleznyov",
+    "Daniil Korbut",
+    "Viktor Moskvoretskii",
+    "Oleg Somov",
+    "Alexander Panchenko",
+    "Elena Tutubalina"
+   ],
+   "primary_category": "cs.CL",
+   "categories": [
+    "cs.CL",
+    "cs.AI"
+   ],
+   "url": "https://arxiv.org/abs/2604.03473v1",
+   "pdf": "https://arxiv.org/pdf/2604.03473v1",
+   "comment": ""
+  },
+  {
+   "id": "2407.10873v1",
+   "title": "Understanding the Importance of Evolutionary Search in Automated Heuristic Design with Large Language Models",
+   "abstract": "Automated heuristic design (AHD) has gained considerable attention for its potential to automate the development of effective heuristics. The recent advent of large language models (LLMs) has paved a new avenue for AHD, with initial efforts focusing on framing AHD as an evolutionary program search (EPS) problem. However, inconsistent benchmark settings, inadequate baselines, and a lack of detailed component analysis have left the necessity of integrating LLMs with search strategies and the true progress achieved by existing LLM-based EPS methods to be inadequately justified. This work seeks to fulfill these research queries by conducting a large-scale benchmark comprising four LLM-based EPS methods and four AHD problems across nine LLMs and five independent runs. Our extensive experiments yield meaningful insights, providing empirical grounding for the importance of evolutionary search in LLM-based AHD approaches, while also contributing to the advancement of future EPS algorithmic development. To foster accessibility and reproducibility, we have fully open-sourced our benchmark and corresponding results.",
+   "published": "2024-07-15",
+   "updated": "2024-07-15",
+   "authors": [
+    "Rui Zhang",
+    "Fei Liu",
+    "Xi Lin",
+    "Zhenkun Wang",
+    "Zhichao Lu",
+    "Qingfu Zhang"
+   ],
+   "primary_category": "cs.NE",
+   "categories": [
+    "cs.NE",
+    "cs.AI"
+   ],
+   "url": "https://arxiv.org/abs/2407.10873v1",
+   "pdf": "https://arxiv.org/pdf/2407.10873v1",
+   "comment": "Accepted by the 18th International Conference on Parallel Problem Solving From Nature (PPSN 2024)"
+  },
+  {
+   "id": "2605.01120v3",
+   "title": "New Bounds for Zarankiewicz Numbers via Reinforced LLM Evolutionary Search",
+   "abstract": "The Zarankiewicz number $\\textbf{Z}(m, n, s, t)$ is the maximum number of edges in a bipartite graph $G_{m, n}$ such that there is no complete $K_{s, t}$ bipartite subgraph. We determine for the first time the exact values of three Zarankiewicz numbers: $\\textbf{Z}(11, 21, 3, 3)=116$, $\\textbf{Z}(11, 22, 3, 3)=121$, and $\\textbf{Z}(12, 22, 3, 3)=132$. We further establish lower bounds for 41 more Zarankiewicz numbers, including several that are within one edge of the best known upper bound, and we match the established value in four more closed cases. Our results are obtained using OpenEvolve, an open-source evolutionary algorithm based on Large Language Models (LLMs) that iteratively improves algorithms for generating mathematical constructions by optimizing a reward signal which we tailored for this specific problem. These findings provide new extremal graph constructions and demonstrate the potential of LLM-guided evolutionary search to contribute to mathematical research. In addition to presenting the resulting constructions, we report the generation algorithms produced, describe the relevant implementation details, and provide our computational costs. Our costs are remarkably low, at less than \\$30 for each Zarankiewicz parameter combination, showing that LLM-guided evolutionary search can be an inexpensive, reproducible, and accessible tool for discovering new combinatorial constructions.",
+   "published": "2026-05-01",
+   "updated": "2026-08-25",
+   "authors": [
+    "Jay Bhan",
+    "Nicole Nobili",
+    "Patrick Langer"
+   ],
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI",
+    "math.CO"
+   ],
+   "url": "https://arxiv.org/abs/2605.01120v3",
+   "pdf": "https://arxiv.org/pdf/2605.01120v3",
+   "comment": "*Jay Bhan and Nicole Nobili contributed equally to this work as first authors, and their order was determined via coin flip"
+  },
+  {
+   "id": "2604.19440v1",
+   "title": "What Makes an LLM a Good Optimizer? A Trajectory Analysis of LLM-Guided Evolutionary Search",
+   "abstract": "Recent work has demonstrated the promise of orchestrating large language models (LLMs) within evolutionary and agentic optimization systems. However, the mechanisms driving these optimization gains remain poorly understood. In this work, we present a large-scale study of LLM-guided evolutionary search, collecting optimization trajectories for 15 LLMs across 8 tasks. Although zero-shot problem-solving ability correlates with final optimization outcomes, it explains only part of the variance: models with similar initial capability often induce dramatically different search trajectories and outcomes. By analyzing these trajectories, we find that strong LLM optimizers behave as local refiners, producing frequent incremental improvements while progressively localizing the search in semantic space. Conversely, weaker optimizers exhibit large semantic drift, with sporadic breakthroughs followed by stagnation. Notably, various measures of solution novelty do not predict final performance; novelty is beneficial only when the search remains sufficiently localized around high-performing regions of the solution space. Our results highlight the importance of trajectory analysis for understanding and improving LLM-based optimization systems and provide actionable insights for their design and training.",
+   "published": "2026-04-21",
+   "updated": "2026-04-21",
+   "authors": [
+    "Xinhao Zhang",
+    "Xi Chen",
+    "François Portet",
+    "Maxime Peyrard"
+   ],
+   "primary_category": "cs.CL",
+   "categories": [
+    "cs.CL",
+    "cs.NE"
+   ],
+   "url": "https://arxiv.org/abs/2604.19440v1",
+   "pdf": "https://arxiv.org/pdf/2604.19440v1",
+   "comment": "9 pages, 8 figures, Accepted at Findings of ACL 2026"
+  },
+  {
+   "id": "2511.12916v1",
+   "title": "Fault2Flow: An AlphaEvolve-Optimized Human-in-the-Loop Multi-Agent System for Fault-to-Workflow Automation",
+   "abstract": "Power grid fault diagnosis is a critical process hindered by its reliance on manual, error-prone methods. Technicians must manually extract reasoning logic from dense regulations and attempt to combine it with tacit expert knowledge, which is inefficient, error-prone, and lacks maintainability as ragulations are updated and experience evolves. While Large Language Models (LLMs) have shown promise in parsing unstructured text, no existing framework integrates these two disparate knowledge sources into a single, verified, and executable workflow. To bridge this gap, we propose Fault2Flow, an LLM-based multi-agent system. Fault2Flow systematically: (1) extracts and structures regulatory logic into PASTA-formatted fault trees; (2) integrates expert knowledge via a human-in-the-loop interface for verification; (3) optimizes the reasoning logic using a novel AlphaEvolve module; and (4) synthesizes the final, verified logic into an n8n-executable workflow. Experimental validation on transformer fault diagnosis datasets confirms 100\\% topological consistency and high semantic fidelity. Fault2Flow establishes a reproducible path from fault analysis to operational automation, substantially reducing expert workload.",
+   "published": "2025-11-17",
+   "updated": "2025-11-17",
+   "authors": [
+    "Yafang Wang",
+    "Yangjie Tian",
+    "Xiaoyu Shen",
+    "Gaoyang Zhang",
+    "Jiaze Sun",
+    "He Zhang",
+    "Ruohua Xu",
+    "Feng Zhao"
+   ],
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI"
+   ],
+   "url": "https://arxiv.org/abs/2511.12916v1",
+   "pdf": "https://arxiv.org/pdf/2511.12916v1",
+   "comment": ""
+  },
+  {
+   "id": "2603.22341v2",
+   "title": "T-MAP: Red-Teaming LLM Agents with Trajectory-aware Evolutionary Search",
+   "abstract": "While prior red-teaming efforts have focused on eliciting harmful text outputs from large language models (LLMs), such approaches fail to capture agent-specific vulnerabilities that emerge through multi-step tool execution, particularly in rapidly growing ecosystems such as the Model Context Protocol (MCP). To address this gap, we propose a trajectory-aware evolutionary search method, T-MAP, which leverages execution trajectories to guide the discovery of adversarial prompts. Our approach enables the automatic generation of attacks that not only bypass safety guardrails but also reliably realize harmful objectives through actual tool interactions. Empirical evaluations across diverse MCP environments demonstrate that T-MAP substantially outperforms baselines in attack realization rate (ARR) and remains effective against frontier models, including GPT-5.2, Gemini-3-Pro, Qwen3.5, and GLM-5, thereby revealing previously underexplored vulnerabilities in autonomous LLM agents. Code is available at https://github.com/pwnhyo/T-MAP.",
+   "published": "2026-03-21",
+   "updated": "2026-08-31",
+   "authors": [
+    "Hyomin Lee",
+    "Sangwoo Park",
+    "Yumin Choi",
+    "Sohyun An",
+    "Seanie Lee",
+    "Sung Ju Hwang"
+   ],
+   "primary_category": "cs.CR",
+   "categories": [
+    "cs.CR",
+    "cs.AI",
+    "cs.CL"
+   ],
+   "url": "https://arxiv.org/abs/2603.22341v2",
+   "pdf": "https://arxiv.org/pdf/2603.22341v2",
+   "comment": "EMNLP 2026"
+  },
+  {
+   "id": "2507.10326v1",
+   "title": "Grammar-Guided Evolutionary Search for Discrete Prompt Optimisation",
+   "abstract": "Prompt engineering has proven to be a crucial step in leveraging pretrained large language models (LLMs) in solving various real-world tasks. Numerous solutions have been proposed that seek to automate prompt engineering by using the model itself to edit prompts. However, the majority of state-of-the-art approaches are evaluated on tasks that require minimal prompt templates and on very large and highly capable LLMs. In contrast, solving complex tasks that require detailed information to be included in the prompt increases the amount of text that needs to be optimised. Furthermore, smaller models have been shown to be more sensitive to prompt design. To address these challenges, we propose an evolutionary search approach to automated discrete prompt optimisation consisting of two phases. In the first phase, grammar-guided genetic programming is invoked to synthesise prompt-creating programmes by searching the space of programmes populated by function compositions of syntactic, dictionary-based and LLM-based prompt-editing functions. In the second phase, local search is applied to explore the neighbourhoods of best-performing programmes in an attempt to further fine-tune their performance. Our approach outperforms three state-of-the-art prompt optimisation approaches, PromptWizard, OPRO, and RL-Prompt, on three relatively small general-purpose LLMs in four domain-specific challenging tasks. We also illustrate several examples where these benchmark methods suffer relatively severe performance degradation, while our approach improves performance in almost all task-model combinations, only incurring minimal degradation when it does not.",
+   "published": "2025-07-14",
+   "updated": "2025-07-14",
+   "authors": [
+    "Muzhaffar Hazman",
+    "Minh-Khoi Pham",
+    "Shweta Soundararajan",
+    "Goncalo Mordido",
+    "Leonardo Custode",
+    "David Lynch",
+    "Giorgio Cruciata",
+    "Yucheng Shi",
+    "Hongmeng Song",
+    "Wang Chao",
+    "Pan Yue",
+    "Aleksandar Milenovic",
+    "Alexandros Agapitos"
+   ],
+   "primary_category": "cs.CL",
+   "categories": [
+    "cs.CL"
+   ],
+   "url": "https://arxiv.org/abs/2507.10326v1",
+   "pdf": "https://arxiv.org/pdf/2507.10326v1",
+   "comment": "Accepted for Publication at ECAI 2025"
+  },
+  {
+   "id": "2608.03129v1",
+   "title": "Beyond Average Performance: Dynamic Instance Clustering and Specialized Algorithm Design in LLM-Assisted Evolutionary Search",
+   "abstract": "Large Language Model-assisted Evolutionary Search (LES) has emerged as a powerful paradigm for automated algorithm design. However, existing LES methods primarily optimize for average performance, inherently directing search effort toward instances that contribute most to this metric while leaving others poorly served, resulting in weak tail robustness and limited real-world reliability. To address this limitation, we propose Dynamic Instance Clustering and Specialized Algorithm Design (DyCA), an LES framework with a feature-free, structure-aware mechanism for constructing reliable algorithm portfolios under heterogeneous instance distributions. DyCA treats instance clustering as a co-evolving component within the search process, reusing accumulated evaluation data as feature-free signals to progressively partition instances with similar algorithmic response patterns. The uncovered clusters decompose the mixed objective into a set of structure-aware sub-objectives, thereby enabling finer-grained and more adaptive guidance for specialized algorithm design. Experimental results across four algorithm design tasks with heterogeneous instances demonstrate that DyCA outperforms state-of-the-art LES baselines, improving tail robustness by an average of 15.2\\% and overall performance by 7.1\\% while maintaining competitive head performance.",
+   "published": "2026-08-04",
+   "updated": "2026-08-04",
+   "authors": [
+    "Qinglong Hu",
+    "Qingfu Zhang",
+    "Fei Liu",
+    "Xialiang Tong",
+    "Kun Mao",
+    "Mingxuan Yuan"
+   ],
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI"
+   ],
+   "url": "https://arxiv.org/abs/2608.03129v1",
+   "pdf": "https://arxiv.org/pdf/2608.03129v1",
+   "comment": ""
+  },
+  {
+   "id": "2605.15221v1",
+   "title": "Effective Harness Engineering for Algorithm Discovery with Coding Agents",
+   "abstract": "AlphaEvolve and FunSearch have demonstrated the potential of combining large language models (LLMs) with evolutionary search for automated algorithm discovery. However, discovery success is shaped not only by model capability but also significantly by the design of the execution infrastructure, i.e., the harness. This paper investigates effective harness design through three questions: under a fixed token budget, is it better to produce many algorithms with brief thought or fewer algorithms with deeper thought? How should the harness handle evaluation hacks, where generated programs exploit the scoring function? And how can agents that require full filesystem access execute safely in parallel? Using Vesper, an algorithm discovery framework that incorporates harness improvements addressing these questions, we evaluate on Circle Packing under the same token budget. Interestingly, generating fewer algorithms while thinking more deeply about each one achieved higher scores. That is, scaling the quality of each individual is more budget-efficient than scaling the number of evolutionary generations. Surprisingly, more capable models produced evaluation hacks at higher rates, making hack detection increasingly necessary as models scale.",
+   "published": "2026-05-13",
+   "updated": "2026-05-13",
+   "authors": [
+    "Yoichi Ishibashi",
+    "Taro Yano",
+    "Masafumi Oyamada"
+   ],
+   "primary_category": "cs.SE",
+   "categories": [
+    "cs.SE",
+    "cs.AI",
+    "cs.CL"
+   ],
+   "url": "https://arxiv.org/abs/2605.15221v1",
+   "pdf": "https://arxiv.org/pdf/2605.15221v1",
+   "comment": ""
+  },
+  {
+   "id": "2508.03661v3",
+   "title": "Automated Algorithmic Discovery for Scientific Computing through LLM-Guided Evolutionary Search: A Case Study in Gravitational-Wave Detection",
+   "abstract": "Automated algorithm discovery in scientific computing faces fundamental challenges: vast design spaces with expensive evaluations, domain-specific physical constraints requiring expert knowledge, and the necessity for interpretable solutions that scientists can validate and understand. We present the Evo-MCTS (Evolutionary Monte Carlo Tree Search) framework, integrating large language models (LLMs) with tree-structured evolutionary search for interpretable algorithm discovery. Evo-MCTS combines reflective code synthesis leveraging LLM domain knowledge, multi-scale evolutionary operations on structured code representations, and interpretable algorithmic pathways emerging from tree-guided exploration. When applied to gravitational wave detection-a challenging domain with continuous parameter spaces and strict physical constraints-Evo-MCTS achieves 20.2% improvement over domain-specific methods and 59.1% over LLM-based optimization frameworks. This improvement arises from its ability to consistently converge toward interpretable algorithmic structures that integrate multiple functional components. Our domain-agnostic architecture establishes a generalizable methodology for automated algorithm discovery in scientific computing, where algorithmic transparency and physical validity are as essential as performance optimization.",
+   "published": "2025-08-05",
+   "updated": "2025-11-16",
+   "authors": [
+    "He Wang",
+    "Liang Zeng"
+   ],
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI",
+    "astro-ph.HE",
+    "astro-ph.IM",
+    "gr-qc"
+   ],
+   "url": "https://arxiv.org/abs/2508.03661v3",
+   "pdf": "https://arxiv.org/pdf/2508.03661v3",
+   "comment": "76 pages (28 main), with 6+6 figures and 2 tables, substantially revised with improved structure and clarity"
+  },
+  {
+   "id": "2510.14150v6",
+   "title": "CodeEvolve: an open source evolutionary coding agent for algorithmic discovery and optimization",
+   "abstract": "We introduce CodeEvolve, an open-source framework that couples large language models with island-based evolutionary search for end-to-end algorithmic discovery. CodeEvolve integrates inspiration-based crossover, meta-prompting, and depth-based refinement on top of a CVT-MAP-Elites archive and a weighted LLM ensemble to generate optimized solutions for complex problems. On the AlphaEvolve benchmark suite, CodeEvolve matches or surpasses the reported AlphaEvolve results on 5 of 9 problems and, under matched conditions, outperforms the open-source frameworks OpenEvolve and ShinkaEvolve on 6 of 9. With the open-weight Qwen3-Coder-30B backbone, it surpasses the reported AlphaEvolve score on both CirclePackingSquare instances at roughly an order of magnitude lower cost than a frontier closed-source ensemble, and remains competitive with EoH on heuristic-design tasks without retuning. Ablations show that the interaction between CodeEvolve's components, rather than any single operator, drives these results. We release the framework, experimental data, and practical hyperparameter guidelines at https://github.com/inter-co/science-codeevolve.",
+   "published": "2025-10-15",
+   "updated": "2026-08-27",
+   "authors": [
+    "Henrique Assumpção",
+    "Diego Ferreira",
+    "Leandro Campos",
+    "Fabricio Murai"
+   ],
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI",
+    "cs.LG",
+    "cs.NE"
+   ],
+   "url": "https://arxiv.org/abs/2510.14150v6",
+   "pdf": "https://arxiv.org/pdf/2510.14150v6",
+   "comment": "EMNLP 2026 Findings;23 pages, 16 figures, 12 tables"
+  },
+  {
+   "id": "2511.02864v3",
+   "title": "Mathematical exploration and discovery at scale",
+   "abstract": "AlphaEvolve (Novikov et al., 2025) is a generic evolutionary coding agent that combines the generative capabilities of LLMs with automated evaluation in an iterative evolutionary framework that proposes, tests, and refines algorithmic solutions to challenging scientific and practical problems. In this paper we showcase AlphaEvolve as a tool for autonomously discovering novel mathematical constructions and advancing our understanding of long-standing open problems. To demonstrate its breadth, we considered a list of 67 problems spanning mathematical analysis, combinatorics, geometry, and number theory. The system rediscovered the best known solutions in most of the cases and discovered improved solutions in several. In some instances, AlphaEvolve is also able to generalize results for a finite number of input values into a formula valid for all input values. Furthermore, we are able to combine this methodology with Deep Think and AlphaProof in a broader framework where the additional proof-assistants and reasoning systems provide automated proof generation and further mathematical insights. These results demonstrate that large language model-guided evolutionary search can autonomously discover mathematical constructions that complement human intuition, at times matching or even improving the best known results, highlighting the potential for significant new ways of interaction between mathematicians and AI systems. We present AlphaEvolve as a powerful new tool for mathematical discovery, capable of exploring vast search spaces to solve complex optimization problems at scale, often with significantly reduced requirements on preparation and computation time.",
+   "published": "2025-11-03",
+   "updated": "2025-12-22",
+   "authors": [
+    "Bogdan Georgiev",
+    "Javier Gómez-Serrano",
+    "Terence Tao",
+    "Adam Zsolt Wagner"
+   ],
+   "primary_category": "cs.NE",
+   "categories": [
+    "cs.NE",
+    "cs.AI",
+    "math.CA",
+    "math.CO",
+    "math.MG"
+   ],
+   "url": "https://arxiv.org/abs/2511.02864v3",
+   "pdf": "https://arxiv.org/pdf/2511.02864v3",
+   "comment": "81 pages, 35 figures"
+  },
+  {
+   "id": "2504.00613v2",
+   "title": "LLM-Guided Search for Deletion-Correcting Codes",
+   "abstract": "Finding deletion-correcting codes of maximum size has been an open problem for over 70 years, even for a single deletion. We adapt FunSearch, a large language model (LLM)-guided evolutionary search, to discover functions that construct deletion-correcting codes at short code lengths. For a single deletion, our search finds a function that we prove constructs the conjectured-optimal Varshamov-Tenengolts code. For multiple deletions and quaternary edit codes, the discovered functions improve on prior explicit, search-based, and neural constructions but remain empirical heuristics without new theoretical insights. We study design choices for LLM-guided evolutionary search and find that, for our problem, compute is better allocated to sampling more functions than to longer reasoning traces per function, and that co-evolving natural language descriptions with code hurts search quality. We propose deduplicating logically identical functions during evolution, which we find critical for search diversity. Our results demonstrate the potential of LLM-guided evolutionary search for information theory and code design and represent the first application of such methods for constructing error-correcting codes. However, in our current formulation, evaluating a function scales exponentially with code length, limiting the approach to short codes.",
+   "published": "2025-04-01",
+   "updated": "2026-06-05",
+   "authors": [
+    "Franziska Weindel",
+    "Reinhard Heckel"
+   ],
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI",
+    "cs.IT",
+    "cs.NE"
+   ],
+   "url": "https://arxiv.org/abs/2504.00613v2",
+   "pdf": "https://arxiv.org/pdf/2504.00613v2",
+   "comment": ""
+  },
+  {
+   "id": "2401.02051v3",
+   "title": "Evolution of Heuristics: Towards Efficient Automatic Algorithm Design Using Large Language Model",
+   "abstract": "Heuristics are widely used for dealing with complex search and optimization problems. However, manual design of heuristics can be often very labour extensive and requires rich working experience and knowledge. This paper proposes Evolution of Heuristic (EoH), a novel evolutionary paradigm that leverages both Large Language Models (LLMs) and Evolutionary Computation (EC) methods for Automatic Heuristic Design (AHD). EoH represents the ideas of heuristics in natural language, termed thoughts. They are then translated into executable codes by LLMs. The evolution of both thoughts and codes in an evolutionary search framework makes it very effective and efficient for generating high-performance heuristics. Experiments on three widely studied combinatorial optimization benchmark problems demonstrate that EoH outperforms commonly used handcrafted heuristics and other recent AHD methods including FunSearch. Particularly, the heuristic produced by EoH with a low computational budget (in terms of the number of queries to LLMs) significantly outperforms widely-used human hand-crafted baseline algorithms for the online bin packing problem.",
+   "published": "2024-01-04",
+   "updated": "2024-06-01",
+   "authors": [
+    "Fei Liu",
+    "Xialiang Tong",
+    "Mingxuan Yuan",
+    "Xi Lin",
+    "Fu Luo",
+    "Zhenkun Wang",
+    "Zhichao Lu",
+    "Qingfu Zhang"
+   ],
+   "primary_category": "cs.NE",
+   "categories": [
+    "cs.NE",
+    "cs.AI"
+   ],
+   "url": "https://arxiv.org/abs/2401.02051v3",
+   "pdf": "https://arxiv.org/pdf/2401.02051v3",
+   "comment": ""
+  },
+  {
+   "id": "2608.12522v1",
+   "title": "$\\varepsilon$-MemEvo: Adaptive Cross-Task Memory Transfer for LLM Program Evolution",
+   "abstract": "LLM-based program evolution systems such as FunSearch and AlphaEvolve have shown strong ability to discover novel algorithms, but typically optimize each task in isolation, discarding search experience after completion. We introduce $\\varepsilon$-MemEvo, a framework for cross-task knowledge transfer in LLM program evolution. $\\varepsilon$-MemEvo stores prior experience as task-agnostic tactic memories: compact natural-language summaries of successful algorithmic strategies rather than raw code, enabling transfer across tasks with different APIs and evaluators. To avoid negative transfer from semantically mismatched memories, $\\varepsilon$-MemEvo uses an adaptive injection gate that decides whether retrieved memories should be injected, and at what intensity. We evaluate $\\varepsilon$-MemEvo on 8 diverse optimization benchmarks spanning mathematical optimization and systems engineering, using a content-level Leave-One-Out protocol that excludes target-task memory entries. On the primary GPT-5 backbone, $\\varepsilon$-MemEvo improves AUCC over AdaEvolve on all 8 tasks, with a mean relative gain of +8.7%, and improves early-stage convergence by +9.4% on average. Ablations show that naive memory injection can fail catastrophically, while adaptive gating remains safe across all five ablation tasks. The data-updated posterior is interpretable in observed states: it favors skip during improving search and shifts from skip to hint across early and late plateaus. These gains incur less than 1% computational overhead.",
+   "published": "2026-08-12",
+   "updated": "2026-08-12",
+   "authors": [
+    "Aofan Liu",
+    "Shiyuan Song",
+    "Yiyan Qi"
+   ],
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI"
+   ],
+   "url": "https://arxiv.org/abs/2608.12522v1",
+   "pdf": "https://arxiv.org/pdf/2608.12522v1",
+   "comment": ""
+  }
+ ]
+}

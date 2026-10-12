@@ -1,0 +1,128 @@
+{
+ "A1_proof_repair_lean": {
+  "query": "abs:\"Lean\" AND abs:\"proof\" AND abs:\"agent\"",
+  "n": 30,
+  "top": [
+   "2607.17352v1",
+   "2605.17283v1",
+   "2605.20244v2",
+   "2606.22997v1",
+   "2012.09388v1"
+  ]
+ },
+ "A2_subgoal_decomposition_proving": {
+  "query": "abs:\"subgoal\" AND abs:\"theorem proving\" AND abs:\"language model\"",
+  "n": 16,
+  "top": [
+   "2408.11172v1",
+   "2504.21801v2",
+   "2510.02335v1",
+   "2305.16366v1",
+   "2507.02726v1"
+  ]
+ },
+ "A3_critic_pruning_search": {
+  "query": "abs:\"search\" AND abs:\"verifier\" AND abs:\"language model\" AND abs:\"prune\"",
+  "n": 26,
+  "top": [
+   "2502.00271v1",
+   "2609.39069v1",
+   "2510.16751v2",
+   "2512.19433v2",
+   "2407.12863v2"
+  ]
+ },
+ "B1_alphaevolve_funsearch": {
+  "query": "all:\"AlphaEvolve\" OR all:\"FunSearch\" OR all:\"evolutionary search\" AND abs:\"large language model\"",
+  "n": 30,
+  "top": [
+   "2506.13131v1",
+   "2505.16105v1",
+   "2605.14718v1",
+   "2504.05108v4",
+   "2610.02361v1"
+  ]
+ },
+ "B2_quality_diversity_llm": {
+  "query": "abs:\"quality-diversity\" AND abs:\"large language model\"",
+  "n": 30,
+  "top": [
+   "2607.11916v1",
+   "2606.25198v2",
+   "2501.06795v1",
+   "2402.15265v1",
+   "2601.22536v1"
+  ]
+ },
+ "B3_llm_scientific_discovery_hypothesis": {
+  "query": "abs:\"hypothesis\" AND abs:\"large language model\" AND abs:\"scientific discovery\"",
+  "n": 30,
+  "top": [
+   "2604.13699v1",
+   "2510.09901v2",
+   "2311.05965v1",
+   "2607.28990v1",
+   "2504.05496v1"
+  ]
+ },
+ "C1_infeasibility_certificate": {
+  "query": "abs:\"infeasibility\" AND abs:\"certificate\"",
+  "n": 30,
+  "top": [
+   "1810.11792v3",
+   "2004.14459v2",
+   "1507.00290v4",
+   "1506.08338v1",
+   "1108.5930v1"
+  ]
+ },
+ "C2_fundamental_limits_vibration_isolation": {
+  "query": "abs:\"vibration isolation\" AND (abs:\"fundamental limit\" OR abs:\"trade-off\" OR abs:\"Bode\")",
+  "n": 0,
+  "top": []
+ },
+ "D1_engineering_design_agent_physics": {
+  "query": "abs:\"engineering design\" AND abs:\"agent\" AND abs:\"physics\"",
+  "n": 10,
+  "top": [
+   "2605.19717v1",
+   "2606.12040v3",
+   "2608.15073v1",
+   "2602.20639v1",
+   "2605.28978v2"
+  ]
+ },
+ "D2_cad_llm_agent": {
+  "query": "abs:\"CAD\" AND abs:\"large language model\" AND abs:\"design\"",
+  "n": 30,
+  "top": [
+   "2409.17457v1",
+   "2412.13810v3",
+   "2509.21150v2",
+   "2602.22284v3",
+   "2412.14042v2"
+  ]
+ },
+ "E1_design_space_adaptation": {
+  "query": "abs:\"design space\" AND abs:\"agent\" AND (abs:\"adapt\" OR abs:\"expand\" OR abs:\"restructure\")",
+  "n": 30,
+  "top": [
+   "2608.12605v1",
+   "2410.15550v1",
+   "2402.17918v1",
+   "2510.20409v1",
+   "1407.0698v1"
+  ]
+ },
+ "E2_design_fixation_llm": {
+  "query": "abs:\"design fixation\" OR abs:\"creative ideation\" AND abs:\"large language model\"",
+  "n": 28,
+  "top": [
+   "2601.07121v3",
+   "2405.17837v3",
+   "2506.19644v1",
+   "2502.07128v2",
+   "2502.05870v1"
+  ]
+ }
+}

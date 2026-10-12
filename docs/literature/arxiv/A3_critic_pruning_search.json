@@ -1,0 +1,613 @@
+{
+ "query": "abs:\"search\" AND abs:\"verifier\" AND abs:\"language model\" AND abs:\"prune\"",
+ "hits": [
+  {
+   "id": "2502.00271v1",
+   "title": "Scaling Flaws of Verifier-Guided Search in Mathematical Reasoning",
+   "abstract": "Large language models (LLMs) struggle with multi-step reasoning, where inference-time scaling has emerged as a promising strategy for performance improvement. Verifier-guided search outperforms repeated sampling when sample size is limited by selecting and prioritizing valid reasoning paths. However, we identify a critical limitation: scaling flaws, prevalent across different models (Mistral 7B and DeepSeekMath 7B), benchmarks (GSM8K and MATH), and verifiers (outcome value models and process reward models). As sample size increases, verifier-guided search exhibits diminishing advantages and eventually underperforms repeated sampling. Our analysis attributes this to verifier failures, where imperfect verifiers misrank candidates and erroneously prune all valid paths. These issues are further exacerbated in challenging and out-of-distribution problems, restricting search effectiveness. To mitigate verifier failures, we explore reducing reliance on verifiers and conduct preliminary investigations using two simple methods. Our findings reveal fundamental limitations in verifier-guided search and suggest future directions.",
+   "published": "2025-02-01",
+   "updated": "2025-02-01",
+   "authors": [
+    "Fei Yu",
+    "Yingru Li",
+    "Benyou Wang"
+   ],
+   "primary_category": "cs.CL",
+   "categories": [
+    "cs.CL"
+   ],
+   "url": "https://arxiv.org/abs/2502.00271v1",
+   "pdf": "https://arxiv.org/pdf/2502.00271v1",
+   "comment": ""
+  },
+  {
+   "id": "2609.39069v1",
+   "title": "CORE: Conflict-Oriented Reasoning Elimination for Verifiable Language-Model Search",
+   "abstract": "Test-time reasoning systems often respond to failure by restarting or revising the latest step, even when an earlier decision caused the error. We introduce CORE, a search controller that requests a certified conflict core from a verifier, backjumps to the latest decision in that core, and caches the conflict to avoid repeating it. Under sound verification, finite branching and depth, and exhaustive proposals, the uncapped search is complete and never prunes a valid solution. On 2,000 planted graph-coloring instances with matched proposals and an exact verifier, CORE reduces median verifier calls by 39.8% at 30 variables and 35.0% at 36 variables relative to chronological repair; caching further improves on backjumping alone. Across five reasoning tasks, CORE achieves 75.9% mean success with Qwen2.5-7B-Instruct and 84.2% with Qwen3-8B, compared with 72.5% and 81.8% for Tree of Thoughts. It also uses fewer verifier calls and generated tokens on both backbones. These results show the value of using certified failure explanations to direct language-model search.",
+   "published": "2026-09-30",
+   "updated": "2026-09-30",
+   "authors": [
+    "Siyu Song",
+    "Rui Xu",
+    "Jia Lin",
+    "Kai Liu",
+    "Weifang Wang"
+   ],
+   "primary_category": "cs.CL",
+   "categories": [
+    "cs.CL"
+   ],
+   "url": "https://arxiv.org/abs/2609.39069v1",
+   "pdf": "https://arxiv.org/pdf/2609.39069v1",
+   "comment": ""
+  },
+  {
+   "id": "2510.16751v2",
+   "title": "Visual Autoregressive Models Beat Diffusion Models on Inference Time Scaling",
+   "abstract": "While inference-time scaling through search has revolutionized Large Language Models, translating these gains to image generation has proven difficult. Recent attempts to apply search strategies to continuous diffusion models show limited benefits, with simple random sampling often performing best. We demonstrate that the discrete, sequential nature of visual autoregressive models enables effective search for image generation. We show that beam search substantially improves text-to-image generation, enabling a 2B parameter autoregressive model to outperform a 12B parameter diffusion model across benchmarks. Systematic ablations show that this advantage comes from the discrete token space, which allows early pruning and computational reuse, and our verifier analysis highlights trade-offs between speed and reasoning capability. These findings suggest that model architecture, not just scale, is critical for inference-time optimization in visual generation.",
+   "published": "2025-10-19",
+   "updated": "2025-10-24",
+   "authors": [
+    "Erik Riise",
+    "Mehmet Onurcan Kaya",
+    "Dim P. Papadopoulos"
+   ],
+   "primary_category": "cs.CV",
+   "categories": [
+    "cs.CV"
+   ],
+   "url": "https://arxiv.org/abs/2510.16751v2",
+   "pdf": "https://arxiv.org/pdf/2510.16751v2",
+   "comment": ""
+  },
+  {
+   "id": "2512.19433v2",
+   "title": "dMLLM-TTS: Self-Verified and Efficient Test-Time Scaling for Diffusion Multi-Modal Large Language Models",
+   "abstract": "Diffusion Multi-modal Large Language Models (dMLLMs) have recently emerged as a novel architecture unifying image generation and understanding. However, developing effective and efficient Test-Time Scaling (TTS) methods to unlock their full generative potential remains an underexplored challenge. To address this, we propose dMLLM-TTS, a novel framework operating on two complementary scaling axes: (1) trajectory exploration scaling to enhance the diversity of generated hypotheses, and (2) iterative refinement scaling for stable generation. Conventional TTS approaches typically perform linear search across these two dimensions, incurring substantial computational costs of O(NT) and requiring an external verifier for best-of-N selection. To overcome these limitations, we propose two innovations. First, we design an efficient hierarchical search algorithm with O(N+T) complexity that adaptively expands and prunes sampling trajectories. Second, we introduce a self-verified feedback mechanism that leverages the dMLLMs' intrinsic image understanding capabilities to assess text-image alignment, eliminating the need for external verifier. Extensive experiments on the GenEval benchmark across three representative dMLLMs (e.g., Lumina-DiMOO, MMaDA, Muddit) show that our framework substantially improves generation quality while achieving up to 6x greater efficiency than linear search. Project page: https://github.com/Alpha-VLLM/Lumina-DiMOO.",
+   "published": "2025-12-22",
+   "updated": "2026-04-08",
+   "authors": [
+    "Yi Xin",
+    "Siqi Luo",
+    "Tianxiang Xu",
+    "Qi Qin",
+    "Haoxing Chen",
+    "Kaiwen Zhu",
+    "Zhiwei Zhang",
+    "Yangfan He",
+    "Rongchao Zhang",
+    "Jinbin Bai",
+    "Shuo Cao",
+    "Bin Fu",
+    "Junjun He",
+    "Yihao Liu",
+    "Yuewen Cao",
+    "Xiaohong Liu"
+   ],
+   "primary_category": "cs.CV",
+   "categories": [
+    "cs.CV"
+   ],
+   "url": "https://arxiv.org/abs/2512.19433v2",
+   "pdf": "https://arxiv.org/pdf/2512.19433v2",
+   "comment": "Project page: https://github.com/Alpha-VLLM/Lumina-DiMOO"
+  },
+  {
+   "id": "2407.12863v2",
+   "title": "Token-Supervised Value Models for Enhancing Mathematical Problem-Solving Capabilities of Large Language Models",
+   "abstract": "With the rapid advancement of test-time compute search strategies to improve the mathematical problem-solving capabilities of large language models (LLMs), the need for building robust verifiers has become increasingly important. However, all these inference strategies rely on existing verifiers originally designed for Best-of-N search, which makes them sub-optimal for tree search techniques at test time. During tree search, existing verifiers can only offer indirect and implicit assessments of partial solutions or under-value prospective intermediate steps, thus resulting in the premature pruning of promising intermediate steps. To overcome these limitations, we propose token-supervised value models (TVMs) - a new class of verifiers that assign each token a probability that reflects the likelihood of reaching the correct final answer. This new token-level supervision enables TVMs to directly and explicitly evaluate partial solutions, effectively distinguishing between promising and incorrect intermediate steps during tree search at test time. Experimental results demonstrate that combining tree-search-based inference strategies with TVMs significantly improves the accuracy of LLMs in mathematical problem-solving tasks, surpassing the performance of existing verifiers.",
+   "published": "2024-07-12",
+   "updated": "2025-03-10",
+   "authors": [
+    "Jung Hyun Lee",
+    "June Yong Yang",
+    "Byeongho Heo",
+    "Dongyoon Han",
+    "Kyungsu Kim",
+    "Eunho Yang",
+    "Kang Min Yoo"
+   ],
+   "primary_category": "cs.CL",
+   "categories": [
+    "cs.CL",
+    "cs.AI"
+   ],
+   "url": "https://arxiv.org/abs/2407.12863v2",
+   "pdf": "https://arxiv.org/pdf/2407.12863v2",
+   "comment": ""
+  },
+  {
+   "id": "2510.08992v3",
+   "title": "Constraints-of-Thought: A Framework for Constrained Reasoning in Language-Model-Guided Search",
+   "abstract": "While researchers have made significant progress in enabling large language models (LLMs) to perform multi-step planning, LLMs struggle to ensure that those plans align with high-level user intent and satisfy symbolic constraints, especially in complex, multi-step domains. Existing reasoning approaches such as Chain-of-Thought (CoT), Tree-of-Thought (ToT), and verifier-augmented methods, expand the search space but often yield infeasible actions or hallucinated steps. To overcome these limitations, we propose Constraints-of-Thought (Const-o-T), a framework that provides a structured prior that enables Monte Carlo Tree Search (MCTS) focus search on semantically meaningful paths. Each reasoning step is represented as an (intent, constraint) pair, which serves both to compress the search space and enforce validity. Unlike prior methods that merely generate reasoning traces or validate outputs post hoc, Const-o-T uses (intent, constraint)pairs to actively focus the search toward feasible and meaningful plans. We integrate Const-o-T into MCTS using a structured representation of intent-constraint pairs constraints prune infeasible branches and guide exploration toward semantically valid actions, improving planning efficiency and verifiable decision-making. We demonstrate across three domains Risk game, CAD code generation, and arithmetic reasoning that our approach outperforms baselines, yielding higher accuracy and stronger structural alignment. Our contribution is to demonstrate that Const-of-T offers a generalizable foundation for constraint-guided reasoning, enabling more efficient, constraint-aligned, and domain-adaptable planning with LLMs.",
+   "published": "2025-10-10",
+   "updated": "2026-05-12",
+   "authors": [
+    "Kamel Alrashedy",
+    "Vriksha Srihari",
+    "Zulfiqar Zaidi",
+    "Ridam Srivastava",
+    "Pradyumna Tambwekar",
+    "Matthew Gombolay"
+   ],
+   "primary_category": "cs.LG",
+   "categories": [
+    "cs.LG"
+   ],
+   "url": "https://arxiv.org/abs/2510.08992v3",
+   "pdf": "https://arxiv.org/pdf/2510.08992v3",
+   "comment": ""
+  },
+  {
+   "id": "2601.20014v1",
+   "title": "Teaching LLMs to Ask: Self-Querying Category-Theoretic Planning for Under-Specified Reasoning",
+   "abstract": "Inference-time planning with large language models frequently breaks under partial observability: when task-critical preconditions are not specified at query time, models tend to hallucinate missing facts or produce plans that violate hard constraints. We introduce \\textbf{Self-Querying Bidirectional Categorical Planning (SQ-BCP)}, which explicitly represents precondition status (\\texttt{Sat}/\\texttt{Viol}/\\texttt{Unk}) and resolves unknowns via (i) targeted self-queries to an oracle/user or (ii) \\emph{bridging} hypotheses that establish the missing condition through an additional action. SQ-BCP performs bidirectional search and invokes a pullback-based verifier as a categorical certificate of goal compatibility, while using distance-based scores only for ranking and pruning. We prove that when the verifier succeeds and hard constraints pass deterministic checks, accepted plans are compatible with goal requirements; under bounded branching and finite resolution depth, SQ-BCP finds an accepting plan when one exists. Across WikiHow and RecipeNLG tasks with withheld preconditions, SQ-BCP reduces resource-violation rates to \\textbf{14.9\\%} and \\textbf{5.8\\%} (vs.\\ \\textbf{26.0\\%} and \\textbf{15.7\\%} for the best baseline), while maintaining competitive reference quality.",
+   "published": "2026-01-27",
+   "updated": "2026-01-27",
+   "authors": [
+    "Shuhui Qu"
+   ],
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI"
+   ],
+   "url": "https://arxiv.org/abs/2601.20014v1",
+   "pdf": "https://arxiv.org/pdf/2601.20014v1",
+   "comment": ""
+  },
+  {
+   "id": "2511.18743v1",
+   "title": "RhinoInsight: Improving Deep Research through Control Mechanisms for Model Behavior and Context",
+   "abstract": "Large language models are evolving from single-turn responders into tool-using agents capable of sustained reasoning and decision-making for deep research. Prevailing systems adopt a linear pipeline of plan to search to write to a report, which suffers from error accumulation and context rot due to the lack of explicit control over both model behavior and context. We introduce RhinoInsight, a deep research framework that adds two control mechanisms to enhance robustness, traceability, and overall quality without parameter updates. First, a Verifiable Checklist module transforms user requirements into traceable and verifiable sub-goals, incorporates human or LLM critics for refinement, and compiles a hierarchical outline to anchor subsequent actions and prevent non-executable planning. Second, an Evidence Audit module structures search content, iteratively updates the outline, and prunes noisy context, while a critic ranks and binds high-quality evidence to drafted content to ensure verifiability and reduce hallucinations. Our experiments demonstrate that RhinoInsight achieves state-of-the-art performance on deep research tasks while remaining competitive on deep search tasks.",
+   "published": "2025-11-24",
+   "updated": "2025-11-24",
+   "authors": [
+    "Yu Lei",
+    "Shuzheng Si",
+    "Wei Wang",
+    "Yifei Wu",
+    "Gang Chen",
+    "Fanchao Qi",
+    "Maosong Sun"
+   ],
+   "primary_category": "cs.CL",
+   "categories": [
+    "cs.CL",
+    "cs.AI"
+   ],
+   "url": "https://arxiv.org/abs/2511.18743v1",
+   "pdf": "https://arxiv.org/pdf/2511.18743v1",
+   "comment": ""
+  },
+  {
+   "id": "2509.25420v1",
+   "title": "Adaptive Test-Time Reasoning via Reward-Guided Dual-Phase Search",
+   "abstract": "Large Language Models (LLMs) have achieved significant advances in reasoning tasks. A key approach is tree-based search with verifiers, which expand candidate reasoning paths and use reward models to guide pruning and selection. Although effective in improving accuracy, these methods are not optimal in terms of efficiency: they perform simple decomposition on the reasoning process, but ignore the planning-execution nature of tasks such as math reasoning or code generation. This results in inefficient exploration of reasoning process. To address this, we propose a dual-phase test-time scaling framework that explicitly separates reasoning into planning and execution, and performs search over the two phases individually. Specifically, we decompose reasoning trajectories and develop reward models for each phase, enabling the search to explore and prune plans and executions separately. We further introduce a dynamic budget allocation mechanism that adaptively redistributes sampling effort based on reward feedback, allowing early stopping on confident steps and reallocation of computation to more challenging parts of the reasoning process. Experiments on both mathematical reasoning and code generation benchmarks demonstrate that our approach consistently improves accuracy while reducing redundant computation.",
+   "published": "2025-09-29",
+   "updated": "2025-09-29",
+   "authors": [
+    "Yingqian Cui",
+    "Zhenwei Dai",
+    "Pengfei He",
+    "Bing He",
+    "Hui Liu",
+    "Xianfeng Tang",
+    "Jingying Zeng",
+    "Suhang Wang",
+    "Yue Xing",
+    "Jiliang Tang",
+    "Benoit Dumoulin"
+   ],
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI",
+    "cs.CL",
+    "cs.LG"
+   ],
+   "url": "https://arxiv.org/abs/2509.25420v1",
+   "pdf": "https://arxiv.org/pdf/2509.25420v1",
+   "comment": ""
+  },
+  {
+   "id": "2503.21961v4",
+   "title": "Entropy-Gated Branching for Efficient Test-Time Reasoning",
+   "abstract": "Test-time compute methods can significantly improve the reasoning capabilities and problem-solving accuracy of large language models (LLMs). However, these approaches require substantially more computational resources, with most compute wasted on exploring low-diversity branches where the model already exhibits high confidence. We observe that a small subset of uncertain reasoning steps has a disproportionately large impact on final prediction accuracy, and branching at these critical junctures tends to yield more diverse and higher-quality candidate reasoning steps. We propose Entropy-Gated Branching (EGB), which branches only at high-uncertainty steps and prunes expansions with a lightweight verifier. On mathematical and financial reasoning benchmarks, EGB improves accuracy by 22.6% over standard inference while operating 31%-75% faster across math benchmarks than test-time beam search with higher performance. Our results show that dynamic resource allocation during inference can substantially improve both efficiency and effectiveness, offering a more scalable pathway to enhanced LLM reasoning capabilities.",
+   "published": "2025-03-27",
+   "updated": "2026-01-27",
+   "authors": [
+    "Xianzhi Li",
+    "Ethan Callanan",
+    "Abdellah Ghassel",
+    "Xiaodan Zhu"
+   ],
+   "primary_category": "cs.CL",
+   "categories": [
+    "cs.CL",
+    "cs.AI"
+   ],
+   "url": "https://arxiv.org/abs/2503.21961v4",
+   "pdf": "https://arxiv.org/pdf/2503.21961v4",
+   "comment": ""
+  },
+  {
+   "id": "2606.25354v2",
+   "title": "Efficient and Trainable Language Model Test-Time Scaling via Local Branch Routing",
+   "abstract": "Test-time scaling improves language-model reasoning, but existing approaches often face a difficult trade-off: long chain-of-thought sampling remains single-threaded, while sentence- or solution-level search can be computationally expensive and hard to train end-to-end. We introduce Local Branch Routing (LBR), a token-level test-time scaling framework that expands a small local lookahead tree, forwards all sampled branches through the language model, and uses a lightweight router to select the depth-1 subtree to commit. By routing over the hidden states of candidate local futures, LBR allows each token decision to use evidence beyond the root next-token distribution while avoiding full solution-level search. The resulting prune-shift-grow decoding process preserves discrete branch identities and defines a tractable tree-trajectory likelihood: newly grown nodes are counted when first sampled, and router decisions are assigned explicit probabilities. This enables end-to-end reinforcement learning with verifiable rewards, jointly optimizing the base model and router under the same likelihood-ratio principle as discrete-token RLVR. On synthetic hierarchical-planning tasks, LBR shows that post-candidate hidden states provide useful routing evidence. On mathematical reasoning benchmarks, LBR improves both Pass@1 and Pass@32 over discrete chain-of-thought, vanilla discrete-token RLVR, and RL-compatible soft-token branching baselines. These results suggest that lightweight local branching offers an efficient, trainable, and discrete form of language-model test-time scaling.",
+   "published": "2026-06-24",
+   "updated": "2026-06-29",
+   "authors": [
+    "Yutong Yin",
+    "Mingyu Jin",
+    "Jin Pan",
+    "Changyi Yang",
+    "Zijie Xia",
+    "Dhruv Pai",
+    "Shuming Hu",
+    "Zhen Zhang",
+    "Chenyang Zhao",
+    "Jinman Zhao",
+    "Wujiang Xu",
+    "Raymond Li",
+    "Xin Eric Wang",
+    "Julian McAuley",
+    "Zhaoran Wang"
+   ],
+   "primary_category": "cs.CL",
+   "categories": [
+    "cs.CL"
+   ],
+   "url": "https://arxiv.org/abs/2606.25354v2",
+   "pdf": "https://arxiv.org/pdf/2606.25354v2",
+   "comment": ""
+  },
+  {
+   "id": "2602.01842v3",
+   "title": "Prism: Efficient Test-Time Scaling via Hierarchical Search and Self-Verification for Discrete Diffusion Language Models",
+   "abstract": "Inference-time compute has re-emerged as a practical way to improve LLM reasoning. Most test-time scaling (TTS) algorithms rely on autoregressive decoding, which is ill-suited to discrete diffusion language models (dLLMs) due to their parallel decoding over the entire sequence. As a result, developing effective and efficient TTS methods to unlock dLLMs' full generative potential remains an underexplored challenge. To address this, we propose Prism (Pruning, Remasking, and Integrated Self-verification Method), an efficient TTS framework for dLLMs that (i) performs Hierarchical Trajectory Search (HTS) which dynamically prunes and reallocates compute in an early-to-mid denoising window, (ii) introduces Local branching with partial remasking to explore diverse implementations while preserving high-confidence tokens, and (iii) replaces external verifiers with Self-Verified Feedback (SVF) obtained via self-evaluation prompts on intermediate completions. Across four mathematical reasoning and code generation benchmarks on three dLLMs, including LLaDA 8B Instruct, Dream 7B Instruct, and LLaDA 2.0-mini, our Prism achieves a favorable performance-efficiency trade-off, matching best-of-N performance with substantially fewer function evaluations (NFE). The code is released at https://github.com/viiika/Prism.",
+   "published": "2026-02-02",
+   "updated": "2026-05-05",
+   "authors": [
+    "Jinbin Bai",
+    "Yixuan Li",
+    "Yuchen Zhu",
+    "Yi Xin",
+    "Qingyu Shi",
+    "Aosong Feng",
+    "Xiaohong Liu",
+    "Molei Tao",
+    "Jianru Xue",
+    "Xiangtai Li",
+    "Ming-Hsuan Yang"
+   ],
+   "primary_category": "cs.LG",
+   "categories": [
+    "cs.LG"
+   ],
+   "url": "https://arxiv.org/abs/2602.01842v3",
+   "pdf": "https://arxiv.org/pdf/2602.01842v3",
+   "comment": "Accepted to ICML 2026. Codes and Supplementary Material: https://github.com/viiika/Prism"
+  },
+  {
+   "id": "2608.22762v1",
+   "title": "Compositional Chain-of-Relations for Faithful Knowledge Graph Question Answering with Large Language Models",
+   "abstract": "Knowledge graph question answering (KGQA) is a key task for evaluating KG-augmented Large Language Models (LLMs), and complex KGQA that requires multi-hop reasoning is especially challenging. Solving a complex query involves two coupled phases: candidate retrieval, which locates answer candidates over the KG, and constraint handling, which filters these candidates against the query constraints. Faithful reasoning requires grounding both phases in the KG. However, existing agent-based methods ground candidate retrieval through entity-centric exploration, while leaving constraint handling to the LLM's internal knowledge, which leads to two critical limitations. (1) Unreliable entity pruning: entity-centric exploration uses entities as search units and must prune them to a fixed-size subset at each hop. Because entity information in KGs is often incomplete and a fixed-size subset cannot retain all valid entities, such pruning inevitably drops valid entities and ultimately leads to wrong answers. (2) Ungrounded constraint handling: query constraints are resolved from the LLM's internal knowledge rather than the KG, leaving the final answers unverifiable and prone to hallucination. To address these limitations, this paper introduces a relation-centric exploration paradigm, which uses relations rather than entities as search units and thus avoids unreliable entity pruning. Built on this paradigm, this paper proposes Compositional Chain-of-Relations (CCoR), a simple and effective framework that grounds both phases in the KG with two relation chains: a main chain for candidate retrieval and a constraint chain that verifies query constraints through explicit KG exploration. Experiments on four KGQA benchmarks show that CCoR consistently improves accuracy, faithfulness, and efficiency over strong baselines, with more pronounced gains on complex queries.",
+   "published": "2026-08-24",
+   "updated": "2026-08-24",
+   "authors": [
+    "Chenhui Liu",
+    "Jianpeng Zhou",
+    "Jiahai Wang"
+   ],
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI"
+   ],
+   "url": "https://arxiv.org/abs/2608.22762v1",
+   "pdf": "https://arxiv.org/pdf/2608.22762v1",
+   "comment": ""
+  },
+  {
+   "id": "2606.01544v1",
+   "title": "CRePE: Convolution-aware Relative Importance in Post-training Pruning with Efficient Search",
+   "abstract": "Deploying Large Language Models (LLMs) in practice incurs substantial memory and computational costs. Post-training pruning (PTP) is an effective approach to reducing these costs by removing weights without additional training. Among existing methods, RIA introduces relative importance scores normalized by row and column sums, achieving state-of-the-art accuracy. However, RIA considers only 1D cross-shaped (row/column) directional information and assigns equal weight to row and column contributions. In this paper, we propose \\textbf{CRePE}, which incorporates 2D local neighborhood context and adaptive coefficients into Relative Importance scoring. CRePE consistently outperforms existing PTP methods across diverse models and sparsity settings. However, identifying optimal adaptive coefficients via perplexity (PPL)-based hill climbing requires numerous PPL evaluations and approximately 11 hours of search time. To address this, we propose \\textbf{PHO} (Proxy-based Hyperparameter Optimization), which eliminates the need for repeated PPL measurements and reduces the search time to approximately 20 minutes. Furthermore, the optimal hyperparameter configuration found by PHO on one model transfers well to other models, demonstrating strong generalization. Finally, we verify that CRePE can be orthogonally combined with existing techniques including Channel Permutation, non-uniform sparsity allocation, and re-pruning methods.",
+   "published": "2026-06-01",
+   "updated": "2026-06-01",
+   "authors": [
+    "Cheonjun Park"
+   ],
+   "primary_category": "cs.LG",
+   "categories": [
+    "cs.LG"
+   ],
+   "url": "https://arxiv.org/abs/2606.01544v1",
+   "pdf": "https://arxiv.org/pdf/2606.01544v1",
+   "comment": "10 pages"
+  },
+  {
+   "id": "2609.26100v1",
+   "title": "TSS: Target-Side Sparsification for Speculative Decoding in Domain-Specific Large Language Models",
+   "abstract": "Speculative decoding accelerates large language model inference through collaboration between a lightweight draft model and a target verifier. Existing methods mainly improve the draft side, while the target model is typically kept dense and unchanged. We show that, under domain-specific inference, full-depth target verification is not always the optimal choice. Counter-intuitively, skipping selected target layers can reduce verification cost while simultaneously increasing draft acceptance and preserving, or even improving, downstream task performance. Based on this observation, we propose TSS, a target-side sparsification framework for speculative decoding. TSS employs an acceptance- and metric-aware breadth search to explore multi-layer skip configurations without imposing a fixed priority between the two objectives. The selected configurations are stored in a domain-to-configuration mapping and applied by a lightweight skip controller, allowing one complete target model to support multiple sparse verification paths without retraining or permanent parameter pruning. Experiments on Spec-Bench across multiple domains, model scales, and speculative decoding methods show consistent improvements in draft acceptance and downstream task performance. In Translation setting, TSS increases the average accept length from 2.70 to 4.53 (+67.8%), improves BLEU from 0.131 to 0.237 (+80.9%), and raises end-to-end throughput from 75.6 to 127.3 tokens/s, corresponding to a 1.68X speedup.",
+   "published": "2026-08-15",
+   "updated": "2026-08-15",
+   "authors": [
+    "Haibo Hu",
+    "Lianming Huang",
+    "Qiao Li",
+    "Nan Guan",
+    "Chun Jason Xue"
+   ],
+   "primary_category": "cs.CL",
+   "categories": [
+    "cs.CL",
+    "cs.AI"
+   ],
+   "url": "https://arxiv.org/abs/2609.26100v1",
+   "pdf": "https://arxiv.org/pdf/2609.26100v1",
+   "comment": ""
+  },
+  {
+   "id": "2605.29307v2",
+   "title": "GrepSeek: Training Search Agents for Direct Corpus Interaction",
+   "abstract": "Large Language Model (LLM) search agents have shown strong promise on knowledge-intensive tasks through iterative reasoning and retrieval. Most existing systems rely on retrievers that return ranked documents from a pre-built index. We explore a complementary paradigm in which the agent treats the corpus as the search environment and finds evidence through executable shell commands. We introduce GrepSeek, an optimized direct corpus interaction (DCI) agent that learns to find, filter, and compose evidence over large text corpora. To stabilize reinforcement learning (RL) over large corpora, we train in two stages: first, we initialize the policy using verified, causally grounded search trajectories generated by an answer-aware Tutor and an answer-blind Planner; then, we refine the policy using Group Relative Policy Optimization (GRPO). To make DCI practical at scale, we introduce two semantics-preserving execution optimizations: Pruned Adaptive Command Execution, which reduces shell-based search latency by up to $77\\times$ on a 14GB corpus with 21 million documents using a compact auxiliary structure, and Sharded-Parallel Corpus Search, which achieves up to $7.6\\times$ speedup without additional preprocessing; both preserve equivalence with sequential execution. Across eight open-domain QA benchmarks, GrepSeek achieves the strongest overall performance, with a statistically significant relative improvement of $5.7\\%$ over the best baseline. Our analysis shows how DCI-optimized agents conduct flexible and effective compositional search through direct corpus interaction.",
+   "published": "2026-05-28",
+   "updated": "2026-09-30",
+   "authors": [
+    "Alireza Salemi",
+    "Chang Zeng",
+    "Atharva Nijasure",
+    "Jui-Hui Chung",
+    "Razieh Rahimi",
+    "Fernando Diaz",
+    "Hamed Zamani"
+   ],
+   "primary_category": "cs.CL",
+   "categories": [
+    "cs.CL",
+    "cs.AI",
+    "cs.IR",
+    "cs.LG"
+   ],
+   "url": "https://arxiv.org/abs/2605.29307v2",
+   "pdf": "https://arxiv.org/pdf/2605.29307v2",
+   "comment": ""
+  },
+  {
+   "id": "2509.21874v1",
+   "title": "Abductive Logical Rule Induction by Bridging Inductive Logic Programming and Multimodal Large Language Models",
+   "abstract": "We propose ILP-CoT, a method that bridges Inductive Logic Programming (ILP) and Multimodal Large Language Models (MLLMs) for abductive logical rule induction. The task involves both discovering logical facts and inducing logical rules from a small number of unstructured textual or visual inputs, which still remain challenging when solely relying on ILP, due to the requirement of specified background knowledge and high computational cost, or MLLMs, due to the appearance of perceptual hallucinations. Based on the key observation that MLLMs could propose structure-correct rules even under hallucinations, our approach automatically builds ILP tasks with pruned search spaces based on the rule structure proposals from MLLMs, and utilizes ILP system to output rules built upon rectified logical facts and formal inductive reasoning. Its effectiveness is verified through challenging logical induction benchmarks, as well as a potential application of our approach, namely text-to-image customized generation with rule induction. Our code and data are released at https://github.com/future-item/ILP-CoT.",
+   "published": "2025-09-26",
+   "updated": "2025-09-26",
+   "authors": [
+    "Yifei Peng",
+    "Yaoli Liu",
+    "Enbo Xia",
+    "Yu Jin",
+    "Wang-Zhou Dai",
+    "Zhong Ren",
+    "Yao-Xiang Ding",
+    "Kun Zhou"
+   ],
+   "primary_category": "cs.LG",
+   "categories": [
+    "cs.LG"
+   ],
+   "url": "https://arxiv.org/abs/2509.21874v1",
+   "pdf": "https://arxiv.org/pdf/2509.21874v1",
+   "comment": ""
+  },
+  {
+   "id": "2511.21734v2",
+   "title": "Asking LLMs to Verify First is Almost Free Lunch",
+   "abstract": "To enhance the reasoning capabilities of Large Language Models (LLMs) without high costs of training, nor extensive test-time sampling, we introduce Verification-First (VF), a strategy that prompts models to verify a provided candidate answer, even a trivial or random one, before generating a solution. This approach triggers a \"reverse reasoning\" process complementary to standard forward Chain-of-Thought (CoT), which restricts the logical search space of the answer by pruning the LLM's output distribution. We further generalize VF prompting to Iter-VF, a sequential test-time scaling (TTS) method that iteratively cycles the verification-generation process using the model's previous answer. Extensive experiments across various benchmarks and various LLMs confirm that VF prompting with random answer consistently outperforms standard CoT with minimal computational overhead, and Iter-VF outperforms existing TTS strategies. VF is also effective on SOTA thinking models. For example, by using the simple VF prompting, we obtain a new SOTA 94.9% accuracy on GPQA-Diamond with Gemini-3-Pro-Preview where VF reduces its errors by ~30% relatively.",
+   "published": "2025-11-21",
+   "updated": "2026-05-23",
+   "authors": [
+    "Shiguang Wu",
+    "Quanming Yao"
+   ],
+   "primary_category": "cs.CL",
+   "categories": [
+    "cs.CL",
+    "cs.AI"
+   ],
+   "url": "https://arxiv.org/abs/2511.21734v2",
+   "pdf": "https://arxiv.org/pdf/2511.21734v2",
+   "comment": ""
+  },
+  {
+   "id": "2601.08468v1",
+   "title": "JudgeRLVR: Judge First, Generate Second for Efficient Reasoning",
+   "abstract": "Reinforcement Learning with Verifiable Rewards (RLVR) has become a standard paradigm for reasoning in Large Language Models. However, optimizing solely for final-answer correctness often drives models into aimless, verbose exploration, where they rely on exhaustive trial-and-error tactics rather than structured planning to reach solutions. While heuristic constraints like length penalties can reduce verbosity, they often truncate essential reasoning steps, creating a difficult trade-off between efficiency and verification. In this paper, we argue that discriminative capability is a prerequisite for efficient generation: by learning to distinguish valid solutions, a model can internalize a guidance signal that prunes the search space. We propose JudgeRLVR, a two-stage judge-then-generate paradigm. In the first stage, we train the model to judge solution responses with verifiable answers. In the second stage, we fine-tune the same model with vanilla generating RLVR initialized from the judge. Compared to Vanilla RLVR using the same math-domain training data, JudgeRLVR achieves a better quality--efficiency trade-off for Qwen3-30B-A3B: on in-domain math, it delivers about +3.7 points average accuracy gain with -42\\% average generation length; on out-of-domain benchmarks, it delivers about +4.5 points average accuracy improvement, demonstrating enhanced generalization.",
+   "published": "2026-01-13",
+   "updated": "2026-01-13",
+   "authors": [
+    "Jiangshan Duo",
+    "Hanyu Li",
+    "Hailin Zhang",
+    "Yudong Wang",
+    "Sujian Li",
+    "Liang Zhao"
+   ],
+   "primary_category": "cs.CL",
+   "categories": [
+    "cs.CL",
+    "cs.AI",
+    "cs.LG"
+   ],
+   "url": "https://arxiv.org/abs/2601.08468v1",
+   "pdf": "https://arxiv.org/pdf/2601.08468v1",
+   "comment": "16 pages, 5 figures"
+  },
+  {
+   "id": "2608.01867v2",
+   "title": "CRISP: Critical Step Perception for Training Efficient Deep Search Agents",
+   "abstract": "Large language models (LLMs) are increasingly extended into deep search agents that solve complex questions through multi-step interaction with external search and browsing tools. However, existing agents often incur substantial computational and interaction costs, generating lengthy trajectories that contain redundant queries, inefficient exploration, and irrelevant observations. Existing efficiency-oriented methods usually encourage agents to use tools less frequently, but treating all tool interactions uniformly may also suppress steps that gather necessary evidence. In this paper, we propose CRISP, a framework for training efficient deep search agents through critical step perception. Unlike prior efficiency methods that uniformly penalize tool use, CRISP distinguishes interactions that gather necessary evidence from redundant ones and shapes the training reward to preserve the former while pruning the latter, improving efficiency without sacrificing the evidence needed for correct answers. Specifically, CRISP first constructs critical-step labels with Backward Evidence Induction: starting from the final answer, a strong model traverses a completed search trajectory backward and judges whether each tool-interaction step provides or preserves evidence for the final answer. We then distill these step-wise judgments into a smaller critical-step recognizer, enabling full-trajectory analysis in a single pass. During policy optimization, an efficiency-aware reward is applied only to successful rollouts. Experiments on BrowseComp and HLE-Verified show that CRISP maintains competitive final-answer accuracy while reducing average interaction turns by 15.1% and 33.2%, respectively, demonstrating substantial improvements in interaction efficiency.",
+   "published": "2026-08-03",
+   "updated": "2026-08-04",
+   "authors": [
+    "Haosi Mo",
+    "Zihao Yan",
+    "Ruiqing Zhang",
+    "Zhongli Li",
+    "Hexuan Deng",
+    "Xuebo Liu",
+    "Min Zhang"
+   ],
+   "primary_category": "cs.CL",
+   "categories": [
+    "cs.CL"
+   ],
+   "url": "https://arxiv.org/abs/2608.01867v2",
+   "pdf": "https://arxiv.org/pdf/2608.01867v2",
+   "comment": "15 pages, 6 figures"
+  },
+  {
+   "id": "2302.13145v2",
+   "title": "Absynthe: Abstract Interpretation-Guided Synthesis",
+   "abstract": "Synthesis tools have seen significant success in recent times. However, past approaches often require a complete and accurate embedding of the source language in the logic of the underlying solver, an approach difficult for industrial-grade languages. Other approaches couple the semantics of the source language with purpose-built synthesizers, necessarily tying the synthesis engine to a particular language model. In this paper, we propose Absynthe, an alternative approach based on user-defined abstract semantics that aims to be both lightweight and language agnostic, yet effective in guiding the search for programs. A synthesis goal in Absynthe is specified as an abstract specification in a lightweight user-defined abstract domain and concrete test cases. The synthesis engine is parameterized by the abstract semantics and independent of the source language. Absynthe validates candidate programs against test cases using the actual concrete language implementation to ensure correctness. We formalize the synthesis rules for Absynthe and describe how the key ideas are scaled-up in our implementation in Ruby. We evaluated Absynthe on SyGuS strings benchmark and found it competitive with other enumerative search solvers. Moreover, Absynthe's ability to combine abstract domains allows the user to move along a cost spectrum, i.e., expressive domains prune more programs but require more time. Finally, to verify Absynthe can act as a general purpose synthesis tool, we use Absynthe to synthesize Pandas data frame manipulating programs in Python using simple abstractions like types and column labels of a data frame. Absynthe reaches parity with AutoPandas, a deep learning based tool for the same benchmark suite. In summary, our results demonstrate Absynthe is a promising step forward towards a general-purpose approach to synthesis that may broaden the applicability of synthesis to more $\\ldots$",
+   "published": "2023-02-25",
+   "updated": "2023-04-24",
+   "authors": [
+    "Sankha Narayan Guria",
+    "Jeffrey S. Foster",
+    "David Van Horn"
+   ],
+   "primary_category": "cs.PL",
+   "categories": [
+    "cs.PL"
+   ],
+   "url": "https://arxiv.org/abs/2302.13145v2",
+   "pdf": "https://arxiv.org/pdf/2302.13145v2",
+   "comment": "22 pages, 6 figures, this is a preprint of a paper conditionally accepted at Programming Language Design and Implementation (PLDI) 2023"
+  },
+  {
+   "id": "2503.18942v2",
+   "title": "Video-T1: Test-Time Scaling for Video Generation",
+   "abstract": "With the scale capability of increasing training data, model size, and computational cost, video generation has achieved impressive results in digital creation, enabling users to express creativity across various domains. Recently, researchers in Large Language Models (LLMs) have expanded the scaling to test-time, which can significantly improve LLM performance by using more inference-time computation. Instead of scaling up video foundation models through expensive training costs, we explore the power of Test-Time Scaling (TTS) in video generation, aiming to answer the question: if a video generation model is allowed to use non-trivial amount of inference-time compute, how much can it improve generation quality given a challenging text prompt. In this work, we reinterpret the test-time scaling of video generation as a searching problem to sample better trajectories from Gaussian noise space to the target video distribution. Specifically, we build the search space with test-time verifiers to provide feedback and heuristic algorithms to guide searching process. Given a text prompt, we first explore an intuitive linear search strategy by increasing noise candidates at inference time. As full-step denoising all frames simultaneously requires heavy test-time computation costs, we further design a more efficient TTS method for video generation called Tree-of-Frames (ToF) that adaptively expands and prunes video branches in an autoregressive manner. Extensive experiments on text-conditioned video generation benchmarks demonstrate that increasing test-time compute consistently leads to significant improvements in the quality of videos. Project page: https://liuff19.github.io/Video-T1",
+   "published": "2025-03-24",
+   "updated": "2025-04-01",
+   "authors": [
+    "Fangfu Liu",
+    "Hanyang Wang",
+    "Yimo Cai",
+    "Kaiyan Zhang",
+    "Xiaohang Zhan",
+    "Yueqi Duan"
+   ],
+   "primary_category": "cs.CV",
+   "categories": [
+    "cs.CV",
+    "cs.AI"
+   ],
+   "url": "https://arxiv.org/abs/2503.18942v2",
+   "pdf": "https://arxiv.org/pdf/2503.18942v2",
+   "comment": "Project page: https://liuff19.github.io/Video-T1"
+  },
+  {
+   "id": "2505.20266v1",
+   "title": "syftr: Pareto-Optimal Generative AI",
+   "abstract": "Retrieval-Augmented Generation (RAG) pipelines are central to applying large language models (LLMs) to proprietary or dynamic data. However, building effective RAG flows is complex, requiring careful selection among vector databases, embedding models, text splitters, retrievers, and synthesizing LLMs. The challenge deepens with the rise of agentic paradigms. Modules like verifiers, rewriters, and rerankers-each with intricate hyperparameter dependencies have to be carefully tuned. Balancing tradeoffs between latency, accuracy, and cost becomes increasingly difficult in performance-sensitive applications. We introduce syftr, a framework that performs efficient multi-objective search over a broad space of agentic and non-agentic RAG configurations. Using Bayesian Optimization, syftr discovers Pareto-optimal flows that jointly optimize task accuracy and cost. A novel early-stopping mechanism further improves efficiency by pruning clearly suboptimal candidates. Across multiple RAG benchmarks, syftr finds flows which are on average approximately 9 times cheaper while preserving most of the accuracy of the most accurate flows on the Pareto-frontier. Furthermore, syftr's ability to design and optimize allows integrating new modules, making it even easier and faster to realize high-performing generative AI pipelines.",
+   "published": "2025-05-26",
+   "updated": "2025-05-26",
+   "authors": [
+    "Alexander Conway",
+    "Debadeepta Dey",
+    "Stefan Hackmann",
+    "Matthew Hausknecht",
+    "Michael Schmidt",
+    "Mark Steadman",
+    "Nick Volynets"
+   ],
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI",
+    "cs.LG"
+   ],
+   "url": "https://arxiv.org/abs/2505.20266v1",
+   "pdf": "https://arxiv.org/pdf/2505.20266v1",
+   "comment": "International Conference on Automated Machine Learning (AutoML) 2025"
+  },
+  {
+   "id": "2608.29263v1",
+   "title": "RACER: Reinforced Agent Collaboration for Explainable Reasoning on Knowledge Graphs",
+   "abstract": "Large Language Models (LLMs) often suffer from hallucination and struggle with complex reasoning tasks requiring multi-hop domain knowledge. While integrating Knowledge Graphs (KGs) provides a structured and verifiable information source, current KG-enhanced LLM paradigms usually rely on single-agent path extraction and fixed prompting, lacking adaptability and facing huge search spaces. To address these challenges, we propose RACER, a Reinforced Agent Collaboration framework for Explainable Reasoning on knowledge graphs. RACER employs a semantic-aware action pruning and teacher-guided reinforcement learning mechanism to efficiently extract high-quality reasoning pathways from large-scale KGs. Furthermore, to mitigate single-path generation pitfalls, we introduce a cross-task accumulated shared memory graph paired with an attention-driven multi-path knowledge refinement module. Finally, RACER orchestrates these components through a four-role multi-agent collaboration system (GraphAgent, TemplateAgent, AnswerAgent, and CriticAgent) to dynamically refine prompts and evaluate answers. Extensive experiments on CommonsenseQA and OpenBookQA datasets demonstrate that RACER significantly outperforms state-of-the-art KG-enhanced LLM baselines with an average improvement of 5\\%, offering robust and highly interpretable reasoning capabilities.",
+   "published": "2026-08-29",
+   "updated": "2026-08-29",
+   "authors": [
+    "Yuwei Lou",
+    "Hao Hu",
+    "Yuzhou Jiang",
+    "Zongfei Zhang",
+    "Liang Wang",
+    "Jincai Liu",
+    "Jidong Ge",
+    "Xianping Tao"
+   ],
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI"
+   ],
+   "url": "https://arxiv.org/abs/2608.29263v1",
+   "pdf": "https://arxiv.org/pdf/2608.29263v1",
+   "comment": "15 pages, 1 figures, This paper has been accepted by ICONIP 2026"
+  },
+  {
+   "id": "2606.24245v3",
+   "title": "AutoSpec: Safety Rule Evolution for LLM Agents via Inductive Logic Programming",
+   "abstract": "Large language model (LLM) agents increasingly automate complex tasks by integrating language models with external tools and environments. However, their autonomy poses significant safety risks: agents may execute destructive commands, leak sensitive data, or violate domain constraints. Existing safety approaches face a fundamental tradeoff: hand-crafted rules are interpretable but brittle, with overly conservative rules blocking safe operations (high false positives) while permissive rules miss unsafe behaviors (high false negatives). Neural classifiers lack the interpretability required for safety-critical deployments. We present AutoSpec, a framework that automatically evolves deployed expert-designed safety rules from user safe/unsafe annotations through counterexample-guided inductive synthesis (CEGIS) guided by inductive logic programming (ILP). Starting from the expert rules and a stream of annotated traces, AutoSpec iteratively evaluates rules, mines false-positive and false-negative counterexamples, uses ILP to learn which predicates discriminate them, generates candidate rule edits, and verifies candidates to select the best revision. The key insight is that ILP efficiently identifies predicates that appear frequently in false negatives but rarely in false positives (or vice versa), dramatically pruning the exponential search space of rule edits. This continues until convergence, producing interpretable rules that balance precision and recall. We evaluate AutoSpec on 291 execution traces spanning code execution and embodied agent domains. AutoSpec raises rule F1 to 0.98 and 0.93 across the two domains, achieving up to 94% false positive reduction while maintaining high recall, and converges within 4-5 iterations. The ILP-guided approach achieves up to 4.8x higher F1 than heuristic CEGIS. The learned rules are human-readable, auditable, and generalize to unseen scenarios.",
+   "published": "2026-06-23",
+   "updated": "2026-07-07",
+   "authors": [
+    "Pingchuan Ma",
+    "Zhaoyu Wang",
+    "Zimo Ji",
+    "Yuguang Zhou",
+    "Zhantong Xue",
+    "Zongjie Li",
+    "Shuai Wang",
+    "Xiaoqin Zhang"
+   ],
+   "primary_category": "cs.SE",
+   "categories": [
+    "cs.SE",
+    "cs.AI",
+    "cs.CR"
+   ],
+   "url": "https://arxiv.org/abs/2606.24245v3",
+   "pdf": "https://arxiv.org/pdf/2606.24245v3",
+   "comment": ""
+  },
+  {
+   "id": "2507.23370v1",
+   "title": "Trae Agent: An LLM-based Agent for Software Engineering with Test-time Scaling",
+   "abstract": "Software issue resolution is a critical challenge in software engineering and has garnered increasing attention in recent years. With the rapid advancement of large language models (LLMs), substantial progress has been made in addressing real-world software engineering tasks. Recent studies have introduced ensemble reasoning techniques to enhance the performance of LLM-based issue resolution. However, existing prompting-based methods still face limitations in effectively exploring large ensemble spaces and lack the capacity for repository-level understanding, both of which constrain their overall effectiveness. In this paper, we propose Trae Agent, the first agent-based ensemble reasoning approach for repository-level issue resolution. Trae Agent formulates our goal as an optimal solution search problem and addresses two key challenges, i.e., large ensemble spaces and repository-level understanding, through modular agents for generation, pruning, and selection. We conduct extensive experiments using three leading LLMs on the widely-adopted SWE-bench benchmark, comparing Trae Agent against four state-of-the-art ensemble reasoning techniques. Experimental results demonstrate that Trae Agent consistently achieves superior performance, with an average improvement of 10.22% over all baselines in terms of Pass@1. Trae Agent has achieved first place on the SWE-bench Verified leaderboard, with a notable Pass@1 score of 75.20%. We are pleased to release Trae Agent as an open-source project to support the research community, with all resources available at https://github.com/bytedance/trae-agent.",
+   "published": "2025-07-31",
+   "updated": "2025-07-31",
+   "authors": [
+    "Trae Research Team",
+    "Pengfei Gao",
+    "Zhao Tian",
+    "Xiangxin Meng",
+    "Xinchen Wang",
+    "Ruida Hu",
+    "Yuanan Xiao",
+    "Yizhou Liu",
+    "Zhao Zhang",
+    "Junjie Chen",
+    "Cuiyun Gao",
+    "Yun Lin",
+    "Yingfei Xiong",
+    "Chao Peng",
+    "Xia Liu"
+   ],
+   "primary_category": "cs.SE",
+   "categories": [
+    "cs.SE",
+    "cs.AI"
+   ],
+   "url": "https://arxiv.org/abs/2507.23370v1",
+   "pdf": "https://arxiv.org/pdf/2507.23370v1",
+   "comment": "Pengfei Gao and Zhao Tian contributed equally to this technical report"
+  }
+ ]
+}

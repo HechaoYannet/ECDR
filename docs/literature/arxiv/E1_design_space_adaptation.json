@@ -1,0 +1,650 @@
+{
+ "query": "abs:\"design space\" AND abs:\"agent\" AND (abs:\"adapt\" OR abs:\"expand\" OR abs:\"restructure\")",
+ "hits": [
+  {
+   "id": "2608.12605v1",
+   "title": "Surprise2Refine: Axis-Centered Exploration-To-Refinement for Agent-Assisted Creative Scaffolding",
+   "abstract": "Designers require different design spaces across creative stages: broad during exploration, and targeted during refinement. Yet existing agent-driven tools assume a fixed or continuously expanding space, leaving designers to manage and navigate it themselves. Informed by a formative study with five designers, we propose an axis-centered workflow that adaptively broadens and narrows the design space to support structured exploration and refinement. We implemented this workflow in Surprise2Refine, a prototype that allows users to build and reshape an nxn design space through a set of axis-centered interactions as their creative intent evolves. A within-subjects study with 14 designers shows that Surprise2Refine enhances users' sense of control, supports tracking of scaffolding paths, and improves the perceived creativity of design outcomes. We further distill design insights to guide future agent-assisted tools for creative scaffolding.",
+   "published": "2026-08-12",
+   "updated": "2026-08-12",
+   "authors": [
+    "Yuzhe You",
+    "Gromit Yeuk-Yin Chan",
+    "Shunan Guo",
+    "Anlan Zhang",
+    "Eunyee Koh",
+    "Jian Zhao",
+    "Tongyu Zhou"
+   ],
+   "primary_category": "cs.HC",
+   "categories": [
+    "cs.HC"
+   ],
+   "url": "https://arxiv.org/abs/2608.12605v1",
+   "pdf": "https://arxiv.org/pdf/2608.12605v1",
+   "comment": "Accepted to ACM UIST 2026"
+  },
+  {
+   "id": "2410.15550v1",
+   "title": "Hiding in Plain Sight: Reframing Hardware Trojan Benchmarking as a Hide&Seek Modification",
+   "abstract": "This work focuses on advancing security research in the hardware design space by formally defining the realistic problem of Hardware Trojan (HT) detection. The goal is to model HT detection more closely to the real world, i.e., describing the problem as The Seeker's Dilemma where a detecting agent is unaware of whether circuits are infected by HTs or not. Using this theoretical problem formulation, we create a benchmark that consists of a mixture of HT-free and HT-infected restructured circuits while preserving their original functionalities. The restructured circuits are randomly infected by HTs, causing a situation where the defender is uncertain if a circuit is infected or not. We believe that our innovative benchmark and methodology of creating benchmarks will help the community judge the detection quality of different methods by comparing their success rates in circuit classification. We use our developed benchmark to evaluate three state-of-the-art HT detection tools to show baseline results for this approach. We use Principal Component Analysis to assess the strength of our benchmark, where we observe that some restructured HT-infected circuits are mapped closely to HT-free circuits, leading to significant label misclassification by detectors.",
+   "published": "2024-10-21",
+   "updated": "2024-10-21",
+   "authors": [
+    "Amin Sarihi",
+    "Ahmad Patooghy",
+    "Peter Jamieson",
+    "Abdel-Hameed A. Badawy"
+   ],
+   "primary_category": "cs.CR",
+   "categories": [
+    "cs.CR",
+    "cs.AR",
+    "cs.LG"
+   ],
+   "url": "https://arxiv.org/abs/2410.15550v1",
+   "pdf": "https://arxiv.org/pdf/2410.15550v1",
+   "comment": "arXiv admin note: substantial text overlap with arXiv:2402.17918"
+  },
+  {
+   "id": "2402.17918v1",
+   "title": "The Seeker's Dilemma: Realistic Formulation and Benchmarking for Hardware Trojan Detection",
+   "abstract": "This work focuses on advancing security research in the hardware design space by formally defining the realistic problem of Hardware Trojan (HT) detection. The goal is to model HT detection more closely to the real world, i.e., describing the problem as \"The Seeker's Dilemma\" (an extension of Hide&Seek on a graph), where a detecting agent is unaware of whether circuits are infected by HTs or not. Using this theoretical problem formulation, we create a benchmark that consists of a mixture of HT-free and HT-infected restructured circuits while preserving their original functionalities. The restructured circuits are randomly infected by HTs, causing a situation where the defender is uncertain if a circuit is infected or not. We believe that our innovative dataset will help the community better judge the detection quality of different methods by comparing their success rates in circuit classification. We use our developed benchmark to evaluate three state-of-the-art HT detection tools to show baseline results for this approach. We use Principal Component Analysis to assess the strength of our benchmark, where we observe that some restructured HT-infected circuits are mapped closely to HT-free circuits, leading to significant label misclassification by detectors.",
+   "published": "2024-02-27",
+   "updated": "2024-02-27",
+   "authors": [
+    "Amin Sarihi",
+    "Ahmad Patooghy",
+    "Abdel-Hameed A. Badawy",
+    "Peter Jamieson"
+   ],
+   "primary_category": "cs.CR",
+   "categories": [
+    "cs.CR",
+    "cs.AR",
+    "cs.LG"
+   ],
+   "url": "https://arxiv.org/abs/2402.17918v1",
+   "pdf": "https://arxiv.org/pdf/2402.17918v1",
+   "comment": ""
+  },
+  {
+   "id": "2510.20409v1",
+   "title": "Designing Intent Communication for Agent-Human Collaboration",
+   "abstract": "As autonomous agents, from self-driving cars to virtual assistants, become increasingly present in everyday life, safe and effective collaboration depends on human understanding of agents' intentions. Current intent communication approaches are often rigid, agent-specific, and narrowly scoped, limiting their adaptability across tasks, environments, and user preferences. A key gap remains: existing models of what to communicate are rarely linked to systematic choices of how and when to communicate, preventing the development of generalizable, multi-modal strategies. In this paper, we introduce a multidimensional design space for intent communication structured along three dimensions: Transparency (what is communicated), Abstraction (when), and Modality (how). We apply this design space to three distinct human-agent collaboration scenarios: (a) bystander interaction, (b) cooperative tasks, and (c) shared control, demonstrating its capacity to generate adaptable, scalable, and cross-domain communication strategies. By bridging the gap between intent content and communication implementation, our design space provides a foundation for designing safer, more intuitive, and more transferable agent-human interactions.",
+   "published": "2025-10-23",
+   "updated": "2025-10-23",
+   "authors": [
+    "Yi Li",
+    "Francesco Chiossi",
+    "Helena Anna Frijns",
+    "Jan Leusmann",
+    "Julian Rasch",
+    "Robin Welsch",
+    "Philipp Wintersberger",
+    "Florian Michahelles",
+    "Albrecht Schmidt"
+   ],
+   "primary_category": "cs.HC",
+   "categories": [
+    "cs.HC"
+   ],
+   "url": "https://arxiv.org/abs/2510.20409v1",
+   "pdf": "https://arxiv.org/pdf/2510.20409v1",
+   "comment": ""
+  },
+  {
+   "id": "1407.0698v1",
+   "title": "Continuous On-line Evolution of Agent Behaviours with Cartesian Genetic Programming",
+   "abstract": "Evolutionary Computation has been successfully used to synthesise controllers for embodied agents and multi-agent systems in general. Notwithstanding this, continuous on-line adaptation by the means of evolutionary algorithms is still under-explored, especially outside the evolutionary robotics domain. In this paper, we present an on-line evolutionary programming algorithm that searches in the agent design space for the appropriate behavioural policies to cope with the underlying environment. We discuss the current problems of continuous agent adaptation, present our on-line evolution testbed for evolutionary simulation.",
+   "published": "2014-07-02",
+   "updated": "2014-07-02",
+   "authors": [
+    "Davide Nunes",
+    "Luis Antunes"
+   ],
+   "primary_category": "cs.NE",
+   "categories": [
+    "cs.NE",
+    "cs.MA"
+   ],
+   "url": "https://arxiv.org/abs/1407.0698v1",
+   "pdf": "https://arxiv.org/pdf/1407.0698v1",
+   "comment": ""
+  },
+  {
+   "id": "2605.30102v1",
+   "title": "When Cloud Agents Meet Device Agents: Lessons from Hybrid Multi-Agent Systems",
+   "abstract": "The design space of agentic AI inference spans two extremes: frontier large language models (LLMs), typically hosted in the cloud and offering strong performance across a wide range of tasks at substantially high cost, and more cost-efficient small language models (SLMs), which are amenable to on-device inference. Hybrid multi-agent systems (MASs) combining on-device and cloud models offer a promising middle ground, but they also introduce a complex and poorly understood design space in which task accuracy, monetary cost, and edge energy consumption are tightly coupled; in the absence of general design principles, hybrid components, although not the most prevalent choice, are typically introduced through ad hoc decisions tailored to specific domains. In this work, we examine this design space more systematically. We adapt two representative MAS architectures to support hybrid inference and study how individual design choices shift the operating point along the Pareto frontier of power, cost, and performance. Our findings paint a nuanced picture of hybrid MAS design: while SLMs can effectively benefit from LLM assistance, the optimal architecture is highly task-dependent, and greater frontier-level compute does not consistently translate to better performance.",
+   "published": "2026-05-28",
+   "updated": "2026-05-28",
+   "authors": [
+    "Corrado Rainone",
+    "Davide Belli",
+    "Bence Major",
+    "Arash Behboodi"
+   ],
+   "primary_category": "cs.MA",
+   "categories": [
+    "cs.MA",
+    "cs.AI"
+   ],
+   "url": "https://arxiv.org/abs/2605.30102v1",
+   "pdf": "https://arxiv.org/pdf/2605.30102v1",
+   "comment": "30 pages, 16 figures. Accepted to the Second Workshop on Agents in the Wild: Safety, Security, and Beyond (AIWILD) at ICML 2026"
+  },
+  {
+   "id": "2608.04166v1",
+   "title": "Enacting Constructive Conflicts with AI Agents to Enhance Reconsideration among Novice Interaction Designers",
+   "abstract": "Generative AI agents are increasingly used in interaction design to facilitate ideation and offer critique, often following their own internal reasoning. These interactions tend to add design ideas and expand the design space. Our work explores an antagonistic role for design agents, prompting designers to engage with stakeholder tension. We built an AI agent inspired by adversarial design theory that enacts constructive conflict. We examine the agent's influence in a between-subjects experiment with 45 design students across three conditions: Self Reflection (unsupported review of the design proposal), Stepwise Guidance (written prompts that walk designers through a constructive-conflict framework), and Interactive Engagement (an AI agent that enacts the constructive-conflict framework interactively by synthesizing stakeholder pushback). The latter two conditions share the framework but differ in whether it is self-enacted or agent-enacted. Results show that, compared with Self Reflection, both the Stepwise Guidance and Interactive Engagement groups reported significantly higher self-reconsideration and made more improvements to their design proposals. Compared with Stepwise Guidance, the antagonistic agent introduced more conflictual perspectives, and participants in the Interactive Engagement condition generated and discarded more ideas. These findings suggest that agent-enacted constructive conflict can turn reconsideration into concrete design actions and deepen engagement with divergent stakeholder perspectives.",
+   "published": "2026-08-04",
+   "updated": "2026-08-04",
+   "authors": [
+    "Howard Ziyu Han",
+    "Nikolas Martelaro"
+   ],
+   "primary_category": "cs.HC",
+   "categories": [
+    "cs.HC"
+   ],
+   "url": "https://arxiv.org/abs/2608.04166v1",
+   "pdf": "https://arxiv.org/pdf/2608.04166v1",
+   "comment": "8 pages, 4 figures, conditionally accepted to Human-Agent Interaction 2026"
+  },
+  {
+   "id": "2503.12721v2",
+   "title": "Can Reasoning Models Reason about Hardware? An Agentic HLS Perspective",
+   "abstract": "Recent Large Language Models (LLMs) such as OpenAI o3-mini and DeepSeek-R1 use enhanced reasoning through Chain-of-Thought (CoT). Their potential in hardware design, which relies on expert-driven iterative optimization, remains unexplored. This paper investigates whether reasoning LLMs can address challenges in High-Level Synthesis (HLS) design space exploration and optimization. During HLS, engineers manually define pragmas/directives to balance performance and resource constraints. We propose an LLM-based optimization agentic framework that automatically restructures code, inserts pragmas, and identifies optimal design points via feedback from HLs tools and access to integer-linear programming (ILP) solvers. Experiments compare reasoning models against conventional LLMs on benchmarks using success rate, efficiency, and design quality (area/latency) metrics, and provide the first-ever glimpse into the CoTs produced by a powerful open-source reasoning model like DeepSeek-R1.",
+   "published": "2025-03-17",
+   "updated": "2025-04-14",
+   "authors": [
+    "Luca Collini",
+    "Andrew Hennessee",
+    "Ramesh Karri",
+    "Siddharth Garg"
+   ],
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI"
+   ],
+   "url": "https://arxiv.org/abs/2503.12721v2",
+   "pdf": "https://arxiv.org/pdf/2503.12721v2",
+   "comment": "7 pages, submitted for peer review"
+  },
+  {
+   "id": "2411.10841v1",
+   "title": "Adaptive Learning of Design Strategies over Non-Hierarchical Multi-Fidelity Models via Policy Alignment",
+   "abstract": "Multi-fidelity Reinforcement Learning (RL) frameworks significantly enhance the efficiency of engineering design by leveraging analysis models with varying levels of accuracy and computational costs. The prevailing methodologies, characterized by transfer learning, human-inspired strategies, control variate techniques, and adaptive sampling, predominantly depend on a structured hierarchy of models. However, this reliance on a model hierarchy overlooks the heterogeneous error distributions of models across the design space, extending beyond mere fidelity levels. This work proposes ALPHA (Adaptively Learned Policy with Heterogeneous Analyses), a novel multi-fidelity RL framework to efficiently learn a high-fidelity policy by adaptively leveraging an arbitrary set of non-hierarchical, heterogeneous, low-fidelity models alongside a high-fidelity model. Specifically, low-fidelity policies and their experience data are dynamically used for efficient targeted learning, guided by their alignment with the high-fidelity policy. The effectiveness of ALPHA is demonstrated in analytical test optimization and octocopter design problems, utilizing two low-fidelity models alongside a high-fidelity one. The results highlight ALPHA's adaptive capability to dynamically utilize models across time and design space, eliminating the need for scheduling models as required in a hierarchical framework. Furthermore, the adaptive agents find more direct paths to high-performance solutions, showing superior convergence behavior compared to hierarchical agents.",
+   "published": "2024-11-16",
+   "updated": "2024-11-16",
+   "authors": [
+    "Akash Agrawal",
+    "Christopher McComb"
+   ],
+   "primary_category": "cs.LG",
+   "categories": [
+    "cs.LG",
+    "cs.AI"
+   ],
+   "url": "https://arxiv.org/abs/2411.10841v1",
+   "pdf": "https://arxiv.org/pdf/2411.10841v1",
+   "comment": "48 pages, 20 figures"
+  },
+  {
+   "id": "2604.23299v1",
+   "title": "Proteus: Shapeshifting Desktop Visualizations for Mobile via Multi-level Intelligent Adaptation",
+   "abstract": "With the rise of mobile-first consumption, users increasingly engage with data visualizations on mobile devices. However, the vast majority of existing visualizations are originally authored for desktop environments. Due to significant differences in viewport size and interaction paradigms, directly scaling desktop charts often results in illegible text, information loss, and interaction failures. To bridge this gap, we propose an automated framework to adapt desktop-based visualizations for mobile screens. By systematically categorizing the operations involved in the adaptation process, we establish a multi-level design space. This space defines evolution rules spanning from the global topology level, through the reference frame level, down to the visual elements level. Guided by this theoretical framework, we developed Proteus, a large language model-driven multi-agent system that automatically parses online visualizations, predicts optimal transformation strategies within the design space, and generates equivalent, highly readable visualizations for mobile devices. Case studies and an in-depth user study with 12 participants demonstrate the effectiveness and usability of Proteus.",
+   "published": "2026-04-25",
+   "updated": "2026-04-25",
+   "authors": [
+    "Can Liu",
+    "Sizhe Cheng",
+    "Feng Liang",
+    "Zhibang Jiang",
+    "Lingru Huang",
+    "Kavinda Athapaththu",
+    "Yong Wang"
+   ],
+   "primary_category": "cs.HC",
+   "categories": [
+    "cs.HC",
+    "cs.MA"
+   ],
+   "url": "https://arxiv.org/abs/2604.23299v1",
+   "pdf": "https://arxiv.org/pdf/2604.23299v1",
+   "comment": "accepted by ACM Designing Interactive Systems Conference"
+  },
+  {
+   "id": "2609.16309v1",
+   "title": "Agentic Search Spaces for Tabular Machine Learning",
+   "abstract": "Despite the rapid progress of LLM-based agents for planning, code generation, and debugging, their practical value for tabular machine learning remains underexplored. In this paper, we investigate a concrete use case: whether state-of-the-art agentic AI systems can design extended HPO search spaces for established tabular models that outperform the standard search spaces provided by the model authors. Specifically, we represent each tabular model as a modular pipeline covering preprocessing, embeddings, architecture, training, and inference. We then task the agent to propose candidate code implementations for each module and use a classical HPO algorithm to jointly optimize over these candidates and the model's default hyperparameters. Compared with the base HPO spaces, the expanded search spaces improve the performance of nearly every model family across a suite of 45 datasets, with average relative gains of 0.6%, rising to 2.0% on small-to-medium regression datasets. Notably, these gains come at no extra tuning cost: the enlarged spaces outperform the base under the same tuning and ensembling budgets. The gains transfer to the recent TabArena benchmark, where the agentic spaces improve the official Elo scores of four of the five model families and the two strongest agentic ensembles surpass the best AutoGluon ensemble of conventional models. Overall, our study suggests that LLM agents can provide practical value for tabular ML by expanding the design space.",
+   "published": "2026-09-14",
+   "updated": "2026-09-14",
+   "authors": [
+    "Renat Sergazinov",
+    "Artem Chistyakov",
+    "Sergey Pankevich",
+    "Artem Babenko"
+   ],
+   "primary_category": "cs.LG",
+   "categories": [
+    "cs.LG"
+   ],
+   "url": "https://arxiv.org/abs/2609.16309v1",
+   "pdf": "https://arxiv.org/pdf/2609.16309v1",
+   "comment": ""
+  },
+  {
+   "id": "2602.22680v2",
+   "title": "Toward Personalized LLM-Powered Agents: Foundations, Evaluation, and Future Directions",
+   "abstract": "Large language models have enabled agentic systems that reason, plan, and interact with tools and environments to accomplish complex tasks. As these agents operate over extended interaction horizons, their effectiveness increasingly depends on adapting behavior to individual users and maintaining continuity across interactions, giving rise to personalized LLM-powered agents (PLAs). In such long-term, user-dependent settings, personalization permeates the entire decision pipeline rather than remaining confined to surface-level response generation. This survey provides a capability-oriented review of personalized LLM-powered agents. Existing work is organized around four interdependent capabilities: profile modeling, memory, planning, and action execution. Using this taxonomy, representative methods are synthesized and analyzed to illustrate how user signals are represented, propagated, and utilized across the agent pipeline, highlighting cross-component interactions and recurring design challenges. Evaluation metrics and benchmarking paradigms tailored to personalized agents are further examined, along with application scenarios ranging from conversational assistants to domain-specific expert systems. By clarifying the design space of personalization in agent systems, this survey provides a structured foundation for developing more user-aligned, adaptive, and deployable LLM-powered agents.",
+   "published": "2026-02-26",
+   "updated": "2026-03-16",
+   "authors": [
+    "Yue Xu",
+    "Qian Chen",
+    "Zizhan Ma",
+    "Dongrui Liu",
+    "Wenxuan Wang",
+    "Xiting Wang",
+    "Li Xiong",
+    "Wenjie Wang"
+   ],
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI"
+   ],
+   "url": "https://arxiv.org/abs/2602.22680v2",
+   "pdf": "https://arxiv.org/pdf/2602.22680v2",
+   "comment": ""
+  },
+  {
+   "id": "2410.06153v3",
+   "title": "AgentSquare: Automatic LLM Agent Search in Modular Design Space",
+   "abstract": "Recent advancements in Large Language Models (LLMs) have led to a rapid growth of agentic systems capable of handling a wide range of complex tasks. However, current research largely relies on manual, task-specific design, limiting their adaptability to novel tasks. In this paper, we introduce a new research problem: Modularized LLM Agent Search (MoLAS). We propose a modular design space that abstracts existing LLM agent designs into four fundamental modules with uniform IO interface: Planning, Reasoning, Tool Use, and Memory. Building on this design space, we present a novel LLM agent search framework called AgentSquare, which introduces two core mechanisms, i.e., module evolution and recombination, to efficiently search for optimized LLM agents. To further accelerate the process, we design a performance predictor that uses in-context surrogate models to skip unpromising agent designs. Extensive experiments across six benchmarks, covering the diverse scenarios of web, embodied, tool use and game applications, show that AgentSquare substantially outperforms hand-crafted agents, achieving an average performance gain of 17.2% against best-known human designs. Moreover, AgentSquare can generate interpretable design insights, enabling a deeper understanding of agentic architecture and its impact on task performance. We believe that the modular design space and AgentSquare search framework offer a platform for fully exploiting the potential of prior successful designs and consolidating the collective efforts of research community. Code repo is available at https://github.com/tsinghua-fib-lab/AgentSquare.",
+   "published": "2024-10-08",
+   "updated": "2025-02-27",
+   "authors": [
+    "Yu Shang",
+    "Yu Li",
+    "Keyu Zhao",
+    "Likai Ma",
+    "Jiahe Liu",
+    "Fengli Xu",
+    "Yong Li"
+   ],
+   "primary_category": "cs.CL",
+   "categories": [
+    "cs.CL"
+   ],
+   "url": "https://arxiv.org/abs/2410.06153v3",
+   "pdf": "https://arxiv.org/pdf/2410.06153v3",
+   "comment": "25 pages"
+  },
+  {
+   "id": "2609.39765v1",
+   "title": "MemCodex: Self-Programming Hierarchical Memory for Language Agents",
+   "abstract": "Agent memory faces heterogeneous access needs: a single-hop question may require one piece of evidence, whereas a multi-hop question must combine evidence from multiple sources. Predefined memory workflows cannot adapt to these varying needs. Recent adaptive methods search or learn over memory components and their compositions, but the design space itself remains predefined. We introduce MemCodex, a self-evolving hierarchical memory system that organizes experience into executable memory programs for summaries, relational knowledge, reusable skills, and latent memory. Open-ended program evolution searches the open design space of layer programs by rewriting how each layer is constructed, indexed, retrieved, and routed, thereby adapting both within-layer implementations and cross-layer composition. At query time, reads traverse the hierarchy from coarse to fine and stop once sufficient evidence is found, descending to the original history when needed. We further develop MemArena, a unified runtime that places heterogeneous data and memory systems behind a common interface. MemCodex improves average task success by 10.1% relative to the strongest adaptive-memory baseline, while using 3.4x fewer context tokens and achieving 2.1x faster inference.",
+   "published": "2026-09-30",
+   "updated": "2026-09-30",
+   "authors": [
+    "Xiaoqiang Wang",
+    "Bang Liu"
+   ],
+   "primary_category": "cs.CL",
+   "categories": [
+    "cs.CL"
+   ],
+   "url": "https://arxiv.org/abs/2609.39765v1",
+   "pdf": "https://arxiv.org/pdf/2609.39765v1",
+   "comment": "Work in progress"
+  },
+  {
+   "id": "2602.07491v1",
+   "title": "GraphAgents: Knowledge Graph-Guided Agentic AI for Cross-Domain Materials Design",
+   "abstract": "Large Language Models (LLMs) promise to accelerate discovery by reasoning across the expanding scientific landscape. Yet, the challenge is no longer access to information but connecting it in meaningful, domain-spanning ways. In materials science, where innovation demands integrating concepts from molecular chemistry to mechanical performance, this is especially acute. Neither humans nor single-agent LLMs can fully contend with this torrent of information, with the latter often prone to hallucinations. To address this bottleneck, we introduce a multi-agent framework guided by large-scale knowledge graphs to find sustainable substitutes for per- and polyfluoroalkyl substances (PFAS)-chemicals currently under intense regulatory scrutiny. Agents in the framework specialize in problem decomposition, evidence retrieval, design parameter extraction, and graph traversal, uncovering latent connections across distinct knowledge pockets to support hypothesis generation. Ablation studies show that the full multi-agent pipeline outperforms single-shot prompting, underscoring the value of distributed specialization and relational reasoning. We demonstrate that by tailoring graph traversal strategies, the system alternates between exploitative searches focusing on domain-critical outcomes and exploratory searches surfacing emergent cross-connections. Illustrated through the exemplar of biomedical tubing, the framework generates sustainable PFAS-free alternatives that balance tribological performance, thermal stability, chemical resistance, and biocompatibility. This work establishes a framework combining knowledge graphs with multi-agent reasoning to expand the materials design space, showcasing several initial design candidates to demonstrate the approach.",
+   "published": "2026-02-07",
+   "updated": "2026-02-07",
+   "authors": [
+    "Isabella A. Stewart",
+    "Tarjei Paule Hage",
+    "Yu-Chuan Hsu",
+    "Markus J. Buehler"
+   ],
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI",
+    "cond-mat.mes-hall",
+    "cond-mat.mtrl-sci",
+    "cond-mat.soft",
+    "cs.LG"
+   ],
+   "url": "https://arxiv.org/abs/2602.07491v1",
+   "pdf": "https://arxiv.org/pdf/2602.07491v1",
+   "comment": ""
+  },
+  {
+   "id": "2608.17582v1",
+   "title": "Automating Variational Quantum Sensing through Reinforcement-Learned Circuit Structures",
+   "abstract": "Variational quantum sensing offers a promising route to high-precision parameter estimation, but its performance depends strongly on the circuit architectures used for probe preparation and measurement. Existing approaches typically optimize continuous parameters within predefined ansätze, restricting the accessible design space and limiting adaptation to sensing tasks and hardware constraints. Here, we introduce \\textsc{AutoQSense}, a reinforcement-learning framework that searches circuit architectures using Fisher-information-based objectives. For few-qubit systems, a single agent sequentially constructs preparation and measurement circuits. For larger systems, a distributed formulation assigns local circuit design to subsystem agents and inter-block entanglement to a budgeted agent. Numerical results show that the learned architectures recover known benchmark strategies, adapt to dephasing noise, and outperform fixed hardware-efficient ansätze while using fewer entangling gates. These results establish \\textsc{AutoQSense} as a resource-aware approach to adaptive and hardware-compatible quantum sensing.",
+   "published": "2026-08-18",
+   "updated": "2026-08-18",
+   "authors": [
+    "Jie Liu",
+    "Xin Wang"
+   ],
+   "primary_category": "quant-ph",
+   "categories": [
+    "quant-ph",
+    "cond-mat.dis-nn"
+   ],
+   "url": "https://arxiv.org/abs/2608.17582v1",
+   "pdf": "https://arxiv.org/pdf/2608.17582v1",
+   "comment": "17 pages, 13 figs"
+  },
+  {
+   "id": "2608.07496v1",
+   "title": "Human-Simulation Interaction: From Prediction to Exploration in LLM Agent Simulations for Policy",
+   "abstract": "Agent-based models have historically served as tools for generative explanation, constructing testbeds in which candidate micro-level behavioral rules can be tested for their capacity to produce observed macro-level phenomena. The integration of Large Language Models into agent-based simulation has expanded what these models can represent, but it has also introduced an unexamined shift in how users engage them. We argue that current generative agent-based models (GABMs) inherit the dominant interaction metaphor of conversational LLM interfaces - a question-answer pattern that positions users as consumers of system output rather than explorers of a possibility space. In the context of policy, where problems are wicked and ground truth is unknowable in advance, this metaphor produces a trust deficit that cannot be resolved through improved model accuracy alone. We open a design space we call human-simulation interaction, and argue that warranted trust requires interaction metaphors that restore the exploratory capacity simulation has historically supported.",
+   "published": "2026-06-17",
+   "updated": "2026-06-17",
+   "authors": [
+    "Huanxing Chen"
+   ],
+   "primary_category": "cs.HC",
+   "categories": [
+    "cs.HC"
+   ],
+   "url": "https://arxiv.org/abs/2608.07496v1",
+   "pdf": "https://arxiv.org/pdf/2608.07496v1",
+   "comment": "4 pages. Position paper accepted to PoliSim@CHI 2026: LLM Agent Simulation for Policy, a workshop at CHI 2026 (CHI Conference on Human Factors in Computing Systems)"
+  },
+  {
+   "id": "2510.04465v3",
+   "title": "Autonomy Reshapes How Personalization Affects Privacy Concerns and Trust in LLM Agents",
+   "abstract": "LLM agents require personal information for personalization in order to effectively act on users' behalf, but this raises privacy concerns that can discourage data sharing, limiting both the autonomy levels at which agents can operate and the effectiveness of personalization. Yet the expanded design space of agent autonomy also presents opportunities to shape these effects, which remain underexplored. We conducted a $3\\times3$ between-subjects experiment ($N=450$) to study how agent autonomy level influences personalization's effects on users' privacy concerns, trust, and willingness to use, as well as the underlying psychological processes. We find that risk-contingent autonomy, where the agent delegates control back to users upon detecting potential privacy leakage, improves users' perceived control. This in turn attenuates personalization's adverse effects: privacy concerns rise less and trust declines less. Our results suggest that designing $\\textbf{agent's autonomy}$ that supports $\\textbf{human autonomy}$ (both perceived control and oversight effectiveness) helps users benefit from personalization without being deterred by growing privacy concerns. This positions aligning decision authority between users and agents ($\\textbf{autonomy alignment}$) as an important opportunity and challenge for trustworthy human-agent interaction.",
+   "published": "2025-10-06",
+   "updated": "2026-08-09",
+   "authors": [
+    "Zhiping Zhang",
+    "Yi Evie Zhang",
+    "Freda Shi",
+    "Tianshi Li"
+   ],
+   "primary_category": "cs.HC",
+   "categories": [
+    "cs.HC",
+    "cs.AI",
+    "cs.CR"
+   ],
+   "url": "https://arxiv.org/abs/2510.04465v3",
+   "pdf": "https://arxiv.org/pdf/2510.04465v3",
+   "comment": "Accepted to COLM 2026"
+  },
+  {
+   "id": "2602.07839v1",
+   "title": "TodoEvolve: Learning to Architect Agent Planning Systems",
+   "abstract": "Planning has become a central capability for contemporary agent systems in navigating complex, long-horizon tasks, yet existing approaches predominantly rely on fixed, hand-crafted planning structures that lack the flexibility to adapt to the structural diversity of open-ended problems. To address this limitation, we introduce TodoEvolve, a meta-planning paradigm that autonomously synthesizes and dynamically revises task-specific planning architectures. Specifically, we first construct PlanFactory, a modular design space that standardizes diverse planning paradigms within a unified codebase encompassing topology, initialization, adaptation, and navigation, thereby providing a common interface for heterogeneous planning patterns. Leveraging PlanFactory, we collect high-quality planning trajectories and train Todo-14B via \\textit{Impedance-Guided Preference Optimization} (IGPO), a multi-objective reinforcement learning objective that encourages the generation of planning systems that are performant, stable, and token-efficient across arbitrary tasks and agent backbones. Empirical evaluations on five agentic benchmarks demonstrate that TodoEvolve consistently surpasses carefully engineered planning modules while maintaining economical API costs and runtime overhead.",
+   "published": "2026-02-08",
+   "updated": "2026-02-08",
+   "authors": [
+    "Jiaxi Liu",
+    "Yanzuo Jiang",
+    "Guibin Zhang",
+    "Zihan Zhang",
+    "Heng Chang",
+    "Zhenfei Yin",
+    "Qibing Ren",
+    "Junchi Yan"
+   ],
+   "primary_category": "cs.CL",
+   "categories": [
+    "cs.CL",
+    "cs.AI",
+    "cs.LG"
+   ],
+   "url": "https://arxiv.org/abs/2602.07839v1",
+   "pdf": "https://arxiv.org/pdf/2602.07839v1",
+   "comment": ""
+  },
+  {
+   "id": "2609.08599v1",
+   "title": "Graph-Based Personalized Memory for LLM Agents: Representation, Evolution, Retrieval, and Evaluation",
+   "abstract": "Large Language Model (LLM) agents are evolving from single-session tools toward long-term personal assistants that must adapt to individual users across tasks, contexts, and interactions. This shift makes memory a core requirement for personalization, since user preferences, goals, constraints, relationships, and past experiences are accumulated gradually and often change over time. Graph-based personalized memory provides a structured way to model such user information through explicit relations, temporal context, and evidence links. Such representations can model not only what an agent remembers about a user but also how memories are connected, revised, and retrieved to support personalized decisions. However, existing work remains fragmented across personalized agents and generic graph memory frameworks, making it difficult to understand the design space as a whole. This survey develops a lifecycle-oriented view of graph-based personalized memory for LLM agents. We organize existing studies around memory representation, memory evolution, memory retrieval, and memory evaluation. We further compare key design choices, discuss current evaluation practices, and open challenges in building reliable long-term personalized agents. This survey aims to clarify how graph-based memory can support adaptive, controllable, and user-centric LLM agents.",
+   "published": "2026-09-08",
+   "updated": "2026-09-08",
+   "authors": [
+    "Dac Duy Anh Nguyen",
+    "Zhangchi Qiu",
+    "Shigeng Chen",
+    "Alan Wee-Chung Liew"
+   ],
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI"
+   ],
+   "url": "https://arxiv.org/abs/2609.08599v1",
+   "pdf": "https://arxiv.org/pdf/2609.08599v1",
+   "comment": "Accepted by ICKG 2026"
+  },
+  {
+   "id": "2609.10248v1",
+   "title": "A-JIT: Agentic Just-In-Time Software Construction",
+   "abstract": "Traditional software delivery assumes a static paradigm: code is constructed prior to execution and deployed as a fixed artifact. We present Agentic Just-In-Time Software Construction (A-JIT), a paradigm that replaces static binaries with dynamic, software systems that can perpetually evolve to meet changing demands. In A-JIT, an application is an integrated assembly comprising code, a runtime harness, and an embedded AI agent that continuously observes system usage and live execution traces. Much like a traditional JIT compiler specializes machine code to runtime execution paths, A-JIT specializes software logic, workflows, and tool interfaces to meet the specific needs of the end-user. By integrating synthesis directly into the ambient application lifecycle, A-JIT enables applications to dynamically construct missing implementations, generate new capabilities on the fly, and continuously adapt to end-user behavior. We demonstrate how this model supports trace-driven human-AI co-construction and opens a new design space for adaptive, self-evolving software.",
+   "published": "2026-09-09",
+   "updated": "2026-09-09",
+   "authors": [
+    "Mark Marron",
+    "Earl T. Barr"
+   ],
+   "primary_category": "cs.SE",
+   "categories": [
+    "cs.SE",
+    "cs.AI"
+   ],
+   "url": "https://arxiv.org/abs/2609.10248v1",
+   "pdf": "https://arxiv.org/pdf/2609.10248v1",
+   "comment": "Technical report for presentation at VMIL 2026"
+  },
+  {
+   "id": "2505.12188v3",
+   "title": "LLM-DSE: Searching Accelerator Parameters with LLM Agents",
+   "abstract": "Even though high-level synthesis (HLS) tools mitigate the challenges of programming domain-specific accelerators (DSAs) by raising the abstraction level, optimizing hardware directive parameters remains a significant hurdle. Existing heuristic and learning-based methods struggle with adaptability and sample efficiency. We present LLM-DSE, a multi-agent framework designed specifically for optimizing HLS directives. Combining LLM with design space exploration (DSE), our explorer coordinates four agents: Router, Specialists, Arbitrator, and Critic. These multi-agent components interact with various tools to accelerate the optimization process. LLM-DSE leverages essential domain knowledge to identify efficient parameter combinations while maintaining adaptability through verbal learning from online interactions. Evaluations on the HLSyn dataset demonstrate that LLM-DSE achieves substantial $2.55\\times$ performance gains over state-of-the-art methods, uncovering novel designs while reducing runtime. Ablation studies validate the effectiveness and necessity of the proposed agent interactions. Our code is open-sourced here: https://github.com/Nozidoali/LLM-DSE.",
+   "published": "2025-05-18",
+   "updated": "2025-11-21",
+   "authors": [
+    "Hanyu Wang",
+    "Xinrui Wu",
+    "Zijian Ding",
+    "Su Zheng",
+    "Chengyue Wang",
+    "Neha Prakriya",
+    "Tony Nowatzki",
+    "Yizhou Sun",
+    "Jason Cong"
+   ],
+   "primary_category": "cs.AR",
+   "categories": [
+    "cs.AR",
+    "cs.AI"
+   ],
+   "url": "https://arxiv.org/abs/2505.12188v3",
+   "pdf": "https://arxiv.org/pdf/2505.12188v3",
+   "comment": ""
+  },
+  {
+   "id": "2605.13647v1",
+   "title": "FlowCompile: An Optimizing Compiler for Structured LLM Workflows",
+   "abstract": "Structured LLM workflows, where specialized LLM sub-agents execute according to a predefined graph, have become a powerful abstraction for solving complex tasks. Optimizing such workflows, i.e., selecting configurations for each sub-agent to balance accuracy and latency, is challenging due to the combinatorial design space over model choices, reasoning budgets, and workflow structures. Existing cost-aware methods largely treat workflow optimization as a routing problem, selecting a configuration at inference time for each query according to the accuracy-latency objective used during training. We argue that structured LLM workflows can also be optimized from a compilation perspective: before deployment, the system can globally explore the workflow design space and construct a reusable set of workflow-level configurations spanning diverse accuracy-latency trade-offs. Drawing inspiration from machine learning compilers, we introduce FlowCompile, a structured LLM workflow compiler that performs compile-time design space exploration to identify a high-quality, reusable trade-off set. FlowCompile decomposes a workflow into sub-agents, profiles each sub-agent under diverse configurations, and composes these measurements through a structure-aware proxy to estimate workflow-level accuracy and latency. It then identifies diverse high-quality configurations in a single compile-time pass, without retraining or online adaptation. Experiments across diverse workflows and challenging benchmarks show that FlowCompile consistently outperforms heuristically optimized workflow configurations and routing-based baselines, delivering up to 6.4x speedup. The compiled configuration set further serves as a reusable optimization artifact, enabling flexible deployment under varying runtime preferences and supporting downstream selection or routing.",
+   "published": "2026-05-13",
+   "updated": "2026-05-13",
+   "authors": [
+    "Junyan Li",
+    "Zhang-Wei Hong",
+    "Maohao Shen",
+    "Yang Zhang",
+    "Chuang Gan"
+   ],
+   "primary_category": "cs.CL",
+   "categories": [
+    "cs.CL"
+   ],
+   "url": "https://arxiv.org/abs/2605.13647v1",
+   "pdf": "https://arxiv.org/pdf/2605.13647v1",
+   "comment": ""
+  },
+  {
+   "id": "2503.16874v2",
+   "title": "MARS: Multi-Agent Adaptive Reasoning with Socratic Guidance for Automated Prompt Optimization",
+   "abstract": "Large language models (LLMs) typically operate in a question-answering paradigm, where the quality of the input prompt critically affects the response. Automated Prompt Optimization (APO) aims to overcome the cognitive biases of manually crafted prompts and explore a broader prompt design space. However, existing APO methods often suffer from rigid template structures and inefficient exploration in the prompt space. To this end, we propose a Multi-Agent Adaptive Reasoning with Socratic guidance framework (MARS) for APO. MARS consists of five complementary agents and formulates the optimization process as a Partially Observable Markov Decision Process (POMDP), enabling adaptive prompt refinement through explicit state modeling and interactive feedback. Specifically, a Planner agent generates flexible optimization trajectories, a Teacher-Critic-Student triad engages in Socratic-style dialogue to iteratively optimize the prompt based on pseudo-gradient signals in the text space, and a Target agent executes the prompt in downstream tasks to provide performance feedback. MARS integrates reasoning, feedback, and state transition into a unified hidden-state evolution process, improving both the effectiveness and interpretability of optimization. Extensive experiments on multiple datasets demonstrate that MARS outperforms existing APO methods in terms of optimization performance, search efficiency, and interpretability.",
+   "published": "2025-03-21",
+   "updated": "2025-11-12",
+   "authors": [
+    "Jian Zhang",
+    "Zhangqi Wang",
+    "Haiping Zhu",
+    "Kangda Cheng",
+    "Kai He",
+    "Bo Li",
+    "Qika Lin",
+    "Jun Liu",
+    "Erik Cambria"
+   ],
+   "primary_category": "cs.CL",
+   "categories": [
+    "cs.CL",
+    "cs.AI"
+   ],
+   "url": "https://arxiv.org/abs/2503.16874v2",
+   "pdf": "https://arxiv.org/pdf/2503.16874v2",
+   "comment": "AAAI 2026"
+  },
+  {
+   "id": "2603.11011v1",
+   "title": "Task-Aware Delegation Cues for LLM Agents",
+   "abstract": "LLM agents increasingly present as conversational collaborators, yet human--agent teamwork remains brittle due to information asymmetry: users lack task-specific reliability cues, and agents rarely surface calibrated uncertainty or rationale. We propose a task-aware collaboration signaling layer that turns offline preference evaluations into online, user-facing primitives for delegation. Using Chatbot Arena pairwise comparisons, we induce an interpretable task taxonomy via semantic clustering, then derive (i) Capability Profiles as task-conditioned win-rate maps and (ii) Coordination-Risk Cues as task-conditioned disagreement (tie-rate) priors. These signals drive a closed-loop delegation protocol that supports common-ground verification, adaptive routing (primary vs.\\ primary+auditor), explicit rationale disclosure, and privacy-preserving accountability logs. Two predictive probes validate that task typing carries actionable structure: cluster features improve winner prediction accuracy and reduce difficulty prediction error under stratified 5-fold cross-validation. Overall, our framework reframes delegation from an opaque system default into a visible, negotiable, and auditable collaborative decision, providing a principled design space for adaptive human--agent collaboration grounded in mutual awareness and shared accountability.",
+   "published": "2026-03-11",
+   "updated": "2026-03-11",
+   "authors": [
+    "Xingrui Gu"
+   ],
+   "primary_category": "cs.HC",
+   "categories": [
+    "cs.HC"
+   ],
+   "url": "https://arxiv.org/abs/2603.11011v1",
+   "pdf": "https://arxiv.org/pdf/2603.11011v1",
+   "comment": "Accepeted by CHI'26 Workshop on Developing Standards and Documentation For LLM Use as Simulated Research Participants"
+  },
+  {
+   "id": "2506.18627v1",
+   "title": "Multi-Agent Reinforcement Learning for Inverse Design in Photonic Integrated Circuits",
+   "abstract": "Inverse design of photonic integrated circuits (PICs) has traditionally relied on gradientbased optimization. However, this approach is prone to end up in local minima, which results in suboptimal design functionality. As interest in PICs increases due to their potential for addressing modern hardware demands through optical computing, more adaptive optimization algorithms are needed. We present a reinforcement learning (RL) environment as well as multi-agent RL algorithms for the design of PICs. By discretizing the design space into a grid, we formulate the design task as an optimization problem with thousands of binary variables. We consider multiple two- and three-dimensional design tasks that represent PIC components for an optical computing system. By decomposing the design space into thousands of individual agents, our algorithms are able to optimize designs with only a few thousand environment samples. They outperform previous state-of-the-art gradient-based optimization in both twoand three-dimensional design tasks. Our work may also serve as a benchmark for further exploration of sample-efficient RL for inverse design in photonics.",
+   "published": "2025-06-23",
+   "updated": "2025-06-23",
+   "authors": [
+    "Yannik Mahlau",
+    "Maximilian Schier",
+    "Christoph Reinders",
+    "Frederik Schubert",
+    "Marco Bügling",
+    "Bodo Rosenhahn"
+   ],
+   "primary_category": "cs.LG",
+   "categories": [
+    "cs.LG",
+    "cs.AI"
+   ],
+   "url": "https://arxiv.org/abs/2506.18627v1",
+   "pdf": "https://arxiv.org/pdf/2506.18627v1",
+   "comment": ""
+  },
+  {
+   "id": "2608.24650v2",
+   "title": "Simthesizer: An Agent-Driven Simulation Framework for LLM Serving Systems",
+   "abstract": "System-level simulation is an essential tool for exploring the rapidly expanding design space of LLM serving systems, where real deployments remain costly and often infeasible. However, modern LLM serving now evolves faster than human-driven simulator development can track, and emerging workloads and mechanisms, from agentic workflows to disaggregated serving, no longer fit the monolithic simulation pipeline that existing simulators assume. Each new mechanism therefore demands an invasive rewrite, leaving a widening development gap between deployed serving systems and the simulators that model them. To close this gap, we present Simthesizer, a framework that realizes agent-driven simulator development. Simthesizer introduces a composable simulator infrastructure that uniformly expresses the complete serving workflow, including the control decisions that coordinate it, and realizes it as a unified dynamic graph in Simthesizer simulator. Synthesizer agent, a harnessed coding agent, then lowers natural-language feature requests onto this abstraction under simulator-specific guardrails and fidelity validation, evolving one shared simulator instead of building a new one for every feature. Under the same coding agent and harnesses, extensions built on Simthesizer follow a vLLM-based real system with 2.51% average throughput error, versus 6.03% for extensions built on existing simulators. On identical workloads, Simthesizer also simulates up to 284.96x and 23.19x faster than two state-of-the-art simulators, LLMServingSim2.0 and Vidur, respectively.",
+   "published": "2026-08-25",
+   "updated": "2026-08-26",
+   "authors": [
+    "Wonung Kim",
+    "Hyunmin Choi",
+    "Minsu Kim",
+    "Jaehong Cho",
+    "Yeongwook Kim",
+    "Jongse Park"
+   ],
+   "primary_category": "cs.AR",
+   "categories": [
+    "cs.AR",
+    "cs.AI"
+   ],
+   "url": "https://arxiv.org/abs/2608.24650v2",
+   "pdf": "https://arxiv.org/pdf/2608.24650v2",
+   "comment": ""
+  },
+  {
+   "id": "2602.22942v2",
+   "title": "ClawMobile: Rethinking Smartphone-Native Agentic Systems",
+   "abstract": "Smartphones represent a uniquely challenging environment for agentic systems. Unlike cloud or desktop settings, mobile devices combine constrained execution contexts, fragmented control interfaces, and rapidly changing application states. As large language models (LLMs) evolve from conversational assistants to action-oriented agents, achieving reliable smartphone-native autonomy requires rethinking how reasoning and control are composed. We introduce ClawMobile as a concrete exploration of this design space. ClawMobile adopts a hierarchical architecture that separates high-level language reasoning from structured, deterministic control pathways, improving execution stability and reproducibility on real devices. Using ClawMobile as a case study, we distill the design principles for mobile LLM runtimes and identify key challenges in efficiency, adaptability, and stability. We argue that building robust smartphone-native agentic systems demands principled coordination between probabilistic planning and deterministic system interfaces. The implementation is open-sourced~\\footnote{https://github.com/ClawMobile/ClawMobile} to facilitate future exploration.",
+   "published": "2026-02-26",
+   "updated": "2026-04-11",
+   "authors": [
+    "Hongchao Du",
+    "Shangyu Wu",
+    "Qiao Li",
+    "Riwei Pan",
+    "Jinheng Li",
+    "Youcheng Sun",
+    "Chun Jason Xue"
+   ],
+   "primary_category": "cs.MA",
+   "categories": [
+    "cs.MA"
+   ],
+   "url": "https://arxiv.org/abs/2602.22942v2",
+   "pdf": "https://arxiv.org/pdf/2602.22942v2",
+   "comment": "Accepted at EuroMLSys 2026, 7 pages, 1 figure"
+  },
+  {
+   "id": "2605.19337v2",
+   "title": "Agentic Trading: When LLM Agents Meet Financial Markets",
+   "abstract": "Large Language Models (LLMs) combined with autonomous agent architectures are shifting quantitative finance from isolated predictive modeling toward closed-loop trading agents. These systems perceive multimodal market signals, maintain context and memory, reason about decisions, emit executable trading actions, and adapt to non-stationary market regimes. This survey provides a systematic synthesis of agentic trading through an Architecture--Capability--Adaptation (A-C-A) conceptual framework. Architecture covers perception (textual, numerical, and multimodal), memory (working memory, vector storage, and knowledge bases), reasoning (reactive, reflective, and planning-driven), and execution (order routing and friction management). Capability examines alpha discovery, portfolio optimization, and multi-tier risk control. Adaptation covers in-context learning, supervised fine-tuning, reinforcement learning, multi-agent coordination, and architectural self-evolution. Drawing on 185 systematically selected studies, including a core empirical subset of 80 systems evaluated under closed-loop market conditions, we analyze design spaces, operational trade-offs, and emerging paradigms. We also examine evaluation practices, including backtesting split schemes, transaction-cost realism, survivorship-bias handling, and execution fidelity, and distill methodological best practices for future research. By bridging artificial intelligence, market microstructure, and quantitative finance, this survey provides a roadmap for designing, benchmarking, and deploying reliable agentic trading systems.",
+   "published": "2026-05-19",
+   "updated": "2026-10-04",
+   "authors": [
+    "Yihan Xia",
+    "Panpan You",
+    "Taotao Wang",
+    "Fang Liu",
+    "Han Qi",
+    "Xiaoxiao Wu",
+    "Shengli Zhang"
+   ],
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI"
+   ],
+   "url": "https://arxiv.org/abs/2605.19337v2",
+   "pdf": "https://arxiv.org/pdf/2605.19337v2",
+   "comment": "59 pages, 17 figures, 27 tables"
+  },
+  {
+   "id": "2312.03126v2",
+   "title": "Learning Curricula in Open-Ended Worlds",
+   "abstract": "Deep reinforcement learning (RL) provides powerful methods for training optimal sequential decision-making agents. As collecting real-world interactions can entail additional costs and safety risks, the common paradigm of sim2real conducts training in a simulator, followed by real-world deployment. Unfortunately, RL agents easily overfit to the choice of simulated training environments, and worse still, learning ends when the agent masters the specific set of simulated environments. In contrast, the real world is highly open-ended, featuring endlessly evolving environments and challenges, making such RL approaches unsuitable. Simply randomizing over simulated environments is insufficient, as it requires making arbitrary distributional assumptions and can be combinatorially less likely to sample specific environment instances that are useful for learning. An ideal learning process should automatically adapt the training environment to maximize the learning potential of the agent over an open-ended task space that matches or surpasses the complexity of the real world. This thesis develops a class of methods called Unsupervised Environment Design (UED), which aim to produce such open-ended processes. Given an environment design space, UED automatically generates an infinite sequence or curriculum of training environments at the frontier of the learning agent's capabilities. Through extensive empirical studies and theoretical arguments founded on minimax-regret decision theory and game theory, the findings in this thesis show that UED autocurricula can produce RL agents exhibiting significantly improved robustness and generalization to previously unseen environment instances. Such autocurricula are promising paths toward open-ended learning systems that achieve more general intelligence by continually generating and mastering additional challenges of their own design.",
+   "published": "2023-12-03",
+   "updated": "2023-12-08",
+   "authors": [
+    "Minqi Jiang"
+   ],
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI",
+    "cs.LG"
+   ],
+   "url": "https://arxiv.org/abs/2312.03126v2",
+   "pdf": "https://arxiv.org/pdf/2312.03126v2",
+   "comment": "PhD dissertation"
+  }
+ ]
+}

@@ -1,0 +1,714 @@
+{
+ "query": "abs:\"quality-diversity\" AND abs:\"large language model\"",
+ "hits": [
+  {
+   "id": "2607.11916v1",
+   "title": "QDEvo: A Multi-Objective Quality-Diversity Framework for Automated Heuristic Design",
+   "abstract": "The integration of Large Language Models (LLMs) with evolutionary computation has emerged as a powerful paradigm for automated heuristic design in combinatorial optimization. However, existing approaches suffer from mode collapse, converging to homogeneous populations that lack semantic diversity and fail to explore the full algorithmic space. We propose Quality-Diversity Evolution (QDEvo), a multi-objective framework that integrates Quality-Diversity optimization with LLM-driven heuristic search, maintaining an unbounded archive of semantically diverse algorithms using pre-trained code embeddings and incorporating hierarchical self-reflection to guide the evolutionary process. Extensive experiments across standard benchmarks and real-world industrial applications demonstrate that QDEvo significantly outperforms state-of-the-art methods in both Hypervolume and Inverted Generational Distance metrics. Our framework enables the discovery of heuristics that are simultaneously high-performing, computationally efficient, and semantically diverse, providing practitioners with a rich portfolio of solutions for complex optimization problems.",
+   "published": "2026-07-06",
+   "updated": "2026-07-06",
+   "authors": [
+    "Nam Do Khanh",
+    "Nhat Nguyen Tran Minh",
+    "Dat Pham Vu Tuan",
+    "Long Doan",
+    "Binh Huynh Thi Thanh"
+   ],
+   "primary_category": "cs.NE",
+   "categories": [
+    "cs.NE",
+    "cs.AI",
+    "cs.CL"
+   ],
+   "url": "https://arxiv.org/abs/2607.11916v1",
+   "pdf": "https://arxiv.org/pdf/2607.11916v1",
+   "comment": "4 pages; Accepted as poster at GECCO 2026"
+  },
+  {
+   "id": "2606.25198v2",
+   "title": "Heuresis: Search Strategies for Autonomous AI Research Agents Across Quality, Diversity and Novelty",
+   "abstract": "Autonomous AI Research promises to accelerate the scientific progress of machine learning. To realise this goal, current Large Language Model (LLM)-based agents need to go beyond just writing code, to mastering the exploration of simultaneously performant, diverse and novel ideas. To this end, we introduce Heuresis, a framework that abstracts the research pipeline into a set of general and composable primitives, enabling open-ended scientific exploration in machine learning research. We implement six search strategies: a greedy baseline, two archive-based (MAP-Elites, Go-Explore), one evolutionary (Islands), and two divergent (Curiosity, Omni), and evaluate them across three axes (Quality, Diversity, and Novelty) on three domains (LLM Pretraining, On-Policy RL, and Model Unlearning), totalling 3,222 scored runs. We find that completely novel ideas are rare. No idea across our scored runs is rated as \"Original\", and only a few achieve only \"Minor Similarity\" to prior work. Moreover, novel ideas never approach the highest-performing known-recipe scores. Across all six strategies and three domains, only one such idea lands in the top-10 by quality. We also observed agents resorting to a variety of reward-hacking techniques during execution (40 confirmed fabrications across 1,628 scored runs), and detecting them was necessary to keep the search faithful to the task. Our results show that while current search and Quality-Diversity strategies enable us to steer where the generated ideas land on the quality, diversity, and novelty axes, they do not expand the quality-novelty frontier. Bridging this gap is the open challenge towards the ultimate goal of perpetual, autonomous scientific progress. Code is available at github.com/a-antoniades/Heuresis.",
+   "published": "2026-06-23",
+   "updated": "2026-07-01",
+   "authors": [
+    "Antonis Antoniades",
+    "Deepak Nathani",
+    "Ritam Saha",
+    "Alfonso Amayuelas",
+    "Ivan Bercovich",
+    "Zhaotian Weng",
+    "Vignesh Baskaran",
+    "Kunal Bhatia",
+    "William Yang Wang"
+   ],
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI"
+   ],
+   "url": "https://arxiv.org/abs/2606.25198v2",
+   "pdf": "https://arxiv.org/pdf/2606.25198v2",
+   "comment": "14 pages main text, 82 pages total including appendix; 38 figures, 4 tables"
+  },
+  {
+   "id": "2501.06795v1",
+   "title": "Bridging the Fairness Gap: Enhancing Pre-trained Models with LLM-Generated Sentences",
+   "abstract": "Pre-trained language models (PLMs) are trained on data that inherently contains gender biases, leading to undesirable impacts. Traditional debiasing methods often rely on external corpora, which may lack quality, diversity, or demographic balance, affecting the effectiveness of debiasing. With the rise of large language models and their extensive knowledge, we propose enhancing fairness (Fair-Gender) in PLMs by absorbing coherent, attribute-balanced, and semantically rich sentences. However, these sentences cannot be directly used for debiasing due to alignment issues and the risk of negative transfer. We address this by applying causal analysis to estimate causal effects, filtering out unaligned sentences, and identifying aligned ones for incorporation into PLMs, thereby ensuring positive transfer. Experiments show that our approach significantly reduces gender biases in PLMs while preserving their language expressiveness.",
+   "published": "2025-01-12",
+   "updated": "2025-01-12",
+   "authors": [
+    "Liu Yu",
+    "Ludie Guo",
+    "Ping Kuang",
+    "Fan Zhou"
+   ],
+   "primary_category": "cs.CL",
+   "categories": [
+    "cs.CL",
+    "cs.AI"
+   ],
+   "url": "https://arxiv.org/abs/2501.06795v1",
+   "pdf": "https://arxiv.org/pdf/2501.06795v1",
+   "comment": ""
+  },
+  {
+   "id": "2402.15265v1",
+   "title": "CloChat: Understanding How People Customize, Interact, and Experience Personas in Large Language Models",
+   "abstract": "Large language models (LLMs) have facilitated significant strides in generating conversational agents, enabling seamless, contextually relevant dialogues across diverse topics. However, the existing LLM-driven conversational agents have fixed personalities and functionalities, limiting their adaptability to individual user needs. Creating personalized agent personas with distinct expertise or traits can address this issue. Nonetheless, we lack knowledge of how people customize and interact with agent personas. In this research, we investigated how users customize agent personas and their impact on interaction quality, diversity, and dynamics. To this end, we developed CloChat, an interface supporting easy and accurate customization of agent personas in LLMs. We conducted a study comparing how participants interact with CloChat and ChatGPT. The results indicate that participants formed emotional bonds with the customized agents, engaged in more dynamic dialogues, and showed interest in sustaining interactions. These findings contribute to design implications for future systems with conversational agents using LLMs.",
+   "published": "2024-02-23",
+   "updated": "2024-02-23",
+   "authors": [
+    "Juhye Ha",
+    "Hyeon Jeon",
+    "DaEun Han",
+    "Jinwook Seo",
+    "Changhoon Oh"
+   ],
+   "primary_category": "cs.HC",
+   "categories": [
+    "cs.HC",
+    "cs.CL"
+   ],
+   "url": "https://arxiv.org/abs/2402.15265v1",
+   "pdf": "https://arxiv.org/pdf/2402.15265v1",
+   "comment": "In Proceedings of the SIGCHI Conference on Human Factors in Computing Systems (CHI '24)"
+  },
+  {
+   "id": "2601.22536v1",
+   "title": "Decoding in Geometry: Alleviating Embedding-Space Crowding for Complex Reasoning",
+   "abstract": "Sampling-based decoding underlies complex reasoning in large language models (LLMs), where decoding strategies critically shape model behavior. Temperature- and truncation-based methods reshape the next-token distribution through global probability reweighting or thresholding to balance the quality-diversity tradeoff. However, they operate solely on token probabilities, ignoring fine-grained relationships among tokens in the embedding space. We uncover a novel phenomenon, embedding-space crowding, where the next-token distribution concentrates its probability mass on geometrically close tokens in the embedding space. We quantify crowding at multiple granularities and find a statistical association with reasoning success in mathematical problem solving. Motivated by this finding, we propose CraEG, a plug-and-play sampling method that mitigates crowding through geometry-guided reweighting. CraEG is training-free, single-pass, and compatible with standard sampling strategies. Experiments on multiple models and benchmarks demonstrate improved generation performance, with gains in robustness and diversity metrics.",
+   "published": "2026-01-30",
+   "updated": "2026-01-30",
+   "authors": [
+    "Yixin Yang",
+    "Qingxiu Dong",
+    "Zhifang Sui"
+   ],
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI"
+   ],
+   "url": "https://arxiv.org/abs/2601.22536v1",
+   "pdf": "https://arxiv.org/pdf/2601.22536v1",
+   "comment": ""
+  },
+  {
+   "id": "2601.00105v1",
+   "title": "Mortar: Evolving Mechanics for Automatic Game Design",
+   "abstract": "We present Mortar, a system for autonomously evolving game mechanics for automatic game design. Game mechanics define the rules and interactions that govern gameplay, and designing them manually is a time-consuming and expert-driven process. Mortar combines a quality-diversity algorithm with a large language model to explore a diverse set of mechanics, which are evaluated by synthesising complete games that incorporate both evolved mechanics and those drawn from an archive. The mechanics are evaluated by composing complete games through a tree search procedure, where the resulting games are evaluated by their ability to preserve a skill-based ordering over players -- that is, whether stronger players consistently outperform weaker ones. We assess the mechanics based on their contribution towards the skill-based ordering score in the game. We demonstrate that Mortar produces games that appear diverse and playable, and mechanics that contribute more towards the skill-based ordering score in the game. We perform ablation studies to assess the role of each system component and a user study to evaluate the games based on human feedback.",
+   "published": "2025-12-31",
+   "updated": "2025-12-31",
+   "authors": [
+    "Muhammad U. Nasir",
+    "Yuchen Li",
+    "Steven James",
+    "Julian Togelius"
+   ],
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI"
+   ],
+   "url": "https://arxiv.org/abs/2601.00105v1",
+   "pdf": "https://arxiv.org/pdf/2601.00105v1",
+   "comment": ""
+  },
+  {
+   "id": "2502.08896v1",
+   "title": "Communication is All You Need: Persuasion Dataset Construction via Multi-LLM Communication",
+   "abstract": "Large Language Models (LLMs) have shown proficiency in generating persuasive dialogue, yet concerns about the fluency and sophistication of their outputs persist. This paper presents a multi-LLM communication framework designed to enhance the generation of persuasive data automatically. This framework facilitates the efficient production of high-quality, diverse linguistic content with minimal human oversight. Through extensive evaluations, we demonstrate that the generated data excels in naturalness, linguistic diversity, and the strategic use of persuasion, even in complex scenarios involving social taboos. The framework also proves adept at generalizing across novel contexts. Our results highlight the framework's potential to significantly advance research in both computational and social science domains concerning persuasive communication.",
+   "published": "2025-02-13",
+   "updated": "2025-02-13",
+   "authors": [
+    "Weicheng Ma",
+    "Hefan Zhang",
+    "Ivory Yang",
+    "Shiyu Ji",
+    "Joice Chen",
+    "Farnoosh Hashemi",
+    "Shubham Mohole",
+    "Ethan Gearey",
+    "Michael Macy",
+    "Saeed Hassanpour",
+    "Soroush Vosoughi"
+   ],
+   "primary_category": "cs.CL",
+   "categories": [
+    "cs.CL",
+    "cs.AI"
+   ],
+   "url": "https://arxiv.org/abs/2502.08896v1",
+   "pdf": "https://arxiv.org/pdf/2502.08896v1",
+   "comment": "Accepted to NAACL 2025 Main Conference"
+  },
+  {
+   "id": "2602.12049v1",
+   "title": "Improving HPC Code Generation Capability of LLMs via Online Reinforcement Learning with Real-Machine Benchmark Rewards",
+   "abstract": "Large language models (LLMs) have demonstrated strong code generation capabilities, yet the runtime performance of generated code is not guaranteed, and there have been few attempts to train LLMs using runtime performance as a reward in the HPC domain. We propose an online reinforcement learning approach that executes LLM-generated code on a supercomputer and directly feeds back the measured runtime performance (GFLOPS) as a reward. We further introduce a Staged Quality-Diversity (SQD) algorithm that progressively varies the permitted optimization techniques on a per-problem basis, enabling the model to learn code optimization from diverse perspectives. We build a distributed system connecting a GPU training cluster with a CPU benchmarking cluster, and train Qwen2.5 Coder 14B on a double-precision matrix multiplication task using Group Relative Policy Optimization (GRPO). Through two experiments, we show that reinforcement learning combining runtime performance feedback with staged optimization can improve the HPC code generation capability of LLMs.",
+   "published": "2026-02-12",
+   "updated": "2026-02-12",
+   "authors": [
+    "Ryo Mikasa",
+    "Shun-ichiro Hayashi",
+    "Daichi Mukunoki",
+    "Tetsuya Hoshino",
+    "Takahiro Katagiri"
+   ],
+   "primary_category": "cs.LG",
+   "categories": [
+    "cs.LG"
+   ],
+   "url": "https://arxiv.org/abs/2602.12049v1",
+   "pdf": "https://arxiv.org/pdf/2602.12049v1",
+   "comment": ""
+  },
+  {
+   "id": "2608.05222v1",
+   "title": "Diff-Symbo: Text-Controlled Long-Duration Symbolic Music Generation Using Autoregressive Latent Diffusion Model",
+   "abstract": "Text-controlled symbolic music generation has recently gained research attention due to its versatile, flexible and straightforward approach to music composition. However, previous approaches tend to generate symbolic music with compromising quality, diversity, controllability and limited duration. In this paper, we present Diff-Symbo, an innovative method that uses latent diffusion model (LDM) to generate high-quality, diverse and long-duration symbolic music. To address the lack of text-symbolic music dataset, we develop a comprehensive dataset with 19,345 text templates by employing large language model. Furthermore, we design a music information encoder to reduce the training overhead while extracting more effective control representations. Given textual descriptions, our proposed method leverages LDM to improve the quality and diversity of music generation. Our method also improves the duration and the compositional consistency of music generation through an autoregressive approach. Experimental results show significant improvements of Diff-Symbo in text controllability, duration, and the quality of generated music compared to the baseline models such as GPT-4, MuseCoco and Multitrack Music Transformer (MMT). As one of the pioneer models in this field, Diff-Symbo paves the way towards controllable and high-quality symbolic music composition based on LDM, offering valuable contributions to both music amateurs and practitioners.",
+   "published": "2026-08-05",
+   "updated": "2026-08-05",
+   "authors": [
+    "Zhiwei Lin",
+    "Jun Chen",
+    "Boshi Tang",
+    "Weihao Wu",
+    "Yang Jing",
+    "Yaolong Ju",
+    "Fan Fan",
+    "Zhiyong Wu"
+   ],
+   "primary_category": "cs.SD",
+   "categories": [
+    "cs.SD",
+    "eess.AS"
+   ],
+   "url": "https://arxiv.org/abs/2608.05222v1",
+   "pdf": "https://arxiv.org/pdf/2608.05222v1",
+   "comment": ""
+  },
+  {
+   "id": "2604.07622v1",
+   "title": "DIVERSED: Relaxed Speculative Decoding via Dynamic Ensemble Verification",
+   "abstract": "Speculative decoding is an effective technique for accelerating large language model inference by drafting multiple tokens in parallel. In practice, its speedup is often bottlenecked by a rigid verification step that strictly enforces the accepted token distribution to exactly match the target model. This constraint leads to the rejection of many plausible tokens, lowering the acceptance rate and limiting overall time speedup. To overcome this limitation, we propose Dynamic Verification Relaxed Speculative Decoding (DIVERSED), a relaxed verification framework that improves time efficiency while preserving generation quality. DIVERSED learns an ensemble-based verifier that blends the draft and target model distributions with a task-dependent and context-dependent weight. We provide theoretical justification for our approach and demonstrate empirically that DIVERSED achieves substantially higher inference efficiency compared to standard speculative decoding methods. Code is available at: https://github.com/comeusr/diversed.",
+   "published": "2026-04-08",
+   "updated": "2026-04-08",
+   "authors": [
+    "Ziyi Wang",
+    "Siva Rajesh Kasa",
+    "Ankith M S",
+    "Santhosh Kumar Kasa",
+    "Jiaru Zou",
+    "Sumit Negi",
+    "Ruqi Zhang",
+    "Nan Jiang",
+    "Qifan Song"
+   ],
+   "primary_category": "cs.CL",
+   "categories": [
+    "cs.CL",
+    "cs.AI",
+    "cs.LG"
+   ],
+   "url": "https://arxiv.org/abs/2604.07622v1",
+   "pdf": "https://arxiv.org/pdf/2604.07622v1",
+   "comment": "35 pages, 9 figures, accepted at AISTATS 2026"
+  },
+  {
+   "id": "2510.23324v3",
+   "title": "Partnering with Generative AI: Experimental Evaluation of Human-Led and Model-Led Interaction in Human-AI Co-Creation",
+   "abstract": "Large language models (LLMs) show strong potential to support creative tasks, but the role of the interface design is poorly understood. In particular, the effect of different modes of collaboration between humans and LLMs on co-creation outcomes is unclear. To test this, we conducted a randomized controlled experiment ($N = 486$) comparing: (a) two variants of reflective, human-led modes in which the LLM elicits elaboration through suggestions or questions, against (b) a proactive, model-led mode in which the LLM independently rewrites ideas. By assessing the effects on idea quality, diversity, and perceived ownership, we found that the model-led mode substantially improved idea quality but reduced idea diversity and users' perceived idea ownership. The reflective, human-led mode also improved idea quality, yet while preserving diversity and ownership. We independently validated the findings in a different context ($N = 640$). Our findings highlight the importance of designing interactions with generative AI systems as reflective thought partners that complement human strengths and augment creative processes.",
+   "published": "2025-10-27",
+   "updated": "2026-03-09",
+   "authors": [
+    "Sebastian Maier",
+    "Manuel Schneider",
+    "Stefan Feuerriegel"
+   ],
+   "primary_category": "cs.HC",
+   "categories": [
+    "cs.HC"
+   ],
+   "url": "https://arxiv.org/abs/2510.23324v3",
+   "pdf": "https://arxiv.org/pdf/2510.23324v3",
+   "comment": ""
+  },
+  {
+   "id": "2412.02980v2",
+   "title": "Surveying the Effects of Quality, Diversity, and Complexity in Synthetic Data From Large Language Models",
+   "abstract": "Synthetic data generation with Large Language Models is a promising paradigm for augmenting natural data over a nearly infinite range of tasks. Given this variety, direct comparisons among synthetic data generation algorithms are scarce, making it difficult to understand where improvement comes from and what bottlenecks exist. We propose to evaluate algorithms via the makeup of synthetic data generated by each algorithm in terms of data quality, diversity, and complexity. We choose these three characteristics for their significance in open-ended processes and the impact each has on the capabilities of downstream models. We find quality to be essential for in-distribution model generalization, diversity to be essential for out-of-distribution generalization, and complexity to be beneficial for both. Further, we emphasize the existence of Quality-Diversity trade-offs in training data and the downstream effects on model performance. We then examine the effect of various components in the synthetic data pipeline on each data characteristic. This examination allows us to taxonomize and compare synthetic data generation algorithms through the components they utilize and the resulting effects on data QDC composition. This analysis extends into a discussion on the importance of balancing QDC in synthetic data for efficient reinforcement learning and self-improvement algorithms. Analogous to the QD trade-offs in training data, often there exist trade-offs between model output quality and output diversity which impact the composition of synthetic data. We observe that many models are currently evaluated and optimized only for output quality, thereby limiting output diversity and the potential for self-improvement. We argue that balancing these trade-offs is essential to the development of future self-improvement algorithms and highlight a number of works making progress in this direction.",
+   "published": "2024-12-04",
+   "updated": "2024-12-09",
+   "authors": [
+    "Alex Havrilla",
+    "Andrew Dai",
+    "Laura O'Mahony",
+    "Koen Oostermeijer",
+    "Vera Zisler",
+    "Alon Albalak",
+    "Fabrizio Milo",
+    "Sharath Chandra Raparthy",
+    "Kanishk Gandhi",
+    "Baber Abbasi",
+    "Duy Phung",
+    "Maia Iyer",
+    "Dakota Mahan",
+    "Chase Blagden",
+    "Srishti Gureja",
+    "Mohammed Hamdy",
+    "Wen-Ding Li",
+    "Giovanni Paolini",
+    "Pawan Sasanka Ammanamanchi",
+    "Elliot Meyerson"
+   ],
+   "primary_category": "cs.LG",
+   "categories": [
+    "cs.LG",
+    "cs.AI",
+    "cs.CL"
+   ],
+   "url": "https://arxiv.org/abs/2412.02980v2",
+   "pdf": "https://arxiv.org/pdf/2412.02980v2",
+   "comment": ""
+  },
+  {
+   "id": "2412.00657v1",
+   "title": "Improving Vietnamese Legal Document Retrieval using Synthetic Data",
+   "abstract": "In the field of legal information retrieval, effective embedding-based models are essential for accurate question-answering systems. However, the scarcity of large annotated datasets poses a significant challenge, particularly for Vietnamese legal texts. To address this issue, we propose a novel approach that leverages large language models to generate high-quality, diverse synthetic queries for Vietnamese legal passages. This synthetic data is then used to pre-train retrieval models, specifically bi-encoder and ColBERT, which are further fine-tuned using contrastive loss with mined hard negatives. Our experiments demonstrate that these enhancements lead to strong improvement in retrieval accuracy, validating the effectiveness of synthetic data and pre-training techniques in overcoming the limitations posed by the lack of large labeled datasets in the Vietnamese legal domain.",
+   "published": "2024-12-01",
+   "updated": "2024-12-01",
+   "authors": [
+    "Son Pham Tien",
+    "Hieu Nguyen Doan",
+    "An Nguyen Dai",
+    "Sang Dinh Viet"
+   ],
+   "primary_category": "cs.IR",
+   "categories": [
+    "cs.IR",
+    "cs.AI"
+   ],
+   "url": "https://arxiv.org/abs/2412.00657v1",
+   "pdf": "https://arxiv.org/pdf/2412.00657v1",
+   "comment": ""
+  },
+  {
+   "id": "2404.15794v2",
+   "title": "Large Language Models as In-context AI Generators for Quality-Diversity",
+   "abstract": "Quality-Diversity (QD) approaches are a promising direction to develop open-ended processes as they can discover archives of high-quality solutions across diverse niches. While already successful in many applications, QD approaches usually rely on combining only one or two solutions to generate new candidate solutions. As observed in open-ended processes such as technological evolution, wisely combining large diversity of these solutions could lead to more innovative solutions and potentially boost the productivity of QD search. In this work, we propose to exploit the pattern-matching capabilities of generative models to enable such efficient solution combinations. We introduce In-context QD, a framework of techniques that aim to elicit the in-context capabilities of pre-trained Large Language Models (LLMs) to generate interesting solutions using few-shot and many-shot prompting with quality-diverse examples from the QD archive as context. Applied to a series of common QD domains, In-context QD displays promising results compared to both QD baselines and similar strategies developed for single-objective optimization. Additionally, this result holds across multiple values of parameter sizes and archive population sizes, as well as across domains with distinct characteristics from BBO functions to policy search. Finally, we perform an extensive ablation that highlights the key prompt design considerations that encourage the generation of promising solutions for QD.",
+   "published": "2024-04-24",
+   "updated": "2024-06-05",
+   "authors": [
+    "Bryan Lim",
+    "Manon Flageat",
+    "Antoine Cully"
+   ],
+   "primary_category": "cs.NE",
+   "categories": [
+    "cs.NE",
+    "cs.AI",
+    "cs.LG"
+   ],
+   "url": "https://arxiv.org/abs/2404.15794v2",
+   "pdf": "https://arxiv.org/pdf/2404.15794v2",
+   "comment": ""
+  },
+  {
+   "id": "2505.21184v4",
+   "title": "Jailbreak-as-a-Service++: Unveiling Distributed AI-Driven Malicious Information Campaigns Powered by LLM Crowdsourcing",
+   "abstract": "To prevent the misuse of Large Language Models (LLMs) for malicious purposes, numerous efforts have been made to develop the safety alignment mechanisms of LLMs. However, as multiple LLMs become readily accessible through various Model-as-a-Service (MaaS) platforms, attackers can strategically exploit LLMs' heterogeneous safety policies to fulfill malicious information generation tasks in a distributed manner. In this study, we introduce \\textit{\\textbf{PoisonSwarm}} to how attackers can reliably launder malicious tasks via the speculative use of LLM crowdsourcing. Building upon a scheduler orchestrating crowdsourced LLMs, PoisonSwarm maps the given malicious task to a benign analogue to derive a content template, decomposes it into semantic units for crowdsourced unit-wise rewriting, and reassembles the outputs into malicious content. Experiments show its superiority over existing methods in data quality, diversity, and success rates. Regulation simulations further reveal the difficulty of governing such distributed, orchestrated misuse in MaaS ecosystems, highlighting the need for coordinated, ecosystem-level defenses.",
+   "published": "2025-05-27",
+   "updated": "2026-01-24",
+   "authors": [
+    "Yu Yan",
+    "Sheng Sun",
+    "Mingfeng Li",
+    "Yunlong Song",
+    "Xingzhou Zhang",
+    "Linran Lu",
+    "Zhifei Zheng",
+    "Min Liu",
+    "Qi Li"
+   ],
+   "primary_category": "cs.LG",
+   "categories": [
+    "cs.LG",
+    "cs.AI",
+    "cs.CL"
+   ],
+   "url": "https://arxiv.org/abs/2505.21184v4",
+   "pdf": "https://arxiv.org/pdf/2505.21184v4",
+   "comment": ""
+  },
+  {
+   "id": "2607.18199v1",
+   "title": "PPL-Factory: Task-Aware and Budget-Aware Data Selection from Language Modeling to Reasoning",
+   "abstract": "Not all training samples contribute equally to large language model fine-tuning. Selecting informative training samples can reduce the computational cost while preserving downstream performance. Many existing data selection methods rely on indirect heuristics, such as data quality, diversity or reasoning trace length. However, the effectiveness of these fixed criteria is task-dependent and difficult to generalize across diverse downstream tasks. Perplexity-based data selection provides a simple and model-aware solution to estimate the sample difficulty, but existing approaches typically score the entire training sequence and ignore the difference in learning objectives of language modeling and reasoning tasks. In this paper, we propose PPL-Factory, a simple and interpretable data selection framework that combines task-aware perplexity-based scores and data budget-aware selection criteria. Experiments on GSM8K demonstrate that PPL-Factory outperforms other state-of-the-art data selection methods using only $1\\%$ of the training set. With $10\\%$ of the data, PPL-Factory exceeds full-data fine-tuning accuracy by 0.9 on GSM8K and 4.8 on MATH. Overall, our results demonstrate that task-aware and budget-aware perplexity-based selection provides an effective and applicable approach for efficient fine-tuning.",
+   "published": "2026-07-20",
+   "updated": "2026-07-20",
+   "authors": [
+    "Hang Zhang",
+    "Warren J. Gross"
+   ],
+   "primary_category": "cs.CL",
+   "categories": [
+    "cs.CL",
+    "cs.LG"
+   ],
+   "url": "https://arxiv.org/abs/2607.18199v1",
+   "pdf": "https://arxiv.org/pdf/2607.18199v1",
+   "comment": "13 pages, 4 figures, 5 tables"
+  },
+  {
+   "id": "2505.18458v3",
+   "title": "A Survey of LLM $\\times$ DATA",
+   "abstract": "The integration of large language model (LLM) and data management (DATA) is rapidly redefining both domains. In this survey, we comprehensively review the bidirectional relationships. On the one hand, DATA4LLM, spanning large-scale data processing, storage, and serving, feeds LLMs with high quality, diversity, and timeliness of data required for stages like pre-training, post-training, retrieval-augmented generation, and agentic workflows: (i) Data processing for LLMs includes scalable acquisition, deduplication, filtering, selection, domain mixing, and synthetic augmentation; (ii) Data Storage for LLMs focuses on efficient data and model formats, distributed and heterogeneous storage hierarchies, KV-cache management, and fault-tolerant checkpointing; (iii) Data serving for LLMs tackles challenges in RAG (e.g., knowledge post-processing), LLM inference (e.g., prompt compression, data provenance), and training strategies (e.g., data packing and shuffling). On the other hand, in LLM4DATA, LLMs are emerging as general-purpose engines for data management. We review recent advances in (i) data manipulation, including automatic data cleaning, integration, discovery; (ii) data analysis, covering reasoning over structured, semi-structured, and unstructured data, and (iii) system optimization (e.g., configuration tuning, query rewriting, anomaly diagnosis), powered by LLM techniques like retrieval-augmented prompting, task-specialized fine-tuning, and multi-agent collaboration.",
+   "published": "2025-05-24",
+   "updated": "2025-06-01",
+   "authors": [
+    "Xuanhe Zhou",
+    "Junxuan He",
+    "Wei Zhou",
+    "Haodong Chen",
+    "Zirui Tang",
+    "Haoyu Zhao",
+    "Xin Tong",
+    "Guoliang Li",
+    "Youmin Chen",
+    "Jun Zhou",
+    "Zhaojun Sun",
+    "Binyuan Hui",
+    "Shuo Wang",
+    "Conghui He",
+    "Zhiyuan Liu",
+    "Jingren Zhou",
+    "Fan Wu"
+   ],
+   "primary_category": "cs.DB",
+   "categories": [
+    "cs.DB",
+    "cs.AI",
+    "cs.CL",
+    "cs.IR",
+    "cs.LG"
+   ],
+   "url": "https://arxiv.org/abs/2505.18458v3",
+   "pdf": "https://arxiv.org/pdf/2505.18458v3",
+   "comment": "Please refer to the paper list at: https://github.com/weAIDB/awesome-data-llm"
+  },
+  {
+   "id": "2312.17343v1",
+   "title": "AQUALLM: Audio Question Answering Data Generation Using Large Language Models",
+   "abstract": "Audio Question Answering (AQA) constitutes a pivotal task in which machines analyze both audio signals and natural language questions to produce precise natural language answers. The significance of possessing high-quality, diverse, and extensive AQA datasets cannot be overstated when aiming for the precision of an AQA system. While there has been notable focus on developing accurate and efficient AQA models, the creation of high-quality, diverse, and extensive datasets for the specific task at hand has not garnered considerable attention. To address this challenge, this work makes several contributions. We introduce a scalable AQA data generation pipeline, denoted as the AQUALLM framework, which relies on Large Language Models (LLMs). This framework utilizes existing audio-caption annotations and incorporates state-of-the-art LLMs to generate expansive, high-quality AQA datasets. Additionally, we present three extensive and high-quality benchmark datasets for AQA, contributing significantly to the progression of AQA research. AQA models trained on the proposed datasets set superior benchmarks compared to the existing state-of-the-art. Moreover, models trained on our datasets demonstrate enhanced generalizability when compared to models trained using human-annotated AQA data. Code and datasets will be accessible on GitHub~\\footnote{\\url{https://github.com/swarupbehera/AQUALLM}}.",
+   "published": "2023-12-28",
+   "updated": "2023-12-28",
+   "authors": [
+    "Swarup Ranjan Behera",
+    "Krishna Mohan Injeti",
+    "Jaya Sai Kiran Patibandla",
+    "Praveen Kumar Pokala",
+    "Balakrishna Reddy Pailla"
+   ],
+   "primary_category": "cs.CL",
+   "categories": [
+    "cs.CL",
+    "cs.AI",
+    "cs.LG",
+    "cs.MM",
+    "cs.SD",
+    "eess.AS"
+   ],
+   "url": "https://arxiv.org/abs/2312.17343v1",
+   "pdf": "https://arxiv.org/pdf/2312.17343v1",
+   "comment": ""
+  },
+  {
+   "id": "2510.01028v2",
+   "title": "Syntax-Guided Diffusion Language Models with User-Integrated Personalization",
+   "abstract": "Large language models have made revolutionary progress in generating human-like text, yet their outputs often tend to be generic, exhibiting insufficient structural diversity, which limits personalized expression. Recent advances in diffusion models have opened new opportunities for improving language generation beyond the limitations of autoregressive paradigms. In this work, we propose a syntax-guided diffusion language model that integrates structural supervision and personalized conditioning to enhance text quality, diversity, and controllability. We introduce a cascaded framework that generates syntactic guidance before conditional text generation, and further generalize it to a novel noncascaded architecture for better alignment between structure and content. By incorporating syntactic information in the generating process, the proposed model better captures the lexical and structural characteristics of stylistic sentence construction. To enable fine-grained personalization, we develop a shared representation mechanism that facilitates information integration across users, supporting both faithful stylistic generation and generalizable zero-shot inference. Extensive experiments on multiple tasks demonstrate the superiority of our approach in fluency, diversity, and stylistic fidelity. Further qualitative analyses highlight its interpretability and flexibility in learning personalized patterns.",
+   "published": "2025-10-01",
+   "updated": "2026-08-22",
+   "authors": [
+    "Ruqian Zhang",
+    "Yijiao Zhang",
+    "Juan Shen",
+    "Zhongyi Zhu",
+    "Annie Qu"
+   ],
+   "primary_category": "cs.CL",
+   "categories": [
+    "cs.CL",
+    "stat.ME"
+   ],
+   "url": "https://arxiv.org/abs/2510.01028v2",
+   "pdf": "https://arxiv.org/pdf/2510.01028v2",
+   "comment": ""
+  },
+  {
+   "id": "2410.01088v2",
+   "title": "Exploring Empty Spaces: Human-in-the-Loop Data Augmentation",
+   "abstract": "Data augmentation is crucial to make machine learning models more robust and safe. However, augmenting data can be challenging as it requires generating diverse data points to rigorously evaluate model behavior on edge cases and mitigate potential harms. Creating high-quality augmentations that cover these \"unknown unknowns\" is a time- and creativity-intensive task. In this work, we introduce Amplio, an interactive tool to help practitioners navigate \"unknown unknowns\" in unstructured text datasets and improve data diversity by systematically identifying empty data spaces to explore. Amplio includes three human-in-the-loop data augmentation techniques: Augment With Concepts, Augment by Interpolation, and Augment with Large Language Model. In a user study with 18 professional red teamers, we demonstrate the utility of our augmentation methods in helping generate high-quality, diverse, and relevant model safety prompts. We find that Amplio enabled red teamers to augment data quickly and creatively, highlighting the transformative potential of interactive augmentation workflows.",
+   "published": "2024-10-01",
+   "updated": "2025-02-04",
+   "authors": [
+    "Catherine Yeh",
+    "Donghao Ren",
+    "Yannick Assogba",
+    "Dominik Moritz",
+    "Fred Hohman"
+   ],
+   "primary_category": "cs.HC",
+   "categories": [
+    "cs.HC",
+    "cs.CL",
+    "cs.LG"
+   ],
+   "url": "https://arxiv.org/abs/2410.01088v2",
+   "pdf": "https://arxiv.org/pdf/2410.01088v2",
+   "comment": "Code: https://github.com/apple/ml-interactive-data-augmentation/"
+  },
+  {
+   "id": "2306.01102v8",
+   "title": "LLMatic: Neural Architecture Search via Large Language Models and Quality Diversity Optimization",
+   "abstract": "Large Language Models (LLMs) have emerged as powerful tools capable of accomplishing a broad spectrum of tasks. Their abilities span numerous areas, and one area where they have made a significant impact is in the domain of code generation. Here, we propose using the coding abilities of LLMs to introduce meaningful variations to code defining neural networks. Meanwhile, Quality-Diversity (QD) algorithms are known to discover diverse and robust solutions. By merging the code-generating abilities of LLMs with the diversity and robustness of QD solutions, we introduce \\texttt{LLMatic}, a Neural Architecture Search (NAS) algorithm. While LLMs struggle to conduct NAS directly through prompts, \\texttt{LLMatic} uses a procedural approach, leveraging QD for prompts and network architecture to create diverse and high-performing networks. We test \\texttt{LLMatic} on the CIFAR-10 and NAS-bench-201 benchmarks, demonstrating that it can produce competitive networks while evaluating just $2,000$ candidates, even without prior knowledge of the benchmark domain or exposure to any previous top-performing models for the benchmark. The open-sourced code is available in \\url{https://github.com/umair-nasir14/LLMatic}.",
+   "published": "2023-06-01",
+   "updated": "2024-04-12",
+   "authors": [
+    "Muhammad U. Nasir",
+    "Sam Earle",
+    "Christopher Cleghorn",
+    "Steven James",
+    "Julian Togelius"
+   ],
+   "primary_category": "cs.NE",
+   "categories": [
+    "cs.NE",
+    "cs.AI",
+    "cs.CL"
+   ],
+   "url": "https://arxiv.org/abs/2306.01102v8",
+   "pdf": "https://arxiv.org/pdf/2306.01102v8",
+   "comment": "Accepted to The Genetic and Evolutionary Computation Conference 2024"
+  },
+  {
+   "id": "2605.09781v2",
+   "title": "Parameter-Efficient Neuroevolution for Diverse LLM Generation: Quality-Diversity Optimization via Prompt Embedding Evolution",
+   "abstract": "Large Language Models exhibit mode collapse, producing homogeneous outputs that fail to explore valid solution spaces. We present QD-LLM, a framework for parameter-efficient neuroevolution that evolves prompt embeddings, compact neural interfaces (~32K parameters) that steer generation in frozen LLMs (70B+ parameters), within a Quality-Diversity (QD) optimization framework. Our contributions: (1) evolved prompt embeddings via gradient-free optimization enabling behavioral steering without model fine-tuning; (2) hybrid behavior characterization combining semantic and explicit features with formal coverage bounds (Theorem 1) under validated near-independence (NMI $= 0.08 \\pm 0.02$); (3) co-evolutionary variation operators including targeted behavioral mutation via finite-difference gradient estimation. On HumanEval (164 problems), MBPP, and creative writing benchmarks, QD-LLM achieves 46.4% higher coverage and 41.4% higher QD-Score than QDAIF ($p<0.001$, 30 runs, Vargha-Delaney $A=0.94$). We demonstrate downstream utility: diverse archives improve test generation (34% more edge cases) and fine-tuning data quality (8.3% accuracy gain). We validate across open-source LLMs (Llama-3-70B, Mistral-Large) with full embedding access, establishing prompt embedding evolution as an effective paradigm bridging neuroevolution and modern LLMs.",
+   "published": "2026-05-10",
+   "updated": "2026-06-18",
+   "authors": [
+    "Dongxin Guo",
+    "Jikun Wu",
+    "Siu Ming Yiu"
+   ],
+   "primary_category": "cs.NE",
+   "categories": [
+    "cs.NE",
+    "cs.AI",
+    "cs.CL",
+    "cs.LG"
+   ],
+   "url": "https://arxiv.org/abs/2605.09781v2",
+   "pdf": "https://arxiv.org/pdf/2605.09781v2",
+   "comment": ""
+  },
+  {
+   "id": "2605.28835v1",
+   "title": "GenesisFunc: Multi-Agent Data Generation for Accurate and Generalizable Function-Calling",
+   "abstract": "Large Language Models (LLMs) extend their capabilities through function-calling (FC), which relies on training data with high quality, diversity, and broad coverage of scenario. However, obtaining and annotating real function-calling data is challenging, while synthetic data from existing pipelines often suffers from unreliable APIs, limited tool scalability, insufficient diversity, and weak quality control. To address these, we present GenesisFunc, an automated pipeline for generating FC training data. Starting from reliable tools in widely used public benchmarks, our GenesisFunc employs a multi-agent framework to support a dialogue generation system that produces conversations spanning diverse scenarios, while maintaining both diversity and quality throughout the process. The accuracy of the data is further reinforced through a multi-stage evaluation system. We fine-tune an 8B LLM on the synthetic dataset and show through extensive experiments that it outperforms similarly sized open-source models in in-domain FC performance and out-of-domain generalization, while reaching FC capabilities comparable to some of the latest API-based models. In addition, our method demonstrates strong potential to scale effectively across downstream tools, underscoring its real-world applicability.",
+   "published": "2026-04-10",
+   "updated": "2026-04-10",
+   "authors": [
+    "Hao-Xiang Xu",
+    "Chong Deng",
+    "Jiaqing Liu",
+    "Wen Wang",
+    "Qian Chen",
+    "Lujia Bao",
+    "Xiangang Li",
+    "Zhen-Hua Ling"
+   ],
+   "primary_category": "cs.CL",
+   "categories": [
+    "cs.CL",
+    "cs.AI"
+   ],
+   "url": "https://arxiv.org/abs/2605.28835v1",
+   "pdf": "https://arxiv.org/pdf/2605.28835v1",
+   "comment": "Accepted by ACL 2026 Main"
+  },
+  {
+   "id": "2601.14160v1",
+   "title": "Domain-Adaptation through Synthetic Data: Fine-Tuning Large Language Models for German Law",
+   "abstract": "Large language models (LLMs) often struggle in specialized domains such as legal reasoning due to limited expert knowledge, resulting in factually incorrect outputs or hallucinations. This paper presents an effective method for adapting advanced LLMs to German legal question answering through a novel synthetic data generation approach. In contrast to costly human-annotated resources or unreliable synthetic alternatives, our approach systematically produces high-quality, diverse, and legally accurate question-answer pairs directly from authoritative German statutes. Using rigorous automated filtering methods and parameter-efficient fine-tuning techniques, we demonstrate that LLMs adapted with our synthetic dataset significantly outperform their baseline counterparts on German legal question answering tasks. Our results highlight the feasibility of using carefully designed synthetic data as a robust alternative to manual annotation in high-stakes, knowledge-intensive domains.",
+   "published": "2026-01-20",
+   "updated": "2026-01-20",
+   "authors": [
+    "Ali Hamza Bashir",
+    "Muhammad Rehan Khalid",
+    "Kostadin Cvejoski",
+    "Jana Birr",
+    "Jule Berghaus",
+    "Armin Berger",
+    "Sandra Halscheidt",
+    "Christian Temath",
+    "Rafet Sifa",
+    "David Berghaus"
+   ],
+   "primary_category": "cs.CL",
+   "categories": [
+    "cs.CL",
+    "cs.AI"
+   ],
+   "url": "https://arxiv.org/abs/2601.14160v1",
+   "pdf": "https://arxiv.org/pdf/2601.14160v1",
+   "comment": ""
+  },
+  {
+   "id": "2503.01151v1",
+   "title": "ReaderLM-v2: Small Language Model for HTML to Markdown and JSON",
+   "abstract": "We present ReaderLM-v2, a compact 1.5 billion parameter language model designed for efficient web content extraction. Our model processes documents up to 512K tokens, transforming messy HTML into clean Markdown or JSON formats with high accuracy -- making it an ideal tool for grounding large language models. The model's effectiveness results from two key innovations: (1) a three-stage data synthesis pipeline that generates high quality, diverse training data by iteratively drafting, refining, and critiquing web content extraction; and (2) a unified training framework combining continuous pre-training with multi-objective optimization. Intensive evaluation demonstrates that ReaderLM-v2 outperforms GPT-4o-2024-08-06 and other larger models by 15-20\\% on carefully curated benchmarks, particularly excelling at documents exceeding 100K tokens, while maintaining significantly lower computational requirements.",
+   "published": "2025-03-03",
+   "updated": "2025-03-03",
+   "authors": [
+    "Feng Wang",
+    "Zesheng Shi",
+    "Bo Wang",
+    "Nan Wang",
+    "Han Xiao"
+   ],
+   "primary_category": "cs.CL",
+   "categories": [
+    "cs.CL",
+    "cs.AI",
+    "cs.IR"
+   ],
+   "url": "https://arxiv.org/abs/2503.01151v1",
+   "pdf": "https://arxiv.org/pdf/2503.01151v1",
+   "comment": "9 pages, 10-12 refs"
+  },
+  {
+   "id": "2601.20981v2",
+   "title": "Diversifying Toxicity Search in Large Language Models Through Speciation",
+   "abstract": "Evolutionary prompt search is a practical black-box approach for red teaming large language models, however existing methods often collapse onto a small family of high-performing prompts, limiting coverage of distinct failure modes. We present a speciated quality-diversity extension of \\textit{ToxSearch} that maintains multiple high-toxicity prompt niches in parallel rather than optimizing a single best prompt. \\textit{ToxSearch-S} introduces unsupervised prompt speciation via a search methodology that maintains capacity-limited species with exemplar leaders, a reserve pool for emerging niches, and species-aware parent selection that trades off within-niche exploitation and cross-niche exploration. Preliminary results show \\textit{ToxSearch-S} reaching higher peak toxicity ($\\approx 0.73$ vs.\\ $\\approx 0.47$) with a heavier tail (top-10 median $0.66$ vs.\\ $0.45$) than the baseline. Speciation also yields broader semantic coverage under a topics-as-species analysis (higher effective topic diversity and larger unique topic coverage). Finally, species formed are well-separated in embedding space (mean separation ratio $\\approx 1.93$) and exhibit distinct toxicity distributions, indicating that speciation partitions the adversarial space into behaviorally differentiated niches rather than superficial lexical variants.",
+   "published": "2026-01-28",
+   "updated": "2026-04-21",
+   "authors": [
+    "Onkar Shelar",
+    "Travis Desell"
+   ],
+   "primary_category": "cs.NE",
+   "categories": [
+    "cs.NE",
+    "q-bio.PE"
+   ],
+   "url": "https://arxiv.org/abs/2601.20981v2",
+   "pdf": "https://arxiv.org/pdf/2601.20981v2",
+   "comment": "Preprint. 4 pages, Accepted at GECCO as short paper"
+  },
+  {
+   "id": "2502.11546v5",
+   "title": "DCAD-2000: A Multilingual Dataset across 2000+ Languages with Data Cleaning as Anomaly Detection",
+   "abstract": "The rapid development of multilingual large language models (LLMs) highlights the need for high-quality, diverse, and well-curated multilingual datasets. In this paper, we introduce DCAD-2000 (Data Cleaning as Anomaly Detection), a large-scale multilingual corpus constructed from newly extracted Common Crawl data and existing multilingual sources. DCAD-2000 covers 2,282 languages, 46.72TB of text, and 8.63 billion documents, spanning 155 high- and medium-resource languages and 159 writing scripts. To overcome the limitations of existing data cleaning approaches, which rely on manually designed heuristic thresholds, we reframe data cleaning as an anomaly detection problem. This dynamic filtering paradigm substantially improves data quality by automatically identifying and removing noisy or anomalous content. By fine-tuning LLMs on DCAD-2000, we demonstrate notable improvements in data quality, robustness of the cleaning pipeline, and downstream performance, particularly for low-resource languages across multiple multilingual benchmarks.",
+   "published": "2025-02-17",
+   "updated": "2025-10-24",
+   "authors": [
+    "Yingli Shen",
+    "Wen Lai",
+    "Shuo Wang",
+    "Xueren Zhang",
+    "Kangyang Luo",
+    "Alexander Fraser",
+    "Maosong Sun"
+   ],
+   "primary_category": "cs.CL",
+   "categories": [
+    "cs.CL"
+   ],
+   "url": "https://arxiv.org/abs/2502.11546v5",
+   "pdf": "https://arxiv.org/pdf/2502.11546v5",
+   "comment": "NeurIPS 2025 Datasets and Benchmarks Track"
+  },
+  {
+   "id": "2602.02862v1",
+   "title": "STEER: Inference-Time Risk Control via Constrained Quality-Diversity Search",
+   "abstract": "Large Language Models (LLMs) trained for average correctness often exhibit mode collapse, producing narrow decision behaviors on tasks where multiple responses may be reasonable. This limitation is particularly problematic in ordinal decision settings such as clinical triage, where standard alignment removes the ability to trade off specificity and sensitivity (the ROC operating point) based on contextual constraints. We propose STEER (Steerable Tuning via Evolutionary Ensemble Refinement), a training-free framework that reintroduces this tunable control. STEER constructs a population of natural-language personas through an offline, constrained quality-diversity search that promotes behavioral coverage while enforcing minimum safety, reasoning, and stability thresholds. At inference time, STEER exposes a single, interpretable control parameter that maps a user-specified risk percentile to a selected persona, yielding a monotonic adjustment of decision conservativeness. On two clinical triage benchmarks, STEER achieves broader behavioral coverage compared to temperature-based sampling and static persona ensembles. Compared to a representative post-training method, STEER maintains substantially higher accuracy on unambiguous urgent cases while providing comparable control over ambiguous decisions. These results demonstrate STEER as a safety-preserving paradigm for risk control, capable of steering behavior without compromising domain competence.",
+   "published": "2026-02-02",
+   "updated": "2026-02-02",
+   "authors": [
+    "Eric Yang",
+    "Jong Ha Lee",
+    "Jonathan Amar",
+    "Elissa Ye",
+    "Yugang Jia"
+   ],
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI",
+    "cs.LG"
+   ],
+   "url": "https://arxiv.org/abs/2602.02862v1",
+   "pdf": "https://arxiv.org/pdf/2602.02862v1",
+   "comment": "20 pages"
+  },
+  {
+   "id": "2509.01185v2",
+   "title": "Modular Techniques for Synthetic Long-Context Data Generation in Language Model Training and Evaluation",
+   "abstract": "The ability of large language models (LLMs) to process and reason over long textual inputs is critical for a wide range of real-world applications. However, progress in this area is significantly constrained by the absence of high-quality, diverse, and verifiable long-context datasets suitable for both training and evaluation. This work introduces a modular, extensible framework for synthetic long-context data generation via prompt-based interaction with LLMs. The framework supports multiple training and alignment objectives, including Supervised Fine-Tuning (SFT), Direct Preference Optimization (DPO), and Group Relative Policy Optimization (GRPO). It encompasses four core generation paradigms: multi-turn conversational dialogues, document-grounded input-output pairs, verifiable instruction-response tasks, and long-context reasoning examples. Through templated prompting, a model-agnostic architecture, and metadata-enriched outputs, the proposed approach facilitates scalable, controllable, and purpose-aligned dataset creation for advancing long-context capabilities in LLMs.",
+   "published": "2025-09-01",
+   "updated": "2025-09-04",
+   "authors": [
+    "Seganrasan Subramanian",
+    "Abhigya Verma"
+   ],
+   "primary_category": "cs.CL",
+   "categories": [
+    "cs.CL",
+    "cs.AI"
+   ],
+   "url": "https://arxiv.org/abs/2509.01185v2",
+   "pdf": "https://arxiv.org/pdf/2509.01185v2",
+   "comment": "26 pages, 4 figures"
+  },
+  {
+   "id": "2510.08936v1",
+   "title": "RO-Bench: Large-scale robustness evaluation of MLLMs with text-driven counterfactual videos",
+   "abstract": "Recently, Multi-modal Large Language Models (MLLMs) have demonstrated significant performance across various video understanding tasks. However, their robustness, particularly when faced with manipulated video content, remains largely unexplored. In this paper, we introduce Ro-Bench, the first benchmark for evaluating MLLMs on dynamic out-of-distribution (OOD) counterfactual video test sets. Ro-Bench incorporates high-quality, diverse and temporally relevant video data, by editing Style, Object, Background and their compositions. We evaluated eight recent video MLLMs and found that current models exhibit substantial performance degradation on Ro-Bench when exposed to counterfactual video content. Furthermore, we demonstrate that fine-tuning MLLMs with counterfactual data enhances robustness, achieving a 21.73% performance increase on Ro-Bench and a 12.78% improvement across 20 tasks in the MVBench dataset. These findings underscore the effectiveness of counterfactual data in enhancing the video understanding ability of MLLMs. The code and data will be released shortly.",
+   "published": "2025-10-10",
+   "updated": "2025-10-10",
+   "authors": [
+    "Zixi Yang",
+    "Jiapeng Li",
+    "Muxi Diao",
+    "Yinuo Jing",
+    "Kongming Liang"
+   ],
+   "primary_category": "cs.CV",
+   "categories": [
+    "cs.CV",
+    "cs.AI"
+   ],
+   "url": "https://arxiv.org/abs/2510.08936v1",
+   "pdf": "https://arxiv.org/pdf/2510.08936v1",
+   "comment": ""
+  }
+ ]
+}

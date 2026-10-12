@@ -1,0 +1,231 @@
+{
+ "query": "abs:\"engineering design\" AND abs:\"agent\" AND abs:\"physics\"",
+ "hits": [
+  {
+   "id": "2605.19717v1",
+   "title": "Physics-in-the-Loop: A Hybrid Agentic Architecture for Validated CAD Engineering Design",
+   "abstract": "Large Language Models (LLMs) can generate Computer-Aided Design (CAD), yet lack physical comprehension required for reliable engineering design. Instead of attempting to implicitly learn physical laws from data, we propose a Hybrid Agentic-Physical Architecture that embeds validated knowledge-based engineering tools directly into the decision making loop of autonomous AI agents. In this framework, engineering design is formulated as a closed-loop, sequential decision making process guided by explicit physical verification. Based on a load case, dedicated agents iteratively plan, generate, evaluate, and revise engineering designs using knowledge-based tools as a feedback signal. We introduce a benchmark dataset and metrics for assessing functional validity in generative CAD. Our system generates more complex and physically verified designs, with a 4.2 increase in structural complexity and improving compile rate by 3.5% compared to similar agentic methods. The codebase, prompts and dataset will be made publicly available to support reproducibility and future research.",
+   "published": "2026-05-19",
+   "updated": "2026-05-19",
+   "authors": [
+    "Elias Berger",
+    "Muhammad Usama",
+    "Jan Mehlstäubl",
+    "Bernhard Saske",
+    "Kristin Paetzold-Byhain"
+   ],
+   "primary_category": "cs.CV",
+   "categories": [
+    "cs.CV"
+   ],
+   "url": "https://arxiv.org/abs/2605.19717v1",
+   "pdf": "https://arxiv.org/pdf/2605.19717v1",
+   "comment": "Accepted in IJCAI-ECAI 2026 (Special Track on AI4Tech)"
+  },
+  {
+   "id": "2606.12040v3",
+   "title": "A Lightweight Multi-Agent Framework for Automated Concrete Barrier Design",
+   "abstract": "The design of reinforced concrete (RC) highway barriers is a safety-critical engineering task that requires strict compliance with regulatory provisions such as the AASHTO LRFD Bridge Design Specifications. Current engineering practice relies largely on manual, iterative, and experience-driven procedures to satisfy complex material, geometric, and mechanical constraints. Although standalone large language models (LLMs) show strong capabilities in knowledge representation and text generation, their direct use in structural engineering design is limited by hallucination, numerical reasoning errors, and insufficient integration with physics-based analysis. To address these limitations, this study proposes a \"generation-validation-modification\" closed-loop framework for automated RC barrier design based on the multi-agent orchestration capability of AutoGen. The framework integrates specialized agents for parameter generation, mechanics-based calculation, target-interval evaluation, deviation diagnosis, and rule-based design modification. The multi-agent framework (MAF) was evaluated on three barrier testing levels (TL-3, TL-4, and TL-5) using sixty RC barrier designs with different geometric configurations. Three DeepSeek models with different parameter scales, DS-8B, DS-32B, and DS-671B, were investigated. All designs were evaluated according to Section 13 of the AASHTO LRFD Bridge Design Specifications, 10th Edition (2024). Results show that MAF-DS-8B achieves a target-interval compliance rate of 98.3%, while the best-performing standalone LLM, DS-32B, achieves 11.7%. These results demonstrate that multi-agent architectures can improve the reliability, interpretability, and accessibility of AI-assisted engineering design for practical applications.",
+   "published": "2026-06-10",
+   "updated": "2026-09-10",
+   "authors": [
+    "Wanting Wang",
+    "Xiye Ma",
+    "Yuyang He",
+    "Ran Cao"
+   ],
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI",
+    "cs.GR"
+   ],
+   "url": "https://arxiv.org/abs/2606.12040v3",
+   "pdf": "https://arxiv.org/pdf/2606.12040v3",
+   "comment": ""
+  },
+  {
+   "id": "2608.15073v1",
+   "title": "BOCoDe: Engineering-Centered Benchmarking for Bayesian Optimization",
+   "abstract": "Bayesian optimization (BO) is a sample-efficient, surrogate-based approach to black-box optimization (BBO), but its evaluation remains dominated by synthetic functions and hyperparameter optimization (HPO) tasks that are typically low-dimensional and single-objective. Engineering design poses a substantially different regime: problems are physics-based, often high-dimensional, constrained by requirements such as cost and manufacturability, and may involve multiple objectives or mixed variables. To close this benchmarking gap, we introduce BOCoDe, an open-source, PyTorch-native benchmark comprising 307 BBO problems, including 159 engineering design tasks and widely used synthetic and HPO benchmarks. Each problem includes cited provenance and machine-readable metadata that supports programmatic discovery, including by LLM-based agents, and all tasks are exposed through a unified API compatible with open-source BO libraries. We evaluate 31 BO and evolutionary algorithms across five problem classes spanning single- and multi-objective optimization, constrained and unconstrained settings, and mixed-variable search spaces. Analyses of problem structure show that engineering tasks uniquely span constrained and multi-objective settings that synthetic and HPO suites rarely cover, while embeddings from a tabular foundation model separate them most clearly from HPO tasks. Algorithm rankings also vary substantially across domains; in several problem classes, rankings obtained on standard benchmarks do not transfer to engineering tasks. BOCoDe establishes a reproducible and extensible foundation for developing and evaluating BO methods that better reflect the demands of engineering design. Code & data can be found at https://github.com/rosenyu304/BOCoDe",
+   "published": "2026-08-15",
+   "updated": "2026-08-15",
+   "authors": [
+    "Rosen Ting-Ying Yu",
+    "Christophe Hatterer",
+    "Advaith Narayanan",
+    "Cyril Picard",
+    "Faez Ahmed"
+   ],
+   "primary_category": "cs.CE",
+   "categories": [
+    "cs.CE"
+   ],
+   "url": "https://arxiv.org/abs/2608.15073v1",
+   "pdf": "https://arxiv.org/pdf/2608.15073v1",
+   "comment": ""
+  },
+  {
+   "id": "2602.20639v1",
+   "title": "Grounding LLMs in Scientific Discovery via Embodied Actions",
+   "abstract": "Large Language Models (LLMs) have shown significant potential in scientific discovery but struggle to bridge the gap between theoretical reasoning and verifiable physical simulation. Existing solutions operate in a passive \"execute-then-response\" loop and thus lacks runtime perception, obscuring agents to transient anomalies (e.g., numerical instability or diverging oscillations). To address this limitation, we propose EmbodiedAct, a framework that transforms established scientific software into active embodied agents by grounding LLMs in embodied actions with a tight perception-execution loop. We instantiate EmbodiedAct within MATLAB and evaluate it on complex engineering design and scientific modeling tasks. Extensive experiments show that EmbodiedAct significantly outperforms existing baselines, achieving SOTA performance by ensuring satisfactory reliability and stability in long-horizon simulations and enhanced accuracy in scientific modeling.",
+   "published": "2026-02-24",
+   "updated": "2026-02-24",
+   "authors": [
+    "Bo Zhang",
+    "Jinfeng Zhou",
+    "Yuxuan Chen",
+    "Jianing Yin",
+    "Minlie Huang",
+    "Hongning Wang"
+   ],
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI"
+   ],
+   "url": "https://arxiv.org/abs/2602.20639v1",
+   "pdf": "https://arxiv.org/pdf/2602.20639v1",
+   "comment": "24 pages, 7 figures, 7 tables. Preprint"
+  },
+  {
+   "id": "2605.28978v2",
+   "title": "VFEAgent: A Multimodal Agent Framework for End-to-End Automated Finite Element Analysis",
+   "abstract": "Finite Element Analysis (FEA) serves as the cornerstone of modern engineering design. However, its workflow is inherently complex and relies heavily on domain expertise. Although recent efforts have integrated Large Language Models (LLMs) into FEA, existing approaches face limitations in handling multimodal inputs and executing complex tasks. To address these limitations, we propose VFEAgent, an end-to-end multi-agent system designed to automate FEA modeling and simulation directly from input images and problem descriptions. Our methodology integrates two core components: (1) a multimodal vision-language multi-agent pipeline that employs ReAct-driven reasoning to extract structured FEA specifications from heterogeneous inputs and (2) a verification-first code synthesis framework, incorporating robust self-debugging and fallback mechanisms to ensure executability and physical validity. We systematically evaluated the system across various engineering mechanics scenarios. The results demonstrate that VFEAgent achieves a high success rate in generating complete and physically valid simulations, outperforming LLM-based baseline methods in reliability and correctness. These findings validate the feasibility of automating the complete FEA workflow, highlighting the framework's potential to liberate engineers from tedious manual analysis.",
+   "published": "2026-05-27",
+   "updated": "2026-08-03",
+   "authors": [
+    "Jiachen Zhang",
+    "Junyi Lao",
+    "Chenghao Liu",
+    "Siyuan Liu",
+    "Shixin Wu",
+    "Linsen Zhang",
+    "Boyu Wang",
+    "Songfang Huang"
+   ],
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI",
+    "cs.CE"
+   ],
+   "url": "https://arxiv.org/abs/2605.28978v2",
+   "pdf": "https://arxiv.org/pdf/2605.28978v2",
+   "comment": "9 pages, 3 figures, 2 tables. Equal contribution: Jiachen Zhang and Junyi Lao. Corresponding author: Songfang Huang. Preprint"
+  },
+  {
+   "id": "2507.08619v2",
+   "title": "Agentic Large Language Models for Conceptual Systems Engineering and Design",
+   "abstract": "Early-stage engineering design involves complex, iterative reasoning, yet existing large language model (LLM) workflows struggle to maintain task continuity and generate executable models. We evaluate whether a structured multi-agent system (MAS) can more effectively manage requirements extraction, functional decomposition, and simulator code generation than a simpler two-agent system (2AS). The target application is a solar-powered water filtration system as described in a cahier des charges. We introduce the Design-State Graph (DSG), a JSON-serializable representation that bundles requirements, physical embodiments, and Python-based physics models into graph nodes. A nine-role MAS iteratively builds and refines the DSG, while the 2AS collapses the process to a Generator-Reflector loop. Both systems run a total of 60 experiments (2 LLMs - Llama 3.3 70B vs reasoning-distilled DeepSeek R1 70B x 2 agent configurations x 3 temperatures x 5 seeds). We report a JSON validity, requirement coverage, embodiment presence, code compatibility, workflow completion, runtime, and graph size. Across all runs, both MAS and 2AS maintained perfect JSON integrity and embodiment tagging. Requirement coverage remained minimal (less than 20%). Code compatibility peaked at 100% under specific 2AS settings but averaged below 50% for MAS. Only the reasoning-distilled model reliably flagged workflow completion. Powered by DeepSeek R1 70B, the MAS generated more granular DSGs (average 5-6 nodes) whereas 2AS mode-collapsed. Structured multi-agent orchestration enhanced design detail. Reasoning-distilled LLM improved completion rates, yet low requirements and fidelity gaps in coding persisted.",
+   "published": "2025-07-11",
+   "updated": "2025-11-02",
+   "authors": [
+    "Soheyl Massoudi",
+    "Mark Fuge"
+   ],
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI"
+   ],
+   "url": "https://arxiv.org/abs/2507.08619v2",
+   "pdf": "https://arxiv.org/pdf/2507.08619v2",
+   "comment": "32 pages, 4 figures"
+  },
+  {
+   "id": "2505.10653v1",
+   "title": "On the Evaluation of Engineering Artificial General Intelligence",
+   "abstract": "We discuss the challenges and propose a framework for evaluating engineering artificial general intelligence (eAGI) agents. We consider eAGI as a specialization of artificial general intelligence (AGI), deemed capable of addressing a broad range of problems in the engineering of physical systems and associated controllers. We exclude software engineering for a tractable scoping of eAGI and expect dedicated software engineering AI agents to address the software implementation challenges. Similar to human engineers, eAGI agents should possess a unique blend of background knowledge (recall and retrieve) of facts and methods, demonstrate familiarity with tools and processes, exhibit deep understanding of industrial components and well-known design families, and be able to engage in creative problem solving (analyze and synthesize), transferring ideas acquired in one context to another. Given this broad mandate, evaluating and qualifying the performance of eAGI agents is a challenge in itself and, arguably, a critical enabler to developing eAGI agents. In this paper, we address this challenge by proposing an extensible evaluation framework that specializes and grounds Bloom's taxonomy - a framework for evaluating human learning that has also been recently used for evaluating LLMs - in an engineering design context. Our proposed framework advances the state of the art in benchmarking and evaluation of AI agents in terms of the following: (a) developing a rich taxonomy of evaluation questions spanning from methodological knowledge to real-world design problems; (b) motivating a pluggable evaluation framework that can evaluate not only textual responses but also evaluate structured design artifacts such as CAD models and SysML models; and (c) outlining an automatable procedure to customize the evaluation benchmark to different engineering contexts.",
+   "published": "2025-05-15",
+   "updated": "2025-05-15",
+   "authors": [
+    "Sandeep Neema",
+    "Susmit Jha",
+    "Adam Nagel",
+    "Ethan Lew",
+    "Chandrasekar Sureshkumar",
+    "Aleksa Gordic",
+    "Chase Shimmin",
+    "Hieu Nguygen",
+    "Paul Eremenko"
+   ],
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI"
+   ],
+   "url": "https://arxiv.org/abs/2505.10653v1",
+   "pdf": "https://arxiv.org/pdf/2505.10653v1",
+   "comment": "21 pages"
+  },
+  {
+   "id": "2510.16742v2",
+   "title": "Surrogate Modeling and Explainable Artificial Intelligence for Complex Systems: A Workflow for Automated Simulation Exploration",
+   "abstract": "Complex systems are increasingly explored through simulation-driven engineering workflows that combine physics-based and empirical models with optimization and analytics. Despite their power, these workflows face two central obstacles: (1) high computational cost, since accurate exploration requires many expensive simulator runs; and (2) limited transparency and reliability when decisions rely on opaque blackbox components. We propose a workflow that addresses both challenges by training lightweight emulators on compact designs of experiments that (i) provide fast, low-latency approximations of expensive simulators, (ii) enable rigorous uncertainty quantification, and (iii) are adapted for global and local Explainable Artificial Intelligence (XAI) analyses. This workflow unifies every simulation-based complex-system analysis tool, ranging from engineering design to agent-based models for socio-environmental understanding. In this paper, we proposea comparative methodology and practical recommendations for using surrogate-based explainability tools within the proposed workflow. The methodology supports continuous and categorical inputs, combines global-effect and uncertainty analyses with local attribution, and evaluates the consistency of explanations across surrogate models, thereby diagnosing surrogate adequacy and guiding further data collection or model refinement. We demonstrate the approach on two contrasting case studies: a multidisciplinary design analysis of a hybrid-electric aircraft and an agent-based model of urban segregation. Results show that the surrogate model and XAI coupling enables large-scale exploration in seconds, uncovers nonlinear interactions and emergent behaviors, identifies key design and policy levers, and signals regions where surrogates require more data or alternative architectures.",
+   "published": "2025-10-19",
+   "updated": "2025-11-17",
+   "authors": [
+    "Paul Saves",
+    "Pramudita Satria Palar",
+    "Muhammad Daffa Robani",
+    "Nicolas Verstaevel",
+    "Moncef Garouani",
+    "Julien Aligon",
+    "Benoit Gaudou",
+    "Koji Shimoyama",
+    "Joseph Morlier"
+   ],
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI",
+    "cs.MA",
+    "stat.ME"
+   ],
+   "url": "https://arxiv.org/abs/2510.16742v2",
+   "pdf": "https://arxiv.org/pdf/2510.16742v2",
+   "comment": ""
+  },
+  {
+   "id": "2105.03909v1",
+   "title": "Diagnosable-by-Design Model-Driven Development for IEC 61499 Industrial Cyber-Physical Systems",
+   "abstract": "Integrating the design and creation of fault identification and diagnostic capabilities into Model-Driven Development methodologies is one approach to enhancing the resilience of Industrial Cyber-Physical Systems. We present a Fault Diagnostic Engine designed to recognise and diagnose faults in IEC 61499 Function Block Applications. Using diagnostic agents that interact directly with the target application, we demonstrate fault monitoring and analysis techniques and as well as failure scenario intervention. By designing and building fault diagnostic resources during early phases of Model-Driven Development, both iterative testing and long-term fault management capabilities can be created. While applying and refining appropriate model artifacts, we demonstrate that the concurrent development of function blocks alongside fault management capabilities is both feasible and worthwhile.",
+   "published": "2021-05-09",
+   "updated": "2021-05-09",
+   "authors": [
+    "Barry Dowdeswell",
+    "Roopak Sinha",
+    "Stephen G. MacDonell"
+   ],
+   "primary_category": "cs.SE",
+   "categories": [
+    "cs.SE"
+   ],
+   "url": "https://arxiv.org/abs/2105.03909v1",
+   "pdf": "https://arxiv.org/pdf/2105.03909v1",
+   "comment": "Conference paper, 6 pages, 7 figures, 1 table"
+  },
+  {
+   "id": "2608.21976v1",
+   "title": "Closed-loop AI achieves certifiable engineering design",
+   "abstract": "Agentic AI has automated parts of scientific discovery, including paper generation, expert-level coding, therapeutic proposal, and autonomous experimentation. Complex physical engineering design remains a gap, because candidates must satisfy simultaneous constraints in fluid dynamics, solid mechanics, and structural stability. We introduce The AI Engineer, an agentic framework that couples large language models (LLMs) to deterministic engineering backends in a closed loop: natural-language requirements are converted into design-domain geometry and mesh; topology is optimized with bi-directional evolutionary structural optimization (BESO) coupled to the CalculiX solver; and member sizes are refined with particle swarm optimization (PSO) coupled to Zwind under offshore aero-hydro-servo-elastic load cases. To explore many designs without per-candidate certification cost, an Automated Reviewer scores each candidate on five dimensions (capacity, steel intensity, unit cost, constructability, and fatigue life) using piecewise-linear functions calibrated on 11 real floating-wind projects. Search terminates only when a candidate reaches a composite score $S \\ge 85$ (grade A) with no subscore below 60. We validated this gate by submitting the top-scoring design to the China Classification Society (CCS) for Approval in Principle (AIP), which it passed; AIP is thus an external check that the reviewer tracks professional judgment, not the daily objective. The certified design outperforms the human-optimized TuQiang baseline, reducing steel mass and unit capital cost by 8.1% each while meeting all AIP criteria. This verification-closed regime, in which every proposal is judged by deterministic physics and codified limit states, distinguishes The AI Engineer from open-ended generative systems. Remaining limits include detailed design and fabrication-hard constraints.",
+   "published": "2026-08-22",
+   "updated": "2026-08-22",
+   "authors": [
+    "Tianyi Yu",
+    "Chengxing Tao",
+    "Haoxuan Shen",
+    "Huiyang Li",
+    "Rugang Chen",
+    "Long Teng",
+    "Lilin Wang",
+    "Yan Li",
+    "Qingbin Chen",
+    "Chaogang Xu",
+    "Lizhong Wang"
+   ],
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI"
+   ],
+   "url": "https://arxiv.org/abs/2608.21976v1",
+   "pdf": "https://arxiv.org/pdf/2608.21976v1",
+   "comment": "24 pages,3 figures"
+  }
+ ]
+}

@@ -1,0 +1,7559 @@
+BOCoDe: Engineering-Centered Benchmarking for Bayesian Optimization 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+ Title: 
+
+ Content selection saved. Describe the issue below:
+
+ Description: 
+
+ 
+
+ 
+ arXiv is now an independent nonprofit! 
+ Learn more 
+ × 
+
+ 
+
+ 
+ 
+ License: arXiv.org perpetual non-exclusive license
+
+arXiv:2608.15073v1 [cs.CE] 15 Aug 2026
+
+ 
+
+## BOCoDe: Engineering-Centered Benchmarking for Bayesian Optimization
+
+ Thanks: Preprint. Under Review. 
+
+ 
+ Rosen Ting-Ying Yu
+ 
+ Affiliation: Massachusetts Institute of Technology
+ 
+ Email: rosenyu@mit.edu 
+ 
+    
+ Christophe Hatterer
+ 
+ Affiliation: ETH Zürich
+ 
+ Email: christophe@hatterer.net 
+ 
+    
+ Advaith Narayanan
+ 
+ Affiliation: Carnegie Mellon University
+ 
+ Email: advaithn@andrew.cmu.edu 
+ 
+    
+ Cyril Picard
+ 
+ Affiliation: Massachusetts Institute of Technology
+ 
+ Email: cyrilp@mit.edu 
+ 
+    
+ Faez Ahmed
+ 
+ Affiliation: Massachusetts Institute of Technology
+ 
+ Email: faez@mit.edu 
+
+ 
+
+## Abstract
+
+ Bayesian optimization (BO) is a sample-efficient, surrogate-based approach to black-box optimization (BBO), but its evaluation remains dominated by synthetic functions and hyperparameter optimization (HPO) tasks that are typically low-dimensional and single-objective. Engineering design poses a substantially different regime: problems are physics-based, often high-dimensional, constrained by requirements such as cost and manufacturability, and may involve multiple objectives or mixed variables. To close this benchmarking gap, we introduce BOCoDe, an open-source, PyTorch-native benchmark comprising 307 BBO problems, including 159 engineering design tasks and widely used synthetic and HPO benchmarks. Each problem includes cited provenance and machine-readable metadata that supports programmatic discovery, including by LLM-based agents, and all tasks are exposed through a unified API compatible with open-source BO libraries. We evaluate 31 BO and evolutionary algorithms across five problem classes spanning single- and multi-objective optimization, constrained and unconstrained settings, and mixed-variable search spaces. Analyses of problem structure show that engineering tasks uniquely span constrained and multi-objective settings that synthetic and HPO suites rarely cover, while embeddings from a tabular foundation model separate them most clearly from HPO tasks. Algorithm rankings also vary substantially across domains; in several problem classes, rankings obtained on standard benchmarks do not transfer to engineering tasks. BOCoDe establishes a reproducible and extensible foundation for developing and evaluating BO methods that better reflect the demands of engineering design. Code & data can be found at https://github.com/rosenyu304/BOCoDe 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+## 1 Introduction
+
+ 
+ Bayesian optimization (BO) is a popular surrogate-based approach for black-box optimization (BBO), where the objective function or the constraints defining the feasible set are unknown. To model the search space, BO fits a probabilistic surrogate, usually a Gaussian process (GP), with increasing recent interest in using random forests (RFs) and tabular foundation models (TFMs) ( Snoek et al., 2012 ; Lindauer et al., 2022 ; Müller et al., 2023 ) . Next, BO uses an acquisition function to choose the next point to evaluate, making it sample-efficient. However, the field develops BO methods yet evaluates them almost entirely on two families: synthetic analytical functions and hyperparameter optimization (HPO) tasks that are mostly single-objective (SO), rather than on the applied scientific and engineering design problems where BO is increasingly deployed ( Liang et al., 2021 ; Paulson and Tsay, 2025 ) .
+
+ 
+ Figure 1: Overview of BOCoDe, a benchmark suite with 307 BBO problems featuring 159 engineering tasks, which aims to provide an efficient framework for solving real-world engineering design optimization problems. 
+
+ Engineering design problems occupy a different regime: typically multi-objective (MO), constrained, and high-dimensional ( Tian et al., 2024 ; Kumbhojkar et al., 2026 ) . These problems span one to over a thousand dimensions, up to hundreds of constraints, and up to nine objectives (Figure 3 ). Furthermore, algorithm performance could be limited by, or depend on, problem structure (e.g., SO algorithms cannot be directly deployed on MO problems). Past studies on a smaller scale show that methods that win on synthetic benchmarks do not always win on “real” problems (tasks reflecting real-world applications) ( Turner et al., 2021 ; Le Riche and Picheny, 2021 ) . To our knowledge, there has yet to be a study on BO’s performance transfer at scale across various application domains, so method selection for physical and engineering settings rests on an untested assumption.
+
+ 
+ In fact, benchmarking BO algorithms is by itself a difficult task. Engineering, synthetic, and HPO benchmarks are scattered across incompatible codebases with conflicting dependencies and no common interface, so it is hard to compare results across papers ( Dreczkowski et al., 2023 ; Papenmeier and Nardi, 2025 ) . Fair comparison also demands aggregating performance across many runs, problems, and domains under a consistent, statistically grounded ranking protocol—something existing suites have almost never standardized. We close both gaps with BOCoDe , a PyTorch-native benchmark that provides 307 black-box problems, including a set of 159 engineering design problems. BOCoDe also comes with 31 reference BO and evolutionary algorithms and a statistical ranking protocol, all within a single interface, with machine-readable metadata that makes every problem programmatically selectable. Our contributions are:
+
+ 
+ 
+ 1. 
+ 
+ A benchmark suite centered on engineering design problems. We curate 159 engineering optimization problems for BOCoDe, alongside 68 synthetic and 80 HPO reference problems; these problems are constrained, multi-objective, mixed-variable, and high-dimensional far more often than those in existing suites. A structural analysis shows these problems uniquely cover the constrained, multi-objective, and mixed-variable settings existing suites omit, and a foundation-model embedding separates them from the HPO tasks that dominate BO benchmarks.
+
+ 2. 
+ 
+ A unified code interface for evaluation, optimization, and ranking. Engineering benchmarks are scattered across incompatible conventions—minimization versus maximization, and separate handling of constraints, multiple objectives, and mixed variables—so results are hard to compare across papers. BOCoDe places problems, optimizers, and a cross-domain ranking protocol behind one Python interface, and every problem has machine-readable metadata so it can be selected and run programmatically, including by LLM agents.
+
+ 3. 
+ 
+ The first systematic evidence that BO is under-benchmarked on engineering design. Running 31 methods across five optimization classes under a statistically grounded protocol, we find the best-ranked method changes across the engineering, synthetic, and HPO domains, so rankings from synthetic proxies do not transfer. To our knowledge, this is the first study at this scale, and it is only a starting point: closing the gap will take more problems and more algorithms, which we build BOCoDe to keep adding.
+
+ 
+
+ 
+
+## 2 Related Work
+
+ 
+
+## 2.1 Black-Box Optimization Benchmark Suites
+
+ 
+ BBO suites exist across analytical optimization, HPO in automated machine learning (AutoML), and engineering design. Each domain has produced benchmark suites tailored to its own research gaps.
+
+ 
+
+## 2.1.1 Bayesian optimization benchmarks.
+
+ 
+ BO is typically benchmarked using general-purpose libraries. COCO/BBOB ( Hansen et al., 2021 ) standardizes synthetic functions but includes no applied tasks, and BoTorch/Ax ( Balandat et al., 2020 ; Olson et al., 2025 ) are extensible PyTorch-native frameworks whose test-problem suites are dominated by synthetic tasks. The remaining efforts are application-driven: Design-Bench ( Trabucco et al., 2022 ) offers only eight small-scale design tasks and provides no Bayesian optimization loop; Olympus ( Häse et al., 2021 ) is limited to chemistry and materials experiment planning; and BO4Mob ( Ryu et al., 2026 ) is a BO benchmark built around a high-dimensional urban-mobility estimation problem problem. AutoML HPO suites ( Turner, 2019 ; Eggensperger et al., 2021 ) advance BO for ML tuning and architecture search, yet they remain single-objective and rarely constrained. Bencher ( Papenmeier and Nardi, 2025 ) instead gathers real-world problems but isolates each in its own remote environment rather than a shared, BO-native representation. However, none of them features constrained, MO, and mixed-variable problems across application domains.
+
+ 
+
+## 2.1.2 Evolutionary platforms.
+
+ 
+ Pymoo ( Blank and Deb, 2020 ) and PlatEMO ( Tian et al., 2017 ) provide many constrained and multi-objective design problems from the evolutionary algorithm (EA) literature. However, their minimization convention and their NumPy/MATLAB, population-based interfaces do not map directly onto BO’s sequential, GPU-accelerated surrogate loop without non-trivial reimplementation.
+
+ 
+
+## 2.2 Computational engineering design problems
+
+ 
+ Engineering design optimization has historically been driven by evolutionary methods, so many of its standard benchmark problems originate in the EA literature, including the CEC constrained suites ( Kumar et al., 2020 ) , the RE/CRE problems ( Tanabe and Ishibuchi, 2020 ) , and MODAct ( Picard and Schiffmann, 2021 ) . BO is increasingly applied to engineering problems as design evaluations and simulations become more expensive, for example in materials and experimental design ( Liang et al., 2021 ; Paulson and Tsay, 2025 ) , yet the problems remain isolated by domain, tied to specific solvers, and rarely exposed under a BO-native API with matched baselines.
+
+ 
+ A further obstacle is that the same problem often appears in multiple incompatible versions, differing in search-space bounds, dimensionality, or scaling, and is frequently released without a citation to the publication or code from which it originates ( González-Duque et al., 2024 ) . This leaves users unable to identify what a problem represents or reproduce it faithfully. Thus, we propose BOCoDe, a living suite that gathers constrained, multi-objective, and mixed-variable engineering problems under a single BO-native API with reference implementations for each class.
+
+ 
+
+## 3 The BOCoDe Benchmark
+
+ 
+ In the following, we detail the three main modules in BOCoDe: the optimization problem library, the algorithm suite, and the statistical ranking API.
+
+ 
+
+## 3.1 BOCoDe Optimization Problem Library
+
+ 
+
+## 3.1.1 Optimization Definition and API.
+
+ 
+ Every BOCoDe problem is written in a single canonical form. For a design variable [MATH] within box bounds [MATH] ,
+
+ 
+ 
+ [MATH] 
+
+ 
+ with [MATH] variables (dimension), [MATH] objectives, and [MATH] inequality constraints with feasibility as [MATH] . All objectives are maximized by the algorithm, following BO algorithm convention, but can be negated for minimization. We categorize the optimization problems into five classes based on the problem formulation and search space characteristics: SO and MO, unconstrained and constrained, continuous and mixed-variable problems, as shown in Table 1 .
+
+ 
+ Table 1: Optimization problem class definition. 
+
+ 
+ 
+ Class Name 
+ 
+ Objective 
+ Constrained 
+ Continuity 
+
+ 
+ 
+ SO-Unconstrained 
+ 
+ 1 
+ No 
+ Continuous 
+
+ 
+ 
+ MO-Unconstrained 
+ 
+ [MATH] 1 
+ No 
+ Continuous 
+
+ 
+ 
+ SO-Constrained 
+ 
+ 1 
+ Yes 
+ Continuous 
+
+ 
+ 
+ MO-Constrained 
+ 
+ [MATH] 1 
+ Yes 
+ Continuous 
+
+ 
+ 
+ SO-Mixed-Variable 
+ 
+ 1 
+ No 
+ Mixed-variable 
+
+ 
+ 
+ Every BOCoDe problem is a Python object with a single evaluate(x) method, following BoTorch/Ax test-problem style. The method takes a design variable [MATH] as a PyTorch tensor and returns objective and constraint values in maximization form. This allows all optimization problems to be called through the same API (see below):
+
+ 
+ ⬇ 
+
+ import bocode 
+
+ import torch 
+
+ # Instantiate a benchmark problem 
+
+ problem = bocode . Car () 
+
+ # Read metadata 
+
+ metadata = bocode . get_metadata ( "Car" ) 
+
+ # Evaluate five LHS points 
+
+ x = problem . sample (5, seed =0) 
+
+ obj , cons = problem . evaluate ( x ) 
+
+ A separate JSON metadata file records each problem’s dimension, objectives, constraints, bounds, variable types, and source for programmatic selection. This structured, self-describing metadata lets both users and automated LLM agents discover, filter, and instantiate problems programmatically, supplying the type of documented schema that reliable agentic use depends on ( Purucker et al., 2026 ) . The source lives in both the metadata and the docstring, making every problem traceable to its original paper or code.
+
+ 
+
+## 3.1.2 Optimization Problem Domain Analysis.
+
+ 
+ BOCoDe’s benchmark campaign spans 307 problems across three domain categories : (i) Synthetic : [MATH] analytical test functions from BoTorch ( Balandat et al., 2020 ) , (ii) Engineering : [MATH] structural, mechanical, and control optimization problems drawn from the BO literature, from computational engineering design research, or from real-world engineering applications verified by three engineering design domain experts ( Todorov et al., 2012 ; Wang et al., 2018 ; Kumar et al., 2020 ; Tanabe and Ishibuchi, 2020 ; Picard and Schiffmann, 2021 ; Norheim, 2022 ; Yu et al., 2025 ) , and (iii) HPO : [MATH] common HPO baselines from the AutoML literature Šehić et al. (2022) ; Turner (2019) ; Eggensperger et al. (2021) . This current set of problems is a starting collection from open-source repositoriesitories rather than a complete census, and we continue to expand it.
+
+ 
+ Below, we analyze how a problem’s application domain shapes its optimization characteristics from two angles: the distribution of optimization problem structural characteristics within each domain and how their problems cluster in a learned behavioral embedding.
+
+ 
+ 
+ 1. 
+ 
+ Optimization Problem Structural Characteristics. Figure 3 shows how objectives, constraints, discrete variables, and dimensions are distributed across domains. HPO problems are single-objective, and synthetic problems have fewer than five objectives. Engineering problems alone populate the constrained, MO, and mixed-variable regions and span one to over a thousand dimensions. This makes engineering tasks a broad arena for benchmarking BO across every optimization regime the field targets.
+
+ 2. 
+ 
+ Optimization Problem Embedding. Matching characteristic counts does not mean two problems behave alike, so we add a behavioral view. Beyond serving as a BO surrogate ( Müller et al., 2023 ) , TabPFN produces per-point embeddings useful for clustering and visualization ( Hollmann et al., 2025 ) . Following ( Regenwetter et al., 2026 ) , we Latin hypercube sample (LHS) 500 points per problem, average their embeddings into one vector, and lay out all problems with t-SNE ( van der Maaten and Hinton, 2008 ) . Figure 3 shows engineering problems in regions largely disjoint from the HPO clusters that most BO benchmarks sample, but overlap partially with synthetic clusters. In our Technical Supplement, we further demonstrate that a classifier trained on the per-problem embeddings distinguishes the domains, with the HPO problems the most separable.
+
+ 
+
+ 
+ These domain differences motivate our main experiment, in which we benchmark all 31 BBO algorithms in our suite on every BOCoDe problem. In the Results section, we show that each domain favors a different algorithm, so a ranking established in one domain might not carry over to another. Per-problem information, the software code structure, and APIs are detailed in the Technical Supplement.
+
+ 
+
+ 
+ Figure 2: Distribution of problem characteristics across BOCoDe’s domains. Columns: four characteristics: objectives, inequality constraints, discrete or categorical variables, and dimension. Rows: distributions of BOCoDe’s three problem domains (Engineering, Synthetic, HPO). 
+
+ 
+ Figure 3: Two-dimensional t-SNE projection of per-problem TabPFN (v3) embeddings, colored by domain. Each point in the plot is one problem, represented by a 512-dimensional vector from TabPFN’s per-problem embeddings. Nearby points have similar embeddings. 
+
+ 
+
+ 
+
+## 3.2 BOCoDe Algorithm Suite
+
+ 
+ BOCoDe provides 31 BBO algorithm interface implementations: 27 BO algorithms implemented in a BoTorch-compatible interface ( Balandat et al., 2020 ) and 4 EA methods featured in Pymoo ( Blank and Deb, 2020 ) that are commonly used as engineering BBO benchmarking baselines Picard and Schiffmann (2021) , which together form an initial, non-comprehensive set for BOCoDe’s collection. Table 2 provides the full list. The algorithms are grouped by BOCoDe’s five optimization problem classes, and every algorithm reads and returns the same tensors as the problems, so any method runs on any problem in its class through the single BOCoDe API:
+
+ 
+ ⬇ 
+
+ python - m algorithms . single_obj . gp_ucb \ 
+
+ -- problem Car -- init 10 -- iters 40 
+
+ python - m algorithms . multi_obj . qnehvi \ 
+
+ -- problem RE21 -- init 10 -- iters 50 
+
+ 
+ BOCoDe also makes the surrogate a swappable component. Following the standard decomposition of BO into a surrogate model, an acquisition function, and an acquisition optimizer ( Dreczkowski et al., 2023 ; Balandat et al., 2020 ) , BOCoDe fixes the acquisition and optimizer and substitutes the surrogate, supporting GP, RF, and two latest TFMs, TabPFN(v3) ( Grinsztajn et al., 2026 ) and TabICL(v2) ( QU et al., 2026 ) , due to the growing interest in TFM-based BO ( Müller et al., 2023 ; Rakotoarison et al., 2024 ; Yu et al., 2026 ) . In this study, we restrict the swap to SO problems because published TFM surrogates have so far been demonstrated only in SO BO settings; MO TFM-based BO remains an open problem. A surrogate ablation is shown in the Results & Discussion section.
+
+ 
+ Table 2: 31 Bayesian and evolutionary optimization (“Opt.”) algorithms grouped by optimization classes. This is a representative starting set rather than an exhaustive one; more methods can be added through the same API in the future. 
+
+ 
+ 
+ Opt. Classes 
+ 
+ # 
+
+ Opt. Algorithms 
+
+ 
+
+ SO-Unconstrained 
+ 
+ 9 
+
+ GP-UCB ( Srinivas et al., 2010 ) , GP-LogEI ( Ament et al., 2023 ) , {GP,RF,TabPFN,TabICL}-TuRBO ( Eriksson et al., 2019 ) , BAxUS ( Papenmeier et al., 2022 ) , Vanilla-HD-BO ( Hvarfner et al., 2024 ) , Standard-GP ( Xu et al., 2025 ) . 
+
+ 
+
+ SO-Constrained 
+ 
+ 7 
+
+ CEI ( Gardner et al., 2014 ) , {GP,RF,TabPFN,TabICL}-SCBO ( Eriksson and Poloczek, 2021 ) , Penalty ( Fletcher, 1975 ) , CLF-CBO (classifier CBO) ( Tian et al., 2024 ) 
+
+ 
+
+ MO-Unconstrained 
+ 
+ 6 
+
+ BO methods: qNEHVI ( Daulton et al., 2020 ) , qNParEGO ( Daulton et al., 2021 ) , MESMO ( Belakaria et al., 2019 ) , DGEMO ( Konakovic Lukovic et al., 2020 ) . EA methods: NSGA-II ( Deb et al., 2002 ) , SPEA2 ( Zitzler et al., 2001 ) . 
+
+ 
+
+ MO-Constrained 
+ 
+ 4 
+
+ BO methods: C-qNEHVI ( Daulton et al., 2020 ) , C-qNParEGO ( Daulton et al., 2021 ) . EA methods: C-NSGA-II ( Deb et al., 2002 ; Blank and Deb, 2020 ) , C-SPEA2 ( Zitzler et al., 2001 ; Blank and Deb, 2020 ) . 
+
+ 
+
+ SO-Mixed-Variable 
+ 
+ 5 
+
+ PR ( Daulton et al., 2022 ) , Bounce ( Papenmeier et al., 2023 ) , Casmopolitan ( Wan et al., 2021 ) , HEBO ( Cowen-Rivers et al., 2022 ) , BODi ( Deshwal et al., 2023 ) . 
+
+ 
+
+ 
+
+## 3.3 BOCoDe Statistical Ranking Protocol
+
+ 
+ Comparing algorithms across hundreds of problems raises two difficulties: each problem produces objective values of vastly different magnitudes, and each run is subject to the stochasticity of the optimizer across seeds. BOCoDe therefore ranks methods statistically. We summarize each (problem, method) pair by the median best-so-far over its seeds. We report the median rather than the mean commonly used in the BO literature, because it is what the non-parametric ranking tests below are defined on, and the median represents a realizable engineering design ( Carrasco et al., 2020 ) .
+
+ 
+ Within each problem, methods are ranked ( [MATH] best, ties averaged) and compared by mean rank with a Friedman omnibus test, an Iman-Davenport correction, and a Nemenyi post-hoc test drawn as a critical-difference (CD) diagram ( Demšar, 2006 ; Herbold, 2020 ) . Because the Nemenyi approximation weakens on small sets, for classes with fewer than 20 problems, we additionally confirm each significant pair with a Holm-corrected Wilcoxon signed-rank test and read these CD values as indicative; omnibus statistics, corrected p-values, and effect sizes are in the Technical Supplement. For each test we use only the problems on which every compared method returned a valid result, and report the effective problem count [MATH] per panel in the Technical Supplement.
+
+ 
+
+## 4 Experiments
+
+ 
+
+## 4.1 Experimental Setup
+
+ 
+ We evaluate the 31 algorithms in BOCoDe across the 307 benchmark problems under a fixed-iteration protocol ( Hansen et al., 2022 ) . Each method receives [MATH] LHS-sampled initial points ( Müller et al., 2023 ) followed by a fixed budget of [MATH] black-box evaluations, repeated over [MATH] seeds. All methods, BO and EA, share the same initial design and the same total evaluation budget per problem. For EA baselines these [MATH] evaluations are spent across generations (population [MATH] generations [MATH] ), so every method issues an identical number of objective calls. Per-method population sizes, full call counts, and computing infrastructure details are in the Technical Supplement.
+
+ 
+
+## 4.2 Metrics & Aggregation
+
+ 
+ We match the performance metric with each optimization class: the best-so-far objective for SO problems, normalized per problem to [MATH] , and hypervolume to a fixed reference point for MO problems. For constrained problems, we calculate the best feasible objective (SO-Constrained) or hypervolume (MO-Constrained) value, and document the feasibility rate of each method: the fraction of the 25 runs that reach a feasible point within the budget ( Yu et al., 2025 ) .
+
+ 
+ All rankings and critical-difference diagrams (Nemenyi, [MATH] ) are produced by the BOCoDe Statistical Ranking Protocol; convergence plots report the median best-so-far with a 95% confidence-interval band, negated to follow the engineering minimization convention. Per-problem convergence analyses are in the Technical Supplement.
+
+ 
+
+## 5 Results & Discussion
+
+ 
+ We run all 31 methods on the 307 BOCoDe problems and organize the analysis around three questions: (i) whether the rankings transfer across domains (Figure 4 ), (ii) how the rankings change over the evaluation budget (Figure 5 ), and (iii) whether the use of different surrogates for BO results in statistical changes in convergence behavior (Figure 7 ). Our main result shows that no single method dominates: for SO-Unconstrained and SO-Mixed-Variable problems, the ranking established on synthetic functions reverses on engineering problems, and even where the rank order is preserved, the set of statistically indistinguishable methods differs by domain.
+
+ 
+ Figure 4: Statistical rankings at the final iteration, comparing GP-based methods by class and domain. Lower is better, and methods joined by a bar are statistically indistinguishable at the per-panel CD. A full per-surrogate analysis with non-GP variants is in the Technical Supplement. 
+
+ Figure 5: Rank trajectories over the 250-iteration budget, per class and domain. Lines show mean rank
+and bands the 95% CI. 
+
+## 5.1 Rankings transfer unevenly across domains.
+
+ 
+ For SO-Unconstrained problems, BAxUS and GP-TuRBO lead on synthetic problems and are statistically tied there, while Vanilla-HD-BO climbs from near the bottom on synthetic problems to first on both engineering and HPO. The reshuffling, however, comes with a compression of the field: on the engineering and HPO panels, all six methods fall within a single critical difference (rank spread [MATH] vs. CD [MATH] on engineering), so no method separates significantly, whereas the synthetic panel does separate its leaders from the rest (the gap between BAxUS and Standard-GP exceeds the CD of [MATH] ). SO-Mixed-Variable shows the same domain-dependence: Bounce leads on synthetic problems but is last on HPO, PR is first on engineering, and the HPO panel is led by a statistical three-way tie (PR, HEBO, BODi within [MATH] rank). The constrained and MO classes are the stable exceptions: qNEHVI and C-qNEHVI lead every domain, and CEI and GP-SCBO swap the top spot on SO-Constrained within one CD. Yet, that stability is in the ranking only. Feasibility itself diverges by domain: every method almost always reaches feasibility on synthetic problems (0.94–1.00), but the feasibility rate drops to 0.51–0.91 across SO-Constrained methods on engineering ones (Table 3 ), so the synthetic ceiling hides constraint-handling gaps that engineering exposes.
+
+ 
+
+## Discussion.
+
+ 
+ This indicates that engineering problems are needed to evaluate BO methods for open and mixed-variable search spaces, where synthetic rankings do not carry over. Reporting only the top method also understates the result, since which methods are statistically tied is itself domain-dependent. Part of the cross-domain difference may reflect imbalanced problem counts: some classes contribute many engineering problems but far fewer synthetic ones, so the wider CD on the smaller sets can mask real gaps. Expanding the underrepresented domains is therefore needed in future work to settle borderline comparisons.
+
+ 
+
+## 5.2 Rankings change over the iteration budget.
+
+ 
+ The rank trajectories in Figure 5 show that this domain-dependence is also a function of the budget. Method orderings are not fixed within a run: trust-region (TR) methods such as GP-TuRBO and BAxUS start mid-pack and climb as the budget grows, while the standard GP acquisitions lead early and are overtaken, and the confidence bands separate only in later iterations. The budget at which a method leads, and how sharply the domains distinguish methods, therefore shift over the run.
+
+ 
+
+## Discussion. 
+
+ 
+ Methods that favor early exploration and methods that favor late trust-region refinement appear complementary, and when each regime wins across the engineering, synthetic, and HPO domains is an open question, with budget-aware or switching strategies a natural response.
+
+ 
+ Figure 6: Example convergence for one engineering problem in each class; constrained panels show only feasible values. Full results for all 307 problems appear in Technical Supplement. 
+
+ 
+
+## 5.3 Surrogate choice changes convergence behavior.
+
+ 
+ When the acquisition and the acquisition optimizer are fixed and only the surrogate is varied (Figure 7 ), the surrogate produces statistically distinguishable convergence on engineering problems. GP-based variants remain in the top group, and the latest TabICL is statistically tied with the GP in both settings (TabICL-SCBO vs. GP-SCBO, CD = 0.69; TabICL-TuRBO vs. GP-TuRBO, CD = 0.38), while the latest TabPFN and a random-forest surrogate rank below both. The gap is between models rather than versions, since both foundation models are the most recent releases, and to our knowledge TabICL has not previously been used as a BO surrogate.
+
+ 
+
+## Discussion.
+
+ 
+ A TFM can thus be competitive with a GP as a BO surrogate on engineering problems, which makes foundation-model surrogates a concrete direction worth studying alongside GPs rather than in place of them Yu et al. (2025) . The open questions are why TabICL is competitive while TabPFN is not, despite both being tabular foundation models, and whether this holds in the high-dimensional and constrained regimes where surrogate modeling is hardest.
+
+ 
+ Figure 7: Effect of the surrogate under (a) SCBO and (b) TuRBO on engineering problems, holding acquisition and optimizer fixed. Averaged rank over evaluations with final CD diagrams; bar-connected methods are statistically tied. 
+
+ Table 3: Feasibility rate for the SO-Constrained class. 
+
+ Method 
+ Synthetic 
+ Engineering 
+
+    GP-SCBO 
+ 1.00 
+ 0.91 
+
+    CEI 
+ 1.00 
+ 0.80 
+
+    PENALTY 
+ 0.96 
+ 0.64 
+
+    CLF-CBO 
+ 0.94 
+ 0.51 
+
+ 
+
+ 
+
+## 6 Conclusions, Limitations, and Future Work
+
+ 
+ BOCoDe is a BO benchmark of 307 problems under a single API—159 computational engineering design problems alongside synthetic and HPO ones—with 31 reference methods across five optimization classes. Our main finding is that engineering design is a different regime, not just a harder one: the best method on synthetic problems can rank last on engineering ones, at least for the unconstrained and mixed-variable classes. The same holds for the surrogate: on engineering problems a TFM statistically ties the GP. Neither is visible from synthetic benchmarks, so engineering must be benchmarked on its own. BOCoDe’s coverage is still incomplete, most notably for multi-objective mixed-variable problems and BO methods that are not featured in the ML literature. Additionally, a natural next step is extending swappable foundation-model surrogates to multi-objective BO, which current TFM methods do not yet support. Robust constraint handling on engineering problems also remains open: penalty- and classifier-based methods reach feasibility on only half to two-thirds of runs. We will maintain BOCoDe as an open-source PyPI package after acceptance and extend it with larger problems linked to numerical solvers for structural or fluid-dynamics problems and with new BO methods, and we welcome community contributions.
+
+ 
+
+## Acknowledgments
+
+ 
+ The authors thank Kailey Epstein, Janet Qian, and Lyle Regenwetter for their help in curating engineering problems from the literature and conducting code reviews.
+
+ 
+
+## References
+
+ 
+ [1] 
+ J. Snoek, H. Larochelle, and R. Adams (2012) 
+ 
+ Practical bayesian optimization of machine learning algorithms .
+ 
+ In Advances in Neural Information Processing Systems , F. Pereira, C.J. Burges, L. Bottou, and K. Weinberger (Eds.) ,
+ 
+ Vol. 25 , pp. .
+ 
+ Cited by: §1 .
+
+ [2] 
+ M. Lindauer, K. Eggensperger, M. Feurer, A. Biedenkapp, D. Deng, C. Benjamins, T. Ruhkopf, R. Sass, and F. Hutter (2022) 
+ 
+ SMAC3: a versatile bayesian optimization package for hyperparameter optimization .
+ 
+ Journal of Machine Learning Research 23 ( 54 ), pp. 1–9 .
+ 
+ External Links: Link 
+ 
+ Cited by: §1 .
+
+ [3] 
+ S. Müller, M. Feurer, N. Hollmann, and F. Hutter (2023) 
+ 
+ PFNs4BO: in-context learning for Bayesian optimization .
+ 
+ In Proceedings of the 40th International Conference on Machine Learning ,
+ 
+ Proceedings of Machine Learning Research , Vol. 202 , pp. 25444–25470 .
+ 
+ Cited by: §G.1 ,
+ §1 ,
+ item 2 ,
+ §3.2 ,
+ §4.1 .
+
+ [4] 
+ Q. Liang, A. E. Gongora, Z. Ren, A. Tiihonen, Z. Liu, S. Sun, J. R. Deneault, D. Bash, F. Mekki-Berrada, S. A. Khan, et al. (2021) 
+ 
+ Benchmarking the performance of bayesian optimization across multiple experimental materials science domains .
+ 
+ npj Computational Materials 7 ( 1 ), pp. 188 .
+ 
+ Cited by: §1 ,
+ §2.2 .
+
+ [5] 
+ J. A. Paulson and C. Tsay (2025) 
+ 
+ Bayesian optimization as a flexible and efficient design framework for sustainable process systems .
+ 
+ Current Opinion in Green and Sustainable Chemistry 51 , pp. 100983 .
+ 
+ Cited by: §1 ,
+ §2.2 .
+
+ [6] 
+ Y. Tian, A. Zuniga, X. Zhang, J. P. Dürholt, P. Das, J. Chen, W. Matusik, and M. Konakovic Lukovic (2024) 
+ 
+ Boundary exploration for Bayesian optimization with unknown physical constraints .
+ 
+ In Proceedings of the 41st International Conference on Machine Learning ,
+ 
+ Proceedings of Machine Learning Research , Vol. 235 , pp. 48295–48320 .
+ 
+ Cited by: 4th item ,
+ Table 4 ,
+ §1 ,
+ Table 2 .
+
+ [7] 
+ G. Kumbhojkar, Z. Wang, S. Keten, and W. Chen (2026) 
+ 
+ Multi-objective bayesian optimization for design under unknown feasibility constraints .
+ 
+ Journal of Mechanical Design 148 ( 4 ), pp. 041707 .
+ 
+ Cited by: §1 .
+
+ [8] 
+ R. Turner, D. Eriksson, M. McCourt, J. Kiili, E. Laaksonen, Z. Xu, and I. Guyon (2021) 
+ 
+ Bayesian optimization is superior to random search for machine learning hyperparameter tuning: analysis of the black-box optimization challenge 2020 .
+ 
+ In Proceedings of the NeurIPS 2020 Competition and Demonstration Track ,
+ 
+ Proceedings of Machine Learning Research , Vol. 133 , pp. 3–26 .
+ 
+ Cited by: Table 13 ,
+ Table 13 ,
+ Table 13 ,
+ Table 13 ,
+ Table 13 ,
+ Table 13 ,
+ Table 13 ,
+ Table 13 ,
+ Table 13 ,
+ Table 13 ,
+ Table 13 ,
+ Table 13 ,
+ Table 13 ,
+ Table 13 ,
+ Table 13 ,
+ Table 13 ,
+ Table 13 ,
+ Table 13 ,
+ Table 13 ,
+ Table 13 ,
+ Table 13 ,
+ Table 13 ,
+ Table 13 ,
+ Table 13 ,
+ Table 13 ,
+ Table 13 ,
+ Table 13 ,
+ Table 13 ,
+ Table 13 ,
+ Table 13 ,
+ Table 13 ,
+ Table 13 ,
+ Table 13 ,
+ Table 13 ,
+ Table 13 ,
+ Table 13 ,
+ §1 .
+
+ [9] 
+ R. Le Riche and V. Picheny (2021) 
+ 
+ Revisiting Bayesian optimization in the light of the COCO benchmark .
+ 
+ Structural and Multidisciplinary Optimization 64 ( 5 ), pp. 3063–3087 .
+ 
+ Cited by: §1 .
+
+ [10] 
+ K. Dreczkowski, A. Grosnit, and H. B. Ammar (2023) 
+ 
+ Framework and benchmarks for combinatorial and mixed-variable bayesian optimization .
+ 
+ In Thirty-seventh Conference on Neural Information Processing Systems Datasets and Benchmarks Track ,
+ 
+ Cited by: Table 23 ,
+ Table 23 ,
+ Table 23 ,
+ Table 23 ,
+ Table 23 ,
+ Table 23 ,
+ Table 23 ,
+ Table 23 ,
+ Table 23 ,
+ Table 23 ,
+ Table 23 ,
+ Table 23 ,
+ Table 23 ,
+ Table 23 ,
+ Table 23 ,
+ Table 23 ,
+ Table 23 ,
+ §1 ,
+ §3.2 .
+
+ [11] 
+ L. Papenmeier and L. Nardi (2025) 
+ 
+ Bencher: simple and reproducible benchmarking for black-box optimization .
+ 
+ External Links: 2505.21321 
+ 
+ Cited by: §1 ,
+ §2.1.1 .
+
+ [12] 
+ N. Hansen, A. Auger, R. Ros, O. Mersmann, T. Tušar, and D. Brockhoff (2021) 
+ 
+ COCO: a platform for comparing continuous optimizers in a black-box setting .
+ 
+ Optimization Methods and Software 36 ( 1 ), pp. 114–144 .
+ 
+ Cited by: Table 18 ,
+ Table 18 ,
+ Table 18 ,
+ Table 18 ,
+ Table 18 ,
+ Table 18 ,
+ Table 18 ,
+ Table 18 ,
+ Table 18 ,
+ Table 18 ,
+ Table 18 ,
+ Table 18 ,
+ Table 18 ,
+ Table 18 ,
+ Table 18 ,
+ Table 18 ,
+ Table 18 ,
+ Table 18 ,
+ Table 18 ,
+ Table 18 ,
+ Table 18 ,
+ Table 18 ,
+ Table 18 ,
+ Table 18 ,
+ Table 18 ,
+ Table 18 ,
+ Table 18 ,
+ Table 18 ,
+ Table 18 ,
+ Table 18 ,
+ Table 18 ,
+ Table 18 ,
+ Table 18 ,
+ Table 18 ,
+ Table 18 ,
+ Table 18 ,
+ Table 18 ,
+ Table 23 ,
+ Table 23 ,
+ Table 23 ,
+ Table 23 ,
+ Table 23 ,
+ Table 23 ,
+ Table 23 ,
+ §2.1.1 .
+
+ [13] 
+ M. Balandat, B. Karrer, D. R. Jiang, S. Daulton, B. Letham, A. G. Wilson, and E. Bakshy (2020) 
+ 
+ BoTorch: A Framework for Efficient Monte-Carlo Bayesian Optimization .
+ 
+ In Advances in Neural Information Processing Systems 33 ,
+ 
+ Cited by: 1st item ,
+ 2nd item ,
+ Table 4 ,
+ Table 4 ,
+ §2.1.1 ,
+ §3.1.2 ,
+ §3.2 ,
+ §3.2 .
+
+ [14] 
+ M. Olson, E. Santorella, L. C. Tiao, S. Cakmak, M. Garrard, S. Daulton, Z. J. Lin, S. Ament, B. Beckerman, E. Onofrey, P. Igusti, C. Lara, B. Letham, C. Cardoso, S. S. Shen, A. C. Lin, M. Grange, E. Kashtelyan, D. Eriksson, M. Balandat, and Eytan. Bakshy (2025) 
+ 
+ Ax: A Platform for Adaptive Experimentation .
+ 
+ In AutoML 2025 ABCD Track ,
+ 
+ Cited by: §2.1.1 .
+
+ [15] 
+ B. Trabucco, X. Geng, A. Kumar, and S. Levine (2022) 
+ 
+ Design-bench: benchmarks for data-driven offline model-based optimization .
+ 
+ In Proceedings of the 39th International Conference on Machine Learning ,
+ 
+ Proceedings of Machine Learning Research , Vol. 162 , pp. 21658–21676 .
+ 
+ Cited by: §2.1.1 .
+
+ [16] 
+ F. Häse, M. Aldeghi, R. J. Hickman, L. M. Roch, M. Christensen, E. Liles, J. E. Hein, and A. Aspuru-Guzik (2021) 
+ 
+ Olympus: a benchmarking framework for noisy optimization and experiment planning .
+ 
+ Machine Learning: Science and Technology 2 ( 3 ), pp. 035021 .
+ 
+ Cited by: Table 13 ,
+ Table 13 ,
+ Table 13 ,
+ Table 13 ,
+ Table 23 ,
+ Table 23 ,
+ §2.1.1 .
+
+ [17] 
+ S. Ryu, D. Kwon, S. Choi, A. Deshwal, S. Kang, and C. Osorio (2026) 
+ 
+ BO4mob: bayesian optimization benchmarks for high-dimensional urban mobility problem .
+ 
+ In The Thirty-ninth Annual Conference on Neural Information Processing Systems Datasets and Benchmarks Track ,
+ 
+ Cited by: §2.1.1 .
+
+ [18] 
+ R. Turner (2019) 
+ 
+ The bayes opt benchmark documentation .
+ 
+ External Links: Link 
+ 
+ Cited by: Table 13 ,
+ Table 13 ,
+ Table 13 ,
+ Table 13 ,
+ Table 13 ,
+ Table 13 ,
+ Table 13 ,
+ Table 13 ,
+ Table 13 ,
+ Table 13 ,
+ Table 13 ,
+ Table 13 ,
+ Table 13 ,
+ Table 13 ,
+ Table 13 ,
+ Table 13 ,
+ Table 13 ,
+ Table 13 ,
+ Table 13 ,
+ Table 13 ,
+ Table 13 ,
+ Table 13 ,
+ Table 13 ,
+ Table 13 ,
+ Table 13 ,
+ Table 13 ,
+ Table 13 ,
+ Table 13 ,
+ Table 13 ,
+ Table 13 ,
+ Table 13 ,
+ Table 13 ,
+ Table 13 ,
+ Table 13 ,
+ Table 13 ,
+ Table 13 ,
+ §2.1.1 ,
+ §3.1.2 .
+
+ [19] 
+ K. Eggensperger, P. Müller, N. Mallik, M. Feurer, R. Sass, A. Klein, N. Awad, M. Lindauer, and F. Hutter (2021) 
+ 
+ HPOBench: a collection of reproducible multi-fidelity benchmark problems for HPO .
+ 
+ In Thirty-fifth Conference on Neural Information Processing Systems Datasets and Benchmarks Track (Round 2) ,
+ 
+ Cited by: §2.1.1 ,
+ §3.1.2 .
+
+ [20] 
+ J. Blank and K. Deb (2020) 
+ 
+ Pymoo: multi-objective optimization in python .
+ 
+ IEEE Access 8 ( ), pp. 89497–89509 .
+ 
+ Cited by: 5th item ,
+ 3rd item ,
+ Table 4 ,
+ Table 4 ,
+ §2.1.2 ,
+ §3.2 ,
+ Table 2 .
+
+ [21] 
+ Y. Tian, R. Cheng, X. Zhang, and Y. Jin (2017) 
+ 
+ PlatEMO: a matlab platform for evolutionary multi-objective optimization .
+ 
+ IEEE Computational Intelligence Magazine 12 ( 4 ), pp. 73–87 .
+ 
+ Cited by: §2.1.2 .
+
+ [22] 
+ A. Kumar, G. Wu, M. Z. Ali, R. Mallipeddi, P. N. Suganthan, and S. Das (2020) 
+ 
+ A test-suite of non-convex constrained optimization problems from the real-world and some baseline results .
+ 
+ Swarm and Evolutionary Computation 56 , pp. 100693 .
+ 
+ Cited by: Table 13 ,
+ Table 13 ,
+ Table 13 ,
+ Table 13 ,
+ Table 13 ,
+ Table 13 ,
+ Table 13 ,
+ Table 13 ,
+ Table 13 ,
+ Table 13 ,
+ Table 13 ,
+ Table 13 ,
+ Table 13 ,
+ Table 13 ,
+ Table 13 ,
+ Table 13 ,
+ Table 13 ,
+ Table 13 ,
+ Table 13 ,
+ Table 13 ,
+ Table 13 ,
+ Table 13 ,
+ Table 13 ,
+ Table 13 ,
+ Table 13 ,
+ Table 13 ,
+ Table 13 ,
+ Table 13 ,
+ Table 13 ,
+ Table 13 ,
+ Table 13 ,
+ Table 18 ,
+ Table 18 ,
+ Table 18 ,
+ Table 18 ,
+ Table 18 ,
+ Table 18 ,
+ Table 18 ,
+ Table 18 ,
+ Table 18 ,
+ Table 18 ,
+ Table 18 ,
+ Table 18 ,
+ Table 18 ,
+ Table 18 ,
+ Table 18 ,
+ Table 18 ,
+ Table 18 ,
+ Table 18 ,
+ Table 18 ,
+ Table 18 ,
+ Table 18 ,
+ Table 18 ,
+ Table 18 ,
+ Table 18 ,
+ Table 18 ,
+ Table 18 ,
+ Table 18 ,
+ §2.2 ,
+ §3.1.2 .
+
+ [23] 
+ R. Tanabe and H. Ishibuchi (2020) 
+ 
+ An easy-to-use real-world multi-objective optimization problem suite .
+ 
+ Applied Soft Computing 89 , pp. 106078 .
+ 
+ Cited by: Table 13 ,
+ Table 18 ,
+ Table 18 ,
+ Table 18 ,
+ Table 18 ,
+ Table 18 ,
+ Table 18 ,
+ Table 18 ,
+ Table 18 ,
+ Table 18 ,
+ Table 18 ,
+ Table 18 ,
+ Table 18 ,
+ Table 18 ,
+ Table 18 ,
+ Table 18 ,
+ Table 18 ,
+ Table 23 ,
+ Table 23 ,
+ Table 23 ,
+ Table 23 ,
+ Table 23 ,
+ Table 23 ,
+ Table 23 ,
+ Table 23 ,
+ §2.2 ,
+ §3.1.2 .
+
+ [24] 
+ C. Picard and J. Schiffmann (2021) 
+ 
+ Realistic constrained multiobjective optimization benchmark problems from design .
+ 
+ IEEE Transactions on Evolutionary Computation 25 ( 2 ), pp. 234–246 .
+ 
+ Cited by: Table 13 ,
+ Table 13 ,
+ Table 13 ,
+ Table 13 ,
+ Table 13 ,
+ Table 13 ,
+ Table 13 ,
+ Table 13 ,
+ Table 13 ,
+ Table 23 ,
+ Table 23 ,
+ Table 23 ,
+ Table 23 ,
+ Table 23 ,
+ Table 23 ,
+ Table 23 ,
+ Table 23 ,
+ Table 23 ,
+ Table 23 ,
+ Table 23 ,
+ §2.2 ,
+ §3.1.2 ,
+ §3.2 .
+
+ [25] 
+ M. González-Duque, R. Michael, S. Bartels, Y. Zainchkovskyy, S. Hauberg, and W. Boomsma (2024) 
+ 
+ A survey and benchmark of high-dimensional bayesian optimization of discrete sequences .
+ 
+ In Advances in Neural Information Processing Systems ,
+ 
+ Vol. 37 , pp. 140478–140508 .
+ 
+ Cited by: §2.2 .
+
+ [26] 
+ L. Purucker, A. Tschalzev, N. Erickson, G. Blayer, D. Holzmüller, A. Arazi, A. Pfefferle, M. Tajjar, G. Varoquaux, and F. Hutter (2026) 
+ 
+ Beyond iid: how general are tabular foundation models, really? .
+ 
+ External Links: 2606.30410 
+ 
+ Cited by: §3.1.1 .
+
+ [27] 
+ E. Todorov, T. Erez, and Y. Tassa (2012) 
+ 
+ MuJoCo: a physics engine for model-based control .
+ 
+ In 2012 IEEE/RSJ International Conference on Intelligent Robots and Systems ,
+ 
+ Vol. , pp. 5026–5033 .
+ 
+ Cited by: Table 13 ,
+ Table 13 ,
+ Table 13 ,
+ Table 13 ,
+ Table 13 ,
+ Table 13 ,
+ Table 13 ,
+ Table 13 ,
+ Table 13 ,
+ Table 13 ,
+ Table 13 ,
+ Table 13 ,
+ Table 13 ,
+ Table 13 ,
+ Table 13 ,
+ Table 13 ,
+ Table 13 ,
+ §3.1.2 .
+
+ [28] 
+ Z. Wang, C. Gehring, P. Kohli, and S. Jegelka (2018) 
+ 
+ Batched large-scale bayesian optimization in high-dimensional spaces .
+ 
+ In Proceedings of the Twenty-First International Conference on Artificial Intelligence and Statistics ,
+ 
+ Proceedings of Machine Learning Research , Vol. 84 , pp. 745–754 .
+ 
+ Cited by: Table 13 ,
+ Table 13 ,
+ §3.1.2 .
+
+ [29] 
+ J. J. Norheim (2022) 
+ 
+ Mathematical formulations in conceptual design, analysis, and optimization .
+ 
+ Ph.D. Thesis , Massachusetts Institute of Technology .
+ 
+ Cited by: Table 13 ,
+ Table 18 ,
+ Table 18 ,
+ §3.1.2 .
+
+ [30] 
+ R. T. Yu, C. Picard, and F. Ahmed (2025) 
+ 
+ Fast and accurate bayesian optimization with pre-trained transformers for constrained engineering problems .
+ 
+ Structural and Multidisciplinary Optimization 68 ( 3 ), pp. 66 .
+ 
+ Cited by: §3.1.2 ,
+ §4.2 ,
+ §5.3 .
+
+ [31] 
+ K. Šehić, A. Gramfort, J. Salmon, and L. Nardi (2022) 
+ 
+ LassoBench: a high-dimensional hyperparameter optimization benchmark suite for lasso .
+ 
+ Proceedings of the 1st International Conference on Automated Machine Learning .
+ 
+ Cited by: Table 13 ,
+ Table 13 ,
+ Table 13 ,
+ Table 13 ,
+ §3.1.2 .
+
+ [32] 
+ N. Hollmann, S. Müller, L. Purucker, A. Krishnakumar, M. Körfer, S. B. Hoo, R. T. Schirrmeister, and F. Hutter (2025) 
+ 
+ Accurate predictions on small data with a tabular foundation model .
+ 
+ Nature 637 ( 8045 ), pp. 319–326 .
+ 
+ Cited by: 1st item ,
+ item 2 .
+
+ [33] 
+ L. Regenwetter, R. Yu, C. Picard, and F. Ahmed (2026) 
+ 
+ Engineering regression without real-data training: domain adaptation for tabular foundation models using multi-dataset embeddings .
+ 
+ arXiv preprint arXiv:2603.04692 .
+ 
+ Cited by: item 2 .
+
+ [34] 
+ L. van der Maaten and G. Hinton (2008) 
+ 
+ Visualizing data using t-sne .
+ 
+ Journal of Machine Learning Research 9 ( 86 ), pp. 2579–2605 .
+ 
+ Cited by: item 2 .
+
+ [35] 
+ L. Grinsztajn, K. Flöge, O. Key, F. Birkel, P. Jund, B. Roof, M. Manium, S. B. Hoo, M. Bühler, A. Garg, D. Safaric, J. Robertson, B. Jäger, S. Alessi, A. Hayler, V. Moroshan, L. Purucker, P. Singer, A. Arazi, J. Siems, J. H. Metzen, G. Grab, N. Erickson, S. Guo, E. Kalfon, S. Bing, D. Salinas, C. Cornu, L. C. Wehrhahn, D. Kriuchkova, K. Kaya, L. Sidhoum, M. Salmon, J. Chen, M. Hulsebos, Y. LeCun, S. Müller, B. Schölkopf, S. Gambhir, N. Hollmann, and F. Hutter (2026) 
+ 
+ TabPFN-3: technical report .
+ 
+ External Links: 2605.13986 
+ 
+ Cited by: 1st item ,
+ §3.2 .
+
+ [36] 
+ J. QU, D. Holzmüller, G. Varoquaux, and M. L. Morvan (2026) 
+ 
+ TabICLv2: a better, faster, scalable, and open tabular foundation model .
+ 
+ In Forty-third International Conference on Machine Learning ,
+ 
+ Cited by: 2nd item ,
+ §3.2 .
+
+ [37] 
+ H. Rakotoarison, S. Adriaensen, N. Mallik, S. Garibov, E. Bergman, and F. Hutter (2024) 
+ 
+ In-context freeze-thaw bayesian optimization for hyperparameter optimization .
+ 
+ In AutoML Conference 2024 (Workshop Track) ,
+ 
+ Cited by: §3.2 .
+
+ [38] 
+ R. T. Yu, C. Picard, and F. Ahmed (2026) 
+ 
+ GIT-BO: high-dimensional bayesian optimization with tabular foundation models .
+ 
+ In The Fourteenth International Conference on Learning Representations ,
+ 
+ Cited by: §3.2 .
+
+ [39] 
+ N. Srinivas, A. Krause, S. Kakade, and M. Seeger (2010) 
+ 
+ Gaussian process optimization in the bandit setting: no regret and experimental design .
+ 
+ In Proceedings of the 27th International Conference on International Conference on Machine Learning ,
+ 
+ ICML’10 , pp. 1015–1022 .
+ 
+ Cited by: 2nd item ,
+ Table 4 ,
+ Table 2 .
+
+ [40] 
+ S. Ament, S. Daulton, D. Eriksson, M. Balandat, and E. Bakshy (2023) 
+ 
+ Unexpected improvements to expected improvement for bayesian optimization .
+ 
+ In Thirty-seventh Conference on Neural Information Processing Systems ,
+ 
+ Cited by: 1st item ,
+ 1st item ,
+ 1st item ,
+ Table 4 ,
+ Table 2 .
+
+ [41] 
+ D. Eriksson, M. Pearce, J. Gardner, R. D. Turner, and M. Poloczek (2019) 
+ 
+ Scalable global optimization via local bayesian optimization .
+ 
+ Advances in neural information processing systems 32 .
+ 
+ Cited by: 3rd item ,
+ Table 4 ,
+ Table 2 .
+
+ [42] 
+ L. Papenmeier, L. Nardi, and M. Poloczek (2022) 
+ 
+ Increasing the scope as you learn: adaptive bayesian optimization in nested subspaces .
+ 
+ Advances in Neural Information Processing Systems 35 , pp. 11586–11601 .
+ 
+ Cited by: 4th item ,
+ Table 4 ,
+ Table 2 .
+
+ [43] 
+ C. Hvarfner, E. O. Hellsten, and L. Nardi (2024) 
+ 
+ Vanilla Bayesian optimization performs great in high dimensions .
+ 
+ In Proceedings of the 41st International Conference on Machine Learning ,
+ 
+ Vol. 235 , pp. 20793–20817 .
+ 
+ Cited by: 5th item ,
+ Table 4 ,
+ Table 2 .
+
+ [44] 
+ Z. Xu, H. Wang, J. M. Phillips, and S. Zhe (2025) 
+ 
+ Standard gaussian process is all you need for high-dimensional bayesian optimization .
+ 
+ In The Thirteenth International Conference on Learning Representations ,
+ 
+ Cited by: 6th item ,
+ Table 4 ,
+ Table 2 .
+
+ [45] 
+ J. R. Gardner, M. J. Kusner, Z. E. Xu, K. Q. Weinberger, and J. P. Cunningham (2014) 
+ 
+ Bayesian optimization with inequality constraints. .
+ 
+ In Proceedings of the 31st International Conference on Machine Learning ,
+ 
+ Vol. 2014 , pp. 937–945 .
+ 
+ Cited by: 1st item ,
+ Table 4 ,
+ Table 18 ,
+ Table 18 ,
+ Table 18 ,
+ Table 18 ,
+ Table 18 ,
+ Table 18 ,
+ Table 18 ,
+ Table 2 .
+
+ [46] 
+ D. Eriksson and M. Poloczek (2021) 
+ 
+ Scalable constrained bayesian optimization .
+ 
+ In International Conference on Artificial Intelligence and Statistics ,
+ 
+ pp. 730–738 .
+ 
+ Cited by: 2nd item ,
+ Table 4 ,
+ Table 2 .
+
+ [47] 
+ R. Fletcher (1975) 
+ 
+ An ideal penalty function for constrained optimization .
+ 
+ IMA Journal of Applied Mathematics 15 ( 3 ), pp. 319–342 .
+ 
+ Cited by: 3rd item ,
+ Table 4 ,
+ Table 2 .
+
+ [48] 
+ S. Daulton, M. Balandat, and E. Bakshy (2020) 
+ 
+ Differentiable expected hypervolume improvement for parallel multi-objective bayesian optimization .
+ 
+ In Advances in Neural Information Processing Systems ,
+ 
+ Vol. 33 , pp. 9851–9864 .
+ 
+ Cited by: 1st item ,
+ 1st item ,
+ Table 4 ,
+ Table 4 ,
+ Appendix E ,
+ §G.2 ,
+ Table 2 ,
+ Table 2 .
+
+ [49] 
+ S. Daulton, M. Balandat, and E. Bakshy (2021) 
+ 
+ Parallel bayesian optimization of multiple noisy objectives with expected hypervolume improvement .
+ 
+ In Advances in Neural Information Processing Systems ,
+ 
+ Vol. 34 , pp. 2187–2200 .
+ 
+ Cited by: 2nd item ,
+ 2nd item ,
+ Table 4 ,
+ Table 4 ,
+ Table 2 ,
+ Table 2 .
+
+ [50] 
+ S. Belakaria, A. Deshwal, and J. R. Doppa (2019) 
+ 
+ Max-value entropy search for multi-objective bayesian optimization .
+ 
+ In Advances in Neural Information Processing Systems , H. Wallach, H. Larochelle, A. Beygelzimer, F. d'Alché-Buc, E. Fox, and R. Garnett (Eds.) ,
+ 
+ Vol. 32 , pp. .
+ 
+ Cited by: 3rd item ,
+ Table 4 ,
+ Table 2 .
+
+ [51] 
+ M. Konakovic Lukovic, Y. Tian, and W. Matusik (2020) 
+ 
+ Diversity-guided multi-objective bayesian optimization with batch evaluations .
+ 
+ In Advances in Neural Information Processing Systems , H. Larochelle, M. Ranzato, R. Hadsell, M.F. Balcan, and H. Lin (Eds.) ,
+ 
+ Vol. 33 , pp. 17708–17720 .
+ 
+ Cited by: 4th item ,
+ Table 4 ,
+ Appendix E ,
+ §G.2 ,
+ Table 2 .
+
+ [52] 
+ K. Deb, A. Pratap, S. Agarwal, and T. Meyarivan (2002) 
+ 
+ A fast and elitist multiobjective genetic algorithm: nsga-ii .
+ 
+ IEEE Transactions on Evolutionary Computation 6 ( 2 ), pp. 182–197 .
+ 
+ Cited by: 5th item ,
+ 3rd item ,
+ Table 4 ,
+ Table 4 ,
+ Table 2 ,
+ Table 2 .
+
+ [53] 
+ E. Zitzler, M. Laumanns, and L. Thiele (2001) 
+ 
+ SPEA2: improving the strength pareto evolutionary algorithm .
+ 
+ TIK report 103 .
+ 
+ Cited by: 5th item ,
+ 3rd item ,
+ Table 4 ,
+ Table 4 ,
+ Table 2 ,
+ Table 2 .
+
+ [54] 
+ S. Daulton, X. Wan, D. Eriksson, M. Balandat, M. A. Osborne, and E. Bakshy (2022) 
+ 
+ Bayesian optimization over discrete and mixed spaces via probabilistic reparameterization .
+ 
+ In Advances in Neural Information Processing Systems ,
+ 
+ Vol. 35 , pp. 12760–12774 .
+ 
+ Cited by: 1st item ,
+ Table 4 ,
+ Table 2 .
+
+ [55] 
+ L. Papenmeier, L. Nardi, and M. Poloczek (2023) 
+ 
+ Bounce: reliable high-dimensional bayesian optimization for combinatorial and mixed spaces .
+ 
+ In Advances in Neural Information Processing Systems ,
+ 
+ Vol. 36 , pp. 1764–1793 .
+ 
+ Cited by: 2nd item ,
+ Table 4 ,
+ Table 2 .
+
+ [56] 
+ X. Wan, V. Nguyen, H. Ha, B. Ru, C. Lu, and M. A. Osborne (2021) 
+ 
+ Think global and act local: bayesian optimisation over high-dimensional categorical and mixed search spaces .
+ 
+ In Proceedings of the 38th International Conference on Machine Learning ,
+ 
+ Proceedings of Machine Learning Research , Vol. 139 , pp. 10663–10674 .
+ 
+ Cited by: 3rd item ,
+ Table 4 ,
+ Table 23 ,
+ Table 23 ,
+ Table 23 ,
+ Table 23 ,
+ Table 23 ,
+ Table 23 ,
+ Table 23 ,
+ Table 23 ,
+ Table 23 ,
+ Table 23 ,
+ Table 23 ,
+ Table 23 ,
+ Table 23 ,
+ Table 23 ,
+ Table 23 ,
+ Table 23 ,
+ Table 23 ,
+ Table 2 .
+
+ [57] 
+ A. I. Cowen-Rivers, W. Lyu, R. Tutunov, Z. Wang, A. Grosnit, R. R. Griffiths, A. M. Maraval, H. Jianye, J. Wang, J. Peters, et al. (2022) 
+ 
+ Hebo: pushing the limits of sample-efficient hyper-parameter optimisation .
+ 
+ Journal of Artificial Intelligence Research 74 , pp. 1269–1349 .
+ 
+ Cited by: 4th item ,
+ Table 4 ,
+ Table 2 .
+
+ [58] 
+ A. Deshwal, S. Ament, M. Balandat, E. Bakshy, J. R. Doppa, and D. Eriksson (2023) 
+ 
+ Bayesian optimization over high-dimensional combinatorial spaces via dictionary-based embeddings .
+ 
+ In Proceedings of The 26th International Conference on Artificial Intelligence and Statistics ,
+ 
+ Proceedings of Machine Learning Research , Vol. 206 , pp. 7021–7039 .
+ 
+ Cited by: 5th item ,
+ Table 4 ,
+ Table 23 ,
+ Table 2 .
+
+ [59] 
+ J. Carrasco, S. García, M.M. Rueda, S. Das, and F. Herrera (2020) 
+ 
+ Recent trends in the use of statistical tests for comparing swarm and evolutionary computing algorithms: practical guidelines and a critical review .
+ 
+ Swarm and Evolutionary Computation 54 , pp. 100665 .
+ 
+ Cited by: §3.3 .
+
+ [60] 
+ J. Demšar (2006) 
+ 
+ Statistical comparisons of classifiers over multiple data sets .
+ 
+ Journal of Machine Learning Research 7 ( 1 ), pp. 1–30 .
+ 
+ Cited by: Appendix F ,
+ Appendix F ,
+ §3.3 .
+
+ [61] 
+ S. Herbold (2020) 
+ 
+ Autorank: a python package for automated ranking of classifiers .
+ 
+ Journal of Open Source Software 5 ( 48 ), pp. 2173 .
+ 
+ Cited by: §3.3 .
+
+ [62] 
+ N. Hansen, A. Auger, D. Brockhoff, and T. Tušar (2022) 
+ 
+ Anytime performance assessment in blackbox optimization benchmarking .
+ 
+ IEEE Transactions on Evolutionary Computation 26 ( 6 ), pp. 1293–1305 .
+ 
+ Cited by: §4.1 .
+
+ [63] 
+ T. Chen and C. Guestrin (2016) 
+ 
+ XGBoost: a scalable tree boosting system .
+ 
+ In Proceedings of the 22nd ACM SIGKDD International Conference on Knowledge Discovery and Data Mining ,
+ 
+ pp. 785–794 .
+ 
+ Cited by: Appendix A .
+
+ [64] 
+ R. T. Marler and J. S. Arora (2004) 
+ 
+ Survey of multi-objective optimization methods for engineering .
+ 
+ Structural and multidisciplinary optimization 26 ( 6 ), pp. 369–395 .
+ 
+ Cited by: §C.2 .
+
+ [65] 
+ Y. G. Woldesenbet, G. G. Yen, and B. G. Tessema (2009) 
+ 
+ Constraint handling in multiobjective evolutionary optimization .
+ 
+ IEEE Transactions on Evolutionary Computation 13 ( 3 ), pp. 514–525 .
+ 
+ Cited by: §C.2 .
+
+ [66] 
+ J. Knowles (2006) 
+ 
+ ParEGO: a hybrid algorithm with on-line landscape approximation for expensive multiobjective optimization problems .
+ 
+ IEEE Transactions on Evolutionary Computation 10 ( 1 ), pp. 50–66 .
+ 
+ Cited by: 2nd item ,
+ 2nd item ,
+ Table 4 ,
+ Table 4 .
+
+ [67] 
+ B. Tu, A. Gandy, N. Kantas, and B. Shafei (2022) 
+ 
+ Joint entropy search for multi-objective bayesian optimization .
+ 
+ In Advances in Neural Information Processing Systems ,
+ 
+ Vol. 35 , pp. 9922–9938 .
+ 
+ Cited by: 3rd item ,
+ Table 4 .
+
+ [68] 
+ M. A. Gelbart, J. Snoek, and R. P. Adams (2014) 
+ 
+ Bayesian optimization with unknown constraints .
+ 
+ In Proceedings of the 30th Conference on Uncertainty in Artificial Intelligence ,
+ 
+ pp. 250–259 .
+ 
+ Cited by: 1st item .
+
+ [69] 
+ M. Friedman (1937) 
+ 
+ The use of ranks to avoid the assumption of normality implicit in the analysis of variance .
+ 
+ Journal of the american statistical association 32 ( 200 ), pp. 675–701 .
+ 
+ Cited by: Appendix F .
+
+ [70] 
+ R. L. Iman and J. M. Davenport (1980) 
+ 
+ Approximations of the critical region of the fbietkan statistic .
+ 
+ Communications in Statistics-Theory and Methods 9 ( 6 ), pp. 571–595 .
+ 
+ Cited by: Appendix F .
+
+ [71] 
+ X. Yang and A. H. Gandomi (2012) 
+ 
+ Bat algorithm: a novel approach for global engineering optimization .
+ 
+ Engineering Computations 29 ( 5 ), pp. 464–483 .
+ 
+ Cited by: Table 13 ,
+ Table 18 ,
+ Table 23 .
+
+ [72] 
+ T. Kohira, H. Kemmotsu, A. Oyama, and T. Tatsukawa (2018) 
+ 
+ Proposal of a benchmark problem based on real-world car structure design optimization .
+ 
+ In Proceedings of the Genetic and Evolutionary Computation Conference Companion ,
+ 
+ pp. 183–184 .
+ 
+ Cited by: Table 13 ,
+ Table 13 .
+
+ [73] 
+ W. Hoburg and P. Abbeel (2014) 
+ 
+ Geometric programming for aircraft design optimization .
+ 
+ AIAA Journal 52 ( 11 ), pp. 2414–2426 .
+ 
+ Cited by: Table 13 .
+
+ [74] 
+ M. I. Radaideh, K. Du, P. Seurin, D. Seyler, X. Gu, H. Wang, and K. Shirvan (2023) 
+ 
+ NEORL: NeuroEvolution optimization with reinforcement learning — applications to carbon-free energy systems .
+ 
+ Nuclear Engineering and Design 412 , pp. 112423 .
+ 
+ Cited by: Table 13 ,
+ Table 13 .
+
+ [75] 
+ A. Yousefpour, Z. Zanjani Foumani, M. Shishehbor, C. Mora, and R. Bostanabad (2024) 
+ 
+ GP+: a python library for kernel-based learning via Gaussian processes .
+ 
+ Advances in Engineering Software 195 , pp. 103686 .
+ 
+ Cited by: Table 13 ,
+ Table 23 .
+
+ [76] 
+ J. T. Allison (2004) 
+ 
+ Complex system optimization: a review of analytical target cascading, collaborative optimization, and other formulations .
+ 
+ Master’s Thesis , University of Michigan .
+ 
+ Cited by: Table 13 .
+
+ [77] 
+ S. Surjanovic and D. Bingham (2013) 
+ 
+ Virtual library of simulation experiments: test functions and datasets .
+ 
+ Note: https://www.sfu.ca/~ssurjano 
+ 
+ Cited by: Table 13 .
+
+ [78] 
+ J. Cuesta Ramirez, R. Le Riche, O. Roustant, G. Perrin, C. Durantin, and A. Glière (2022) 
+ 
+ A comparison of mixed-variables bayesian optimization approaches .
+ 
+ Advanced Modeling and Simulation in Engineering Sciences 9 , pp. 6 .
+ 
+ Cited by: Table 13 ,
+ Table 23 .
+
+ [79] 
+ S. P. Arango, H. S. Jomaa, M. Wistuba, and J. Grabocka (2021) 
+ 
+ HPO-b: a large-scale reproducible benchmark for black-box HPO based on openML .
+ 
+ In Thirty-fifth Conference on Neural Information Processing Systems Datasets and Benchmarks Track (Round 2) ,
+ 
+ Cited by: Table 13 ,
+ Table 13 ,
+ Table 13 ,
+ Table 13 ,
+ Table 13 ,
+ Table 13 ,
+ Table 13 ,
+ Table 13 ,
+ Table 13 ,
+ Table 13 ,
+ Table 13 ,
+ Table 13 ,
+ Table 23 ,
+ Table 23 ,
+ Table 23 ,
+ Table 23 ,
+ Table 23 ,
+ Table 23 ,
+ Table 23 ,
+ Table 23 ,
+ Table 23 ,
+ Table 23 ,
+ Table 23 ,
+ Table 23 ,
+ Table 23 .
+
+ [80] 
+ Q. Liang and L. Lai (2021) 
+ 
+ Scalable bayesian optimization accelerates process optimization of penicillin production .
+ 
+ In NeurIPS 2021 AI for Science Workshop ,
+ 
+ Cited by: Table 18 .
+
+ [81] 
+ A. H. Gandomi, X. Yang, and A. H. Alavi (2011) 
+ 
+ Mixed variable structural optimization using firefly algorithm .
+ 
+ Computers & Structures 89 ( 23–24 ), pp. 2325–2336 .
+ 
+ Cited by: Table 18 ,
+ Table 23 ,
+ Table 23 ,
+ Table 23 ,
+ Table 23 ,
+ Table 23 .
+
+ [82] 
+ J. R. Wertz and W. J. Larson (Eds.) (1999) 
+ 
+ Space mission analysis and design .
+ 
+ 3rd edition , Microcosm Press / Kluwer Academic .
+ 
+ Cited by: Table 18 .
+
+ [83] 
+ R. S. Sellar, S. M. Batill, and J. E. Renaud (1996) 
+ 
+ Response surface based, concurrent subspace optimization for multidisciplinary system design .
+ 
+ In 34th AIAA Aerospace Sciences Meeting and Exhibit ,
+ 
+ Note: AIAA 96-0714 
+ 
+ Cited by: Table 18 .
+
+ [84] 
+ D. T. Le, D. Bui, T. D. Ngo, Q. Nguyen, and H. Nguyen-Xuan (2019) 
+ 
+ A novel hybrid method combining electromagnetism-like mechanism and firefly algorithms for constrained design optimization of discrete truss structures .
+ 
+ Computers & Structures 212 , pp. 20–42 .
+ 
+ Cited by: Table 18 ,
+ Table 18 ,
+ Table 18 ,
+ Table 18 .
+
+ [85] 
+ C. A. Coello Coello (2000) 
+ 
+ Use of a self-adaptive penalty approach for engineering optimization problems .
+ 
+ Computers in Industry 41 ( 2 ), pp. 113–127 .
+ 
+ Cited by: Table 18 .
+
+ [86] 
+ E. Sandgren (1990) 
+ 
+ Nonlinear integer and discrete programming in mechanical design optimization .
+ 
+ Journal of Mechanical Design 112 ( 2 ), pp. 223–229 .
+ 
+ Cited by: Table 23 .
+
+ [87] 
+ C. Oh, J. Tomczak, E. Gavves, and M. Welling (2019) 
+ 
+ Combinatorial bayesian optimization using the graph cartesian product .
+ 
+ Advances in Neural Information Processing Systems 32 .
+ 
+ Cited by: Table 23 .
+
+ [88] 
+ L. Zimmer, M. Lindauer, and F. Hutter (2021) 
+ 
+ Auto-pytorch tabular: multi-fidelity metalearning for efficient and robust autodl .
+ 
+ IEEE Transactions on Pattern Analysis and Machine Intelligence 43 ( 9 ), pp. 3079 – 3090 .
+ 
+ Cited by: Table 23 ,
+ Table 23 ,
+ Table 23 ,
+ Table 23 ,
+ Table 23 ,
+ Table 23 ,
+ Table 23 ,
+ Table 23 ,
+ Table 23 ,
+ Table 23 ,
+ Table 23 ,
+ Table 23 ,
+ Table 23 ,
+ Table 23 ,
+ Table 23 .
+
+ 
+
+ 
+
+## Table of Contents for Appendices
+
+ 
+
+ 
+
+## Appendix A Domain Distinguishability in the Embedding Space
+
+ 
+ To quantify the separation seen in the t-SNE layout (main paper’s Figure 3), we train an XGBoost [ 63 ] classifier to predict a problem’s domain from its per-problem TabPFN embedding. Its confusion matrix is shown in Figure 8 . As a control, we add a class of random-noise datasets with no structure, which are recovered with 100% accuracy, confirming that the embedding encodes genuine problem structure rather than noise. Engineering and HPO problems are highly distinguishable (85% and 93% accuracy), whereas synthetic problems are the least distinguishable (59%) and are most often mistaken for engineering ones (38%). This matches the t-SNE view: engineering occupies a well-defined region largely disjoint from HPO, while a portion of the synthetic problems spans the engineering region.
+
+ 
+ Figure 8: Confusion matrix of a classifier predicting a problem’s domain from its TabPFN embedding (row-normalized recall). A random-noise control with no structure is separated perfectly, confirming the embedding captures genuine problem structure. Engineering and HPO are highly distinguishable; synthetic problems overlap the engineering region (38% predicted as engineering). 
+
+ 
+
+## Appendix B Repository Structure and Problem Catalog
+
+ 
+ The BOCoDe registry catalogs the 307 base problems evaluated in the main paper’s benchmark campaign—159 engineering, 68 synthetic, and 80 HPO—together with additional dimension and scalarization variants of these problems that were not run in this campaign. Figure 9 shows the layout of the bocode Python package, and Figure 10 the algorithms directory holding the reference baselines.
+
+ {forest} 
+ Figure 9: Structure of the bocode Python package. 
+ 
+ {forest} 
+ Figure 10: Structure of the algorithms directory holding the reference BO baselines. 
+
+ 
+
+## Appendix C The BOCoDe API
+
+ 
+ This section details the programming interfaces summarized in the main text: the problem API every benchmark exposes, the transforms that derive new runnable problems from existing ones, the machine-readable metadata, and the adapters that put third-party optimizer packages on BOCoDe’s shared protocol.
+
+ 
+
+## C.1 Problem API
+
+ 
+ Every BOCoDe problem derives from a common base class. The registry hands out problems by name and answers queries over the metadata described below:
+
+ 
+ ⬇ 
+
+ problem = bocode . Car () 
+
+ # or get_problem("Car") 
+
+ bocode . list_problems ( 
+
+ # all filters optional 
+
+ application = "Engineering" , 
+
+ # domain, case-insensitive 
+
+ num_objectives =1, 
+
+ constrained = True , 
+
+ input_type = "mixed" , 
+
+ # or "continuous" / "discrete" 
+
+ scalable = False ) 
+
+ # fixed- vs. user-set dimension 
+
+ bocode . get_single_objective_constrained () 
+
+ # one class’s members 
+
+ meta = bocode . get_metadata ( "Car" ) 
+
+ # JSON record 
+
+ 
+ Filters combine conjunctively, and each of the five optimization classes has its own selector.
+
+ 
+ The initial design is reproducible and type-aware: continuous dimensions get a Latin-hypercube sampled (LHS) design, integer dimensions get integers, and categorical dimensions draw from their allowed levels, so one call serves continuous and mixed-variable problems alike. During optimization, every algorithm in this study proposes in the unit cube; the problem maps each proposal back to native bounds and valid levels:
+
+ 
+ ⬇ 
+
+ X0 = problem . sample (5, seed =0) 
+
+ # type-aware LHS design 
+
+ X = problem . enforce_variable_types ( 
+
+ problem . scale ( X_unit )) 
+
+ 
+ Evaluation follows the maximization convention of the main text: a constraint counts as satisfied when its value is [MATH] , and the evaluator concatenates the CEC2020 suite’s separate equality and inequality blocks, so every problem presents a single constraint tensor of width [MATH] :
+
+ 
+ ⬇ 
+
+ obj_value , cons_value = problem . evaluate ( X ) 
+
+ # shapes (n, M), (n, G) 
+
+ 
+
+## C.2 Transforms
+
+ 
+ Adding a raw objective to a raw constraint violation (or to another
+objective) lets whichever term has the larger magnitude dominate, so each
+wrapper min–max normalizes its terms to [MATH] over a Latin-hypercube
+sample of the base problem (256 points by default), following standard
+practice [ 64 , 65 ] . Inside a benchmark
+run it calibrates on the already-evaluated initial design instead, so
+construction costs no evaluations beyond the shared budget.
+
+ 
+ ⬇ 
+
+ mo = bocode . CRE21 () # multi-obj., constrained 
+
+ so = bocode . ScalarizedProblem ( mo ) # -> single-objective 
+
+ flat = bocode . PenalizedProblem ( so ) # -> unconstrained 
+
+ cont = bocode . ContinuousRelaxation ( bocode . Car ()) # -> continuous 
+
+ 
+ 
+ 1. 
+ 
+ Scalarization (multi- to single-objective). Combines the
+ [MATH] normalized objectives into one, with weights defaulting to
+ [MATH] . Constraints pass through unchanged.
+
+ 2. 
+ 
+ Penalization (constrained to unconstrained). Maximizes
+ [MATH] 
+with [MATH] by default, where the violation is [MATH] .
+A feasible point therefore scores its plain normalized objective.
+
+ 3. 
+ 
+ Continuous relaxation (mixed to continuous). Drops the
+integer and categorical restrictions of a mixed-variable problem.
+Dataset problems with a fixed candidate pool are rejected, since they
+admit no relaxation.
+
+ 
+
+ 
+ The Problem Directory’s penalty-scalarized entries apply the same idea to 44 constrained problems, twelve of them multi-objective, re-exposing each as single-objective and unconstrained.
+The wrapper takes the equal-weight mean of the objectives, normalizes each
+by a precomputed per-objective scale shipped with the package, and
+subtracts the total constraint violation. The scales are fixed problem
+constants rather than sample estimates, so every entry is a deterministic
+problem definition.
+
+ 
+
+## C.3 Problem Metadata
+
+ 
+ Every registered problem ships one JSON record. The package loads these
+records without importing the problem’s code, so a query touches no
+optional dependency, and a batch script can select problems from the
+records alone, without instantiating a single one. The record for the car
+side-impact problem, abridged:
+
+ 
+ ⬇ 
+
+ { 
+
+ " name ": " Car ", 
+
+ " real_name ": " Car Side Impact Design 
+
+ ( single - objective , 11 mixed variables )", 
+
+ " application ": " Engineering ", 
+
+ " suite ": " Engineering ( standalone )", 
+
+ " num_objectives ": 1, 
+
+ " num_constraints ": 10, 
+
+ " dim ": 11, 
+
+ " input_type ": " mixed ", 
+
+ " scalable ": false , 
+
+ " bounds ": [[0.5, 1.5], [0.45, 1.35], ...], 
+
+ " variable_types ": [" continuous ", ..., 
+
+ [0.192, 0.345], ...], 
+
+ " convex ": " unknown ", 
+
+ " np_hard ": " unknown ", 
+
+ " f_opt ": null , 
+
+ " source ": " Gandomi AH , Yang XS , Alavi AH 
+
+ (2011) Mixed variable structural 
+
+ optimization using firefly algorithm . 
+
+ Computers & Structures 
+
+ 89(23-24):2325-2336" 
+
+ } 
+
+ 
+
+## C.4 Optimizer Adapters
+
+ 
+ Every baseline ships as a runnable module behind one command-line pattern, where the
+module path names the optimization class and the method:
+
+ 
+ ⬇ 
+
+ python - m algorithms .< class >.< method > \ 
+
+ -- problem < Problem > -- init < number > -- iters < number > -- seed < number > 
+
+ 
+ For example:
+
+ 
+ ⬇ 
+
+ python - m algorithms . single_obj . gp_ucb \ 
+
+ -- problem Car -- init 20 -- iters 40 -- seed 42 
+
+ 
+ The shared runner splits the budget into an initial design, dimension-scaled
+when no size is given. It issues one proposal per iteration, resumes interrupted
+runs from checkpoints, and writes the same per-iteration trace for every
+method: best value so far (minimized) and wall time. Third-party packages run behind thin
+adapters that hand each package the same initial design and budget every
+other method receives and record results in BOCoDe’s conventions;
+Appendix D documents the per-method choices, including
+HEBO’s sign convention and Bounce’s single-call budget.
+
+ 
+
+## Appendix D Algorithms: Implementation Details
+
+ 
+ Table 4 summarizes the implementation source, surrogate, acquisition, and
+license of every baseline; the bullets below give the full hyperparameter settings and any
+deviations from the reference implementations. The interchangeable-surrogate variants
+introduced in this work (the RF-, TabPFN- and TabICL- rows) reuse the machinery of the
+corresponding baseline with only the surrogate replaced, and are described in the main text.
+
+ 
+ Table 4: Overview of the reference algorithms (surrogate-swap variants share one row; the
+four surrogates expand the 26 rows to the 31 algorithm entries of the main paper’s Table 2).
+Full hyperparameter settings and deviations are given in the per-method bullets below. 
+
+ 
+ 
+ Method 
+ 
+ Opt. class 
+
+ Surrogate 
+
+ 
+ Acquisition / Selection 
+
+ 
+ Source 
+ 
+ License 
+
+ 
+ 
+ GP-LogEI 
+ 
+ SO-Unc 
+
+ GP 
+
+ 
+ LogEI 
+
+ 
+ [ 13 , 40 ] 
+ 
+ MIT 
+
+ 
+ 
+ GP-UCB 
+ 
+ SO-Unc 
+
+ GP 
+
+ 
+ UCB ( [MATH] ) 
+
+ 
+ [ 13 , 39 ] 
+ 
+ MIT 
+
+ 
+ 
+ {GP,RF,TabPFN,TabICL}-TuRBO 
+ 
+ SO-Unc 
+
+ swappable 
+
+ 
+ trust-region Thompson sampling 
+
+ 
+ [ 41 ] 
+ 
+ MIT 
+
+ 
+ 
+ BAxUS 
+ 
+ SO-Unc 
+
+ GP (nested subspaces) 
+
+ 
+ trust-region Thompson sampling 
+
+ 
+ [ 42 ] 
+ 
+ MIT 
+
+ 
+ 
+ Vanilla-HD-BO 
+ 
+ SO-Unc 
+
+ GP (dim.-scaled prior) 
+
+ 
+ qLogNEI 
+
+ 
+ [ 43 ] 
+ 
+ — 
+
+ 
+ 
+ Standard-GP 
+ 
+ SO-Unc 
+
+ GP (robust [MATH] init) 
+
+ 
+ UCB ( [MATH] ) 
+
+ 
+ [ 44 ] 
+ 
+ — 
+
+ 
+ 
+ CEI 
+ 
+ SO-Con 
+
+ GP per output 
+
+ 
+ constrained LogEI 
+
+ 
+ [ 45 ] 
+ 
+ MIT 
+
+ 
+ 
+ {GP,RF,TabPFN,TabICL}-SCBO 
+ 
+ SO-Con 
+
+ swappable 
+
+ 
+ constrained Thompson sampling 
+
+ 
+ [ 46 ] 
+ 
+ MIT 
+
+ 
+ 
+ Penalty 
+ 
+ SO-Con 
+
+ GP 
+
+ 
+ LogEI on penalized objective 
+
+ 
+ [ 47 ] 
+ 
+ — 
+
+ 
+ 
+ CLF-CBO 
+ 
+ SO-Con 
+
+ GP + GP classifier 
+
+ 
+ qLogEI [MATH] feasibility 
+
+ 
+ [ 6 ] 
+ 
+ MIT 
+
+ 
+ 
+ qNEHVI 
+ 
+ MO-Unc 
+
+ GP per objective 
+
+ 
+ qLogNEHVI 
+
+ 
+ [ 48 ] 
+ 
+ MIT 
+
+ 
+ 
+ qNParEGO 
+ 
+ MO-Unc 
+
+ GP per objective 
+
+ 
+ qLogNParEGO 
+
+ 
+ [ 49 , 66 ] 
+ 
+ MIT 
+
+ 
+ 
+ MESMO 
+ 
+ MO-Unc 
+
+ GP per objective 
+
+ 
+ lower-bound max-value entropy 
+
+ 
+ [ 50 , 67 ] 
+ 
+ MIT 
+
+ 
+ 
+ DGEMO 
+ 
+ MO-Unc 
+
+ GP per objective 
+
+ 
+ diversity-guided batch HVI 
+
+ 
+ [ 51 ] 
+ 
+ MIT 
+
+ 
+ 
+ NSGA-II / SPEA2 
+ 
+ MO-Unc 
+
+ — (EA) 
+
+ 
+ genetic operators 
+
+ 
+ [ 52 , 53 , 20 ] 
+ 
+ Apache-2.0 
+
+ 
+ 
+ C-qNEHVI 
+ 
+ MO-Con 
+
+ GP per output 
+
+ 
+ feasibility-weighted qLogNEHVI 
+
+ 
+ [ 48 ] 
+ 
+ MIT 
+
+ 
+ 
+ C-qNParEGO 
+ 
+ MO-Con 
+
+ GP per output 
+
+ 
+ feasibility-weighted scalarization 
+
+ 
+ [ 49 , 66 ] 
+ 
+ MIT 
+
+ 
+ 
+ C-NSGA-II / C-SPEA2 
+ 
+ MO-Con 
+
+ — (EA) 
+
+ 
+ constraint domination 
+
+ 
+ [ 52 , 53 , 20 ] 
+ 
+ Apache-2.0 
+
+ 
+ 
+ PR 
+ 
+ SO-Mixed 
+
+ GP 
+
+ 
+ LogEI (probabilistic reparam.) 
+
+ 
+ [ 54 ] 
+ 
+ MIT 
+
+ 
+ 
+ Bounce 
+ 
+ SO-Mixed 
+
+ GP (nested embedding) 
+
+ 
+ trust-region Thompson sampling 
+
+ 
+ [ 55 ] 
+ 
+ MIT 
+
+ 
+ 
+ Casmopolitan 
+ 
+ SO-Mixed 
+
+ GP (mixed kernel) 
+
+ 
+ interleaved trust-region search 
+
+ 
+ [ 56 ] 
+ 
+ — 
+
+ 
+ 
+ HEBO 
+ 
+ SO-Mixed 
+
+ input-warped GP 
+
+ 
+ MACE ensemble 
+
+ 
+ [ 57 ] 
+ 
+ MIT 
+
+ 
+ 
+ BODi 
+ 
+ SO-Mixed 
+
+ GP (dictionary embedding) 
+
+ 
+ LogEI (alternating search) 
+
+ 
+ [ 58 ] 
+ 
+ — 
+
+ 
+ 
+ All algorithms optimize over the unit cube in BOCoDe’s maximization convention (constraints
+feasible when [MATH] ), start from a Latin-hypercube initial design of [MATH] 
+points, and run [MATH] sequential ( [MATH] ) iterations over [MATH] seeds. We set [MATH] ( dim ) problem dimension as a default. Restarts that redraw an initial design (TuRBO, SCBO) are charged
+against the same budget. We use BoTorch v0.18.1, GPyTorch v1.15.2, PyTorch v2.11.0 and pymoo
+v0.6.2. Unless stated otherwise, “BoTorch defaults” means a single-task GP with input
+normalization and output standardization fit by the exact marginal log-likelihood, and an
+acquisition optimizer with [MATH] restarts and [MATH] raw samples. All links were last accessed on
+July 25th, 2026.
+
+ 
+
+## D.1 Single-Objective Unconstrained
+
+ 
+ 
+ • 
+ 
+ GP-LogEI : From BoTorch’s getting-started guide
+ [ 13 ] ( https://botorch.org/docs/getting_started ,
+MIT), with the LogEI acquisition [ 40 ] .
+
+ • 
+ 
+ GP-UCB : The same loop with BoTorch’s upper-confidence-bound
+acquisition [ 13 , 39 ] ; we set [MATH] on
+the posterior standard deviation (passed to BoTorch as [MATH] under its
+ [MATH] parameterization).
+
+ • 
+ 
+ GP-TuRBO : TuRBO-1 [ 41 ] , from the official
+repository ( https://github.com/uber-research/TuRBO , MIT) and BoTorch’s
+tutorial
+( https://github.com/pytorch/botorch/blob/main/tutorials/turbo_1/turbo_1.ipynb ,
+MIT). We use the reference constants: trust-region side [MATH] initially with
+bounds [MATH] , failure tolerance [MATH] , a
+candidate set of [MATH] Sobol points, per-coordinate
+perturbation probability [MATH] , and a local ARD Matérn-5/2 GP with
+lengthscales in [MATH] and noise in [MATH] . The repository
+and the tutorial disagree on the success tolerance ( [MATH] vs. [MATH] ); we follow
+the paper’s [MATH] .
+
+ • 
+ 
+ BAxUS : From BoTorch’s tutorial [ 42 ] 
+( https://github.com/pytorch/botorch/blob/main/tutorials/baxus/baxus.ipynb ,
+MIT), cross-checked against the official repository
+( https://github.com/LeoIV/BAxUS ). For the failure tolerance we follow
+the official repository’s rule rather than the tutorial’s, whose cap can halve
+the trust region after a single failed evaluation at BAxUS’s small starting
+dimensionalities.
+
+ • 
+ 
+ Vanilla-HD-BO : From [ 43 ] 
+( https://github.com/hvarfner/vanilla_bo_in_highdim ). We set the paper’s
+dimension-scaled lengthscale and noise priors explicitly on an ARD RBF GP,
+since a library default would silently substitute different ones, and keep the
+reference’s sample-around-best [MATH] ; BoTorch’s default [MATH] 
+would disable that feature.
+
+ • 
+ 
+ Standard-GP : From [ 44 ] 
+( https://github.com/XZT008/Standard-GP-is-all-you-need-for-HDBO ). The
+reference’s lengthscale box and its [MATH] initialization become
+inconsistent once [MATH] ; for the one such problem in our suite
+(LassoLeukemia, [MATH] ) we widen the box’s upper bound to [MATH] 
+rather than clamping the initialization that defines the method.
+
+ 
+
+ 
+
+## D.2 Single-Objective Constrained
+
+ 
+ 
+ • 
+ 
+ CEI : From BoTorch’s closed-loop tutorial
+( https://botorch.org/docs/tutorials/closed_loop_botorch_only , MIT),
+realizing [ 45 ] in the numerically stable log form
+ [ 40 ] . Before any feasible point exists the acquisition
+reduces to the probability of feasibility [ 68 , Eq. 9] .
+
+ • 
+ 
+ SCBO : From BoTorch’s tutorial [ 46 ] 
+( https://botorch.org/docs/tutorials/scalable_constrained_bo , MIT) and
+the paper’s Appendix C. The paper and the tutorial disagree on both
+tolerances; we take the success tolerance from the paper and the failure
+tolerance from the tutorial.
+
+ • 
+ 
+ Penalty : A static exterior penalty [ 47 ] ,
+for which no reference implementation exists; we fold the constraints into the
+objective and hand the result to the same GP-LogEI loop as above, so the only
+difference from CEI and SCBO is the constraint handling. The penalized
+objective is [MATH] with total violation
+ [MATH] , where [MATH] and [MATH] are
+min–max normalized on the run’s own initial design; because both terms are
+normalized we set [MATH] , exposed as a flag for sweeping. We report the
+best feasible raw objective, as for the other constrained methods.
+
+ • 
+ 
+ CLF-CBO : From the BoTorch community notebook
+“Classifier-based Constrained BO”
+( https://github.com/meta-pytorch/botorch/blob/main/notebooks_community/clf_constrained_bo/clf_constrained_bo.ipynb ,
+MIT), the classifier-based approach to unknown constraints of which
+ [ 6 ] is a recent instance. Before any feasible point
+exists the notebook’s masked incumbent is undefined; we fall back to the worst
+observed objective, which keeps the acquisition positive so the feasibility
+weighting steers the search.
+
+ 
+
+ 
+
+## D.3 Multi-Objective Unconstrained
+
+ 
+ 
+ • 
+ 
+ qNEHVI : From BoTorch’s multi-objective tutorial
+ [ 48 ] 
+( https://botorch.org/docs/tutorials/multi_objective_bo , MIT), in the log
+form [ 40 ] . The hypervolume reference point is inferred once
+from the initial design and held fixed. We fit and optimize in a per-objective
+standardized frame, which leaves dominance unchanged, because the log box
+decomposition underflows when objectives differ by orders of magnitude; the
+reported hypervolume is computed in the raw frame.
+
+ • 
+ 
+ qNParEGO : From the same tutorial
+ [ 49 , 66 ] ; acquisition settings and the
+standardized frame are as for qNEHVI.
+
+ • 
+ 
+ MESMO : BoTorch’s lower-bound multi-objective max-value entropy
+search, implementing [ 50 ] with the estimator of
+ [ 67 ] ; original code at https://github.com/belakaria/MESMO .
+We use the diagonal-covariance estimator rather than BoTorch’s full-covariance
+default: it matches MESMO’s Eq. 6, and the default returns NaNs on RE61 and
+CRE51 and requests [MATH] GiB on RE91.
+
+ • 
+ 
+ DGEMO : Adapted from [ 51 ] (official
+repository: https://github.com/yunshengtian/DGEMO , MIT); the greedy
+diversity-aware batch selection is ported from the reference code. NSGA-II
+over the GP posterior mean (population [MATH] , [MATH] generations) replaces the
+reference’s Pareto discovery, and KMeans replaces its graph-cut clustering,
+which requires the pygco C++ wrapper. DGEMO consumes the shared budget in
+batches of [MATH] ; the per-evaluation incumbent trace and the shared
+reference-point rule keep it comparable at equal evaluation budget.
+
+ • 
+ 
+ NSGA-II and SPEA2 : pymoo’s official implementations
+ [ 52 , 53 , 20 ] unchanged
+( https://pymoo.org , Apache-2.0). Our only settings put pymoo on the BO
+baselines’ budget: population size [MATH] and
+ [MATH] generations, from
+which only the first [MATH] evaluated points, in evaluation
+order, are used. Objectives are negated at the boundary since BOCoDe maximizes
+and pymoo minimizes; hypervolume uses the same reference point and
+partitioning as the BO baselines.
+
+ 
+
+ 
+
+## D.4 Multi-Objective Constrained
+
+ 
+ 
+ • 
+ 
+ C-qNEHVI : From BoTorch’s constrained multi-objective tutorial
+ [ 48 ] 
+( https://botorch.org/docs/tutorials/constrained_multi_objective_bo ,
+MIT); we report the running feasible hypervolume.
+
+ • 
+ 
+ C-qNParEGO : From the same tutorial
+ [ 49 , 66 ] . The constrained tutorial
+normalizes the Chebyshev scalarization with the raw observations while the
+unconstrained one uses the GP posterior mean; we use the posterior mean in
+both ParEGO rows so they differ only in constraint handling.
+
+ • 
+ 
+ C-NSGA-II and C-SPEA2 : The same pymoo algorithms, defaults, and
+budget rule as above [ 52 , 53 , 20 ] .
+BOCoDe and pymoo share the [MATH] feasibility convention, so constraints
+pass through unchanged; we report the running feasible hypervolume.
+
+ 
+
+ 
+
+## D.5 Single-Objective Mixed-Variable
+
+ 
+ 
+ • 
+ 
+ PR : From [ 54 ] 
+( https://github.com/facebookresearch/bo_pr , MIT), with the paper’s
+Table 2 reparameterizations, a single-task GP, and LogEI as the inner
+acquisition.
+
+ • 
+ 
+ Bounce : The authors’ official package v0.1.0 unmodified
+ [ 55 ] ( https://github.com/LeoIV/bounce , MIT); we
+set only the batch size to [MATH] and the evaluation budget to
+ [MATH] . Every discrete dimension, integer as well as
+categorical, maps to a categorical parameter over level indices, because the
+official initial sampler does not support ordinal parameters; this drops the
+ordering of integer levels but keeps them inside the combinatorial embedding
+the method is built on.
+
+ • 
+ 
+ Casmopolitan : From [ 56 ] 
+( https://github.com/xingchenwan/Casmopolitan ). Integer dimensions are
+treated as continuous with Garrido-Merchán rounding inside the Matérn
+kernel, as in the official code.
+
+ • 
+ 
+ HEBO : The official package v0.3.6 unmodified through its
+ask/tell API [ 57 ] 
+( https://github.com/huawei-noah/HEBO , MIT). Instead of HEBO’s own
+quasi-random warm-up we replay BOCoDe’s shared initial design, so every method
+starts from the same design; discrete parameters carry the index into the
+dimension’s allowed values, so proposals decode to a valid level without
+rounding.
+
+ • 
+ 
+ BODi : From [ 58 ] 
+( https://github.com/aryandeshwal/BODi ), with the paper’s dictionary
+embedding, kernel, and alternating acquisition search.
+
+ 
+
+ 
+
+## D.6 Non-GP Surrogates
+
+ 
+ The RF, TabPFN, and TabICL rows of Table 2 replace only the
+surrogate inside their host loop (TuRBO or SCBO); the trust-region logic,
+candidate generation, restart rule, and budget stay untouched, so differences
+between rows of one host are attributable to the surrogate, with the random
+forest as the classical non-GP control. Every surrogate meets the same
+contract: a predictive mean and uncertainty per candidate, plus posterior
+samples for Thompson-sampling selection.
+
+ 
+ 
+ • 
+ 
+ TabPFN : Upstream TabPFN v3 (8.0.6)
+ [ 32 , 35 ] , whose
+bar-distribution readouts supply the mean, variance, and acquisition values
+directly. Checkpoints are downloaded from Hugging Face under a Prior-Labs
+license token; an environment variable pins a local checkpoint file, which
+skips the token and fixes the exact weights a batch run used. The code
+carries the Prior Labs license (Apache 2.0 with an attribution requirement);
+the TabPFN-3 weights carry a separate non-commercial license on Hugging Face.
+
+ • 
+ 
+ TabICL : TabICL v2 (version 2 or later, BSD-3-Clause)
+ [ 36 ] through its native regressor. The uncertainty signal is
+a [MATH] -point equal-probability quantile grid whose points are the midpoints of
+equal-mass bins, so averaging over the grid gives an unbiased Monte-Carlo
+estimate of any expectation; EI, quantile-UCB, and Thompson samples all read
+off it. We set the ensemble size to one to match the TabPFN wrapper’s cost
+profile.
+
+ • 
+ 
+ Random forest (RF) : scikit-learn’s random-forest regressor with
+ [MATH] trees, refit from scratch each iteration; the predictive mean and
+uncertainty are the mean and cross-tree standard deviation of the ensemble.
+The forest provides marginal [MATH] per candidate and no joint
+posterior, so Thompson sampling draws each candidate independently from its
+own [MATH] and takes the argmax, repeating without
+replacement for a batch.
+
+ 
+
+ 
+
+## Appendix E Experiment Setup Details
+
+ 
+
+## Budget and protocol.
+
+ 
+ Every run starts from a Latin-hypercube initial design
+of [MATH] points and adds [MATH] sequential ( [MATH] ) proposals, repeated over
+ [MATH] seeds. BOCoDe’s shared dimension-scaled rule of [MATH] . The rule
+overrides each method’s own initial-design default, so no method receives a larger
+budget, and restarts that redraw an initial design (TuRBO, SCBO) draw against the same
+budget. Compute limits set the [MATH] -iteration cap: the campaign spans roughly
+ [MATH] runs, and the per-problem convergence figures in the Full Results section
+show method rankings stabilize well before the cap on most problems. Longer horizons
+are future work.
+
+ 
+
+## Software.
+
+ 
+ We use BoTorch v0.18.1, GPyTorch v1.15.2, PyTorch v2.11.0, and
+pymoo v0.6.2.
+
+ 
+
+## Evolutionary baselines.
+
+ 
+ The size of the pymoo population [MATH] is equal to [MATH] ,
+with [MATH] generations. The first [MATH] evaluated points, in evaluation order, enter the
+analysis. This is the same-function-evaluation convention for comparing BO with EAs
+ [ 51 , 48 ] . For the multi-objective problems below
+ [MATH] , the large majority, this yields a population of [MATH] , the value Ablation 2
+validates against [MATH] , [MATH] , and [MATH] .
+
+ 
+
+## E.1 Evaluation Accounting
+
+ 
+ Each method family’s function-evaluation count
+per run is shown in Table 5 . Every family consumes the same total,
+ [MATH] . The families differ only in where the initial design
+comes from and how mid-run restarts are launched.
+
+ 
+ Table 5: Function-evaluation accounting per run and method family. Every family
+consumes the same total budget of [MATH] evaluations. 
+
+ 
+ 
+ Family 
+
+ 
+ Evaluation accounting 
+
+ 
+
+ BoTorch loops 
+
+ 
+ shared LHS design ( [MATH] ), then [MATH] proposals, [MATH] 
+
+ 
+
+ Trust-region (TuRBO, SCBO, BAxUS, Casmopolitan) 
+
+ 
+ as above; restart-triggered redraws
+of the design are charged against the same [MATH] 
+
+ 
+
+ Bounce 
+
+ 
+ native initialization of matched size [MATH] , then proposals up to
+the shared total 
+
+ 
+
+ HEBO 
+
+ 
+ shared LHS design replayed through ask/tell, then [MATH] proposals 
+
+ 
+
+ pymoo EAs 
+
+ 
+ population [MATH] ,
+ [MATH] generations; the first
+ [MATH] evaluations, in order, enter the analysis 
+
+ 
+
+## Hardware.
+
+ 
+ The experiments run in parallel on a shared cluster, one job per
+(problem, method, seed) triple, each allocated identical resources: 8 CPU cores of an
+Intel Xeon Platinum 8480+ node and one NVIDIA H200 GPU. Preempted jobs resume from
+checkpoints rather than restarting.
+
+ 
+
+ 
+
+## Appendix F Detailed Statistical Analysis
+
+ 
+ This appendix expands the per-class rankings of the main paper into the full statistical evidence behind the critical-difference (CD) diagrams.
+For every optimization class and domain, we summarize over the [MATH] seeds of each (problem, method) “panel" pair to its median final performance:
+the best-so-far objective value, or the dominated hypervolume for the MO classes. We then rank the methods within each problem
+( [MATH] best, ties averaged) and report each method’s mean rank over the panel’s complete-case problems
+—those on which every compared method returned a valid result—so the ranks, the CD diagrams, and the rank-vs-iteration trajectories
+of the main paper all summarize the same quantities (Tables 9 and 9 ;
+the effective problem count [MATH] per panel is in Table 9 ).
+Significance is assessed with a Friedman test (Iman–Davenport correction) over the same complete-case problems (Table 6 ),
+Holm-corrected pairwise Wilcoxon signed-rank tests (Figure 11 ), and matched-pairs effect sizes
+(Cliff’s [MATH] , Figure 12 ). Following [ 60 ] , the CD diagrams (Table 9 )
+are the Nemenyi construction on these mean ranks; on the small panels ( [MATH] ) we read them as indicative and rest significance on the Holm-Wilcoxon tests.
+Cross-domain rank transfer is measured by Kendall’s [MATH] and Spearman’s [MATH] with a bootstrap (Tables 11 and 11 ).
+The non-GP surrogate variants (RF, TabPFN, TabICL) enter the surrogate ablation, not the per-class rankings.
+
+ 
+
+## Friedman tests.
+
+ 
+ For each panel we rank the methods within every problem ( [MATH] best)
+and test them with the Friedman test using the Iman–Davenport [MATH] -correction [ 69 , 70 ] ,
+as recommended for comparing methods across many problems [ 60 ] . The [MATH] -value is this [MATH] ’s tail
+probability under equal ranking, and a panel is significant at [MATH] . All panels are significant except
+SO-Mixed-Variable/Engineering ( [MATH] ) and SO-Unconstrained/HPO ( [MATH] ). This aligns with our observations:
+on the mixed-variable engineering problems the methods swap ranks from problem to problem, and on the
+HPO problems the acquisition functions all reach comparable tuning accuracy, so no systematic ordering
+emerges. On SO-Unconstrained/Engineering the omnibus is only marginal ( [MATH] ): the Friedman test
+detects that some ordering exists, yet no single pair separates by the Nemenyi criterion,
+which is consistent with the compressed mean-rank spread on that panel.
+
+ 
+
+## Pairwise tests and effect sizes.
+
+ 
+ For significant panels we identify the differing pairs with Holm-corrected paired Wilcoxon signed-rank tests and size them with Cliff’s [MATH] . Wilcoxon sums the signed ranks of the per-problem paired differences. Holm compares the sorted [MATH] -values against [MATH] to cap the family-wise error at [MATH] , and [MATH] gives the net dominance rate in [MATH] . A pair is called different when its Holm-adjusted [MATH] , with [MATH] reporting the margin. The engineering panels resolve cleanly (Fig. 11 ): qNEHVI beats the evolutionary baselines and MESMO but ties DGEMO; C-qNEHVI and C-qNParEGO beat the constrained EAs; GP-SCBO and CEI beat Penalty and tie each other—all with large [MATH] (Fig. 12 ). The small synthetic panels often yield no significant pair despite a significant Friedman test, a power limit rather than true parity.
+
+ 
+ Figure 11: Pairwise Holm-corrected Wilcoxon signed-rank [MATH] -values on the complete-case paired subset, one panel per optimization class and domain. Blue cells are significant ( [MATH] ; darker [MATH] smaller [MATH] ), and gray cells are not; each pair is tested on the problems both methods solve, with the Holm correction applied across the panel’s pairs. “Unc”: Unconstrained; “Con”: Constrained; “Mixed”: Mixed-variable. 
+
+ Figure 12: Matched-pairs effect sizes (Cliff’s [MATH] , row minus column; [MATH] means the row method dominates) for the same panels. Red cells favor the row method, blue the column; magnitude reads with the pairwise significance in Fig. 11 . “Unc”: Unconstrained; “Con”: Constrained; “Mixed”: Mixed-variable. 
+
+ 
+
+## Critical differences.
+
+ 
+ Table 9 lists the CD values of the diagrams, [MATH] at [MATH] .
+The CD shrinks on the large engineering panels ( [MATH] for SO-Constrained/Engineering and [MATH] for SO-Unconstrained/Engineering)
+and grows on the small synthetic and multi-objective panels (up to [MATH] for MO-Unconstrained/Synthetic),
+so the latter establish differences less readily. A tight CD is necessary but not sufficient for separation:
+on SO-Unconstrained/Engineering the mean-rank spread ( [MATH] ) falls below even this small CD, so the panel remains statistically tied.
+
+ 
+
+## Rank transfer across domains.
+
+ 
+ Table 11 reports Kendall’s [MATH] and Spearman’s [MATH] between the per-method mean-rank vectors of each domain pair,
+with bootstrap [MATH] confidence intervals over problems. To ask whether a method ordering learned in one domain
+carries to another we correlate the two domains’ rank vectors within each class. Kendall’s [MATH] 
+is the normalized excess of concordant over discordant method pairs and Spearman’s [MATH] 
+the rank-correlation. Both run from [MATH] (reversed) to [MATH] (identical), with [MATH] meaning the orderings are unrelated.
+We read transfer off the bootstrap [MATH] CI and its [MATH] : a CI excluding [MATH] indicates a reliable correlation.
+Two patterns emerge. First, in the single-objective classes no domain pair transfers reliably: the synthetic-to-engineering
+correlations are weak and inconsistent in sign (SO-Unconstrained [MATH] , SO-Mixed-Variable [MATH] , neither significant),
+and the engineering-to-HPO agreement, though positive
+(SO-Mixed-Variable [MATH] , with [MATH] significant at [MATH] ; SO-Unconstrained [MATH] ),
+does not reach significance in [MATH] . Second, the constrained and multi-objective classes transfer moderately and consistently
+( [MATH] from [MATH] to [MATH] , with MO-Unconstrained engineering-to-synthetic [MATH] at [MATH] ).
+With at most [MATH] methods per rank vector these tests have little power, so we read the table as trends rather than as proof:
+cross-domain orderings correlate at best moderately, which is consistent with our main finding that the engineering
+panels are governed by problem-to-problem heterogeneity rather than by a stable global ordering.
+
+ 
+
+## Robustness to problem families.
+
+ 
+ Many engineering problems come in closely related variants (the RE family, the MODAct series).
+Table 11 repeats the rank-transfer analysis with the bootstrap resampled at the level of source families,
+so related variants count as one unit. The correlations barely move (SO-Mixed-Variable engineering-to-HPO stays [MATH] ),
+so the pattern is not an artifact of near-duplicate problems.
+
+ 
+
+## Summary.
+
+ 
+ The tests support three claims of the main paper: (i) on panels with sufficient power,
+the leading methods sit clearly ahead of the baselines, with large [MATH] on every
+engineering comparison above; (ii) method orderings do not transfer reliably across domains
+in the single-objective classes, so a ranking established on synthetic functions carries
+no significant information about the engineering ranking, while the constrained and
+multi-objective classes are moderately stable; and (iii) on the largest engineering
+panels the field is statistically tied on average because no method sustains an
+advantage across problems, so per-problem results carry more information than any
+single global ranking. Where a panel lacks power or a domain overlap is too small to test,
+we say so rather than infer equivalence.
+
+ 
+ Table 6: Per-panel Friedman test (with the Iman–Davenport correction) for each optimization class and domain. A significant [MATH] indicates that at least one method differs on the panel; which methods differ is given by the pairwise tests (Figure 11 ). [MATH] , [MATH] : the complete-case problems and methods of the panel—the same block used by the mean ranks and CD diagrams (Table 9 ). 
+
+ Class 
+ Domain 
+ [MATH] 
+ [MATH] 
+ Iman–Davenport [MATH] 
+ Friedman [MATH] 
+
+ SO-Mixed-Variable 
+ Engineering 
+ 12 
+ 5 
+ 1.04 
+ 3.98e-01 
+
+ SO-Mixed-Variable 
+ Synthetic 
+ 17 
+ 5 
+ 4.06 
+ 5.40e-03 
+
+ SO-Mixed-Variable 
+ HPO 
+ 28 
+ 5 
+ 16.94 
+ 8.32e-11 
+
+ SO-Unconstrained 
+ Engineering 
+ 72 
+ 6 
+ 2.54 
+ 2.80e-02 
+
+ SO-Unconstrained 
+ Synthetic 
+ 24 
+ 6 
+ 14.89 
+ 2.95e-11 
+
+ SO-Unconstrained 
+ HPO 
+ 52 
+ 6 
+ 1.13 
+ 3.46e-01 
+
+ SO-Constrained 
+ Engineering 
+ 30 
+ 4 
+ 40.74 
+ 1.53e-16 
+
+ SO-Constrained 
+ Synthetic 
+ 11 
+ 4 
+ 11.01 
+ 4.87e-05 
+
+ MO-Unconstrained 
+ Engineering 
+ 15 
+ 6 
+ 24.18 
+ 4.79e-14 
+
+ MO-Unconstrained 
+ Synthetic 
+ 9 
+ 6 
+ 14.68 
+ 3.55e-08 
+
+ MO-Constrained 
+ Engineering 
+ 16 
+ 4 
+ 67.09 
+ 1.21e-16 
+
+ MO-Constrained 
+ Synthetic 
+ 7 
+ 4 
+ 34.83 
+ 1.05e-07 
+
+ 
+
+ 
+ 
+ Table 7: Single-objective classes: mean within-problem rank per method ( [MATH] best), matching the CD diagrams. Methods are ranked within each problem and averaged (arithmetic mean) over the complete-case problems of the panel (those on which every compared method returned a valid result; [MATH] in Table 9 ). 
+
+ Class 
+ Domain 
+ Method 
+ mean rank 
+
+ SO-Mixed-Variable 
+ Engineering 
+ PR 
+ 2.50 
+
+ 
+ 
+ HEBO 
+ 2.71 
+
+ 
+ 
+ BODi 
+ 3.00 
+
+ 
+ 
+ Casmopolitan 
+ 3.25 
+
+ 
+ 
+ Bounce 
+ 3.54 
+
+ SO-Mixed-Variable 
+ Synthetic 
+ Bounce 
+ 2.18 
+
+ 
+ 
+ HEBO 
+ 2.50 
+
+ 
+ 
+ BODi 
+ 3.00 
+
+ 
+ 
+ PR 
+ 3.50 
+
+ 
+ 
+ Casmopolitan 
+ 3.82 
+
+ SO-Mixed-Variable 
+ HPO 
+ HEBO 
+ 2.46 
+
+ 
+ 
+ PR 
+ 2.48 
+
+ 
+ 
+ BODi 
+ 2.50 
+
+ 
+ 
+ Casmopolitan 
+ 3.45 
+
+ 
+ 
+ Bounce 
+ 4.11 
+
+ SO-Unconstrained 
+ Engineering 
+ Vanilla-HD-BO 
+ 3.12 
+
+ 
+ 
+ BAxUS 
+ 3.12 
+
+ 
+ 
+ GP-TuRBO 
+ 3.41 
+
+ 
+ 
+ Standard-GP 
+ 3.67 
+
+ 
+ 
+ GP-LogEI 
+ 3.74 
+
+ 
+ 
+ GP-UCB 
+ 3.94 
+
+ SO-Unconstrained 
+ Synthetic 
+ BAxUS 
+ 1.88 
+
+ 
+ 
+ GP-TuRBO 
+ 2.25 
+
+ 
+ 
+ Standard-GP 
+ 3.67 
+
+ 
+ 
+ GP-LogEI 
+ 4.12 
+
+ 
+ 
+ Vanilla-HD-BO 
+ 4.33 
+
+ 
+ 
+ GP-UCB 
+ 4.75 
+
+ SO-Unconstrained 
+ HPO 
+ Vanilla-HD-BO 
+ 3.16 
+
+ 
+ 
+ GP-LogEI 
+ 3.42 
+
+ 
+ 
+ Standard-GP 
+ 3.47 
+
+ 
+ 
+ GP-TuRBO 
+ 3.57 
+
+ 
+ 
+ BAxUS 
+ 3.67 
+
+ 
+ 
+ GP-UCB 
+ 3.70 
+
+ SO-Constrained 
+ Engineering 
+ CEI 
+ 1.57 
+
+ 
+ 
+ GP-SCBO 
+ 1.77 
+
+ 
+ 
+ CLF-CBO 
+ 3.12 
+
+ 
+ 
+ Penalty 
+ 3.55 
+
+ SO-Constrained 
+ Synthetic 
+ GP-SCBO 
+ 1.36 
+
+ 
+ 
+ CEI 
+ 2.36 
+
+ 
+ 
+ CLF-CBO 
+ 2.64 
+
+ 
+ 
+ Penalty 
+ 3.64 
+
+ 
+
+ Table 8: Multi-objective classes: mean within-problem rank per method ( [MATH] best), matching the CD diagrams. Methods are ranked within each problem and averaged (arithmetic mean) over the complete-case problems of the panel ( [MATH] in Table 9 ). 
+
+ 
+ Class 
+ Domain 
+ Method 
+ mean rank 
+
+ MO-Unconstrained 
+ Engineering 
+ qNEHVI 
+ 1.53 
+
+ 
+ 
+ DGEMO 
+ 2.13 
+
+ 
+ 
+ qNParEGO 
+ 3.33 
+
+ 
+ 
+ MESMO 
+ 3.80 
+
+ 
+ 
+ SPEA2 
+ 4.87 
+
+ 
+ 
+ NSGA-II 
+ 5.33 
+
+ MO-Unconstrained 
+ Synthetic 
+ qNEHVI 
+ 1.44 
+
+ 
+ 
+ qNParEGO 
+ 2.33 
+
+ 
+ 
+ DGEMO 
+ 2.89 
+
+ 
+ 
+ MESMO 
+ 4.22 
+
+ 
+ 
+ NSGA-II 
+ 5.00 
+
+ 
+ 
+ SPEA2 
+ 5.11 
+
+ MO-Constrained 
+ Engineering 
+ C-qNEHVI 
+ 1.44 
+
+ 
+ 
+ C-qNParEGO 
+ 1.56 
+
+ 
+ 
+ C-NSGA-II 
+ 3.47 
+
+ 
+ 
+ C-SPEA2 
+ 3.53 
+
+ MO-Constrained 
+ Synthetic 
+ C-qNEHVI 
+ 1.14 
+
+ 
+ 
+ C-qNParEGO 
+ 1.86 
+
+ 
+ 
+ C-SPEA2 
+ 3.43 
+
+ 
+ 
+ C-NSGA-II 
+ 3.57 
+
+ Table 9: Critical-difference computation: [MATH] , [MATH] . [MATH] is the panel’s methods and [MATH] its complete-case problems (every method valid), matching the CD diagrams and the mean ranks of Tables 9 and 9 . 
+
+ 
+ Class 
+ Domain 
+ [MATH] 
+ [MATH] 
+ [MATH] 
+ CD 
+
+ SO-Mixed-Variable 
+ Engineering 
+ 2.728 
+ 5 
+ 12 
+ 1.761 
+
+ SO-Mixed-Variable 
+ Synthetic 
+ 2.728 
+ 5 
+ 17 
+ 1.479 
+
+ SO-Mixed-Variable 
+ HPO 
+ 2.728 
+ 5 
+ 28 
+ 1.153 
+
+ SO-Unconstrained 
+ Engineering 
+ 2.850 
+ 6 
+ 72 
+ 0.889 
+
+ SO-Unconstrained 
+ Synthetic 
+ 2.850 
+ 6 
+ 24 
+ 1.539 
+
+ SO-Unconstrained 
+ HPO 
+ 2.850 
+ 6 
+ 52 
+ 1.046 
+
+ SO-Constrained 
+ Engineering 
+ 2.569 
+ 4 
+ 30 
+ 0.856 
+
+ SO-Constrained 
+ Synthetic 
+ 2.569 
+ 4 
+ 11 
+ 1.414 
+
+ MO-Unconstrained 
+ Engineering 
+ 2.850 
+ 6 
+ 15 
+ 1.947 
+
+ MO-Unconstrained 
+ Synthetic 
+ 2.850 
+ 6 
+ 9 
+ 2.513 
+
+ MO-Constrained 
+ Engineering 
+ 2.569 
+ 4 
+ 16 
+ 1.173 
+
+ MO-Constrained 
+ Synthetic 
+ 2.569 
+ 4 
+ 7 
+ 1.773 
+
+ 
+
+ 
+
+ Table 10: Rank-transfer correlations between domains (per class). Kendall [MATH] /Spearman [MATH] between method mean-rank vectors (complete-case, matching the CD diagrams); bootstrap 95% CI over problems. Rows with few common methods ( [MATH] ) and non-significant [MATH] indicate a consistent trend rather than a significant correlation; the cross-class pattern is the robust signal. 
+
+ 
+ Class 
+ Domains 
+ [MATH] 
+ [MATH] 
+ 95% CI ( [MATH] ) 
+ [MATH] 
+ 95% CI ( [MATH] ) 
+
+ SO-Mixed-Variable 
+ Eng [MATH] Syn 
+ 5 
+ -0.20 
+ [-0.74,+0.40] (0.82) 
+ -0.30 
+ [-0.82,+0.46] (0.62) 
+
+ SO-Mixed-Variable 
+ Eng [MATH] HPO 
+ 5 
+ +0.80 
+ [-0.20,+1.00] (0.08) 
+ +0.90 
+ [-0.30,+1.00] (0.04) 
+
+ SO-Mixed-Variable 
+ Syn [MATH] HPO 
+ 5 
+ +0.00 
+ [-0.60,+0.40] (1.00) 
+ -0.10 
+ [-0.70,+0.40] (0.87) 
+
+ SO-Unconstrained 
+ Eng [MATH] Syn 
+ 6 
+ +0.47 
+ [-0.20,+0.83] (0.27) 
+ +0.43 
+ [-0.20,+0.89] (0.40) 
+
+ SO-Unconstrained 
+ Eng [MATH] HPO 
+ 6 
+ +0.20 
+ [-0.33,+0.73] (0.72) 
+ +0.43 
+ [-0.49,+0.89] (0.40) 
+
+ SO-Unconstrained 
+ Syn [MATH] HPO 
+ 6 
+ -0.33 
+ [-0.73,+0.47] (0.47) 
+ -0.14 
+ [-0.83,+0.60] (0.79) 
+
+ SO-Constrained 
+ Eng [MATH] Syn 
+ 4 
+ +0.67 
+ [+0.33,+1.00] (0.33) 
+ +0.80 
+ [+0.40,+1.00] (0.20) 
+
+ MO-Unconstrained 
+ Eng [MATH] Syn 
+ 6 
+ +0.73 
+ [+0.47,+1.00] (0.06) 
+ +0.89 
+ [+0.66,+1.00] (0.02) 
+
+ MO-Constrained 
+ Eng [MATH] Syn 
+ 4 
+ +0.67 
+ [+0.33,+1.00] (0.33) 
+ +0.80 
+ [+0.60,+1.00] (0.20) 
+
+ Table 11: Family-clustered rank-transfer (per class): Table 11 with the bootstrap resampling by source family (e.g. all RE [MATH] as one unit). 
+
+ 
+ Class 
+ Domains 
+ [MATH] 
+ [MATH] 
+ 95% CI ( [MATH] ) 
+ [MATH] 
+ 95% CI ( [MATH] ) 
+
+ SO-Mixed-Variable 
+ Eng [MATH] Syn 
+ 5 
+ -0.20 
+ [-0.60,+0.40] (0.82) 
+ -0.30 
+ [-0.80,+0.50] (0.62) 
+
+ SO-Mixed-Variable 
+ Eng [MATH] HPO 
+ 5 
+ +0.80 
+ [-0.20,+1.00] (0.08) 
+ +0.90 
+ [-0.30,+1.00] (0.04) 
+
+ SO-Mixed-Variable 
+ Syn [MATH] HPO 
+ 5 
+ +0.00 
+ [-0.60,+0.40] (1.00) 
+ -0.10 
+ [-0.70,+0.40] (0.87) 
+
+ SO-Unconstrained 
+ Eng [MATH] Syn 
+ 6 
+ +0.47 
+ [-0.20,+0.73] (0.27) 
+ +0.43 
+ [-0.20,+0.89] (0.40) 
+
+ SO-Unconstrained 
+ Eng [MATH] HPO 
+ 6 
+ +0.20 
+ [-0.33,+0.60] (0.72) 
+ +0.43 
+ [-0.43,+0.75] (0.40) 
+
+ SO-Unconstrained 
+ Syn [MATH] HPO 
+ 6 
+ -0.33 
+ [-0.73,+0.41] (0.47) 
+ -0.14 
+ [-0.84,+0.38] (0.79) 
+
+ SO-Constrained 
+ Eng [MATH] Syn 
+ 4 
+ +0.67 
+ [+0.33,+1.00] (0.33) 
+ +0.80 
+ [+0.40,+1.00] (0.20) 
+
+ MO-Unconstrained 
+ Eng [MATH] Syn 
+ 6 
+ +0.73 
+ [+0.47,+1.00] (0.06) 
+ +0.89 
+ [+0.71,+1.00] (0.02) 
+
+ MO-Constrained 
+ Eng [MATH] Syn 
+ 4 
+ +0.67 
+ [+0.33,+1.00] (0.33) 
+ +0.80 
+ [+0.60,+1.00] (0.20) 
+
+ 
+
+ 
+
+## Appendix G Ablations
+
+ 
+
+## G.1 Ablation 1: Why [MATH] ?
+
+ 
+ We set [MATH] following common BO practice [ 3 ] . Based on the results in Figure 13 , we can see that this default is a reasonable but not uniformly optimal with a larger initial design ( [MATH] ) matches or slightly converge to a better design than [MATH] in two out of three problems. In practice, the user can easily experiment [MATH] parameter in BOCoDe’s API.
+
+ 
+
+## Takeaway.
+
+ 
+ To our knowledge, there is no systematic account of how [MATH] should scale with dimension. Literature reported choices range from small fixed budgets to [MATH] , with no consensus. Our results show the best value is problem- and dimension-dependent. A principled study of [MATH] is, we believe, an under-studied question for the BO community.
+
+ 
+ Figure 13: Ablation on [MATH] for GP-TuRBO on CEC2020_p45 ( [MATH] ), CEC2020_p51 ( [MATH] ), and Rover ( [MATH] ). Best objective (lower is better) vs. function evaluations, with [MATH] over 15 seeds. 
+
+ 
+
+## G.2 Ablation 2: Why [MATH] for EA methods?
+
+ 
+ We give the evolutionary baselines the same total function-evaluation budget as the BO methods ( [MATH] evaluations), following the function-evaluation-equalized, anytime-hypervolume (HV) convention used to compare BO against EA [ 51 , 48 ] . We empirically show in Figure 14 , small-to-medium populations (10–40) reach comparable final HV, while a population of [MATH] does clearly worse. Therefore, we set our the default population of [MATH] in the main experiment with this empirical validated result.
+
+ 
+
+## Takeaway.
+
+ 
+ A fair, agreed-upon metric for comparing sample-efficient BO against population-based EAs remains an open question, and we see it as a valuable direction for future work.
+
+ 
+ Figure 14: NSGA-II population-size ablation on RE21, RE33, and RE37. Best hypervolume (higher is better) vs. function evaluation for [MATH] , 15 seeds. 
+
+ 
+
+## G.3 Ablation 3: Surrogate Ablations
+
+ 
+ We extend the surrogate ablation of the main paper from two acquisitions to three, and from a controlled swap to a full per-class ranking. In Figure 15 we fix the acquisition function and its optimizer and vary only the surrogate (GP, RF, TabPFN, TabICL) under UCB, SCBO, and TuRBO. In Figure 16 we let every surrogate variant compete across the full SO-Unconstrained and SO-Constrained classes.
+
+ 
+ Across all three acquisitions, the GP is statistically tied for best, and the random forest is consistently worst. Among the foundation-model (FM) surrogates, TabICL is the strongest: it is statistically indistinguishable from the GP under SCBO and TuRBO, and mid-ranked under UCB, while TabPFN sits below both the GP and TabICL throughout. The full rankings (Figure 16 ) tell the same story: GP-based methods and TabICL-SCBO lead their classes, and the RF variants trail.
+
+ 
+
+## Takeaway.
+
+ 
+ To our knowledge, TabICL has not previously been used as a surrogate for BO. That an off-the-shelf TFM is already statistically indistinguishable from a well-tuned GP on several classes makes FM-based surrogates a promising direction for BO that we believe warrants further study.
+
+ 
+ Figure 15: Surrogate ablation under a fixed acquisition. Averaged rank over function evaluations when only the surrogate is swapped (GP, RF, TabPFN, TabICL) under (a) UCB, (b) SCBO, and (c) TuRBO, with final-iteration critical-difference diagrams. Lower is better; bar-connected methods are statistically tied. 
+
+ Figure 16: Full per-class rank trajectories including all surrogate variants, for (1) SO-Unconstrained (10 methods) and (2) SO-Constrained (7 methods), with final critical-difference diagrams. Lower is better; bar-connected methods are statistically tied. 
+
+ 
+
+## Appendix H BOCoDe Problem Directory
+
+ 
+ This section catalogs every BOCoDe problem with its defining attributes (dimension [MATH] , number of objectives [MATH] , number of constraints [MATH] , variable type, and the cited literature source) organized by optimization class and, within each class, by domain (Engineering, Synthetic, HPO). SO-Unconstrained problems appear in Tables 13 , 13 and 18 ; SO-Constrained in Tables 18 and 18 ; MO-Unconstrained in Tables 18 and 18 ; MO-Constrained in Tables 23 and 23 ; and SO-Mixed-Variable in Tables 23 , 23 and 23 . Every entry is traceable to its original paper or code through the source column, matching the machine-readable metadata.
+
+ 
+
+ 
+ Table 12: BOCoDe problems in SO-Unconstrained class (single-objective, unconstrained, continuous) and Engineering category (74 problems). #Obj: number of objectives; #Con: number of inequality constraints; Dim: design-space dimension. 
+
+ Problem 
+ #Obj 
+ #Con 
+ Dim 
+ Source 
+
+ HalfCheetahProblem 
+ 1 
+ 0 
+ 6 
+ [ 27 ] 
+
+ HeatExchanger_PS 
+ 1 
+ 0 
+ 8 
+ [ 71 ] 
+
+ HopperPolicy 
+ 1 
+ 0 
+ 33 
+ [ 27 ] 
+
+ HopperProblem 
+ 1 
+ 0 
+ 3 
+ [ 27 ] 
+
+ HumanoidProblem 
+ 1 
+ 0 
+ 17 
+ [ 27 ] 
+
+ HumanoidStandupProblem 
+ 1 
+ 0 
+ 17 
+ [ 27 ] 
+
+ InvertedDoublePendulumProblem 
+ 1 
+ 0 
+ 1 
+ [ 27 ] 
+
+ InvertedPendulumProblem 
+ 1 
+ 0 
+ 1 
+ [ 27 ] 
+
+ Mazda_PS 
+ 1 
+ 0 
+ 222 
+ [ 72 ] 
+
+ Mazda_SCA_PS 
+ 1 
+ 0 
+ 148 
+ [ 72 ] 
+
+ MiniAeroWing 
+ 1 
+ 0 
+ 3 
+ [ 73 , 29 ] 
+
+ P3HT 
+ 1 
+ 0 
+ 5 
+ [ 16 ] 
+
+ PD4CartPole 
+ 1 
+ 0 
+ 4 
+ [ 27 ] 
+
+ Perovskite 
+ 1 
+ 0 
+ 3 
+ [ 16 ] 
+
+ PID4Acrobot 
+ 1 
+ 0 
+ 3 
+ [ 27 ] 
+
+ PusherProblem 
+ 1 
+ 0 
+ 7 
+ [ 27 ] 
+
+ QPowerModel 
+ 1 
+ 0 
+ 8 
+ [ 74 ] 
+
+ ReacherProblem 
+ 1 
+ 0 
+ 2 
+ [ 27 ] 
+
+ ReactivityModel 
+ 1 
+ 0 
+ 8 
+ [ 74 ] 
+
+ RobotPush 
+ 1 
+ 0 
+ 14 
+ [ 28 ] 
+
+ Rover 
+ 1 
+ 0 
+ 100 
+ [ 28 ] 
+
+ SwimmerProblem 
+ 1 
+ 0 
+ 2 
+ [ 27 ] 
+
+ Walker2DPolicy 
+ 1 
+ 0 
+ 102 
+ [ 27 ] 
+
+ Walker2DProblem 
+ 1 
+ 0 
+ 6 
+ [ 27 ] 
+
+ Wing 
+ 1 
+ 0 
+ 10 
+ [ 75 ] 
+
+ AgNP 
+ 1 
+ 0 
+ 5 
+ [ 16 ] 
+
+ Allison 
+ 1 
+ 0 
+ 3 
+ [ 76 ] 
+
+ AntPolicy 
+ 1 
+ 0 
+ 840 
+ [ 27 ] 
+
+ AntProblem 
+ 1 
+ 0 
+ 8 
+ [ 27 ] 
+
+ AutoAM 
+ 1 
+ 0 
+ 4 
+ [ 16 ] 
+
+ Borehole 
+ 1 
+ 0 
+ 8 
+ [ 77 ] 
+
+ CEC2020_p11_PS 
+ 1 
+ 0 
+ 7 
+ [ 22 ] 
+
+ CEC2020_p1_PS 
+ 1 
+ 0 
+ 9 
+ [ 22 ] 
+
+ CEC2020_p2_PS 
+ 1 
+ 0 
+ 11 
+ [ 22 ] 
+
+ CEC2020_p34_PS 
+ 1 
+ 0 
+ 118 
+ [ 22 ] 
+
+ CEC2020_p35_PS 
+ 1 
+ 0 
+ 153 
+ [ 22 ] 
+
+ CEC2020_p36_PS 
+ 1 
+ 0 
+ 158 
+ [ 22 ] 
+
+ CEC2020_p37_PS 
+ 1 
+ 0 
+ 126 
+ [ 22 ] 
+
+ CEC2020_p38_PS 
+ 1 
+ 0 
+ 126 
+ [ 22 ] 
+
+ CEC2020_p39_PS 
+ 1 
+ 0 
+ 126 
+ [ 22 ] 
+
+ CEC2020_p3_PS 
+ 1 
+ 0 
+ 7 
+ [ 22 ] 
+
+ CEC2020_p40_PS 
+ 1 
+ 0 
+ 76 
+ [ 22 ] 
+
+ CEC2020_p41_PS 
+ 1 
+ 0 
+ 74 
+ [ 22 ] 
+
+ CEC2020_p42_PS 
+ 1 
+ 0 
+ 86 
+ [ 22 ] 
+
+ CEC2020_p43_PS 
+ 1 
+ 0 
+ 86 
+ [ 22 ] 
+
+ CEC2020_p45_PS 
+ 1 
+ 0 
+ 25 
+ [ 22 ] 
+
+ CEC2020_p46_PS 
+ 1 
+ 0 
+ 25 
+ [ 22 ] 
+
+ CEC2020_p47_PS 
+ 1 
+ 0 
+ 25 
+ [ 22 ] 
+
+ CEC2020_p48_PS 
+ 1 
+ 0 
+ 30 
+ [ 22 ] 
+
+ CEC2020_p49_PS 
+ 1 
+ 0 
+ 30 
+ [ 22 ] 
+
+ CEC2020_p4_PS 
+ 1 
+ 0 
+ 6 
+ [ 22 ] 
+
+ CEC2020_p50_PS 
+ 1 
+ 0 
+ 30 
+ [ 22 ] 
+
+ CEC2020_p51_PS 
+ 1 
+ 0 
+ 59 
+ [ 22 ] 
+
+ CEC2020_p52_PS 
+ 1 
+ 0 
+ 59 
+ [ 22 ] 
+
+ CEC2020_p53_PS 
+ 1 
+ 0 
+ 59 
+ [ 22 ] 
+
+ CEC2020_p54_PS 
+ 1 
+ 0 
+ 59 
+ [ 22 ] 
+
+ CEC2020_p55_PS 
+ 1 
+ 0 
+ 64 
+ [ 22 ] 
+
+ CEC2020_p56_PS 
+ 1 
+ 0 
+ 64 
+ [ 22 ] 
+
+ CEC2020_p57_PS 
+ 1 
+ 0 
+ 64 
+ [ 22 ] 
+
+ CEC2020_p5_PS 
+ 1 
+ 0 
+ 9 
+ [ 22 ] 
+
+ CEC2020_p6_PS 
+ 1 
+ 0 
+ 38 
+ [ 22 ] 
+
+ CEC2020_p7_PS 
+ 1 
+ 0 
+ 48 
+ [ 22 ] 
+
+ CRE21_PS 
+ 1 
+ 0 
+ 3 
+ [ 23 ] 
+
+ CS3_PS 
+ 1 
+ 0 
+ 20 
+ [ 24 ] 
+
+ CS4_PS 
+ 1 
+ 0 
+ 20 
+ [ 24 ] 
+
+ CT3_PS 
+ 1 
+ 0 
+ 20 
+ [ 24 ] 
+
+ CT4_PS 
+ 1 
+ 0 
+ 20 
+ [ 24 ] 
+
+ CTS3_PS 
+ 1 
+ 0 
+ 20 
+ [ 24 ] 
+
+ CTS4_PS 
+ 1 
+ 0 
+ 20 
+ [ 24 ] 
+
+ CTSE4_PS 
+ 1 
+ 0 
+ 20 
+ [ 24 ] 
+
+ CTSEI3_PS 
+ 1 
+ 0 
+ 20 
+ [ 24 ] 
+
+ CTSEI4_PS 
+ 1 
+ 0 
+ 20 
+ [ 24 ] 
+
+ EulerBernoulliBeamBending 
+ 1 
+ 0 
+ 3 
+ [ 78 ] 
+
+ HalfCheetahPolicy 
+ 1 
+ 0 
+ 102 
+ [ 27 ] 
+
+ 
+
+ Table 13: BOCoDe problems in SO-Unconstrained class (single-objective, unconstrained, continuous) and HPO category (52 problems). #Obj: number of objectives; #Con: number of inequality constraints; Dim: design-space dimension. 
+
+ Problem 
+ #Obj 
+ #Con 
+ Dim 
+ Source 
+
+ Bayesmark_ada_breast 
+ 1 
+ 0 
+ 2 
+ [ 18 , 8 ] 
+
+ Bayesmark_ada_digits 
+ 1 
+ 0 
+ 2 
+ [ 18 , 8 ] 
+
+ Bayesmark_ada_iris 
+ 1 
+ 0 
+ 2 
+ [ 18 , 8 ] 
+
+ Bayesmark_ada_wine 
+ 1 
+ 0 
+ 2 
+ [ 18 , 8 ] 
+
+ Bayesmark_DT_breast 
+ 1 
+ 0 
+ 6 
+ [ 18 , 8 ] 
+
+ Bayesmark_DT_digits 
+ 1 
+ 0 
+ 6 
+ [ 18 , 8 ] 
+
+ Bayesmark_DT_iris 
+ 1 
+ 0 
+ 6 
+ [ 18 , 8 ] 
+
+ Bayesmark_DT_wine 
+ 1 
+ 0 
+ 6 
+ [ 18 , 8 ] 
+
+ Bayesmark_kNN_breast 
+ 1 
+ 0 
+ 2 
+ [ 18 , 8 ] 
+
+ Bayesmark_kNN_digits 
+ 1 
+ 0 
+ 2 
+ [ 18 , 8 ] 
+
+ Bayesmark_kNN_iris 
+ 1 
+ 0 
+ 2 
+ [ 18 , 8 ] 
+
+ Bayesmark_kNN_wine 
+ 1 
+ 0 
+ 2 
+ [ 18 , 8 ] 
+
+ Bayesmark_lasso_breast 
+ 1 
+ 0 
+ 2 
+ [ 18 , 8 ] 
+
+ Bayesmark_lasso_digits 
+ 1 
+ 0 
+ 2 
+ [ 18 , 8 ] 
+
+ Bayesmark_lasso_iris 
+ 1 
+ 0 
+ 2 
+ [ 18 , 8 ] 
+
+ Bayesmark_lasso_wine 
+ 1 
+ 0 
+ 2 
+ [ 18 , 8 ] 
+
+ Bayesmark_linear_breast 
+ 1 
+ 0 
+ 2 
+ [ 18 , 8 ] 
+
+ Bayesmark_linear_digits 
+ 1 
+ 0 
+ 2 
+ [ 18 , 8 ] 
+
+ Bayesmark_linear_iris 
+ 1 
+ 0 
+ 2 
+ [ 18 , 8 ] 
+
+ Bayesmark_linear_wine 
+ 1 
+ 0 
+ 2 
+ [ 18 , 8 ] 
+
+ Bayesmark_MLPadam_breast 
+ 1 
+ 0 
+ 9 
+ [ 18 , 8 ] 
+
+ Bayesmark_MLPadam_digits 
+ 1 
+ 0 
+ 9 
+ [ 18 , 8 ] 
+
+ Bayesmark_MLPadam_iris 
+ 1 
+ 0 
+ 9 
+ [ 18 , 8 ] 
+
+ Bayesmark_MLPadam_wine 
+ 1 
+ 0 
+ 9 
+ [ 18 , 8 ] 
+
+ Bayesmark_MLPsgd_breast 
+ 1 
+ 0 
+ 8 
+ [ 18 , 8 ] 
+
+ Bayesmark_MLPsgd_digits 
+ 1 
+ 0 
+ 8 
+ [ 18 , 8 ] 
+
+ Bayesmark_MLPsgd_iris 
+ 1 
+ 0 
+ 8 
+ [ 18 , 8 ] 
+
+ Bayesmark_MLPsgd_wine 
+ 1 
+ 0 
+ 8 
+ [ 18 , 8 ] 
+
+ Bayesmark_RF_breast 
+ 1 
+ 0 
+ 6 
+ [ 18 , 8 ] 
+
+ Bayesmark_RF_digits 
+ 1 
+ 0 
+ 6 
+ [ 18 , 8 ] 
+
+ Bayesmark_RF_iris 
+ 1 
+ 0 
+ 6 
+ [ 18 , 8 ] 
+
+ Bayesmark_RF_wine 
+ 1 
+ 0 
+ 6 
+ [ 18 , 8 ] 
+
+ Bayesmark_SVM_breast 
+ 1 
+ 0 
+ 3 
+ [ 18 , 8 ] 
+
+ Bayesmark_SVM_digits 
+ 1 
+ 0 
+ 3 
+ [ 18 , 8 ] 
+
+ Bayesmark_SVM_iris 
+ 1 
+ 0 
+ 3 
+ [ 18 , 8 ] 
+
+ Bayesmark_SVM_wine 
+ 1 
+ 0 
+ 3 
+ [ 18 , 8 ] 
+
+ HPOB_5970_14951 
+ 1 
+ 0 
+ 2 
+ [ 79 ] 
+
+ HPOB_5970_34536 
+ 1 
+ 0 
+ 2 
+ [ 79 ] 
+
+ HPOB_5970_3492 
+ 1 
+ 0 
+ 2 
+ [ 79 ] 
+
+ HPOB_5970_37 
+ 1 
+ 0 
+ 2 
+ [ 79 ] 
+
+ HPOB_5970_49 
+ 1 
+ 0 
+ 2 
+ [ 79 ] 
+
+ HPOB_5970_9952 
+ 1 
+ 0 
+ 2 
+ [ 79 ] 
+
+ HPOB_6766_10101 
+ 1 
+ 0 
+ 2 
+ [ 79 ] 
+
+ HPOB_6766_145804 
+ 1 
+ 0 
+ 2 
+ [ 79 ] 
+
+ HPOB_6766_145953 
+ 1 
+ 0 
+ 2 
+ [ 79 ] 
+
+ HPOB_6766_146064 
+ 1 
+ 0 
+ 2 
+ [ 79 ] 
+
+ HPOB_6766_31 
+ 1 
+ 0 
+ 2 
+ [ 79 ] 
+
+ HPOB_6766_3903 
+ 1 
+ 0 
+ 2 
+ [ 79 ] 
+
+ LassoBreastCancer 
+ 1 
+ 0 
+ 9 
+ [ 31 ] 
+
+ LassoDiabetes 
+ 1 
+ 0 
+ 8 
+ [ 31 ] 
+
+ LassoDNA 
+ 1 
+ 0 
+ 180 
+ [ 31 ] 
+
+ LassoLeukemia 
+ 1 
+ 0 
+ 7129 
+ [ 31 ] 
+
+ 
+
+ 
+
+ 
+
+ Table 14: BOCoDe problems in SO-Unconstrained class (single-objective, unconstrained, continuous) and Synthetic category (24 problems). #Obj: number of objectives; #Con: number of inequality constraints; Dim: design-space dimension. 
+
+ 
+ Problem 
+ #Obj 
+ #Con 
+ Dim 
+ Source 
+
+ Ackley 
+ 1 
+ 0 
+ 10 
+ [ 12 ] 
+
+ AckleyShifted 
+ 1 
+ 0 
+ 10 
+ [ 12 ] 
+
+ Branin 
+ 1 
+ 0 
+ 2 
+ [ 12 ] 
+
+ BraninShifted 
+ 1 
+ 0 
+ 2 
+ [ 12 ] 
+
+ DixonPrice 
+ 1 
+ 0 
+ 10 
+ [ 12 ] 
+
+ DixonPriceShifted 
+ 1 
+ 0 
+ 10 
+ [ 12 ] 
+
+ EggHolder 
+ 1 
+ 0 
+ 2 
+ [ 12 ] 
+
+ Griewank 
+ 1 
+ 0 
+ 10 
+ [ 12 ] 
+
+ GriewankShifted 
+ 1 
+ 0 
+ 10 
+ [ 12 ] 
+
+ Hartmann 
+ 1 
+ 0 
+ 6 
+ [ 12 ] 
+
+ HartmannShifted 
+ 1 
+ 0 
+ 6 
+ [ 12 ] 
+
+ HolderTable 
+ 1 
+ 0 
+ 2 
+ [ 12 ] 
+
+ Levy 
+ 1 
+ 0 
+ 10 
+ [ 12 ] 
+
+ LevyShifted 
+ 1 
+ 0 
+ 10 
+ [ 12 ] 
+
+ Powell 
+ 1 
+ 0 
+ 10 
+ [ 12 ] 
+
+ PowellShifted 
+ 1 
+ 0 
+ 10 
+ [ 12 ] 
+
+ Rastrigin 
+ 1 
+ 0 
+ 10 
+ [ 12 ] 
+
+ RastriginShifted 
+ 1 
+ 0 
+ 10 
+ [ 12 ] 
+
+ Rosenbrock 
+ 1 
+ 0 
+ 10 
+ [ 12 ] 
+
+ RosenbrockShifted 
+ 1 
+ 0 
+ 10 
+ [ 12 ] 
+
+ SixHumpCamel 
+ 1 
+ 0 
+ 2 
+ [ 12 ] 
+
+ SixHumpCamelShifted 
+ 1 
+ 0 
+ 2 
+ [ 12 ] 
+
+ StyblinskiTang 
+ 1 
+ 0 
+ 10 
+ [ 12 ] 
+
+ StyblinskiTangShifted 
+ 1 
+ 0 
+ 10 
+ [ 12 ] 
+
+ Table 15: BOCoDe problems in SO-Constrained class (single-objective, constrained, continuous) and Synthetic category (11 problems). #Obj: number of objectives; #Con: number of inequality constraints; Dim: design-space dimension. 
+
+ 
+ Problem 
+ #Obj 
+ #Con 
+ Dim 
+ Source 
+
+ ConstrainedAckley10D 
+ 1 
+ 2 
+ 10 
+ [ 45 ] 
+
+ ConstrainedAckley2D 
+ 1 
+ 2 
+ 2 
+ [ 45 ] 
+
+ ConstrainedAckley6D 
+ 1 
+ 2 
+ 6 
+ [ 45 ] 
+
+ ConstrainedGramacy 
+ 1 
+ 2 
+ 2 
+ [ 12 ] 
+
+ ConstrainedHartmann 
+ 1 
+ 1 
+ 6 
+ [ 12 ] 
+
+ ConstrainedHartmannSmooth 
+ 1 
+ 1 
+ 6 
+ [ 12 ] 
+
+ GKXWC1 
+ 1 
+ 1 
+ 2 
+ [ 45 ] 
+
+ GKXWC2 
+ 1 
+ 1 
+ 2 
+ [ 45 ] 
+
+ JLH1 
+ 1 
+ 1 
+ 2 
+ [ 45 ] 
+
+ JLH2 
+ 1 
+ 1 
+ 2 
+ [ 45 ] 
+
+ KeaneBumpFunction 
+ 1 
+ 2 
+ 10 
+ [ 12 ] 
+
+ Table 16: BOCoDe problems in MO-Unconstrained class (multi-objective, unconstrained, continuous) and Engineering category (17 problems). #Obj: number of objectives; #Con: number of inequality constraints; Dim: design-space dimension. 
+
+ 
+ Problem 
+ #Obj 
+ #Con 
+ Dim 
+ Source 
+
+ Penicillin 
+ 3 
+ 0 
+ 7 
+ [ 80 ] 
+
+ RE21 
+ 2 
+ 0 
+ 4 
+ [ 23 ] 
+
+ RE22 
+ 2 
+ 0 
+ 3 
+ [ 23 ] 
+
+ RE23 
+ 2 
+ 0 
+ 4 
+ [ 23 ] 
+
+ RE24 
+ 2 
+ 0 
+ 2 
+ [ 23 ] 
+
+ RE25 
+ 2 
+ 0 
+ 3 
+ [ 23 ] 
+
+ RE31 
+ 3 
+ 0 
+ 3 
+ [ 23 ] 
+
+ RE32 
+ 3 
+ 0 
+ 4 
+ [ 23 ] 
+
+ RE33 
+ 3 
+ 0 
+ 4 
+ [ 23 ] 
+
+ RE34 
+ 3 
+ 0 
+ 5 
+ [ 23 ] 
+
+ RE35 
+ 3 
+ 0 
+ 7 
+ [ 23 ] 
+
+ RE36 
+ 3 
+ 0 
+ 4 
+ [ 23 ] 
+
+ RE37 
+ 3 
+ 0 
+ 4 
+ [ 23 ] 
+
+ RE41 
+ 4 
+ 0 
+ 7 
+ [ 23 ] 
+
+ RE42 
+ 4 
+ 0 
+ 6 
+ [ 23 ] 
+
+ RE61 
+ 6 
+ 0 
+ 3 
+ [ 23 ] 
+
+ RE91 
+ 9 
+ 0 
+ 7 
+ [ 23 ] 
+
+ 
+
+ Table 17: BOCoDe problems in SO-Constrained class (single-objective, constrained, continuous) and Engineering category (37 problems). #Obj: number of objectives; #Con: number of inequality constraints; Dim: design-space dimension. 
+
+ 
+ Problem 
+ #Obj 
+ #Con 
+ Dim 
+ Source 
+
+ CantileverBeam 
+ 1 
+ 11 
+ 10 
+ [ 71 ] 
+
+ CEC2020_p10 
+ 1 
+ 3 
+ 3 
+ [ 22 ] 
+
+ CEC2020_p12 
+ 1 
+ 9 
+ 7 
+ [ 22 ] 
+
+ CEC2020_p13 
+ 1 
+ 3 
+ 5 
+ [ 22 ] 
+
+ CEC2020_p14 
+ 1 
+ 10 
+ 10 
+ [ 22 ] 
+
+ CEC2020_p15 
+ 1 
+ 11 
+ 7 
+ [ 22 ] 
+
+ CEC2020_p16 
+ 1 
+ 15 
+ 14 
+ [ 22 ] 
+
+ CEC2020_p17 
+ 1 
+ 4 
+ 3 
+ [ 22 ] 
+
+ CEC2020_p18 
+ 1 
+ 4 
+ 4 
+ [ 22 ] 
+
+ CEC2020_p19 
+ 1 
+ 5 
+ 4 
+ [ 22 ] 
+
+ CEC2020_p20 
+ 1 
+ 3 
+ 2 
+ [ 22 ] 
+
+ CEC2020_p21 
+ 1 
+ 8 
+ 5 
+ [ 22 ] 
+
+ CEC2020_p22 
+ 1 
+ 11 
+ 9 
+ [ 22 ] 
+
+ CEC2020_p23 
+ 1 
+ 11 
+ 5 
+ [ 22 ] 
+
+ CEC2020_p24 
+ 1 
+ 7 
+ 7 
+ [ 22 ] 
+
+ CEC2020_p25 
+ 1 
+ 7 
+ 4 
+ [ 22 ] 
+
+ CEC2020_p26 
+ 1 
+ 86 
+ 22 
+ [ 22 ] 
+
+ CEC2020_p27 
+ 1 
+ 3 
+ 10 
+ [ 22 ] 
+
+ CEC2020_p28 
+ 1 
+ 9 
+ 10 
+ [ 22 ] 
+
+ CEC2020_p29 
+ 1 
+ 1 
+ 4 
+ [ 22 ] 
+
+ CEC2020_p30 
+ 1 
+ 8 
+ 3 
+ [ 22 ] 
+
+ CEC2020_p32 
+ 1 
+ 6 
+ 5 
+ [ 22 ] 
+
+ CEC2020_p33 
+ 1 
+ 30 
+ 30 
+ [ 22 ] 
+
+ CEC2020_p44 
+ 1 
+ 91 
+ 30 
+ [ 22 ] 
+
+ CEC2020_p5 
+ 1 
+ 6 
+ 9 
+ [ 22 ] 
+
+ CEC2020_p7 
+ 1 
+ 38 
+ 48 
+ [ 22 ] 
+
+ CEC2020_p8 
+ 1 
+ 2 
+ 2 
+ [ 22 ] 
+
+ CEC2020_p9 
+ 1 
+ 2 
+ 3 
+ [ 22 ] 
+
+ CompressionSpring 
+ 1 
+ 4 
+ 3 
+ [ 81 ] 
+
+ PEARL 
+ 1 
+ 6 
+ 7 
+ [ 29 ] 
+
+ SatelliteDesign 
+ 1 
+ 3 
+ 4 
+ [ 82 , 29 ] 
+
+ Sellar 
+ 1 
+ 2 
+ 3 
+ [ 83 ] 
+
+ Truss10D 
+ 1 
+ 14 
+ 10 
+ [ 84 ] 
+
+ Truss25D 
+ 1 
+ 31 
+ 25 
+ [ 84 ] 
+
+ Truss72D_FourForces 
+ 1 
+ 88 
+ 72 
+ [ 84 ] 
+
+ Truss72D_SingleForce 
+ 1 
+ 88 
+ 72 
+ [ 84 ] 
+
+ WeldedBeamSO 
+ 1 
+ 7 
+ 4 
+ [ 85 ] 
+
+ Table 18: BOCoDe problems in MO-Unconstrained class (multi-objective, unconstrained, continuous) and Synthetic category (9 problems). #Obj: number of objectives; #Con: number of inequality constraints; Dim: design-space dimension. 
+
+ 
+ Problem 
+ #Obj 
+ #Con 
+ Dim 
+ Source 
+
+ BraninCurrin 
+ 2 
+ 0 
+ 2 
+ [ 12 ] 
+
+ DTLZ1 
+ 3 
+ 0 
+ 7 
+ [ 12 ] 
+
+ DTLZ2 
+ 3 
+ 0 
+ 7 
+ [ 12 ] 
+
+ DTLZ3 
+ 3 
+ 0 
+ 7 
+ [ 12 ] 
+
+ DTLZ4 
+ 3 
+ 0 
+ 7 
+ [ 12 ] 
+
+ DTLZ5 
+ 3 
+ 0 
+ 7 
+ [ 12 ] 
+
+ ZDT1 
+ 2 
+ 0 
+ 6 
+ [ 12 ] 
+
+ ZDT2 
+ 2 
+ 0 
+ 6 
+ [ 12 ] 
+
+ ZDT3 
+ 2 
+ 0 
+ 6 
+ [ 12 ] 
+
+ 
+
+ 
+
+ 
+
+ Table 19: BOCoDe problems in MO-Constrained class (multi-objective, constrained, continuous) and Engineering category (19 problems). #Obj: number of objectives; #Con: number of inequality constraints; Dim: design-space dimension. 
+
+ 
+ Problem 
+ #Obj 
+ #Con 
+ Dim 
+ Source 
+
+ CRE22 
+ 2 
+ 4 
+ 4 
+ [ 23 ] 
+
+ CRE23 
+ 2 
+ 4 
+ 4 
+ [ 23 ] 
+
+ CRE24 
+ 2 
+ 11 
+ 7 
+ [ 23 ] 
+
+ CRE25 
+ 2 
+ 1 
+ 4 
+ [ 23 ] 
+
+ CRE31 
+ 3 
+ 10 
+ 7 
+ [ 23 ] 
+
+ CRE32 
+ 3 
+ 9 
+ 6 
+ [ 23 ] 
+
+ CRE51 
+ 5 
+ 7 
+ 3 
+ [ 23 ] 
+
+ CS1 
+ 2 
+ 7 
+ 20 
+ [ 24 ] 
+
+ CS2 
+ 2 
+ 8 
+ 20 
+ [ 24 ] 
+
+ CT1 
+ 2 
+ 7 
+ 20 
+ [ 24 ] 
+
+ CT2 
+ 2 
+ 8 
+ 20 
+ [ 24 ] 
+
+ CTS1 
+ 3 
+ 7 
+ 20 
+ [ 24 ] 
+
+ CTS2 
+ 3 
+ 8 
+ 20 
+ [ 24 ] 
+
+ CTSE1 
+ 4 
+ 7 
+ 20 
+ [ 24 ] 
+
+ CTSE2 
+ 4 
+ 8 
+ 20 
+ [ 24 ] 
+
+ CTSE3 
+ 4 
+ 10 
+ 20 
+ [ 24 ] 
+
+ CTSEI1 
+ 5 
+ 7 
+ 20 
+ [ 24 ] 
+
+ CTSEI2 
+ 5 
+ 8 
+ 20 
+ [ 24 ] 
+
+ WeldedBeam 
+ 2 
+ 4 
+ 4 
+ [ 23 ] 
+
+ Table 20: BOCoDe problems in MO-Constrained class (multi-objective, constrained, continuous) and Synthetic category (7 problems). #Obj: number of objectives; #Con: number of inequality constraints; Dim: design-space dimension. 
+
+ 
+ Problem 
+ #Obj 
+ #Con 
+ Dim 
+ Source 
+
+ BNH 
+ 2 
+ 2 
+ 2 
+ [ 12 ] 
+
+ C2DTLZ2 
+ 2 
+ 1 
+ 12 
+ [ 12 ] 
+
+ CONSTR 
+ 2 
+ 2 
+ 2 
+ [ 12 ] 
+
+ ConstrainedBraninCurrin 
+ 2 
+ 1 
+ 2 
+ [ 12 ] 
+
+ MW7 
+ 2 
+ 2 
+ 2 
+ [ 12 ] 
+
+ OSY 
+ 2 
+ 6 
+ 6 
+ [ 12 ] 
+
+ SRN 
+ 2 
+ 2 
+ 2 
+ [ 12 ] 
+
+ Table 21: BOCoDe problems in SO-Mixed-Variable class (single-objective, mixed-variable) and Engineering category (12 problems). #Obj: number of objectives; #Con: number of inequality constraints; Dim: design-space dimension. 
+
+ 
+ Problem 
+ #Obj 
+ #Con 
+ Dim 
+ Source 
+
+ Car 
+ 1 
+ 10 
+ 11 
+ [ 81 ] 
+
+ ColumnBuckling 
+ 1 
+ 0 
+ 4 
+ [ 75 ] 
+
+ CrossedBarrel 
+ 1 
+ 0 
+ 4 
+ [ 16 ] 
+
+ EulerBeamMixed 
+ 1 
+ 0 
+ 3 
+ [ 78 ] 
+
+ GearTrain 
+ 1 
+ 0 
+ 4 
+ [ 86 , 81 ] 
+
+ HelicalSpring 
+ 1 
+ 8 
+ 3 
+ [ 81 ] 
+
+ HOIP 
+ 1 
+ 0 
+ 3 
+ [ 16 ] 
+
+ WeldedBeamCategorical 
+ 1 
+ 5 
+ 5 
+ [ 56 , 10 ] 
+
+ PestControl 
+ 1 
+ 0 
+ 25 
+ [ 87 ] 
+
+ PressureVessel 
+ 1 
+ 4 
+ 4 
+ [ 81 ] 
+
+ ReinforcedConcreteBeam 
+ 1 
+ 2 
+ 3 
+ [ 81 ] 
+
+ SpeedReducer 
+ 1 
+ 9 
+ 7 
+ [ 71 ] 
+
+ 
+
+ Table 22: BOCoDe problems in SO-Mixed-Variable class (single-objective, mixed-variable) and HPO category (28 problems). #Obj: number of objectives; #Con: number of inequality constraints; Dim: design-space dimension. 
+
+ 
+ Problem 
+ #Obj 
+ #Con 
+ Dim 
+ Source 
+
+ HPOB_4796_23 
+ 1 
+ 0 
+ 3 
+ [ 79 ] 
+
+ HPOB_5527_10101 
+ 1 
+ 0 
+ 8 
+ [ 79 ] 
+
+ HPOB_5636_10101 
+ 1 
+ 0 
+ 6 
+ [ 79 ] 
+
+ HPOB_5859_125923 
+ 1 
+ 0 
+ 6 
+ [ 79 ] 
+
+ HPOB_5889_31 
+ 1 
+ 0 
+ 6 
+ [ 79 ] 
+
+ HPOB_5891_3492 
+ 1 
+ 0 
+ 8 
+ [ 79 ] 
+
+ HPOB_5906_3889 
+ 1 
+ 0 
+ 16 
+ [ 79 ] 
+
+ HPOB_5965_10101 
+ 1 
+ 0 
+ 10 
+ [ 79 ] 
+
+ HPOB_5971_10093 
+ 1 
+ 0 
+ 16 
+ [ 79 ] 
+
+ HPOB_6767_145804 
+ 1 
+ 0 
+ 18 
+ [ 79 ] 
+
+ HPOB_6794_10101 
+ 1 
+ 0 
+ 10 
+ [ 79 ] 
+
+ HPOB_7607_145976 
+ 1 
+ 0 
+ 9 
+ [ 79 ] 
+
+ HPOB_7609_125923 
+ 1 
+ 0 
+ 9 
+ [ 79 ] 
+
+ LCBenchAdult 
+ 1 
+ 0 
+ 7 
+ [ 88 ] 
+
+ LCBenchAirlines 
+ 1 
+ 0 
+ 7 
+ [ 88 ] 
+
+ LCBenchAlbert 
+ 1 
+ 0 
+ 7 
+ [ 88 ] 
+
+ LCBenchAPSFailure 
+ 1 
+ 0 
+ 7 
+ [ 88 ] 
+
+ LCBenchAustralian 
+ 1 
+ 0 
+ 7 
+ [ 88 ] 
+
+ LCBenchBankMarketing 
+ 1 
+ 0 
+ 7 
+ [ 88 ] 
+
+ LCBenchCar 
+ 1 
+ 0 
+ 7 
+ [ 88 ] 
+
+ LCBenchChristine 
+ 1 
+ 0 
+ 7 
+ [ 88 ] 
+
+ LCBenchCovertype 
+ 1 
+ 0 
+ 7 
+ [ 88 ] 
+
+ LCBenchCreditG 
+ 1 
+ 0 
+ 7 
+ [ 88 ] 
+
+ LCBenchFabert 
+ 1 
+ 0 
+ 7 
+ [ 88 ] 
+
+ LCBenchHiggs 
+ 1 
+ 0 
+ 7 
+ [ 88 ] 
+
+ LCBenchJasmine 
+ 1 
+ 0 
+ 7 
+ [ 88 ] 
+
+ LCBenchNomao 
+ 1 
+ 0 
+ 7 
+ [ 88 ] 
+
+ LCBenchVehicle 
+ 1 
+ 0 
+ 7 
+ [ 88 ] 
+
+ Table 23: BOCoDe problems in SO-Mixed-Variable class (single-objective, mixed-variable) and Synthetic category (17 problems). #Obj: number of objectives; #Con: number of inequality constraints; Dim: design-space dimension. 
+
+ 
+ Problem 
+ #Obj 
+ #Con 
+ Dim 
+ Source 
+
+ Ackley53 
+ 1 
+ 0 
+ 53 
+ [ 56 , 10 ] 
+
+ Ackley5Mixed 
+ 1 
+ 0 
+ 5 
+ [ 56 , 10 ] 
+
+ AckleyCat 
+ 1 
+ 0 
+ 20 
+ [ 56 , 10 ] 
+
+ BraninCategorical 
+ 1 
+ 0 
+ 3 
+ [ 56 , 10 ] 
+
+ BraninLVGP 
+ 1 
+ 0 
+ 2 
+ [ 56 , 10 ] 
+
+ CoCaBOFunc2C 
+ 1 
+ 0 
+ 4 
+ [ 56 , 10 ] 
+
+ CoCaBOFunc3C 
+ 1 
+ 0 
+ 5 
+ [ 56 , 10 ] 
+
+ GoldsteinLVGP 
+ 1 
+ 0 
+ 2 
+ [ 56 , 10 ] 
+
+ HartmannCat 
+ 1 
+ 0 
+ 6 
+ [ 56 , 10 ] 
+
+ MixedAckley 
+ 1 
+ 0 
+ 5 
+ [ 56 , 10 ] 
+
+ RastriginCat 
+ 1 
+ 0 
+ 20 
+ [ 56 , 10 ] 
+
+ Rosenbrock5Mixed 
+ 1 
+ 0 
+ 5 
+ [ 56 , 10 ] 
+
+ SchwefelCat 
+ 1 
+ 0 
+ 20 
+ [ 56 , 10 ] 
+
+ ShekelMixed 
+ 1 
+ 0 
+ 4 
+ [ 56 , 10 ] 
+
+ StyblinskiTangCat 
+ 1 
+ 0 
+ 10 
+ [ 56 , 10 ] 
+
+ StyblinskiTangMixed 
+ 1 
+ 0 
+ 5 
+ [ 56 , 10 ] 
+
+ MaxSAT 
+ 1 
+ 0 
+ 60 
+ [ 58 ] 
+
+ 
+
+ 
+
+## Appendix I Full Results
+
+ 
+
+## I.1 Single-Objective Per-problem Best Searched Value
+
+ 
+ Tables 26 [MATH] 36 report, for
+every single-objective problem, the final best value; the constrained classes
+report the best feasible objective. Pooling over methods makes these problem-level
+reference values: they record what the campaign attained on each problem at the
+shared budget and give future work an absolute anchor to compare against, complementing
+the rank-based analyses.
+
+ 
+
+## I.2 Multi-Objective Per-problem Best Hypervolume Value
+
+ 
+ Tables 36 [MATH] 36 report the
+same summary for the multi-objective problems: the final best dominated
+hypervolume under each problem’s fixed reference point,
+pooled over methods and seeds, with feasible hypervolume only for the
+constrained class.
+
+ 
+
+ 
+ Table 24: SO-Unconstrained Engineering (part 1): final best objective at BO iteration 250, pooled over the 6 methods and seeds (sign matches the convergence figures). 
+
+ Problem 
+ mean [MATH] std 
+ median [MATH] 95%CI 
+
+ AgNP 
+ [MATH] 
+ [MATH] 
+
+ Allison 
+ [MATH] 
+ [MATH] 
+
+ AntPolicySearchProblem 
+ [MATH] 
+ [MATH] 
+
+ AntProblem 
+ [MATH] 
+ [MATH] 
+
+ AutoAM 
+ [MATH] 
+ [MATH] 
+
+ Borehole 
+ [MATH] 
+ [MATH] 
+
+ CEC2020_p11_PS 
+ [MATH] 
+ [MATH] 
+
+ CEC2020_p1_PS 
+
+ 
+ [MATH] 
+ 
+ [MATH] 
+
+ 
+ 
+ [MATH] 
+ 
+ [MATH] 
+
+ 
+ CEC2020_p2_PS 
+
+ 
+ [MATH] 
+ 
+ [MATH] 
+
+ 
+ 
+ [MATH] 
+ 
+ [MATH] 
+
+ 
+ CEC2020_p34_PS 
+ [MATH] 
+ [MATH] 
+
+ CEC2020_p35_PS 
+ [MATH] 
+ [MATH] 
+
+ CEC2020_p36_PS 
+ [MATH] 
+ [MATH] 
+
+ CEC2020_p37_PS 
+ [MATH] 
+ [MATH] 
+
+ CEC2020_p38_PS 
+ [MATH] 
+ [MATH] 
+
+ CEC2020_p39_PS 
+ [MATH] 
+ [MATH] 
+
+ CEC2020_p3_PS 
+
+ 
+ [MATH] 
+ 
+ [MATH] 
+
+ 
+ 
+ [MATH] 
+ 
+ [MATH] 
+
+ 
+ CEC2020_p40_PS 
+
+ 
+ [MATH] 
+ 
+ [MATH] 
+
+ 
+ 
+ [MATH] 
+ 
+ [MATH] 
+
+ 
+ CEC2020_p41_PS 
+
+ 
+ [MATH] 
+ 
+ [MATH] 
+
+ 
+ 
+ [MATH] 
+ 
+ [MATH] 
+
+ 
+ CEC2020_p42_PS 
+ [MATH] 
+ [MATH] 
+
+ CEC2020_p43_PS 
+ [MATH] 
+ [MATH] 
+
+ CEC2020_p45_PS 
+ [MATH] 
+ [MATH] 
+
+ CEC2020_p46_PS 
+ [MATH] 
+ [MATH] 
+
+ CEC2020_p47_PS 
+ [MATH] 
+ [MATH] 
+
+ CEC2020_p48_PS 
+ [MATH] 
+ [MATH] 
+
+ CEC2020_p49_PS 
+ [MATH] 
+ [MATH] 
+
+ CEC2020_p4_PS 
+ [MATH] 
+ [MATH] 
+
+ CEC2020_p50_PS 
+ [MATH] 
+ [MATH] 
+
+ CEC2020_p51_PS 
+ [MATH] 
+ [MATH] 
+
+ CEC2020_p52_PS 
+ [MATH] 
+ [MATH] 
+
+ CEC2020_p53_PS 
+ [MATH] 
+ [MATH] 
+
+ CEC2020_p54_PS 
+ [MATH] 
+ [MATH] 
+
+ CEC2020_p55_PS 
+
+ 
+ [MATH] 
+ 
+ [MATH] 
+ 
+ [MATH] 
+
+ CEC2020_p56_PS 
+
+ 
+ [MATH] 
+ 
+ [MATH] 
+ 
+ [MATH] 
+
+ CEC2020_p57_PS 
+
+ 
+ [MATH] 
+ 
+ [MATH] 
+ 
+ [MATH] 
+
+ CEC2020_p5_PS 
+ [MATH] 
+ [MATH] 
+
+ CEC2020_p6_PS 
+ [MATH] 
+ [MATH] 
+
+ CEC2020_p7_PS 
+ [MATH] 
+ [MATH] 
+
+ CRE21_PS 
+ [MATH] 
+ [MATH] 
+
+ CS3_PS 
+ [MATH] 
+ [MATH] 
+
+ CS4_PS 
+ [MATH] 
+ [MATH] 
+
+ CT3_PS 
+ [MATH] 
+ [MATH] 
+
+ CT4_PS 
+ [MATH] 
+ [MATH] 
+
+ CTS3_PS 
+ [MATH] 
+ [MATH] 
+
+ CTS4_PS 
+ [MATH] 
+ [MATH] 
+
+ CTSE4_PS 
+ [MATH] 
+ [MATH] 
+
+ CTSEI3_PS 
+ [MATH] 
+ [MATH] 
+
+ CTSEI4_PS 
+ [MATH] 
+ [MATH] 
+
+ EulerBernoulliBeamBending 
+ [MATH] 
+ [MATH] 
+
+ 
+
+ Table 25: SO-Unconstrained Engineering (part 2): final best objective at BO iteration 250, pooled over the 6 methods and seeds (sign matches the convergence figures). 
+
+ 
+ Problem 
+ mean [MATH] std 
+ median [MATH] 95%CI 
+
+ HalfCheetahPolicySearchProblem 
+ [MATH] 
+ [MATH] 
+
+ HalfCheetahProblem 
+ [MATH] 
+ [MATH] 
+
+ HeatExchanger_PS 
+
+ 
+ [MATH] 
+ 
+ [MATH] 
+
+ 
+ 
+ [MATH] 
+ 
+ [MATH] 
+
+ 
+ HopperPolicySearchProblem 
+ [MATH] 
+ [MATH] 
+
+ HopperProblem 
+ [MATH] 
+ [MATH] 
+
+ HumanoidProblem 
+ [MATH] 
+ [MATH] 
+
+ HumanoidStandupProblem 
+
+ 
+ [MATH] 
+ 
+ [MATH] 
+
+ 
+ 
+ [MATH] 
+ 
+ [MATH] 
+
+ 
+ InvertedDoublePendulumProblem 
+ [MATH] 
+ [MATH] 
+
+ InvertedPendulumProblem 
+ [MATH] 
+ [MATH] 
+
+ Mazda_PS 
+ [MATH] 
+ [MATH] 
+
+ Mazda_SCA_PS 
+ [MATH] 
+ [MATH] 
+
+ MiniAeroWing 
+ [MATH] 
+ [MATH] 
+
+ P3HT 
+ [MATH] 
+ [MATH] 
+
+ PD4CartPole 
+ [MATH] 
+ [MATH] 
+
+ PID4Acrobot 
+ [MATH] 
+ [MATH] 
+
+ Perovskite 
+
+ 
+ [MATH] 
+ 
+ [MATH] 
+
+ 
+ 
+ [MATH] 
+ 
+ [MATH] 
+
+ 
+ PusherProblem 
+ [MATH] 
+ [MATH] 
+
+ QPowerModel 
+ [MATH] 
+
+ 
+ [MATH] 
+ 
+ [MATH] 
+
+ 
+ ReacherProblem 
+ [MATH] 
+ [MATH] 
+
+ ReactivityModel 
+
+ 
+ [MATH] 
+ 
+ [MATH] 
+
+ 
+ 
+ [MATH] 
+ 
+ [MATH] 
+
+ 
+ RobotPush 
+ [MATH] 
+ [MATH] 
+
+ Rover 
+ [MATH] 
+ [MATH] 
+
+ SwimmerProblem 
+ [MATH] 
+ [MATH] 
+
+ Walker2DPolicySearchProblem 
+ [MATH] 
+ [MATH] 
+
+ Walker2DProblem 
+ [MATH] 
+ [MATH] 
+
+ Wing 
+ [MATH] 
+ [MATH] 
+
+ Table 26: SO-Unconstrained Synthetic: final best objective at BO iteration 250, pooled over the 6 methods and seeds (sign matches the convergence figures). 
+
+ 
+ Problem 
+ mean [MATH] std 
+ median [MATH] 95%CI 
+
+ Ackley 
+ [MATH] 
+ [MATH] 
+
+ AckleyShifted 
+ [MATH] 
+ [MATH] 
+
+ Branin 
+ [MATH] 
+
+ 
+ [MATH] 
+ 
+ [MATH] 
+
+ 
+ BraninShifted 
+ [MATH] 
+ [MATH] 
+
+ DixonPrice 
+ [MATH] 
+ [MATH] 
+
+ DixonPriceShifted 
+ [MATH] 
+ [MATH] 
+
+ EggHolder 
+ [MATH] 
+ [MATH] 
+
+ Griewank 
+ [MATH] 
+ [MATH] 
+
+ GriewankShifted 
+ [MATH] 
+ [MATH] 
+
+ Hartmann 
+ [MATH] 
+ [MATH] 
+
+ HartmannShifted 
+ [MATH] 
+ [MATH] 
+
+ HolderTable 
+ [MATH] 
+ [MATH] 
+
+ Levy 
+ [MATH] 
+ [MATH] 
+
+ LevyShifted 
+ [MATH] 
+ [MATH] 
+
+ Powell 
+ [MATH] 
+ [MATH] 
+
+ PowellShifted 
+ [MATH] 
+ [MATH] 
+
+ Rastrigin 
+ [MATH] 
+ [MATH] 
+
+ RastriginShifted 
+ [MATH] 
+ [MATH] 
+
+ Rosenbrock 
+ [MATH] 
+ [MATH] 
+
+ RosenbrockShifted 
+ [MATH] 
+ [MATH] 
+
+ SixHumpCamel 
+ [MATH] 
+
+ 
+ [MATH] 
+ 
+ [MATH] 
+
+ 
+ SixHumpCamelShifted 
+ [MATH] 
+ [MATH] 
+
+ StyblinskiTang 
+ [MATH] 
+ [MATH] 
+
+ StyblinskiTangShifted 
+ [MATH] 
+ [MATH] 
+
+ 
+
+ 
+
+ 
+ 
+ Table 27: SO-Unconstrained HPO: final best objective at BO iteration 250, pooled over the 6 methods and seeds (sign matches the convergence figures). 
+
+ Problem 
+ mean [MATH] std 
+ median [MATH] 95%CI 
+
+ Bayesmark_DT_breast 
+ [MATH] 
+ [MATH] 
+
+ Bayesmark_DT_digits 
+ [MATH] 
+ [MATH] 
+
+ Bayesmark_DT_iris 
+ [MATH] 
+ [MATH] 
+
+ Bayesmark_DT_wine 
+ [MATH] 
+ [MATH] 
+
+ Bayesmark_MLPadam_breast 
+ [MATH] 
+ [MATH] 
+
+ Bayesmark_MLPadam_digits 
+ [MATH] 
+ [MATH] 
+
+ Bayesmark_MLPadam_iris 
+ [MATH] 
+ [MATH] 
+
+ Bayesmark_MLPadam_wine 
+ [MATH] 
+ [MATH] 
+
+ Bayesmark_MLPsgd_breast 
+ [MATH] 
+ [MATH] 
+
+ Bayesmark_MLPsgd_digits 
+ [MATH] 
+ [MATH] 
+
+ Bayesmark_MLPsgd_iris 
+ [MATH] 
+ [MATH] 
+
+ Bayesmark_MLPsgd_wine 
+ [MATH] 
+ [MATH] 
+
+ Bayesmark_RF_breast 
+ [MATH] 
+ [MATH] 
+
+ Bayesmark_RF_digits 
+ [MATH] 
+ [MATH] 
+
+ Bayesmark_RF_iris 
+ [MATH] 
+ [MATH] 
+
+ Bayesmark_RF_wine 
+ [MATH] 
+ [MATH] 
+
+ Bayesmark_SVM_breast 
+ [MATH] 
+ [MATH] 
+
+ Bayesmark_SVM_digits 
+ [MATH] 
+ [MATH] 
+
+ Bayesmark_SVM_iris 
+ [MATH] 
+ [MATH] 
+
+ Bayesmark_SVM_wine 
+ [MATH] 
+ [MATH] 
+
+ Bayesmark_ada_breast 
+ [MATH] 
+ [MATH] 
+
+ Bayesmark_ada_digits 
+ [MATH] 
+ [MATH] 
+
+ Bayesmark_ada_iris 
+ [MATH] 
+ [MATH] 
+
+ Bayesmark_ada_wine 
+ [MATH] 
+ [MATH] 
+
+ Bayesmark_kNN_breast 
+ [MATH] 
+ [MATH] 
+
+ Bayesmark_kNN_digits 
+ [MATH] 
+ [MATH] 
+
+ Bayesmark_kNN_iris 
+ [MATH] 
+ [MATH] 
+
+ Bayesmark_kNN_wine 
+ [MATH] 
+ [MATH] 
+
+ Bayesmark_lasso_breast 
+ [MATH] 
+ [MATH] 
+
+ Bayesmark_lasso_digits 
+ [MATH] 
+
+ 
+ [MATH] 
+ 
+ [MATH] 
+
+ 
+ Bayesmark_lasso_iris 
+ [MATH] 
+ [MATH] 
+
+ Bayesmark_lasso_wine 
+ [MATH] 
+ [MATH] 
+
+ Bayesmark_linear_breast 
+ [MATH] 
+ [MATH] 
+
+ Bayesmark_linear_digits 
+ [MATH] 
+ [MATH] 
+
+ Bayesmark_linear_iris 
+ [MATH] 
+ [MATH] 
+
+ Bayesmark_linear_wine 
+ [MATH] 
+ [MATH] 
+
+ HPOB_5527_31 
+ [MATH] 
+ [MATH] 
+
+ HPOB_5636_146065 
+ [MATH] 
+ [MATH] 
+
+ HPOB_5891_3899 
+ [MATH] 
+
+ 
+ [MATH] 
+ 
+ [MATH] 
+
+ 
+ HPOB_5970_14951 
+
+ 
+ [MATH] 
+ 
+ [MATH] 
+ 
+ [MATH] 
+
+ HPOB_5970_34536 
+ [MATH] 
+ [MATH] 
+
+ HPOB_5970_37 
+ [MATH] 
+ [MATH] 
+
+ HPOB_5970_9952 
+
+ 
+ [MATH] 
+ 
+ [MATH] 
+
+ 
+ 
+ [MATH] 
+ 
+ [MATH] 
+
+ 
+ HPOB_5971_9970 
+ [MATH] 
+ [MATH] 
+
+ HPOB_6766_10101 
+ [MATH] 
+ [MATH] 
+
+ HPOB_6766_145953 
+
+ 
+ [MATH] 
+ 
+ [MATH] 
+ 
+ [MATH] 
+
+ HPOB_6766_31 
+ [MATH] 
+ [MATH] 
+
+ HPOB_6766_3903 
+ [MATH] 
+
+ 
+ [MATH] 
+ 
+ [MATH] 
+
+ 
+ LassoBreastCancer 
+ [MATH] 
+
+ 
+ [MATH] 
+ 
+ [MATH] 
+
+ 
+ LassoDNA 
+ [MATH] 
+ [MATH] 
+
+ LassoDiabetes 
+
+ 
+ [MATH] 
+ 
+ [MATH] 
+
+ 
+ 
+ [MATH] 
+ 
+ [MATH] 
+
+ 
+ LassoLeukemia 
+ [MATH] 
+ [MATH] 
+
+ 
+
+ Table 28: SO-Constrained Engineering: final best feasible objective at BO iteration 250, pooled over the 4 methods and seeds (sign matches the convergence figures). 
+
+ 
+ Problem 
+ mean [MATH] std 
+ median [MATH] 95%CI 
+
+ CEC2020_p10 
+ [MATH] 
+ [MATH] 
+
+ CEC2020_p12 
+ [MATH] 
+ [MATH] 
+
+ CEC2020_p13 
+
+ 
+ [MATH] 
+ 
+ [MATH] 
+
+ 
+ 
+ [MATH] 
+ 
+ [MATH] 
+
+ 
+ CEC2020_p14 
+
+ 
+ [MATH] 
+ 
+ [MATH] 
+
+ 
+ 
+ [MATH] 
+ 
+ [MATH] 
+
+ 
+ CEC2020_p15 
+ [MATH] 
+ [MATH] 
+
+ CEC2020_p17 
+ [MATH] 
+ [MATH] 
+
+ CEC2020_p18 
+
+ 
+ [MATH] 
+ 
+ [MATH] 
+ 
+ [MATH] 
+
+ CEC2020_p19 
+ [MATH] 
+ [MATH] 
+
+ CEC2020_p20 
+ [MATH] 
+ [MATH] 
+
+ CEC2020_p21 
+ [MATH] 
+ [MATH] 
+
+ CEC2020_p22 
+ [MATH] 
+ [MATH] 
+
+ CEC2020_p24 
+ [MATH] 
+ [MATH] 
+
+ CEC2020_p25 
+ [MATH] 
+ [MATH] 
+
+ CEC2020_p27 
+ [MATH] 
+ [MATH] 
+
+ CEC2020_p28 
+
+ 
+ [MATH] 
+ 
+ [MATH] 
+
+ 
+ 
+ [MATH] 
+ 
+ [MATH] 
+
+ 
+ CEC2020_p29 
+
+ 
+ [MATH] 
+ 
+ [MATH] 
+
+ 
+ 
+ [MATH] 
+ 
+ [MATH] 
+
+ 
+ CEC2020_p30 
+ [MATH] 
+ [MATH] 
+
+ CEC2020_p32 
+
+ 
+ [MATH] 
+ 
+ [MATH] 
+
+ 
+ 
+ [MATH] 
+ 
+ [MATH] 
+
+ 
+ CEC2020_p33 
+ [MATH] 
+ [MATH] 
+
+ CEC2020_p44 
+ [MATH] 
+ [MATH] 
+
+ CEC2020_p8 
+ [MATH] 
+ [MATH] 
+
+ CantileverBeam 
+
+ 
+ [MATH] 
+ 
+ [MATH] 
+
+ 
+ 
+ [MATH] 
+ 
+ [MATH] 
+
+ 
+ CarContinuous 
+ [MATH] 
+ [MATH] 
+
+ CompressionSpring 
+ [MATH] 
+ [MATH] 
+
+ HeatExchanger 
+ [MATH] 
+ [MATH] 
+
+ PEARL 
+ [MATH] 
+ [MATH] 
+
+ PressureVesselContinuous 
+
+ 
+ [MATH] 
+ 
+ [MATH] 
+ 
+ [MATH] 
+
+ ReinforcedConcreteBeamContinuous 
+ [MATH] 
+ [MATH] 
+
+ SatelliteDesign 
+ [MATH] 
+ [MATH] 
+
+ Sellar 
+ [MATH] 
+ [MATH] 
+
+ SpeedReducerContinuous 
+ [MATH] 
+ [MATH] 
+
+ ThreeTruss 
+ [MATH] 
+ [MATH] 
+
+ Truss10D 
+ [MATH] 
+ [MATH] 
+
+ Truss25D 
+ [MATH] 
+ [MATH] 
+
+ Truss72D_FourForces 
+ [MATH] 
+ [MATH] 
+
+ Truss72D_SingleForce 
+ [MATH] 
+ [MATH] 
+
+ WeldedBeamSO 
+ [MATH] 
+ [MATH] 
+
+ Table 29: SO-Constrained Synthetic: final best feasible objective at BO iteration 250, pooled over the 4 methods and seeds (sign matches the convergence figures). 
+
+ 
+ Problem 
+ mean [MATH] std 
+ median [MATH] 95%CI 
+
+ ConstrainedAckley10D 
+ [MATH] 
+ [MATH] 
+
+ ConstrainedAckley2D 
+ [MATH] 
+ [MATH] 
+
+ ConstrainedAckley6D 
+ [MATH] 
+ [MATH] 
+
+ ConstrainedGramacy 
+ [MATH] 
+ [MATH] 
+
+ ConstrainedHartmann 
+ [MATH] 
+ [MATH] 
+
+ ConstrainedHartmannSmooth 
+ [MATH] 
+ [MATH] 
+
+ GKXWC1 
+ [MATH] 
+
+ 
+ [MATH] 
+ 
+ [MATH] 
+
+ 
+ GKXWC2 
+ [MATH] 
+ [MATH] 
+
+ JLH1 
+ [MATH] 
+
+ 
+ [MATH] 
+ 
+ [MATH] 
+
+ 
+ JLH2 
+ [MATH] 
+ [MATH] 
+
+ KeaneBumpFunction 
+ [MATH] 
+ [MATH] 
+
+ 
+
+ 
+
+ 
+
+ Table 30: SO-Mixed-Variable HPO: final best objective at BO iteration 250, pooled over the 5 methods and seeds (sign matches the convergence figures). 
+
+ 
+ Problem 
+ mean [MATH] std 
+ median [MATH] 95%CI 
+
+ HPOB_4796_23 
+ [MATH] 
+ [MATH] 
+
+ HPOB_5527_10101 
+ [MATH] 
+ [MATH] 
+
+ HPOB_5636_10101 
+ [MATH] 
+ [MATH] 
+
+ HPOB_5859_125923 
+ [MATH] 
+ [MATH] 
+
+ HPOB_5889_31 
+ [MATH] 
+ [MATH] 
+
+ HPOB_5906_3889 
+ [MATH] 
+
+ 
+ [MATH] 
+ 
+ [MATH] 
+
+ 
+ HPOB_5965_10101 
+ [MATH] 
+ [MATH] 
+
+ HPOB_5971_10093 
+ [MATH] 
+ [MATH] 
+
+ HPOB_6767_145804 
+ [MATH] 
+ [MATH] 
+
+ HPOB_6794_10101 
+ [MATH] 
+ [MATH] 
+
+ HPOB_7607_145976 
+ [MATH] 
+ [MATH] 
+
+ HPOB_7609_125923 
+ [MATH] 
+ [MATH] 
+
+ LCBenchAPSFailure 
+ [MATH] 
+ [MATH] 
+
+ LCBenchAdult 
+ [MATH] 
+ [MATH] 
+
+ LCBenchAirlines 
+ [MATH] 
+ [MATH] 
+
+ LCBenchAlbert 
+ [MATH] 
+ [MATH] 
+
+ LCBenchAustralian 
+ [MATH] 
+ [MATH] 
+
+ LCBenchBankMarketing 
+ [MATH] 
+ [MATH] 
+
+ LCBenchCar 
+ [MATH] 
+ [MATH] 
+
+ LCBenchChristine 
+ [MATH] 
+ [MATH] 
+
+ LCBenchCovertype 
+ [MATH] 
+ [MATH] 
+
+ LCBenchCreditG 
+ [MATH] 
+ [MATH] 
+
+ LCBenchFabert 
+ [MATH] 
+ [MATH] 
+
+ LCBenchHiggs 
+ [MATH] 
+ [MATH] 
+
+ LCBenchJasmine 
+ [MATH] 
+ [MATH] 
+
+ LCBenchNomao 
+ [MATH] 
+ [MATH] 
+
+ LCBenchVehicle 
+ [MATH] 
+ [MATH] 
+
+ LCBenchVolkert 
+ [MATH] 
+ [MATH] 
+
+ Table 31: SO-Mixed-Variable Engineering: final best objective at BO iteration 250, pooled over the 5 methods and seeds (sign matches the convergence figures). 
+
+ 
+ Problem 
+ mean [MATH] std 
+ median [MATH] 95%CI 
+
+ Car 
+ [MATH] 
+ [MATH] 
+
+ ColumnBuckling 
+
+ 
+ [MATH] 
+ 
+ [MATH] 
+
+ 
+ 
+ [MATH] 
+ 
+ [MATH] 
+
+ 
+ CrossedBarrel 
+ [MATH] 
+ [MATH] 
+
+ EulerBeamMixed 
+ [MATH] 
+ [MATH] 
+
+ GearTrain 
+
+ 
+ [MATH] 
+ 
+ [MATH] 
+
+ 
+ 
+ [MATH] 
+ 
+ [MATH] 
+
+ 
+ HOIP 
+ [MATH] 
+ [MATH] 
+
+ HelicalSpring 
+ [MATH] 
+ [MATH] 
+
+ PestControl 
+ [MATH] 
+ [MATH] 
+
+ PressureVessel 
+ [MATH] 
+ [MATH] 
+
+ ReinforcedConcreteBeam 
+ [MATH] 
+
+ 
+ [MATH] 
+ 
+ [MATH] 
+
+ 
+ SpeedReducer 
+ [MATH] 
+ [MATH] 
+
+ WeldedBeamCategorical 
+ [MATH] 
+ [MATH] 
+
+ Table 32: SO-Mixed-Variable Synthetic: final best objective at BO iteration 250, pooled over the 5 methods and seeds (sign matches the convergence figures). 
+
+ 
+ Problem 
+ mean [MATH] std 
+ median [MATH] 95%CI 
+
+ Ackley53 
+ [MATH] 
+ [MATH] 
+
+ Ackley5Mixed 
+ [MATH] 
+ [MATH] 
+
+ AckleyCat 
+ [MATH] 
+
+ 
+ [MATH] 
+ 
+ [MATH] 
+
+ 
+ BraninCategorical 
+ [MATH] 
+
+ 
+ [MATH] 
+ 
+ [MATH] 
+
+ 
+ BraninLVGP 
+ [MATH] 
+ [MATH] 
+
+ CoCaBOFunc2C 
+ [MATH] 
+ [MATH] 
+
+ CoCaBOFunc3C 
+ [MATH] 
+ [MATH] 
+
+ GoldsteinLVGP 
+ [MATH] 
+ [MATH] 
+
+ HartmannCat 
+ [MATH] 
+ [MATH] 
+
+ MaxSAT 
+
+ 
+ [MATH] 
+ 
+ [MATH] 
+
+ 
+ 
+ [MATH] 
+ 
+ [MATH] 
+
+ 
+ MixedAckley 
+ [MATH] 
+ [MATH] 
+
+ RastriginCat 
+ [MATH] 
+ [MATH] 
+
+ Rosenbrock5Mixed 
+ [MATH] 
+ [MATH] 
+
+ SchwefelCat 
+ [MATH] 
+ [MATH] 
+
+ ShekelMixed 
+ [MATH] 
+ [MATH] 
+
+ StyblinskiTangCat 
+ [MATH] 
+ [MATH] 
+
+ StyblinskiTangMixed 
+ [MATH] 
+ [MATH] 
+
+ 
+
+ Table 33: MO-Unconstrained Engineering: final best hypervolume value at BO iteration 250, pooled over the 6 methods and seeds (sign matches the convergence figures). 
+
+ 
+ Problem 
+ mean [MATH] std 
+ median [MATH] 95%CI 
+
+ Penicillin 
+
+ 
+ [MATH] 
+ 
+ [MATH] 
+
+ 
+ 
+ [MATH] 
+ 
+ [MATH] 
+
+ 
+ RE21 
+ [MATH] 
+ [MATH] 
+
+ RE22 
+
+ 
+ [MATH] 
+ 
+ [MATH] 
+
+ 
+ 
+ [MATH] 
+ 
+ [MATH] 
+
+ 
+ RE23 
+
+ 
+ [MATH] 
+ 
+ [MATH] 
+
+ 
+ 
+ [MATH] 
+ 
+ [MATH] 
+
+ 
+ RE24 
+
+ 
+ [MATH] 
+ 
+ [MATH] 
+
+ 
+ 
+ [MATH] 
+ 
+ [MATH] 
+
+ 
+ RE25 
+
+ 
+ [MATH] 
+ 
+ [MATH] 
+
+ 
+ 
+ [MATH] 
+ 
+ [MATH] 
+
+ 
+ RE31 
+
+ 
+ [MATH] 
+ 
+ [MATH] 
+
+ 
+ 
+ [MATH] 
+ 
+ [MATH] 
+
+ 
+ RE32 
+
+ 
+ [MATH] 
+ 
+ [MATH] 
+
+ 
+ 
+ [MATH] 
+ 
+ [MATH] 
+
+ 
+ RE33 
+ [MATH] 
+ [MATH] 
+
+ RE34 
+ [MATH] 
+ [MATH] 
+
+ RE35 
+
+ 
+ [MATH] 
+ 
+ [MATH] 
+
+ 
+ 
+ [MATH] 
+ 
+ [MATH] 
+
+ 
+ RE36 
+ [MATH] 
+ [MATH] 
+
+ RE37 
+ [MATH] 
+ [MATH] 
+
+ RE41 
+ [MATH] 
+ [MATH] 
+
+ RE42 
+
+ 
+ [MATH] 
+ 
+ [MATH] 
+
+ 
+ 
+ [MATH] 
+ 
+ [MATH] 
+
+ 
+ RE61 
+
+ 
+ [MATH] 
+ 
+ [MATH] 
+
+ 
+ 
+ [MATH] 
+ 
+ [MATH] 
+
+ 
+ RE91 
+ [MATH] 
+ [MATH] 
+
+ Table 34: MO-Unconstrained Synthetic: final best hypervolume value at BO iteration 250, pooled over the 6 methods and seeds (sign matches the convergence figures). 
+
+ 
+ Problem 
+ mean [MATH] std 
+ median [MATH] 95%CI 
+
+ BraninCurrin 
+ [MATH] 
+ [MATH] 
+
+ DTLZ1 
+
+ 
+ [MATH] 
+ 
+ [MATH] 
+
+ 
+ 
+ [MATH] 
+ 
+ [MATH] 
+
+ 
+ DTLZ2 
+ [MATH] 
+ [MATH] 
+
+ DTLZ3 
+
+ 
+ [MATH] 
+ 
+ [MATH] 
+
+ 
+ 
+ [MATH] 
+ 
+ [MATH] 
+
+ 
+ DTLZ4 
+ [MATH] 
+ [MATH] 
+
+ DTLZ5 
+ [MATH] 
+ [MATH] 
+
+ ZDT1 
+ [MATH] 
+ [MATH] 
+
+ ZDT2 
+ [MATH] 
+ [MATH] 
+
+ ZDT3 
+ [MATH] 
+ [MATH] 
+
+ Table 35: MO-Constrained Engineering: final best feasible hypervolume value at BO iteration 250, pooled over the 4 methods and seeds (sign matches the convergence figures). 
+
+ 
+ Problem 
+ mean [MATH] std 
+ median [MATH] 95%CI 
+
+ CRE22 
+
+ 
+ [MATH] 
+ 
+ [MATH] 
+
+ 
+ 
+ [MATH] 
+ 
+ [MATH] 
+
+ 
+ CRE23 
+ [MATH] 
+ [MATH] 
+
+ CRE24 
+
+ 
+ [MATH] 
+ 
+ [MATH] 
+
+ 
+ 
+ [MATH] 
+ 
+ [MATH] 
+
+ 
+ CRE25 
+ [MATH] 
+ [MATH] 
+
+ CRE31 
+ [MATH] 
+ [MATH] 
+
+ CRE32 
+
+ 
+ [MATH] 
+ 
+ [MATH] 
+
+ 
+ 
+ [MATH] 
+ 
+ [MATH] 
+
+ 
+ CRE51 
+
+ 
+ [MATH] 
+ 
+ [MATH] 
+
+ 
+ 
+ [MATH] 
+ 
+ [MATH] 
+
+ 
+ CS1 
+ [MATH] 
+ [MATH] 
+
+ CS2 
+ [MATH] 
+ [MATH] 
+
+ CT1 
+ [MATH] 
+ [MATH] 
+
+ CT2 
+ [MATH] 
+ [MATH] 
+
+ CTS1 
+ [MATH] 
+ [MATH] 
+
+ CTS2 
+ [MATH] 
+ [MATH] 
+
+ CTSE1 
+ [MATH] 
+ [MATH] 
+
+ CTSE2 
+ [MATH] 
+ [MATH] 
+
+ CTSEI1 
+ [MATH] 
+ [MATH] 
+
+ CTSEI2 
+ [MATH] 
+ [MATH] 
+
+ Table 36: MO-Constrained Synthetic: final best feasible hypervolume value at BO iteration 250, pooled over the 4 methods and seeds (sign matches the convergence figures). 
+
+ 
+ Problem 
+ mean [MATH] std 
+ median [MATH] 95%CI 
+
+ C2DTLZ2 
+ [MATH] 
+ [MATH] 
+
+ CONSTR 
+ [MATH] 
+ [MATH] 
+
+ ConstrainedBraninCurrin 
+ [MATH] 
+ [MATH] 
+
+ MW1 
+ [MATH] 
+ [MATH] 
+
+ MW3 
+ [MATH] 
+ [MATH] 
+
+ MW7 
+ [MATH] 
+ [MATH] 
+
+ OSY 
+ [MATH] 
+ [MATH] 
+
+ 
+
+ 
+
+## I.3 Convergence Plot
+
+ 
+ Figures 17 [MATH] 32 show the
+per-problem convergence of the campaign, one panel per problem, grouped by
+optimization class and domain. Single-objective panels track the best
+objective value found so far in the minimization convention, so lower is
+better; multi-objective panels track the best dominated hypervolume of the
+evaluated points under the problem’s fixed reference point, so higher is
+better. The constrained classes plot feasible values only. Solid lines are
+the median over the [MATH] seeds, and shaded bands are [MATH] confidence
+intervals.
+
+ 
+ Figure 17: Per-problem optimization convergence plot of SO-Unconstrained Engineering problems (1). 
+
+ Figure 18: Per-problem optimization convergence plot of SO-Unconstrained Engineering problems (2). 
+
+ Figure 19: Per-problem optimization convergence plot of SO-Unconstrained Engineering problems (3). 
+
+ Figure 20: Per-problem optimization convergence plot of SO-Unconstrained HPO problems. 
+
+ Figure 21: Per-problem optimization convergence plot of SO-Unconstrained HPO problems. 
+
+ Figure 22: Per-problem optimization convergence plot of SO-Unconstrained Synthetics problems. 
+
+ Figure 23: Per-problem optimization convergence plot of SO-Constrained Engineering problems. 
+
+ Figure 24: Per-problem optimization convergence plot of SO-Constrained Engineering problems. 
+
+ Figure 25: Per-problem optimization convergence plot of SO-Constrained Synthetics problems. 
+
+ Figure 26: Per-problem optimization convergence plot of MO-Unconstrained Engineering problems. 
+
+ Figure 27: Per-problem optimization convergence plot of MO-Unconstrained Synthetic problems. 
+
+ Figure 28: Per-problem optimization convergence plot of MO-Constrained Engineering problems. 
+
+ Figure 29: Per-problem optimization convergence plot of MO-Constrained Synthetic problems. 
+
+ Figure 30: Per-problem optimization convergence plot of SO-Mixed-Variable Engineering problems. 
+
+ Figure 31: Per-problem optimization convergence plot of SO-Mixed-Variable HPO problems. 
+
+ Figure 32: Per-problem optimization convergence plot of SO-Mixed-Variable Synthetic problems.

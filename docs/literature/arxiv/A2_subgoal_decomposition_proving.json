@@ -1,0 +1,391 @@
+{
+ "query": "abs:\"subgoal\" AND abs:\"theorem proving\" AND abs:\"language model\"",
+ "hits": [
+  {
+   "id": "2408.11172v1",
+   "title": "SubgoalXL: Subgoal-based Expert Learning for Theorem Proving",
+   "abstract": "Formal theorem proving, a field at the intersection of mathematics and computer science, has seen renewed interest with advancements in large language models (LLMs). This paper introduces SubgoalXL, a novel approach that synergizes subgoal-based proofs with expert learning to enhance LLMs' capabilities in formal theorem proving within the Isabelle environment. SubgoalXL addresses two critical challenges: the scarcity of specialized mathematics and theorem-proving data, and the need for improved multi-step reasoning abilities in LLMs. By optimizing data efficiency and employing subgoal-level supervision, SubgoalXL extracts richer information from limited human-generated proofs. The framework integrates subgoal-oriented proof strategies with an expert learning system, iteratively refining formal statement, proof, and subgoal generators. Leveraging the Isabelle environment's advantages in subgoal-based proofs, SubgoalXL achieves a new state-of-the-art performance of 56.1\\% in Isabelle on the standard miniF2F dataset, marking an absolute improvement of 4.9\\%. Notably, SubgoalXL successfully solves 41 AMC12, 9 AIME, and 3 IMO problems from miniF2F. These results underscore the effectiveness of maximizing limited data utility and employing targeted guidance for complex reasoning in formal theorem proving, contributing to the ongoing advancement of AI reasoning capabilities. The implementation is available at \\url{https://github.com/zhaoxlpku/SubgoalXL}.",
+   "published": "2024-08-20",
+   "updated": "2024-08-20",
+   "authors": [
+    "Xueliang Zhao",
+    "Lin Zheng",
+    "Haige Bo",
+    "Changran Hu",
+    "Urmish Thakker",
+    "Lingpeng Kong"
+   ],
+   "primary_category": "cs.LG",
+   "categories": [
+    "cs.LG",
+    "cs.AI",
+    "cs.CL",
+    "cs.LO"
+   ],
+   "url": "https://arxiv.org/abs/2408.11172v1",
+   "pdf": "https://arxiv.org/pdf/2408.11172v1",
+   "comment": ""
+  },
+  {
+   "id": "2504.21801v2",
+   "title": "DeepSeek-Prover-V2: Advancing Formal Mathematical Reasoning via Reinforcement Learning for Subgoal Decomposition",
+   "abstract": "We introduce DeepSeek-Prover-V2, an open-source large language model designed for formal theorem proving in Lean 4, with initialization data collected through a recursive theorem proving pipeline powered by DeepSeek-V3. The cold-start training procedure begins by prompting DeepSeek-V3 to decompose complex problems into a series of subgoals. The proofs of resolved subgoals are synthesized into a chain-of-thought process, combined with DeepSeek-V3's step-by-step reasoning, to create an initial cold start for reinforcement learning. This process enables us to integrate both informal and formal mathematical reasoning into a unified model. The resulting model, DeepSeek-Prover-V2-671B, achieves state-of-the-art performance in neural theorem proving, reaching 88.9% pass ratio on the MiniF2F-test and solving 49 out of 658 problems from PutnamBench. In addition to standard benchmarks, we introduce ProverBench, a collection of 325 formalized problems, to enrich our evaluation, including 15 selected problems from the recent AIME competitions (years 24-25). Further evaluation on these 15 AIME problems shows that the model successfully solves 6 of them. In comparison, DeepSeek-V3 solves 8 of these problems using majority voting, highlighting that the gap between formal and informal mathematical reasoning in large language models is substantially narrowing.",
+   "published": "2025-04-30",
+   "updated": "2025-07-18",
+   "authors": [
+    "Z. Z. Ren",
+    "Zhihong Shao",
+    "Junxiao Song",
+    "Huajian Xin",
+    "Haocheng Wang",
+    "Wanjia Zhao",
+    "Liyue Zhang",
+    "Zhe Fu",
+    "Qihao Zhu",
+    "Dejian Yang",
+    "Z. F. Wu",
+    "Zhibin Gou",
+    "Shirong Ma",
+    "Hongxuan Tang",
+    "Yuxuan Liu",
+    "Wenjun Gao",
+    "Daya Guo",
+    "Chong Ruan"
+   ],
+   "primary_category": "cs.CL",
+   "categories": [
+    "cs.CL",
+    "cs.AI"
+   ],
+   "url": "https://arxiv.org/abs/2504.21801v2",
+   "pdf": "https://arxiv.org/pdf/2504.21801v2",
+   "comment": ""
+  },
+  {
+   "id": "2510.02335v1",
+   "title": "FormalML: A Benchmark for Evaluating Formal Subgoal Completion in Machine Learning Theory",
+   "abstract": "Large language models (LLMs) have recently demonstrated remarkable progress in formal theorem proving. Yet their ability to serve as practical assistants for mathematicians, filling in missing steps within complex proofs, remains underexplored. We identify this challenge as the task of subgoal completion, where an LLM must discharge short but nontrivial proof obligations left unresolved in a human-provided sketch. To study this problem, we introduce FormalML, a Lean 4 benchmark built from foundational theories of machine learning. Using a translation tactic that converts procedural proofs into declarative form, we extract 4937 problems spanning optimization and probability inequalities, with varying levels of difficulty. FormalML is the first subgoal completion benchmark to combine premise retrieval and complex research-level contexts. Evaluation of state-of-the-art provers highlights persistent limitations in accuracy and efficiency, underscoring the need for more capable LLM-based theorem provers for effective subgoal completion,",
+   "published": "2025-09-26",
+   "updated": "2025-09-26",
+   "authors": [
+    "Xiao-Wen Yang",
+    "Zihao Zhang",
+    "Jianuo Cao",
+    "Zhi Zhou",
+    "Zenan Li",
+    "Lan-Zhe Guo",
+    "Yuan Yao",
+    "Taolue Chen",
+    "Yu-Feng Li",
+    "Xiaoxing Ma"
+   ],
+   "primary_category": "cs.CL",
+   "categories": [
+    "cs.CL",
+    "cs.AI"
+   ],
+   "url": "https://arxiv.org/abs/2510.02335v1",
+   "pdf": "https://arxiv.org/pdf/2510.02335v1",
+   "comment": ""
+  },
+  {
+   "id": "2305.16366v1",
+   "title": "Decomposing the Enigma: Subgoal-based Demonstration Learning for Formal Theorem Proving",
+   "abstract": "Large language models~(LLMs) present an intriguing avenue of exploration in the domain of formal theorem proving. Nonetheless, the full utilization of these models, particularly in terms of demonstration formatting and organization, remains an underexplored area. In an endeavor to enhance the efficacy of LLMs, we introduce a subgoal-based demonstration learning framework, consisting of two primary elements: Firstly, drawing upon the insights of subgoal learning from the domains of reinforcement learning and robotics, we propose the construction of distinct subgoals for each demonstration example and refine these subgoals in accordance with the pertinent theories of subgoal learning. Secondly, we build upon recent advances in diffusion models to predict the optimal organization, simultaneously addressing two intricate issues that persist within the domain of demonstration organization: subset selection and order determination. Through the integration of subgoal-based learning methodologies, we have successfully increased the prevailing proof accuracy from 38.9\\% to 44.3\\% on the miniF2F benchmark. Furthermore, the adoption of diffusion models for demonstration organization can lead to an additional enhancement in accuracy to 45.5\\%, or a $5\\times$ improvement in sampling efficiency compared with the long-standing state-of-the-art method. Our code is available at \\url{https://github.com/HKUNLP/subgoal-theorem-prover}.",
+   "published": "2023-05-25",
+   "updated": "2023-05-25",
+   "authors": [
+    "Xueliang Zhao",
+    "Wenda Li",
+    "Lingpeng Kong"
+   ],
+   "primary_category": "cs.CL",
+   "categories": [
+    "cs.CL",
+    "cs.AI",
+    "cs.LG",
+    "cs.LO"
+   ],
+   "url": "https://arxiv.org/abs/2305.16366v1",
+   "pdf": "https://arxiv.org/pdf/2305.16366v1",
+   "comment": ""
+  },
+  {
+   "id": "2507.02726v1",
+   "title": "Bourbaki: Self-Generated and Goal-Conditioned MDPs for Theorem Proving",
+   "abstract": "Reasoning remains a challenging task for large language models (LLMs), especially within the logically constrained environment of automated theorem proving (ATP), due to sparse rewards and the vast scale of proofs. These challenges are amplified in benchmarks like PutnamBench, which contains university-level problems requiring complex, multi-step reasoning. To address this, we introduce self-generated goal-conditioned MDPs (sG-MDPs), a new framework in which agents generate and pursue their subgoals based on the evolving proof state. Given this more structured generation of goals, the resulting problem becomes more amenable to search. We then apply Monte Carlo Tree Search (MCTS)-like algorithms to solve the sG-MDP, instantiating our approach in Bourbaki (7B), a modular system that can ensemble multiple 7B LLMs for subgoal generation and tactic synthesis. On PutnamBench, Bourbaki (7B) solves 26 problems, achieving new state-of-the-art results with models at this scale.",
+   "published": "2025-07-03",
+   "updated": "2025-07-03",
+   "authors": [
+    "Matthieu Zimmer",
+    "Xiaotong Ji",
+    "Rasul Tutunov",
+    "Anthony Bordg",
+    "Jun Wang",
+    "Haitham Bou Ammar"
+   ],
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI",
+    "cs.LG"
+   ],
+   "url": "https://arxiv.org/abs/2507.02726v1",
+   "pdf": "https://arxiv.org/pdf/2507.02726v1",
+   "comment": ""
+  },
+  {
+   "id": "2608.28639v1",
+   "title": "Reward-Oracle MCTS for Formal Theorem Proving: Sample-Efficient Search and the Need for Kernel-Level Proof Auditing",
+   "abstract": "Formal theorem proving with large language models remains challenging due to the difficulty of navigating large proof search spaces efficiently. Existing tree search approaches either feed verbose compiler error messages directly into the generation context, increasing context usage during search, or employ non-standard evaluation protocols that prevent direct comparison with established baselines. We propose a three-role Monte Carlo Tree Search (MCTS) framework that treats the Lean 4 compiler purely as a reward oracle using compiler output as a scalar signal for UCB-guided tree updates without feeding error content into the generation context. Our framework decomposes proof search into three roles: a generator for proof attempts, a decomposer for subgoal decomposition, and a critic for subgoal quality evaluation. We evaluate across 4 benchmarks spanning competition mathematics and physics (MiniF2F, PutnamBench, LeanPhysBench, PhysLeandata) with three prover models at standard proof attempt budgets (PAB@16 to PAB@256). Our method achieves 87.1\\% on MiniF2F with Goedel-Prover-V2-8B at PAB@256 and solves 26/659 PutnamBench problems at PAB@32 surpassing base sampling 18/659 at same proof attempt budget. Through an exhaustive axiom-level audit of every compiled proof, we further identify reward hacking in search-based theorem proving: DeepSeek-Prover-V2-7B produces proofs on PutnamBench that pass compilation and the standard sorry-token scan while depending on sorryAx. The audit removes 4 and 8 such proofs from whole-proof sampling at PAB@32 and PAB@128, and 11 and 19 from MCTS. We do not attribute these counts to the search procedure; we report them to establish that kernel-level auditing is necessary for compiler-verified evaluation.",
+   "published": "2026-08-11",
+   "updated": "2026-08-11",
+   "authors": [
+    "Bodla Krishna Vamshi",
+    "Haizhao Yang"
+   ],
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI",
+    "cs.LG",
+    "cs.LO"
+   ],
+   "url": "https://arxiv.org/abs/2608.28639v1",
+   "pdf": "https://arxiv.org/pdf/2608.28639v1",
+   "comment": ""
+  },
+  {
+   "id": "2506.19923v5",
+   "title": "Prover Agent: An Agent-Based Framework for Formal Mathematical Proofs",
+   "abstract": "We present Prover Agent, a novel AI agent for automated theorem proving that integrates large language models (LLMs) with a formal proof assistant, Lean. Prover Agent coordinates an informal reasoning LLM, a formal prover model, and feedback from Lean while also generating auxiliary lemmas. These auxiliary lemmas are not limited to subgoals in the formal proof but can also include special cases or potentially useful facts derived from the assumptions, which help in discovering a viable proof strategy. It achieves an 88.1% success rate on MiniF2F and solves 25 problems on the PutnamBench with a smaller sample budget than previous approaches, establishing a new state-of-the-art on both benchmarks among methods using small language models (SLMs). We also present theoretical analyses and case studies that illustrate how these generated lemmas contribute to solving challenging problems. Our code is publicly available at https://github.com/kAIto47802/Prover-Agent.",
+   "published": "2025-06-24",
+   "updated": "2026-02-17",
+   "authors": [
+    "Kaito Baba",
+    "Chaoran Liu",
+    "Shuhei Kurita",
+    "Akiyoshi Sannai"
+   ],
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI",
+    "cs.LG"
+   ],
+   "url": "https://arxiv.org/abs/2506.19923v5",
+   "pdf": "https://arxiv.org/pdf/2506.19923v5",
+   "comment": "49 pages, 4 figures"
+  },
+  {
+   "id": "2604.19558v1",
+   "title": "On Reasoning-Centric LLM-based Automated Theorem Proving",
+   "abstract": "Automated theorem proving is fundamental to formal methods, and the recent trend is to integrate large language models (LLMs) and proof assistants to form effective proof agents. While existing proof agents show promising performance, they inadequately leverage reasoning capabilities of modern LLMs in high-level planning and self-critique. We argue that proof agents should not merely generate tactics but also reason strategically about proof plans and critically evaluate their own proposals. This paper introduces ReCent-Prover, a reasoning-centric LLM-based proof agent for Rocq that addresses two critical limitations in current systems. First, we present validation with reflection, enabling LLMs to scrutinize their generated tactics and synthesize failure summaries when reflection identifies potential errors, filtering out potentially misapplied tactics earlier. Second, we propose retrieval with planning, which conditions retrieval on LLM-generated proof plans rather than subgoal similarity, retrieving lemmas and proofs that align with the anticipated proof strategy. Both techniques increase the number of invocations of LLMs. However, when evaluated on the CoqStoq benchmark, even under the same budget of LLM invocations, ReCent-Prover achieves a 22.58% relative improvement in the number of proved theorems over the previous state-of-the-art, demonstrating that our reasoning-centric design significantly enhances automated theorem proving capabilities.",
+   "published": "2026-04-21",
+   "updated": "2026-04-21",
+   "authors": [
+    "Yican Sun",
+    "Chengwei Shi",
+    "Hangzhou Lyu",
+    "Yingfei Xiong"
+   ],
+   "primary_category": "cs.SE",
+   "categories": [
+    "cs.SE"
+   ],
+   "url": "https://arxiv.org/abs/2604.19558v1",
+   "pdf": "https://arxiv.org/pdf/2604.19558v1",
+   "comment": ""
+  },
+  {
+   "id": "2603.29088v2",
+   "title": "WybeCoder: Verified Imperative Code Generation",
+   "abstract": "Recent progress in large language models (LLMs) has substantially advanced automatic code generation and formal theorem proving, yet software verification has not seen comparable gains. To address this gap, we propose WybeCoder, an agentic code verification framework that enables prove-as-you-generate development, in which code, invariants, and proofs co-evolve. WybeCoder builds on a recent framework that combines automatic verification condition generation and SMT solving with interactive proofs in Lean. To enable systematic evaluation, we translate two benchmarks for functional verification in Lean, Verina and Clever, into equivalent imperative code specifications. On complex algorithms such as Heapsort, we observe consistent performance improvements as we scale our approach, synthesizing dozens of valid invariants and dispatching dozens of subgoals, ultimately producing hundreds of lines of verified code and overcoming plateaus reported in previous work. Our best system solves 74% of Verina tasks and 62% of Clever tasks at moderate compute budgets, substantially surpassing previous evaluations and paving the way for the automated construction of large-scale datasets of verified imperative code.",
+   "published": "2026-03-31",
+   "updated": "2026-04-14",
+   "authors": [
+    "Fabian Gloeckle",
+    "Mantas Baksys",
+    "Darius Feher",
+    "Kunhao Zheng",
+    "Amaury Hayat",
+    "Sean B. Holden",
+    "Gabriel Synnaeve",
+    "Peter O'Hearn"
+   ],
+   "primary_category": "cs.SE",
+   "categories": [
+    "cs.SE",
+    "cs.AI"
+   ],
+   "url": "https://arxiv.org/abs/2603.29088v2",
+   "pdf": "https://arxiv.org/pdf/2603.29088v2",
+   "comment": ""
+  },
+  {
+   "id": "2603.24465v2",
+   "title": "MechMath: Sorrifier-Driven Formal Decomposition Workflow for Automated Theorem Proving",
+   "abstract": "Recent advances in large language models (LLMs) and LLM-based agents have substantially improved the capabilities of automated theorem proving. However, for problems that require complex mathematical reasoning, current systems seldom succeed in their initial attempt, necessitating iterative adjustments to their proof strategies. Existing approaches for handling failed attempts typically either iteratively fix errors within the proof or discard the entire proof and regenerate it from scratch. The former leads to progressively longer contexts, which degrade the model's ability to attend to the remaining unresolved subproblems, while the latter is inefficient, as it may abandon mostly correct reasoning due to localized errors. To address this dilemma, we present MechMath, an agent system centered on a Sorrifier-driven formal decomposition paradigm. By leveraging the sorry placeholder in Lean to precisely isolate unresolved subgoals while preserving the surrounding verified proof structure, MechMath extracts each failed subproblem into a clean, self-contained context and resolves it independently. This avoids both the waste of full regeneration and the excessive context length induced by repeated repairs. Experimental results on challenging mathematical competition benchmarks, including IMO 2025, Putnam 2025, miniF2F, and a subset of ProverBench, demonstrate that our agent achieves significant advantages in proving efficiency.",
+   "published": "2026-03-25",
+   "updated": "2026-08-16",
+   "authors": [
+    "Ruichen Qiu",
+    "Yichuan Cao",
+    "Junqi Liu",
+    "Dakai Guo",
+    "Xiao-Shan Gao",
+    "Lihong Zhi",
+    "Ruyong Feng"
+   ],
+   "primary_category": "cs.CL",
+   "categories": [
+    "cs.CL"
+   ],
+   "url": "https://arxiv.org/abs/2603.24465v2",
+   "pdf": "https://arxiv.org/pdf/2603.24465v2",
+   "comment": "Published as a conference paper at COLM 2026"
+  },
+  {
+   "id": "2309.15806v4",
+   "title": "Lyra: Orchestrating Dual Correction in Automated Theorem Proving",
+   "abstract": "Large Language Models (LLMs) present an intriguing avenue for exploration in the field of formal theorem proving. Nevertheless, their full potential, particularly concerning the mitigation of hallucinations and refinement through prover error messages, remains an area that has yet to be thoroughly investigated. To enhance the effectiveness of LLMs in the field, we introduce the Lyra, a new framework that employs two distinct correction mechanisms: Tool Correction (TC) and Conjecture Correction (CC). To implement Tool Correction in the post-processing of formal proofs, we leverage prior knowledge to utilize predefined prover tools (e.g., Sledgehammer) for guiding the replacement of incorrect tools. Tool Correction significantly contributes to mitigating hallucinations, thereby improving the overall accuracy of the proof. In addition, we introduce Conjecture Correction, an error feedback mechanism designed to interact with prover to refine formal proof conjectures with prover error messages. Compared to the previous refinement framework, the proposed Conjecture Correction refines generation with instruction but does not collect paired (generation, error & refinement) prompts. Our method has achieved state-of-the-art (SOTA) performance on both miniF2F validation (48.0% -> 55.3%) and test (45.5% -> 51.2%). We also present 3 IMO problems solved by Lyra. We believe Tool Correction (post-process for hallucination mitigation) and Conjecture Correction (subgoal adjustment from interaction with environment) could provide a promising avenue for future research in this field.",
+   "published": "2023-09-27",
+   "updated": "2024-08-24",
+   "authors": [
+    "Chuanyang Zheng",
+    "Haiming Wang",
+    "Enze Xie",
+    "Zhengying Liu",
+    "Jiankai Sun",
+    "Huajian Xin",
+    "Jianhao Shen",
+    "Zhenguo Li",
+    "Yu Li"
+   ],
+   "primary_category": "cs.CL",
+   "categories": [
+    "cs.CL",
+    "cs.AI"
+   ],
+   "url": "https://arxiv.org/abs/2309.15806v4",
+   "pdf": "https://arxiv.org/pdf/2309.15806v4",
+   "comment": "Accepted to TMLR: https://openreview.net/forum?id=9Z0yB8rmQ2"
+  },
+  {
+   "id": "2405.14414v1",
+   "title": "Proving Theorems Recursively",
+   "abstract": "Recent advances in automated theorem proving leverages language models to explore expanded search spaces by step-by-step proof generation. However, such approaches are usually based on short-sighted heuristics (e.g., log probability or value function scores) that potentially lead to suboptimal or even distracting subgoals, preventing us from finding longer proofs. To address this challenge, we propose POETRY (PrOvE Theorems RecursivelY), which proves theorems in a recursive, level-by-level manner in the Isabelle theorem prover. Unlike previous step-by-step methods, POETRY searches for a verifiable sketch of the proof at each level and focuses on solving the current level's theorem or conjecture. Detailed proofs of intermediate conjectures within the sketch are temporarily replaced by a placeholder tactic called sorry, deferring their proofs to subsequent levels. This approach allows the theorem to be tackled incrementally by outlining the overall theorem at the first level and then solving the intermediate conjectures at deeper levels. Experiments are conducted on the miniF2F and PISA datasets and significant performance gains are observed in our POETRY approach over state-of-the-art methods. POETRY on miniF2F achieves an average proving success rate improvement of 5.1%. Moreover, we observe a substantial increase in the maximum proof length found by POETRY, from 10 to 26.",
+   "published": "2024-05-23",
+   "updated": "2024-05-23",
+   "authors": [
+    "Haiming Wang",
+    "Huajian Xin",
+    "Zhengying Liu",
+    "Wenda Li",
+    "Yinya Huang",
+    "Jianqiao Lu",
+    "Zhicheng Yang",
+    "Jing Tang",
+    "Jian Yin",
+    "Zhenguo Li",
+    "Xiaodan Liang"
+   ],
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI"
+   ],
+   "url": "https://arxiv.org/abs/2405.14414v1",
+   "pdf": "https://arxiv.org/pdf/2405.14414v1",
+   "comment": "21 pages, 5 figures, 3 tables"
+  },
+  {
+   "id": "2507.06804v1",
+   "title": "Towards Solving More Challenging IMO Problems via Decoupled Reasoning and Proving",
+   "abstract": "Automated Theorem Proving (ATP) in formal languages is a foundational challenge for AI. While Large Language Models (LLMs) have driven remarkable progress, a significant gap remains between their powerful informal reasoning capabilities and their weak formal proving performance. Recent studies show that the informal accuracy exceeds 80% while formal success remains below 8% on benchmarks like PutnamBench. We argue this gap persists because current state-of-the-art provers, by tightly coupling reasoning and proving, are trained with paradigms that inadvertently punish deep reasoning in favor of shallow, tactic-based strategies. To bridge this fundamental gap, we propose a novel framework that decouples high-level reasoning from low-level proof generation. Our approach utilizes two distinct, specialized models: a powerful, general-purpose Reasoner to generate diverse, strategic subgoal lemmas, and an efficient Prover to rigorously verify them. This modular design liberates the model's full reasoning potential and bypasses the pitfalls of end-to-end training. We evaluate our method on a challenging set of post-2000 IMO problems, a problem set on which no prior open-source prover has reported success. Our decoupled framework successfully solves 5 of these problems, demonstrating a significant step towards automated reasoning on exceptionally difficult mathematical challenges. To foster future research, we release our full dataset of generated and verified lemmas for a wide range of IMO problems, available at https://tencent-imo.github.io/ .",
+   "published": "2025-07-07",
+   "updated": "2025-07-07",
+   "authors": [
+    "Zhenwen Liang",
+    "Linfeng Song",
+    "Yang Li",
+    "Tao Yang",
+    "Feng Zhang",
+    "Haitao Mi",
+    "Dong Yu"
+   ],
+   "primary_category": "cs.LO",
+   "categories": [
+    "cs.LO",
+    "cs.AI"
+   ],
+   "url": "https://arxiv.org/abs/2507.06804v1",
+   "pdf": "https://arxiv.org/pdf/2507.06804v1",
+   "comment": "Work in progress"
+  },
+  {
+   "id": "2603.19715v2",
+   "title": "Neuro-Symbolic Proof Generation for Scaling Systems Software Verification",
+   "abstract": "Formal verification via interactive theorem proving is increasingly used to ensure the correctness of critical systems, yet constructing large proof scripts remains highly manual and limits scalability. Advances in large language models (LLMs), especially in mathematical reasoning, make their integration into software verification increasingly promising. This paper introduces a neuro-symbolic proof generation framework designed to automate proof search for system-level verification projects. The framework performs a best-first tree search over proof states, repeatedly querying an LLM for the next candidate proof step. On the neural side, we fine-tune LLMs using datasets of proof state-step pairs; on the symbolic side, we incorporate a range of ITP tools to repair rejected steps, filter and rank proof states, and automatically discharge subgoals when search progress stalls. This synergy enables data-efficient LLM adaptation and semantics-informed pruning of the search space. We implement the framework on a new Isabelle REPL that exposes fine-grained proof states and automation tools, and evaluate it on the FVEL seL4 benchmark and additional Isabelle developments. On seL4, the system proves up to 77.6\\% of the theorems, substantially surpassing previous LLM-based approaches and standalone Sledgehammer, while solving significantly more multi-step proofs. Results across further Isabelle benchmarks demonstrate strong generalization, indicating a viable path toward scalable automated software verification.",
+   "published": "2026-03-20",
+   "updated": "2026-05-07",
+   "authors": [
+    "Baoding He",
+    "Zenan Li",
+    "Wei Sun",
+    "Yuan Yao",
+    "Taolue Chen",
+    "Xiaoxing Ma",
+    "Zhendong Su"
+   ],
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI"
+   ],
+   "url": "https://arxiv.org/abs/2603.19715v2",
+   "pdf": "https://arxiv.org/pdf/2603.19715v2",
+   "comment": "Published as a conference paper at OSDI'2026, and code is available at \\url{https://github.com/SoaringE/seL4-proof-search}"
+  },
+  {
+   "id": "2509.06493v2",
+   "title": "Scaling up Multi-Turn Off-Policy RL and Multi-Agent Tree Search for LLM Step-Provers",
+   "abstract": "The integration of Large Language Models (LLMs) into automated theorem proving has shown immense promise, yet is fundamentally constrained by challenges in scaling up both training-time reinforcement learning (RL) and inference-time compute. This paper introduces \\texttt{BFS-Prover-V2}, a system designed to address this dual scaling problem. We present two primary innovations. The first is a novel multi-turn off-policy RL framework for continually improving the performance of LLM step-prover at training time. This framework, inspired by the principles of AlphaZero, utilizes a multi-stage expert iteration pipeline featuring adaptive tactic-level data filtering and periodic retraining to surmount the performance plateaus that typically curtail long-term RL in LLM-based agents. The second innovation is a planner-enhanced multi-agent search architecture that scales reasoning capabilities at inference time. This architecture employs a general reasoning model as a high-level planner to iteratively decompose complex theorems into a sequence of simpler subgoals. This hierarchical approach substantially reduces the search space, enabling a team of parallel prover agents to collaborate efficiently by leveraging a shared proof cache. We demonstrate that this dual approach to scaling yields state-of-the-art results on established formal mathematics benchmarks. \\texttt{BFS-Prover-V2} achieves 95.08\\% and 41.4\\% on the MiniF2F and ProofNet test sets respectively. While demonstrated in the domain of formal mathematics, the RL and inference techniques presented in this work are of broader interest and may be applied to other domains requiring long-horizon multi-turn reasoning and complex search.",
+   "published": "2025-09-08",
+   "updated": "2025-10-09",
+   "authors": [
+    "Ran Xin",
+    "Zeyu Zheng",
+    "Yanchen Nie",
+    "Kun Yuan",
+    "Xia Xiao"
+   ],
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI"
+   ],
+   "url": "https://arxiv.org/abs/2509.06493v2",
+   "pdf": "https://arxiv.org/pdf/2509.06493v2",
+   "comment": ""
+  },
+  {
+   "id": "2509.22819v2",
+   "title": "Hilbert: Recursively Building Formal Proofs with Informal Reasoning",
+   "abstract": "Large Language Models (LLMs) demonstrate impressive mathematical reasoning abilities, but their solutions frequently contain errors that cannot be automatically checked. Formal theorem proving systems such as Lean 4 offer automated verification with complete accuracy, motivating recent efforts to build specialized prover LLMs that generate verifiable proofs in formal languages. However, a significant gap remains: current prover LLMs solve substantially fewer problems than general-purpose LLMs operating in natural language. We introduce Hilbert, an agentic framework that bridges this gap by combining the complementary strengths of informal reasoning and formal verification. Our system orchestrates four components: an informal LLM that excels at mathematical reasoning, a specialized prover LLM optimized for Lean 4 tactics, a formal verifier, and a semantic theorem retriever. Given a problem that the prover is unable to solve, Hilbert employs recursive decomposition to split the problem into subgoals that it solves with the prover or reasoner LLM. It leverages verifier feedback to refine incorrect proofs as necessary. Experimental results demonstrate that Hilbert substantially outperforms existing approaches on key benchmarks, achieving 99.2\\% on miniF2F, 6.6\\% points above the best publicly available method. Hilbert achieves the \\textbf{strongest known result} from a publicly available model on PutnamBench. It solves 462/660 problems (70.0\\%), outperforming proprietary approaches like SeedProver (50.4\\%) and achieving a 422\\% improvement over the best publicly available baseline. Thus, Hilbert effectively narrows the gap between informal reasoning and formal proof generation. Code is available at https://github.com/Rose-STL-Lab/ml-hilbert.",
+   "published": "2025-09-26",
+   "updated": "2026-03-16",
+   "authors": [
+    "Sumanth Varambally",
+    "Thomas Voice",
+    "Yanchao Sun",
+    "Zhifeng Chen",
+    "Rose Yu",
+    "Ke Ye"
+   ],
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI",
+    "cs.FL",
+    "cs.LG"
+   ],
+   "url": "https://arxiv.org/abs/2509.22819v2",
+   "pdf": "https://arxiv.org/pdf/2509.22819v2",
+   "comment": ""
+  }
+ ]
+}

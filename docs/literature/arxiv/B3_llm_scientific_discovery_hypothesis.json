@@ -1,0 +1,801 @@
+{
+ "query": "abs:\"hypothesis\" AND abs:\"large language model\" AND abs:\"scientific discovery\"",
+ "hits": [
+  {
+   "id": "2604.13699v1",
+   "title": "MIND: AI Co-Scientist for Material Research",
+   "abstract": "Large language models (LLMs) have enabled agentic AI systems for scientific discovery, but most approaches remain limited to textbased reasoning without automated experimental verification. We propose MIND, an LLM-driven framework for automated hypothesis validation in materials research. MIND organizes the scientific discovery process into hypothesis refinement, experimentation, and debate-based validation within a multi-agent pipeline. For experimental verification, the system integrates Machine Learning Interatomic Potentials, particularly SevenNet-Omni, enabling scalable in-silico experiments. We also provide a web-based user interface for automated hypothesis testing. The modular design allows additional experimental modules to be integrated, making the framework adaptable to broader scientific workflows. The code is available at: https://github.com/IMMS-Ewha/MIND, and a demonstration video at: https://youtu.be/lqiFe1OQzN4.",
+   "published": "2026-04-15",
+   "updated": "2026-04-15",
+   "authors": [
+    "Geonhee Ahn",
+    "Donghyun Lee",
+    "Hayoung Doo",
+    "Jonggeol Na",
+    "Hyunsoo Cho",
+    "Sookyung Kim"
+   ],
+   "primary_category": "cs.MA",
+   "categories": [
+    "cs.MA",
+    "cs.AI",
+    "cs.CE"
+   ],
+   "url": "https://arxiv.org/abs/2604.13699v1",
+   "pdf": "https://arxiv.org/pdf/2604.13699v1",
+   "comment": "4 pages, 3 figures. Under review for ECML PKDD 2026 Demonstration Track. Code available at https://github.com/IMMS-Ewha/MIND . Demo video available at https://youtu.be/lqiFe1OQzN4"
+  },
+  {
+   "id": "2510.09901v2",
+   "title": "Autonomous Agents for Scientific Discovery: Orchestrating Scientists, Language, Code, and Physics",
+   "abstract": "Computing has long served as a cornerstone of scientific discovery. Recently, a paradigm shift has emerged with the rise of large language models (LLMs), introducing autonomous systems, referred to as agents, that accelerate discovery across varying levels of autonomy. These language agents provide a flexible and versatile framework that orchestrates interactions with human scientists, natural language, computer language and code, and physics. This paper presents our view and vision of LLM-based scientific agents and their growing role in transforming the scientific discovery lifecycle, from hypothesis discovery, experimental design and execution, to result analysis and refinement. We critically examine current methodologies, emphasizing key innovations, practical achievements, and outstanding limitations. Additionally, we identify open research challenges and outline promising directions for building more robust, generalizable, and adaptive scientific agents. Our analysis highlights the transformative potential of autonomous agents to accelerate scientific discovery across diverse domains.",
+   "published": "2025-10-10",
+   "updated": "2026-04-06",
+   "authors": [
+    "Lianhao Zhou",
+    "Hongyi Ling",
+    "Cong Fu",
+    "Yepeng Huang",
+    "Michael Sun",
+    "Wendi Yu",
+    "Xiaoxuan Wang",
+    "Xiner Li",
+    "Xingyu Su",
+    "Junkai Zhang",
+    "Xiusi Chen",
+    "Chenxing Liang",
+    "Xiaofeng Qian",
+    "Heng Ji",
+    "Wei Wang",
+    "Marinka Zitnik",
+    "Shuiwang Ji"
+   ],
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI"
+   ],
+   "url": "https://arxiv.org/abs/2510.09901v2",
+   "pdf": "https://arxiv.org/pdf/2510.09901v2",
+   "comment": ""
+  },
+  {
+   "id": "2311.05965v1",
+   "title": "Large Language Models are Zero Shot Hypothesis Proposers",
+   "abstract": "Significant scientific discoveries have driven the progress of human civilisation. The explosion of scientific literature and data has created information barriers across disciplines that have slowed the pace of scientific discovery. Large Language Models (LLMs) hold a wealth of global and interdisciplinary knowledge that promises to break down these information barriers and foster a new wave of scientific discovery. However, the potential of LLMs for scientific discovery has not been formally explored. In this paper, we start from investigating whether LLMs can propose scientific hypotheses. To this end, we construct a dataset consist of background knowledge and hypothesis pairs from biomedical literature. The dataset is divided into training, seen, and unseen test sets based on the publication date to control visibility. We subsequently evaluate the hypothesis generation capabilities of various top-tier instructed models in zero-shot, few-shot, and fine-tuning settings, including both closed and open-source LLMs. Additionally, we introduce an LLM-based multi-agent cooperative framework with different role designs and external tools to enhance the capabilities related to generating hypotheses. We also design four metrics through a comprehensive review to evaluate the generated hypotheses for both ChatGPT-based and human evaluations. Through experiments and analyses, we arrive at the following findings: 1) LLMs surprisingly generate untrained yet validated hypotheses from testing literature. 2) Increasing uncertainty facilitates candidate generation, potentially enhancing zero-shot hypothesis generation capabilities. These findings strongly support the potential of LLMs as catalysts for new scientific discoveries and guide further exploration.",
+   "published": "2023-11-10",
+   "updated": "2023-11-10",
+   "authors": [
+    "Biqing Qi",
+    "Kaiyan Zhang",
+    "Haoxiang Li",
+    "Kai Tian",
+    "Sihang Zeng",
+    "Zhang-Ren Chen",
+    "Bowen Zhou"
+   ],
+   "primary_category": "cs.CL",
+   "categories": [
+    "cs.CL"
+   ],
+   "url": "https://arxiv.org/abs/2311.05965v1",
+   "pdf": "https://arxiv.org/pdf/2311.05965v1",
+   "comment": "Instruction Workshop @ NeurIPS 2023"
+  },
+  {
+   "id": "2607.28990v1",
+   "title": "Scaling Scientific Discovery Environments for Turn-Level Agentic RL",
+   "abstract": "Large language model agents have shown promising capabilities in data-driven scientific discovery tasks, where an agent interacts with an execution environment and produces a statistical claim. Long-horizon scientific analysis remains constrained by the lack of process supervised environments over real-world scientific data. This paper introduces SciDisco, a scalable framework for training Scientific Discovery agents in process-verifiable environments. SciThèque compiles hypotheses, datasets, hidden evidence graphs, and verifiers into task environments where analytical progress can be checked during interaction. DAG-grounded trajectory synthesis uses these environments to construct verifier-filtered multi-turn demonstrations. DiscoPO then uses the environment as the source of training signal, assigning turn-level credit to actions that produce verifiable analytical evidence. Experiments show that SciDisco-14B reaches state-of-the-art on hypothesis-driven scientific data analysis benchmarks.",
+   "published": "2026-07-31",
+   "updated": "2026-07-31",
+   "authors": [
+    "Yucheng Xu",
+    "Keyi Zhang",
+    "Yuyang Yu",
+    "Min Zhang",
+    "Shiyuan Meng",
+    "Pei Chu",
+    "Zhongying Tu"
+   ],
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI"
+   ],
+   "url": "https://arxiv.org/abs/2607.28990v1",
+   "pdf": "https://arxiv.org/pdf/2607.28990v1",
+   "comment": ""
+  },
+  {
+   "id": "2504.05496v1",
+   "title": "A Survey on Hypothesis Generation for Scientific Discovery in the Era of Large Language Models",
+   "abstract": "Hypothesis generation is a fundamental step in scientific discovery, yet it is increasingly challenged by information overload and disciplinary fragmentation. Recent advances in Large Language Models (LLMs) have sparked growing interest in their potential to enhance and automate this process. This paper presents a comprehensive survey of hypothesis generation with LLMs by (i) reviewing existing methods, from simple prompting techniques to more complex frameworks, and proposing a taxonomy that categorizes these approaches; (ii) analyzing techniques for improving hypothesis quality, such as novelty boosting and structured reasoning; (iii) providing an overview of evaluation strategies; and (iv) discussing key challenges and future directions, including multimodal integration and human-AI collaboration. Our survey aims to serve as a reference for researchers exploring LLMs for hypothesis generation.",
+   "published": "2025-04-07",
+   "updated": "2025-04-07",
+   "authors": [
+    "Atilla Kaan Alkan",
+    "Shashwat Sourav",
+    "Maja Jablonska",
+    "Simone Astarita",
+    "Rishabh Chakrabarty",
+    "Nikhil Garuda",
+    "Pranav Khetarpal",
+    "Maciej Pióro",
+    "Dimitrios Tanoglidis",
+    "Kartheik G. Iyer",
+    "Mugdha S. Polimera",
+    "Michael J. Smith",
+    "Tirthankar Ghosal",
+    "Marc Huertas-Company",
+    "Sandor Kruk",
+    "Kevin Schawinski",
+    "Ioana Ciucă"
+   ],
+   "primary_category": "cs.CL",
+   "categories": [
+    "cs.CL"
+   ],
+   "url": "https://arxiv.org/abs/2504.05496v1",
+   "pdf": "https://arxiv.org/pdf/2504.05496v1",
+   "comment": "9 pages (+2 pages of references), 2 figures"
+  },
+  {
+   "id": "2609.35315v1",
+   "title": "Collaborative Principle Evolution via Evidence Transfer for Scientific Discovery",
+   "abstract": "Large Language Model (LLM)-based agents promise to automate scientific discovery, yet exploring the vast hypothesis space remains costly. Existing principle-evolution methods accelerate this loop, but operate sequentially, which caps exploration breadth and wastes wall-clock time on challenging problems. To address this, we formulate collaborative scientific discovery as evidence transfer between parallel principle-evolution branches. We present COEVOLVE, which realizes this transfer through a coordination core over parallel branches. By integrating value-of-information-gated routing and context-discounted likelihood injection, COEVOLVE enables branches to collaborate through shared measurements while keeping their principle posteriors separate. Across six scientific-discovery tasks under a matched evaluation budget, COEVOLVE attains a mean solution quality of 66.5% versus 57.0% for single-branch principle evolution, with a 1.80x mean wall-clock speedup on the GPT-5.6-Terra backbone; on five auto-research tasks delegated to an autonomous research harness, it is the only arm whose mean stays above the published SOTA anchor on every task. These results establish when evidence sharing accelerates parallel discovery and when transfer safeguards are necessary to limit negative or inert transfers",
+   "published": "2026-09-28",
+   "updated": "2026-09-28",
+   "authors": [
+    "Yingming Pu",
+    "Hongyu Chen",
+    "Tao Lin"
+   ],
+   "primary_category": "cs.LG",
+   "categories": [
+    "cs.LG"
+   ],
+   "url": "https://arxiv.org/abs/2609.35315v1",
+   "pdf": "https://arxiv.org/pdf/2609.35315v1",
+   "comment": ""
+  },
+  {
+   "id": "2512.15567v2",
+   "title": "Evaluating Large Language Models in Scientific Discovery",
+   "abstract": "Large language models (LLMs) are increasingly applied to scientific research, yet prevailing science benchmarks probe decontextualized knowledge and overlook the iterative reasoning, hypothesis generation, and observation interpretation that drive scientific discovery. We introduce a scenario-grounded benchmark that evaluates LLMs across biology, chemistry, materials, and physics, where domain experts define research projects of genuine interest and decompose them into modular research scenarios from which vetted questions are sampled. The framework assesses models at two levels: (i) question-level accuracy on scenario-tied items and (ii) project-level performance, where models must propose testable hypotheses, design simulations or experiments, and interpret results. Applying this two-phase scientific discovery evaluation (SDE) framework to state-of-the-art LLMs reveals a consistent performance gap relative to general science benchmarks, diminishing return of scaling up model sizes and reasoning, and systematic weaknesses shared across top-tier models from different providers. Large performance variation in research scenarios leads to changing choices of the best performing model on scientific discovery projects evaluated, suggesting all current LLMs are distant to general scientific \"superintelligence\". Nevertheless, LLMs already demonstrate promise in a great variety of scientific discovery projects, including cases where constituent scenario scores are low, highlighting the role of guided exploration and serendipity in discovery. This SDE framework offers a reproducible benchmark for discovery-relevant evaluation of LLMs and charts practical paths to advance their development toward scientific discovery.",
+   "published": "2025-12-17",
+   "updated": "2026-05-08",
+   "authors": [
+    "Zhangde Song",
+    "Jieyu Lu",
+    "Yuanqi Du",
+    "Botao Yu",
+    "Thomas M. Pruyn",
+    "Yue Huang",
+    "Kehan Guo",
+    "Xiuzhe Luo",
+    "Yuanhao Qu",
+    "Yi Qu",
+    "Yinkai Wang",
+    "Haorui Wang",
+    "Jeff Guo",
+    "Jingru Gan",
+    "Parshin Shojaee",
+    "Di Luo",
+    "Andres M Bran",
+    "Gen Li",
+    "Qiyuan Zhao",
+    "Shao-Xiong Lennon Luo",
+    "Yuxuan Zhang",
+    "Xiang Zou",
+    "Wanru Zhao",
+    "Yifan F. Zhang",
+    "Wucheng Zhang",
+    "Shunan Zheng",
+    "Saiyang Zhang",
+    "Sartaaj Takrim Khan",
+    "Mahyar Rajabi-Kochi",
+    "Samantha Paradi-Maropakis",
+    "Tony Baltoiu",
+    "Fengyu Xie",
+    "Tianyang Chen",
+    "Kexin Huang",
+    "Weiliang Luo",
+    "Meijing Fang",
+    "Xin Yang",
+    "Lixue Cheng",
+    "Jiajun He",
+    "Soha Hassoun",
+    "Xiangliang Zhang",
+    "Wei Wang",
+    "Chandan K. Reddy",
+    "Chao Zhang",
+    "Zhiling Zheng",
+    "Mengdi Wang",
+    "Le Cong",
+    "Carla P. Gomes",
+    "Chang-Yu Hsieh",
+    "Aditya Nandy",
+    "Philippe Schwaller",
+    "Heather J. Kulik",
+    "Haojun Jia",
+    "Huan Sun",
+    "Seyed Mohamad Moosavi",
+    "Chenru Duan"
+   ],
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI",
+    "cond-mat.mtrl-sci",
+    "cs.LG",
+    "physics.chem-ph"
+   ],
+   "url": "https://arxiv.org/abs/2512.15567v2",
+   "pdf": "https://arxiv.org/pdf/2512.15567v2",
+   "comment": ""
+  },
+  {
+   "id": "2602.06448v2",
+   "title": "Principle-Evolvable Scientific Discovery via Uncertainty Minimization",
+   "abstract": "Large Language Model (LLM)-based scientific agents have accelerated scientific discovery, yet they often suffer from significant inefficiencies due to adherence to fixed initial priors. Existing approaches predominantly operate within a static hypothesis space, which restricts the discovery of novel phenomena, resulting in computational waste when baseline theories fail. To address this, we propose shifting the focus from searching hypotheses to evolving the underlying scientific principles. We present PiEvo, a principle-evolvable framework that treats scientific discovery as Bayesian optimization over an expanding principle space. By integrating Information-Directed Hypothesis Selection via Gaussian Process and an anomaly-driven augmentation mechanism, PiEvo enables agents to autonomously refine their theoretical worldview. Evaluation across four benchmarks demonstrates that PiEvo (1) achieves an average solution quality of up to 90.81%~93.15%, representing a 29.7%~31.1% improvement over the state-of-the-art, (2) attains an 83.3% speedup in convergence step via significantly reduced sample complexity by optimizing the compact principle space, and (3) maintains robust performance across diverse scientific domains and LLM backbones. Code is publicly available at \\hyperlink{https://github.com/amair-lab/PiEvo}{github.com/amair-lab/PiEvo}.",
+   "published": "2026-02-06",
+   "updated": "2026-05-31",
+   "authors": [
+    "Yingming Pu",
+    "Tao Lin",
+    "Hongyu Chen"
+   ],
+   "primary_category": "cs.LG",
+   "categories": [
+    "cs.LG",
+    "cs.AI"
+   ],
+   "url": "https://arxiv.org/abs/2602.06448v2",
+   "pdf": "https://arxiv.org/pdf/2602.06448v2",
+   "comment": "Proceedings of the 43rd International Conference on Machine Learning, Seoul, South Korea. PMLR 306, 2026. Copyright 2026 by the author(s)"
+  },
+  {
+   "id": "2606.29182v1",
+   "title": "Evidence-Informed LLM Beliefs for Continual Scientific Discovery",
+   "abstract": "Open-ended scientific discovery with large language models (LLMs) increasingly operates as a long-horizon loop of hypothesis search and verification, where a reward signal guides which hypotheses to test next. A notable recent example is AutoDiscovery, which uses \"Bayesian surprise\" - the belief shift an LLM undergoes after observing evidence for a hypothesis - as both a discovery metric and a reward for search. We first observe that AutoDiscovery treats surprisal as a static quantity, while surprisal in human reasoning is non-stationary - it is defined relative to beliefs that evolve with experience, a prerequisite for continual scientific discovery. We address this mismatch with evidence-informed LLM beliefs: priors updated with evidence from previous hypotheses to compute non-stationary surprisal for new hypotheses. We compare in-context belief-updating mechanisms and find that embedding-based retrieval-augmented generation over prior discoveries best anticipates eventual posteriors, identifying 37.5% of static surprisals as spurious. We then modify search to avoid these spurious rewards and prioritize hypotheses that remain surprising under non-stationary beliefs. Concretely, we introduce two complementary changes to the original search procedure: belief-update filtering and diversity maximization. Across five discovery domains, our method increases accumulated non-stationary surprisal by 30.62% on average compared to the original search procedure, demonstrating that continual scientific discovery with LLMs requires not only better belief measurement but also search procedures that avoid redundancy and encourage diversity.",
+   "published": "2026-06-28",
+   "updated": "2026-06-28",
+   "authors": [
+    "Dhruv Agarwal",
+    "Reece Adamson",
+    "Andrew McCallum",
+    "Peter Clark",
+    "Ashish Sabharwal",
+    "Bodhisattwa Prasad Majumder"
+   ],
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI",
+    "cs.CL",
+    "cs.LG"
+   ],
+   "url": "https://arxiv.org/abs/2606.29182v1",
+   "pdf": "https://arxiv.org/pdf/2606.29182v1",
+   "comment": ""
+  },
+  {
+   "id": "2507.17209v1",
+   "title": "HypoChainer: A Collaborative System Combining LLMs and Knowledge Graphs for Hypothesis-Driven Scientific Discovery",
+   "abstract": "Modern scientific discovery faces growing challenges in integrating vast and heterogeneous knowledge critical to breakthroughs in biomedicine and drug development. Traditional hypothesis-driven research, though effective, is constrained by human cognitive limits, the complexity of biological systems, and the high cost of trial-and-error experimentation. Deep learning models, especially graph neural networks (GNNs), have accelerated prediction generation, but the sheer volume of outputs makes manual selection for validation unscalable. Large language models (LLMs) offer promise in filtering and hypothesis generation, yet suffer from hallucinations and lack grounding in structured knowledge, limiting their reliability. To address these issues, we propose HypoChainer, a collaborative visualization framework that integrates human expertise, LLM-driven reasoning, and knowledge graphs (KGs) to enhance hypothesis generation and validation. HypoChainer operates in three stages: First, exploration and contextualization -- experts use retrieval-augmented LLMs (RAGs) and dimensionality reduction to navigate large-scale GNN predictions, assisted by interactive explanations. Second, hypothesis chain formation -- experts iteratively examine KG relationships around predictions and semantically linked entities, refining hypotheses with LLM and KG suggestions. Third, validation prioritization -- refined hypotheses are filtered based on KG-supported evidence to identify high-priority candidates for experimentation, with visual analytics further strengthening weak links in reasoning. We demonstrate HypoChainer's effectiveness through case studies in two domains and expert interviews, highlighting its potential to support interpretable, scalable, and knowledge-grounded scientific discovery.",
+   "published": "2025-07-23",
+   "updated": "2025-07-23",
+   "authors": [
+    "Haoran Jiang",
+    "Shaohan Shi",
+    "Yunjie Yao",
+    "Chang Jiang",
+    "Quan Li"
+   ],
+   "primary_category": "cs.HC",
+   "categories": [
+    "cs.HC",
+    "cs.LG"
+   ],
+   "url": "https://arxiv.org/abs/2507.17209v1",
+   "pdf": "https://arxiv.org/pdf/2507.17209v1",
+   "comment": ""
+  },
+  {
+   "id": "2608.25770v1",
+   "title": "HypoForge: A Self-Improving Multi-Agent Framework for Automated Hypothesis Generation and Testing via Scientific Skill Learning",
+   "abstract": "Large language models (LLMs) have enabled AI scientist systems to automate scientific discovery, yet existing approaches most rely on static prompting or fixed workflows and fail to accumulate experience for continual improvement. We propose HypoForge, an experience-guided multi-agent framework that learns reusable scientific skills for automated hypothesis generation and hypothesis testing. HypoForge is built on the observation that these two stages involve different supervision signals. For hypothesis generation, where explicit feedback is unavailable, HypoForge adopts an adversarial generator--discriminator mechanism to improve reasoning through comparative critique. For hypothesis testing, where empirical feedback is available, HypoForge learns testing skills from execution outcomes and ground-truth results. By matching skill learning strategies with stage-specific supervision, HypoForge enables continual improvement without fine-tuning foundation models. Experiments on hypothesis generation and testing benchmarks show that HypoForge consistently outperforms existing AI scientist frameworks and skill-level variants. Further analysis demonstrates the effectiveness of the proposed stage-specific skill learning paradigms.",
+   "published": "2026-08-26",
+   "updated": "2026-08-26",
+   "authors": [
+    "Ziqing Qian",
+    "Jiaying Lei",
+    "Yifang Wang",
+    "Nan Cao"
+   ],
+   "primary_category": "cs.MA",
+   "categories": [
+    "cs.MA"
+   ],
+   "url": "https://arxiv.org/abs/2608.25770v1",
+   "pdf": "https://arxiv.org/pdf/2608.25770v1",
+   "comment": ""
+  },
+  {
+   "id": "2508.14111v2",
+   "title": "From AI for Science to Agentic Science: A Survey on Autonomous Scientific Discovery",
+   "abstract": "Artificial intelligence (AI) is reshaping scientific discovery, evolving from specialized computational tools into autonomous research partners. We position Agentic Science as a pivotal stage within the broader AI for Science paradigm, where AI systems progress from partial assistance to full scientific agency. Enabled by large language models (LLMs), multimodal systems, and integrated research platforms, agentic AI shows capabilities in hypothesis generation, experimental design, execution, analysis, and iterative refinement -- behaviors once regarded as uniquely human. This survey provides a domain-oriented review of autonomous scientific discovery across life sciences, chemistry, materials science, and physics. We unify three previously fragmented perspectives -- process-oriented, autonomy-oriented, and mechanism-oriented -- through a comprehensive framework that connects foundational capabilities, core processes, and domain-specific realizations. Building on this framework, we (i) trace the evolution of AI for Science, (ii) identify five core capabilities underpinning scientific agency, (iii) model discovery as a dynamic four-stage workflow, (iv) review applications across the above domains, and (v) synthesize key challenges and future opportunities. This work establishes a domain-oriented synthesis of autonomous scientific discovery and positions Agentic Science as a structured paradigm for advancing AI-driven research.",
+   "published": "2025-08-18",
+   "updated": "2025-10-20",
+   "authors": [
+    "Jiaqi Wei",
+    "Yuejin Yang",
+    "Xiang Zhang",
+    "Yuhan Chen",
+    "Xiang Zhuang",
+    "Zhangyang Gao",
+    "Dongzhan Zhou",
+    "Guangshuai Wang",
+    "Zhiqiang Gao",
+    "Juntai Cao",
+    "Zijie Qiu",
+    "Ming Hu",
+    "Chenglong Ma",
+    "Shixiang Tang",
+    "Junjun He",
+    "Chunfeng Song",
+    "Xuming He",
+    "Qiang Zhang",
+    "Chenyu You",
+    "Shuangjia Zheng",
+    "Ning Ding",
+    "Wanli Ouyang",
+    "Nanqing Dong",
+    "Yu Cheng",
+    "Siqi Sun",
+    "Lei Bai",
+    "Bowen Zhou"
+   ],
+   "primary_category": "cs.LG",
+   "categories": [
+    "cs.LG"
+   ],
+   "url": "https://arxiv.org/abs/2508.14111v2",
+   "pdf": "https://arxiv.org/pdf/2508.14111v2",
+   "comment": ""
+  },
+  {
+   "id": "2605.30284v1",
+   "title": "ProjectionBench: Evaluating Scientific Hypothesis Generation in LLMs Under Progressive Information Disclosure",
+   "abstract": "Scientific discovery is an inherently creative and uncertain process, requiring reasoning beyond the recall of known knowledge. While many benchmarks have been proposed to evaluate large language model (LLM) performance on deep research tasks via multi-hop retrieval, their innovative reasoning abilities essential for true scientific discovery remain largely untested. We introduce a benchmark framework for evaluating model performance in scientific discovery and reasoning, building up from a raw problem to the classical null hypothesis test. In our framework, models initially receive only the topic and research question from a recent paper, with technical details progressively revealed. At each stage of information disclosure, the model is tasked with generating hypotheses that address the research question, which is compared with the conclusions from the original paper and evaluated via automated semantic similarity of constituent atomic claims. This progressive evaluation of semantic divergence from ground-truth conclusions enables assessment of a model's innovativeness (under minimal information) to grounded reasoning capabilities (under full experimental details), both critical for using LLMs for scientific discovery purposes. Our framework provides a foundation for systematically evaluating scientific reasoning and discovery capabilities in LLMs, crucial for advancing the development of next-generation AI scientist/co-scientist systems. Specifically, here we evaluate GPT-5, GPT-5.4, Gemini 2.5 pro, and Gemini 3.1 pro preview across 45 papers spanning bioactive materials, mechanical materials, and nanomaterials. We find that GPT-5.4 and Gemini 3.1 pro outperform their previous generation counterparts as expected, and GPT-5.4 in particular maintains 0.7 F1 score alignment with ground truth conclusions even under minimal context.",
+   "published": "2026-05-28",
+   "updated": "2026-05-28",
+   "authors": [
+    "A. J. Lew",
+    "Y. Cao",
+    "M. J. Buehler"
+   ],
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI"
+   ],
+   "url": "https://arxiv.org/abs/2605.30284v1",
+   "pdf": "https://arxiv.org/pdf/2605.30284v1",
+   "comment": "19 pages, 4 figures"
+  },
+  {
+   "id": "2607.09195v1",
+   "title": "Toward Auditable AI Scientists: A Hypothesis Evolution Protocol for LLM Agents",
+   "abstract": "Large language model (LLM) agents are increasingly expected to play a central role in AI-driven scientific discovery. Equipped with broad knowledge, flexible reasoning, and tool use, they have the potential to autonomously explore and solve scientific problems by repeatedly proposing hypotheses, testing them, and revising their beliefs in the light of the evidence. In current agents, however, these hypotheses, tests, and belief updates are buried in unstructured logs, and no mechanism lets the agent or the human researcher audit that process. Here we propose the Hypothesis Evolution Protocol (HEP), an agent harness that provides hypothesis generation, evaluation, and evolution as explicit, auditable operations. On materials-science research tasks, a HEP-equipped agent operates the hypothesis--test--evidence--belief cycle that planning-style agents lack, generalizes across research questions, and exploits the protocol more fully as the base LLM becomes more capable. These results mark a step toward auditable AI scientists, whose scientific reasoning can be inspected, verified, and built upon.",
+   "published": "2026-07-10",
+   "updated": "2026-07-10",
+   "authors": [
+    "Izumi Takahara",
+    "Teruyasu Mizoguchi"
+   ],
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI",
+    "cond-mat.mtrl-sci"
+   ],
+   "url": "https://arxiv.org/abs/2607.09195v1",
+   "pdf": "https://arxiv.org/pdf/2607.09195v1",
+   "comment": ""
+  },
+  {
+   "id": "2504.11524v2",
+   "title": "HypoBench: Towards Systematic and Principled Benchmarking for Hypothesis Generation",
+   "abstract": "There is growing interest in hypothesis generation with large language models (LLMs). However, fundamental questions remain: what makes a good hypothesis, and how can we systematically evaluate methods for hypothesis generation? To address this, we introduce HypoBench, a novel benchmark designed to evaluate LLMs and hypothesis generation methods across multiple aspects, including practical utility, generalizability, and hypothesis discovery rate. HypoBench includes 7 real-world tasks and 5 synthetic tasks with 194 distinct datasets. We evaluate four state-of-the-art LLMs combined with six existing hypothesis-generation methods. Overall, our results suggest that existing methods are capable of discovering valid and novel patterns in the data. However, the results from synthetic datasets indicate that there is still significant room for improvement, as current hypothesis generation methods do not fully uncover all relevant or meaningful patterns. Specifically, in synthetic settings, as task difficulty increases, performance significantly drops, with best models and methods only recovering 38.8% of the ground-truth hypotheses. These findings highlight challenges in hypothesis generation and demonstrate that HypoBench serves as a valuable resource for improving AI systems designed to assist scientific discovery.",
+   "published": "2025-04-15",
+   "updated": "2026-02-10",
+   "authors": [
+    "Haokun Liu",
+    "Sicong Huang",
+    "Jingyu Hu",
+    "Yangqiaoyu Zhou",
+    "Chenhao Tan"
+   ],
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI",
+    "cs.CL",
+    "cs.CY",
+    "cs.LG"
+   ],
+   "url": "https://arxiv.org/abs/2504.11524v2",
+   "pdf": "https://arxiv.org/pdf/2504.11524v2",
+   "comment": "32 pages, 6 figures, website link: https://chicagohai.github.io/HypoBench/"
+  },
+  {
+   "id": "2411.02429v1",
+   "title": "IdeaBench: Benchmarking Large Language Models for Research Idea Generation",
+   "abstract": "Large Language Models (LLMs) have transformed how people interact with artificial intelligence (AI) systems, achieving state-of-the-art results in various tasks, including scientific discovery and hypothesis generation. However, the lack of a comprehensive and systematic evaluation framework for generating research ideas using LLMs poses a significant obstacle to understanding and assessing their generative capabilities in scientific discovery. To address this gap, we propose IdeaBench, a benchmark system that includes a comprehensive dataset and an evaluation framework for standardizing the assessment of research idea generation using LLMs. Our dataset comprises titles and abstracts from a diverse range of influential papers, along with their referenced works. To emulate the human process of generating research ideas, we profile LLMs as domain-specific researchers and ground them in the same context considered by human researchers. This maximizes the utilization of the LLMs' parametric knowledge to dynamically generate new research ideas. We also introduce an evaluation framework for assessing the quality of generated research ideas. Our evaluation framework is a two-stage process: first, using GPT-4o to rank ideas based on user-specified quality indicators such as novelty and feasibility, enabling scalable personalization; and second, calculating relative ranking based \"Insight Score\" to quantify the chosen quality indicator. The proposed benchmark system will be a valuable asset for the community to measure and compare different LLMs, ultimately advancing the automation of the scientific discovery process.",
+   "published": "2024-10-31",
+   "updated": "2024-10-31",
+   "authors": [
+    "Sikun Guo",
+    "Amir Hassan Shariatmadari",
+    "Guangzhi Xiong",
+    "Albert Huang",
+    "Eric Xie",
+    "Stefan Bekiranov",
+    "Aidong Zhang"
+   ],
+   "primary_category": "cs.CL",
+   "categories": [
+    "cs.CL",
+    "cs.AI",
+    "cs.CE"
+   ],
+   "url": "https://arxiv.org/abs/2411.02429v1",
+   "pdf": "https://arxiv.org/pdf/2411.02429v1",
+   "comment": ""
+  },
+  {
+   "id": "2603.26496v1",
+   "title": "Innovation Discovery System for Networking Research",
+   "abstract": "As networking systems become increasingly complex, achieving disruptive innovation grows more challenging. At the same time, recent progress in Large Language Models (LLMs) has shown strong potential for scientific hypothesis formation and idea generation. Nevertheless, applying LLMs effectively to networking research remains difficult for two main reasons: standalone LLMs tend to generate ideas by recombining existing solutions, and current open-source networking resources do not provide the structured, idea-level knowledge necessary for data-driven scientific discovery. To bridge this gap, we present SciNet, a research idea generation system specifically designed for networking. SciNet is built upon three key components: (1) constructing a networking-oriented scientific discovery dataset from top-tier networking conferences, (2) simulating the human idea discovery workflow through problem setting, inspiration retrieval, and idea generation, and (3) developing an idea evaluation method that jointly measures novelty and practicality. Experimental results show that \\system consistently produces practical and novel networking research ideas across multiple LLM backbones, and outperforms standalone LLM-based generation in overall idea quality.",
+   "published": "2026-03-27",
+   "updated": "2026-03-27",
+   "authors": [
+    "Mengrui Zhang",
+    "Bang Huang",
+    "Yunxin Xu",
+    "Haiying Huang",
+    "Luxi Zhao",
+    "Mochun Long",
+    "Qingyu Song",
+    "Qiao Xiang",
+    "Xue Liu",
+    "Jiwu Shu"
+   ],
+   "primary_category": "cs.NI",
+   "categories": [
+    "cs.NI"
+   ],
+   "url": "https://arxiv.org/abs/2603.26496v1",
+   "pdf": "https://arxiv.org/pdf/2603.26496v1",
+   "comment": ""
+  },
+  {
+   "id": "2605.23917v1",
+   "title": "Multi-Persona Debate System for Automated Scientific Hypothesis Generation",
+   "abstract": "Modern scientific discovery is bottlenecked not by data scarcity, but by the inability to synthesize fragmented knowledge into actionable hypotheses. This challenge is especially acute in battery materials research, where electrochemical performance, interfacial behavior, and manufacturing feasibility must be optimized simultaneously. Here, we present the Multi-Persona Debate System (MPDS), a literature-grounded framework for automated scientific hypothesis generation that combines literature retrieval, long-context large language model reasoning, corpus-driven persona induction, and structured multi-agent debate. MPDS constructs literature snapshots of up to 500 papers, grounds agents in role-specific evidence pools, and conducts a three-round citation-aware debate followed by moderator synthesis, enabling negotiation between personas while preserving evidence traceability. We evaluate MPDS using a temporally controlled protocol excluding direct access to target papers, including two held-out battery-materials case studies and a blinded comparison across 30 matched cases. In sodium-ion anode and all-solid-state battery cathode design tasks, MPDS recovered design logics aligned with experimentally validated solution spaces and generated more mechanistically explicit, process-aware proposals than simpler baselines. To assess the impact of personas and debate, we introduce Integrative Hypothesis Quality scoring. In ablation studies, MPDS achieved the highest mean score among five conditions, with its largest advantage in cross-perspective integration. A laboratory follow-up suggests utility as a diagnostic aid for identifying practical bottlenecks in workflows. These results indicate that structured debate over literature snapshots improves hypothesis formation under coupled engineering constraints and provides a reusable workflow for text-intensive scientific discovery.",
+   "published": "2026-04-14",
+   "updated": "2026-04-14",
+   "authors": [
+    "Jaeha Oh",
+    "Byungchan Kim",
+    "Ju Li",
+    "Yang Jeong Park",
+    "Jin-Sung Park"
+   ],
+   "primary_category": "cs.CL",
+   "categories": [
+    "cs.CL"
+   ],
+   "url": "https://arxiv.org/abs/2605.23917v1",
+   "pdf": "https://arxiv.org/pdf/2605.23917v1",
+   "comment": "31 pages with 7 main figures, 4 supplementary figures and 1 supplementary table"
+  },
+  {
+   "id": "2608.17270v1",
+   "title": "Do LLMs Know a Good Hypothesis When They See One? Logit-Based Energy Scoring Outperforms Prompted LLM-as-Judge for Scientific Hypothesis Ranking",
+   "abstract": "Large language models (LLMs) are increasingly used for scientific hypothesis generation. However, evaluating generated hypotheses remains a challenge for trustworthy AI-enabled scientific workflows. Existing approaches often use LLMs as judges or rely on semantic similarity, which can favor familiar ideas over novel ones. We propose a logit-based energy scoring method that evaluates hypotheses using a language model's intrinsic confidence rather than comparative judgment. We benchmarked seven language models on 1,323 papers across 12 disciplines. Each paper was paired with its hypothesis and fifteen incorrect alternatives. Intrinsic scoring reached 33.0% Hit@1 pooled across both scorers, compared with 16.6% for prompted listwise ranking. The strongest configuration, a 1-billion-parameter model using logit-based energy scoring, reached 53.1%, though this was the maximum across 14 model-by-scorer combinations selected post hoc. Overall, intrinsic model confidence shows potential for scientific hypothesis evaluation. This study also motivates future research on confidence-based methods for trustworthy AI-enabled scientific discovery.",
+   "published": "2026-08-18",
+   "updated": "2026-08-18",
+   "authors": [
+    "Swati Rajwal",
+    "Sanjay Das",
+    "Tirthankar Ghosal"
+   ],
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI"
+   ],
+   "url": "https://arxiv.org/abs/2608.17270v1",
+   "pdf": "https://arxiv.org/pdf/2608.17270v1",
+   "comment": ""
+  },
+  {
+   "id": "2506.02242v2",
+   "title": "From Street Views to Urban Science: Discovering Road Safety Factors with Multimodal Large Language Models",
+   "abstract": "Urban and transportation research has long sought to uncover statistically meaningful relationships between key variables and societal outcomes such as road safety, to generate actionable insights that guide the planning, development, and renewal of urban and transportation systems. However, traditional workflows face several key challenges: (1) reliance on human experts to propose hypotheses, which is time-consuming and prone to confirmation bias; (2) limited interpretability, particularly in deep learning approaches; and (3) underutilization of unstructured data that can encode critical urban context. Given these limitations, we propose a Multimodal Large Language Model (MLLM)-based approach for interpretable hypothesis inference, enabling the automated generation, evaluation, and refinement of hypotheses concerning urban context and road safety outcomes. Our method leverages MLLMs to craft safety-relevant questions for street view images (SVIs), extract interpretable embeddings from their responses, and apply them in regression-based statistical models. UrbanX supports iterative hypothesis testing and refinement, guided by statistical evidence such as coefficient significance, thereby enabling rigorous scientific discovery of previously overlooked correlations between urban design and safety. Experimental evaluations on Manhattan street segments demonstrate that our approach outperforms pretrained deep learning models while offering full interpretability. Beyond road safety, UrbanX can serve as a general-purpose framework for urban scientific discovery, extracting structured insights from unstructured urban data across diverse socioeconomic and environmental outcomes. This approach enhances model trustworthiness for policy applications and establishes a scalable, statistically grounded pathway for interpretable knowledge discovery in urban and transportation studies.",
+   "published": "2025-06-02",
+   "updated": "2025-06-17",
+   "authors": [
+    "Yihong Tang",
+    "Ao Qu",
+    "Xujing Yu",
+    "Weipeng Deng",
+    "Jun Ma",
+    "Jinhua Zhao",
+    "Lijun Sun"
+   ],
+   "primary_category": "cs.LG",
+   "categories": [
+    "cs.LG",
+    "cs.CY"
+   ],
+   "url": "https://arxiv.org/abs/2506.02242v2",
+   "pdf": "https://arxiv.org/pdf/2506.02242v2",
+   "comment": ""
+  },
+  {
+   "id": "2507.00310v3",
+   "title": "AutoDiscovery: Open-ended Scientific Discovery via Bayesian Surprise",
+   "abstract": "The promise of autonomous scientific discovery (ASD) hinges not only on answering questions, but also on knowing which questions to ask. Most recent works in ASD explore the use of large language models (LLMs) in goal-driven settings, relying on human-specified research questions to guide hypothesis generation. However, scientific discovery may be accelerated further by allowing the AI system to drive exploration by its own criteria. The few existing approaches in open-ended ASD select hypotheses based on diversity heuristics or subjective proxies for human interestingness, but the former struggles to meaningfully navigate the typically vast hypothesis space, and the latter suffers from imprecise definitions. This paper presents AutoDiscovery -- a method for open-ended ASD that instead drives scientific exploration using Bayesian surprise. Here, we quantify the epistemic shift from the LLM's prior beliefs about a hypothesis to its posterior beliefs after gathering experimental results. To efficiently explore the space of nested hypotheses, our method employs a Monte Carlo tree search (MCTS) strategy with progressive widening using surprisal as the reward function. We evaluate AutoDiscovery in the setting of data-driven discovery across 21 real-world datasets spanning domains such as biology, economics, finance, and behavioral science. Our results demonstrate that under a fixed budget, AutoDiscovery substantially outperforms competitors by producing 5-29% more discoveries deemed surprising by the LLM. Our human evaluation further reveals that two-thirds of discoveries made by our system are surprising to domain experts as well, suggesting this is an important step towards building open-ended ASD systems.",
+   "published": "2025-06-30",
+   "updated": "2026-02-12",
+   "authors": [
+    "Dhruv Agarwal",
+    "Bodhisattwa Prasad Majumder",
+    "Reece Adamson",
+    "Megha Chakravorty",
+    "Satvika Reddy Gavireddy",
+    "Aditya Parashar",
+    "Harshit Surana",
+    "Bhavana Dalvi Mishra",
+    "Andrew McCallum",
+    "Ashish Sabharwal",
+    "Peter Clark"
+   ],
+   "primary_category": "cs.LG",
+   "categories": [
+    "cs.LG",
+    "cs.AI",
+    "cs.CL"
+   ],
+   "url": "https://arxiv.org/abs/2507.00310v3",
+   "pdf": "https://arxiv.org/pdf/2507.00310v3",
+   "comment": "Accepted to NeurIPS 2025: https://neurips.cc/virtual/2025/loc/san-diego/poster/116398"
+  },
+  {
+   "id": "2601.13299v1",
+   "title": "Enginuity: Building an Open Multi-Domain Dataset of Complex Engineering Diagrams",
+   "abstract": "We propose Enginuity - the first open, large-scale, multi-domain engineering diagram dataset with comprehensive structural annotations designed for automated diagram parsing. By capturing hierarchical component relationships, connections, and semantic elements across diverse engineering domains, our proposed dataset would enable multimodal large language models to address critical downstream tasks including structured diagram parsing, cross-modal information retrieval, and AI-assisted engineering simulation. Enginuity would be transformative for AI for Scientific Discovery by enabling artificial intelligence systems to comprehend and manipulate the visual-structural knowledge embedded in engineering diagrams, breaking down a fundamental barrier that currently prevents AI from fully participating in scientific workflows where diagram interpretation, technical drawing analysis, and visual reasoning are essential for hypothesis generation, experimental design, and discovery.",
+   "published": "2026-01-19",
+   "updated": "2026-01-19",
+   "authors": [
+    "Ethan Seefried",
+    "Prahitha Movva",
+    "Naga Harshita Marupaka",
+    "Tilak Kasturi",
+    "Tirthankar Ghosal"
+   ],
+   "primary_category": "cs.CV",
+   "categories": [
+    "cs.CV"
+   ],
+   "url": "https://arxiv.org/abs/2601.13299v1",
+   "pdf": "https://arxiv.org/pdf/2601.13299v1",
+   "comment": "Accepted at the 39th Conference on Neural Information Processing Systems (NeurIPS 2025) Workshop: Ai4 Science"
+  },
+  {
+   "id": "2606.10587v1",
+   "title": "Towards Diverse Scientific Hypothesis Search with Large Language Models",
+   "abstract": "Large language models (LLMs) are on the rise for accelerating scientific discovery, most recently in advanced tasks such as generating valid scientific hypotheses. Yet in many discovery settings, the goal is not to identify a single best hypothesis since validation can be noisy and expensive, and scientists benefit from a set of high-quality alternative hypotheses that hedge against downstream uncertainty for the best solutions. Nevertheless, commonly used evolutionary search recipes tend to prioritize optimization over exploration in hypothesis generation, and the resulting selection pressure during the search process leads to diversity collapse. Motivated by these limitations, we formulate hypothesis search as a sampling problem, where the objective is to efficiently produce diverse, high-quality hypotheses under a fixed validation budget. Building on this perspective, we propose \\ours, an evolutionary framework inspired by the classical parallel tempering algorithm that searches hypotheses at multiple temperature levels and enables principled information exchange across temperatures to improve exploration without disrupting convergence. Across domains including molecular discovery, equation discovery, and algorithm discovery, our approach consistently improves both hypothesis quality and diversity under the same validation budget, and produces candidates that remain robust under more expensive downstream computational validations.",
+   "published": "2026-06-09",
+   "updated": "2026-06-09",
+   "authors": [
+    "Haorui Wang",
+    "Parshin Shojaee",
+    "Kazem Meidani",
+    "Kunyang Sun",
+    "José Miguel Hernández-Lobato",
+    "Teresa Head-Gordon",
+    "Jiajun He",
+    "Chandan K. Reddy",
+    "Chao Zhang",
+    "Yuanqi Du"
+   ],
+   "primary_category": "cs.LG",
+   "categories": [
+    "cs.LG",
+    "cs.AI"
+   ],
+   "url": "https://arxiv.org/abs/2606.10587v1",
+   "pdf": "https://arxiv.org/pdf/2606.10587v1",
+   "comment": "ICML 2026"
+  },
+  {
+   "id": "2606.04751v1",
+   "title": "FALSIFYBENCH: Evaluating Inductive Reasoning in LLMs with Rule Discovery Games",
+   "abstract": "Large language models (LLMs) are increasingly deployed as autonomous agents in scientific tasks. Yet whether these systems can effectively engage in forms of inductive reasoning relevant to scientific discovery remains an open question. In this work, we introduce FALSIFYBENCH, an evaluation framework for hypothesis-driven reasoning inspired by the classic Wason 2-4-6 task, in which agents must discover hidden semantic properties by iteratively proposing examples and receiving feedback. This task captures key elements of scientific reasoning: hypothesis generation, evidence gathering, and belief revision in response to both confirming and disconfirming evidence. Our evaluation of 12 LLMs across model families and scales shows that reasoning models are generally stronger scientific reasoners than instruction-tuned models, although no model comes close to optimal performance. The primary driver of success is the capacity for negative testing: models that actively seek to falsify their hypotheses consistently outperform those that primarily seek confirmation. Moreover, a fine-grained turn-level analysis, neglected in previous work, reveals that failure is tied to identifiable patterns in how models navigate the hypothesis space.",
+   "published": "2026-06-03",
+   "updated": "2026-06-03",
+   "authors": [
+    "Leonardo Bertolazzi",
+    "Katya Tentori",
+    "Raffaella Bernardi"
+   ],
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI"
+   ],
+   "url": "https://arxiv.org/abs/2606.04751v1",
+   "pdf": "https://arxiv.org/pdf/2606.04751v1",
+   "comment": ""
+  },
+  {
+   "id": "2410.07076v6",
+   "title": "MOOSE-Chem: Large Language Models for Rediscovering Unseen Chemistry Scientific Hypotheses",
+   "abstract": "Scientific discovery plays a pivotal role in advancing human society, and recent progress in large language models (LLMs) suggests their potential to accelerate this process. However, it remains unclear whether LLMs can autonomously generate novel and valid hypotheses in chemistry. In this work, we investigate whether LLMs can discover high-quality chemistry hypotheses given only a research background-comprising a question and/or a survey-without restriction on the domain of the question. We begin with the observation that hypothesis discovery is a seemingly intractable task. To address this, we propose a formal mathematical decomposition grounded in a fundamental assumption: that most chemistry hypotheses can be composed from a research background and a set of inspirations. This decomposition leads to three practical subtasks-retrieving inspirations, composing hypotheses with inspirations, and ranking hypotheses - which together constitute a sufficient set of subtasks for the overall scientific discovery task. We further develop an agentic LLM framework, MOOSE-Chem, that is a direct implementation of this mathematical decomposition. To evaluate this framework, we construct a benchmark of 51 high-impact chemistry papers published and online after January 2024, each manually annotated by PhD chemists with background, inspirations, and hypothesis. The framework is able to rediscover many hypotheses with high similarity to the groundtruth, successfully capturing the core innovations-while ensuring no data contamination since it uses an LLM with knowledge cutoff date prior to 2024. Finally, based on LLM's surprisingly high accuracy on inspiration retrieval, a task with inherently out-of-distribution nature, we propose a bold assumption: that LLMs may already encode latent scientific knowledge associations not yet recognized by humans.",
+   "published": "2024-10-09",
+   "updated": "2025-10-27",
+   "authors": [
+    "Zonglin Yang",
+    "Wanhao Liu",
+    "Ben Gao",
+    "Tong Xie",
+    "Yuqiang Li",
+    "Wanli Ouyang",
+    "Soujanya Poria",
+    "Erik Cambria",
+    "Dongzhan Zhou"
+   ],
+   "primary_category": "cs.CL",
+   "categories": [
+    "cs.CL",
+    "cs.AI",
+    "cs.LG"
+   ],
+   "url": "https://arxiv.org/abs/2410.07076v6",
+   "pdf": "https://arxiv.org/pdf/2410.07076v6",
+   "comment": "Accepted by ICLR 2025"
+  },
+  {
+   "id": "2507.15550v2",
+   "title": "PhysGym: Benchmarking LLMs in Interactive Physics Discovery with Controlled Priors",
+   "abstract": "Evaluating the scientific discovery capabilities of large language model based agents, particularly how they cope with varying environmental complexity and utilize prior knowledge, requires specialized benchmarks currently lacking in the landscape. To address this gap, we introduce \\textsc{PhysGym}, a novel benchmark suite and simulation platform for rigorously assessing LLM-based scientific reasoning in interactive physics environments. \\textsc{PhysGym}'s primary contribution lies in its sophisticated control over the level of prior knowledge provided to the agent. This allows researchers to dissect agent performance along axes including the complexity of the problem and the prior knowledge levels. The benchmark comprises a suite of interactive simulations, where agents must actively probe environments, gather data sequentially under constraints and formulate hypotheses about underlying physical laws. \\textsc{PhysGym} provides standardized evaluation protocols and metrics for assessing hypothesis accuracy and model fidelity. We demonstrate the benchmark's utility by presenting results from baseline LLMs, showcasing its ability to differentiate capabilities based on varying priors and task complexity.",
+   "published": "2025-07-21",
+   "updated": "2025-10-26",
+   "authors": [
+    "Yimeng Chen",
+    "Piotr Piȩkos",
+    "Mateusz Ostaszewski",
+    "Firas Laakom",
+    "Jürgen Schmidhuber"
+   ],
+   "primary_category": "cs.LG",
+   "categories": [
+    "cs.LG",
+    "cs.AI",
+    "physics.soc-ph"
+   ],
+   "url": "https://arxiv.org/abs/2507.15550v2",
+   "pdf": "https://arxiv.org/pdf/2507.15550v2",
+   "comment": "31 Pages"
+  },
+  {
+   "id": "2509.13978v2",
+   "title": "LLM Agents for Interactive Workflow Provenance: Reference Architecture and Evaluation Methodology",
+   "abstract": "Modern scientific discovery increasingly relies on workflows that process data across the Edge, Cloud, and High Performance Computing (HPC) continuum. Comprehensive and in-depth analyses of these data are critical for hypothesis validation, anomaly detection, reproducibility, and impactful findings. Although workflow provenance techniques support such analyses, at large scale, the provenance data become complex and difficult to analyze. Existing systems depend on custom scripts, structured queries, or static dashboards, limiting data interaction. In this work, we introduce an evaluation methodology, reference architecture, and open-source implementation that leverages interactive Large Language Model (LLM) agents for runtime data analysis. Our approach uses a lightweight, metadata-driven design that translates natural language into structured provenance queries. Evaluations across LLaMA, GPT, Gemini, and Claude, covering diverse query classes and a real-world chemistry workflow, show that modular design, prompt tuning, and Retrieval-Augmented Generation (RAG) enable accurate and insightful LLM agent responses beyond recorded provenance.",
+   "published": "2025-09-17",
+   "updated": "2025-09-23",
+   "authors": [
+    "Renan Souza",
+    "Timothy Poteet",
+    "Brian Etz",
+    "Daniel Rosendo",
+    "Amal Gueroudji",
+    "Woong Shin",
+    "Prasanna Balaprakash",
+    "Rafael Ferreira da Silva"
+   ],
+   "primary_category": "cs.DC",
+   "categories": [
+    "cs.DC",
+    "cs.AI",
+    "cs.DB"
+   ],
+   "url": "https://arxiv.org/abs/2509.13978v2",
+   "pdf": "https://arxiv.org/pdf/2509.13978v2",
+   "comment": "Paper accepted in the proceedings of the Supercomputing Conference (SC). Cite it as Renan Souza, Timothy Poteet, Brian Etz, Daniel Rosendo, Amal Gueroudji, Woong Shin, Prasanna Balaprakash, and Rafael Ferreira da Silva. LLM Agents for Interactive Workflow Provenance: Reference Architecture and Evaluation Methodology. In WORKS at the ACM/IEEE International Conference on Supercomputing, 2025"
+  },
+  {
+   "id": "2307.07522v3",
+   "title": "The Future of Fundamental Science Led by Generative Closed-Loop Artificial Intelligence",
+   "abstract": "Recent advances in machine learning and AI, including Generative AI and LLMs, are disrupting technological innovation, product development, and society as a whole. AI's contribution to technology can come from multiple approaches that require access to large training data sets and clear performance evaluation criteria, ranging from pattern recognition and classification to generative models. Yet, AI has contributed less to fundamental science in part because large data sets of high-quality data for scientific practice and model discovery are more difficult to access. Generative AI, in general, and Large Language Models in particular, may represent an opportunity to augment and accelerate the scientific discovery of fundamental deep science with quantitative models. Here we explore and investigate aspects of an AI-driven, automated, closed-loop approach to scientific discovery, including self-driven hypothesis generation and open-ended autonomous exploration of the hypothesis space. Integrating AI-driven automation into the practice of science would mitigate current problems, including the replication of findings, systematic production of data, and ultimately democratisation of the scientific process. Realising these possibilities requires a vision for augmented AI coupled with a diversity of AI approaches able to deal with fundamental aspects of causality analysis and model discovery while enabling unbiased search across the space of putative explanations. These advances hold the promise to unleash AI's potential for searching and discovering the fundamental structure of our world beyond what human scientists have been able to achieve. Such a vision would push the boundaries of new fundamental science rather than automatize current workflows and instead open doors for technological innovation to tackle some of the greatest challenges facing humanity today.",
+   "published": "2023-07-09",
+   "updated": "2023-08-29",
+   "authors": [
+    "Hector Zenil",
+    "Jesper Tegnér",
+    "Felipe S. Abrahão",
+    "Alexander Lavin",
+    "Vipin Kumar",
+    "Jeremy G. Frey",
+    "Adrian Weller",
+    "Larisa Soldatova",
+    "Alan R. Bundy",
+    "Nicholas R. Jennings",
+    "Koichi Takahashi",
+    "Lawrence Hunter",
+    "Saso Dzeroski",
+    "Andrew Briggs",
+    "Frederick D. Gregory",
+    "Carla P. Gomes",
+    "Jon Rowe",
+    "James Evans",
+    "Hiroaki Kitano",
+    "Ross King"
+   ],
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI",
+    "cs.LG"
+   ],
+   "url": "https://arxiv.org/abs/2307.07522v3",
+   "pdf": "https://arxiv.org/pdf/2307.07522v3",
+   "comment": "35 pages, first draft of the final report from the Alan Turing Institute on AI for Scientific Discovery"
+  },
+  {
+   "id": "2503.21248v3",
+   "title": "ResearchBench: Benchmarking LLMs in Scientific Discovery via Inspiration-Based Task Decomposition",
+   "abstract": "Large language models (LLMs) have shown potential in assisting scientific research, yet their ability to discover high-quality research hypotheses remains unexamined due to the lack of a dedicated benchmark. To address this gap, we introduce the first large-scale benchmark for evaluating LLMs on a sufficient set of scientific discovery sub-tasks-inspiration retrieval, hypothesis composition, and hypothesis ranking-where sufficient means that perfectly solving these sub-tasks perfectly solves the overall discovery task. We develop an automated LLM-based framework that extracts critical components-research questions, background surveys, inspirations, and hypotheses-from papers across 12 disciplines, with expert validation confirming its accuracy. To prevent data contamination, we focus exclusively on publications from 2024 onward, ensuring minimal overlap with LLM pretraining data; our automated framework further enables automatic extraction of even more recent papers as LLM pretraining cutoffs advance, supporting scalable and contamination-free automatic renewal of this discovery benchmark. Our evaluation shows that, across disciplines, LLMs excel at inspiration retrieval-an out-of-distribution task-suggesting their ability to surface novel knowledge associations.",
+   "published": "2025-03-27",
+   "updated": "2026-04-20",
+   "authors": [
+    "Yujie Liu",
+    "Zonglin Yang",
+    "Tong Xie",
+    "Jinjie Ni",
+    "Ben Gao",
+    "Yuqiang Li",
+    "Shixiang Tang",
+    "Wanli Ouyang",
+    "Erik Cambria",
+    "Dongzhan Zhou"
+   ],
+   "primary_category": "cs.CL",
+   "categories": [
+    "cs.CL",
+    "cs.AI",
+    "cs.CE"
+   ],
+   "url": "https://arxiv.org/abs/2503.21248v3",
+   "pdf": "https://arxiv.org/pdf/2503.21248v3",
+   "comment": "Accepted by ACL 2026 (findings)"
+  },
+  {
+   "id": "2512.11509v2",
+   "title": "Does Less Hallucination Mean Less Creativity? An Empirical Investigation in LLMs",
+   "abstract": "Large Language Models (LLMs) exhibit remarkable capabilities in natural language understanding and reasoning, but suffer from hallucination: the generation of factually incorrect content. While numerous methods have been developed to reduce hallucinations, their impact on creative generations remains unexplored. This gap is particularly critical for AI-assisted scientific discovery, which requires both factual accuracy and creative hypothesis generation. We investigate how three hallucination-reduction techniques: Chain of Verification (CoVe), Decoding by Contrasting Layers (DoLa), and Retrieval-Augmented Generation (RAG), affect creativity in LLMs. Evaluating multiple model families (LLaMA, Qwen, Mistral) at varying scales (1B - 70B parameters) on two creativity benchmarks (NeoCoder and CS4), we find that these methods have opposing effects on divergent creativity. CoVe enhances divergent thinking, DoLa suppresses it, and RAG shows minimal impact. Our findings provide guidance for selecting appropriate hallucination-reduction methods in scientific applications, where the balance between factual accuracy and creative exploration is crucial.",
+   "published": "2025-12-12",
+   "updated": "2026-01-21",
+   "authors": [
+    "Mohor Banerjee",
+    "Nadya Yuki Wangsajaya",
+    "Syed Ali Redha Alsagoff",
+    "Min Sen Tan",
+    "Zachary Choy Kit Chun",
+    "Alvin Chan Guo Wei"
+   ],
+   "primary_category": "cs.CL",
+   "categories": [
+    "cs.CL",
+    "cs.AI"
+   ],
+   "url": "https://arxiv.org/abs/2512.11509v2",
+   "pdf": "https://arxiv.org/pdf/2512.11509v2",
+   "comment": "Accepted at the AAAI 2026 Workshop on AI for Scientific Research (AI4Research)"
+  }
+ ]
+}

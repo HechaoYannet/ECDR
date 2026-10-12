@@ -217,6 +217,19 @@ coincidence. This is a **relaxation**: physical bounds are naturally continuous,
 "shape" obstacle largely dissolves, and Finding 010's failure of mode counting is re-read
 as a consequence of its bound being a small integer.
 
+**AND FINDING 023 CORRECTS A DIRECTION ERROR RUNNING FROM FINDING 013 TO 022.** The ratio
+P(notA and notB)/(P(notA)P(notB)) was read as "above 1 is complementary". It is the
+reverse: identical cuts give 2.0 and disjoint cuts give 0.0. The numbers are unaffected -
+every conditional and every Spearman rho was computed correctly - but two conclusions flip:
+Finding 013's performance axes were mildly **complementary**, not redundant, and Finding
+015's "structural cuts compose better" is **withdrawn**, since 1.111 is the more redundant
+family. Finding 023 also adds a **third sound certificate** (Rayleigh: omega_1^2 <= sum of
+ground stiffnesses / sum of masses; 0 violations in 300, rho = -0.006 against the modal
+count) and composes all three: the sequential conditionals are **0.537-0.550** and
+**0.760-0.806** across four space sizes, leaving 5.2-8.3 percent per round. **The library
+condition holds BETTER than independence**, since the cuts are complementary. Library
+arithmetic: about **24 certificates against 1e10 evaluations**.
+
 **AND FINDING 022 TURNS THE CONDITION INTO A MEASUREMENT.** A pair of sound certificates -
 the modal bound (n degrees of freedom gives at most n harmonics) and the static-equilibrium
 bound (sag under gravity) - was tested across four space sizes. With the requirement

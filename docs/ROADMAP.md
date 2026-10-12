@@ -217,6 +217,18 @@ coincidence. This is a **relaxation**: physical bounds are naturally continuous,
 "shape" obstacle largely dissolves, and Finding 010's failure of mode counting is re-read
 as a consequence of its bound being a small integer.
 
+**AND FINDING 022 TURNS THE CONDITION INTO A MEASUREMENT.** A pair of sound certificates -
+the modal bound (n degrees of freedom gives at most n harmonics) and the static-equilibrium
+bound (sag under gravity) - was tested across four space sizes. With the requirement
+calibrated, the second cut takes **0.525 to 0.558 of what the first left** at every size,
+and the independence ratio stays above **0.88**. Under a FIXED requirement the modal cut
+decays as 1/n_max toward zero, which is Finding 010's mechanism operating slowly. So the
+library condition of Finding 011 is satisfiable, and **what binds is the calibration of the
+requirement, not the certificates** - the third appearance of that same lesson. The
+arithmetic gives k ~ 17 pairs (34 certificates) against 1e10 evaluations. At the sizes this
+ensemble can reach the advantage is a dozen against five hundred, so the separation is a
+statement about growth and not a demonstrated practical gain.
+
 **AND AGAIN BY FINDING 021, which withdraws Finding 020's pessimistic conclusion.** The
 capability space has an **effective dimension of 4.62** (leading eigenvalue share 0.36,
 7 components for 90 percent of variance, 14 of 66 pairs below abs(rho) = 0.1). Finding 020

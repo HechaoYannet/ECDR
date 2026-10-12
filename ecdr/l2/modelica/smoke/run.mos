@@ -1,0 +1,12 @@
+// Pinned: OpenModelica 1.27.1 (image tag v1.27.1-minimal), MSL 4.1.0+maint.om.
+// The version is pinned rather than floating so the run manifest can record it, as
+// docs/decisions/002 requires.
+installPackage(Modelica, "4.1.0+maint.om", exactMatch=true);
+getErrorString();
+loadModel(Modelica);
+getErrorString();
+loadFile("SdofIso.mo");
+getErrorString();
+getVersion();
+simulate(SdofIso, startTime = 0, stopTime = 8, numberOfIntervals = 8000, outputFormat = "csv");
+getErrorString();

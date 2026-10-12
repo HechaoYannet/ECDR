@@ -1,0 +1,5 @@
+loadModel(Modelica);
+getErrorString();
+getClassNames(Modelica.Mechanics.Translational.Sources);
+getClassNames(Modelica.Mechanics.Translational.Components);
+getClassNames(Modelica.Mechanics.Translational.Interfaces);

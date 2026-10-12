@@ -5,3 +5,4 @@ runs/
 *.png
 !docs/**/*.png
 reference/
+node_modules/

@@ -1,0 +1,5 @@
+# ECDR orchestrator composition. Order does not matter: Cordis starts a plugin when the
+# services it injects exist, not when its line appears.
+- name: './src/physics.ts'
+- name: './src/certificates.ts'
+- name: './src/demo.ts'

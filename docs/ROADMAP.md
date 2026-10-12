@@ -50,6 +50,7 @@ section 5 turns it into a theorem.
 
 | result | status |
 |---|---|
+| **Waterbed closed form (originally Finding 004)** | **DOWNGRADED by Finding 016.** The identity p1/p0 = q1/q0 is exact (6.9e-18, resting on C 1 = g), so the closed form predicts zero for every passive network - but the integral is non-zero and converged for about one network in ten. The formula is not valid in general |
 | Closed-form infeasibility certificate for one mechanism class (passive SDOF; two incompatible bounds on omega_n; Lambda = 0.2903; independently falsified on 7 tasks) | exact, verified |
 | Certificates **transfer upward** through a fidelity ladder built so each level only ADDS constraints | exact, verified |
 | A certificate's **feasibility** verdict does NOT transfer upward (the 172-240 Hz zone) | measured |

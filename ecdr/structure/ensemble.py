@@ -24,8 +24,14 @@ def _loguniform_scalar(rng, lo, hi) -> float:
     return float(np.exp(rng.uniform(np.log(lo), np.log(hi))))
 
 
-def random_structure(rng, n: int) -> Structure:
-    """A random tree on n masses, one random ground tie, log-spread component values."""
+def random_structure(rng, n: int, ground_count=None) -> Structure:
+    """A random tree on n masses, log-spread component values.
+
+    ground_count = None draws the number of ground ties uniformly on 1..ceil(n/2).
+    It MUST be variable: an earlier version always tied exactly one node, which left
+    the "how many parallel paths to ground" axis with zero variance and made the
+    structural-feature test silently vacuous on that axis.
+    """
     masses = _loguniform(rng, 0.3, 3.0, n)
 
     springs = {}
@@ -36,14 +42,17 @@ def random_structure(rng, n: int) -> Structure:
         springs[(parent, k)] = _loguniform_scalar(rng, 1e3, 1e5)
         dampers[(parent, k)] = _loguniform_scalar(rng, 1.0, 100.0)
 
-    g_node = int(rng.integers(0, n))
-    ground_k = {g_node: _loguniform_scalar(rng, 1e3, 1e5)}
-    ground_c = {g_node: _loguniform_scalar(rng, 1.0, 100.0)}
+    if ground_count is None:
+        ground_count = int(rng.integers(1, max(2, (n + 1) // 2 + 1)))
+    g_nodes = rng.choice(n, size=min(ground_count, n), replace=False)
+    ground_k = {int(g): _loguniform_scalar(rng, 1e3, 1e5) for g in g_nodes}
+    ground_c = {int(g): _loguniform_scalar(rng, 1.0, 100.0) for g in g_nodes}
     return Structure(masses=masses, springs=springs, dampers=dampers,
                      ground_k=ground_k, ground_c=ground_c)
 
 
-def ensemble(seed: int, count: int, n_lo: int = 2, n_hi: int = 8, fixed_n=None):
+def ensemble(seed: int, count: int, n_lo: int = 2, n_hi: int = 8, fixed_n=None,
+             ground_count=None):
     """Draw a batch of structures.
 
     fixed_n = None  -> n uniform on [n_lo, n_hi]      (size-spread)
@@ -53,7 +62,7 @@ def ensemble(seed: int, count: int, n_lo: int = 2, n_hi: int = 8, fixed_n=None):
     out = []
     for _ in range(count):
         n = int(fixed_n) if fixed_n is not None else int(rng.integers(n_lo, n_hi + 1))
-        out.append(random_structure(rng, n))
+        out.append(random_structure(rng, n, ground_count=ground_count))
     return out
 
 

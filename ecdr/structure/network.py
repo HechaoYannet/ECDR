@@ -74,14 +74,17 @@ class Structure:
         return np.diag(self.masses), C, K, f, g
 
     def transmissibility(self, omega):
+        """Batched over frequency.  A per-frequency Python loop is unusably slow for
+        the 1e5-point grids the waterbed integral needs."""
         M, C, K, f, g = self.matrices()
         omega = np.atleast_1d(np.asarray(omega, dtype=float))
         s = 1j * omega
-        out = np.empty(omega.shape, dtype=complex)
-        for idx, si in enumerate(s):
-            A = M * si ** 2 + C * si + K
-            out[idx] = np.linalg.solve(A, f + g * si)[0]
-        return out
+        A = (M[None, :, :] * (s ** 2)[:, None, None]
+             + C[None, :, :] * s[:, None, None]
+             + K[None, :, :])
+        # b must be (nfreq, n, 1): numpy's batched solve takes (m,m) and (m,1), not (m,n)
+        rhs = (f[None, :] + g[None, :] * s[:, None])[:, :, None]
+        return np.linalg.solve(A, rhs)[:, 0, 0]
 
     # ---- sound, topology-independent bounds -------------------------------
     def static_deflection(self) -> float:

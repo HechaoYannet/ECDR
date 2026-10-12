@@ -60,14 +60,25 @@ def waterbed_vieta(p, q) -> float:
     return float(np.pi / 2 * (p[1] / p[0] - q[1] / q[0]))
 
 
-def waterbed_numeric(s: Structure, u_lo: float = -16.0, u_hi: float = 22.0,
-                     n: int = 6000) -> float:
-    """W = integral ln|T(j w)| / w^2 dw, evaluated in u = ln w to keep it integrable."""
-    u = np.linspace(u_lo, u_hi, n)
-    w = np.exp(u)
+def waterbed_numeric(s: Structure, w_lo: float = 1e-4, w_hi: float = 1e9,
+                     n: int = 60000) -> float:
+    """W = integral ln|T(j w)| / w^2 dw, integrated in w with analytic tails.
+
+    Do NOT substitute u = ln w.  That turns the integrand into ln|T| * exp(-u), where
+    ln|T| = O(w^2) near zero is computed by catastrophic cancellation and then multiplied
+    by a diverging factor, so a tail that is genuinely zero becomes a large spurious
+    number.  scipy.quad on that substitution returned values of order 100 for a quantity
+    of order 1e-2, and the same value for different structures.
+    """
+    w = np.logspace(np.log10(w_lo), np.log10(w_hi), n)
     T = np.abs(s.transmissibility(w))
-    T = np.maximum(T, 1e-300)
-    return float(np.trapezoid(np.log(T) * np.exp(-u), u))
+    W = float(np.trapezoid(np.log(T) / w ** 2, w))
+    Tlo = float(np.abs(s.transmissibility(np.array([w_lo])))[0])
+    W += (np.log(Tlo) / w_lo ** 2) * w_lo                      # w -> 0: integrand -> c
+    Thi = float(np.abs(s.transmissibility(np.array([w_hi])))[0])
+    A = Thi * w_hi                                             # |T| ~ A / w
+    W += (np.log(A) - np.log(w_hi) - 1.0) / w_hi
+    return W
 
 
 def peak(s: Structure, omega) -> float:

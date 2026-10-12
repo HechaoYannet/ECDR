@@ -1,0 +1,585 @@
+{
+ "query": "abs:\"benchmark\" AND abs:\"engineering design\" AND abs:\"language model\"",
+ "hits": [
+  {
+   "id": "2509.16204v2",
+   "title": "Toward Engineering AGI: Benchmarking the Engineering Design Capabilities of LLMs",
+   "abstract": "Modern engineering, spanning electrical, mechanical, aerospace, civil, and computer disciplines, stands as a cornerstone of human civilization and the foundation of our society. However, engineering design poses a fundamentally different challenge for large language models (LLMs) compared with traditional textbook-style problem solving or factual question answering. Although existing benchmarks have driven progress in areas such as language understanding, code synthesis, and scientific problem solving, real-world engineering design demands the synthesis of domain knowledge, navigation of complex trade-offs, and management of the tedious processes that consume much of practicing engineers' time. Despite these shared challenges across engineering disciplines, no benchmark currently captures the unique demands of engineering design work. In this work, we introduce EngDesign, an Engineering Design benchmark that evaluates LLMs' abilities to perform practical design tasks across nine engineering domains. Unlike existing benchmarks that focus on factual recall or question answering, EngDesign uniquely emphasizes LLMs' ability to synthesize domain knowledge, reason under constraints, and generate functional, objective-oriented engineering designs. Each task in EngDesign represents a real-world engineering design problem, accompanied by a detailed task description specifying design goals, constraints, and performance requirements. EngDesign pioneers a simulation-based evaluation paradigm that moves beyond textbook knowledge to assess genuine engineering design capabilities and shifts evaluation from static answer checking to dynamic, simulation-driven functional verification, marking a crucial step toward realizing the vision of engineering Artificial General Intelligence (AGI).",
+   "published": "2025-07-01",
+   "updated": "2025-11-06",
+   "authors": [
+    "Xingang Guo",
+    "Yaxin Li",
+    "Xiangyi Kong",
+    "Yilan Jiang",
+    "Xiayu Zhao",
+    "Zhihua Gong",
+    "Yufan Zhang",
+    "Daixuan Li",
+    "Tianle Sang",
+    "Beixiao Zhu",
+    "Gregory Jun",
+    "Yingbing Huang",
+    "Yiqi Liu",
+    "Yuqi Xue",
+    "Rahul Dev Kundu",
+    "Qi Jian Lim",
+    "Yizhou Zhao",
+    "Luke Alexander Granger",
+    "Mohamed Badr Younis",
+    "Darioush Keivan",
+    "Nippun Sabharwal",
+    "Shreyanka Sinha",
+    "Prakhar Agarwal",
+    "Kojo Vandyck",
+    "Hanlin Mai",
+    "Zichen Wang",
+    "Aditya Venkatesh",
+    "Ayush Barik",
+    "Jiankun Yang",
+    "Chongying Yue",
+    "Jingjie He",
+    "Libin Wang",
+    "Licheng Xu",
+    "Hao Chen",
+    "Jinwen Wang",
+    "Liujun Xu",
+    "Rushabh Shetty",
+    "Ziheng Guo",
+    "Dahui Song",
+    "Manvi Jha",
+    "Weijie Liang",
+    "Weiman Yan",
+    "Bryan Zhang",
+    "Sahil Bhandary Karnoor",
+    "Jialiang Zhang",
+    "Rutva Pandya",
+    "Xinyi Gong",
+    "Mithesh Ballae Ganesh",
+    "Feize Shi",
+    "Ruiling Xu",
+    "Yifan Zhang",
+    "Yanfeng Ouyang",
+    "Lianhui Qin",
+    "Elyse Rosenbaum",
+    "Corey Snyder",
+    "Peter Seiler",
+    "Geir Dullerud",
+    "Xiaojia Shelly Zhang",
+    "Zuofu Cheng",
+    "Pavan Kumar Hanumolu",
+    "Jian Huang",
+    "Mayank Kulkarni",
+    "Mahdi Namazifar",
+    "Huan Zhang",
+    "Bin Hu"
+   ],
+   "primary_category": "cs.CE",
+   "categories": [
+    "cs.CE",
+    "cs.HC",
+    "cs.RO"
+   ],
+   "url": "https://arxiv.org/abs/2509.16204v2",
+   "pdf": "https://arxiv.org/pdf/2509.16204v2",
+   "comment": "To Appear in NeurIPS 2025 Datasets & Benchmarks Track"
+  },
+  {
+   "id": "2311.12668v3",
+   "title": "From Concept to Manufacturing: Evaluating Vision-Language Models for Engineering Design",
+   "abstract": "Engineering design is undergoing a transformative shift with the advent of AI, marking a new era in how we approach product, system, and service planning. Large language models have demonstrated impressive capabilities in enabling this shift. Yet, with text as their only input modality, they cannot leverage the large body of visual artifacts that engineers have used for centuries and are accustomed to. This gap is addressed with the release of multimodal vision-language models (VLMs), such as GPT-4V, enabling AI to impact many more types of tasks. Our work presents a comprehensive evaluation of VLMs across a spectrum of engineering design tasks, categorized into four main areas: Conceptual Design, System-Level and Detailed Design, Manufacturing and Inspection, and Engineering Education Tasks. Specifically in this paper, we assess the capabilities of two VLMs, GPT-4V and LLaVA 1.6 34B, in design tasks such as sketch similarity analysis, CAD generation, topology optimization, manufacturability assessment, and engineering textbook problems. Through this structured evaluation, we not only explore VLMs' proficiency in handling complex design challenges but also identify their limitations in complex engineering design applications. Our research establishes a foundation for future assessments of vision language models. It also contributes a set of benchmark testing datasets, with more than 1000 queries, for ongoing advancements and applications in this field.",
+   "published": "2023-11-21",
+   "updated": "2024-12-09",
+   "authors": [
+    "Cyril Picard",
+    "Kristen M. Edwards",
+    "Anna C. Doris",
+    "Brandon Man",
+    "Giorgio Giannone",
+    "Md Ferdous Alam",
+    "Faez Ahmed"
+   ],
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI",
+    "cs.CE"
+   ],
+   "url": "https://arxiv.org/abs/2311.12668v3",
+   "pdf": "https://arxiv.org/pdf/2311.12668v3",
+   "comment": ""
+  },
+  {
+   "id": "2108.11899v3",
+   "title": "Patent-KG: Patent Knowledge Graph Use for Engineering Design",
+   "abstract": "To facilitate knowledge reuse in engineering design, several dataset approaches have been proposed and applied by designers. This paper builds a patent-based knowledge graph, patent-KG, to represent the knowledge facts in patents for engineering design. The arising patent-KG approach proposes a new unsupervised mechanism to extract knowledge facts in a patent, by searching the attention graph in language models. This method avoids using expensive labelled data in supervised learning or listing complex syntactic rules in rule-based extraction. The extracted entities are compared with other benchmarks in the criteria of recall rate. The result reaches the highest 0.9 recall rate in the standard list of mechanical engineering related technical terms, which means the highest coverage of engineering words. The extracted relationships are also compared with other benchmarks. The result shows that our method provides more contextual information in relationships, and extracts more relationship types including positional and negation relationships.",
+   "published": "2021-08-26",
+   "updated": "2021-09-16",
+   "authors": [
+    "Haoyu Zuo",
+    "Yuan Yin",
+    "Peter Childs"
+   ],
+   "primary_category": "cs.IR",
+   "categories": [
+    "cs.IR"
+   ],
+   "url": "https://arxiv.org/abs/2108.11899v3",
+   "pdf": "https://arxiv.org/pdf/2108.11899v3",
+   "comment": "delete the weapon examples"
+  },
+  {
+   "id": "2306.09169v1",
+   "title": "Opportunities for Large Language Models and Discourse in Engineering Design",
+   "abstract": "In recent years, large language models have achieved breakthroughs on a wide range of benchmarks in natural language processing and continue to increase in performance. Recently, the advances of large language models have raised interest outside the natural language processing community and could have a large impact on daily life. In this paper, we pose the question: How will large language models and other foundation models shape the future product development process? We provide the reader with an overview of the subject by summarizing both recent advances in natural language processing and the use of information technology in the engineering design process. We argue that discourse should be regarded as the core of engineering design processes, and therefore should be represented in a digital artifact. On this basis, we describe how foundation models such as large language models could contribute to the design discourse by automating parts thereof that involve creativity and reasoning, and were previously reserved for humans. We describe how simulations, experiments, topology optimizations, and other process steps can be integrated into a machine-actionable, discourse-centric design process. Finally, we outline the future research that will be necessary for the implementation of the conceptualized framework.",
+   "published": "2023-06-15",
+   "updated": "2023-06-15",
+   "authors": [
+    "Jan Göpfert",
+    "Jann M. Weinand",
+    "Patrick Kuckertz",
+    "Detlef Stolten"
+   ],
+   "primary_category": "cs.CL",
+   "categories": [
+    "cs.CL",
+    "cs.AI",
+    "cs.CE"
+   ],
+   "url": "https://arxiv.org/abs/2306.09169v1",
+   "pdf": "https://arxiv.org/pdf/2306.09169v1",
+   "comment": ""
+  },
+  {
+   "id": "2605.19717v1",
+   "title": "Physics-in-the-Loop: A Hybrid Agentic Architecture for Validated CAD Engineering Design",
+   "abstract": "Large Language Models (LLMs) can generate Computer-Aided Design (CAD), yet lack physical comprehension required for reliable engineering design. Instead of attempting to implicitly learn physical laws from data, we propose a Hybrid Agentic-Physical Architecture that embeds validated knowledge-based engineering tools directly into the decision making loop of autonomous AI agents. In this framework, engineering design is formulated as a closed-loop, sequential decision making process guided by explicit physical verification. Based on a load case, dedicated agents iteratively plan, generate, evaluate, and revise engineering designs using knowledge-based tools as a feedback signal. We introduce a benchmark dataset and metrics for assessing functional validity in generative CAD. Our system generates more complex and physically verified designs, with a 4.2 increase in structural complexity and improving compile rate by 3.5% compared to similar agentic methods. The codebase, prompts and dataset will be made publicly available to support reproducibility and future research.",
+   "published": "2026-05-19",
+   "updated": "2026-05-19",
+   "authors": [
+    "Elias Berger",
+    "Muhammad Usama",
+    "Jan Mehlstäubl",
+    "Bernhard Saske",
+    "Kristin Paetzold-Byhain"
+   ],
+   "primary_category": "cs.CV",
+   "categories": [
+    "cs.CV"
+   ],
+   "url": "https://arxiv.org/abs/2605.19717v1",
+   "pdf": "https://arxiv.org/pdf/2605.19717v1",
+   "comment": "Accepted in IJCAI-ECAI 2026 (Special Track on AI4Tech)"
+  },
+  {
+   "id": "2508.00830v2",
+   "title": "BikeBench: A Bicycle Design Benchmark for Generative Models with Objectives and Constraints",
+   "abstract": "We introduce BikeBench, an engineering design benchmark for evaluating generative models on problems with multiple real-world objectives and constraints. As generative AI's reach continues to grow, evaluating its capability to understand physical laws, human guidelines, and hard constraints grows increasingly important. Engineering product design lies at the intersection of these difficult tasks, providing new challenges for AI capabilities. BikeBench evaluates AI models' capabilities to generate bicycle designs that not only resemble the dataset, but meet specific performance objectives and constraints. To do so, BikeBench quantifies a variety of human-centered and multiphysics performance characteristics, such as aerodynamics, ergonomics, structural mechanics, human-rated usability, and similarity to subjective text or image prompts. Supporting the benchmark are several datasets of simulation results, a dataset of 10,000 human-rated bicycle assessments, and a synthetically generated dataset of 1.6M designs, each with a parametric, CAD/XML, SVG, and PNG representation. BikeBench is uniquely configured to evaluate tabular generative models, large language models (LLMs), design optimization, and hybrid algorithms side-by-side. Our experiments indicate that LLMs and tabular generative models fall short of hybrid GenAI+optimization algorithms in design quality, constraint satisfaction, and similarity scores, suggesting significant room for improvement. We hope that BikeBench, a first-of-its-kind benchmark, will help catalyze progress in generative AI for constrained multi-objective engineering design problems. We provide code, data, an interactive leaderboard, and other resources at https://github.com/Lyleregenwetter/BikeBench.",
+   "published": "2025-05-25",
+   "updated": "2025-10-24",
+   "authors": [
+    "Lyle Regenwetter",
+    "Yazan Abu Obaideh",
+    "Fabien Chiotti",
+    "Ioanna Lykourentzou",
+    "Faez Ahmed"
+   ],
+   "primary_category": "cs.CE",
+   "categories": [
+    "cs.CE",
+    "cs.AI",
+    "cs.LG"
+   ],
+   "url": "https://arxiv.org/abs/2508.00830v2",
+   "pdf": "https://arxiv.org/pdf/2508.00830v2",
+   "comment": ""
+  },
+  {
+   "id": "2412.08072v1",
+   "title": "Using Large Language Models for Parametric Shape Optimization",
+   "abstract": "Recent advanced large language models (LLMs) have showcased their emergent capability of in-context learning, facilitating intelligent decision-making through natural language prompts without retraining. This new machine learning paradigm has shown promise in various fields, including general control and optimization problems. Inspired by these advancements, we explore the potential of LLMs for a specific and essential engineering task: parametric shape optimization (PSO). We develop an optimization framework, LLM-PSO, that leverages an LLM to determine the optimal shape of parameterized engineering designs in the spirit of evolutionary strategies. Utilizing the ``Claude 3.5 Sonnet'' LLM, we evaluate LLM-PSO on two benchmark flow optimization problems, specifically aiming to identify drag-minimizing profiles for 1) a two-dimensional airfoil in laminar flow, and 2) a three-dimensional axisymmetric body in Stokes flow. In both cases, LLM-PSO successfully identifies optimal shapes in agreement with benchmark solutions. Besides, it generally converges faster than other classical optimization algorithms. Our preliminary exploration may inspire further investigations into harnessing LLMs for shape optimization and engineering design more broadly.",
+   "published": "2024-12-11",
+   "updated": "2024-12-11",
+   "authors": [
+    "Xinxin Zhang",
+    "Zhuoqun Xu",
+    "Guangpu Zhu",
+    "Chien Ming Jonathan Tay",
+    "Yongdong Cui",
+    "Boo Cheong Khoo",
+    "Lailai Zhu"
+   ],
+   "primary_category": "cs.CE",
+   "categories": [
+    "cs.CE",
+    "cs.AI",
+    "cs.LG"
+   ],
+   "url": "https://arxiv.org/abs/2412.08072v1",
+   "pdf": "https://arxiv.org/pdf/2412.08072v1",
+   "comment": ""
+  },
+  {
+   "id": "2605.28579v2",
+   "title": "MUSE: Benchmarking Manufacturable, Functional, and Assemblable Text-to-CAD Generation",
+   "abstract": "Large language models (LLMs) have recently advanced text-driven 3D generation, yet Text-to-CAD remains far from supporting industrial product design. Existing benchmarks focus primarily on generating single-part CAD models and evaluate them using geometric similarity metrics that fail to capture functionality, manufacturability, and assemblability. To address this gap, we introduce MUSE, a Text-to-CAD benchmark focused on complex, editable boundary representation (B-Rep) assemblies. MUSE pairs practical design instances with structured Design Specifications and evaluates generated models through a three-stage protocol: code check, geometric check, and design-intent alignment. The final stage uses design-specific rubrics to assess functionality, manufacturability, and assemblability, moving beyond shape matching toward practical design quality. To enable scalable evaluation, we use a rubric-based visual language model (VLM) judge and validate its reliability through human annotation. Experiments on closed-source and open-source LLMs reveal a clear failure cascade from executable code to valid geometry and finally to engineering-ready design, with even the strongest models achieving limited success on fine-grained engineering criteria. Together, MUSE provides a realistic benchmark and evaluation framework for advancing Text-to-CAD from geometric generation toward true engineering design. Our project website, including the leaderboard, dataset, and code, is available at https://dong7313.github.io/muse-benchmark/.",
+   "published": "2026-05-27",
+   "updated": "2026-06-04",
+   "authors": [
+    "Xiaoyu Dong",
+    "Zhi Li",
+    "Xiao-Ming Wu"
+   ],
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI"
+   ],
+   "url": "https://arxiv.org/abs/2605.28579v2",
+   "pdf": "https://arxiv.org/pdf/2605.28579v2",
+   "comment": "26 pages"
+  },
+  {
+   "id": "2404.07917v2",
+   "title": "DesignQA: A Multimodal Benchmark for Evaluating Large Language Models' Understanding of Engineering Documentation",
+   "abstract": "This research introduces DesignQA, a novel benchmark aimed at evaluating the proficiency of multimodal large language models (MLLMs) in comprehending and applying engineering requirements in technical documentation. Developed with a focus on real-world engineering challenges, DesignQA uniquely combines multimodal data-including textual design requirements, CAD images, and engineering drawings-derived from the Formula SAE student competition. Different from many existing MLLM benchmarks, DesignQA contains document-grounded visual questions where the input image and input document come from different sources. The benchmark features automatic evaluation metrics and is divided into segments-Rule Comprehension, Rule Compliance, and Rule Extraction-based on tasks that engineers perform when designing according to requirements. We evaluate state-of-the-art models (at the time of writing) like GPT-4o, GPT-4, Claude-Opus, Gemini-1.0, and LLaVA-1.5 against the benchmark, and our study uncovers the existing gaps in MLLMs' abilities to interpret complex engineering documentation. The MLLMs tested, while promising, struggle to reliably retrieve relevant rules from the Formula SAE documentation, face challenges in recognizing technical components in CAD images, and encounter difficulty in analyzing engineering drawings. These findings underscore the need for multimodal models that can better handle the multifaceted questions characteristic of design according to technical documentation. This benchmark sets a foundation for future advancements in AI-supported engineering design processes. DesignQA is publicly available at: https://github.com/anniedoris/design_qa/.",
+   "published": "2024-04-11",
+   "updated": "2024-08-23",
+   "authors": [
+    "Anna C. Doris",
+    "Daniele Grandi",
+    "Ryan Tomich",
+    "Md Ferdous Alam",
+    "Mohammadmehdi Ataei",
+    "Hyunmin Cheong",
+    "Faez Ahmed"
+   ],
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI",
+    "cs.CL"
+   ],
+   "url": "https://arxiv.org/abs/2404.07917v2",
+   "pdf": "https://arxiv.org/pdf/2404.07917v2",
+   "comment": ""
+  },
+  {
+   "id": "2609.21493v1",
+   "title": "PolyBridgeBench: Benchmarking Multimodal LLMs for Physics-Grounded Bridge Design",
+   "abstract": "Multimodal large language models, or MLLMs, perform well at visual understanding and structured generation, yet these capabilities do not establish whether an engineering design will work when executed. Existing benchmarks assess spatial reasoning, structural validity, or physics-grounded construction, but they do not determine whether MLLMs can synthesize complete load-bearing structures and repair them after simulator execution exposes a failure. We introduce PolyBridgeBench, an executable benchmark for multimodal bridge design. A model receives a visual scene and structured engineering constraints and generates a complete node--member--material topology. Deterministic legality checks gate execution in a native dynamic physics simulation. Following an execution failure, the benchmark returns temporal visual evidence from the failed rollout and evaluates repair under a fixed interaction budget. Separate measurements of deterministic validity, dynamic functional success, and post-failure recovery identify the stage at which design fails. Experiments with six representative MLLMs across 189 levels expose a substantial gap between deterministic validity and dynamic success, pronounced sensitivity to material budgets, and limited post-failure recovery under the primary strict-budget setting.",
+   "published": "2026-09-18",
+   "updated": "2026-09-18",
+   "authors": [
+    "Zicheng Zhao",
+    "Dongyin Chen",
+    "Rui Xu",
+    "Yinghui Xu"
+   ],
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI"
+   ],
+   "url": "https://arxiv.org/abs/2609.21493v1",
+   "pdf": "https://arxiv.org/pdf/2609.21493v1",
+   "comment": ""
+  },
+  {
+   "id": "2607.05573v1",
+   "title": "Foundation Models for Automatic CAD Generation",
+   "abstract": "Recent advances in Large Language Models (LLMs) and Vision-Language Models (VLMs) enable the automatic generation of parametric 3D designs from natural-language specifications. This chapter presents an empirical study of foundation models for automatic Computer-Aided Design (CAD) generation of mechanical parts, using a unified evaluation pipeline and a curated benchmark of 97 engineering design problems. We introduce LLMForge, a multi-model text-to-CAD framework integrating JSON-schema validation, analytic feature scoring, mesh synthesis, and multi-round iterative refinement, studied under two critique regimes. IterTracer uses a Phong-shaded ray-trace renderer with analytic visual metrics (silhouette IoU, hole visibility, edge clearance, aspect-ratio conformance) for lightweight geometry-aware feedback across rounds. IterVision replaces the analytic scorer with a VLM semantic critic (Qwen2.5-VL-72B) that evaluates rendered views via chain-of-thought visual reasoning, assessing spatial coherence and design intent. On a benchmark spanning four canonical geometry families (plates with holes and bolt circles, multi-feature boxes, flanged cylinders, and L-brackets), we evaluate seven foundation models: DeepSeek-V3.2, Qwen3-235B-A22B, Llama-3.3-70B, Gemma-3-27B, GLM-4.5, MiniMax-M2.1, and INTELLECT. Under IterTracer, the four highest-ranked models form a tight cluster (overall mean in [0.885, 0.890]) with 98.97% mesh success, showing that compact instruction-tuned models can match substantially larger systems. VLM-based critique in IterVision yields 100% watertight mesh generation on the leading model while surfacing systematic difficulty on rotationally symmetric geometries such as cylinders, where visual and semantic scoring diverge most. We discuss benchmark design, failure modes, CAD-oriented prompting, and implications for industrial workflows and scalable automated mechanical design.",
+   "published": "2026-07-06",
+   "updated": "2026-07-06",
+   "authors": [
+    "J de Curtò",
+    "Victoria Guillén",
+    "I. de Zarzà"
+   ],
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI",
+    "cs.CE"
+   ],
+   "url": "https://arxiv.org/abs/2607.05573v1",
+   "pdf": "https://arxiv.org/pdf/2607.05573v1",
+   "comment": "Accepted as a book chapter in \"Advances in Global Applied Artificial Intelligence\" (G. A. Tsihrintzis, M. Virvou, N. G. Bourbakis, L. C. Jain, Eds.), authenticated version will be published in Springer series: Learning and Analytics in Intelligent Systems"
+  },
+  {
+   "id": "2601.05187v1",
+   "title": "SimuAgent: An LLM-Based Simulink Modeling Assistant Enhanced with Reinforcement Learning",
+   "abstract": "Large language models (LLMs) have revolutionized text-based code automation, but their potential in graph-oriented engineering workflows remains under-explored. We introduce SimuAgent, an LLM-powered modeling and simulation agent tailored for Simulink. SimuAgent replaces verbose XML with a concise, dictionary-style Python representation, dramatically cutting token counts, improving interpretability, and enabling fast, in-process simulation. A lightweight plan-execute architecture, trained in two stages, equips the agent with both low-level tool skills and high-level design reasoning. To tackle sparse rewards in long-horizon tasks, we propose Reflection-GRPO (ReGRPO), which augments Group Relative Policy Optimization (GRPO) with self-reflection traces that supply rich intermediate feedback, accelerating convergence and boosting robustness. Experiments on SimuBench, our newly released benchmark comprising 5300 multi-domain modeling tasks, show that a Qwen2.5-7B model fine-tuned with SimuAgent converges faster and achieves higher modeling accuracy than standard RL baselines, and even surpasses GPT-4o when evaluated with few-shot prompting on the same benchmark. Ablations confirm that the two-stage curriculum and abstract-reconstruct data augmentation further enhance generalization. SimuAgent trains and runs entirely on-premise with modest hardware, delivering a privacy-preserving, cost-effective solution for industrial model-driven engineering. SimuAgent bridges the gap between LLMs and graphical modeling environments, offering a practical solution for AI-assisted engineering design in industrial settings.",
+   "published": "2026-01-08",
+   "updated": "2026-01-08",
+   "authors": [
+    "Yanchang Liang",
+    "Xiaowei Zhao"
+   ],
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI"
+   ],
+   "url": "https://arxiv.org/abs/2601.05187v1",
+   "pdf": "https://arxiv.org/pdf/2601.05187v1",
+   "comment": ""
+  },
+  {
+   "id": "2609.04216v1",
+   "title": "Engineering as Code: Bringing Software Engineering Methodology to Engineering Design",
+   "abstract": "Large language models have made significant progress in verifiable domains such as code generation and chip design, yet remain limited on engineering design tasks in fields like architecture, mechanical engineering, and HVAC. This paper argues the root cause is not model capability but the absence of a \"Design as Code\" computable foundation: design representations that can be consumed, verified, and versioned by machines. Existing CAD/BIM systems couple design logic with geometry, causing quality assurance to drift downstream; Automated Compliance Checking (ACC) suffers from geometric false positives and naming-dependent model reconstruction overhead. We propose the Engineering as Code (EaC) paradigm: expressing engineering design as text-native declarative language with automated rule engines, version control, and package management as quality gates. Core contributions: (1) the Information Representation Hypothesis, arguing the engineering AI bottleneck stems from missing computable design representations rather than model capability; (2) ADL (Assembly Definition Language) with Part as atom, organized into three orthogonal sub-languages -- PDL (Part Definition), PML (Part Mating), and PLL (Part Layout); (3) ESA (Engineering Static Analysis), shifting compliance checking from downstream review to design-time, operating on semantic categories (Family types, Mate relations) rather than geometry, eliminating false positives and naming dependencies. A prototype validates ADL expressiveness and ESA detection across three cross-domain samples (telecom rack expansion, modular datacenter, mechanical keyboard), checking 69 rules in under 200ms. A controlled violation injection experiment achieves 100% detection rate with zero false positives. The SD-HWE-Bench benchmark design is complete as an empirical testbed for the hypothesis.",
+   "published": "2026-06-22",
+   "updated": "2026-06-22",
+   "authors": [
+    "Song Difei"
+   ],
+   "primary_category": "cs.SE",
+   "categories": [
+    "cs.SE"
+   ],
+   "url": "https://arxiv.org/abs/2609.04216v1",
+   "pdf": "https://arxiv.org/pdf/2609.04216v1",
+   "comment": "27 pages, 3 tables, 1 figure"
+  },
+  {
+   "id": "2509.22339v2",
+   "title": "CircuitSense: A Hierarchical MLLM Benchmark Bridging Visual Comprehension and Symbolic Reasoning in Engineering Design Process",
+   "abstract": "Engineering design operates through hierarchical abstraction from system specifications to component implementations, requiring visual understanding coupled with mathematical reasoning at each level. While Multi-modal Large Language Models (MLLMs) excel at natural image tasks, their ability to extract mathematical models from technical diagrams remains unexplored. We present \\textbf{CircuitSense}, a comprehensive benchmark evaluating circuit understanding across this hierarchy through 8,006+ problems spanning component-level schematics to system-level block diagrams. Our benchmark uniquely examines the complete engineering workflow: Perception, Analysis, and Design, with a particular emphasis on the critical but underexplored capability of deriving symbolic equations from visual inputs. We introduce a hierarchical synthetic generation pipeline consisting of a grid-based schematic generator and a block diagram generator with auto-derived symbolic equation labels. Comprehensive evaluation of six state-of-the-art MLLMs, including both closed-source and open-source models, reveals fundamental limitations in visual-to-mathematical reasoning. Closed-source models achieve over 85\\% accuracy on perception tasks involving component recognition and topology identification, yet their performance on symbolic derivation and analytical reasoning falls below 19\\%, exposing a critical gap between visual parsing and symbolic reasoning. Models with stronger symbolic reasoning capabilities consistently achieve higher design task accuracy, confirming the fundamental role of mathematical understanding in circuit synthesis and establishing symbolic reasoning as the key metric for engineering competence.",
+   "published": "2025-09-26",
+   "updated": "2026-02-28",
+   "authors": [
+    "Arman Akbari",
+    "Jian Gao",
+    "Yifei Zou",
+    "Mei Yang",
+    "Jinru Duan",
+    "Dmitrii Torbunov",
+    "Yanzhi Wang",
+    "Yihui Ren",
+    "Xuan Zhang"
+   ],
+   "primary_category": "cs.CV",
+   "categories": [
+    "cs.CV"
+   ],
+   "url": "https://arxiv.org/abs/2509.22339v2",
+   "pdf": "https://arxiv.org/pdf/2509.22339v2",
+   "comment": ""
+  },
+  {
+   "id": "2404.03647v1",
+   "title": "Capabilities of Large Language Models in Control Engineering: A Benchmark Study on GPT-4, Claude 3 Opus, and Gemini 1.0 Ultra",
+   "abstract": "In this paper, we explore the capabilities of state-of-the-art large language models (LLMs) such as GPT-4, Claude 3 Opus, and Gemini 1.0 Ultra in solving undergraduate-level control problems. Controls provides an interesting case study for LLM reasoning due to its combination of mathematical theory and engineering design. We introduce ControlBench, a benchmark dataset tailored to reflect the breadth, depth, and complexity of classical control design. We use this dataset to study and evaluate the problem-solving abilities of these LLMs in the context of control engineering. We present evaluations conducted by a panel of human experts, providing insights into the accuracy, reasoning, and explanatory prowess of LLMs in control engineering. Our analysis reveals the strengths and limitations of each LLM in the context of classical control, and our results imply that Claude 3 Opus has become the state-of-the-art LLM for solving undergraduate control problems. Our study serves as an initial step towards the broader goal of employing artificial general intelligence in control engineering.",
+   "published": "2024-04-04",
+   "updated": "2024-04-04",
+   "authors": [
+    "Darioush Kevian",
+    "Usman Syed",
+    "Xingang Guo",
+    "Aaron Havens",
+    "Geir Dullerud",
+    "Peter Seiler",
+    "Lianhui Qin",
+    "Bin Hu"
+   ],
+   "primary_category": "math.OC",
+   "categories": [
+    "math.OC",
+    "cs.AI",
+    "cs.LG"
+   ],
+   "url": "https://arxiv.org/abs/2404.03647v1",
+   "pdf": "https://arxiv.org/pdf/2404.03647v1",
+   "comment": ""
+  },
+  {
+   "id": "2606.20146v3",
+   "title": "BIM-Edit: Benchmarking Large Language Models for IFC-Based Building Information Modeling",
+   "abstract": "Large language models (LLMs) are increasingly applied to computer-aided design (CAD) to generate design artifacts from textual instructions. In engineering practice, this requires more than creating new geometry, models must also understand existing scenes, edit them correctly, and preserve semantics and relations. However, many CAD benchmarks focus on creating new models rather than editing existing ones, and mostly evaluate geometric correctness. We introduce BIM-Edit, a benchmark for evaluating LLMs on natural-language editing of Building Information Models (BIM) represented in the Industry Foundation Classes (IFC) format. BIM provides a challenging testbed because building models encode geometry together with semantic and relational structure. BIM-Edit contains 324 editing tasks spanning 11 realistic building models and 36 synthetic scenes. Tasks are expressed using three instruction categories - direct, spatial, and topological - covering both explicit and scene-grounded edits. We evaluate outputs along three dimensions: geometric accuracy, semantic validity, and topological consistency. Across evaluated LLMs, the best-performing model achieves only 49.5% average score across the three metrics, and no model fully solves more than 3.4% of tasks. These results demonstrate a substantial gap between current LLM capabilities and the requirements of structured engineering design workflows.",
+   "published": "2026-06-18",
+   "updated": "2026-06-23",
+   "authors": [
+    "Bharathi Kannan Nithyanantham",
+    "Clemens Kujat",
+    "Tobias Sesterhenn",
+    "Stefan Telgmann",
+    "Ashwin Nedungadi",
+    "Jörn Plönnigs",
+    "Christian Bartelt",
+    "Stefan Lüdtke"
+   ],
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI"
+   ],
+   "url": "https://arxiv.org/abs/2606.20146v3",
+   "pdf": "https://arxiv.org/pdf/2606.20146v3",
+   "comment": ""
+  },
+  {
+   "id": "2410.22349v1",
+   "title": "Search Engines in an AI Era: The False Promise of Factual and Verifiable Source-Cited Responses",
+   "abstract": "Large Language Model (LLM)-based applications are graduating from research prototypes to products serving millions of users, influencing how people write and consume information. A prominent example is the appearance of Answer Engines: LLM-based generative search engines supplanting traditional search engines. Answer engines not only retrieve relevant sources to a user query but synthesize answer summaries that cite the sources. To understand these systems' limitations, we first conducted a study with 21 participants, evaluating interactions with answer vs. traditional search engines and identifying 16 answer engine limitations. From these insights, we propose 16 answer engine design recommendations, linked to 8 metrics. An automated evaluation implementing our metrics on three popular engines (You.com, Perplexity.ai, BingChat) quantifies common limitations (e.g., frequent hallucination, inaccurate citation) and unique features (e.g., variation in answer confidence), with results mirroring user study insights. We release our Answer Engine Evaluation benchmark (AEE) to facilitate transparent evaluation of LLM-based applications.",
+   "published": "2024-10-15",
+   "updated": "2024-10-15",
+   "authors": [
+    "Pranav Narayanan Venkit",
+    "Philippe Laban",
+    "Yilun Zhou",
+    "Yixin Mao",
+    "Chien-Sheng Wu"
+   ],
+   "primary_category": "cs.IR",
+   "categories": [
+    "cs.IR",
+    "cs.AI",
+    "cs.CL",
+    "cs.CY",
+    "cs.HC"
+   ],
+   "url": "https://arxiv.org/abs/2410.22349v1",
+   "pdf": "https://arxiv.org/pdf/2410.22349v1",
+   "comment": ""
+  },
+  {
+   "id": "2607.21570v1",
+   "title": "MedGame: Storytelling Gamification Empowered by Large Language Models for Medical Education",
+   "abstract": "Large Language Models (LLMs) show promise for medical education, but most existing systems focus on localized interactions such as question answering or single-turn feedback, rather than organizing an entire clinical case into a decision-centered learning trajectory. We introduce \\textit{MedGame}, a framework that transforms static clinical cases into structured, executable storytelling games. MedGame uses a dual-engine design: a Medical Narrative Designer synthesizes case-grounded clinical storylines with states and decision nodes, while a Story Director converts them into dependency-aware multimodal orchestration plans rendered by our released interactive platform. We construct MedGame Bench, a 5,000-case benchmark and evaluation protocol for Medical Narrative Generation and Story Direction. Experiments show that task-specific fine-tuning substantially improves open-source LLMs on MedGame Bench and narrows the gap with commercial models. A pilot student study further shows that learners perceive MedGame as more engaging and useful than text-only alternatives.",
+   "published": "2026-07-23",
+   "updated": "2026-07-23",
+   "authors": [
+    "Qian Wu",
+    "Xinrong Zhou",
+    "Zizhan Ma",
+    "Kai Chen",
+    "Zheyao Gao",
+    "Xun Lin",
+    "Hongqiu Wu",
+    "Longfei Gou",
+    "Yixiao Liu",
+    "Ann Sin Nga Lau",
+    "Qi Dou"
+   ],
+   "primary_category": "cs.CL",
+   "categories": [
+    "cs.CL",
+    "cs.HC"
+   ],
+   "url": "https://arxiv.org/abs/2607.21570v1",
+   "pdf": "https://arxiv.org/pdf/2607.21570v1",
+   "comment": "Work in Progress; an explorational design and study on AI+Education+Game"
+  },
+  {
+   "id": "2402.09638v1",
+   "title": "Multi-Fidelity Methods for Optimization: A Survey",
+   "abstract": "Real-world black-box optimization often involves time-consuming or costly experiments and simulations. Multi-fidelity optimization (MFO) stands out as a cost-effective strategy that balances high-fidelity accuracy with computational efficiency through a hierarchical fidelity approach. This survey presents a systematic exploration of MFO, underpinned by a novel text mining framework based on a pre-trained language model. We delve deep into the foundational principles and methodologies of MFO, focusing on three core components -- multi-fidelity surrogate models, fidelity management strategies, and optimization techniques. Additionally, this survey highlights the diverse applications of MFO across several key domains, including machine learning, engineering design optimization, and scientific discovery, showcasing the adaptability and effectiveness of MFO in tackling complex computational challenges. Furthermore, we also envision several emerging challenges and prospects in the MFO landscape, spanning scalability, the composition of lower fidelities, and the integration of human-in-the-loop approaches at the algorithmic level. We also address critical issues related to benchmarking and the advancement of open science within the MFO community. Overall, this survey aims to catalyze further research and foster collaborations in MFO, setting the stage for future innovations and breakthroughs in the field.",
+   "published": "2024-02-15",
+   "updated": "2024-02-15",
+   "authors": [
+    "Ke Li",
+    "Fan Li"
+   ],
+   "primary_category": "cs.LG",
+   "categories": [
+    "cs.LG",
+    "cs.NE"
+   ],
+   "url": "https://arxiv.org/abs/2402.09638v1",
+   "pdf": "https://arxiv.org/pdf/2402.09638v1",
+   "comment": "47 pages, 9 figures"
+  },
+  {
+   "id": "2605.09990v1",
+   "title": "Merlin: Deterministic Byte-Exact Deduplication for Lossless Context Optimization in Large Language Model Inference",
+   "abstract": "Data-intensive applications, ranging from large-scale retrieval systems to advanced data pipelines, are increasingly bottlenecked by the processing of highly redundant text corpora. We present Merlin, a local-first, agnostic, high-throughput deduplication and context optimization engine designed to mitigate these inefficiencies. Utilizing a highly optimized, SIMD-friendly open-addressing flat hash set combined with xxHash3-64, Merlin performs rapid, byte-exact deduplication of text passages and data chunks. While broadly applicable to any text-processing workflow, its impact is particularly pronounced in Large Language Model (LLM) ecosystems, such as Retrieval-Augmented Generation (RAG). Our empirical evaluations demonstrate an input reduction ranging from 13.9% in low-redundancy datasets to over 71% in high-redundancy pipelines, maintaining absolute data fidelity. Furthermore, we detail the system's integration architecture via the Model Context Protocol (MCP), enabling secure, zero-network-interception deployment across major IDEs and autonomous agents. This paper outlines the core algorithmic design, performance benchmarks, and the architectural principles required to process data at sustained speeds of up to 8.7 GB/s.",
+   "published": "2026-05-11",
+   "updated": "2026-05-11",
+   "authors": [
+    "Sietse Schelpe"
+   ],
+   "primary_category": "cs.CL",
+   "categories": [
+    "cs.CL"
+   ],
+   "url": "https://arxiv.org/abs/2605.09990v1",
+   "pdf": "https://arxiv.org/pdf/2605.09990v1",
+   "comment": "Preprint. Implementation and open-source community version available at: https://github.com/corbenicai/merlin-community - https://doi.org/10.5281/zenodo.20090991"
+  },
+  {
+   "id": "2605.10865v2",
+   "title": "BenchCAD: A Comprehensive, Industry-Standard Benchmark for Programmatic CAD",
+   "abstract": "Industrial Computer-Aided Design (CAD) code generation requires models to produce executable parametric programs from visual or textual inputs. Beyond recognizing the outer shape of a part, this task involves understanding its 3D structure, inferring engineering parameters, and choosing CAD operations that reflect how the part would be designed and manufactured. Despite the promise of Multimodal large language models (MLLMs) for this task, they are rarely evaluated on whether these capabilities jointly hold in realistic industrial CAD settings. We present BenchCAD, a unified benchmark for industrial CAD reasoning. BenchCAD contains 17,900 execution-verified CadQuery programs across 106 industrial part families, including bevel gears, compression springs, twist drills, and other reusable engineering designs. It evaluates models through visual question answering, code question answering, image-to-code generation, and instruction-guided code editing, enabling fine-grained analysis across perception, parametric abstraction, and executable program synthesis. Across 10+ frontier models, BenchCAD shows that current systems often recover coarse outer geometry but fail to produce faithful parametric CAD programs. Common failures include missing fine 3D structure, misinterpreting industrial design parameters, and replacing essential operations such as sweeps, lofts, and twist-extrudes with simpler sketch-and-extrude patterns. Fine-tuning and reinforcement learning improve in-distribution performance, but generalization to unseen part families remains limited. These results position BenchCAD as a benchmark for measuring and improving the industrial readiness of multimodal CAD automation.",
+   "published": "2026-05-11",
+   "updated": "2026-05-12",
+   "authors": [
+    "Haozhe Zhang",
+    "Kaichen Liu",
+    "Miaomiao Chen",
+    "Lei Li",
+    "Shaojie Yang",
+    "Cheng Peng",
+    "Hanjie Chen"
+   ],
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI",
+    "cs.CV",
+    "cs.SE"
+   ],
+   "url": "https://arxiv.org/abs/2605.10865v2",
+   "pdf": "https://arxiv.org/pdf/2605.10865v2",
+   "comment": "9 page 7 figures"
+  },
+  {
+   "id": "2609.36892v1",
+   "title": "Harness Evolution as Learning: Approximation, Generalization, and Optimization Limits of Self-Improving Personal Agents",
+   "abstract": "As the capabilities of large language models (LLMs) continue to advance, increasing attention is turning to how to translate their abilities into useful behavior. Personal agents bring this question into everyday settings, where models are expected to serve individual users and continually adapt to their preferences. With the underlying model held fixed, such adaptation relies on harness engineering: designing and evolving the surrounding layer that manages context, memory, tools, and execution. Despite rapid progress, the factors governing effective harness evolution remain insufficiently understood. To narrow this gap, we investigate three central questions concerning harness architecture, harness scale, and self-evolution algorithms through complementary empirical and theoretical analyses. Empirically, we introduce a preference-oriented benchmark and systematically characterize the capabilities and limitations of personal agents associated with these three dimensions. Theoretically, we formulate harness evolution as a learning problem and explain these phenomena through approximation, generalization, and optimization errors. Analyses of reachable policies, capacity under finite interaction evidence, and biased update dynamics provide theoretical accounts of the observed phenomena. Together, these results offer a unified perspective on the limits of personalization through harness evolution and inform future harness design.",
+   "published": "2026-09-29",
+   "updated": "2026-09-29",
+   "authors": [
+    "Zeyu Gan",
+    "Zixuan Gong",
+    "Yong Liu"
+   ],
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI",
+    "cs.CL"
+   ],
+   "url": "https://arxiv.org/abs/2609.36892v1",
+   "pdf": "https://arxiv.org/pdf/2609.36892v1",
+   "comment": ""
+  },
+  {
+   "id": "2501.03508v1",
+   "title": "A Sequential Optimal Learning Approach to Automated Prompt Engineering in Large Language Models",
+   "abstract": "Designing effective prompts is essential to guiding large language models (LLMs) toward desired responses. Automated prompt engineering aims to reduce reliance on manual effort by streamlining the design, refinement, and optimization of natural language prompts. This paper proposes an optimal learning framework for automated prompt engineering, designed to sequentially identify effective prompt features while efficiently allocating a limited evaluation budget. We introduce a feature-based method to express prompts, which significantly broadens the search space. Bayesian regression is employed to utilize correlations among similar prompts, accelerating the learning process. To efficiently explore the large space of prompt features for a high quality prompt, we adopt the forward-looking Knowledge-Gradient (KG) policy for sequential optimal learning. The KG policy is computed efficiently by solving mixed-integer second-order cone optimization problems, making it scalable and capable of accommodating prompts characterized only through constraints. We demonstrate that our method significantly outperforms a set of benchmark strategies assessed on instruction induction tasks. The results highlight the advantages of using the KG policy for prompt learning given a limited evaluation budget. Our framework provides a solution to deploying automated prompt engineering in a wider range applications where prompt evaluation is costly.",
+   "published": "2025-01-07",
+   "updated": "2025-01-07",
+   "authors": [
+    "Shuyang Wang",
+    "Somayeh Moazeni",
+    "Diego Klabjan"
+   ],
+   "primary_category": "cs.CL",
+   "categories": [
+    "cs.CL"
+   ],
+   "url": "https://arxiv.org/abs/2501.03508v1",
+   "pdf": "https://arxiv.org/pdf/2501.03508v1",
+   "comment": ""
+  },
+  {
+   "id": "2506.10987v1",
+   "title": "Chain of Draft for Software Engineering: Challenges in Applying Concise Reasoning to Code Tasks",
+   "abstract": "Large language models (LLMs) have become vital tools for software development, but they often require verbose intermediate reasoning for complex code tasks, leading to high latency and costs. This research extends the Chain of Draft (CoD) method to software engineering, designing and evaluating multiple CoD variants tailored for code tasks. Through comprehensive experiments on all 300 samples from the SWE-bench benchmark, we found that all CoD variants used significantly fewer tokens than Chain of Thought (CoT), with Baseline CoD being most efficient at 55.4% of CoT's tokens. While this represents substantial efficiency gains - translating to approximately 45% reduction in processing time and API costs - it differs from the extreme 7.6% reported in the original CoD paper for mathematical reasoning. This difference stems from the inherent complexity and context-dependency of software tasks, which require more detailed reasoning to maintain solution quality. Our multi-dimensional quality assessment revealed that CoD variants maintain over 90% of CoT's code quality across key metrics including correctness, compatibility, and maintainability, making them practical alternatives for real-world development scenarios where efficiency matters. This research demonstrates how domain-specific characteristics influence prompting strategy effectiveness and provides a framework for balancing efficiency with solution quality in software engineering applications. Our findings offer practical guidance for optimizing LLM-based development workflows through appropriate prompting strategy selection based on project requirements.",
+   "published": "2025-03-12",
+   "updated": "2025-03-12",
+   "authors": [
+    "Shaoyi Yang"
+   ],
+   "primary_category": "cs.SE",
+   "categories": [
+    "cs.SE"
+   ],
+   "url": "https://arxiv.org/abs/2506.10987v1",
+   "pdf": "https://arxiv.org/pdf/2506.10987v1",
+   "comment": ""
+  }
+ ]
+}

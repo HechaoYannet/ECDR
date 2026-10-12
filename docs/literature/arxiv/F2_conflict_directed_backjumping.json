@@ -1,0 +1,77 @@
+{
+ "query": "abs:\"conflict-directed\" AND abs:\"backjumping\"",
+ "hits": [
+  {
+   "id": "0311003v1",
+   "title": "Enhancing a Search Algorithm to Perform Intelligent Backtracking",
+   "abstract": "This paper illustrates how a Prolog program, using chronological backtracking to find a solution in some search space, can be enhanced to perform intelligent backtracking. The enhancement crucially relies on the impurity of Prolog that allows a program to store information when a dead end is reached. To illustrate the technique, a simple search program is enhanced. To appear in Theory and Practice of Logic Programming. Keywords: intelligent backtracking, dependency-directed backtracking, backjumping, conflict-directed backjumping, nogood sets, look-back.",
+   "published": "2003-11-05",
+   "updated": "2003-11-05",
+   "authors": [
+    "Maurice Bruynooghe"
+   ],
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI",
+    "cs.LO"
+   ],
+   "url": "https://arxiv.org/abs/0311003v1",
+   "pdf": "https://arxiv.org/pdf/0311003v1",
+   "comment": "To appear in Theory and Practice of Logic Programming"
+  },
+  {
+   "id": "0411016v2",
+   "title": "Intelligent search strategies based on adaptive Constraint Handling Rules",
+   "abstract": "The most advanced implementation of adaptive constraint processing with Constraint Handling Rules (CHR) allows the application of intelligent search strategies to solve Constraint Satisfaction Problems (CSP). This presentation compares an improved version of conflict-directed backjumping and two variants of dynamic backtracking with respect to chronological backtracking on some of the AIM instances which are a benchmark set of random 3-SAT problems. A CHR implementation of a Boolean constraint solver combined with these different search strategies in Java is thus being compared with a CHR implementation of the same Boolean constraint solver combined with chronological backtracking in SICStus Prolog. This comparison shows that the addition of ``intelligence'' to the search process may reduce the number of search steps dramatically. Furthermore, the runtime of their Java implementations is in most cases faster than the implementations of chronological backtracking. More specifically, conflict-directed backjumping is even faster than the SICStus Prolog implementation of chronological backtracking, although our Java implementation of CHR lacks the optimisations made in the SICStus Prolog system. To appear in Theory and Practice of Logic Programming (TPLP).",
+   "published": "2004-11-08",
+   "updated": "2004-11-18",
+   "authors": [
+    "Armin Wolf"
+   ],
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI",
+    "cs.PL"
+   ],
+   "url": "https://arxiv.org/abs/0411016v2",
+   "pdf": "https://arxiv.org/pdf/0411016v2",
+   "comment": "Number of pages: 27 Number of figures: 14 Number of Tables: 2"
+  },
+  {
+   "id": "1110.5867v1",
+   "title": "From Total Assignment Enumeration to Modern SAT Solver",
+   "abstract": "A new framework for presenting and analyzing the functionality of a modern DLL-based SAT solver is proposed. Our approach exploits the inherent relation between backtracking and resolution. We show how to derive the algorithm of a modern SAT solver from DLL step-by-step. We analyze the inference power of Boolean Constraint Propagation, Non-Chronological Backtracking and 1UIP-based Conflict-Directed Backjumping. Our work can serve as an introduction to a modern SAT solver functionality and as a basis for future work on the inference power of a modern SAT solver and on practical SAT solver design.",
+   "published": "2011-10-26",
+   "updated": "2011-10-26",
+   "authors": [
+    "Nachum Dershowitz",
+    "Alexander Nadel"
+   ],
+   "primary_category": "cs.LO",
+   "categories": [
+    "cs.LO"
+   ],
+   "url": "https://arxiv.org/abs/1110.5867v1",
+   "pdf": "https://arxiv.org/pdf/1110.5867v1",
+   "comment": ""
+  },
+  {
+   "id": "1106.0254v1",
+   "title": "Conflict-Directed Backjumping Revisited",
+   "abstract": "In recent years, many improvements to backtracking algorithms for solving constraint satisfaction problems have been proposed. The techniques for improving backtracking algorithms can be conveniently classified as look-ahead schemes and look-back schemes. Unfortunately, look-ahead and look-back schemes are not entirely orthogonal as it has been observed empirically that the enhancement of look-ahead techniques is sometimes counterproductive to the effects of look-back techniques. In this paper, we focus on the relationship between the two most important look-ahead techniques---using a variable ordering heuristic and maintaining a level of local consistency during the backtracking search---and the look-back technique of conflict-directed backjumping (CBJ). We show that there exists a \"perfect\" dynamic variable ordering such that CBJ becomes redundant. We also show theoretically that as the level of local consistency that is maintained in the backtracking search is increased, the less that backjumping will be an improvement. Our theoretical results partially explain why a backtracking algorithm doing more in the look-ahead phase cannot benefit more from the backjumping look-back scheme. Finally, we show empirically that adding CBJ to a backtracking algorithm that maintains generalized arc consistency (GAC), an algorithm that we refer to as GAC-CBJ, can still provide orders of magnitude speedups. Our empirical results contrast with Bessiere and Regin's conclusion (1996) that CBJ is useless to an algorithm that maintains arc consistency.",
+   "published": "2011-06-01",
+   "updated": "2011-06-01",
+   "authors": [
+    "X. Chen",
+    "P. van Beek"
+   ],
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI"
+   ],
+   "url": "https://arxiv.org/abs/1106.0254v1",
+   "pdf": "https://arxiv.org/pdf/1106.0254v1",
+   "comment": ""
+  }
+ ]
+}

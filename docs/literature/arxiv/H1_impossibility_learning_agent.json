@@ -1,0 +1,492 @@
+{
+ "query": "abs:\"impossibility\" AND abs:\"agent\" AND abs:\"proof\"",
+ "hits": [
+  {
+   "id": "2302.06061v1",
+   "title": "Collusion-proof And Sybil-proof Reward Mechanisms For Query Incentive Networks",
+   "abstract": "This paper explores reward mechanisms for a query incentive network in which agents seek information from social networks. In a query tree issued by the task owner, each agent is rewarded by the owner for contributing to the solution, for instance, solving the task or inviting others to solve it. The reward mechanism determines the reward for each agent and motivates all agents to propagate and report their information truthfully. In particular, the reward cannot exceed the budget set by the task owner. However, our impossibility results demonstrate that a reward mechanism cannot simultaneously achieve Sybil-proof (agents benefit from manipulating multiple fake identities), collusion-proof (multiple agents pretend as a single agent to improve the reward), and other essential properties. In order to address these issues, we propose two novel reward mechanisms. The first mechanism achieves Sybil-proof and collusion-proof, respectively; the second mechanism sacrifices Sybil-proof to achieve the approximate versions of Sybil-proof and collusion-proof. Additionally, we show experimentally that our second reward mechanism outperforms the existing ones.",
+   "published": "2023-02-13",
+   "updated": "2023-02-13",
+   "authors": [
+    "Youjia Zhang",
+    "Pingzhong Tang"
+   ],
+   "primary_category": "cs.GT",
+   "categories": [
+    "cs.GT"
+   ],
+   "url": "https://arxiv.org/abs/2302.06061v1",
+   "pdf": "https://arxiv.org/pdf/2302.06061v1",
+   "comment": ""
+  },
+  {
+   "id": "2405.12804v2",
+   "title": "The Machiavellian frontier of stable mechanisms",
+   "abstract": "The impossibility theorem in Roth (1982) states that no stable mechanism satisfies strategy-proofness. This paper explores the Machiavellian frontier of stable mechanisms by weakening strategy-proofness. For a fixed mechanism $\\varphi$ and a true preference profile $\\succ$, a $(\\varphi,\\succ)$-boost mispresentation of agent i is a preference of i that is obtained by (i) raising the ranking of the truth-telling assignment $\\varphi_i(\\succ)$, and (ii) keeping rankings unchanged above the new position of this truth-telling assignment. We require a matching mechanism $\\varphi$ neither punish nor reward any such misrepresentation, and define such axiom as $\\varphi$-boost-invariance. This is strictly weaker than requiring strategy-proofness. We show that no stable mechanism $\\varphi$ satisfies $\\varphi$-boost-invariance. Our negative result strengthens the Roth Impossibility Theorem.",
+   "published": "2024-05-21",
+   "updated": "2024-07-12",
+   "authors": [
+    "Qiufu Chen",
+    "Yuanmei Li",
+    "Xiaopeng Yin",
+    "Luosai Zhang",
+    "Siyi Zhou"
+   ],
+   "primary_category": "econ.TH",
+   "categories": [
+    "econ.TH"
+   ],
+   "url": "https://arxiv.org/abs/2405.12804v2",
+   "pdf": "https://arxiv.org/pdf/2405.12804v2",
+   "comment": ""
+  },
+  {
+   "id": "2005.13224v1",
+   "title": "Sybil-proof Answer Querying Mechanism",
+   "abstract": "We study a question answering problem on a social network, where a requester is seeking an answer from the agents on the network. The goal is to design reward mechanisms to incentivize the agents to propagate the requester's query to their neighbours if they don't have the answer. Existing mechanisms are vulnerable to Sybil-attacks, i.e., an agent may get more reward by creating fake identities. Hence, we combat this problem by first proving some impossibility results to resolve Sybil-attacks and then characterizing a class of mechanisms which satisfy Sybil-proofness (prevents Sybil-attacks) as well as other desirable properties. Except for Sybil-proofness, we also consider cost minimization for the requester and agents' collusions.",
+   "published": "2020-05-27",
+   "updated": "2020-05-27",
+   "authors": [
+    "Yao Zhang",
+    "Xiuzhen Zhang",
+    "Dengji Zhao"
+   ],
+   "primary_category": "cs.GT",
+   "categories": [
+    "cs.GT"
+   ],
+   "url": "https://arxiv.org/abs/2005.13224v1",
+   "pdf": "https://arxiv.org/pdf/2005.13224v1",
+   "comment": ""
+  },
+  {
+   "id": "2610.11851v1",
+   "title": "Dictatorial profiles: a proof of Arrow's theorem",
+   "abstract": "We study social welfare rules with strict individual and social preferences. A preference profile is dictatorial for a rule if the social preference coincides with some agent's preference and no agent with a different preference can change the social preference unilaterally. We establish that (i) a rule is dictatorial if and only if all of its profiles are dictatorial; and (ii) if a rule satisfies unanimity and independence (of irrelevant alternatives), then all its profiles must be dictatorial. These results constitute a proof of Arrow's Impossibility Theorem.",
+   "published": "2026-10-08",
+   "updated": "2026-10-08",
+   "authors": [
+    "Agustin G. Bonifacio"
+   ],
+   "primary_category": "econ.TH",
+   "categories": [
+    "econ.TH"
+   ],
+   "url": "https://arxiv.org/abs/2610.11851v1",
+   "pdf": "https://arxiv.org/pdf/2610.11851v1",
+   "comment": ""
+  },
+  {
+   "id": "2104.13681v1",
+   "title": "Kernelization, Proof Complexity and Social Choice",
+   "abstract": "We display an application of the notions of kernelization and data reduction from parameterized complexity to proof complexity: Specifically, we show that the existence of data reduction rules for a parameterized problem having (a). a small-length reduction chain, and (b). small-size (extended) Frege proofs certifying the soundness of reduction steps implies the existence of subexponential size (extended) Frege proofs for propositional formalizations of the given problem. We apply our result to infer the existence of subexponential Frege and extended Frege proofs for a variety of problems. Improving earlier results of Aisenberg et al. (ICALP 2015), we show that propositional formulas expressing (a stronger form of) the Kneser-Lovász Theorem have polynomial size Frege proofs for each constant value of the parameter k. Previously only quasipolynomial bounds were known (and only for the ordinary Kneser-Lovász Theorem). Another notable application of our framework is to impossibility results in computational social choice: we show that, for any fixed number of agents, propositional translations of the Arrow and Gibbard-Satterthwaite impossibility theorems have subexponential size Frege proofs.",
+   "published": "2021-04-28",
+   "updated": "2021-04-28",
+   "authors": [
+    "Gabriel Istrate",
+    "Cosmin Bonchis",
+    "Adrian Craciun"
+   ],
+   "primary_category": "cs.CC",
+   "categories": [
+    "cs.CC",
+    "cs.DS",
+    "cs.GT",
+    "cs.LO",
+    "math.LO"
+   ],
+   "url": "https://arxiv.org/abs/2104.13681v1",
+   "pdf": "https://arxiv.org/pdf/2104.13681v1",
+   "comment": "Revised version will appear in the Proceedings of ICALP 2021"
+  },
+  {
+   "id": "1708.02543v1",
+   "title": "Impossibility of $n-1$-strong-equllibrium for Distributed Consensus with Rational Agents",
+   "abstract": "An algorithm for $n-1$-strong-equillibrium for distributed consensus in a ring with rational agents was proposed by Afek et al. (2014). A proof of impossibility of $n-1$-strong-equillibrium for distributed consensus in every topology with rational agents, when $n$ is even, is presented. Furthermore, we show that the algorithm proposed by Afek et al. is the only algorithm which can solve the problem when $n$ is odd. Finally, we prove that the proposed algorithm provides a $n-2$-strong-equillibrium in a synchronous ring when $n$ is even.",
+   "published": "2017-08-08",
+   "updated": "2017-08-08",
+   "authors": [
+    "Amit Jacob Fanani",
+    "Itay Harel"
+   ],
+   "primary_category": "cs.DC",
+   "categories": [
+    "cs.DC",
+    "cs.GT"
+   ],
+   "url": "https://arxiv.org/abs/1708.02543v1",
+   "pdf": "https://arxiv.org/pdf/1708.02543v1",
+   "comment": ""
+  },
+  {
+   "id": "2304.11494v3",
+   "title": "Compatibility between Stability and Strategy-Proofness: A Single-Peaked Preferences Investigation",
+   "abstract": "In two-sided matching markets, ensuring both stability and strategy-proofness poses a significant challenge; it is impossible when agents' preferences are unrestricted. But what if agents' preferences have specific restricted structures? Such scenarios frequently arise in real-world applications. This study explores the possibility of achieving both stability and strategy-proofness by focusing on scenarios where agents' preferences follow a structured pattern called single-peakedness. We focus on the simplest case - the well-known marriage problem, which is a one-to-one matching market. Despite its simplicity, this model is a useful starting point for exploration in many cases. Our main contribution is identifying all single-peaked subdomains on which stability and (weak/strong group) strategy-proofness are compatible, which we present through two key results. The first one characterizes all single-peaked subdomains with stable and (weakly group) strategy-proof matching rules, and identifies such a matching rule on these domains. The second one is an impossibility result that shows the incompatibility between stability and strong group strategy-proofness on single-peaked subdomains.",
+   "published": "2023-04-22",
+   "updated": "2025-07-01",
+   "authors": [
+    "Pinaki Mandal"
+   ],
+   "primary_category": "econ.TH",
+   "categories": [
+    "econ.TH"
+   ],
+   "url": "https://arxiv.org/abs/2304.11494v3",
+   "pdf": "https://arxiv.org/pdf/2304.11494v3",
+   "comment": ""
+  },
+  {
+   "id": "1108.2879v2",
+   "title": "Unconditionally Secure Bit Commitment by Transmitting Measurement Outcomes",
+   "abstract": "We propose a new unconditionally secure bit commitment scheme based on Minkowski causality and the properties of quantum information. The receiving party sends a number of randomly chosen BB84 qubits to the committer at a given point in space-time. The committer carries out measurements in one of the two BB84 bases, depending on the committed bit value, and transmits the outcomes securely at light speed in opposite directions to remote agents. These agents unveil the bit by returning the outcomes to adjacent agents of the receiver. The security proofs rely only on simple properties of quantum information and the impossibility of superluminal signalling.",
+   "published": "2011-08-14",
+   "updated": "2012-04-02",
+   "authors": [
+    "Adrian Kent"
+   ],
+   "primary_category": "quant-ph",
+   "categories": [
+    "quant-ph",
+    "cs.CR"
+   ],
+   "url": "https://arxiv.org/abs/1108.2879v2",
+   "pdf": "https://arxiv.org/pdf/1108.2879v2",
+   "comment": "Discussion expanded pedagogically in response to referee comments"
+  },
+  {
+   "id": "2601.15571v5",
+   "title": "Thermodynamic Limits of Proof",
+   "abstract": "Every irreversible recorded distinction has a positive thermodynamic work floor. Landauer's principle supplies the ideal bound $\\varepsilon\\ge k_B T\\ln 2$ per irreversible bit, experimentally verified to $\\pm 10\\%$. Proof available to an agent is checkable information for that agent: some substrate must produce, retain, and expose evidence that excludes answer-changing alternatives. A finite detector array operating at temperature $T$ for finite time has finite signal-acquisition capacity. Combining finite causal access, positive retained-record cost, and exact lower bounds on required records gives the Physical Counting Impossibility Theorem: no fixed-budget substrate can provide universal exact proof once the retained-record lower bound exceeds the declared budget. The theorem requires exactly $B<\\infty$ and $\\varepsilon>0$. An answer reports a value; proof supplies checkable grounds for accepting it. A reversible device may compute an answer and erase its scratch history, but proof requires retained, inspectable records. A global answer register, oracle response, entanglement witness, finite survey catalog, or trusted device output supplies proof only through an interface that exposes the relevant grounds to the verifier. A proposed interface must identify the retained-record lower-bound family $R(n)$ it induces. Sound operational claims about efficient solvability inherit the same finite-budget obstruction when their acceptance would license universal exact proof. Substrate-free derivability has proof status only when a physical verification event makes it available to an agent.",
+   "published": "2026-01-22",
+   "updated": "2026-07-14",
+   "authors": [
+    "Tristan Simas"
+   ],
+   "primary_category": "cs.CC",
+   "categories": [
+    "cs.CC",
+    "cs.LO",
+    "math-ph",
+    "math.CT"
+   ],
+   "url": "https://arxiv.org/abs/2601.15571v5",
+   "pdf": "https://arxiv.org/pdf/2601.15571v5",
+   "comment": "Main PDF: 35 pages, 4 tables. Supplementary: 26 pages, 2 tables. Lean 4 release artifact available at https://doi.org/10.5281/zenodo.18140965"
+  },
+  {
+   "id": "2506.10460v1",
+   "title": "Equitable Mechanism Design for Facility Location",
+   "abstract": "We consider strategy proof mechanisms for facility location which maximize equitability between agents. As is common in the literature, we measure equitability with the Gini index. We first prove a simple but fundamental impossibility result that no strategy proof mechanism can bound the approximation ratio of the optimal Gini index of utilities for one or more facilities. We propose instead computing approximation ratios of the complemented Gini index of utilities, and consider how well both deterministic and randomized mechanisms approximate this. In addition, as Nash welfare is often put forwards as an equitable compromise between egalitarian and utilitarian outcomes, we consider how well mechanisms approximate the Nash welfare.",
+   "published": "2025-06-12",
+   "updated": "2025-06-12",
+   "authors": [
+    "Toby Walsh"
+   ],
+   "primary_category": "cs.GT",
+   "categories": [
+    "cs.GT",
+    "cs.AI"
+   ],
+   "url": "https://arxiv.org/abs/2506.10460v1",
+   "pdf": "https://arxiv.org/pdf/2506.10460v1",
+   "comment": "To appear in Proceedings of IJCAI 2025"
+  },
+  {
+   "id": "2009.13104v2",
+   "title": "Ordinal Bayesian incentive compatibility in random assignment model",
+   "abstract": "We explore the consequences of weakening the notion of incentive compatibility from strategy-proofness to ordinal Bayesian incentive compatibility (OBIC) in the random assignment model. If the common prior of the agents is a uniform prior, then a large class of random mechanisms are OBIC with respect to this prior -- this includes the probabilistic serial mechanism. We then introduce a robust version of OBIC: a mechanism is locally robust OBIC if it is OBIC with respect all independent priors in some neighborhood of a given independent prior. We show that every locally robust OBIC mechanism satisfying a mild property called elementary monotonicity is strategy-proof. This leads to a strengthening of the impossibility result in Bogomolnaia and Moulin (2001): if there are at least four agents, there is no locally robust OBIC and ordinally efficient mechanism satisfying equal treatment of equals.",
+   "published": "2020-09-28",
+   "updated": "2021-05-16",
+   "authors": [
+    "Sulagna Dasgupta",
+    "Debasis Mishra"
+   ],
+   "primary_category": "econ.TH",
+   "categories": [
+    "econ.TH",
+    "cs.GT"
+   ],
+   "url": "https://arxiv.org/abs/2009.13104v2",
+   "pdf": "https://arxiv.org/pdf/2009.13104v2",
+   "comment": ""
+  },
+  {
+   "id": "2204.08300v7",
+   "title": "Axiomatic Characterizations of Draft Rules",
+   "abstract": "Drafts are sequential round-robin allocation procedures for distributing heterogeneous and indivisible objects among agents subject to some priority order (e.g., allocating players' contract rights to teams in professional sports leagues). Agents report ordinal preferences over objects and bundles are partially ordered by pairwise comparison. We provide a simple characterization of draft rules: they are the only allocation rules that are respectful of a priority (RP), envy-free up to one object (EF1), non-wasteful (NW), and resource monotonic (RM). RP and EF1 are crucial for competitive balance in sports leagues. We also prove two related impossibility theorems showing that the competitive-balance axioms RP and EF1 are generally incompatible with strategy-proofness. Nevertheless, draft rules satisfy maxmin strategy-proofness. If agents may declare some objects unacceptable, then draft rules are characterized by RP, EF1, NW, and RM, in conjunction with individual rationality and truncation invariance.",
+   "published": "2022-04-18",
+   "updated": "2026-04-08",
+   "authors": [
+    "Jacob Coreno",
+    "Ivan Balbuzanov"
+   ],
+   "primary_category": "econ.TH",
+   "categories": [
+    "econ.TH"
+   ],
+   "url": "https://arxiv.org/abs/2204.08300v7",
+   "pdf": "https://arxiv.org/pdf/2204.08300v7",
+   "comment": "40 pages"
+  },
+  {
+   "id": "2609.32337v1",
+   "title": "Top Trading Cycles with Indifferences under Matroid Constraints",
+   "abstract": "We study the reallocation of indivisible objects among agents who may hold initial endowments and may be indifferent between objects. Each agent has her own set of admissible objects, and a matroid constraint specifies which combinations of assigned objects are feasible. The model contains the housing market, house allocation with newcomers who hold no endowment, and the assignment of students to schools under matroidal constraints at each school. For this model, we introduce the top-class trading cycles mechanism (TCTC), which extends the top trading cycles mechanism (TTC) to matroid constraints and weak preferences. When a trading cycle is selected, TCTC fixes each agent's top indifference class rather than a specific object and postpones the choice within the class to the end. TCTC is individually rational, Pareto efficient, and weakly group-strategy-proof on the full domain of weak preferences, and it runs in polynomial time. When preferences and reports are strict, TCTC is strongly group-strategy-proof. Together with a known impossibility result, our theorem establishes a maximal domain of school-by-school constraints for individual rationality, Pareto efficiency, and strategy-proofness.",
+   "published": "2026-09-26",
+   "updated": "2026-09-26",
+   "authors": [
+    "Yasushi Kawase"
+   ],
+   "primary_category": "cs.GT",
+   "categories": [
+    "cs.GT",
+    "econ.TH"
+   ],
+   "url": "https://arxiv.org/abs/2609.32337v1",
+   "pdf": "https://arxiv.org/pdf/2609.32337v1",
+   "comment": ""
+  },
+  {
+   "id": "1604.05692v4",
+   "title": "Proving the Incompatibility of Efficiency and Strategyproofness via SMT Solving",
+   "abstract": "Two important requirements when aggregating the preferences of multiple agents are that the outcome should be economically efficient and the aggregation mechanism should not be manipulable. In this paper, we provide a computer-aided proof of a sweeping impossibility using these two conditions for randomized aggregation mechanisms. More precisely, we show that every efficient aggregation mechanism can be manipulated for all expected utility representations of the agents' preferences. This settles an open problem and strengthens a number of existing theorems, including statements that were shown within the special domain of assignment. Our proof is obtained by formulating the claim as a satisfiability problem over predicates from real-valued arithmetic, which is then checked using an SMT (satisfiability modulo theories) solver. In order to verify the correctness of the result, a minimal unsatisfiable set of constraints returned by the SMT solver was translated back into a proof in higher-order logic, which was automatically verified by an interactive theorem prover. To the best of our knowledge, this is the first application of SMT solvers in computational social choice.",
+   "published": "2016-04-19",
+   "updated": "2017-09-06",
+   "authors": [
+    "Florian Brandl",
+    "Felix Brandt",
+    "Manuel Eberl",
+    "Christian Geist"
+   ],
+   "primary_category": "cs.GT",
+   "categories": [
+    "cs.GT",
+    "cs.AI",
+    "cs.LO"
+   ],
+   "url": "https://arxiv.org/abs/1604.05692v4",
+   "pdf": "https://arxiv.org/pdf/1604.05692v4",
+   "comment": ""
+  },
+  {
+   "id": "2303.10832v1",
+   "title": "A Strategy-proof Mechanism For Networked Housing Markets",
+   "abstract": "This paper studies a house allocation problem in a networked housing market, where agents can invite others to join the system in order to enrich their options. Top Trading Cycle is a well-known matching mechanism that achieves a set of desirable properties in a market without invitations. However, under a tree-structured networked market, existing agents have to strategically propagate the barter market as their invitees may compete in the same house with them. Our impossibility result shows that TTC cannot work properly in a networked housing market. Hence, we characterize the possible competitions between inviters and invitees, which lead agents to fail to refer others truthfully (strategy-proof). We then present a novel mechanism based on TTC, avoiding the aforementioned competition to ensure all agents report preference and propagate the barter market truthfully. Unlike the existing mechanisms, the agents' preferences are less restricted under our mechanism. Furthermore, we show by simulations that our mechanism outperforms the existing matching mechanisms in terms of the number of swaps and agents' satisfaction.",
+   "published": "2023-03-20",
+   "updated": "2023-03-20",
+   "authors": [
+    "Youjia Zhang",
+    "Pingzhong Tang"
+   ],
+   "primary_category": "cs.GT",
+   "categories": [
+    "cs.GT"
+   ],
+   "url": "https://arxiv.org/abs/2303.10832v1",
+   "pdf": "https://arxiv.org/pdf/2303.10832v1",
+   "comment": ""
+  },
+  {
+   "id": "2511.19107v1",
+   "title": "The Core in Max-Loss Non-Centroid Clustering Can Be Empty",
+   "abstract": "We study core stability in non-centroid clustering under the max-loss objective, where each agent's loss is the maximum distance to other members of their cluster. We prove that for all $k\\geq 3$ there exist metric instances with $n\\ge 9$ agents, with $n$ divisible by $k$, for which no clustering lies in the $α$-core for any $α<2^{\\frac{1}{5}}\\sim 1.148$. The bound is tight for our construction. Using a computer-aided proof, we also identify a two-dimensional Euclidean point set whose associated lower bound is slightly smaller than that of our general construction. This is, to our knowledge, the first impossibility result showing that the core can be empty in non-centroid clustering under the max-loss objective.",
+   "published": "2025-11-24",
+   "updated": "2025-11-24",
+   "authors": [
+    "Robert Bredereck",
+    "Eva Deltl",
+    "Leon Kellerhals",
+    "Jannik Peters"
+   ],
+   "primary_category": "cs.LG",
+   "categories": [
+    "cs.LG",
+    "cs.AI",
+    "cs.GT",
+    "stat.ML"
+   ],
+   "url": "https://arxiv.org/abs/2511.19107v1",
+   "pdf": "https://arxiv.org/pdf/2511.19107v1",
+   "comment": ""
+  },
+  {
+   "id": "2006.15891v1",
+   "title": "Monotone and Online Fair Division",
+   "abstract": "We study a new but simple model for online fair division in which indivisible items arrive one-by-one and agents have monotone utilities over bundles of the items. We consider axiomatic properties of mechanisms for this model such as strategy-proofness, envy-freeness, and Pareto efficiency. We prove a number of impossibility results that justify why we consider relaxations of the properties, as well as why we consider restricted preference domains on which good axiomatic properties can be achieved. We propose two mechanisms that have good axiomatic fairness properties on restricted but common preference domains.",
+   "published": "2020-06-29",
+   "updated": "2020-06-29",
+   "authors": [
+    "Martin Aleksandrov",
+    "Toby Walsh"
+   ],
+   "primary_category": "cs.GT",
+   "categories": [
+    "cs.GT"
+   ],
+   "url": "https://arxiv.org/abs/2006.15891v1",
+   "pdf": "https://arxiv.org/pdf/2006.15891v1",
+   "comment": "15 pages, 2 tables, KI 2019"
+  },
+  {
+   "id": "2411.05574v2",
+   "title": "Parameterized Voter Relevance in Facility Location Games with Tree-Shaped Invitation Graphs",
+   "abstract": "Diffusion mechanism design, which investigate how to incentivise agents to invite as many colleagues to a multi-agent decision making as possible, is a new research paradigm at the intersection between microeconomics and computer science. In this paper we extend traditional facility location games into the model of diffusion mechanism design. Our objective is to completely understand to what extent of anonymity/voter-relevance we can achieve, along with strategy-proofness and Pareto efficiency when voters strategically invite collegues. We define a series of anonymity properties applicable to the diffusion mechanism design model, as well as parameterized voter-relevance properties for guaranteeing reasonably-fair decision making. We obtained two impossibility theorems and two existence theorems, which partially answer the question we have raised in the beginning of the paper",
+   "published": "2024-11-08",
+   "updated": "2024-11-11",
+   "authors": [
+    "Ryoto Ando",
+    "Kei Kimura",
+    "Taiki Todo",
+    "Makoto Yokoo"
+   ],
+   "primary_category": "cs.GT",
+   "categories": [
+    "cs.GT",
+    "econ.TH"
+   ],
+   "url": "https://arxiv.org/abs/2411.05574v2",
+   "pdf": "https://arxiv.org/pdf/2411.05574v2",
+   "comment": "To appear in Proceedings of WALCOM-25"
+  },
+  {
+   "id": "1906.06836v3",
+   "title": "Multi-type Resource Allocation with Partial Preferences",
+   "abstract": "We propose multi-type probabilistic serial (MPS) and multi-type random priority (MRP) as extensions of the well known PS and RP mechanisms to the multi-type resource allocation problem (MTRA) with partial preferences. In our setting, there are multiple types of divisible items, and a group of agents who have partial order preferences over bundles consisting of one item of each type. We show that for the unrestricted domain of partial order preferences, no mechanism satisfies both sd-efficiency and sd-envy-freeness. Notwithstanding this impossibility result, our main message is positive: When agents' preferences are represented by acyclic CP-nets, MPS satisfies sd-efficiency, sd-envy-freeness, ordinal fairness, and upper invariance, while MRP satisfies ex-post-efficiency, sd-strategy-proofness, and upper invariance, recovering the properties of PS and RP.",
+   "published": "2019-06-13",
+   "updated": "2020-10-29",
+   "authors": [
+    "Haibin Wang",
+    "Sujoy Sikdar",
+    "Xiaoxi Guo",
+    "Lirong Xia",
+    "Yongzhi Cao",
+    "Hanpin Wang"
+   ],
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI"
+   ],
+   "url": "https://arxiv.org/abs/1906.06836v3",
+   "pdf": "https://arxiv.org/pdf/1906.06836v3",
+   "comment": ""
+  },
+  {
+   "id": "2507.09550v1",
+   "title": "On Probabilistic Assignment Rules",
+   "abstract": "We study the classical assignment problem with initial endowments in a probabilistic framework. In this setting, each agent initially owns an object and has strict preferences over the entire set of objects, and the goal is to reassign objects in a way that satisfies desirable properties such as strategy-proofness, Pareto efficiency, and individual rationality. While the celebrated result by Ma (1994) shows that the Top Trading Cycles (TTC) rule is the unique deterministic rule satisfying these properties, similar positive results are scarce in the probabilistic domain. We extend Ma's result in the probabilistic setting, and as desirable properties, consider SD-efficiency, SD-individual rationality, and a weaker notion of SD-strategy-proofness -- SD-top-strategy-proofness -- which only requires agents to have no incentive to misreport if doing so increases the probability of receiving their top-ranked object. We show that under deterministic endowments, a probabilistic rule is SD-efficient, SD-individually rational, and SD-top-strategy-proof if and only if it coincides with the TTC rule. Our result highlights a positive possibility in the face of earlier impossibility results for fractional endowments (Athanassoglou and Sethuraman (2011)) and provides a first step toward reconciling desirable properties in probabilistic assignments with endowments.",
+   "published": "2025-07-13",
+   "updated": "2025-07-13",
+   "authors": [
+    "Sreedurga Gogulapati",
+    "Yadati Narahari",
+    "Souvik Roy",
+    "Soumyarup Sadhukhan"
+   ],
+   "primary_category": "econ.TH",
+   "categories": [
+    "econ.TH"
+   ],
+   "url": "https://arxiv.org/abs/2507.09550v1",
+   "pdf": "https://arxiv.org/pdf/2507.09550v1",
+   "comment": "12 pages"
+  },
+  {
+   "id": "2501.15916v2",
+   "title": "Online Housing Market",
+   "abstract": "This paper studies an online variant of the celebrated housing market problem, where each agent has a single house and seeks to exchange it for another based on her preferences. In this online setting, agents may arrive and depart at any time, meaning that not all agents are present on the housing market simultaneously. I extend the well known serial dictatorship and Gale s top trading cycle mechanisms to this online scenario, aiming to retain their desirable properties such as Pareto efficiency, individual rationality, and strategy proofness. These extensions also seek to prevent agents from strategically delaying their arrival or advancing their departure. I demonstrate that achieving all of these properties simultaneously is impossible in the online context, and I present several variants that achieve different subsets of these properties.",
+   "published": "2025-01-27",
+   "updated": "2025-07-24",
+   "authors": [
+    "Julien Lesca"
+   ],
+   "primary_category": "cs.GT",
+   "categories": [
+    "cs.GT",
+    "cs.AI"
+   ],
+   "url": "https://arxiv.org/abs/2501.15916v2",
+   "pdf": "https://arxiv.org/pdf/2501.15916v2",
+   "comment": ""
+  },
+  {
+   "id": "2011.05064v1",
+   "title": "What Did You Think Would Happen? Explaining Agent Behaviour Through Intended Outcomes",
+   "abstract": "We present a novel form of explanation for Reinforcement Learning, based around the notion of intended outcome. These explanations describe the outcome an agent is trying to achieve by its actions. We provide a simple proof that general methods for post-hoc explanations of this nature are impossible in traditional reinforcement learning. Rather, the information needed for the explanations must be collected in conjunction with training the agent. We derive approaches designed to extract local explanations based on intention for several variants of Q-function approximation and prove consistency between the explanations and the Q-values learned. We demonstrate our method on multiple reinforcement learning problems, and provide code to help researchers introspecting their RL environments and algorithms.",
+   "published": "2020-11-10",
+   "updated": "2020-11-10",
+   "authors": [
+    "Herman Yau",
+    "Chris Russell",
+    "Simon Hadfield"
+   ],
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI",
+    "cs.CY",
+    "cs.LG",
+    "stat.ML"
+   ],
+   "url": "https://arxiv.org/abs/2011.05064v1",
+   "pdf": "https://arxiv.org/pdf/2011.05064v1",
+   "comment": ""
+  },
+  {
+   "id": "1611.06864v1",
+   "title": "Population Protocols with Faulty Interactions: the Impact of a Leader",
+   "abstract": "We consider the problem of simulating traditional population protocols under weaker models of communication, which include one-way interactions (as opposed to two-way interactions) and omission faults (i.e., failure by an agent to read its partner's state during an interaction), which in turn may be detectable or undetectable. We focus on the impact of a leader, and we give a complete characterization of the models in which the presence of a unique leader in the system allows the construction of simulators: when simulations are possible, we give explicit protocols; when they are not, we give proofs of impossibility. Specifically, if each agent has only a finite amount of memory, the simulation is possible only if there are no omission faults. If agents have an unbounded amount of memory, the simulation is possible as long as omissions are detectable. If an upper bound on the number of omissions involving the leader is known, the simulation is always possible, except in the one-way model in which one side is unable to detect the interaction.",
+   "published": "2016-11-21",
+   "updated": "2016-11-21",
+   "authors": [
+    "Giuseppe Antonio Di Luna",
+    "Paola Flocchini",
+    "Taisuke Izumi",
+    "Tomoko Izumi",
+    "Nicola Santoro",
+    "Giovanni Viglietta"
+   ],
+   "primary_category": "cs.DC",
+   "categories": [
+    "cs.DC"
+   ],
+   "url": "https://arxiv.org/abs/1611.06864v1",
+   "pdf": "https://arxiv.org/pdf/1611.06864v1",
+   "comment": ""
+  },
+  {
+   "id": "2112.07255v1",
+   "title": "Mechanism Design without Money for Fair Allocations",
+   "abstract": "Fairness is well studied in the context of resource allocation. Researchers have proposed various fairness notions like envy-freeness (EF), and its relaxations, proportionality and max-min share (MMS). There is vast literature on the existential and computational aspects of such notions. While computing fair allocations, any algorithm assumes agents' truthful reporting of their valuations towards the resources. Whereas in real-world web-based applications for fair division, the agents involved are strategic and may manipulate for individual utility gain. In this paper, we study strategy-proof mechanisms without monetary transfer, which satisfies the various fairness criteria. We know that for additive valuations, designing truthful mechanisms for EF, MMS and proportionality is impossible. Here we show that there cannot be a truthful mechanism for EFX and the existing algorithms for EF1 are manipulable. We then study the particular case of single-minded agents. For this case, we provide a Serial Dictatorship Mechanism that is strategy-proof and satisfies all the fairness criteria except EF.",
+   "published": "2021-12-14",
+   "updated": "2021-12-14",
+   "authors": [
+    "Manisha Padala",
+    "Sujit Gujar"
+   ],
+   "primary_category": "cs.GT",
+   "categories": [
+    "cs.GT"
+   ],
+   "url": "https://arxiv.org/abs/2112.07255v1",
+   "pdf": "https://arxiv.org/pdf/2112.07255v1",
+   "comment": ""
+  },
+  {
+   "id": "2006.15900v1",
+   "title": "Strategy-proofness, Envy-freeness and Pareto efficiency in Online Fair Division with Additive Utilities",
+   "abstract": "We consider fair division problems where indivisible items arrive one-by-one in an online fashion and are allocated immediately to agents who have additive utilities over these items. Many existing offline mechanisms do not work in this online setting. In addition, many existing axiomatic results often do not transfer from the offline to the online setting. For this reason, we propose here three new online mechanisms, as well as consider the axiomatic properties of three previously proposed online mechanisms. In this paper, we use these mechanisms and characterize classes of online mechanisms that are strategy-proof, and return envy-free and Pareto efficient allocations, as well as combinations of these properties. Finally, we identify an important impossibility result.",
+   "published": "2020-06-29",
+   "updated": "2020-06-29",
+   "authors": [
+    "Martin Aleksandrov",
+    "Toby Walsh"
+   ],
+   "primary_category": "cs.GT",
+   "categories": [
+    "cs.GT"
+   ],
+   "url": "https://arxiv.org/abs/2006.15900v1",
+   "pdf": "https://arxiv.org/pdf/2006.15900v1",
+   "comment": "13 pages, 1 table, 1 figure, PRICAI 2019"
+  }
+ ]
+}

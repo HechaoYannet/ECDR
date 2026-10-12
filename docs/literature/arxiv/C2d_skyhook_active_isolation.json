@@ -1,0 +1,73 @@
+{
+ "query": "abs:\"sky-hook\" OR abs:\"skyhook\"",
+ "hits": [
+  {
+   "id": "1303.0664v1",
+   "title": "CO Induced Adatom Sintering in a Model Catalyst: Pd/Fe3O4",
+   "abstract": "The coarsening of catalytically-active metal clusters is often accelerated by the presence of gases through the formation of mobile intermediates, though the exact mechanism through which this happens is often subject to debate. We use scanning tunneling microscopy (STM) to follow the CO induced coalescence of Pd adatoms supported on the Fe3O4(001) surface at room temperature. We show that highly-mobile Pd-carbonyl species, formed via the so-called skyhook effect, are temporarily trapped at other Pd adatoms. Once these reach a critical density, clusters nucleate; subsequent coarsening occurs through cluster diffusion and coalescence. While CO increases the mobility in the Pd/Fe3O4 system, surface hydroxyls have the opposite effect. Pd atoms transported to surface OH groups are no longer susceptible to the skyhook effect and remain isolated. Following the evolution from well-dispersed metal adatoms into clusters, atom-by-atom, allows identification of the key processes that underlie gas-induced mass transport.",
+   "published": "2013-03-04",
+   "updated": "2013-03-04",
+   "authors": [
+    "Gareth S. Parkinson",
+    "Zbynek Novotny",
+    "Giacomo Argentero",
+    "Michael Schmid",
+    "Jiří Pavelec",
+    "Rukan Kosak",
+    "Peter Blaha",
+    "Ulrike Diebold"
+   ],
+   "primary_category": "cond-mat.mtrl-sci",
+   "categories": [
+    "cond-mat.mtrl-sci",
+    "cond-mat.str-el",
+    "physics.chem-ph"
+   ],
+   "url": "https://arxiv.org/abs/1303.0664v1",
+   "pdf": "https://arxiv.org/pdf/1303.0664v1",
+   "comment": "16 pages, 4 figures"
+  },
+  {
+   "id": "2204.06074v1",
+   "title": "Skyhook: Towards an Arrow-Native Storage System",
+   "abstract": "With the ever-increasing dataset sizes, several file formats such as Parquet, ORC, and Avro have been developed to store data efficiently, save the network, and interconnect bandwidth at the price of additional CPU utilization. However, with the advent of networks supporting 25-100 Gb/s and storage devices delivering 1, 000, 000 reqs/sec, the CPU has become the bottleneck trying to keep up feeding data in and out of these fast devices. The result is that data access libraries executed on single clients are often CPU-bound and cannot utilize the scale-out benefits of distributed storage systems. One attractive solution to this problem is to offload data-reducing processing and filtering tasks to the storage layer. However, modifying legacy storage systems to support compute offloading is often tedious and requires an extensive understanding of the system internals. Previous approaches re-implemented functionality of data processing frameworks and access libraries for a particular storage system, a duplication of effort that might have to be repeated for different storage systems. This paper introduces a new design paradigm that allows extending programmable object storage systems to embed existing, widely used data processing frameworks and access libraries into the storage layer with no modifications. In this approach, data processing frameworks and access libraries can evolve independently from storage systems while leveraging distributed storage systems scale-out and availability properties. We present Skyhook, an example implementation of our design paradigm using Ceph, Apache Arrow, and Parquet. We provide a brief performance evaluation of Skyhook and discuss key results.",
+   "published": "2022-04-12",
+   "updated": "2022-04-12",
+   "authors": [
+    "Jayjeet Chakraborty",
+    "Ivo Jimenez",
+    "Sebastiaan Alvarez Rodriguez",
+    "Alexandru Uta",
+    "Jeff LeFevre",
+    "Carlos Maltzahn"
+   ],
+   "primary_category": "cs.DC",
+   "categories": [
+    "cs.DC"
+   ],
+   "url": "https://arxiv.org/abs/2204.06074v1",
+   "pdf": "https://arxiv.org/pdf/2204.06074v1",
+   "comment": "arXiv admin note: substantial text overlap with arXiv:2105.09894"
+  },
+  {
+   "id": "2503.12891v2",
+   "title": "VISKY: Virtual Inertia Skyhook Control for Semi-Active Suspension Systems Using Magnetorheological Dampers",
+   "abstract": "This paper presents a Virtual Inertia Skyhook (VISKY) controller for magnetorheological (MR) dampers in semi-active suspensions. The proposed law is derived from a continuous sky-ground damping baseline augmented with acceleration feedback on the sprung and unsprung masses. In the closed-loop equations, these acceleration terms appear as a mass-like virtual inertia matrix rather than as a change in physical hardware. This interpretation motivates the VISKY name while making the underlying sky-ground hybrid structure explicit. Numerical evaluations under half-sine bump, representative ISO 8608 random-road and while-acceleration metrics relative to conventional Skygroundhook, with the largest gains appearing near the wheel-hop mode. The controller retains low computational overhead because it requires only algebraic force computation and bounded MR inversion.",
+   "published": "2025-03-17",
+   "updated": "2026-03-06",
+   "authors": [
+    "Hansol Lim",
+    "Jee Won Lee",
+    "Seung-Bok Choi",
+    "Jongseong Brad Choi"
+   ],
+   "primary_category": "eess.SY",
+   "categories": [
+    "eess.SY"
+   ],
+   "url": "https://arxiv.org/abs/2503.12891v2",
+   "pdf": "https://arxiv.org/pdf/2503.12891v2",
+   "comment": "This work has been submitted to the 2026 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS) for possible publication"
+  }
+ ]
+}

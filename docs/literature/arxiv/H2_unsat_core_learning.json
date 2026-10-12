@@ -1,0 +1,497 @@
+{
+ "query": "abs:\"unsat core\" OR abs:\"conflict clause\"",
+ "hits": [
+  {
+   "id": "2506.04268v1",
+   "title": "MUC-G4: Minimal Unsat Core-Guided Incremental Verification for Deep Neural Network Compression",
+   "abstract": "The rapid development of deep learning has led to challenges in deploying neural networks on edge devices, mainly due to their high memory and runtime complexity. Network compression techniques, such as quantization and pruning, aim to reduce this complexity while maintaining accuracy. However, existing incremental verification methods often focus only on quantization and struggle with structural changes. This paper presents MUC-G4 (Minimal Unsat Core-Guided Incremental Verification), a novel framework for incremental verification of compressed deep neural networks. It encodes both the original and compressed networks into SMT formulas, classifies changes, and use \\emph{Minimal Unsat Cores (MUCs)} from the original network to guide efficient verification for the compressed network. Experimental results show its effectiveness in handling quantization and pruning, with high proof reuse rates and significant speedup in verification time compared to traditional methods. MUC-G4 hence offers a promising solution for ensuring the safety and reliability of compressed neural networks in practical applications.",
+   "published": "2025-06-03",
+   "updated": "2025-06-03",
+   "authors": [
+    "Jingyang Li",
+    "Guoqiang Li"
+   ],
+   "primary_category": "cs.LG",
+   "categories": [
+    "cs.LG",
+    "cs.AI"
+   ],
+   "url": "https://arxiv.org/abs/2506.04268v1",
+   "pdf": "https://arxiv.org/pdf/2506.04268v1",
+   "comment": ""
+  },
+  {
+   "id": "2307.10266v3",
+   "title": "A DPLL(T) Framework for Verifying Deep Neural Networks",
+   "abstract": "Deep Neural Networks (DNNs) have emerged as an effective approach to tackling real-world problems. However, like human-written software, DNNs can have bugs and can be attacked. To address this, research has explored a wide-range of algorithmic approaches to verify DNN behavior. In this work, we introduce NeuralSAT, a new verification approach that adapts the widely-used DPLL(T) algorithm used in modern SMT solvers. A key feature of SMT solvers is the use of conflict clause learning and search restart to scale verification. Unlike prior DNN verification approaches, NeuralSAT combines an abstraction-based deductive theory solver with clause learning and an evaluation clearly demonstrates the benefits of the approach on a set of challenging verification benchmarks.",
+   "published": "2023-07-17",
+   "updated": "2024-01-19",
+   "authors": [
+    "Hai Duong",
+    "ThanhVu Nguyen",
+    "Matthew Dwyer"
+   ],
+   "primary_category": "cs.LG",
+   "categories": [
+    "cs.LG",
+    "cs.LO",
+    "cs.SE"
+   ],
+   "url": "https://arxiv.org/abs/2307.10266v3",
+   "pdf": "https://arxiv.org/pdf/2307.10266v3",
+   "comment": "NeuralSAT is avaliable at: https://github.com/dynaroars/neuralsat"
+  },
+  {
+   "id": "2603.20038v1",
+   "title": "Search-Driven Clause Learning for Product-State Quantum $k$-SAT (PRODSAT-QSAT)",
+   "abstract": "We study PRODSAT-QSAT($k$): given rank-one $k$-local projectors, determine whether a quantum $k$-SAT instance admits a satisfying product state. We present a CDCL-style refutation framework that searches a finite partition of each qubit's Bloch sphere while a sound theory solver checks region feasibility using a geometric overapproximation of the projection amplitudes for each constraint. When the theory solver proves that no state in a region can satisfy a constraint, it produces a sound conflict clause that blocks that region; accumulated blocking clauses can yield a global result of product-state unsatisfiability (UN-PRODSAT). We formalise the problem, prove the soundness of the clause-learning rule, and describe a practical algorithm and implementation.",
+   "published": "2026-03-20",
+   "updated": "2026-03-20",
+   "authors": [
+    "Samuel González-Castillo",
+    "Joon Hyung Lee",
+    "Alfons Laarman"
+   ],
+   "primary_category": "quant-ph",
+   "categories": [
+    "quant-ph",
+    "cs.CC",
+    "cs.LO"
+   ],
+   "url": "https://arxiv.org/abs/2603.20038v1",
+   "pdf": "https://arxiv.org/pdf/2603.20038v1",
+   "comment": "17 pages plus references, 3 figures, 2 tables,"
+  },
+  {
+   "id": "2202.04546v4",
+   "title": "Proving Non-Termination and Lower Runtime Bounds with LoAT (System Description)",
+   "abstract": "We present the new version of the Loop Acceleration Tool (LoAT), a powerful tool for proving non-termination and worst-case lower bounds for programs operating on integers. It is based on a novel calculus for loop acceleration, i.e., transforming loops into non-deterministic straight-line code, and for finding non-terminating configurations. To implement it efficiently, LoAT uses a new approach based on SMT solving and unsat cores. An extensive evaluation shows that LoAT is highly competitive with other state-of-the-art tools for proving non-termination. While no other tool is able to deduce worst-case lower bounds for full integer programs, we also demonstrate that LoAT significantly outperforms its predecessors.",
+   "published": "2022-02-09",
+   "updated": "2022-05-16",
+   "authors": [
+    "Florian Frohn",
+    "Jürgen Giesl"
+   ],
+   "primary_category": "cs.LO",
+   "categories": [
+    "cs.LO"
+   ],
+   "url": "https://arxiv.org/abs/2202.04546v4",
+   "pdf": "https://arxiv.org/pdf/2202.04546v4",
+   "comment": ""
+  },
+  {
+   "id": "2403.03517v1",
+   "title": "IB-Net: Initial Branch Network for Variable Decision in Boolean Satisfiability",
+   "abstract": "Boolean Satisfiability problems are vital components in Electronic Design Automation, particularly within the Logic Equivalence Checking process. Currently, SAT solvers are employed for these problems and neural network is tried as assistance to solvers. However, as SAT problems in the LEC context are distinctive due to their predominantly unsatisfiability nature and a substantial proportion of UNSAT-core variables, existing neural network assistance has proven unsuccessful in this specialized domain. To tackle this challenge, we propose IB-Net, an innovative framework utilizing graph neural networks and novel graph encoding techniques to model unsatisfiable problems and interact with state-of-the-art solvers. Extensive evaluations across solvers and datasets demonstrate IB-Net's acceleration, achieving an average runtime speedup of 5.0% on industrial data and 8.3% on SAT competition data empirically. This breakthrough advances efficient solving in LEC workflows.",
+   "published": "2024-03-06",
+   "updated": "2024-03-06",
+   "authors": [
+    "Tsz Ho Chan",
+    "Wenyi Xiao",
+    "Junhua Huang",
+    "Huiling Zhen",
+    "Guangji Tian",
+    "Mingxuan Yuan"
+   ],
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI"
+   ],
+   "url": "https://arxiv.org/abs/2403.03517v1",
+   "pdf": "https://arxiv.org/pdf/2403.03517v1",
+   "comment": "7 pages, 12 figures"
+  },
+  {
+   "id": "2406.01307v1",
+   "title": "On Efficient Algorithms For Partial Quantifier Elimination",
+   "abstract": "Earlier, we introduced Partial Quantifier Elimination (PQE). It is a $\\mathit{generalization}$ of regular quantifier elimination where one can take a $\\mathit{part}$ of the formula out of the scope of quantifiers. We apply PQE to CNF formulas of propositional logic with existential quantifiers. The appeal of PQE is that many problems like equivalence checking and model checking can be solved in terms of PQE and the latter can be very efficient. The main flaw of current PQE solvers is that they do not $\\mathit{reuse}$ learned information. The problem here is that these PQE solvers are based on the notion of clause redundancy and the latter is a $\\mathit{structural}$ rather than $\\mathit{semantic}$ property. In this paper, we provide two important theoretical results that enable reusing the information learned by a PQE solver. Such reusing can dramatically boost the efficiency of PQE like conflict clause learning boosts SAT solving.",
+   "published": "2024-06-03",
+   "updated": "2024-06-03",
+   "authors": [
+    "Eugene Goldberg"
+   ],
+   "primary_category": "cs.LO",
+   "categories": [
+    "cs.LO"
+   ],
+   "url": "https://arxiv.org/abs/2406.01307v1",
+   "pdf": "https://arxiv.org/pdf/2406.01307v1",
+   "comment": "arXiv admin note: text overlap with arXiv:2403.05928"
+  },
+  {
+   "id": "1807.08707v1",
+   "title": "Fault Localization for Declarative Models in Alloy",
+   "abstract": "Fault localization is a popular research topic and many techniques have been proposed to locate faults in imperative code, e.g. C and Java. In this paper, we focus on the problem of fault localization for declarative models in Alloy -- a first order relational logic with transitive closure. We introduce AlloyFL, the first set of fault localization techniques for faulty Alloy models which leverages multiple test formulas. AlloyFL is also the first set of fault localization techniques at the AST node granularity. We implements in AlloyFL both spectrum-based and mutation-based fault localization techniques, as well as techniques that are based on Alloy's built-in unsat core. We introduce new metrics to measure the accuracy of AlloyFL and systematically evaluate AlloyFL on 38 real faulty models and 9000 mutant models. The results show that the mutation-based fault localization techniques are significantly more accurate than other types of techniques.",
+   "published": "2018-07-23",
+   "updated": "2018-07-23",
+   "authors": [
+    "Kaiyuan Wang",
+    "Allison Sullivan",
+    "Darko Marinov",
+    "Sarfraz Khurshid"
+   ],
+   "primary_category": "cs.SE",
+   "categories": [
+    "cs.SE"
+   ],
+   "url": "https://arxiv.org/abs/1807.08707v1",
+   "pdf": "https://arxiv.org/pdf/1807.08707v1",
+   "comment": ""
+  },
+  {
+   "id": "2209.03398v1",
+   "title": "Small Proofs from Congruence Closure",
+   "abstract": "Satisfiability Modulo Theory (SMT) solvers and equality saturation engines must generate proof certificates from e-graph-based congruence closure procedures to enable verification and conflict clause generation. Smaller proof certificates speed up these activities. Though the problem of generating proofs of minimal size is known to be NP-complete, existing proof minimization algorithms for congruence closure generate unnecessarily large proofs and introduce asymptotic overhead over the core congruence closure procedure. In this paper, we introduce an O(n^5) time algorithm which generates optimal proofs under a new relaxed \"proof tree size\" metric that directly bounds proof size. We then relax this approach further to a practical O(n \\log(n)) greedy algorithm which generates small proofs with no asymptotic overhead. We implemented our techniques in the egg equality saturation toolkit, yielding the first certifying equality saturation engine. We show that our greedy approach in egg quickly generates substantially smaller proofs than the state-of-the-art Z3 SMT solver on a corpus of 3760 benchmarks.",
+   "published": "2022-09-07",
+   "updated": "2022-09-07",
+   "authors": [
+    "Oliver Flatt",
+    "Samuel Coward",
+    "Max Willsey",
+    "Zachary Tatlock",
+    "Pavel Panchekha"
+   ],
+   "primary_category": "cs.PL",
+   "categories": [
+    "cs.PL"
+   ],
+   "url": "https://arxiv.org/abs/2209.03398v1",
+   "pdf": "https://arxiv.org/pdf/2209.03398v1",
+   "comment": ""
+  },
+  {
+   "id": "2602.14634v2",
+   "title": "Beyond Eager Encodings: A Theory-Agnostic Approach to Theory-Lemma Enumeration in SMT",
+   "abstract": "Lifting Boolean-reasoning techniques to the SMT level most often requires producing theory lemmas that rule out theory-inconsistent truth assignments. With standard SMT solving, it is common to \"lazily\" generate such lemmas on demand during the search; with some harder SMT-level tasks -- such as unsat-core extraction, MaxSMT, T-OBDD or T-SDD compilation -- it may be beneficial or even necessary to \"eagerly\" pre-compute all the needed theory lemmas upfront. Whereas in principle \"classic\" eager SMT encodings could do the job, they are specific for very few and easy theories, they do not comply with theory combination, and may produce lots of unnecessary lemmas. In this paper, we present theory-agnostic methods for enumerating complete sets of theory lemmas tailored to a given formula. Starting from AllSMT as a baseline approach, we propose improved lemma-enumeration techniques, including divide&conquer, projected enumeration, and theory-driven partitioning, which are highly parallelizable and which may drastically improve scalability. An experimental evaluation demonstrates that these techniques significantly enhance efficiency and enable the method to scale to substantially more complex instances.",
+   "published": "2026-02-16",
+   "updated": "2026-05-22",
+   "authors": [
+    "Emanuele Civini",
+    "Gabriele Masina",
+    "Giuseppe Spallitta",
+    "Roberto Sebastiani"
+   ],
+   "primary_category": "cs.LO",
+   "categories": [
+    "cs.LO"
+   ],
+   "url": "https://arxiv.org/abs/2602.14634v2",
+   "pdf": "https://arxiv.org/pdf/2602.14634v2",
+   "comment": "Extended version with proofs. Conference version published in Proceedings of IJCAR 2026"
+  },
+  {
+   "id": "1603.04276v2",
+   "title": "Efficient Generation of Inductive Validity Cores for Safety Properties",
+   "abstract": "Symbolic model checkers can construct proofs of properties over very complex models. However, the results reported by the tool when a proof succeeds do not generally provide much insight to the user. It is often useful for users to have traceability information related to the proof: which portions of the model were necessary to construct it. This traceability information can be used to diagnose a variety of modeling problems such as overconstrained axioms and underconstrained properties, and can also be used to measure completeness of a set of requirements over a model. In this paper, we present a new algorithm to efficiently compute the inductive validity core (IVC) within a model necessary for inductive proofs of safety properties for sequential systems. The algorithm is based on the UNSAT core support built into current SMT solvers and a novel encoding of the inductive problem to try to generate a minimal inductive validity core. We prove our algorithm is correct, and describe its implementation in the JKind model checker for Lustre models. We then present an experiment in which we benchmark the algorithm in terms of speed, diversity of produced cores, and minimality, with promising results.",
+   "published": "2016-03-14",
+   "updated": "2016-07-29",
+   "authors": [
+    "Elaheh Ghassabani",
+    "Andrew Gacek",
+    "Michael W. Whalen"
+   ],
+   "primary_category": "cs.SE",
+   "categories": [
+    "cs.SE"
+   ],
+   "url": "https://arxiv.org/abs/1603.04276v2",
+   "pdf": "https://arxiv.org/pdf/1603.04276v2",
+   "comment": "appears in FSE2016: ACM Sigsoft International Symposium on the Foundations of Software Engineering, Seattle, WA, November 13-19, 2016"
+  },
+  {
+   "id": "2503.12083v3",
+   "title": "PICID: Proof-Driven Clause Learning in Neural Network Verification",
+   "abstract": "Current Deep Neural Network (DNN) verifiers are typically designed to prioritize scalability over reliability. Reliability can be reinforced through the generation of proofs that are checkable by trusted, external proof checkers. To date, only a handful of verifiers support proof production; and these rely on verifier-specific formats, and balance between scalability, proof detail, and the trustworthiness of their proof checker. In this tool paper, we introduce PICID, a DNN verifier that produces proofs in the standard Alethe format for SMT solving, checkable by an independent checker. PICID implements a parallel CDCL(T) architecture that integrates the state-of-the-art, proof-producing CaDiCaL SAT solver with the Marabou DNN verifier. Furthermore, PICID leverages UNSAT proofs to derive conflict clauses. Our evaluation shows that PICID generates valid proofs in the vast majority of cases and significantly outperforms existing tools that produce comparable proofs.",
+   "published": "2025-03-15",
+   "updated": "2026-09-21",
+   "authors": [
+    "Omri Isac",
+    "Idan Refaeli",
+    "Haoze Wu",
+    "Clark Barrett",
+    "Guy Katz"
+   ],
+   "primary_category": "cs.LO",
+   "categories": [
+    "cs.LO",
+    "cs.LG"
+   ],
+   "url": "https://arxiv.org/abs/2503.12083v3",
+   "pdf": "https://arxiv.org/pdf/2503.12083v3",
+   "comment": "This is a preprint version of the paper that appeared at FMCAD 2026"
+  },
+  {
+   "id": "2602.21073v2",
+   "title": "Automata Learning with an Incomplete but Inductive Teacher (Technical Report)",
+   "abstract": "Active automata learning (AAL) under a Minimally Adequate Teacher (MAT) has been successfully used to infer a regular language through membership and equivalence queries. This language might not be fully characterized: we are then interested in finding any solution in a target class of possibly many regular languages. Some problems such as regular language separation or inductive invariant synthesis in the context of regular model checking (RMC) may indeed admit more than one answer. We therefore introduce IdMAT: a new teacher formalism answering queries with respect to any language in the target class, all at once. Such a teacher tailored towards invariant synthesis might provide incomplete \"don't know\" answers, but also inductive facts of the form \"if w1 is accepted, so is w2\". We pair IdMAT with a novel AAL algorithm LIndA that 1. encodes all uncertainties as a unique SAT instance and does not fork, 2. leverages incremental SAT solving and UNSAT core analysis, and 3. handles counterexamples of the simple or inductive type in a frugal manner inspired by the Rivest-Schapire refinement technique. We finally evaluate a prototype implementation in the context of regular language separation and RMC.",
+   "published": "2026-02-24",
+   "updated": "2026-04-08",
+   "authors": [
+    "Daniel Stan",
+    "Adrien Pommellet",
+    "Juliette Jacquot"
+   ],
+   "primary_category": "cs.FL",
+   "categories": [
+    "cs.FL"
+   ],
+   "url": "https://arxiv.org/abs/2602.21073v2",
+   "pdf": "https://arxiv.org/pdf/2602.21073v2",
+   "comment": "Article submitted to FORTE 2026 and accepted"
+  },
+  {
+   "id": "2608.30818v1",
+   "title": "ProofPulse: Interactive Proof Coverage Analysis for Dafny",
+   "abstract": "Deductive verification ensures that an implementation satisfies its specification, but successful verification does not guarantee the quality of the specification. As such, weak specifications and redundant invariants may create overconfidence in ``verified'' code. We present \\proofpulse, a tool for Dafny that diagnoses specification quality using a three-valued proof coverage model. By analyzing proof dependencies, ProofPulse distinguishes between elements that contribute to specification intent, those used only for auxiliary checks, and those irrelevant to any proof obligation. Evaluated against an oracle of 252 programs from the dafny-synthesis benchmark, ProofPulse provides a high-precision signal for specification weaknesses, particularly unnecessary preconditions and vacuous proofs. With unsat-core minimization, ProofPulse achieves perfect precision for precondition classification and reduces false positives across all evaluated categories. These results show that proof coverage is a practical complement to verification. Although it cannot fully capture semantic intent, it can reveal weak proof coupling in programs that otherwise appear fully verified. Just as a pulse check distinguishes vitality from the mere absence of symptoms, ProofPulse exposes weaknesses in proofs that technically verify successfully but still suffer from inadequate or redundant code and specifications.",
+   "published": "2026-08-31",
+   "updated": "2026-08-31",
+   "authors": [
+    "Álvaro F. Silva",
+    "Ruben Martins",
+    "Alexandra Mendes"
+   ],
+   "primary_category": "cs.SE",
+   "categories": [
+    "cs.SE"
+   ],
+   "url": "https://arxiv.org/abs/2608.30818v1",
+   "pdf": "https://arxiv.org/pdf/2608.30818v1",
+   "comment": ""
+  },
+  {
+   "id": "2007.02559v1",
+   "title": "Enhancing SAT solvers with glue variable predictions",
+   "abstract": "Modern SAT solvers routinely operate at scales that make it impractical to query a neural network for every branching decision. NeuroCore, proposed by Selsam and Bjorner, offered a proof-of-concept that neural networks can still accelerate SAT solvers by only periodically refocusing a score-based branching heuristic. However, that work suffered from several limitations: their modified solvers require GPU acceleration, further ablations showed that they were no better than a random baseline on the SATCOMP 2018 benchmark, and their training target of unsat cores required an expensive data pipeline which only labels relatively easy unsatisfiable problems. We address all these limitations, using a simpler network architecture allowing CPU inference for even large industrial problems with millions of clauses, and training instead to predict {\\em glue variables}---a target for which it is easier to generate labelled data, and which can also be formulated as a reinforcement learning task. We demonstrate the effectiveness of our approach by modifying the state-of-the-art SAT solver CaDiCaL, improving its performance on SATCOMP 2018 and SATRACE 2019 with supervised learning and its performance on a dataset of SHA-1 preimage attacks with reinforcement learning.",
+   "published": "2020-07-06",
+   "updated": "2020-07-06",
+   "authors": [
+    "Jesse Michael Han"
+   ],
+   "primary_category": "cs.LO",
+   "categories": [
+    "cs.LO",
+    "cs.AI",
+    "cs.LG"
+   ],
+   "url": "https://arxiv.org/abs/2007.02559v1",
+   "pdf": "https://arxiv.org/pdf/2007.02559v1",
+   "comment": "8 pages, 5 figures"
+  },
+  {
+   "id": "2605.04819v2",
+   "title": "Unsat Core Prediction through Polarity-Aware Representation Learning over Clause-Literal Hypergraphs",
+   "abstract": "Graph neural networks have been widely used in Boolean satisfiability (SAT) tasks to learn structural information from SAT formulas. The goal of these studies is to solve SAT instances or to enhance SAT solvers, including tasks such as unsat-core prediction. However, most existing approaches model a SAT formula as a bipartite graph or a directed acyclic graph, which are less direct in capturing clause-level and higher-order interactions among literals and clauses. Moreover, these approaches are limited in modeling intrinsic polarity-related properties of SAT, such as the complementary relationship between the positive and negative literals of a variable. To address these limitations, we propose a polarity-aware representation learning framework over clause-literal hypergraphs. We model SAT formulas as clause-literal hypergraphs augmented with a clause incidence graph to capture higher-order structural interactions. We then introduce a polarity-aware decomposition mechanism that separates variable representations into polarity invariant and equivariant components, explicitly modeling the relationship between positive and negative literals, with the resulting literal representations propagated along the hypergraph structure. We further incorporate a polarity-inversion consistency regularization to reinforce polarity-consistent representations during training. Experimental results on multiple SAT datasets demonstrate the effectiveness of the proposed approach.",
+   "published": "2026-05-06",
+   "updated": "2026-06-01",
+   "authors": [
+    "Zhenchao Sun",
+    "Shuai Ma",
+    "Ping Lu",
+    "Chongyang Tao"
+   ],
+   "primary_category": "cs.LG",
+   "categories": [
+    "cs.LG"
+   ],
+   "url": "https://arxiv.org/abs/2605.04819v2",
+   "pdf": "https://arxiv.org/pdf/2605.04819v2",
+   "comment": "Accepted at ICML 2026"
+  },
+  {
+   "id": "2504.07642v1",
+   "title": "Cache-a-lot: Pushing the Limits of Unsatisfiable Core Reuse in SMT-Based Program Analysis",
+   "abstract": "Satisfiability Modulo Theories (SMT) solvers are integral to program analysis techniques like concolic and symbolic execution, where they help assess the satisfiability of logical formulae to explore execution paths of the program under test. However, frequent solver invocations are still the main performance bottleneck of these techniques. One way to mitigate this challenge is through optimizations such as caching and reusing solver results. While current methods typically focus on reusing results from fully equivalent or closely related formulas, they often miss broader opportunities for reuse. In this paper, we propose a novel approach, Cache-a-lot, that extends the reuse of unsatisfiable (unsat) results by systematically considering all possible variable substitutions. This enables more extensive reuse of results, thereby reducing the number of SMT solver invocations and improving the overall efficiency of concolic and symbolic execution. Our evaluation, conducted against the state-of-the-art Utopia solution using two benchmark sets, shows significant improvements, particularly with more complex formulas. Our method achieves up to 74% unsat core reuse, compared to Utopia's 41%, and significant increase in the time savings. These results demonstrate that, despite the additional computational complexity, the broader reuse of unsat results significantly enhances performance, offering valuable advancements for formal verification and program analysis.",
+   "published": "2025-04-10",
+   "updated": "2025-04-10",
+   "authors": [
+    "Rustam Sadykov",
+    "Azat Abdullin",
+    "Marat Akhin"
+   ],
+   "primary_category": "cs.SE",
+   "categories": [
+    "cs.SE"
+   ],
+   "url": "https://arxiv.org/abs/2504.07642v1",
+   "pdf": "https://arxiv.org/pdf/2504.07642v1",
+   "comment": ""
+  },
+  {
+   "id": "1609.03847v1",
+   "title": "Instrumenting an SMT Solver to Solve Hybrid Network Reachability Problems",
+   "abstract": "PDDL+ planning has its semantics rooted in hybrid automata (HA) and recent work has shown that it can be modeled as a network of HAs. Addressing the complexity of nonlinear PDDL+ planning as HAs requires both space and time efficient reasoning. Unfortunately, existing solvers either do not address nonlinear dynamics or do not natively support networks of automata. We present a new algorithm, called HNSolve, which guides the variable selection of the dReal Satisfiability Modulo Theories (SMT) solver while reasoning about network encodings of nonlinear PDDL+ planning as HAs. HNSolve tightly integrates with dReal by solving a discrete abstraction of the HA network. HNSolve finds composite runs on the HA network that ignore continuous variables, but respect mode jumps and synchronization labels. HNSolve admissibly detects dead-ends in the discrete abstraction, and posts conflict clauses that prune the SMT solver's search. We evaluate the benefits of our HNSolve algorithm on PDDL+ benchmark problems and demonstrate its performance with respect to prior work.",
+   "published": "2016-09-13",
+   "updated": "2016-09-13",
+   "authors": [
+    "Daniel Bryce",
+    "Sergiy Bogomolov",
+    "Alexander Heinz",
+    "Christian Schilling"
+   ],
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI"
+   ],
+   "url": "https://arxiv.org/abs/1609.03847v1",
+   "pdf": "https://arxiv.org/pdf/1609.03847v1",
+   "comment": ""
+  },
+  {
+   "id": "1705.01320v3",
+   "title": "Formal Verification of Piece-Wise Linear Feed-Forward Neural Networks",
+   "abstract": "We present an approach for the verification of feed-forward neural networks in which all nodes have a piece-wise linear activation function. Such networks are often used in deep learning and have been shown to be hard to verify for modern satisfiability modulo theory (SMT) and integer linear programming (ILP) solvers. The starting point of our approach is the addition of a global linear approximation of the overall network behavior to the verification problem that helps with SMT-like reasoning over the network behavior. We present a specialized verification algorithm that employs this approximation in a search process in which it infers additional node phases for the non-linear nodes in the network from partial node phase assignments, similar to unit propagation in classical SAT solving. We also show how to infer additional conflict clauses and safe node fixtures from the results of the analysis steps performed during the search. The resulting approach is evaluated on collision avoidance and handwritten digit recognition case studies.",
+   "published": "2017-05-03",
+   "updated": "2017-08-02",
+   "authors": [
+    "Ruediger Ehlers"
+   ],
+   "primary_category": "cs.LO",
+   "categories": [
+    "cs.LO",
+    "cs.AI",
+    "cs.LG"
+   ],
+   "url": "https://arxiv.org/abs/1705.01320v3",
+   "pdf": "https://arxiv.org/pdf/1705.01320v3",
+   "comment": ""
+  },
+  {
+   "id": "2602.12665v1",
+   "title": "Evaluating Robustness of Reasoning Models on Parameterized Logical Problems",
+   "abstract": "Logic provides a controlled testbed for evaluating LLM-based reasoners, yet standard SAT-style benchmarks often conflate surface difficulty (length, wording, clause order) with the structural phenomena that actually determine satisfiability. We introduce a diagnostic benchmark for 2-SAT built from parameterized families of structured 2--CNF formulas, where satisfiability is characterized by the implication graph and can be tuned along interpretable axes. Our generators isolate distinct competencies and failure modes: (i) contradiction-cycle UNSAT cores with controllable size and imbalance, (ii) SAT instances with a prescribed fraction of free variables to control solution multiplicity, (iii) planted backbones that modulate propagation, (iv) late bridge clauses that couple otherwise monotone regions to probe sensitivity to ordering and revision, and (v) symmetry/duplication variants that test abstraction under renaming and redundant structure. We evaluate LLM-based reasoners on decision accuracy and assignment validity, and quantify robustness under semantics-preserving perturbations such as clause reordering, filler clauses, and variable renaming. Across models, we observe sharp performance transitions under targeted structural interventions even when surface statistics are held fixed, revealing brittleness regimes that are invisible to aggregate SAT accuracy.",
+   "published": "2026-02-13",
+   "updated": "2026-02-13",
+   "authors": [
+    "Naïm Es-sebbani",
+    "Esteban Marquer",
+    "Yakoub Salhi",
+    "Zied Bouraoui"
+   ],
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI"
+   ],
+   "url": "https://arxiv.org/abs/2602.12665v1",
+   "pdf": "https://arxiv.org/pdf/2602.12665v1",
+   "comment": ""
+  },
+  {
+   "id": "1810.00160v3",
+   "title": "Quantifier Elimination With Structural Learning",
+   "abstract": "We consider the Quantifier Elimination (QE) problem for propositional CNF formulas with existential quantifiers. QE plays a key role in formal verification. Earlier, we presented an approach based on the following observation. To perform QE, one just needs to add a set of clauses depending on free variables that makes the quantified clauses (i.e. clauses with quantified variables) redundant. To implement this approach, we introduced a branching algorithm making quantified clauses redundant in subspaces and merging the results of branches. To implement this algorithm we developed the machinery of D-sequents. A D-sequent is a record stating that a quantified clause is redundant in a specified subspace. Redundancy of a clause is a structural property (i.e. it holds only for a subset of logically equivalent formulas as opposed to a semantic property). So, re-using D-sequents is not as easy as re-using conflict clauses in SAT-solving. In this paper, we address this problem. We introduce a new definition of D-sequents that enables their re-usability. We develop a theory showing under what conditions a D-sequent can be safely re-used.",
+   "published": "2018-09-29",
+   "updated": "2018-10-15",
+   "authors": [
+    "Eugene Goldberg"
+   ],
+   "primary_category": "cs.LO",
+   "categories": [
+    "cs.LO"
+   ],
+   "url": "https://arxiv.org/abs/1810.00160v3",
+   "pdf": "https://arxiv.org/pdf/1810.00160v3",
+   "comment": ""
+  },
+  {
+   "id": "1401.3878v1",
+   "title": "Computing Small Unsatisfiable Cores in Satisfiability Modulo Theories",
+   "abstract": "The problem of finding small unsatisfiable cores for SAT formulas has recently received a lot of interest, mostly for its applications in formal verification. However, propositional logic is often not expressive enough for representing many interesting verification problems, which can be more naturally addressed in the framework of Satisfiability Modulo Theories, SMT. Surprisingly, the problem of finding unsatisfiable cores in SMT has received very little attention in the literature. In this paper we present a novel approach to this problem, called the Lemma-Lifting approach. The main idea is to combine an SMT solver with an external propositional core extractor. The SMT solver produces the theory lemmas found during the search, dynamically lifting the suitable amount of theory information to the Boolean level. The core extractor is then called on the Boolean abstraction of the original SMT problem and of the theory lemmas. This results in an unsatisfiable core for the original SMT problem, once the remaining theory lemmas are removed. The approach is conceptually interesting, and has several advantages in practice. In fact, it is extremely simple to implement and to update, and it can be interfaced with every propositional core extractor in a plug-and-play manner, so as to benefit for free of all unsat-core reduction techniques which have been or will be made available. We have evaluated our algorithm with a very extensive empirical test on SMT-LIB benchmarks, which confirms the validity and potential of this approach.",
+   "published": "2014-01-16",
+   "updated": "2014-01-16",
+   "authors": [
+    "Alessandro Cimatti",
+    "Alberto Griggio",
+    "Roberto Sebastiani"
+   ],
+   "primary_category": "cs.LO",
+   "categories": [
+    "cs.LO",
+    "cs.AI"
+   ],
+   "url": "https://arxiv.org/abs/1401.3878v1",
+   "pdf": "https://arxiv.org/pdf/1401.3878v1",
+   "comment": ""
+  },
+  {
+   "id": "2601.14424v1",
+   "title": "Optimising Cylindrical Algebraic Coverings for use in SMT by Solving a Set Covering Problem with Reasons",
+   "abstract": "The Conflict-Driven Cylindrical Algebraic Covering algorithm has proven well suited for performing theory validation checks in the satisfiability modulo theories paradigm for non-linear real arithmetic. CDCAC repurposes the theory underpinning classical cylindrical algebraic decomposition for SMT solving and is implemented in the SMT solvers cvc5 and SMT-RAT, as well as the computer algebra system Maple. It was previously observed that when using cylindrical algebraic decomposition for an SMT theory call, the output can be optimised by solving a single set covering problem instance that minimises the conflict clause. In this paper we consider the corresponding optimisation for CDCAC and observe that CDCAC naturally gives rise to multiple such optimisations within a single call. Each time a covering is generalised in one dimension, the resulting cell in the next dimension is labelled with theory constraints that cannot be satisfied together. We seek the smallest subset of constraints whose union covers all labels from the cells in the current covering. We call this optimisation problem a set covering problem with reasons. To simplify this problem, we introduce a data reduction step that generalises Beasley reduction for the classical set covering problem and show that this step alone solves many of the instances arising from SMT-LIB benchmarks. We then propose an exact solver based on linear programming to efficiently solve the remaining cases. Integrating these techniques into CDCAC has the potential to significantly improve SMT solver performance for non-linear real arithmetic problems.",
+   "published": "2026-01-20",
+   "updated": "2026-01-20",
+   "authors": [
+    "Abiola Babatunde",
+    "Matthew England",
+    "AmirHosein Sadeghimanesh"
+   ],
+   "primary_category": "cs.DS",
+   "categories": [
+    "cs.DS",
+    "math.CO"
+   ],
+   "url": "https://arxiv.org/abs/2601.14424v1",
+   "pdf": "https://arxiv.org/pdf/2601.14424v1",
+   "comment": "22 pages, 4 figures, 3 tables. Submitted to the European Journal of Operational Research"
+  },
+  {
+   "id": "2504.18422v1",
+   "title": "Automated Consistency Analysis for Legal Contracts",
+   "abstract": "Business contracts, particularly sale and purchase agreements, often contain a large number of clauses and are correspondingly long and complex. In practice, it is therefore a great challenge to keep track of their legal context and to identify and avoid inconsistencies in such contracts. Against this background, we describe a method and tool called ContractCheck which allows for the consistency analysis of legal contracts, in particular Share Purchase Agreements (SPAs). In order to identify the concepts that are relevant for an analysis we define an ontology for SPAs. The analysis is, then, based on an encoding of the preconditions for the execution of the clauses of an SPA, as well as on a set of proposed consistency constraints formalized using decidable fragments of First-Order Logic (FOL). Based on the ontology for SPAs, textual SPAs are first encoded in a structured natural language format that we refer to as ``blocks''. ContractCheck interprets these blocks and constraints and translates them into assertions formulated in FOL. It then invokes a Satisfiability Modulo Theory (SMT) solver in order to check the executability of a considered contract, either by providing a satisfying model, or by proving the existence of conflicting clauses that prevent the contract from being executed. We illustrate the application of ContractCheck to concrete SPAs, including one example of an SPA of realistic size and complexity, and conclude by suggesting directions for future research.",
+   "published": "2025-04-25",
+   "updated": "2025-04-25",
+   "authors": [
+    "Alan Khoja",
+    "Martin Kölbl",
+    "Stefan Leue",
+    "Rüdiger Wilhelmi"
+   ],
+   "primary_category": "cs.LO",
+   "categories": [
+    "cs.LO",
+    "cs.CY"
+   ],
+   "url": "https://arxiv.org/abs/2504.18422v1",
+   "pdf": "https://arxiv.org/pdf/2504.18422v1",
+   "comment": "Accepted for publication in Artifical Intelligence and Law. ContractCheck is available from https://github.com/sen-uni-kn/ContractCheck"
+  },
+  {
+   "id": "2103.10267v2",
+   "title": "Exploiting Isomorphic Subgraphs in SAT (Long version)",
+   "abstract": "While static symmetry breaking has been explored in the SAT community for decades, only as of 2010 research has focused on exploiting the same discovered symmetry dynamically, during the run of the SAT solver, by learning extra clauses. The two methods are distinct and not compatible. The former prunes solutions, whereas the latter does not -- it only prunes areas of the search that do not have solutions, like standard conflict clauses. Both approaches, however, require what we call \\emph{full symmetry}, namely a propositionally-consistent mapping $σ$ between the literals, such that $σ(\\varphi) \\equiv \\varphi$, where here $\\equiv$ means syntactic equivalence modulo clause ordering and literal ordering within the clauses. In this article we show that such full symmetry is not a necessary condition for adding extra clauses: isomorphism between possibly-overlapping subgraphs of the colored incidence graph is sufficient. While finding such subgraphs is a computationally hard problem, there are many cases in which they can be detected a priory by analyzing the high-level structure of the problem from which the CNF was derived. We demonstrate this principle with several well-known problems, including Van der Waerden numbers, bounded model checking and Boolean Pythagorean triples.",
+   "published": "2021-03-18",
+   "updated": "2021-08-12",
+   "authors": [
+    "Alexander Ivrii",
+    "Ofer Strichman"
+   ],
+   "primary_category": "cs.LO",
+   "categories": [
+    "cs.LO"
+   ],
+   "url": "https://arxiv.org/abs/2103.10267v2",
+   "pdf": "https://arxiv.org/pdf/2103.10267v2",
+   "comment": "The short version appeared in fmcad'21"
+  },
+  {
+   "id": "2606.12445v1",
+   "title": "SAT, MaxSAT, and SMT for QLDPC Distance Computation: A Large-Scale Empirical Study",
+   "abstract": "Exact distance computation for quantum LDPC (QLDPC) codes plays a central role in validating candidate fault-tolerant quantum-code constructions, yet the computational structure of this problem remains poorly understood. Despite substantial recent progress in QLDPC design, it remains unclear which algorithmic principles govern the practical scalability of exact distance computation and which classes of exact solvers are best suited to this task. To address these questions, we conduct a systematic study of SAT- and MaxSAT-based formulations for exact QLDPC distance computation across representative codes. We further compare these formulations against several established exact-distance approaches in order to better understand the algorithmic landscape of exact QLDPC distance computation. Our study challenges and refines several prevailing intuitions about exact QLDPC distance computation. First, despite the XOR-rich structure of QLDPC parity checks, practical scalability appears to be governed more by the handling of cardinality constraints and optimization bounds than by parity reasoning alone. Accordingly, XOR-aware reasoning does not provide a systematic advantage across our benchmark suite. Second, Brouwer-Zimmermann-style search, long regarded as the benchmark paradigm for exact distance computation in sparse classical codes, no longer maintains its traditional scalability advantage in the QLDPC setting. This finding challenges the expectation that techniques successful for sparse classical codes remain dominant for QLDPC codes. Third, substantial qualitative differences arise even among MaxSAT solvers themselves. Branch-and-bound MaxSAT significantly outperforms unsat-core-based MaxSAT on challenging benchmarks, demonstrating that solver architecture and optimization strategy play a decisive role in practical scalability.",
+   "published": "2026-05-29",
+   "updated": "2026-05-29",
+   "authors": [
+    "Yu-Fang Chen",
+    "Seyed Mohammad Reza Jafari",
+    "Ching-Yi Lai"
+   ],
+   "primary_category": "quant-ph",
+   "categories": [
+    "quant-ph",
+    "cs.IT",
+    "cs.PL"
+   ],
+   "url": "https://arxiv.org/abs/2606.12445v1",
+   "pdf": "https://arxiv.org/pdf/2606.12445v1",
+   "comment": "15 pages of main text and 28 pages of appendix. 3 figures"
+  }
+ ]
+}

@@ -1,0 +1,468 @@
+{
+ "query": "abs:\"minimal unsatisfiable subset\" OR abs:\"minimal unsatisfiable core\"",
+ "hits": [
+  {
+   "id": "2409.09485v1",
+   "title": "Enumerating Minimal Unsatisfiable Cores of LTLf formulas",
+   "abstract": "Linear Temporal Logic over finite traces ($\\text{LTL}_f$) is a widely used formalism with applications in AI, process mining, model checking, and more. The primary reasoning task for $\\text{LTL}_f$ is satisfiability checking; yet, the recent focus on explainable AI has increased interest in analyzing inconsistent formulas, making the enumeration of minimal explanations for infeasibility a relevant task also for $\\text{LTL}_f$. This paper introduces a novel technique for enumerating minimal unsatisfiable cores (MUCs) of an $\\text{LTL}_f$ specification. The main idea is to encode a $\\text{LTL}_f$ formula into an Answer Set Programming (ASP) specification, such that the minimal unsatisfiable subsets (MUSes) of the ASP program directly correspond to the MUCs of the original $\\text{LTL}_f$ specification. Leveraging recent advancements in ASP solving yields a MUC enumerator achieving good performance in experiments conducted on established benchmarks from the literature.",
+   "published": "2024-09-14",
+   "updated": "2024-09-14",
+   "authors": [
+    "Antonio Ielo",
+    "Giuseppe Mazzotta",
+    "Rafael Peñaloza",
+    "Francesco Ricca"
+   ],
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI",
+    "cs.LO"
+   ],
+   "url": "https://arxiv.org/abs/2409.09485v1",
+   "pdf": "https://arxiv.org/pdf/2409.09485v1",
+   "comment": ""
+  },
+  {
+   "id": "1907.00929v2",
+   "title": "Trimming Graphs Using Clausal Proof Optimization",
+   "abstract": "We present a method to gradually compute a smaller and smaller unsatisfiable core of a propositional formula by minimizing proofs of unsatisfiability. The goal is to compute a minimal unsatisfiable core that is relatively small compared to other minimal unsatisfiable cores of the same formula. We try to achieve this goal by postponing deletion of arbitrary clauses from the formula as long as possible---in contrast to existing minimal unsatisfiable core algorithms. We applied this method to reduce the smallest known unit-distance graph with chromatic number 5 from 553 vertices and 2720 edges to 529 vertices and 2670 edges.",
+   "published": "2019-07-01",
+   "updated": "2019-07-15",
+   "authors": [
+    "Marijn J. H. Heule"
+   ],
+   "primary_category": "cs.LO",
+   "categories": [
+    "cs.LO",
+    "math.CO"
+   ],
+   "url": "https://arxiv.org/abs/1907.00929v2",
+   "pdf": "https://arxiv.org/pdf/1907.00929v2",
+   "comment": "arXiv admin note: text overlap with arXiv:1805.12181"
+  },
+  {
+   "id": "0605085v2",
+   "title": "A Scalable Algorithm for Minimal Unsatisfiable Core Extraction",
+   "abstract": "We propose a new algorithm for minimal unsatisfiable core extraction, based on a deeper exploration of resolution-refutation properties. We provide experimental results on formal verification benchmarks confirming that our algorithm finds smaller cores than suboptimal algorithms; and that it runs faster than those algorithms that guarantee minimality of the core.",
+   "published": "2006-05-19",
+   "updated": "2006-05-28",
+   "authors": [
+    "Nachum Dershowitz",
+    "Ziyad Hanna",
+    "Alexander Nadel"
+   ],
+   "primary_category": "cs.LO",
+   "categories": [
+    "cs.LO"
+   ],
+   "url": "https://arxiv.org/abs/0605085v2",
+   "pdf": "https://arxiv.org/pdf/0605085v2",
+   "comment": ""
+  },
+  {
+   "id": "1304.5449v1",
+   "title": "Solving WCSP by Extraction of Minimal Unsatisfiable Cores",
+   "abstract": "Usual techniques to solve WCSP are based on cost transfer operations coupled with a branch and bound algorithm. In this paper, we focus on an approach integrating extraction and relaxation of Minimal Unsatisfiable Cores in order to solve this problem. We decline our approach in two ways: an incomplete, greedy, algorithm and a complete one.",
+   "published": "2013-04-19",
+   "updated": "2013-04-19",
+   "authors": [
+    "Christophe Lecoutre",
+    "Nicolas Paris",
+    "Olivier Roussel",
+    "Sébastien Tabary"
+   ],
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI"
+   ],
+   "url": "https://arxiv.org/abs/1304.5449v1",
+   "pdf": "https://arxiv.org/pdf/1304.5449v1",
+   "comment": ""
+  },
+  {
+   "id": "2412.13606v1",
+   "title": "Exploiting Symmetries in MUS Computation (Extended version)",
+   "abstract": "In eXplainable Constraint Solving (XCS), it is common to extract a Minimal Unsatisfiable Subset (MUS) from a set of unsatisfiable constraints. This helps explain to a user why a constraint specification does not admit a solution. Finding MUSes can be computationally expensive for highly symmetric problems, as many combinations of constraints need to be considered. In the traditional context of solving satisfaction problems, symmetry has been well studied, and effective ways to detect and exploit symmetries during the search exist. However, in the setting of finding MUSes of unsatisfiable constraint programs, symmetries are understudied. In this paper, we take inspiration from existing symmetry-handling techniques and adapt well-known MUS-computation methods to exploit symmetries in the specification, speeding-up overall computation time. Our results display a significant reduction of runtime for our adapted algorithms compared to the baseline on symmetric problems.",
+   "published": "2024-12-18",
+   "updated": "2024-12-18",
+   "authors": [
+    "Ignace Bleukx",
+    "Hélène Verhaeghe",
+    "Bart Bogaerts",
+    "Tias Guns"
+   ],
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI"
+   ],
+   "url": "https://arxiv.org/abs/2412.13606v1",
+   "pdf": "https://arxiv.org/pdf/2412.13606v1",
+   "comment": "Accepted at AAAI25 conference"
+  },
+  {
+   "id": "2507.03929v2",
+   "title": "An ASP-Based Framework for MUSes",
+   "abstract": "Given an unsatisfiable formula, understanding the core reason for unsatisfiability is crucial in several applications. One effective way to capture this is through the minimal unsatisfiable subset (MUS), the subset-minimal set of clauses that remains unsatisfiable. Current research broadly focuses on two directions: (i) enumerating as many MUSes as possible within a given time limit, and (ii) counting the total number of MUSes for a given unsatisfiable formula. In this paper, we introduce an answer set programming-based framework, named MUS-ASP, designed for online enumeration of MUSes. ASP is a powerful tool for its strengths in knowledge representation and is particularly suitable for specifying complex combinatorial problems. By translating MUS enumeration into answer set solving, MUS-ASP leverages the computational efficiency of state-of-the-art ASP systems. Our extensive experimental evaluation demonstrates the effectiveness of MUS-ASP and highlights the acceleration in both MUS enumeration and counting tasks, particularly when integrated within hybrid solvers, including the framework proposed in this paper.",
+   "published": "2025-07-05",
+   "updated": "2026-01-07",
+   "authors": [
+    "Mohimenul Kabir",
+    "Kuldeep S Meel"
+   ],
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI",
+    "cs.LO"
+   ],
+   "url": "https://arxiv.org/abs/2507.03929v2",
+   "pdf": "https://arxiv.org/pdf/2507.03929v2",
+   "comment": "In Proceedings ICLP 2025, arXiv:2601.00047"
+  },
+  {
+   "id": "1502.02484v4",
+   "title": "Incrementally Computing Minimal Unsatisfiable Cores of QBFs via a Clause Group Solver API",
+   "abstract": "We consider the incremental computation of minimal unsatisfiable cores (MUCs) of QBFs. To this end, we equipped our incremental QBF solver DepQBF with a novel API to allow for incremental solving based on clause groups. A clause group is a set of clauses which is incrementally added to or removed from a previously solved QBF. Our implementation of the novel API is related to incremental SAT solving based on selector variables and assumptions. However, the API entirely hides selector variables and assumptions from the user, which facilitates the integration of DepQBF in other tools. We present implementation details and, for the first time, report on experiments related to the computation of MUCs of QBFs using DepQBF's novel clause group API.",
+   "published": "2015-02-09",
+   "updated": "2015-07-23",
+   "authors": [
+    "Florian Lonsing",
+    "Uwe Egly"
+   ],
+   "primary_category": "cs.LO",
+   "categories": [
+    "cs.LO"
+   ],
+   "url": "https://arxiv.org/abs/1502.02484v4",
+   "pdf": "https://arxiv.org/pdf/1502.02484v4",
+   "comment": "(fixed typo), camera-ready version, 6-page tool paper, to appear in proceedings of SAT 2015, LNCS, Springer"
+  },
+  {
+   "id": "2209.00953v2",
+   "title": "SATformer: Transformer-Based UNSAT Core Learning",
+   "abstract": "This paper introduces SATformer, a novel Transformer-based approach for the Boolean Satisfiability (SAT) problem. Rather than solving the problem directly, SATformer approaches the problem from the opposite direction by focusing on unsatisfiability. Specifically, it models clause interactions to identify any unsatisfiable sub-problems. Using a graph neural network, we convert clauses into clause embeddings and employ a hierarchical Transformer-based model to understand clause correlation. SATformer is trained through a multi-task learning approach, using the single-bit satisfiability result and the minimal unsatisfiable core (MUC) for UNSAT problems as clause supervision. As an end-to-end learning-based satisfiability classifier, the performance of SATformer surpasses that of NeuroSAT significantly. Furthermore, we integrate the clause predictions made by SATformer into modern heuristic-based SAT solvers and validate our approach with a logic equivalence checking task. Experimental results show that our SATformer can decrease the runtime of existing solvers by an average of 21.33%.",
+   "published": "2022-09-02",
+   "updated": "2024-03-12",
+   "authors": [
+    "Zhengyuan Shi",
+    "Min Li",
+    "Yi Liu",
+    "Sadaf Khan",
+    "Junhua Huang",
+    "Hui-Ling Zhen",
+    "Mingxuan Yuan",
+    "Qiang Xu"
+   ],
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI",
+    "cs.LG",
+    "cs.LO"
+   ],
+   "url": "https://arxiv.org/abs/2209.00953v2",
+   "pdf": "https://arxiv.org/pdf/2209.00953v2",
+   "comment": ""
+  },
+  {
+   "id": "2202.12512v1",
+   "title": "MUC-driven Feature Importance Measurement and Adversarial Analysis for Random Forest",
+   "abstract": "The broad adoption of Machine Learning (ML) in security-critical fields demands the explainability of the approach. However, the research on understanding ML models, such as Random Forest (RF), is still in its infant stage. In this work, we leverage formal methods and logical reasoning to develop a novel model-specific method for explaining the prediction of RF. Our approach is centered around Minimal Unsatisfiable Cores (MUC) and provides a comprehensive solution for feature importance, covering local and global aspects, and adversarial sample analysis. Experimental results on several datasets illustrate the high quality of our feature importance measurement. We also demonstrate that our adversarial analysis outperforms the state-of-the-art method. Moreover, our method can produce a user-centered report, which helps provide recommendations in real-life applications.",
+   "published": "2022-02-25",
+   "updated": "2022-02-25",
+   "authors": [
+    "Shucen Ma",
+    "Jianqi Shi",
+    "Yanhong Huang",
+    "Shengchao Qin",
+    "Zhe Hou"
+   ],
+   "primary_category": "cs.LG",
+   "categories": [
+    "cs.LG"
+   ],
+   "url": "https://arxiv.org/abs/2202.12512v1",
+   "pdf": "https://arxiv.org/pdf/2202.12512v1",
+   "comment": ""
+  },
+  {
+   "id": "2604.09001v1",
+   "title": "Hypergraph Neural Networks Accelerate MUS Enumeration",
+   "abstract": "Enumerating Minimal Unsatisfiable Subsets (MUSes) is a fundamental task in constraint satisfaction problems (CSPs). Its major challenge is the exponential growth of the search space, which becomes particularly severe when satisfiability checks are expensive. Recent machine learning approaches reduce this cost for Boolean satisfiability problems but rely on explicit variable-constraint relationships, limiting their application domains. This paper proposes a domain-agnostic method to accelerate MUS enumeration using Hypergraph Neural Networks (HGNNs). The proposed method incrementally builds a hypergraph with constraints as vertices and MUSes enumerated until the current step as hyperedges, and employs an HGNN-based agent trained via reinforcement learning to minimize the number of satisfiability checks required to obtain an MUS. Experimental results demonstrate the effectiveness of our approach in accelerating MUS enumeration, showing that our method can enumerate more MUSes within the same satisfiability check budget compared to conventional methods.",
+   "published": "2026-04-10",
+   "updated": "2026-04-10",
+   "authors": [
+    "Hiroya Ijima",
+    "Koichiro Yawata"
+   ],
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI",
+    "cs.LG",
+    "cs.LO"
+   ],
+   "url": "https://arxiv.org/abs/2604.09001v1",
+   "pdf": "https://arxiv.org/pdf/2604.09001v1",
+   "comment": ""
+  },
+  {
+   "id": "2603.10944v1",
+   "title": "Simple minimally unsatisfiable subsets of 2-CNFs",
+   "abstract": "We present a study of minimal unsatisfiable subsets (MUSs) of 2-CNF Boolean formulas, building on the Abbasizanjani-Kullmann classification of minimally unsatisfiable 2-CNFs (2-MUs). We start by giving a linear-time procedure for recognising 2-MUs. Then we study the problem of finding one simple MUS. On the one hand we extend the results by Kleine Buening et al, which showed NP-completeness of the decision, whether a deficiency-1 MUS exists. On the other hand we show that deciding/finding an MUS containing one or two unit-clauses (which are special deficiency-1 MUSs) can be done in polynomial time. Finally we present an incremental polynomial time algorithm for some special type of MUSs, namely those MUSs containing at least one unit-clause. We conclude by discussing the main open problem, developing a deeper understanding of the landscape of easy/hard MUSs of 2-CNFs.",
+   "published": "2026-03-11",
+   "updated": "2026-03-11",
+   "authors": [
+    "Oliver Kullmann",
+    "Edward Clewer"
+   ],
+   "primary_category": "cs.DS",
+   "categories": [
+    "cs.DS"
+   ],
+   "url": "https://arxiv.org/abs/2603.10944v1",
+   "pdf": "https://arxiv.org/pdf/2603.10944v1",
+   "comment": "18 pages"
+  },
+  {
+   "id": "1505.04365v1",
+   "title": "Efficient MUS Enumeration of Horn Formulae with Applications to Axiom Pinpointing",
+   "abstract": "The enumeration of minimal unsatisfiable subsets (MUSes) finds a growing number of practical applications, that includes a wide range of diagnosis problems. As a concrete example, the problem of axiom pinpointing in the EL family of description logics (DLs) can be modeled as the enumeration of the group-MUSes of Horn formulae. In turn, axiom pinpointing for the EL family of DLs finds important applications, such as debugging medical ontologies, of which SNOMED CT is the best known example. The main contribution of this paper is to develop an efficient group-MUS enumerator for Horn formulae, HGMUS, that finds immediate application in axiom pinpointing for the EL family of DLs. In the process of developing HGMUS, the paper also identifies performance bottlenecks of existing solutions. The new algorithm is shown to outperform all alternative approaches when the problem domain targeted by group-MUS enumeration of Horn formulae is axiom pinpointing for the EL family of DLs, with a representative suite of examples taken from different medical ontologies.",
+   "published": "2015-05-17",
+   "updated": "2015-05-17",
+   "authors": [
+    "M. Fareed Arif",
+    "Carlos Mencía",
+    "Joao Marques-Silva"
+   ],
+   "primary_category": "cs.LO",
+   "categories": [
+    "cs.LO"
+   ],
+   "url": "https://arxiv.org/abs/1505.04365v1",
+   "pdf": "https://arxiv.org/pdf/1505.04365v1",
+   "comment": ""
+  },
+  {
+   "id": "2402.15524v1",
+   "title": "Graph Pruning for Enumeration of Minimal Unsatisfiable Subsets",
+   "abstract": "Finding Minimal Unsatisfiable Subsets (MUSes) of binary constraints is a common problem in infeasibility analysis of over-constrained systems. However, because of the exponential search space of the problem, enumerating MUSes is extremely time-consuming in real applications. In this work, we propose to prune formulas using a learned model to speed up MUS enumeration. We represent formulas as graphs and then develop a graph-based learning model to predict which part of the formula should be pruned. Importantly, our algorithm does not require data labeling by only checking the satisfiability of pruned formulas. It does not even require training data from the target application because it extrapolates to data with different distributions. In our experiments we combine our algorithm with existing MUS enumerators and validate its effectiveness in multiple benchmarks including a set of real-world problems outside our training distribution. The experiment results show that our method significantly accelerates MUS enumeration on average on these benchmark problems.",
+   "published": "2024-02-19",
+   "updated": "2024-02-19",
+   "authors": [
+    "Panagiotis Lymperopoulos",
+    "Liping Liu"
+   ],
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI",
+    "cs.LG"
+   ],
+   "url": "https://arxiv.org/abs/2402.15524v1",
+   "pdf": "https://arxiv.org/pdf/2402.15524v1",
+   "comment": ""
+  },
+  {
+   "id": "1611.04946v3",
+   "title": "Safety Model Checking with Complementary Approximations",
+   "abstract": "Formal verification techniques such as model checking, are becoming popular in hardware design. SAT-based model checking techniques such as IC3/PDR, have gained a significant success in hardware industry. In this paper, we present a new framework for SAT-based safety model checking, named Complementary Approximate Reachability (CAR). CAR is based on standard reachability analysis, but instead of maintaining a single sequence of reachable- state sets, CAR maintains two sequences of over- and under- approximate reachable-state sets, checking safety and unsafety at the same time. To construct the two sequences, CAR uses standard Boolean-reasoning algorithms, based on satisfiability solving, one to find a satisfying cube of a satisfiable Boolean formula, and one to provide a minimal unsatisfiable core of an unsatisfiable Boolean formula. We applied CAR to 548 hardware model-checking instances, and compared its performance with IC3/PDR. Our results show that CAR is able to solve 42 instances that cannot be solved by IC3/PDR. When evaluated against a portfolio that includes IC3/PDR and other approaches, CAR is able to solve 21 instances that the other approaches cannot solve. We conclude that CAR should be considered as a valuable member of any algorithmic portfolio for safety model checking.",
+   "published": "2016-11-15",
+   "updated": "2017-12-21",
+   "authors": [
+    "Jianwen Li",
+    "Shufang Zhu",
+    "Yueling Zhang",
+    "Geguang Pu",
+    "Moshe Vardi"
+   ],
+   "primary_category": "cs.LO",
+   "categories": [
+    "cs.LO"
+   ],
+   "url": "https://arxiv.org/abs/1611.04946v3",
+   "pdf": "https://arxiv.org/pdf/1611.04946v3",
+   "comment": ""
+  },
+  {
+   "id": "2608.14771v1",
+   "title": "From Errors to Proofs: Minimal-Core-Guided Repair for Neuro-Symbolic Constraint Solving",
+   "abstract": "Making language models solve constraint problems reliably often means having them translate the problem into a formal specification and delegating the search to a sound solver. But the translation is itself a language-model task, and an unfaithful translation makes the solver faithfully solve the wrong problem. Existing pipelines repair only translations that crash, returning the solver's error message and falling silent when the program runs but is wrong. We replace the error message with a proof: when the generated program is unsatisfiable, we extract a minimal unsatisfiable core over the model's own constraints and hand it back the exact set that cannot hold together, a leakage-free signal that localizes the fault. On a new benchmark of 77 problems with an exact oracle, translation to Answer Set Programming is faithful on six of seven domains and fails only on aggregate coverage scheduling, which concentrates the translation tax in one diagnosable pattern. A minimal core, rather than a bare error, is what stops a weaker model from fabricating solutions to infeasible problems, cutting fabrication from 79% to 7%. A strong chain-of-thought baseline meanwhile matches the symbolic route on accuracy, so the route's value is not accuracy but certificates and its refusal to fabricate.",
+   "published": "2026-08-14",
+   "updated": "2026-08-14",
+   "authors": [
+    "Dipankar Sarkar"
+   ],
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI",
+    "cs.CL",
+    "cs.LG",
+    "cs.LO",
+    "cs.PL",
+    "cs.SC",
+    "math.OC"
+   ],
+   "url": "https://arxiv.org/abs/2608.14771v1",
+   "pdf": "https://arxiv.org/pdf/2608.14771v1",
+   "comment": "7 pages, 2 figures. Accepted at the IJCAI-ECAI 2026 Workshop on Logic and Symbolic Reasoning (LogiSymb), poster"
+  },
+  {
+   "id": "2512.20214v2",
+   "title": "Error Localization, Certificates, and Hints for Probabilistic Program Verification via Slicing (Extended Version)",
+   "abstract": "This paper focuses on effective user diagnostics generated during the deductive verification of probabilistic programs. Our key principle is based on providing slices for (1) error reporting, (2) proof simplification, and (3) preserving successful verification results. By formally defining these different notions on HeyVL, an existing quantitative intermediate verification language (IVL), our concepts (and implementation) can be used to obtain diagnostics for a range of probabilistic programming languages. Slicing for error reporting is a novel notion of error localization for quantitative assertions. We demonstrate slicing-based diagnostics on a variety of proof rules such as quantitative versions of the specification statement and invariant-based loop rules, and formally prove the correctness of specialized error messages and verification hints. We implemented our user diagnostics into the deductive verifier Caesar. Our novel implementation -- called \\emph{Brutus} -- can search for slices which do or do not verify, corresponding to each of the three diagnostic notions. For error reporting (1), it exploits a binary search-based algorithm that minimizes error-witnessing slices. To solve for slices that verify (2 and 3), we empirically compare different algorithms based on unsatisfiable cores, minimal unsatisfiable subset enumeration, and a direct SMT encoding of the slicing problem. Our empirical evaluation of Brutus on existing and new benchmarks shows that we can find slices that are both small and informative.",
+   "published": "2025-12-23",
+   "updated": "2025-12-24",
+   "authors": [
+    "Philipp Schröer",
+    "Darion Haase",
+    "Joost-Pieter Katoen"
+   ],
+   "primary_category": "cs.PL",
+   "categories": [
+    "cs.PL"
+   ],
+   "url": "https://arxiv.org/abs/2512.20214v2",
+   "pdf": "https://arxiv.org/pdf/2512.20214v2",
+   "comment": "Accepted at the European Symposium on Programming (ESOP) 2026"
+  },
+  {
+   "id": "2605.23940v1",
+   "title": "Residual Drift Dominates Contradiction in Multi-Turn Constraint Reasoning",
+   "abstract": "How do multi-turn reasoning systems fail? The expected answer is logical contradiction, in which the system's maintained state becomes unsatisfiable. We show that the dominant mode is instead satisfiable drift, where the internal state stays consistent while the returned answer silently violates prior commitments. We build DRIFT-Bench (Decomposing Reasoning Into Failure Types), a solver-instrumented benchmark of 816 test problems across three constraint domains, and evaluate four methods on it across four open-weight models (8B-120B parameters). MUS-Repair, which feeds minimal unsatisfiable subsets back to the generator, is strongest in every setting (+1.8 to +15.0 pp over the best non-MUS baseline). But the central finding is what repair leaves behind. After structured feedback, models rarely contradict themselves. They forget. Residual errors are 98-100% satisfiable drift across all settings, while contradiction drops to near zero. Reliable multi-turn systems must separately validate that the returned answer respects the maintained state. Code is available at https://github.com/kaons-research/drift-bench.",
+   "published": "2026-04-28",
+   "updated": "2026-04-28",
+   "authors": [
+    "Sebastien Kawada"
+   ],
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI",
+    "cs.CL"
+   ],
+   "url": "https://arxiv.org/abs/2605.23940v1",
+   "pdf": "https://arxiv.org/pdf/2605.23940v1",
+   "comment": "Published at ICLR 2026 Workshop on Reasoning and Planning for LLMs. 18 pages. ICLR page: https://iclr.cc/virtual/2026/10017484 Code: https://github.com/kaons-research/drift-bench"
+  },
+  {
+   "id": "2104.15040v2",
+   "title": "Using Small MUSes to Explain How to Solve Pen and Paper Puzzles",
+   "abstract": "In this paper, we present Demystify, a general tool for creating human-interpretable step-by-step explanations of how to solve a wide range of pen and paper puzzles from a high-level logical description. Demystify is based on Minimal Unsatisfiable Subsets (MUSes), which allow Demystify to solve puzzles as a series of logical deductions by identifying which parts of the puzzle are required to progress. This paper makes three contributions over previous work. First, we provide a generic input language, based on the Essence constraint language, which allows us to easily use MUSes to solve a much wider range of pen and paper puzzles. Second, we demonstrate that the explanations that Demystify produces match those provided by humans by comparing our results with those provided independently by puzzle experts on a range of puzzles. We compare Demystify to published guides for solving a range of different pen and paper puzzles and show that by using MUSes, Demystify produces solving strategies which closely match human-produced guides to solving those same puzzles (on average 89% of the time). Finally, we introduce a new randomised algorithm to find MUSes for more difficult puzzles. This algorithm is focused on optimised search for individual small MUSes.",
+   "published": "2021-04-30",
+   "updated": "2023-01-26",
+   "authors": [
+    "Joan Espasa",
+    "Ian P. Gent",
+    "Ruth Hoffmann",
+    "Christopher Jefferson",
+    "Alice M. Lynch",
+    "András Salamon",
+    "Matthew J. McIlree"
+   ],
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI",
+    "cs.HC"
+   ],
+   "url": "https://arxiv.org/abs/2104.15040v2",
+   "pdf": "https://arxiv.org/pdf/2104.15040v2",
+   "comment": ""
+  },
+  {
+   "id": "1708.00400v3",
+   "title": "Recursive Online Enumeration of All Minimal Unsatisfiable Subsets",
+   "abstract": "In various areas of computer science, we deal with a set of constraints to be satisfied. If the constraints cannot be satisfied simultaneously, it is desirable to identify the core problems among them. Such cores are called minimal unsatisfiable subsets (MUSes). The more MUSes are identified, the more information about the conflicts among the constraints is obtained. However, a full enumeration of all MUSes is in general intractable due to the large number (even exponential) of possible conflicts. Moreover, to identify MUSes algorithms must test sets of constraints for their simultaneous satisfiabilty. The type of the test depends on the application domains. The complexity of tests can be extremely high especially for domains like temporal logics, model checking, or SMT. In this paper, we propose a recursive algorithm that identifies MUSes in an online manner (i.e., one by one) and can be terminated at any time. The key feature of our algorithm is that it minimizes the number of satisfiability tests and thus speeds up the computation. The algorithm is applicable to an arbitrary constraint domain and its effectiveness demonstrates itself especially in domains with expensive satisfiability checks. We benchmark our algorithm against state of the art algorithm on Boolean and SMT constraint domains and demonstrate that our algorithm really requires less satisfiability tests and consequently finds more MUSes in given time limits.",
+   "published": "2017-08-01",
+   "updated": "2018-05-08",
+   "authors": [
+    "Jaroslav Bendik",
+    "Ivana Cerna",
+    "Nikola Benes"
+   ],
+   "primary_category": "cs.LO",
+   "categories": [
+    "cs.LO"
+   ],
+   "url": "https://arxiv.org/abs/1708.00400v3",
+   "pdf": "https://arxiv.org/pdf/1708.00400v3",
+   "comment": ""
+  },
+  {
+   "id": "2608.10755v1",
+   "title": "Conflict Extraction in Probabilistic Datalog Analyses",
+   "abstract": "Probabilistic extensions of Datalog enable static analyses such as pointer analysis, data race detection, and side-channel analysis to rank alarms by likelihood, but this added expressiveness also introduces a new challenge absent from deterministic analyses: the final output may contain alarms that are individually plausible yet mutually inconsistent, because marginal probabilities do not guarantee joint satisfiability. As a result, developers may spend effort investigating combinations of alarms that can never co-occur in any possible world. We address this problem by formalizing such inconsistencies as minimal unsatisfiable subsets (MUSes) and introducing PPProbe, a conflict extractor specialized for probabilistic Datalog analyses. Rather than improving MUS enumeration in general, PPProbe exploits the structure of Datalog derivation graphs to guide the search toward likely conflicts and prune the search space through bottom-up UNSAT inference. We evaluate PPProbe on 70 benchmarks from power side-channel analysis, data race detection, semantic diffing, and Bayesian-network inference. The results show that PPProbe achieves 2.5 to 24 times higher throughput than state-of-the-art MUS enumerators, and that the conflicts it identifies yield a conservative estimate of false-positive reduction, filtering out an average of 47.7% of mutually inconsistent alarms.",
+   "published": "2026-08-11",
+   "updated": "2026-08-11",
+   "authors": [
+    "Siyu Chen",
+    "Chungha Sung",
+    "Xuyang Li",
+    "Jingbo Wang"
+   ],
+   "primary_category": "cs.SE",
+   "categories": [
+    "cs.SE",
+    "cs.PL"
+   ],
+   "url": "https://arxiv.org/abs/2608.10755v1",
+   "pdf": "https://arxiv.org/pdf/2608.10755v1",
+   "comment": "Accepted for publication at ASE 2026"
+  },
+  {
+   "id": "2303.11712v3",
+   "title": "Efficiently Explaining CSPs with Unsatisfiable Subset Optimization (extended algorithms and examples)",
+   "abstract": "We build on a recently proposed method for stepwise explaining solutions of Constraint Satisfaction Problems (CSP) in a human-understandable way. An explanation here is a sequence of simple inference steps where simplicity is quantified using a cost function. The algorithms for explanation generation rely on extracting Minimal Unsatisfiable Subsets (MUS) of a derived unsatisfiable formula, exploiting a one-to-one correspondence between so-called non-redundant explanations and MUSs. However, MUS extraction algorithms do not provide any guarantee of subset minimality or optimality with respect to a given cost function. Therefore, we build on these formal foundations and tackle the main points of improvement, namely how to generate explanations efficiently that are provably optimal (with respect to the given cost metric). For that, we developed (1) a hitting set-based algorithm for finding the optimal constrained unsatisfiable subsets; (2) a method for re-using relevant information over multiple algorithm calls; and (3) methods exploiting domain-specific information to speed up the explanation sequence generation. We experimentally validated our algorithms on a large number of CSP problems. We found that our algorithms outperform the MUS approach in terms of explanation quality and computational time (on average up to 56 % faster than a standard MUS approach).",
+   "published": "2023-03-21",
+   "updated": "2023-11-28",
+   "authors": [
+    "Emilio Gamba",
+    "Bart Bogaerts",
+    "Tias Guns"
+   ],
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI",
+    "cs.LO"
+   ],
+   "url": "https://arxiv.org/abs/2303.11712v3",
+   "pdf": "https://arxiv.org/pdf/2303.11712v3",
+   "comment": "arXiv admin note: text overlap with arXiv:2105.11763"
+  },
+  {
+   "id": "1402.3011v2",
+   "title": "Computing Minimal Sets on Propositional Formulae I: Problems & Reductions",
+   "abstract": "Boolean Satisfiability (SAT) is arguably the archetypical NP-complete decision problem. Progress in SAT solving algorithms has motivated an ever increasing number of practical applications in recent years. However, many practical uses of SAT involve solving function as opposed to decision problems. Concrete examples include computing minimal unsatisfiable subsets, minimal correction subsets, prime implicates and implicants, minimal models, backbone literals, and autarkies, among several others. In most cases, solving a function problem requires a number of adaptive or non-adaptive calls to a SAT solver. Given the computational complexity of SAT, it is therefore important to develop algorithms that either require the smallest possible number of calls to the SAT solver, or that involve simpler instances. This paper addresses a number of representative function problems defined on Boolean formulas, and shows that all these function problems can be reduced to a generic problem of computing a minimal set subject to a monotone predicate. This problem is referred to as the Minimal Set over Monotone Predicate (MSMP) problem. This exercise provides new ways for solving well-known function problems, including prime implicates, minimal correction subsets, backbone literals, independent variables and autarkies, among several others. Moreover, this exercise motivates the development of more efficient algorithms for the MSMP problem. Finally the paper outlines a number of areas of future research related with extensions of the MSMP problem.",
+   "published": "2014-02-13",
+   "updated": "2014-02-14",
+   "authors": [
+    "Joao Marques-Silva",
+    "Mikolas Janota"
+   ],
+   "primary_category": "cs.LO",
+   "categories": [
+    "cs.LO"
+   ],
+   "url": "https://arxiv.org/abs/1402.3011v2",
+   "pdf": "https://arxiv.org/pdf/1402.3011v2",
+   "comment": "This version contains some fixes in formatting and bibliography"
+  },
+  {
+   "id": "2609.14741v1",
+   "title": "A property-registry contract for retrieve-or-refuse thermal-mechanical lattice search",
+   "abstract": "Early thermal-mechanical lattice requirements are knowledge-intensive and often jointly unsatisfiable: an engineer asks for a cell that is light, stiff, laterally conducting and cheap, and no cell in the library satisfies it. A design system should say so, and say which requirement to loosen and by how much, rather than return the nearest row. A generative model can return a candidate even when the library holds none. This work applies established conflict diagnosis to a catalogue of homogenised properties. Search over 1,397 homogenised unit cells and 19 base materials (26,543 combinations) returns a catalogue row that a second solver can rebuild, or, for an empty feasible set of at most eight constraints, inclusion-minimal unsatisfiable subsets (MUS) and the slack of a repair, not a neighbour. One registry declaration generates the prompt and the evaluator, so undeclared parsed keys cannot reach search. On a frozen suite of 64 typed queries, retrieve-or-refuse matches min-repair on every feasible query (48/48) and refuses every empty one (16/16) with MUS and slack. Constraint-ignoring nearest-neighbour and penalty search violate stated cost or density limits. On 216 empty queries, repairs printed at three significant figures and rounded outward stay feasible in every case (216/216). When density and cost must be kept, a list of minimum-cardinality repairs keeps them on 209 of 211 queries; a protection-first repair keeps them on all 211, the same as full diagnosis. A 308-request parse benchmark is a template-text check, not unconstrained engineer prose.",
+   "published": "2026-09-13",
+   "updated": "2026-09-13",
+   "authors": [
+    "Shaoliang Yang",
+    "Henry Chu",
+    "Zu Yashengjiang",
+    "Jun Wang"
+   ],
+   "primary_category": "cs.CE",
+   "categories": [
+    "cs.CE",
+    "cond-mat.mtrl-sci",
+    "cs.AI"
+   ],
+   "url": "https://arxiv.org/abs/2609.14741v1",
+   "pdf": "https://arxiv.org/pdf/2609.14741v1",
+   "comment": "30 pages, 7 figures, 22 tables. Appendices A-D give the full property registry, the generated language-model prompt, the frozen 64-query suite, and one worked tool transcript"
+  }
+ ]
+}

@@ -1,0 +1,147 @@
+{
+ "query": "abs:\"explanation\" AND abs:\"constraint\" AND abs:\"unsatisfiable\"",
+ "hits": [
+  {
+   "id": "2303.11712v3",
+   "title": "Efficiently Explaining CSPs with Unsatisfiable Subset Optimization (extended algorithms and examples)",
+   "abstract": "We build on a recently proposed method for stepwise explaining solutions of Constraint Satisfaction Problems (CSP) in a human-understandable way. An explanation here is a sequence of simple inference steps where simplicity is quantified using a cost function. The algorithms for explanation generation rely on extracting Minimal Unsatisfiable Subsets (MUS) of a derived unsatisfiable formula, exploiting a one-to-one correspondence between so-called non-redundant explanations and MUSs. However, MUS extraction algorithms do not provide any guarantee of subset minimality or optimality with respect to a given cost function. Therefore, we build on these formal foundations and tackle the main points of improvement, namely how to generate explanations efficiently that are provably optimal (with respect to the given cost metric). For that, we developed (1) a hitting set-based algorithm for finding the optimal constrained unsatisfiable subsets; (2) a method for re-using relevant information over multiple algorithm calls; and (3) methods exploiting domain-specific information to speed up the explanation sequence generation. We experimentally validated our algorithms on a large number of CSP problems. We found that our algorithms outperform the MUS approach in terms of explanation quality and computational time (on average up to 56 % faster than a standard MUS approach).",
+   "published": "2023-03-21",
+   "updated": "2023-11-28",
+   "authors": [
+    "Emilio Gamba",
+    "Bart Bogaerts",
+    "Tias Guns"
+   ],
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI",
+    "cs.LO"
+   ],
+   "url": "https://arxiv.org/abs/2303.11712v3",
+   "pdf": "https://arxiv.org/pdf/2303.11712v3",
+   "comment": "arXiv admin note: text overlap with arXiv:2105.11763"
+  },
+  {
+   "id": "2105.11763v4",
+   "title": "Efficiently Explaining CSPs with Unsatisfiable Subset Optimization",
+   "abstract": "We build on a recently proposed method for explaining solutions of constraint satisfaction problems. An explanation here is a sequence of simple inference steps, where the simplicity of an inference step is measured by the number and types of constraints and facts used, and where the sequence explains all logical consequences of the problem. We build on these formal foundations and tackle two emerging questions, namely how to generate explanations that are provably optimal (with respect to the given cost metric) and how to generate them efficiently. To answer these questions, we develop 1) an implicit hitting set algorithm for finding optimal unsatisfiable subsets; 2) a method to reduce multiple calls for (optimal) unsatisfiable subsets to a single call that takes constraints on the subset into account, and 3) a method for re-using relevant information over multiple calls to these algorithms. The method is also applicable to other problems that require finding cost-optimal unsatiable subsets. We specifically show that this approach can be used to effectively find sequences of optimal explanation steps for constraint satisfaction problems like logic grid puzzles.",
+   "published": "2021-05-25",
+   "updated": "2021-07-05",
+   "authors": [
+    "Emilio Gamba",
+    "Bart Bogaerts",
+    "Tias Guns"
+   ],
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI",
+    "cs.LO"
+   ],
+   "url": "https://arxiv.org/abs/2105.11763v4",
+   "pdf": "https://arxiv.org/pdf/2105.11763v4",
+   "comment": ""
+  },
+  {
+   "id": "1511.01123v1",
+   "title": "Adapting Real Quantifier Elimination Methods for Conflict Set Computation",
+   "abstract": "The satisfiability problem in real closed fields is decidable. In the context of satisfiability modulo theories, the problem restricted to conjunctive sets of literals, that is, sets of polynomial constraints, is of particular importance. One of the central problems is the computation of good explanations of the unsatisfiability of such sets, i.e.\\ obtaining a small subset of the input constraints whose conjunction is already unsatisfiable. We adapt two commonly used real quantifier elimination methods, cylindrical algebraic decomposition and virtual substitution, to provide such conflict sets and demonstrate the performance of our method in practice.",
+   "published": "2015-11-03",
+   "updated": "2015-11-03",
+   "authors": [
+    "Maximilian Jaroschek",
+    "Pablo Federico Dobal",
+    "Pascal Fontaine"
+   ],
+   "primary_category": "cs.LO",
+   "categories": [
+    "cs.LO"
+   ],
+   "url": "https://arxiv.org/abs/1511.01123v1",
+   "pdf": "https://arxiv.org/pdf/1511.01123v1",
+   "comment": ""
+  },
+  {
+   "id": "2511.10428v1",
+   "title": "Using Certifying Constraint Solvers for Generating Step-wise Explanations",
+   "abstract": "In the field of Explainable Constraint Solving, it is common to explain to a user why a problem is unsatisfiable. A recently proposed method for this is to compute a sequence of explanation steps. Such a step-wise explanation shows individual reasoning steps involving constraints from the original specification, that in the end explain a conflict. However, computing a step-wise explanation is computationally expensive, limiting the scope of problems for which it can be used. We investigate how we can use proofs generated by a constraint solver as a starting point for computing step-wise explanations, instead of computing them step-by-step. More specifically, we define a framework of abstract proofs, in which both proofs and step-wise explanations can be represented. We then propose several methods for converting a proof to a step-wise explanation sequence, with special attention to trimming and simplification techniques to keep the sequence and its individual steps small. Our results show our method significantly speeds up the generation of step-wise explanation sequences, while the resulting step-wise explanation has a quality similar to the current state-of-the-art.",
+   "published": "2025-11-13",
+   "updated": "2025-11-13",
+   "authors": [
+    "Ignace Bleukx",
+    "Maarten Flippo",
+    "Bart Bogaerts",
+    "Emir Demirović",
+    "Tias Guns"
+   ],
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI"
+   ],
+   "url": "https://arxiv.org/abs/2511.10428v1",
+   "pdf": "https://arxiv.org/pdf/2511.10428v1",
+   "comment": "Accepted for publication at AAAI 2026"
+  },
+  {
+   "id": "2609.29876v1",
+   "title": "Ontology-Mediated Neurosymbolic Constraint Acquisition from Multiple Stakeholders",
+   "abstract": "Neurosymbolic research typically assumes a pre-existing symbolic specification, leaving the upstream challenge of acquiring and formalizing requirements and constraints largely unaddressed. We present an architecture that fills this gap by using an OWL configuration ontology to mediate between neural constraint sources and downstream consumers. In this framework, LLM assistants elicit soft stakeholder preferences, while hardware specifications define hard physical and engineering limits. The ontology unifies these heterogeneous inputs, leverages description logic to identify unsatisfiability, and generates symbolic explanations that enable LLMs to interactively renegotiate terms with users. Any remaining conflicts are resolved downstream via priority-based relaxation. We illustrate our approach on a microgrid use case from the FLEXI project and argue its generalizability to multi-stakeholder domains where constraint acquisition is distributed across human and automated sources of unequal authority.",
+   "published": "2026-09-24",
+   "updated": "2026-09-24",
+   "authors": [
+    "Stefan Bischof",
+    "Juliana Kainz",
+    "Danilo Valerio"
+   ],
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI"
+   ],
+   "url": "https://arxiv.org/abs/2609.29876v1",
+   "pdf": "https://arxiv.org/pdf/2609.29876v1",
+   "comment": "Accepted for KG-NeSy Workshop, co-located with ISWC 2026"
+  },
+  {
+   "id": "2104.15040v2",
+   "title": "Using Small MUSes to Explain How to Solve Pen and Paper Puzzles",
+   "abstract": "In this paper, we present Demystify, a general tool for creating human-interpretable step-by-step explanations of how to solve a wide range of pen and paper puzzles from a high-level logical description. Demystify is based on Minimal Unsatisfiable Subsets (MUSes), which allow Demystify to solve puzzles as a series of logical deductions by identifying which parts of the puzzle are required to progress. This paper makes three contributions over previous work. First, we provide a generic input language, based on the Essence constraint language, which allows us to easily use MUSes to solve a much wider range of pen and paper puzzles. Second, we demonstrate that the explanations that Demystify produces match those provided by humans by comparing our results with those provided independently by puzzle experts on a range of puzzles. We compare Demystify to published guides for solving a range of different pen and paper puzzles and show that by using MUSes, Demystify produces solving strategies which closely match human-produced guides to solving those same puzzles (on average 89% of the time). Finally, we introduce a new randomised algorithm to find MUSes for more difficult puzzles. This algorithm is focused on optimised search for individual small MUSes.",
+   "published": "2021-04-30",
+   "updated": "2023-01-26",
+   "authors": [
+    "Joan Espasa",
+    "Ian P. Gent",
+    "Ruth Hoffmann",
+    "Christopher Jefferson",
+    "Alice M. Lynch",
+    "András Salamon",
+    "Matthew J. McIlree"
+   ],
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI",
+    "cs.HC"
+   ],
+   "url": "https://arxiv.org/abs/2104.15040v2",
+   "pdf": "https://arxiv.org/pdf/2104.15040v2",
+   "comment": ""
+  },
+  {
+   "id": "1407.6571v1",
+   "title": "Conflict-Driven XOR-Clause Learning (extended version)",
+   "abstract": "Modern conflict-driven clause learning (CDCL) SAT solvers are very good in solving conjunctive normal form (CNF) formulas. However, some application problems involve lots of parity (xor) constraints which are not necessarily efficiently handled if translated into CNF. This paper studies solving CNF formulas augmented with xor-clauses in the DPLL(XOR) framework where a CDCL SAT solver is coupled with a separate xor-reasoning module. New techniques for analyzing xor-reasoning derivations are developed, allowing one to obtain smaller CNF clausal explanations for xor-implied literals and also to derive and learn new xor-clauses. It is proven that these new techniques allow very short unsatisfiability proofs for some formulas whose CNF translations do not have polynomial size resolution proofs, even when a very simple xor-reasoning module capable only of unit propagation is applied. The efficiency of the proposed techniques is evaluated on a set of challenging logical cryptanalysis instances.",
+   "published": "2014-07-24",
+   "updated": "2014-07-24",
+   "authors": [
+    "Tero Laitinen",
+    "Tommi Junttila",
+    "Ilkka Niemelä"
+   ],
+   "primary_category": "cs.LO",
+   "categories": [
+    "cs.LO"
+   ],
+   "url": "https://arxiv.org/abs/1407.6571v1",
+   "pdf": "https://arxiv.org/pdf/1407.6571v1",
+   "comment": ""
+  }
+ ]
+}

@@ -1,0 +1,504 @@
+{
+ "query": "abs:\"design structure\" OR abs:\"function structure\" AND abs:\"design synthesis\"",
+ "hits": [
+  {
+   "id": "2311.01190v4",
+   "title": "Non-canonical maximum cliques without a design structure in the block graphs of 2-designs",
+   "abstract": "In this note we answer positively a question of Chris Godsil and Karen Meagher on the existence of a 2-design whose block graph has a non-canonical maximum clique without a design structure.",
+   "published": "2023-11-02",
+   "updated": "2024-06-20",
+   "authors": [
+    "Sergey Goryainov",
+    "Elena V. Konstantinova"
+   ],
+   "primary_category": "math.CO",
+   "categories": [
+    "math.CO"
+   ],
+   "url": "https://arxiv.org/abs/2311.01190v4",
+   "pdf": "https://arxiv.org/pdf/2311.01190v4",
+   "comment": ""
+  },
+  {
+   "id": "2312.09765v1",
+   "title": "Entropic uncertainty relations and entanglement detection from quantum designs",
+   "abstract": "Uncertainty relations and quantum entanglement are pivotal concepts in quantum theory. Beyond their fundamental significance in shaping our understanding of the quantum world, they also underpin crucial applications in quantum information theory. In this article, we investigate entropic uncertainty relations and entanglement detection with an emphasis on quantum measurements with design structures. On the one hand, we derive improved Rényi entropic uncertainty relations for design-structured measurements, exploiting the property that the sum of powered (e.g., squared) probabilities of obtaining different measurement outcomes is now invariant under unitary transformations of the measured system and can be easily computed. On the other hand, the above property essentially imposes a state-independent upper bound, which is achieved at all pure states, on one's ability to predict local outcomes when performing a set of design-structured measurements on quantum systems. Realizing this, we also obtain criteria for detecting multi-partite entanglement with design-structured measurements.",
+   "published": "2023-12-15",
+   "updated": "2023-12-15",
+   "authors": [
+    "Yundu Zhao",
+    "Shan Huang",
+    "Shengjun Wu"
+   ],
+   "primary_category": "quant-ph",
+   "categories": [
+    "quant-ph"
+   ],
+   "url": "https://arxiv.org/abs/2312.09765v1",
+   "pdf": "https://arxiv.org/pdf/2312.09765v1",
+   "comment": ""
+  },
+  {
+   "id": "1603.03577v2",
+   "title": "Combinatorial RNA Design Designability and Structure-Approximating Algorithm in Watson-Crick and Nussinov-Jacobson Energy Models",
+   "abstract": "We consider the Combinatorial RNA Design problem, a minimal instance of RNA design where one must produce an RNA sequence that adopts a given secondary structure as its minimal free-energy structure. We consider two free-energy models where the contributions of base pairs are additive and independent: the purely combinatorial Watson-Crick model, which only allows equally-contributing A -- U and C -- G base pairs, and the real-valued Nussinov-Jacobson model, which associates arbitrary energies to A -- U, C -- G and G -- U base pairs. We first provide a complete characterization of designable structures using restricted alphabets and, in the four-letter alphabet, provide a complete characterization for designable structures without unpaired bases. When unpaired bases are allowed, we characterize extensive classes of (non-)designable structures, and prove the closure of the set of designable structures under the stutter operation. Membership of a given structure to any of the classes can be tested in $Θ$(n) time, including the generation of a solution sequence for positive instances. Finally, we consider a structure-approximating relaxation of the design, and provide a $Θ$(n) algorithm which, given a structure S that avoids two trivially non-designable motifs, transforms S into a designable structure constructively by adding at most one base-pair to each of its stems.",
+   "published": "2016-03-11",
+   "updated": "2016-08-04",
+   "authors": [
+    "Jozef Haleš",
+    "Alice Héliou",
+    "Ján Maňuch",
+    "Yann Ponty",
+    "Ladislav Stacho"
+   ],
+   "primary_category": "q-bio.QM",
+   "categories": [
+    "q-bio.QM",
+    "q-bio.BM"
+   ],
+   "url": "https://arxiv.org/abs/1603.03577v2",
+   "pdf": "https://arxiv.org/pdf/1603.03577v2",
+   "comment": "To appear"
+  },
+  {
+   "id": "1002.3031v1",
+   "title": "Quantifying the Deign Quality of Object Oriented System The metric based rules and heuristic",
+   "abstract": "The design structure of OO software has decisive impact on its quality. The design must be strongly correlated with quality characteristics like analyzability, changeability, stability and testability, which are important for maintaining the system. But due to the diversity and complexity of the design properties of OO system e.g. Polymorphism, encapsulation, coupling it becomes cumbersome.",
+   "published": "2010-02-16",
+   "updated": "2010-02-16",
+   "authors": [
+    "R. Selvarani",
+    "Wahida Banu",
+    "Kamakshi Prasad"
+   ],
+   "primary_category": "cs.SE",
+   "categories": [
+    "cs.SE"
+   ],
+   "url": "https://arxiv.org/abs/1002.3031v1",
+   "pdf": "https://arxiv.org/pdf/1002.3031v1",
+   "comment": "8 pages, 2 figures"
+  },
+  {
+   "id": "0408024v1",
+   "title": "Medium effects on the selection of sequences folding into stable proteins in a simple model",
+   "abstract": "We study the medium effects on the selection of sequences in protein folding by taking account of the surface potential in HP-model. Our analysis on the proportion of H and P monomers in the sequences gives a direct interpretation that the lowly designable structures possess small average gap. The numerical calculation by means of our model exhibits that the surface potential enhances the average gap of highly designable structures. It also shows that a most stable structure may be no longer the most stable one if the medium parameters changed.",
+   "published": "2004-08-27",
+   "updated": "2004-08-27",
+   "authors": [
+    "You-Quan Li",
+    "Yong-Yun Ji",
+    "Jun-Wen Mao",
+    "Xiao-Wei Tang"
+   ],
+   "primary_category": "q-bio.BM",
+   "categories": [
+    "q-bio.BM",
+    "cond-mat.soft"
+   ],
+   "url": "https://arxiv.org/abs/0408024v1",
+   "pdf": "https://arxiv.org/pdf/0408024v1",
+   "comment": "4 pages, 4 figures"
+  },
+  {
+   "id": "1206.3380v1",
+   "title": "Extended Griess algebras and Matsuo-Norton trace formulae",
+   "abstract": "We introduce the Z_2-extended Griess algebra of a vertex operator superalgebra with an involution and derive the Matsuo-Norton trace formulae for the extended Griess algebra based on conformal design structure. We illustrate an application of our formulae by reformulating the one-to-one correspondence between 2A-elements of the Baby-monster simple group and N=1 c=7/10 Virasoro subalgebras inside the Baby-monster vertex operator superalgebra.",
+   "published": "2012-06-15",
+   "updated": "2012-06-15",
+   "authors": [
+    "Hiroshi Yamauchi"
+   ],
+   "primary_category": "math.QA",
+   "categories": [
+    "math.QA"
+   ],
+   "url": "https://arxiv.org/abs/1206.3380v1",
+   "pdf": "https://arxiv.org/pdf/1206.3380v1",
+   "comment": "33 pages"
+  },
+  {
+   "id": "1502.03201v2",
+   "title": "Combinatorial RNA Design: Designability and Structure-Approximating Algorithm",
+   "abstract": "In this work, we consider the Combinatorial RNA Design problem, a minimal instance of the RNA design problem which aims at finding a sequence that admits a given target as its unique base pair maximizing structure. We provide complete characterizations for the structures that can be designed using restricted alphabets. Under a classic four-letter alphabet, we provide a complete characterization of designable structures without unpaired bases. When unpaired bases are allowed, we provide partial characterizations for classes of designable/undesignable structures, and show that the class of designable structures is closed under the stutter operation. Membership of a given structure to any of the classes can be tested in linear time and, for positive instances, a solution can be found in linear time. Finally, we consider a structure-approximating version of the problem that allows to extend bands (helices) and, assuming that the input structure avoids two motifs, we provide a linear-time algorithm that produces a designable structure with at most twice more base pairs than the input structure.",
+   "published": "2015-02-11",
+   "updated": "2015-06-19",
+   "authors": [
+    "Jozef Haleš",
+    "Ján Maňuch",
+    "Yann Ponty",
+    "Ladislav Stacho"
+   ],
+   "primary_category": "q-bio.QM",
+   "categories": [
+    "q-bio.QM",
+    "cs.DS"
+   ],
+   "url": "https://arxiv.org/abs/1502.03201v2",
+   "pdf": "https://arxiv.org/pdf/1502.03201v2",
+   "comment": "CPM - 26th Annual Symposium on Combinatorial Pattern Matching, Jun 2015, Ischia Island, Italy. LNCS, 2015"
+  },
+  {
+   "id": "9912450v1",
+   "title": "Simple Models of the Protein Folding Problem",
+   "abstract": "The protein folding problem has attracted an increasing attention from physicists. The problem has a flavor of statistical mechanics, but possesses the most common feature of most biological problems -- the profound effects of evolution. I will give an introduction to the problem, and then focus on some recent work concerning the so-called ``designability principle''. The designability of a structure is measured by the number of sequences that have that structure as their unique ground state. Structures differ drastically in terms of their designability; highly designable structures emerge with a number of associated sequences much larger than the average. These highly designable structures 1) possess ``proteinlike'' secondary structures and motifs, 2) are thermodynamically more stable, and 3) fold faster than other structures. These results suggest that protein structures are selected in nature because they are readily designed and stable against mutations, and that such selection simultaneously leads to thermodynamic stability and foldability. According to this picture, a key to the protein folding problem is to understand the emergence and the properties of the highly designable structures.",
+   "published": "1999-12-26",
+   "updated": "1999-12-26",
+   "authors": [
+    "Chao Tang"
+   ],
+   "primary_category": "cond-mat.stat-mech",
+   "categories": [
+    "cond-mat.stat-mech",
+    "cond-mat.soft",
+    "q-bio.BM"
+   ],
+   "url": "https://arxiv.org/abs/9912450v1",
+   "pdf": "https://arxiv.org/pdf/9912450v1",
+   "comment": "21 pages, 14 figures. Invited talk at Dynamics Days Asian Pacific, Hong Kong, July 13-16, 1999. To appear in Physica A"
+  },
+  {
+   "id": "2602.21606v1",
+   "title": "Inverse prediction of capacitor multiphysics dynamic parameters using deep generative model",
+   "abstract": "Finite element simulations are run by package design engineers to model design structures. The process is irreversible meaning every minute structural adjustment requires a fresh input parameter run. In this paper, the problem of modeling changing (small) design structures through varying input parameters is known as inverse prediction. We demonstrate inverse prediction on the electrostatics field of an air-filled capacitor dataset where the structural change is affected by a dynamic parameter to the boundary condition. Using recent AI such as deep generative model, we outperformed best baseline on inverse prediction both visually and in terms of quantitative measure.",
+   "published": "2026-02-25",
+   "updated": "2026-02-25",
+   "authors": [
+    "Kart-Leong Lim",
+    "Rahul Dutta",
+    "Mihai Rotaru"
+   ],
+   "primary_category": "cs.CE",
+   "categories": [
+    "cs.CE"
+   ],
+   "url": "https://arxiv.org/abs/2602.21606v1",
+   "pdf": "https://arxiv.org/pdf/2602.21606v1",
+   "comment": ""
+  },
+  {
+   "id": "0908.3599v1",
+   "title": "Hydrodynamic Simulations of M51 and the interaction with NGC 5195",
+   "abstract": "The M51 galaxy is one of best examples of grand design structure in galaxies. The most likely origin of the spiral arms in M51 is the ongoing interaction with NGC 5195. Here we report recent calculations which model the orbit of M51 and NGC 5195. These calculations, which for the first time focus on the gas dynamics, are able to reproduce even detailed features in M51, as well as demonstrate the nature of the spiral structure of M51.",
+   "published": "2009-08-25",
+   "updated": "2009-08-25",
+   "authors": [
+    "C. L. Dobbs",
+    "C. Theis",
+    "J. E. Pringle",
+    "M. R. Bate"
+   ],
+   "primary_category": "astro-ph.GA",
+   "categories": [
+    "astro-ph.GA"
+   ],
+   "url": "https://arxiv.org/abs/0908.3599v1",
+   "pdf": "https://arxiv.org/pdf/0908.3599v1",
+   "comment": "To appear in the Proceedings of the Galaxy Wars: Stellar Populations and Star Formation in Interacting Galaxies Conference"
+  },
+  {
+   "id": "2011.08889v1",
+   "title": "Revival and Expansion of the Theory of Coherent Lattices",
+   "abstract": "An effective way to design structured coherent wave interference patterns that builds on the theory of coherent lattices, is presented. The technique combines prime number factorization in the complex plane with moiré theory to provide a robust way to design structured patterns with variable spacing of intensity maxima. In addition, the proposed theoretical framework facilitates an elegant computation of previously unexplored high-order superlattices both for the periodic and quasiperiodic case. A number of beam configurations highlighting prime examples of patterns for lattices with three-, four-, and fivefold symmetry are verified in a multibeam interference experiment.",
+   "published": "2020-11-17",
+   "updated": "2020-11-17",
+   "authors": [
+    "Dmitry Kouznetsov",
+    "Qingzhong Deng",
+    "Pol Van Dorpe",
+    "Niels Verellen"
+   ],
+   "primary_category": "nlin.PS",
+   "categories": [
+    "nlin.PS"
+   ],
+   "url": "https://arxiv.org/abs/2011.08889v1",
+   "pdf": "https://arxiv.org/pdf/2011.08889v1",
+   "comment": ""
+  },
+  {
+   "id": "2508.00262v1",
+   "title": "Towards Efficient Verification of Computation in Quantum Devices",
+   "abstract": "Designing quantum processors is a complex task that demands advanced verification methods to ensure their correct functionality. However, traditional methods of comprehensively verifying quantum devices, such as quantum process tomography, face significant limitations because of the exponential growth in computational resources. These limitations arise from treating the system as a black box and ignoring its design structure. Consequently, new testing methods must be developed considering the design structure. In this paper, we investigate the structure of computations on the hardware, focusing on the layered interruptible quantum circuit model and designing a scalable algorithm to verify it comprehensively. Specifically, for a given quantum hardware that claims to process an unknown $n$ qubit $d$ layer circuit via a finite set of quantum gates, our method completely reconstructs the circuits within a time complexity of $O(d^2 t \\log (n/δ))$, guaranteeing success with a probability of at least $1-δ$. Here, $t$ represents the maximum execution time for each circuit layer. Our approach significantly reduces execution time for completely verifying computations in quantum devices, achieving double logarithmic scaling in the problem size. Furthermore, we validate our algorithm through experiments using IBM's quantum cloud service, demonstrating its potential applicability in the noisy intermediate-scale quantum era.",
+   "published": "2025-08-01",
+   "updated": "2025-08-01",
+   "authors": [
+    "Keren Li",
+    "Peng Yan",
+    "Hanru Jiang",
+    "Nengkun Yu"
+   ],
+   "primary_category": "quant-ph",
+   "categories": [
+    "quant-ph"
+   ],
+   "url": "https://arxiv.org/abs/2508.00262v1",
+   "pdf": "https://arxiv.org/pdf/2508.00262v1",
+   "comment": "12 pages, appear at QCE 25"
+  },
+  {
+   "id": "1709.07538v2",
+   "title": "Recovery of Architecture Module Views using an Optimized Algorithm Based on Design Structure Matrices",
+   "abstract": "Design structure matrices (DSMs) are useful to represent high-level system structure, modeling interactions between design entities. DSMs are used for many visualization and abstraction activities. In this work, we propose the use of an existing DSM clustering algorithm to recover software architecture module views. To make it suitable to this domain, optimization has proved necessary. It was achieved through performance analysis and parameter tuning on the original algorithm. Results show that DSM clustering can be an alternative to other clustering algorithms.",
+   "published": "2017-09-21",
+   "updated": "2017-09-26",
+   "authors": [
+    "Jemerson Figueiredo Damasio",
+    "Roberto Almeida Bittencourt",
+    "Dalton Dario Serey Guerrero"
+   ],
+   "primary_category": "cs.SE",
+   "categories": [
+    "cs.SE"
+   ],
+   "url": "https://arxiv.org/abs/1709.07538v2",
+   "pdf": "https://arxiv.org/pdf/1709.07538v2",
+   "comment": "10 pages"
+  },
+  {
+   "id": "2407.03739v1",
+   "title": "Coupling Optimization using Design Structure Matrices and Genetic Algorithm",
+   "abstract": "This article seeks to contribute to a nuanced understanding of the integration of Design Structure Matrix (DSM) and genetic algorithms in the context of Complex Systems modelling described within Model-Based System Engineering approach. By examining coupling minimization as a critical aspect of advanced systems engineering practices, we aim to provide a scholarly exploration, blending theoretical insights with practical applications. The objective is to equip systems architects with analytical tools integrated within their Model Based Systems Engineering (MBSE) environment for exploring the design space of component interactions, facilitating the identification of optimal system architectures.",
+   "published": "2024-07-04",
+   "updated": "2024-07-04",
+   "authors": [
+    "Sebastien Dube",
+    "Mirna Ojeda",
+    "Jean-Marie Gauthier"
+   ],
+   "primary_category": "eess.SY",
+   "categories": [
+    "eess.SY"
+   ],
+   "url": "https://arxiv.org/abs/2407.03739v1",
+   "pdf": "https://arxiv.org/pdf/2407.03739v1",
+   "comment": "ERTS2024, SEE; 3AF, Jun 2024, Toulouse, France"
+  },
+  {
+   "id": "0009256v1",
+   "title": "Geometry Selects Highly Designable Structures",
+   "abstract": "By enumerating all sequences of length 20, we study the designability of structures in a two-dimensional Hydrophobic-Polar (HP) lattice model in a wide range of inter-monomer interaction parameters. We find that although the histogram of designability depends on interaction parameters, the set of highly designable structures is invariant. So in the HP lattice model the High Designability should be a purely geometrical feature. Our results suggest two geometrical properties for highly designable structures, they have maximum number of contacts and unique neighborhood vector representation. Also we show that contribution of perfectly stable sequences in designability of structures plays a major role to make them highly designable.",
+   "published": "2000-09-18",
+   "updated": "2000-09-18",
+   "authors": [
+    "V. Shahrezaei",
+    "M. R. Ejtehadi"
+   ],
+   "primary_category": "cond-mat.soft",
+   "categories": [
+    "cond-mat.soft",
+    "q-bio"
+   ],
+   "url": "https://arxiv.org/abs/0009256v1",
+   "pdf": "https://arxiv.org/pdf/0009256v1",
+   "comment": "6 figure, To be appear in JCP"
+  },
+  {
+   "id": "2603.14596v1",
+   "title": "MOTO: Topology Optimization for Large Deformations via an Implicit Material Point Method",
+   "abstract": "The Finite element method (FEM) has long served as the computational backbone for topology optimization (TO). However, for designing structures undergoing large deformations, conventional FEM-based TO often exhibits numerical instabilities due to severe mesh distortions, tangling, and large rotations, consequently leading to convergence failures. To address this challenge, we present a TO framework based on the Material Point Method (MPM). MPM is a hybrid Lagrangian-Eulerian particle method, well-suited for simulating large deformations. In particular, we present an end-to-end differentiable implicit MPM framework for designing structures undergoing quasi-static hyperelastic large deformations. The effectiveness of the approach is demonstrated through validation studies encompassing both single and multi-material designs, including the design of compliant soft robotic grippers. The software accompanying this paper can be accessed at github.com/UW-ERSL/MOTO.",
+   "published": "2026-03-15",
+   "updated": "2026-03-15",
+   "authors": [
+    "Rahul Kumar Padhy",
+    "Aaditya Chandrasekhar",
+    "Krishnan Suresh"
+   ],
+   "primary_category": "cs.CE",
+   "categories": [
+    "cs.CE"
+   ],
+   "url": "https://arxiv.org/abs/2603.14596v1",
+   "pdf": "https://arxiv.org/pdf/2603.14596v1",
+   "comment": "Submitted to Advances in Engineering Software"
+  },
+  {
+   "id": "2412.07442v1",
+   "title": "Bounds on energy and potentials of discrete measures on the sphere",
+   "abstract": "We establish upper and lower universal bounds for potentials of weighted designs on the sphere $\\mathbb{S}^{n-1}$ that depend only on quadrature nodes and weights derived from the design structure. Our bounds hold for a large class of potentials that includes absolutely monotone functions. The classes of spherical designs attaining these bounds are characterized. Additionally, we study the problem of constrained energy minimization for Borel probability measures on $\\mathbb{S}^{n-1}$ and apply it to optimal distribution of charge supported at a given number of points on the sphere. In particular, our results apply to $p$-frame energy.",
+   "published": "2024-12-10",
+   "updated": "2024-12-10",
+   "authors": [
+    "S. Borodachov",
+    "P. Boyvalenkov",
+    "P. Dragnev",
+    "D. Hardin",
+    "E. Saff",
+    "M. Stoyanova"
+   ],
+   "primary_category": "math.MG",
+   "categories": [
+    "math.MG",
+    "math.CA",
+    "math.PR"
+   ],
+   "url": "https://arxiv.org/abs/2412.07442v1",
+   "pdf": "https://arxiv.org/pdf/2412.07442v1",
+   "comment": "21 pages"
+  },
+  {
+   "id": "1802.02647v5",
+   "title": "SCK: A sparse coding based key-point detector",
+   "abstract": "All current popular hand-crafted key-point detectors such as Harris corner, MSER, SIFT, SURF... rely on some specific pre-designed structures for the detection of corners, blobs, or junctions in an image. In this paper, a novel sparse coding based key-point detector which requires no particular pre-designed structures is presented. The key-point detector is based on measuring the complexity level of each block in an image to decide where a key-point should be. The complexity level of a block is defined as the total number of non-zero components of a sparse representation of that block. Generally, a block constructed with more components is more complex and has greater potential to be a good key-point. Experimental results on Webcam and EF datasets [1, 2] show that the proposed detector achieves significantly high repeatability compared to hand-crafted features, and even outperforms the matching scores of the state-of-the-art learning based detector.",
+   "published": "2018-02-07",
+   "updated": "2018-12-07",
+   "authors": [
+    "Thanh Hong-Phuoc",
+    "Yifeng He",
+    "Ling Guan"
+   ],
+   "primary_category": "cs.CV",
+   "categories": [
+    "cs.CV"
+   ],
+   "url": "https://arxiv.org/abs/1802.02647v5",
+   "pdf": "https://arxiv.org/pdf/1802.02647v5",
+   "comment": "Manuscript accepted for presentation at 2018 IEEE International Conference on Image Processing, October 7-10, 2018, Athens, Greece. Patent applied. If you use any techniques, claims, images in this manuscript, please cite the corresponding paper"
+  },
+  {
+   "id": "9708049v2",
+   "title": "Local Interactions and Protein Folding: A Model Study on the Square and Triangular Lattices",
+   "abstract": "We study a simple heteropolymer model containing sequence-independent local interactions on both square and triangular lattices. Sticking to a two-letter code, we investigate the model for varying strength $κ$ of the local interactions; $κ=0$ corresponds to the well-known HP model [K.F. Lau and K.A. Dill, Macromolecules 22, 3986 (1989)]. By exhaustive enumerations for short chains, we obtain all structures which act as a unique and pronounced energy minimum for at least one sequence. We find that the number of such designable structures depends strongly on $κ$. Also, we find that the number of designable structures can differ widely for the two lattices at a given $κ$. This is the case, for example, at $κ=0$, which implies that the HP model exhibits different behavior on the two lattices. Our findings clearly show that sequence-independent local properties of the chains can play an important role in the formation of unique minimum energy structures.",
+   "published": "1997-08-06",
+   "updated": "1997-11-02",
+   "authors": [
+    "Anders Irbäck",
+    "Erik Sandelin"
+   ],
+   "primary_category": "cond-mat.soft",
+   "categories": [
+    "cond-mat.soft",
+    "physics.chem-ph",
+    "q-bio.BM"
+   ],
+   "url": "https://arxiv.org/abs/9708049v2",
+   "pdf": "https://arxiv.org/pdf/9708049v2",
+   "comment": "10 pages LaTeX, 3 Postscript figures. Figure and references added"
+  },
+  {
+   "id": "2207.09250v1",
+   "title": "Roughness of molecular property landscapes and its impact on modellability",
+   "abstract": "In molecular discovery and drug design, structure-property relationships and activity landscapes are often qualitatively or quantitatively analyzed to guide the navigation of chemical space. The roughness (or smoothness) of these molecular property landscapes is one of their most studied geometric attributes, as it can characterize the presence of activity cliffs, with rougher landscapes generally expected to pose tougher optimization challenges. Here, we introduce a general, quantitative measure for describing the roughness of molecular property landscapes. The proposed roughness index (ROGI) is loosely inspired by the concept of fractal dimension and strongly correlates with the out-of-sample error achieved by machine learning models on numerous regression tasks.",
+   "published": "2022-07-19",
+   "updated": "2022-07-19",
+   "authors": [
+    "Matteo Aldeghi",
+    "David E. Graff",
+    "Nathan Frey",
+    "Joseph A. Morrone",
+    "Edward O. Pyzer-Knapp",
+    "Kirk E. Jordan",
+    "Connor W. Coley"
+   ],
+   "primary_category": "q-bio.QM",
+   "categories": [
+    "q-bio.QM"
+   ],
+   "url": "https://arxiv.org/abs/2207.09250v1",
+   "pdf": "https://arxiv.org/pdf/2207.09250v1",
+   "comment": "17 pages, 6 figures, 2 tables (SI with 17 pages, 16 figures)"
+  },
+  {
+   "id": "1404.7511v2",
+   "title": "Predicting evolutionary site variability from structure in viral proteins: buriedness, packing, flexibility, and design",
+   "abstract": "Several recent works have shown that protein structure can predict site-specific evolutionary sequence variation. In particular, sites that are buried and/or have many contacts with other sites in a structure have been shown to evolve more slowly, on average, than surface sites with few contacts. Here, we present a comprehensive study of the extent to which numerous structural properties can predict sequence variation. The quantities we considered include buriedness (as measured by relative solvent accessibility), packing density (as measured by contact number), structural flexibility (as measured by B factors, root-mean-square fluctuations, and variation in dihedral angles), and variability in designed structures. We obtained structural flexibility measures both from molecular dynamics simulations performed on 9 non-homologous viral protein structures and from variation in homologous variants of those proteins, where available. We obtained measures of variability in designed structures from flexible-backbone design in the Rosetta software. We found that most of the structural properties correlate with site variation in the majority of structures, though the correlations are generally weak (correlation coefficients of 0.1 to 0.4). Moreover, we found that buriedness and packing density were better predictors of evolutionary variation than was structural flexibility. Finally, variability in designed structures was a weaker predictor of evolutionary variability than was buriedness or packing density, but it was comparable in its predictive power to the best structural flexibility measures. We conclude that simple measures of buriedness and packing density are better predictors of evolutionary variation than are more complicated predictors obtained from dynamic simulations, ensembles of homologous structures, or computational protein design.",
+   "published": "2014-04-29",
+   "updated": "2014-07-21",
+   "authors": [
+    "Amir Shahmoradi",
+    "Dariya K. Sydykova",
+    "Stephanie J. Spielman",
+    "Eleisha L. Jackson",
+    "Eric T. Dawson",
+    "Austin G. Meyer",
+    "Claus O. Wilke"
+   ],
+   "primary_category": "physics.bio-ph",
+   "categories": [
+    "physics.bio-ph",
+    "q-bio.BM"
+   ],
+   "url": "https://arxiv.org/abs/1404.7511v2",
+   "pdf": "https://arxiv.org/pdf/1404.7511v2",
+   "comment": "to appear in Journal of Molecular Evolution (JME)"
+  },
+  {
+   "id": "2305.07594v1",
+   "title": "Opti Code Pro: A Heuristic Search-based Approach to Code Refactoring",
+   "abstract": "This paper presents an approach that evaluates best-first search methods to code refactoring. The motivation for code refactoring could be to improve the design, structure, or implementation of an existing program without changing its functionality. To solve a very specific problem of coupling and cohesion, we propose using heuristic search-based techniques on an approximation of the full code refactoring problem, to guide the refactoring process toward solutions that have high cohesion and low coupling. We evaluated our approach by providing demonstrative examples of the effectiveness of this approach on random state problems and created a tool to implement the algorithm on Java projects.",
+   "published": "2023-05-12",
+   "updated": "2023-05-12",
+   "authors": [
+    "Sourena Khanzadeh",
+    "Samad Alias Nyein Chan",
+    "Richard Valenzano",
+    "Manar Alalfi"
+   ],
+   "primary_category": "cs.SE",
+   "categories": [
+    "cs.SE",
+    "cs.AI"
+   ],
+   "url": "https://arxiv.org/abs/2305.07594v1",
+   "pdf": "https://arxiv.org/pdf/2305.07594v1",
+   "comment": "12 pages, 2 figures"
+  },
+  {
+   "id": "2602.16715v2",
+   "title": "Retrieval Augmented (Knowledge Graph), and Large Language Model-Driven Design Structure Matrix (DSM) Generation of Cyber-Physical Systems",
+   "abstract": "We explore the potential of Large Language Models (LLMs), Retrieval-Augmented Generation (RAG), and Graph-based RAG (GraphRAG) for generating Design Structure Matrices (DSMs). We test these methods on two distinct use cases--a power screwdriver and a CubeSat with known architectural references--evaluating their performance on two key tasks: determining relationships between predefined components, and the more complex challenge of identifying components and their subsequent relationships. We measure the performance by assessing each element of the DSM and overall architecture. Despite design and computational challenges, we identify opportunities for automated DSM generation, with all code publicly available for reproducibility and further feedback from the domain experts.",
+   "published": "2026-01-30",
+   "updated": "2026-09-22",
+   "authors": [
+    "H. Sinan Bank",
+    "Daniel R. Herber"
+   ],
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI",
+    "cs.CL",
+    "eess.SY"
+   ],
+   "url": "https://arxiv.org/abs/2602.16715v2",
+   "pdf": "https://arxiv.org/pdf/2602.16715v2",
+   "comment": "27 pages, 10 figures"
+  },
+  {
+   "id": "2202.11256v2",
+   "title": "On generalized lc pairs with $\\mathrm{\\textbf b}$-log abundant nef part",
+   "abstract": "We study the behavior of generalized lc pairs with $\\mathrm{\\textbf b}$-log abundant nef part, a meticulously designed structure on algebraic varieties. We show that this structure is preserved under the canonical bundle formula and sub-adjunction formulas, and is also compatible with the non-vanishing conjecture and the abundance conjecture in the classical minimal model program.",
+   "published": "2022-02-23",
+   "updated": "2022-02-24",
+   "authors": [
+    "Junpeng Jiao",
+    "Jihao Liu",
+    "Lingyao Xie"
+   ],
+   "primary_category": "math.AG",
+   "categories": [
+    "math.AG"
+   ],
+   "url": "https://arxiv.org/abs/2202.11256v2",
+   "pdf": "https://arxiv.org/pdf/2202.11256v2",
+   "comment": "20 pages, v2. Reference update"
+  },
+  {
+   "id": "2002.07567v1",
+   "title": "Boundary feedback control of an anti-stable wave equation",
+   "abstract": "We discuss boundary control of a wave equation with a non-linear anti-damping boundary condition. We design structured finite-dimensional $H_\\infty$-output feedback controllers which stabilize the infinite dimensional system exponentially in closed loop. The method is applied to control torsional vibrations in drilling systems with the goal to avoid slip-stick.",
+   "published": "2020-02-18",
+   "updated": "2020-02-18",
+   "authors": [
+    "Pierre Apkarian",
+    "Dominikus Noll"
+   ],
+   "primary_category": "math.OC",
+   "categories": [
+    "math.OC"
+   ],
+   "url": "https://arxiv.org/abs/2002.07567v1",
+   "pdf": "https://arxiv.org/pdf/2002.07567v1",
+   "comment": "28 pages, 11 figures, 2 tables"
+  }
+ ]
+}

@@ -1,0 +1,420 @@
+{
+ "query": "abs:\"topology optimization\" AND abs:\"language model\"",
+ "hits": [
+  {
+   "id": "2604.14237v1",
+   "title": "TOPCELL: Topology Optimization of Standard Cell via LLMs",
+   "abstract": "Transistor topology optimization is a critical step in standard cell design, directly dictating diffusion sharing efficiency and downstream routability. However, identifying optimal topologies remains a persistent bottleneck, as conventional exhaustive search methods become computationally intractable with increasing circuit complexity in advanced nodes. This paper introduces TOPCELL, a novel and scalable framework that reformulates high-dimensional topology exploration as a generative task using Large Language Models (LLMs). We employ Group Relative Policy Optimization (GRPO) to fine-tune the model, aligning its topology optimization strategy with logical (circuit) and spatial (layout) constraints. Experimental results within an industrial flow targeting an advanced 2nm technology node demonstrate that TOPCELL significantly outperforms foundation models in discovering routable, physically-aware topologies. When integrated into a state-of-the-art (SOTA) automation flow for a 7nm library generation task, TOPCELL exhibits robust zero-shot generalization and matches the layout quality of exhaustive solvers while achieving an 85.91x speedup.",
+   "published": "2026-04-15",
+   "updated": "2026-04-15",
+   "authors": [
+    "Zhan Song",
+    "Yu-Tung Liu",
+    "Chen Chen",
+    "Guoheng Sun",
+    "Jiaqi Yin",
+    "Chia-tung Ho",
+    "Ang Li",
+    "Haoxing Ren",
+    "Cunxi Yu"
+   ],
+   "primary_category": "cs.LG",
+   "categories": [
+    "cs.LG"
+   ],
+   "url": "https://arxiv.org/abs/2604.14237v1",
+   "pdf": "https://arxiv.org/pdf/2604.14237v1",
+   "comment": "Accepted to the 63rd ACM/IEEE Design Automation Conference (DAC 2026). 7 pages, 4 figures"
+  },
+  {
+   "id": "2605.23273v1",
+   "title": "Self-Refining Topology Optimization via an LLM-Based Multi-Agent Framework",
+   "abstract": "Topology optimization is a widely used design method that produces optimized material distributions for prescribed objectives and constraints through well-established numerical algorithms. Throughout the workflow, engineers make a series of decisions ranging from setting and adjusting numerical parameters to assessing whether the converged design meets considerations beyond those explicitly included in the optimization problem, such as physical feasibility. These decisions, which draw on domain expertise, interfere with the autonomous design process. To address this difficulty, this study presents TopOptAgents, a multi-agent system for automating not only the design process but also decision-making during the key stages of the topology optimization process. TopOptAgents consists of six LLM-based agents collaborating through iterative self-refinement cycles spanning problem formulation, validation, code generation and execution, and quality assessment of the optimized structure. This process enables error correction and progressive improvement of both the optimization setup and resulting design. The framework is demonstrated on optimization problems selected to cover a range of settings that differ in their literature coverage and numerical characteristics The benefits of iterative self-refinement are found to be particularly pronounced for problem classes where the pretrained language model has limited prior exposure, such as formulations whose literature and open-source implementations are comparatively sparse. In such cases, the proposed framework reliably produces converged designs where a single state-of-the-art LLM struggles, suggesting that self-refinement broadens the range of topology optimization problems that LLM-based automation can reliably address.",
+   "published": "2026-05-22",
+   "updated": "2026-05-22",
+   "authors": [
+    "Hyunjee Park",
+    "Hayoung Chung"
+   ],
+   "primary_category": "cs.MA",
+   "categories": [
+    "cs.MA"
+   ],
+   "url": "https://arxiv.org/abs/2605.23273v1",
+   "pdf": "https://arxiv.org/pdf/2605.23273v1",
+   "comment": "28 pages, 17 figures"
+  },
+  {
+   "id": "2605.27071v1",
+   "title": "Traceable Knowledge Graph Reasoning Enables LLM-Assisted Decision Support for Industrial VOCs in the Steel Industry",
+   "abstract": "Key knowledge for steel-industry volatile organic compounds (VOCs) governance is scattered across unstructured scientific literature, making it difficult to integrate process, pollutant, and control-technology evidence and increasing the risk of hallucination when general large language models (LLMs) answer low-frequency industrial questions. Here we developed Chat-ISV, a knowledge graph (KG) enhanced multi-agent Q&A system that parses a curated steel-industry VOCs literature corpus, constructs a Neo4j KG with 27180 nodes and 81779 semantic edges, and combines prompt-constrained extraction, chunk-centered topology optimization, multi-agent routing, source-backtracking retrieval, local literature retrieval, open-domain knowledge access, and interactive subgraph visualization. Benchmark tests and 400 expert blind evaluations showed that topology optimization reduced isolated nodes from 57% to 4.08% and that Chat-ISV achieved high factual reliability, with 96.93% precision, 72.63% recall, an F1-score of 0.830, and a mean score of 1.69/2.00. By converting fragmented environmental-engineering literature into traceable, queryable, and decision-support-oriented knowledge, Chat-ISV establishes a scalable environmental-informatics paradigm for reliable LLM deployment and intelligent pollution-control decision support in specialized industrial domains.",
+   "published": "2026-05-26",
+   "updated": "2026-05-26",
+   "authors": [
+    "Changqing Su",
+    "Yu Ding",
+    "Zuhong Lin",
+    "Hongyu Liu",
+    "Xi He",
+    "Zheng Zeng",
+    "Liqing Li"
+   ],
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI"
+   ],
+   "url": "https://arxiv.org/abs/2605.27071v1",
+   "pdf": "https://arxiv.org/pdf/2605.27071v1",
+   "comment": ""
+  },
+  {
+   "id": "2311.12668v3",
+   "title": "From Concept to Manufacturing: Evaluating Vision-Language Models for Engineering Design",
+   "abstract": "Engineering design is undergoing a transformative shift with the advent of AI, marking a new era in how we approach product, system, and service planning. Large language models have demonstrated impressive capabilities in enabling this shift. Yet, with text as their only input modality, they cannot leverage the large body of visual artifacts that engineers have used for centuries and are accustomed to. This gap is addressed with the release of multimodal vision-language models (VLMs), such as GPT-4V, enabling AI to impact many more types of tasks. Our work presents a comprehensive evaluation of VLMs across a spectrum of engineering design tasks, categorized into four main areas: Conceptual Design, System-Level and Detailed Design, Manufacturing and Inspection, and Engineering Education Tasks. Specifically in this paper, we assess the capabilities of two VLMs, GPT-4V and LLaVA 1.6 34B, in design tasks such as sketch similarity analysis, CAD generation, topology optimization, manufacturability assessment, and engineering textbook problems. Through this structured evaluation, we not only explore VLMs' proficiency in handling complex design challenges but also identify their limitations in complex engineering design applications. Our research establishes a foundation for future assessments of vision language models. It also contributes a set of benchmark testing datasets, with more than 1000 queries, for ongoing advancements and applications in this field.",
+   "published": "2023-11-21",
+   "updated": "2024-12-09",
+   "authors": [
+    "Cyril Picard",
+    "Kristen M. Edwards",
+    "Anna C. Doris",
+    "Brandon Man",
+    "Giorgio Giannone",
+    "Md Ferdous Alam",
+    "Faez Ahmed"
+   ],
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI",
+    "cs.CE"
+   ],
+   "url": "https://arxiv.org/abs/2311.12668v3",
+   "pdf": "https://arxiv.org/pdf/2311.12668v3",
+   "comment": ""
+  },
+  {
+   "id": "2505.16048v4",
+   "title": "SPhyR: Spatial-Physical Reasoning Benchmark on Material Distribution",
+   "abstract": "We introduce a novel dataset designed to benchmark the physical and spatial reasoning capabilities of Large Language Models (LLM) based on topology optimization, a method for computing optimal material distributions within a design space under prescribed loads and supports. In this dataset, LLMs are provided with conditions such as 2D boundary, applied forces and supports, and must reason about the resulting optimal material distribution. The dataset includes a variety of tasks, ranging from filling in masked regions within partial structures to predicting complete material distributions. Solving these tasks requires understanding the flow of forces and the required material distribution under given constraints, without access to simulation tools or explicit physical models, challenging models to reason about structural stability and spatial organization. Our dataset targets the evaluation of spatial and physical reasoning abilities in 2D settings, offering a complementary perspective to traditional language and logic benchmarks.",
+   "published": "2025-05-21",
+   "updated": "2026-02-05",
+   "authors": [
+    "Philipp D. Siedler"
+   ],
+   "primary_category": "cs.AI",
+   "categories": [
+    "cs.AI"
+   ],
+   "url": "https://arxiv.org/abs/2505.16048v4",
+   "pdf": "https://arxiv.org/pdf/2505.16048v4",
+   "comment": ""
+  },
+  {
+   "id": "2306.09169v1",
+   "title": "Opportunities for Large Language Models and Discourse in Engineering Design",
+   "abstract": "In recent years, large language models have achieved breakthroughs on a wide range of benchmarks in natural language processing and continue to increase in performance. Recently, the advances of large language models have raised interest outside the natural language processing community and could have a large impact on daily life. In this paper, we pose the question: How will large language models and other foundation models shape the future product development process? We provide the reader with an overview of the subject by summarizing both recent advances in natural language processing and the use of information technology in the engineering design process. We argue that discourse should be regarded as the core of engineering design processes, and therefore should be represented in a digital artifact. On this basis, we describe how foundation models such as large language models could contribute to the design discourse by automating parts thereof that involve creativity and reasoning, and were previously reserved for humans. We describe how simulations, experiments, topology optimizations, and other process steps can be integrated into a machine-actionable, discourse-centric design process. Finally, we outline the future research that will be necessary for the implementation of the conceptualized framework.",
+   "published": "2023-06-15",
+   "updated": "2023-06-15",
+   "authors": [
+    "Jan Göpfert",
+    "Jann M. Weinand",
+    "Patrick Kuckertz",
+    "Detlef Stolten"
+   ],
+   "primary_category": "cs.CL",
+   "categories": [
+    "cs.CL",
+    "cs.AI",
+    "cs.CE"
+   ],
+   "url": "https://arxiv.org/abs/2306.09169v1",
+   "pdf": "https://arxiv.org/pdf/2306.09169v1",
+   "comment": ""
+  },
+  {
+   "id": "2603.02701v1",
+   "title": "Graph-GRPO: Stabilizing Multi-Agent Topology Learning via Group Relative Policy Optimization",
+   "abstract": "Optimizing communication topology is fundamental to the efficiency and effectiveness of Large Language Model (LLM)-based Multi-Agent Systems (MAS). While recent approaches utilize reinforcement learning to dynamically construct task-specific graphs, they typically rely on single-sample policy gradients with absolute rewards (e.g., binary correctness). This paradigm suffers from severe gradient variance and the credit assignment problem: simple queries yield non-informative positive rewards for suboptimal structures, while difficult queries often result in failures that provide no learning signal. To address these challenges, we propose Graph-GRPO, a novel topology optimization framework that integrates Group Relative Policy Optimization. Instead of evaluating a single topology in isolation, Graph-GRPO samples a group of diverse communication graphs for each query and computes the advantage of specific edges based on their relative performance within the group. By normalizing rewards across the sampled group, our method effectively mitigates the noise derived from task difficulty variance and enables fine-grained credit assignment. Extensive experiments on reasoning and code generation benchmarks demonstrate that Graph-GRPO significantly outperforms state-of-the-art baselines, achieving superior training stability and identifying critical communication pathways previously obscured by reward noise.",
+   "published": "2026-03-03",
+   "updated": "2026-03-03",
+   "authors": [
+    "Yueyang Cang",
+    "Xiaoteng Zhang",
+    "Erlu Zhao",
+    "Zehua Ji",
+    "Yuhang Liu",
+    "Yuchen He",
+    "Zhiyuan Ning",
+    "Chen Yijun",
+    "Wenge Que",
+    "Li Shi"
+   ],
+   "primary_category": "cs.CL",
+   "categories": [
+    "cs.CL"
+   ],
+   "url": "https://arxiv.org/abs/2603.02701v1",
+   "pdf": "https://arxiv.org/pdf/2603.02701v1",
+   "comment": ""
+  },
+  {
+   "id": "2602.03158v1",
+   "title": "PAMAS: Self-Adaptive Multi-Agent System with Perspective Aggregation for Misinformation Detection",
+   "abstract": "Misinformation on social media poses a critical threat to information credibility, as its diverse and context-dependent nature complicates detection. Large language model-empowered multi-agent systems (MAS) present a promising paradigm that enables cooperative reasoning and collective intelligence to combat this threat. However, conventional MAS suffer from an information-drowning problem, where abundant truthful content overwhelms sparse and weak deceptive cues. With full input access, agents tend to focus on dominant patterns, and inter-agent communication further amplifies this bias. To tackle this issue, we propose PAMAS, a multi-agent framework with perspective aggregation, which employs hierarchical, perspective-aware aggregation to highlight anomaly cues and alleviate information drowning. PAMAS organizes agents into three roles: Auditors, Coordinators, and a Decision-Maker. Auditors capture anomaly cues from specialized feature subsets; Coordinators aggregate their perspectives to enhance coverage while maintaining diversity; and the Decision-Maker, equipped with evolving memory and full contextual access, synthesizes all subordinate insights to produce the final judgment. Furthermore, to improve efficiency in multi-agent collaboration, PAMAS incorporates self-adaptive mechanisms for dynamic topology optimization and routing-based inference, enhancing both efficiency and scalability. Extensive experiments on multiple benchmark datasets demonstrate that PAMAS achieves superior accuracy and efficiency, offering a scalable and trustworthy way for misinformation detection.",
+   "published": "2026-02-03",
+   "updated": "2026-02-03",
+   "authors": [
+    "Zongwei Wang",
+    "Min Gao",
+    "Junliang Yu",
+    "Tong Chen",
+    "Chenghua Lin"
+   ],
+   "primary_category": "cs.IR",
+   "categories": [
+    "cs.IR"
+   ],
+   "url": "https://arxiv.org/abs/2602.03158v1",
+   "pdf": "https://arxiv.org/pdf/2602.03158v1",
+   "comment": "12 pages"
+  },
+  {
+   "id": "2502.02533v2",
+   "title": "Multi-Agent Design: Optimizing Agents with Better Prompts and Topologies",
+   "abstract": "Large language models, employed as multiple agents that interact and collaborate with each other, have excelled at solving complex tasks. The agents are programmed with prompts that declare their functionality, along with the topologies that orchestrate interactions across agents. Designing prompts and topologies for multi-agent systems (MAS) is inherently complex. To automate the entire design process, we first conduct an in-depth analysis of the design space aiming to understand the factors behind building effective MAS. We reveal that prompts together with topologies play critical roles in enabling more effective MAS design. Based on the insights, we propose Multi-Agent System Search (MASS), a MAS optimization framework that efficiently exploits the complex MAS design space by interleaving its optimization stages, from local to global, from prompts to topologies, over three stages: 1) block-level (local) prompt optimization; 2) workflow topology optimization; 3) workflow-level (global) prompt optimization, where each stage is conditioned on the iteratively optimized prompts/topologies from former stages. We show that MASS-optimized multi-agent systems outperform a spectrum of existing alternatives by a substantial margin. Based on the MASS-found systems, we finally propose design principles behind building effective multi-agent systems.",
+   "published": "2025-02-04",
+   "updated": "2026-01-31",
+   "authors": [
+    "Han Zhou",
+    "Xingchen Wan",
+    "Ruoxi Sun",
+    "Hamid Palangi",
+    "Shariq Iqbal",
+    "Ivan Vulić",
+    "Anna Korhonen",
+    "Sercan Ö. Arık"
+   ],
+   "primary_category": "cs.LG",
+   "categories": [
+    "cs.LG",
+    "cs.AI",
+    "cs.CL",
+    "cs.MA"
+   ],
+   "url": "https://arxiv.org/abs/2502.02533v2",
+   "pdf": "https://arxiv.org/pdf/2502.02533v2",
+   "comment": "ICLR 2026"
+  },
+  {
+   "id": "2609.37567v1",
+   "title": "Concealing LLM-Based Multi-Agent Topology via Phantom Structure Injection",
+   "abstract": "Driven by the rapid advancement of large language models (LLMs), LLM-based multi-agent systems (MAS) have emerged as a powerful paradigm for collaborative reasoning over complex tasks. A key design element of MAS is the communication topology, which governs information flow among agents and often encodes proprietary knowledge about the system architecture. However, recent work has shown that such topologies can be inferred even in black-box settings by exploiting semantic dependencies in observable reasoning traces, posing significant risks of intellectual property leakage and exposure of system vulnerabilities. To address this threat, we propose MIRAGE, a topology-concealment framework that preserves the genuine communication topology for task execution while shaping adversary-facing semantic evidence toward a carefully constructed phantom topology. Specifically, MIRAGE operates in three stages: (1) phantom topology synthesis, (2) semantic edge realization, and (3) protected MAS execution. It constructs a phantom topology structurally distinct from the genuine one, materializes phantom edges as plausible semantic dependencies, and suppresses source-specific cues that could reveal genuine edges absent from the phantom topology. Extensive experiments across three topology optimization frameworks and four benchmark datasets demonstrate that MIRAGE substantially reduces the effectiveness of topology inference attacks while largely preserving the task utility of the protected MAS.",
+   "published": "2026-09-29",
+   "updated": "2026-09-29",
+   "authors": [
+    "Longzhu He",
+    "Zelang Wen",
+    "Xinfeng Li",
+    "Sen Su",
+    "XiaoFeng Wang"
+   ],
+   "primary_category": "cs.CR",
+   "categories": [
+    "cs.CR",
+    "cs.AI"
+   ],
+   "url": "https://arxiv.org/abs/2609.37567v1",
+   "pdf": "https://arxiv.org/pdf/2609.37567v1",
+   "comment": ""
+  },
+  {
+   "id": "2607.01812v1",
+   "title": "TO-Master: an LLM-agent framework for automated topology optimization",
+   "abstract": "Topology optimization (TO) has become a mature computational design method, but using it still requires substantial manual effort in geometry preparation, mesh generation, boundary-condition assignment, solver setup, and postprocessing. This implementation barrier limits the use of TO outside expert workflows, even when differentiable finite element solvers are available. This work introduces TO-Master, a large language model (LLM) agent framework that turns finite-element-based TO into a conversational, tool-orchestrated workflow. From natural language instructions and optional mesh, geometry, or image inputs, the agent selects computational tools, constructs finite element TO models, checks meshes and boundary conditions, and launches sensitivity-based optimization with typed solver arguments. The framework supports generated and uploaded meshes, image-to-mesh conversion, 2D and 3D structural compliance minimization, thermal conduction, multiple load cases, stress-constrained optimization, and engineering geometries. Numerical experiments show that TO-Master can reproduce standard benchmark results and solve more complex engineering examples while returning optimized results, field distributions, convergence histories, and interactive artifacts without user-written code. An instruction ablation study further shows that tool-usage rules, internal reasoning guidance, and few-shot examples are critical for robust formulation under ambiguous user input. By combining LLM-agent orchestration with deterministic finite element and optimization tools, TO-Master removes the burden of trivial setup and routine model construction, lowers the modeling barrier of TO, and preserves a reliable numerical workflow. The TO-Master platform is available online at https://www.bohrium.com/en/apps/to-master.",
+   "published": "2026-07-02",
+   "updated": "2026-07-02",
+   "authors": [
+    "Haoju Lin",
+    "Wenchang Zhang",
+    "Weipeng Xu",
+    "Xiang Li",
+    "Tian Xu",
+    "Tianju Xue"
+   ],
+   "primary_category": "cs.CE",
+   "categories": [
+    "cs.CE"
+   ],
+   "url": "https://arxiv.org/abs/2607.01812v1",
+   "pdf": "https://arxiv.org/pdf/2607.01812v1",
+   "comment": "29 pages, 10 figures, 2 tables; submitted manuscript"
+  },
+  {
+   "id": "2604.00344v1",
+   "title": "Agent Q-Mix: Selecting the Right Action for LLM Multi-Agent Systems through Reinforcement Learning",
+   "abstract": "Large Language Models (LLMs) have shown remarkable performance in completing various tasks. However, solving complex problems often requires the coordination of multiple agents, raising a fundamental question: how to effectively select and interconnect these agents. In this paper, we propose \\textbf{Agent Q-Mix}, a reinforcement learning framework that reformulates topology selection as a cooperative Multi-Agent Reinforcement Learning (MARL) problem. Our method learns decentralized communication decisions using QMIX value factorization, where each agent selects from a set of communication actions that jointly induce a round-wise communication graph. At its core, Agent Q-Mix combines a topology-aware GNN encoder, GRU memory, and per-agent Q-heads under a Centralized Training with Decentralized Execution (CTDE) paradigm. The framework optimizes a reward function that balances task accuracy with token cost. Across seven core benchmarks in coding, reasoning, and mathematics, Agent Q-Mix achieves the highest average accuracy compared to existing methods while demonstrating superior token efficiency and robustness against agent failure. Notably, on the challenging Humanity's Last Exam (HLE) using Gemini-3.1-Flash-Lite as a backbone, Agent Q-Mix achieves 20.8\\% accuracy, outperforming Microsoft Agent Framework (19.2\\%) and LangGraph (19.2\\%), followed by AutoGen and Lobster by OpenClaw. These results underscore the effectiveness of learned, decentralized topology optimization in pushing the boundaries of multi-agent reasoning.",
+   "published": "2026-04-01",
+   "updated": "2026-04-01",
+   "authors": [
+    "Eric Hanchen Jiang",
+    "Levina Li",
+    "Rui Sun",
+    "Xiao Liang",
+    "Yubei Li",
+    "Yuchen Wu",
+    "Haozheng Luo",
+    "Hengli Li",
+    "Zhi Zhang",
+    "Zhaolu Kang",
+    "Kai-Wei Chang",
+    "Ying Nian Wu"
+   ],
+   "primary_category": "cs.CL",
+   "categories": [
+    "cs.CL",
+    "stat.AP"
+   ],
+   "url": "https://arxiv.org/abs/2604.00344v1",
+   "pdf": "https://arxiv.org/pdf/2604.00344v1",
+   "comment": ""
+  },
+  {
+   "id": "2603.25099v2",
+   "title": "Large Language Models as Optimization Controllers: Adaptive Continuation for SIMP Topology Optimization",
+   "abstract": "We present a framework in which a large language model (LLM) acts as an online adaptive controller for SIMP topology optimization, replacing conventional fixed-schedule continuation with real-time, state-conditioned parameter decisions. At every $k$-th iteration, the LLM receives a structured observation$-$current compliance, grayness index, stagnation counter, checkerboard measure, volume fraction, and budget consumption$-$and outputs numerical values for the penalization exponent $p$, projection sharpness $β$, filter radius $r_{\\min}$, and move limit $δ$ via a Direct Numeric Control interface. A hard grayness gate prevents premature binarization, and a meta-optimization loop uses a second LLM pass to tune the agent's call frequency and gate threshold across runs. We benchmark the agent against four baselines$-$fixed (no-continuation), standard three-field continuation, an expert heuristic, and a schedule-only ablation$-$on three 2-D problems (cantilever, MBB beam, L-bracket) at $120\\!\\times\\!60$ resolution and two 3-D problems (cantilever, MBB beam) at $40\\!\\times\\!20\\!\\times\\!10$ resolution, all run for 300 iterations. A standardized 40-iteration sharpening tail is applied from the best valid snapshot so that compliance differences reflect only the exploration phase. The LLM agent achieves the lowest final compliance on every benchmark: $-5.7\\%$ to $-18.1\\%$ relative to the fixed baseline, with all solutions fully binary. The schedule-only ablation underperforms the fixed baseline on two of three problems, confirming that the LLM's real-time intervention$-$not the schedule geometry$-$drives the gain. Code and reproduction scripts will be released upon publication.",
+   "published": "2026-03-26",
+   "updated": "2026-05-15",
+   "authors": [
+    "Shaoliang Yang",
+    "Jun Wang",
+    "Yunsheng Wang"
+   ],
+   "primary_category": "cs.CE",
+   "categories": [
+    "cs.CE",
+    "cs.AI"
+   ],
+   "url": "https://arxiv.org/abs/2603.25099v2",
+   "pdf": "https://arxiv.org/pdf/2603.25099v2",
+   "comment": "32 pages, 11 figures"
+  },
+  {
+   "id": "2603.28096v5",
+   "title": "Beyond Traffic Matrix: DELTA -- A DAG-Aware OCS Logical Topology Optimization for AIDCs",
+   "abstract": "The rapid scaling of large language models (LLMs) exacerbates communication bottlenecks in AI data centers (AIDCs). To overcome this, optical circuit switches (OCS) are increasingly adopted for their superior bandwidth capacity and energy efficiency. However, their reconfiguration overhead precludes intra-iteration topology update, necessitating a priori engineering of a static topology to absorb time-varying LLM traffic. Existing methods engineer these topologies based on traffic matrices. However, this representation obscures the bursty concurrent bandwidth demands dictated by parallelization strategies and fails to account for the independent channels required for concurrent communication. To address this, we propose DELTA, an efficient logical topology optimization framework for AIDCs that leverages the computation-communication directed acyclic graph (DAG) to encode time-varying traffic patterns into a Mixed-Integer Linear Programming (MILP) model, while exploiting the temporal slack of non-critical tasks to save optical ports without penalizing iteration makespan. By pioneering a variable-length time interval formulation, DELTA significantly reduces the solution space compared to the fixed-time-step formulation. To scale to thousand-GPU clusters, we design a dual-track acceleration strategy that combines search space pruning (reducing complexity from quadratic to linear) with heuristic hot-starting. Evaluations on large-scale LLM workloads show that DELTA reduces communication time by up to 17.5% compared to state-of-the-art traffic-matrix-based baselines. Furthermore, the framework reduces optical port consumption by at least 20%; dynamically reallocating these surplus ports to bandwidth-bottlenecked workloads reduces their performance gap relative to ideal non-blocking electrical networks by up to 26.1%, ultimately enabling most workloads to achieve near-ideal performance.",
+   "published": "2026-03-30",
+   "updated": "2026-05-26",
+   "authors": [
+    "Niangen Ye",
+    "Jingya Liu",
+    "Guofu Zhu",
+    "Weiqiang Sun",
+    "Weisheng Hu"
+   ],
+   "primary_category": "cs.NI",
+   "categories": [
+    "cs.NI"
+   ],
+   "url": "https://arxiv.org/abs/2603.28096v5",
+   "pdf": "https://arxiv.org/pdf/2603.28096v5",
+   "comment": ""
+  },
+  {
+   "id": "2605.19110v1",
+   "title": "IterSIMP-σ: Evaluating LLM-Assisted Spatial Interventions in Stress-Aware Topology Optimization",
+   "abstract": "This paper studies whether multimodal large language models (LLMs) can serve as inspectable spatial proposal modules for stress-aware topology optimization. IterSIMP-σ keeps the SIMP optimizer as a compliance-minimizing finite-element solver and places a deterministic stress pass, gate evaluator, and hybrid LLM/rule interpreter around it. After each solve, density and von Mises stress fields are rendered; the interpreter proposes ranked spatial interventions; and deterministic safeguards accept, reject, or stop each action. The main action is a soft density seed, where selected elements are initialized at elevated density before the next solve but remain free under the optimality-criteria update. We evaluate the loop on a 16-problem 2D controller-policy benchmark, a six-problem exploratory 3D extension, passive-solid and input ablations, stress-threshold sensitivity, and a fixed-volume attribution study comparing LLM proposals with deterministic max-stress hotspot seeding, random stress-region seeding, and rule-based control. The 2D controller-policy benchmark shows a small retained-compliance difference (1.9% lower geometric mean for the soft-seed LLM), but this diagnostic is not statistically significant (W = 33, two-sided p = 0.382) and is not a fixed-volume feasible-final comparison. In the fixed-volume study, the LLM condition completed 44/48 attempted evaluations; 25/44 completed evaluations produced all-gate-passing retained states. Feasible-final scoring against rule-based control is split 4/4/1, and deterministic exact-hotspot seeding remains competitive. Accepted LLM spatial actions with per-step records have mean normalized seed-to-hotspot distance 0.221. The results support IterSIMP-σ as an inspectable LLM-assisted design-automation framework for spatial interventions, not yet as evidence that LLM visual reasoning improves stress-constrained optimization.",
+   "published": "2026-05-18",
+   "updated": "2026-05-18",
+   "authors": [
+    "Shaoliang Yang",
+    "Jun Wang",
+    "Yunsheng Wang"
+   ],
+   "primary_category": "cs.CE",
+   "categories": [
+    "cs.CE"
+   ],
+   "url": "https://arxiv.org/abs/2605.19110v1",
+   "pdf": "https://arxiv.org/pdf/2605.19110v1",
+   "comment": "44 pages, 19 figures, 14 tables"
+  },
+  {
+   "id": "2604.04942v1",
+   "title": "TDA-RC: Task-Driven Alignment for Knowledge-Based Reasoning Chains in Large Language Models",
+   "abstract": "Enhancing the reasoning capability of large language models (LLMs) remains a core challenge in natural language processing. The Chain-of-Thought (CoT) paradigm dominates practical applications for its single-round efficiency, yet its reasoning chains often exhibit logical gaps. While multi-round paradigms like Graph-of-Thoughts (GoT), Tree-of-Thoughts (ToT), and Atom of Thought (AoT) achieve strong performance and reveal effective reasoning structures, their high cost limits practical use. To address this problem, this paper proposes a topology-based method for optimizing reasoning chains. The framework embeds essential topological patterns of effective reasoning into the lightweight CoT paradigm. Using persistent homology, we map CoT, ToT, and GoT into a unified topological space to quantify their structural features. On this basis, we design a unified optimization system: a Topological Optimization Agent diagnoses deviations in CoT chains from desirable topological characteristics and simultaneously generates targeted strategies to repair these structural deficiencies. Compared with multi-round reasoning methods like ToT and GoT, experiments on multiple datasets show that our approach offers a superior balance between reasoning accuracy and efficiency, showcasing a practical solution to ``single-round generation with multi-round intelligence''.",
+   "published": "2026-03-13",
+   "updated": "2026-03-13",
+   "authors": [
+    "Jiaquan Zhang",
+    "Qigan Sun",
+    "Chaoning Zhang",
+    "Xudong Wang",
+    "Zhenzhen Huang",
+    "Yitian Zhou",
+    "Pengcheng Zheng",
+    "Chi-lok Andy Tai",
+    "Sung-Ho Bae",
+    "Zeyu Ma",
+    "Caiyan Qin",
+    "Jinyu Guo",
+    "Yang Yang",
+    "Hengtao Shen"
+   ],
+   "primary_category": "cs.CL",
+   "categories": [
+    "cs.CL",
+    "cs.AI"
+   ],
+   "url": "https://arxiv.org/abs/2604.04942v1",
+   "pdf": "https://arxiv.org/pdf/2604.04942v1",
+   "comment": "14 pages, 4 figures"
+  },
+  {
+   "id": "2603.28889v1",
+   "title": "DeepEye: A Steerable Self-driving Data Agent System",
+   "abstract": "Large Language Models (LLMs) have revolutionized natural language interaction with data. The \"holy grail\" of data analytics is to build autonomous Data Agents that can self-drive complex data analysis workflows. However, current implementations are still limited to linear \"ChatBI\" systems. These systems struggle with joint analysis across heterogeneous data sources (e.g., databases, documents, and data files) and often encounter \"context explosion\" in complex and iterative data analysis workflows. To address these challenges, we present DeepEye, a production-ready data agent system that adopts a workflow-centric architecture to ensure scalability and trustworthiness. DeepEye introduces a Unified Multimodal Orchestration protocol, enabling seamless integration of structured and unstructured data sources. To mitigate hallucinations, it employs Hierarchical Reasoning with context isolation, decomposing complex intents into autonomous AgentNodes and deterministic ToolNodes. Furthermore, DeepEye incorporates a database-inspired Workflow Engine (comprising a Compiler, Validator, Optimizer, and Executor) that guarantees structural correctness and accelerates execution via runtime topological optimization. In this demonstration, we showcase DeepEye's ability to orchestrate complex workflows to generate diverse multimodal outputs -- including Data Videos, Dashboards, and Analytical Reports -- highlighting its advantages in transparent execution, automated optimization, and human-in-the-loop reliability.",
+   "published": "2026-03-30",
+   "updated": "2026-03-30",
+   "authors": [
+    "Boyan Li",
+    "Yiran Peng",
+    "Yupeng Xie",
+    "Sirong Lu",
+    "Yizhang Zhu",
+    "Xing Mu",
+    "Xinyu Liu",
+    "Yuyu Luo"
+   ],
+   "primary_category": "cs.DB",
+   "categories": [
+    "cs.DB"
+   ],
+   "url": "https://arxiv.org/abs/2603.28889v1",
+   "pdf": "https://arxiv.org/pdf/2603.28889v1",
+   "comment": "SIGMOD Demo (2026)"
+  },
+  {
+   "id": "2610.06695v1",
+   "title": "MedPrune: Topology-Efficient Multimodal Multi-Agent Communication Evolution for Medical VQA Tasks",
+   "abstract": "While medical multimodal large language models (Med-MLLMs) advance medical visual question answering (VQA), existing clinical workflow-inspired multi-agent frameworks suffer from interaction patterns and excessive computational overhead caused by redundant communication topologies. In this paper, we propose MedPrune, an efficient medical multimodal multi-agent collaboration framework that dynamically prunes both nodes and edges from the communication topology to enhance reasoning ability and token efficiency. Specifically, we first formulate the diagnostic process as a heterogeneous communication graph, where nodes represent specialist agents from various departments and edges capture intra- and inter-departmental interactions. Building on this graph, we introduce two sparsification mechanisms to enable adaptive collaborative evolution: (1) Heterogeneous Node Sparsification, which eliminates task-irrelevant specialist agents irrelevant to the current multimodal question via reinforcement learning-driven topological optimization, and (2) Heterogeneous Edge Sparsification, which selectively retains only the most diagnostically salient intra- and inter-departmental connections by jointly optimizing task performance and topological complexity. Extensive medical VQA experiments under full-set and few-shot training settings prove MedPrune surpasses multi-agent baselines and boosts token efficiency with strong adversarial robustness.",
+   "published": "2026-10-05",
+   "updated": "2026-10-05",
+   "authors": [
+    "Jiuheng Wan",
+    "Runze Li",
+    "Chen Chen",
+    "Tingyuan Hu",
+    "Daiyang Yu",
+    "Yimin Jing",
+    "Taolin Zhang",
+    "Richang Hong"
+   ],
+   "primary_category": "cs.CL",
+   "categories": [
+    "cs.CL"
+   ],
+   "url": "https://arxiv.org/abs/2610.06695v1",
+   "pdf": "https://arxiv.org/pdf/2610.06695v1",
+   "comment": ""
+  }
+ ]
+}

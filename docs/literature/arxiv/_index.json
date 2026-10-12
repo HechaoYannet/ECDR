@@ -1,128 +1,131 @@
 {
- "A1_proof_repair_lean": {
-  "query": "abs:\"Lean\" AND abs:\"proof\" AND abs:\"agent\"",
-  "n": 30,
+ "C2b_performance_limitations_control": {
+  "query": "abs:\"performance limitations\" AND (abs:\"feedback\" OR abs:\"control\")",
+  "n": 25,
   "top": [
-   "2607.17352v1",
-   "2605.17283v1",
-   "2605.20244v2",
-   "2606.22997v1",
-   "2012.09388v1"
+   "1711.05318v2",
+   "1412.1056v4",
+   "1912.05541v4",
+   "1710.02880v3",
+   "1707.04528v1"
   ]
  },
- "A2_subgoal_decomposition_proving": {
-  "query": "abs:\"subgoal\" AND abs:\"theorem proving\" AND abs:\"language model\"",
-  "n": 16,
+ "C2c_vibration_isolation_tradeoff": {
+  "query": "abs:\"vibration isolation\" AND (abs:\"trade-off\" OR abs:\"tradeoff\" OR abs:\"limitation\")",
+  "n": 25,
   "top": [
-   "2408.11172v1",
-   "2504.21801v2",
-   "2510.02335v1",
-   "2305.16366v1",
-   "2507.02726v1"
+   "1810.06641v4",
+   "1803.11492v1",
+   "2308.00333v1",
+   "1911.12503v2",
+   "2003.03404v1"
   ]
  },
- "A3_critic_pruning_search": {
-  "query": "abs:\"search\" AND abs:\"verifier\" AND abs:\"language model\" AND abs:\"prune\"",
-  "n": 26,
+ "C2d_skyhook_active_isolation": {
+  "query": "abs:\"sky-hook\" OR abs:\"skyhook\"",
+  "n": 3,
   "top": [
-   "2502.00271v1",
-   "2609.39069v1",
-   "2510.16751v2",
-   "2512.19433v2",
-   "2407.12863v2"
+   "1303.0664v1",
+   "2204.06074v1",
+   "2503.12891v2"
   ]
  },
- "B1_alphaevolve_funsearch": {
-  "query": "all:\"AlphaEvolve\" OR all:\"FunSearch\" OR all:\"evolutionary search\" AND abs:\"large language model\"",
-  "n": 30,
+ "C2e_bode_integral_waterbed": {
+  "query": "abs:\"Bode integral\" OR abs:\"waterbed effect\" OR abs:\"sensitivity integral\"",
+  "n": 25,
   "top": [
-   "2506.13131v1",
-   "2505.16105v1",
-   "2605.14718v1",
-   "2504.05108v4",
-   "2610.02361v1"
+   "2010.08075v1",
+   "2101.08259v1",
+   "2211.10879v1",
+   "1902.11302v1",
+   "1903.01225v1"
   ]
  },
- "B2_quality_diversity_llm": {
-  "query": "abs:\"quality-diversity\" AND abs:\"large language model\"",
-  "n": 30,
+ "F1_minimal_unsatisfiable_subset": {
+  "query": "abs:\"minimal unsatisfiable subset\" OR abs:\"minimal unsatisfiable core\"",
+  "n": 23,
   "top": [
-   "2607.11916v1",
-   "2606.25198v2",
-   "2501.06795v1",
-   "2402.15265v1",
-   "2601.22536v1"
+   "2409.09485v1",
+   "1907.00929v2",
+   "0605085v2",
+   "1304.5449v1",
+   "2412.13606v1"
   ]
  },
- "B3_llm_scientific_discovery_hypothesis": {
-  "query": "abs:\"hypothesis\" AND abs:\"large language model\" AND abs:\"scientific discovery\"",
-  "n": 30,
+ "F2_conflict_directed_backjumping": {
+  "query": "abs:\"conflict-directed\" AND abs:\"backjumping\"",
+  "n": 4,
   "top": [
-   "2604.13699v1",
-   "2510.09901v2",
-   "2311.05965v1",
-   "2607.28990v1",
-   "2504.05496v1"
+   "0311003v1",
+   "0411016v2",
+   "1110.5867v1",
+   "1106.0254v1"
   ]
  },
- "C1_infeasibility_certificate": {
-  "query": "abs:\"infeasibility\" AND abs:\"certificate\"",
-  "n": 30,
+ "F3_explain_reduce_conflict": {
+  "query": "abs:\"explanation\" AND abs:\"constraint\" AND abs:\"unsatisfiable\"",
+  "n": 7,
   "top": [
-   "1810.11792v3",
-   "2004.14459v2",
-   "1507.00290v4",
-   "1506.08338v1",
-   "1108.5930v1"
+   "2303.11712v3",
+   "2105.11763v4",
+   "1511.01123v1",
+   "2511.10428v1",
+   "2609.29876v1"
   ]
  },
- "C2_fundamental_limits_vibration_isolation": {
-  "query": "abs:\"vibration isolation\" AND (abs:\"fundamental limit\" OR abs:\"trade-off\" OR abs:\"Bode\")",
-  "n": 0,
-  "top": []
- },
- "D1_engineering_design_agent_physics": {
-  "query": "abs:\"engineering design\" AND abs:\"agent\" AND abs:\"physics\"",
-  "n": 10,
+ "G1_llm_agent_engineering_benchmark": {
+  "query": "abs:\"benchmark\" AND abs:\"engineering design\" AND abs:\"language model\"",
+  "n": 24,
   "top": [
-   "2605.19717v1",
-   "2606.12040v3",
-   "2608.15073v1",
-   "2602.20639v1",
-   "2605.28978v2"
+   "2509.16204v2",
+   "2311.12668v3",
+   "2108.11899v3",
+   "2306.09169v1",
+   "2605.19717v1"
   ]
  },
- "D2_cad_llm_agent": {
-  "query": "abs:\"CAD\" AND abs:\"large language model\" AND abs:\"design\"",
-  "n": 30,
+ "G2_engineering_design_optimization_llm": {
+  "query": "abs:\"topology optimization\" AND abs:\"language model\"",
+  "n": 18,
   "top": [
-   "2409.17457v1",
-   "2412.13810v3",
-   "2509.21150v2",
-   "2602.22284v3",
-   "2412.14042v2"
+   "2604.14237v1",
+   "2605.23273v1",
+   "2605.27071v1",
+   "2311.12668v3",
+   "2505.16048v4"
   ]
  },
- "E1_design_space_adaptation": {
-  "query": "abs:\"design space\" AND abs:\"agent\" AND (abs:\"adapt\" OR abs:\"expand\" OR abs:\"restructure\")",
-  "n": 30,
+ "G3_mechanism_representation_design": {
+  "query": "abs:\"design structure\" OR abs:\"function structure\" AND abs:\"design synthesis\"",
+  "n": 25,
   "top": [
-   "2608.12605v1",
-   "2410.15550v1",
-   "2402.17918v1",
-   "2510.20409v1",
-   "1407.0698v1"
+   "2311.01190v4",
+   "2312.09765v1",
+   "1603.03577v2",
+   "1002.3031v1",
+   "0408024v1"
   ]
  },
- "E2_design_fixation_llm": {
-  "query": "abs:\"design fixation\" OR abs:\"creative ideation\" AND abs:\"large language model\"",
-  "n": 28,
+ "H1_impossibility_learning_agent": {
+  "query": "abs:\"impossibility\" AND abs:\"agent\" AND abs:\"proof\"",
+  "n": 25,
   "top": [
-   "2601.07121v3",
-   "2405.17837v3",
-   "2506.19644v1",
-   "2502.07128v2",
-   "2502.05870v1"
+   "2302.06061v1",
+   "2405.12804v2",
+   "2005.13224v1",
+   "2610.11851v1",
+   "2104.13681v1"
+  ]
+ },
+ "H2_unsat_core_learning": {
+  "query": "abs:\"unsat core\" OR abs:\"conflict clause\"",
+  "n": 25,
+  "top": [
+   "2506.04268v1",
+   "2307.10266v3",
+   "2603.20038v1",
+   "2202.04546v4",
+   "2403.03517v1"
   ]
  }
 }

@@ -1,0 +1,489 @@
+{
+ "query": "abs:\"Bode integral\" OR abs:\"waterbed effect\" OR abs:\"sensitivity integral\"",
+ "hits": [
+  {
+   "id": "2010.08075v1",
+   "title": "Stability and Robustness of the Disturbance Observer-based Motion Control Systems in Discrete-Time Domain",
+   "abstract": "This paper analyses the robust stability and performance of the Disturbance Observer- (DOb-) based digital motion control systems in discrete-time domain. It is shown that the phase margin and the robustness of the digital motion controller can be directly adjusted by tuning the nominal plant model and the bandwidth of the observer. However, they have upper and lower bounds due to robust stability and performance constraints as well as noise-sensitivity. The constraints on the design parameters of the DOb change when the digital motion controller is synthesised by measuring different states of a servo system. For example, the bandwidth of the DOb is limited by noise-sensitivity and waterbed effect when velocity and position measurements are employed in the digital robust motion controller synthesis. The robustness constraint due to the waterbed effect is removed when the DOb is implemented by acceleration measurement. The design constraints on the nominal plant model and the bandwidth of the observer are analytically derived by employing the generalised Bode Integral Theorem in discrete-time. The proposed design constraints allow one to systematically synthesise a high-performance DOb-based digital robust motion controller. Experimental results are given to verify the proposed analysis and synthesis methods.",
+   "published": "2020-10-16",
+   "updated": "2020-10-16",
+   "authors": [
+    "Emre Sariyildiz",
+    "Satoshi Hangai",
+    "Tarik Uzunovic",
+    "Takahiro Nozaki",
+    "Kouhei Ohnishi"
+   ],
+   "primary_category": "eess.SY",
+   "categories": [
+    "eess.SY",
+    "cs.RO"
+   ],
+   "url": "https://arxiv.org/abs/2010.08075v1",
+   "pdf": "https://arxiv.org/pdf/2010.08075v1",
+   "comment": "11 pages, 17 figures"
+  },
+  {
+   "id": "2101.08259v1",
+   "title": "Acceleration Measurement Enhances the Bandwidth of Disturbance Observer in Motion Control Systems",
+   "abstract": "The trade-off between the noise-sensitivity and the performance of disturbance estimation is well-known in the Disturbance Observer- (DOb-) based motion control systems. As the bandwidth of the DOb increases, not only the performance but also the frequency range of disturbance estimation improves yet the motion controller becomes more sensitive to the noise of measurement system. This trade-off is generally explained by considering only the noise of sensors such as encoders. However, the digital implementation of the robust motion controller may significantly influence the noise sensitivity and performance of disturbance estimation in practice. This paper shows that the conventional DOb implemented by estimating velocity is subject to waterbed effect when the design parameters (i.e., sampling-time, nominal plant parameters and the bandwidth of the DOb) are not properly tuned in the digital motion controller synthesis. Therefore, the bandwidth of disturbance estimation is limited by waterbed effect in addition to the noise of velocity measurement system. To facilitate the digital motion controller synthesis, the design constraints of the conventional DOb are analytically derived in this paper. When the digital motion controller is implemented by estimating acceleration, waterbed effect does not occur, and good robust stability and performance can be achieved for all values of the design parameters of the acceleration measurement-based DOb. The bandwidth of disturbance estimation, however, cannot be freely increased due to the noise of acceleration sensors in practice. By employing Bode Integral Theorem in the discrete-time domain, the design constraints of the DOb-based digital motion control systems are clearly explained and it is shown that acceleration measurement can be used to enhance the bandwidth of the DOb, i.e., the performance and frequency range of disturbance estimation.",
+   "published": "2021-01-20",
+   "updated": "2021-01-20",
+   "authors": [
+    "Emre Sariyildiz"
+   ],
+   "primary_category": "eess.SY",
+   "categories": [
+    "eess.SY"
+   ],
+   "url": "https://arxiv.org/abs/2101.08259v1",
+   "pdf": "https://arxiv.org/pdf/2101.08259v1",
+   "comment": "IEEE International Conference on Mechatronics (ICM2021). arXiv admin note: text overlap with arXiv:2101.07920"
+  },
+  {
+   "id": "2211.10879v1",
+   "title": "Bode Integral Limitation For Irrational Systems",
+   "abstract": "Bode integrals of sensitivity and sensitivity-like functions along with complementary sensitivity and complementary sensitivity-like functions are conventionally used for describing performance limitations of a feedback control system. In this paper, we investigate the Bode integral and evaluate what happens when a fractional order Proportional-Integral-Derivative (PID) controller is used in a feedback control system. We extend our analysis to when fractal PID controllers are applied to irrational systems. We split this into two cases: when the sequence of infinitely many right half plane open-loop poles doesn't have any limit points and when it does have a limit point. In both cases, we prove that the structure of the Bode Integral is similar to the classical version under certain conditions of convergence. We also provide a sufficient condition for the controller to lower the Bode sensitivity integral.",
+   "published": "2022-11-20",
+   "updated": "2022-11-20",
+   "authors": [
+    "William Chang",
+    "Fariba Ariaei",
+    "Edmond Jonckheere"
+   ],
+   "primary_category": "eess.SY",
+   "categories": [
+    "eess.SY"
+   ],
+   "url": "https://arxiv.org/abs/2211.10879v1",
+   "pdf": "https://arxiv.org/pdf/2211.10879v1",
+   "comment": "13 pages, 7 figures"
+  },
+  {
+   "id": "1902.11302v1",
+   "title": "Bode's Sensitivity Integral Constraints: The Waterbed Effect Revisited",
+   "abstract": "Bode's sensitivity integral constraints define a fundamental rule about the limitations of feedback and is referred to as the waterbed effect. We take a fresh look at this problem and reveal an elegant and fundamental result that has been seemingly masked by previous derivations. The main result is that the sensitivity integral constraint is crucially related to the difference in speed of the closed-loop system as compared to that of the open-loop system. This makes much intuitive sense. Similar results are also derived for the complementary sensitivity function. In that case the integral constraint is related to the sum of the differences of the reciprocal of the transmission zeros and the closed-loop poles of the system. Hence all performance limitations are inherently related to the locations of the open-loop and closed-loop poles, and the transmission zeros. A number of illustrative examples are presented.",
+   "published": "2019-01-09",
+   "updated": "2019-01-09",
+   "authors": [
+    "Abbas Emami-Naeini",
+    "Dick de Roover"
+   ],
+   "primary_category": "eess.SY",
+   "categories": [
+    "eess.SY"
+   ],
+   "url": "https://arxiv.org/abs/1902.11302v1",
+   "pdf": "https://arxiv.org/pdf/1902.11302v1",
+   "comment": "9 pages, 3 figures"
+  },
+  {
+   "id": "1903.01225v1",
+   "title": "Bode's Sensitivity Integral Constraints: The Waterbed Effect in Discrete Time",
+   "abstract": "Bode's sensitivity integral constraints define a fundamental rule about the limitations of feedback and is referred to as the waterbed effect. In a companion paper, we took a fresh look at this problem using a direct approach to derive our results. In this paper, we will address the same problem, but now in discrete time. Although similar to the continuous case, the discrete-time case poses its own peculiarities and subtleties. The main result is that the sensitivity integral constraint is crucially related to the locations of the unstable open-loop poles of the system. This makes much intuitive sense. Similar results are also derived for the complementary sensitivity function. In that case the integral constraint is related to the locations of the transmission zeros outside the unit circle. Hence all performance limitations are inherently related to the open-loop poles and the transmission zeros outside the unit circle. A number of illustrative examples are presented.",
+   "published": "2019-01-09",
+   "updated": "2019-01-09",
+   "authors": [
+    "Abbas Emami-Naeini",
+    "Dick de Roover"
+   ],
+   "primary_category": "eess.SY",
+   "categories": [
+    "eess.SY"
+   ],
+   "url": "https://arxiv.org/abs/1903.01225v1",
+   "pdf": "https://arxiv.org/pdf/1903.01225v1",
+   "comment": "8 pages, 4 figures. arXiv admin note: substantial text overlap with arXiv:1902.11302"
+  },
+  {
+   "id": "2510.25131v2",
+   "title": "The Waterbed Effect on Quasiperiodic Disturbance Observer: Avoidance of Sensitivity Tradeoff with Time Delays",
+   "abstract": "In linear time-invariant systems, the sensitivity function to disturbances is designed under a sensitivity tradeoff known as the waterbed effect. To compensate for a quasiperiodic disturbance, a quasiperiodic disturbance observer using time delays was proposed. Its sensitivity function avoids the sensitivity tradeoff, achieving wideband harmonic suppression without amplifying aperiodic disturbances or shifting harmonic suppression frequencies. However, its open-loop transfer function is not rational and does not satisfy the assumptions of existing Bode sensitivity integrals due to its time delays. This paper provides Bode-like sensitivity integrals for the quasiperiodic disturbance observer in both continuous-time and discrete-time representations and clarifies the avoided sensitivity tradeoff with time delays.",
+   "published": "2025-10-29",
+   "updated": "2026-03-02",
+   "authors": [
+    "Hisayoshi Muramatsu"
+   ],
+   "primary_category": "eess.SY",
+   "categories": [
+    "eess.SY"
+   ],
+   "url": "https://arxiv.org/abs/2510.25131v2",
+   "pdf": "https://arxiv.org/pdf/2510.25131v2",
+   "comment": ""
+  },
+  {
+   "id": "1803.10788v2",
+   "title": "Sensitivity Analysis of Continuous-Time Systems based on Power Spectral Density",
+   "abstract": "Bode integrals of sensitivity and sensitivity-like functions along with complementary sensitivity and complementary sensitivity-like functions are conventionally used for describing performance limitations of a feedback control system. In this paper, we show that in the case when the disturbance is a wide sense stationary process the (complementary) sensitivity Bode integral and the (complementary) sensitivity-like Bode integral are identical. A lower bound of the continuous-time complementary sensitivity-like Bode integral is also derived and examined with the linearized flight-path angle tracking control problem of an F-16 aircraft.",
+   "published": "2018-03-28",
+   "updated": "2018-09-16",
+   "authors": [
+    "Neng Wan",
+    "Dapeng Li",
+    "Naira Hovakimyan"
+   ],
+   "primary_category": "eess.SY",
+   "categories": [
+    "eess.SY"
+   ],
+   "url": "https://arxiv.org/abs/1803.10788v2",
+   "pdf": "https://arxiv.org/pdf/1803.10788v2",
+   "comment": "15 pages, 4 figures, 57th IEEE Conference on Decision and Control (CDC 2018), Miami Beach, FL, USA, December 17-19, 2018"
+  },
+  {
+   "id": "2608.24435v1",
+   "title": "Feedback control of vortex shedding using data-driven modelling",
+   "abstract": "This paper details the data-driven modelling and feedback control of vortex shedding past a circular cylinder at a Reynolds number of Re = 1000. We study the effect of varying the order of the reduced model for control design purposes and demonstrate that higher orders can lead to lower suppression of vortex shedding. We use the Bode integral theorem and a frequency-domain interpretation to show that this drop in performance is, in part, due to the classical ``waterbed effect'', which increases sensitivity in frequency bands of unmodelled dynamics. Training data from 2D unsteady simulation is used to obtain linear reduced-order state-space models of the system via dynamic mode decomposition with control. Using only lift measurement, we show that at least a 4th-order model is required for an LQG controller to suppress vortex shedding, with the best performance achieved with as few as 9 modes, whilst higher-order (>14) controllers show a significant decrease in performance. We study the influence of external disturbances, noise rejection, and parameter uncertainty on controller performance. A 28.6 dB reduction in lift coefficient variance is achieved, resulting in a 26% reduction in drag. We further show that, for control design purposes with practical actuation bandwidth, the closed-loop control delivers a significant 13.7% drag reduction within 3D DDES, despite having been trained with 2D URANS and therefore argue that 2D URANS simulation is sufficient for reduced-order model generation and control design.",
+   "published": "2026-08-25",
+   "updated": "2026-08-25",
+   "authors": [
+    "Jack Proudfoot",
+    "Chris J. Nicholls",
+    "Brian M. T. Tang",
+    "Marko Bacic"
+   ],
+   "primary_category": "physics.flu-dyn",
+   "categories": [
+    "physics.flu-dyn"
+   ],
+   "url": "https://arxiv.org/abs/2608.24435v1",
+   "pdf": "https://arxiv.org/pdf/2608.24435v1",
+   "comment": ""
+  },
+  {
+   "id": "1805.10037v1",
+   "title": "Beyond the Waterbed Effect: Development of Fractional Order CRONE Control with Non-Linear Reset",
+   "abstract": "In this paper a novel reset control synthesis method is proposed: CRONE reset control, combining a robust fractional CRONE controller with non-linear reset control to overcome waterbed effect. In CRONE control, robustness is achieved by creation of constant phase behaviour around bandwidth with the use of fractional operators, also allowing more freedom in shaping the open-loop frequency response. However, being a linear controller it suffers from the inevitable trade-off between robustness and performance as a result of the waterbed effect. Here reset control is introduced in the CRONE design to overcome the fundamental limitations. In the new controller design, reset phase advantage is approximated using describing function analysis and used to achieve better open-loop shape. Sufficient quadratic stability conditions are shown for the designed CRONE reset controllers and the control design is validated on a Lorentz-actuated nanometre precision stage. It is shown that for similar phase margin, better performance in terms of reference-tracking and noise attenuation can be achieved.",
+   "published": "2018-05-25",
+   "updated": "2018-05-25",
+   "authors": [
+    "Linda Chen",
+    "Niranjan Saikumar",
+    "Simone Baldi",
+    "S. Hassan HosseinNia"
+   ],
+   "primary_category": "eess.SY",
+   "categories": [
+    "eess.SY"
+   ],
+   "url": "https://arxiv.org/abs/1805.10037v1",
+   "pdf": "https://arxiv.org/pdf/1805.10037v1",
+   "comment": "American Control Conference 2018"
+  },
+  {
+   "id": "1212.6817v1",
+   "title": "Stability Analysis Of Delayed System Using Bodes Integral",
+   "abstract": "The PID controller parameters can be adjusted in such a manner that it gives the desired frequency response and the results are found using the Bodes integral formula in order to adjust the slope of the nyquist curve in a desired manner. The same idea is applied for plants with time delay . The same has also been done in a new approach . The delay term is approximated as a transfer function using Pade approximation and then the Bode integral is used to determine the controller parameters. Both the methodologies are demonstrated with MATLAB simulation of representative plants and accompanying PID controllers. A proper comparison of the two methodologies is also done. The PID controller parameters are also tuned using a real coded Genetic Algorithm (GA) and a proper comparison is done between the three methods.",
+   "published": "2012-12-31",
+   "updated": "2012-12-31",
+   "authors": [
+    "Anish Acharya",
+    "Debatri Mitra",
+    "Kaushik Halder"
+   ],
+   "primary_category": "eess.SY",
+   "categories": [
+    "eess.SY"
+   ],
+   "url": "https://arxiv.org/abs/1212.6817v1",
+   "pdf": "https://arxiv.org/pdf/1212.6817v1",
+   "comment": "5 pages, 5 figures, 2013 International Conference on Computer Communication and Informatics (ICCCI-2013), Jan 2013, Coimbatore, INDIA"
+  },
+  {
+   "id": "1807.08604v1",
+   "title": "A Frequency-Domain Characterization of Optimal Error Covariance for the Kalman-Bucy Filter",
+   "abstract": "In this paper, we discover that the trace of the division of the optimal output estimation error covariance over the noise covariance attained by the Kalman-Bucy filter can be explicitly expressed in terms of the plant dynamics and noise statistics in a frequency-domain integral characterization. Towards this end, we examine the algebraic Riccati equation associated with Kalman-Bucy filtering using analytic function theory and relate it to the Bode integral. Our approach features an alternative, frequency-domain framework for analyzing algebraic Riccati equations and reduces to various existing related results.",
+   "published": "2018-07-23",
+   "updated": "2018-07-23",
+   "authors": [
+    "Song Fang",
+    "Hideaki Ishii",
+    "Jie Chen",
+    "Karl Henrik Johansson"
+   ],
+   "primary_category": "eess.SY",
+   "categories": [
+    "eess.SY",
+    "cs.RO",
+    "eess.SP",
+    "math.OC"
+   ],
+   "url": "https://arxiv.org/abs/1807.08604v1",
+   "pdf": "https://arxiv.org/pdf/1807.08604v1",
+   "comment": ""
+  },
+  {
+   "id": "2212.01256v1",
+   "title": "Shaping Nonlinearity in Reset Controllers for Precision Motion Systems",
+   "abstract": "The precision motion industry has an ever-increasing demand for faster, more precise and more robust controllers. From the perspective of frequency domain and loopshaping technique, this demand has pushed the linear controllers to their inherent limits, namely, the waterbed effect and Bode's phase-gain relationship. Mathematically, complex-order transfer functions are not bound by Bode's phase-gain relationship. However, implementing them in practice is a challenge to be solved. This extended abstract will show review the previous work of the authors in shaping nonlinearities in reset controllers and contribute and propose an overall architecture for reset control systems to approximate complex order controllers.",
+   "published": "2022-12-02",
+   "updated": "2022-12-02",
+   "authors": [
+    "Nima Karbasizadeh",
+    "S. Hassan HosseinNia"
+   ],
+   "primary_category": "eess.SY",
+   "categories": [
+    "eess.SY"
+   ],
+   "url": "https://arxiv.org/abs/2212.01256v1",
+   "pdf": "https://arxiv.org/pdf/2212.01256v1",
+   "comment": ""
+  },
+  {
+   "id": "2110.06268v1",
+   "title": "Stacking Integrators Without Sacrificing the Overshoot in Reset Control Systems",
+   "abstract": "According to the well-known loop-shaping control design approach, the steady-state precision of control systems can be improved by stacking integrators. However, due to the waterbed effect in linear control systems, such an action will worsen the transient response by increasing overshoot and creating wind-up problems. This paper presents a new architecture for rest control systems that can significantly decrease the overshoot and create a no-overshoot performance even in presence of stacked integrators. The steady-state analysis of the proposed system will also show that improved precision expected due to stacked integrators can be achieved as well. A numerical simulation study is presented to verify the results and the tuning guide presented.",
+   "published": "2021-10-12",
+   "updated": "2021-10-12",
+   "authors": [
+    "Nima Karbasizadeh",
+    "S. Hassan HosseinNia"
+   ],
+   "primary_category": "eess.SY",
+   "categories": [
+    "eess.SY"
+   ],
+   "url": "https://arxiv.org/abs/2110.06268v1",
+   "pdf": "https://arxiv.org/pdf/2110.06268v1",
+   "comment": ""
+  },
+  {
+   "id": "2601.10475v2",
+   "title": "Positive Damping Region: A Graphic Tool for Passivization Analysis with Passivity Index",
+   "abstract": "This paper presents a geometric framework for analyzing output-feedback and input-feedforward passivization of linear time-invariant systems. We reveal that a system is passivizable with a given passivity index when the Nyquist plot for SISO systems or the Rayleigh quotient of the transfer function for MIMO systems lies within a specific, index-dependent region in the complex plane, termed the positive damping region. The criteria enable a convenient graphic tool for analyzing the passivization, the associated frequency bands, the maximum achievable passivity index, and the waterbed effect between them. Additionally, the tool can be encoded into classical tools such as the Nyquist plot, the Nichols plot, and the generalized KYP lemma to aid control design. Finally, we demonstrate its application in passivity-based power system stability analysis and discuss its implications for electrical engineers regarding device controller design trade-offs.",
+   "published": "2026-01-15",
+   "updated": "2026-06-13",
+   "authors": [
+    "Xiaoyu Peng",
+    "Xi Ru",
+    "Zhongze Li",
+    "Jianxin Zhang",
+    "Xinghua Chen",
+    "Feng Liu"
+   ],
+   "primary_category": "math.OC",
+   "categories": [
+    "math.OC"
+   ],
+   "url": "https://arxiv.org/abs/2601.10475v2",
+   "pdf": "https://arxiv.org/pdf/2601.10475v2",
+   "comment": ""
+  },
+  {
+   "id": "2110.12801v2",
+   "title": "Continuous reset element: Transient and steady-state analysis for precision motion systems",
+   "abstract": "This paper addresses the main goal of using reset control in precision motion control systems, breaking of the well-known \"Waterbed effect\". A new architecture for reset elements will be introduced which has a continuous output signal as opposed to conventional reset elements. A steady-state precision study is presented, showing the steady-state precision is preserved while the peak of sensitivity is reduced. The architecture is then used for a \"Constant in Gain Lead in Phase\" (CgLp) element and a numerical analysis on transient response shows a significant improvement in transient response. It is shown that by following the presented guideline for tuning, settling time can be reduced and at the same time a non-overshoot step response can be achieved. A practical example is presented to verify the results and also to show that the proposed element can achieve a complex-order behaviour.",
+   "published": "2021-10-25",
+   "updated": "2022-08-30",
+   "authors": [
+    "Nima Karbasizadeh",
+    "S. Hassan HosseinNia"
+   ],
+   "primary_category": "eess.SY",
+   "categories": [
+    "eess.SY"
+   ],
+   "url": "https://arxiv.org/abs/2110.12801v2",
+   "pdf": "https://arxiv.org/pdf/2110.12801v2",
+   "comment": ""
+  },
+  {
+   "id": "1805.09703v1",
+   "title": "No More Differentiator in PID:Development of Nonlinear Lead for Precision Mechatronics",
+   "abstract": "Industrial PID consists of three elements: Lag (integrator), Lead (Differentiator) and Low Pass Filters (LPF). PID being a linear control method is inherently bounded by the waterbed effect due to which there exists a trade-off between precision \\& tracking, provided by Lag and LPF on one side and stability \\& robustness, provided by Lead on the other side. Nonlinear reset strategies applied in Lag and LPF elements have been very effective in reducing this trade-off. However, there is lack of study in developing a reset Lead element. In this paper, we develop a novel lead element which provides higher precision and stability compared to the linear lead filter and can be used as a replacement for the same. The concept is presented and validated on a Lorentz-actuated nanometer precision stage. Improvements in precision, tracking and bandwidth are shown through two separate designs. Performance is validated in both time and frequency domain to ensure that phase margin achieved on the practical setup matches design theories.",
+   "published": "2018-05-24",
+   "updated": "2018-05-24",
+   "authors": [
+    "Arun Palanikumar",
+    "Niranjan Saikumar",
+    "S. Hassan HosseinNia"
+   ],
+   "primary_category": "eess.SY",
+   "categories": [
+    "eess.SY",
+    "cs.RO"
+   ],
+   "url": "https://arxiv.org/abs/1805.09703v1",
+   "pdf": "https://arxiv.org/pdf/1805.09703v1",
+   "comment": "European Control Conference 2018"
+  },
+  {
+   "id": "2411.19634v1",
+   "title": "Alternative sum rules and waterbed effects of Lorentz resonator system for sound absorption and transmission in a unidimensional waveguide",
+   "abstract": "We investigate fundamental constraints on passive linear time-invariant acoustic systems through the developing alternative linear sum rules for sound absorption and transmission. Our approach, based on the Herglotz function method, yields integral identities without non-linear logarithmic terms or frequency weightings, providing clearer physical insights into system performance limits. The study focuses on unidimensional waveguides with Lorentz resonators, encompassing various practical acoustic structures. The developed sum rules are found to be particularly effective in predicting constraints on the average sound absorption coefficient for broadband absorbers operating in deep-subwavelength structures. Based on these rules, we demonstrate the waterbed effect in such systems, highlighting the inherent compromises between absorption efficiency, bandwidth, and device thickness. Through case studies of resonator arrays and membranes, we illustrate the practical implications of these new sum rules for designing optimal sound absorbers and isolators. The work concludes with a discussion on the challenges and future prospects in passive noise control, suggesting potential pathways to surpass current performance boundaries.",
+   "published": "2024-11-29",
+   "updated": "2024-11-29",
+   "authors": [
+    "Di Mo",
+    "Yumin Zhang",
+    "Tianquan Tang",
+    "Xiaochao Ji",
+    "Xiang Liu Keming Wu"
+   ],
+   "primary_category": "physics.class-ph",
+   "categories": [
+    "physics.class-ph",
+    "physics.app-ph"
+   ],
+   "url": "https://arxiv.org/abs/2411.19634v1",
+   "pdf": "https://arxiv.org/pdf/2411.19634v1",
+   "comment": ""
+  },
+  {
+   "id": "1805.12406v2",
+   "title": "'Constant in gain Lead in phase' element - Application in precision motion control",
+   "abstract": "This work presents a novel 'Constant in gain Lead in phase' (CgLp) element using nonlinear reset technique. PID is the industrial workhorse even to this day in high-tech precision positioning applications. However, Bode's gain phase relationship and waterbed effect fundamentally limit performance of PID and other linear controllers. This paper presents CgLp as a controlled nonlinear element which can be introduced within the framework of PID allowing for wide applicability and overcoming linear control limitations. Design of CgLp with generalized first order reset element (GFORE) and generalized second order reset element (GSORE) (introduced in this work) is presented using describing function analysis. A more detailed analysis of reset elements in frequency domain compared to existing literature is first carried out for this purpose. Finally, CgLp is integrated with PID and tested on one of the DOFs of a planar precision positioning stage. Performance improvement is shown in terms of tracking, steady-state precision and bandwidth.",
+   "published": "2018-05-31",
+   "updated": "2018-09-28",
+   "authors": [
+    "Niranjan Saikumar",
+    "Rahul Kumar Sinha",
+    "S. Hassan HosseinNia"
+   ],
+   "primary_category": "eess.SY",
+   "categories": [
+    "eess.SY"
+   ],
+   "url": "https://arxiv.org/abs/1805.12406v2",
+   "pdf": "https://arxiv.org/pdf/1805.12406v2",
+   "comment": ""
+  },
+  {
+   "id": "1410.5192v6",
+   "title": "Three laws of feedback systems: entropy rate never decreases, generalized Bode integral, absolute lower bound in variance minimization, Gaussianity-whiteness measure (joint Shannon-Wiener entropy), Gaussianing-whitening control, and beyond",
+   "abstract": "This paper aims at obtaining universal laws and absolute lower bounds of feedback systems using information theory. The feedback system setup is that with causal plants and causal controllers. Three laws (entropy rate never decreases, generalized Bode integral, and absolute lower bound in variance minimization) are obtained, which are in entropy domain, frequency domain, and time domain, respectively. Those laws characterize the fundamental limitations of such systems imposed by the feedback mechanism. Two new notions, negentropy rate and Gaussianity-whiteness measure (joint Shannon-Wiener entropy), are proposed to facilitate the analysis. Topics such as whiteness-Gaussianity-variance decomposition, Gaussianing-whitening control (the maximum Gaussianity-whiteness measure principle), whitening control (spectrum/spectral flattening control), generalized Bode plot, and so on are also discussed. The special case of linear time-invariant feedback systems is considered in the end.",
+   "published": "2014-10-20",
+   "updated": "2014-12-19",
+   "authors": [
+    "Song Fang"
+   ],
+   "primary_category": "eess.SY",
+   "categories": [
+    "eess.SY",
+    "cs.IT",
+    "math.OC"
+   ],
+   "url": "https://arxiv.org/abs/1410.5192v6",
+   "pdf": "https://arxiv.org/pdf/1410.5192v6",
+   "comment": "This paper has been withdrawn by the author due to personal reasons"
+  },
+  {
+   "id": "2009.06091v1",
+   "title": "Band-Passing Nonlinearity in Reset Elements",
+   "abstract": "This paper addresses nonlinearity in reset elements and their effects. Reset elements are known for having less phase lag compared to their linear counterparts; however, they are nonlinear elements and produce higher-order harmonics. This paper investigates the higher-order harmonics for reset elements with one resetting state and proposes an architecture and a method of design which allows for band-passing the nonlinearity and its effects, namely, higher-order harmonics and phase advantage. The nonlinearity of reset elements is not entirely useful for all frequencies, e.g., they are useful for reducing phase lag at cross-over frequency region; however, higher-order harmonics can compromise tracking and disturbance rejection performance at lower frequencies. Using proposed \"phase shaping\" method, one can selectively suppress nonlinearity of a single-state reset element in a desired range of frequencies and allow the nonlinearity to provide its phase benefit in a different desired range of frequencies. This can be especially useful for the reset elements in the framework of \"Constant in gain, Lead in phase\" (CgLp) filter, which is a newly introduced nonlinear filter, bound to circumvent the well-known linear control limitation -- the waterbed effect.",
+   "published": "2020-09-13",
+   "updated": "2020-09-13",
+   "authors": [
+    "Nima Karbasizadeh",
+    "Ali Ahmadi Dastjerdi",
+    "Niranjan Saikumar",
+    "S. Hassan HosseinNia"
+   ],
+   "primary_category": "eess.SY",
+   "categories": [
+    "eess.SY"
+   ],
+   "url": "https://arxiv.org/abs/2009.06091v1",
+   "pdf": "https://arxiv.org/pdf/2009.06091v1",
+   "comment": ""
+  },
+  {
+   "id": "2204.13544v2",
+   "title": "Generalizing Hybrid Integrator-Gain Systems Using Fractional Calculus",
+   "abstract": "The Hybrid Integral Gain Systems (HIGS) has recently gained a lot of attention in the control of precision motion systems. HIGS is a nonlinear low pass filter with a 52 degree phase advantage over its linear counterpart. This property allows us to avoid the limitations typically associated with linear controllers like the waterbed effect and bode's phase gain relation. In this paper, we generalize HIGS via replacing the involved integer order integrator with a fractional order one to adapt the phase lead from 0 degree (linear low pass filter) to 52 degree (HIGS). To analyze this filter in the frequency domain, the describing function of the proposed filter, i.e., the fractional-order HIGS, is obtained using the Fourier expansion of the output signal. In addition, this generalized HIGS is implemented in a PID structure controlling a double integrator system to validate the performance of the proposed filter in the time domain, in which changing the fractional variable from zero to one, the output varies from the response of a nonlinear control system to a linear one.",
+   "published": "2022-04-28",
+   "updated": "2022-09-30",
+   "authors": [
+    "S. Ali Hosseini",
+    "Mohammad Saleh Tavazoei",
+    "Luke F. van Eijk",
+    "S. Hassan HosseinNia"
+   ],
+   "primary_category": "eess.SY",
+   "categories": [
+    "eess.SY"
+   ],
+   "url": "https://arxiv.org/abs/2204.13544v2",
+   "pdf": "https://arxiv.org/pdf/2204.13544v2",
+   "comment": "6 pages, 9 figures"
+  },
+  {
+   "id": "2009.11131v1",
+   "title": "Fractional-Order Single State Reset Element",
+   "abstract": "This paper proposes a fractional-order reset element whose architecture allows for the suppression of nonlinear effects for a range of frequencies. Suppressing the nonlinear effects of a reset element for the desired frequency range while maintaining it for the rest is beneficial, especially when it is used in the framework of a \"Constant in gain, Lead in phase\" (CgLp) filter. CgLp is a newly introduced nonlinear filter, bound to circumvent the well-known linear control limitation -- the waterbed effect. The ideal behaviour of such a filter in the frequency domain is unity gain while providing a phase lead for a broad range of frequencies. However, CgLp's ideal behaviour is based on the describing function, which is a first-order approximation that neglects the effects of the higher-order harmonics in the output of the filter. Although CgLp is fundamentally a nonlinear filter, its nonlinearity is not required for all frequencies. Thus, it is shown in this paper that using the proposed reset element architecture, CgLp gets closer to its ideal behaviour for a range of frequencies, and its performance will be improved accordingly.",
+   "published": "2020-09-23",
+   "updated": "2020-09-23",
+   "authors": [
+    "Nima Karbasizadeh",
+    "Niranjan Saikumar",
+    "S. Hassan HosseinNia"
+   ],
+   "primary_category": "eess.SY",
+   "categories": [
+    "eess.SY"
+   ],
+   "url": "https://arxiv.org/abs/2009.11131v1",
+   "pdf": "https://arxiv.org/pdf/2009.11131v1",
+   "comment": ""
+  },
+  {
+   "id": "2101.07920v1",
+   "title": "A Guide to Design Disturbance Observer-based Motion Control Systems in Discrete-time Domain",
+   "abstract": "This paper analyses and synthesises the Disturbance Observer (DOb) based motion control systems in the discrete-time domain. By employing Bode Integral Theorem, it is shown that continuous-time analysis methods fall-short in explaining the dynamic behaviours of the DOb-based robust motion controllers implemented by computers and microcontrollers. For example, continuous-time analysis methods cannot explain why the robust stability and performance of the digital motion controller deteriorate as the bandwidth of the DOb increases. Therefore, unexpected dynamic responses (e.g., poor stability and performance, and high-sensitivity to disturbances and noise) may be observed when the parameters of the digital robust motion controller are tuned by using continuous-time synthesis methods in practice. This paper also analytically derives the robust stability and performance constraints of the DOb-based motion controllers in the discrete-time domain. The proposed design constraints allow one to systematically synthesise a high-performance digital robust motion controller. The validity of the proposed analysis and synthesis methods are verified by simulations.",
+   "published": "2021-01-20",
+   "updated": "2021-01-20",
+   "authors": [
+    "Emre Sariyildiz"
+   ],
+   "primary_category": "eess.SY",
+   "categories": [
+    "eess.SY"
+   ],
+   "url": "https://arxiv.org/abs/2101.07920v1",
+   "pdf": "https://arxiv.org/pdf/2101.07920v1",
+   "comment": "IEEE International Conference on Mechatronics (ICM2021)"
+  },
+  {
+   "id": "1811.09882v1",
+   "title": "Sensitivity Analysis of Continuous-Time Linear Control Systems subject to Control and Measurement Noise: An Information-Theoretic Approach",
+   "abstract": "Sensitivity of linear continuous-time control systems, subject to control and measurement noise, is analyzed by deriving the lower bounds of Bode-like integrals via an information-theoretic approach. Bode integrals of four different sensitivity-like functions are employed to gauge the control trade-offs. When the signals of the control system are stationary Gaussian, these four different Bode-like integrals can be represented as differences between mutual information rates. These mutual information rates and hence the corresponding Bode-like integrals are proven to be bounded below by the unstable poles and zeros of the plant model, if the signals of the control system are wide-sense stationary.",
+   "published": "2018-11-24",
+   "updated": "2018-11-24",
+   "authors": [
+    "Neng Wan",
+    "Dapeng Li",
+    "Naira Hovakimyan"
+   ],
+   "primary_category": "eess.SY",
+   "categories": [
+    "eess.SY",
+    "math.OC"
+   ],
+   "url": "https://arxiv.org/abs/1811.09882v1",
+   "pdf": "https://arxiv.org/pdf/1811.09882v1",
+   "comment": "19 pages, 4 figures"
+  },
+  {
+   "id": "1811.09884v1",
+   "title": "A Simplified Approach to Analyze Complementary Sensitivity Trade-offs in Continuous-Time and Discrete-Time Systems",
+   "abstract": "A simplified approach is proposed to investigate the continuous-time and discrete-time complementary sensitivity Bode integrals (CSBIs) in this note. For continuous-time feedback systems with unbounded frequency domain, the CSBI weighted by $1/ω^2$ is considered, where this simplified method reveals a more explicit relationship between the value of CSBI and the structure of the open-loop transfer function. With a minor modification of this method, the CSBI of discrete-time system is derived, and illustrative examples are provided. Compared with the existing results on CSBI, neither Cauchy integral theorem nor Poisson integral formula are used throughout the analysis, and the analytic constraint on the integrand is removed.",
+   "published": "2018-11-24",
+   "updated": "2018-11-24",
+   "authors": [
+    "Neng Wan",
+    "Dapeng Li",
+    "Naira Hovakimyan"
+   ],
+   "primary_category": "eess.SY",
+   "categories": [
+    "eess.SY",
+    "math.OC"
+   ],
+   "url": "https://arxiv.org/abs/1811.09884v1",
+   "pdf": "https://arxiv.org/pdf/1811.09884v1",
+   "comment": "15 pages, 1 figure"
+  }
+ ]
+}

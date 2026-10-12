@@ -1,0 +1,497 @@
+{
+ "query": "abs:\"performance limitations\" AND (abs:\"feedback\" OR abs:\"control\")",
+ "hits": [
+  {
+   "id": "1711.05318v2",
+   "title": "Performance limitations of observer-based feedback for transient energy growth suppression",
+   "abstract": "Transient energy growth suppression is a common control objective for feedback flow control aimed at delaying transition to turbulence. A prevailing control approach in this context is observer-based feedback, in which a full-state feedback controller is applied to state estimates from an observer. The present study identifies a fundamental performance limitation of observer-based feedback control: whenever the uncontrolled system exhibits transient energy growth in response to optimal disturbances, control by observer-based feedback will necessarily lead to transient energy growth in response to optimal disturbances for the closed-loop system as well. Indeed, this result establishes that observer-based feedback can be a poor candidate for controller synthesis in the context of transient energy growth suppression and transition delay: the performance objective of transient energy growth suppression can never be achieved by means of observer-based feedback. Further, an illustrative example is used to show that alternative forms of output feedback are not necessarily subject to these same performance limitations, and should also be considered in the context of transient energy growth suppression and transition control.",
+   "published": "2017-11-14",
+   "updated": "2018-04-17",
+   "authors": [
+    "Maziar S. Hemati",
+    "Huaijin Yao"
+   ],
+   "primary_category": "physics.flu-dyn",
+   "categories": [
+    "physics.flu-dyn"
+   ],
+   "url": "https://arxiv.org/abs/1711.05318v2",
+   "pdf": "https://arxiv.org/pdf/1711.05318v2",
+   "comment": "7 pages; 1 figure"
+  },
+  {
+   "id": "1412.1056v4",
+   "title": "Three Laws of Multivariable Feedback Systems, Extended Spectral Flatness (Extended Wiener Entropy), 'Uncertainty Principles' in Variance Minimization, and Performance Limitations in Minimum Variance Estimation/Filtering",
+   "abstract": "In this paper, three laws are obtained for multiple-input multiple-output feedback systems, which are in entropy domain, frequency domain, and time domain, respectively. The system setup is that with causal plants and causal controllers. Those laws characterize the performance limitations of such systems imposed by the feedback mechanism. Some new notions are proposed to facilitate the analysis: negentropy rate, extended spectral flatness (extended Wiener entropy), Gaussianity-whiteness measure (joint Shannon-Wiener entropy), etc. Two approaches are adopted: the integrated approach and the divided approach. And 'uncertainty principles' are found in minimum variance control. Besides, performance limitations in minimum variance estimation and filtering are obtained. In the end, the special case of linear time-invariant feedback systems is discussed.",
+   "published": "2014-12-01",
+   "updated": "2014-12-19",
+   "authors": [
+    "Song Fang"
+   ],
+   "primary_category": "eess.SY",
+   "categories": [
+    "eess.SY",
+    "cs.IT",
+    "math.OC"
+   ],
+   "url": "https://arxiv.org/abs/1412.1056v4",
+   "pdf": "https://arxiv.org/pdf/1412.1056v4",
+   "comment": "This paper has been withdrawn by the author due to personal reasons"
+  },
+  {
+   "id": "1912.05541v4",
+   "title": "Information-Theoretic Performance Limitations of Feedback Control: Underlying Entropic Laws and Generic $\\mathcal{L}_{p}$ Bounds",
+   "abstract": "In this paper, we utilize information theory to study the fundamental performance limitations of generic feedback systems, where both the controller and the plant may be any causal functions/mappings while the disturbance can be with any distributions. More specifically, we obtain fundamental $\\mathcal{L}_p$ bounds on the control error, which are shown to be completely characterized by the conditional entropy of the disturbance, based upon the entropic laws that are inherent in any feedback systems. We also discuss the generality and implications (in, e.g., fundamental limits of learning-based control) of the obtained bounds.",
+   "published": "2019-12-11",
+   "updated": "2021-05-06",
+   "authors": [
+    "Song Fang",
+    "Quanyan Zhu"
+   ],
+   "primary_category": "eess.SY",
+   "categories": [
+    "eess.SY",
+    "cs.IT",
+    "cs.LG",
+    "cs.RO",
+    "stat.ML"
+   ],
+   "url": "https://arxiv.org/abs/1912.05541v4",
+   "pdf": "https://arxiv.org/pdf/1912.05541v4",
+   "comment": "arXiv admin note: text overlap with arXiv:1912.02628"
+  },
+  {
+   "id": "1710.02880v3",
+   "title": "On Fundamental Limitations of Dynamic Feedback Control in Regular Large-Scale Networks",
+   "abstract": "We study fundamental performance limitations of distributed feedback control in large-scale networked dynamical systems. Specifically, we address the question of whether dynamic feedback controllers perform better than static (memoryless) ones when subject to locality constraints. We consider distributed linear consensus and vehicular formation control problems modeled over toric lattice networks. For the resulting spatially invariant systems we study the large-scale asymptotics (in network size) of global performance metrics that quantify the level of network coherence. With static feedback from relative state measurements, such metrics are known to scale unfavorably in lattices of low spatial dimensions, preventing, for example, a 1-dimensional string of vehicles to move like a rigid object. We show that the same limitations in general apply also to dynamic feedback control that is locally of first order. This means that the addition of one local state to the controller gives a similar asymptotic performance to the memoryless case. This holds unless the controller can access noiseless measurements of its local state with respect to an absolute reference frame, in which case the addition of controller memory may fundamentally improve performance. In simulations of platoons with 20-200 vehicles we show that the performance limitations we derive manifest as unwanted accordion-like motions. Similar behaviors are to be expected in any network that is embeddable in a low-dimensional toric lattice, and the same fundamental limitations would apply. To derive our results, we present a general technical framework for the analysis of stability and performance of spatially invariant systems in the limit of large networks.",
+   "published": "2017-10-08",
+   "updated": "2019-03-13",
+   "authors": [
+    "Emma Tegling",
+    "Partha Mitra",
+    "Henrik Sandberg",
+    "Bassam Bamieh"
+   ],
+   "primary_category": "math.OC",
+   "categories": [
+    "math.OC"
+   ],
+   "url": "https://arxiv.org/abs/1710.02880v3",
+   "pdf": "https://arxiv.org/pdf/1710.02880v3",
+   "comment": "To appear in IEEE Transactions on Automatic Control, 2019. First submitted October 2017. This version February 2019"
+  },
+  {
+   "id": "1707.04528v1",
+   "title": "Performance bounds for optimal feedback control in networks",
+   "abstract": "Many important complex networks, including critical infrastructure and emerging industrial automation systems, are becoming increasingly intricate webs of interacting feedback control loops. A fundamental concern is to quantify the control properties and performance limitations of the network as a function of its dynamical structure and control architecture. We study performance bounds for networks in terms of optimal feedback control costs. We provide a set of complementary bounds as a function of the system dynamics and actuator structure. For unstable network dynamics, we characterize a tradeoff between feedback control performance and the number of control inputs, in particular showing that optimal cost can increase exponentially with the size of the network. We also derive a bound on the performance of the worst-case actuator subset for stable networks, providing insight into dynamics properties that affect the potential efficacy of actuator selection. We illustrate our results with numerical experiments that analyze performance in regular and random networks.",
+   "published": "2017-07-14",
+   "updated": "2017-07-14",
+   "authors": [
+    "Tyler Summers",
+    "Justin Ruths"
+   ],
+   "primary_category": "math.OC",
+   "categories": [
+    "math.OC",
+    "eess.SY"
+   ],
+   "url": "https://arxiv.org/abs/1707.04528v1",
+   "pdf": "https://arxiv.org/pdf/1707.04528v1",
+   "comment": ""
+  },
+  {
+   "id": "1803.10788v2",
+   "title": "Sensitivity Analysis of Continuous-Time Systems based on Power Spectral Density",
+   "abstract": "Bode integrals of sensitivity and sensitivity-like functions along with complementary sensitivity and complementary sensitivity-like functions are conventionally used for describing performance limitations of a feedback control system. In this paper, we show that in the case when the disturbance is a wide sense stationary process the (complementary) sensitivity Bode integral and the (complementary) sensitivity-like Bode integral are identical. A lower bound of the continuous-time complementary sensitivity-like Bode integral is also derived and examined with the linearized flight-path angle tracking control problem of an F-16 aircraft.",
+   "published": "2018-03-28",
+   "updated": "2018-09-16",
+   "authors": [
+    "Neng Wan",
+    "Dapeng Li",
+    "Naira Hovakimyan"
+   ],
+   "primary_category": "eess.SY",
+   "categories": [
+    "eess.SY"
+   ],
+   "url": "https://arxiv.org/abs/1803.10788v2",
+   "pdf": "https://arxiv.org/pdf/1803.10788v2",
+   "comment": "15 pages, 4 figures, 57th IEEE Conference on Decision and Control (CDC 2018), Miami Beach, FL, USA, December 17-19, 2018"
+  },
+  {
+   "id": "1802.03187v4",
+   "title": "Noise-Induced Limitations to the Scalability of Distributed Integral Control",
+   "abstract": "We study performance limitations of distributed feedback control in large-scale networked dynamical systems. Specifically, we address the question of how the performance of distributed integral control is affected by measurement noise. We consider second-order consensus-like problems modeled over a toric lattice network, and study asymptotic scalings (in network size) of H2 performance metrics that quantify the variance of nodal state fluctuations. While previous studies have shown that distributed integral control fundamentally improves these performance scalings compared to distributed proportional feedback control, our results show that an explicit inclusion of measurement noise leads to the opposite conclusion. The noise's impact on performance is shown to decrease with an increased inter-nodal alignment of the local integral states. However, even though the controller can be tuned for acceptable performance for any given network size, performance will degrade as the network grows, limiting the scalability of any such controller tuning. In particular, the requirement for inter-nodal alignment increases with network size. We show that this in practice implies that large and sparse networks will require any integral control to be centralized, rather than distributed. In this case, the best-achievable performance scaling, which is shown to be that of proportional feedback control, is retrieved.",
+   "published": "2018-02-09",
+   "updated": "2019-07-22",
+   "authors": [
+    "Emma Tegling",
+    "Henrik Sandberg"
+   ],
+   "primary_category": "math.OC",
+   "categories": [
+    "math.OC"
+   ],
+   "url": "https://arxiv.org/abs/1802.03187v4",
+   "pdf": "https://arxiv.org/pdf/1802.03187v4",
+   "comment": ""
+  },
+  {
+   "id": "2211.10879v1",
+   "title": "Bode Integral Limitation For Irrational Systems",
+   "abstract": "Bode integrals of sensitivity and sensitivity-like functions along with complementary sensitivity and complementary sensitivity-like functions are conventionally used for describing performance limitations of a feedback control system. In this paper, we investigate the Bode integral and evaluate what happens when a fractional order Proportional-Integral-Derivative (PID) controller is used in a feedback control system. We extend our analysis to when fractal PID controllers are applied to irrational systems. We split this into two cases: when the sequence of infinitely many right half plane open-loop poles doesn't have any limit points and when it does have a limit point. In both cases, we prove that the structure of the Bode Integral is similar to the classical version under certain conditions of convergence. We also provide a sufficient condition for the controller to lower the Bode sensitivity integral.",
+   "published": "2022-11-20",
+   "updated": "2022-11-20",
+   "authors": [
+    "William Chang",
+    "Fariba Ariaei",
+    "Edmond Jonckheere"
+   ],
+   "primary_category": "eess.SY",
+   "categories": [
+    "eess.SY"
+   ],
+   "url": "https://arxiv.org/abs/2211.10879v1",
+   "pdf": "https://arxiv.org/pdf/2211.10879v1",
+   "comment": "13 pages, 7 figures"
+  },
+  {
+   "id": "0107020v1",
+   "title": "Feedback Systems for Linear Colliders",
+   "abstract": "Feedback systems are essential for stable operation of a linear collider, providing a cost-effective method for relaxing tight tolerances. In the Stanford Linear Collider (SLC), feedback controls beam parameters such as trajectory, energy, and intensity throughout the accelerator. A novel dithering optimization system which adjusts final focus parameters to maximize luminosity contributed to achieving record performance in the 1997-98 run. Performance limitations of the steering feedback have been investigated, and improvements have been made. For the Next Linear Collider (NLC), extensive feedback systems are planned as an intregal part of the design. Feedback requiremetns for JLC (the Japanese Linear Collider) are essentially identical to NLC; some of the TESLA requirements are similar but there are significant differences. For NLC, algorithms which incorporate improvements upon the SLC implementation are being prototyped. Specialized systems for the damping rings, rf and interaction point will operate at high bandwidth and fast response. To correct for the motion of individual bunches within a train, both feedforward and feedback systems are planned. SLC experience has shown that feedback systems are an invaluable operational tool for decoupling systems, allowing precision tuning, and providing pulse-to-pulse diagnostics. Feedback systems for the NLC will incorporate the key SLC features and the benefits of advancing technologies.",
+   "published": "2001-07-10",
+   "updated": "2001-07-10",
+   "authors": [
+    "L. Hendrickson",
+    "P. Grossberg",
+    "T. Himel",
+    "M. Minty",
+    "N. Phinney",
+    "P. Raimondi",
+    "T. Raubenheimer",
+    "H. Shoaee",
+    "P. Tenenbaum"
+   ],
+   "primary_category": "physics.acc-ph",
+   "categories": [
+    "physics.acc-ph"
+   ],
+   "url": "https://arxiv.org/abs/0107020v1",
+   "pdf": "https://arxiv.org/pdf/0107020v1",
+   "comment": "Invited talk presented at IEEE Particle Accelerator Conference (PAC99)"
+  },
+  {
+   "id": "1103.4198v1",
+   "title": "Continuous-time performance limitations for overshoot and resulted tracking measures",
+   "abstract": "A dual formulation for the problem of determining absolute performance limitations on overshoot, undershoot, maximum amplitude and fluctuation minimization for continuous-time feedback systems is constructed. Determining, for example, the minimum possible overshoot attainable by all possible stabilizing controllers is an optimization task that cannot be expressed as a minimum-norm problem. It is this fact, coupled with the continuous-time rather than discrete-time formulation, that makes these problems challenging. We extend previous results to include more general reference functions, and derive new results (in continuous time) on the influence of pole/zero locations on achievable time-domain performance.",
+   "published": "2011-03-22",
+   "updated": "2011-03-22",
+   "authors": [
+    "rob wenczel",
+    "robin hill"
+   ],
+   "primary_category": "math.OC",
+   "categories": [
+    "math.OC",
+    "eess.SY"
+   ],
+   "url": "https://arxiv.org/abs/1103.4198v1",
+   "pdf": "https://arxiv.org/pdf/1103.4198v1",
+   "comment": ""
+  },
+  {
+   "id": "2502.09081v3",
+   "title": "Quantum Speed Limit and Quantum Thermodynamic Uncertainty Relation under Feedback Control",
+   "abstract": "Fundamental trade-off relations, such as quantum speed limit and quantum thermodynamic uncertainty relation, describe the performance limits of quantum systems by imposing that improvements in speed or precision necessitate a substantial thermodynamic cost. Quantum feedback control, which is a pivotal technique for manipulating quantum dynamics based on measurement outcomes, is widely employed to enhance system performance. Nevertheless, its impact on these fundamental bounds remains an open question. This work elucidates this influence by establishing a theoretical framework for quantum speed limit and quantum thermodynamic uncertainty relation under a paradigmatic Markovian feedback protocol. We derive general inequalities incorporating the effects of feedback control on speed and precision. Through numerical simulations on a simple two-level system and quantum error correction, a key application of quantum feedback control, we validate our derived bounds and demonstrate that feedback control can indeed improve both speed and precision beyond those achievable limits in uncontrolled systems. Next, to elucidate the mechanism behind these improvements and the qualitative difference from uncontrolled dynamics, we analyze the governing thermodynamic costs, which are the fundamental quantities that constrain speed and precision, within a simple model. Our analysis reveals that feedback can improve the time scaling order of these costs. This modification of the dynamical scaling is the origin of the qualitative performance gain, signifying that the feedback-induced improvements of performance are not merely quantitative but represent a fundamental shift. Consequently, our work offers a comprehensive understanding of how feedback control impacts the fundamental limits on the speed and precision of quantum systems, providing crucial insights for designing high-performance quantum technologies.",
+   "published": "2025-02-13",
+   "updated": "2025-09-29",
+   "authors": [
+    "Hayato Yunoki",
+    "Yoshihiko Hasegawa"
+   ],
+   "primary_category": "quant-ph",
+   "categories": [
+    "quant-ph"
+   ],
+   "url": "https://arxiv.org/abs/2502.09081v3",
+   "pdf": "https://arxiv.org/pdf/2502.09081v3",
+   "comment": "32 pages, 8 figures. New section for detailed analysis of quantum dynamical activity have been added"
+  },
+  {
+   "id": "1904.12660v1",
+   "title": "Tracking Performance Limitations of MIMO Networked Control Systems with Multiple Communication Constraints",
+   "abstract": "In this paper, the tracking performance limitation of networked control systems (NCSs) is studied. The NCSs is considered as continuous-time linear multi-input multi-output (MIMO) systems with random reference noises. The controlled plants include unstable poles and non-minimum phase (NMP) zeros. The output feedback path is affected by multiple communication constraints. We focus on some basic communication constraints, including additive white noise (AWN), quantization noise, bandwidth, as well as encoder-decoder. The system performance is evaluated with the tracking error energy, and used a two-degree of freedom (2DOF) controller. The explicit representation of the tracking performance is given in this paper. The results indicate the tracking performance limitations rely to internal characteristics of the plant (unstable poles and NMP zeros), reference noises (the reference noise power distribution (RNPD) and its directions) and the characteristics of communication constraints. Moreover, the tracking performance limitations are also affected by the angles between the each transform NMP zero direction and RNPD direction, and these angles between each transform unstable poles direction and the direction of communication constraint distribution/allocation. In addition, for MIMO NCSs, bandwidth (there are not identical two channels) always can affects the direction of unstable poles, and the channel allocation of bandwidth and encode-decode may be used for a feasible method for the performance allocation of each channels. Lastly, a instance is given for verifying the effectiveness of the theoretical outcomes.",
+   "published": "2019-04-25",
+   "updated": "2019-04-25",
+   "authors": [
+    "Chao-Yang Chen",
+    "Weihua Gui",
+    "Lianghong Wu",
+    "Zhaohua Liu",
+    "Huaicheng Yan"
+   ],
+   "primary_category": "eess.SY",
+   "categories": [
+    "eess.SY",
+    "cs.PF"
+   ],
+   "url": "https://arxiv.org/abs/1904.12660v1",
+   "pdf": "https://arxiv.org/pdf/1904.12660v1",
+   "comment": "This paper give a fundament performance limitation of networked control systems with multiple communication constraints"
+  },
+  {
+   "id": "1906.04217v2",
+   "title": "Sequential Source Coding for Stochastic Systems Subject to Finite Rate Constraints",
+   "abstract": "In this paper, we revisit the sequential source coding framework to analyze fundamental performance limitations of discrete-time stochastic control systems subject to feedback data-rate constraints in finite-time horizon. The basis of our results is a new characterization of the lower bound on the minimum total-rate achieved by sequential codes subject to a total (across time) distortion constraint and a computational algorithm that allocates optimally the rate-distortion for any fixed finite-time horizon. This characterization facilitates the derivation of analytical, non-asymptotic, and finite-dimensional lower and upper bounds in two control-related scenarios. (a) A parallel time-varying Gauss-Markov process with identically distributed spatial components that is quantized and transmitted through a noiseless channel to a minimum mean-squared error (MMSE) decoder. (b) A time-varying quantized LQG closed-loop control system, with identically distributed spatial components and with a random data-rate allocation. Our non-asymptotic lower bound on the quantized LQG control problem, reveals the absolute minimum data-rates for (mean square) stability of our time-varying plant for any fixed finite time horizon. We supplement our framework with illustrative simulation experiments.",
+   "published": "2019-06-10",
+   "updated": "2020-05-18",
+   "authors": [
+    "Photios A. Stavrou",
+    "Mikael Skoglund",
+    "Takashi Tanaka"
+   ],
+   "primary_category": "eess.SY",
+   "categories": [
+    "eess.SY",
+    "cs.IT",
+    "math.DS",
+    "math.OC"
+   ],
+   "url": "https://arxiv.org/abs/1906.04217v2",
+   "pdf": "https://arxiv.org/pdf/1906.04217v2",
+   "comment": "40 pages, 6 figures"
+  },
+  {
+   "id": "1810.00182v3",
+   "title": "Collaborative target-tracking control using multiple autonomous fixed-wing UAVs with constant speeds",
+   "abstract": "This paper considers a collaborative tracking control problem using a group of fixed-wing unmanned aerial vehicles (UAVs) with constant and non-identical speeds. The dynamics of fixed-wing UAVs are modelled by unicycle-type equations with nonholonomic constraints, assuming that UAVs fly at constant altitudes in the nominal operation mode. The controller is designed such that all fixed-wing UAVs as a group can collaboratively track a desired target's position and velocity. We first present conditions on the relative speeds of tracking UAVs and the target to ensure that the tracking objective can be achieved when UAVs are subject to constant speed constraints. We construct a reference velocity that includes both the target's velocity and position as feedback, which is to be tracked by the group centroid. In this way, all vehicles' headings are controlled such that the group centroid follows a reference trajectory that successfully tracks the target's trajectory. A spacing controller is further devised to ensure that all vehicles stay close to the group centroid trajectory. Trade-offs in the controller design and performance limitations of the target tracking control due to the constant-speed constraint are also discussed in detail. Experimental results with three fixed-wing UAVs tracking a target rotorcraft are provided.",
+   "published": "2018-09-29",
+   "updated": "2020-09-02",
+   "authors": [
+    "Zhiyong Sun",
+    "Hector Garcia de Marina",
+    "Brian D. O. Anderson",
+    "Changbin Yu"
+   ],
+   "primary_category": "eess.SY",
+   "categories": [
+    "eess.SY",
+    "cs.MA",
+    "cs.RO",
+    "math.OC"
+   ],
+   "url": "https://arxiv.org/abs/1810.00182v3",
+   "pdf": "https://arxiv.org/pdf/1810.00182v3",
+   "comment": "33 pages (single column). To be published in the AIAA Journal of Guidance, Dynamics, and Control"
+  },
+  {
+   "id": "1203.2816v1",
+   "title": "Animal-Inspired Agile Flight Using Optical Flow Sensing",
+   "abstract": "There is evidence that flying animals such as pigeons, goshawks, and bats use optical flow sensing to enable high-speed flight through forest clutter. This paper discusses the elements of a theory of controlled flight through obstacle fields in which motion control laws are based on optical flow sensing. Performance comparison is made with feedback laws that use distance and bearing measurements, and practical challenges of implementation on an actual robotic air vehicle are described. The related question of fundamental performance limits due to clutter density is addressed.",
+   "published": "2012-03-13",
+   "updated": "2012-03-13",
+   "authors": [
+    "Kenneth Sebesta",
+    "John Baillieul"
+   ],
+   "primary_category": "eess.SY",
+   "categories": [
+    "eess.SY"
+   ],
+   "url": "https://arxiv.org/abs/1203.2816v1",
+   "pdf": "https://arxiv.org/pdf/1203.2816v1",
+   "comment": "20 pages, 7 figures"
+  },
+  {
+   "id": "2205.07337v1",
+   "title": "Output-Feedback Path Planning with Robustness to State-Dependent Errors",
+   "abstract": "We consider the problem of sample-based feedback motion planning from measurements affected by systematic errors. Our previous work presented output feedback controllers that use measurements from landmarks in the environment to navigate through a cell-decomposable environment using duality, Control Lyapunov and Barrier Functions (CLF, CBF), and Linear Programming. In this paper, we build on this previous work with a novel strategy that allows the use of measurements affected by systematic errors in perceived depth (similarly to what might be generated by vision-based sensors), as opposed to accurate displacement measurements. As a result, our new method has the advantage of providing more robust performance (with quantitative guarantees) when inaccurate sensors are used. We test the proposed algorithm in the simulation to evaluate the performance limits of our approach predicted by our theoretical derivations.",
+   "published": "2022-05-15",
+   "updated": "2022-05-15",
+   "authors": [
+    "Mahroo Bahreinian",
+    "Roberto Tron"
+   ],
+   "primary_category": "cs.RO",
+   "categories": [
+    "cs.RO"
+   ],
+   "url": "https://arxiv.org/abs/2205.07337v1",
+   "pdf": "https://arxiv.org/pdf/2205.07337v1",
+   "comment": "This work has been submitted to the CDC conference 2022. arXiv admin note: text overlap with arXiv:2203.04416"
+  },
+  {
+   "id": "2503.09865v3",
+   "title": "Identification and Classification of Human Performance related Challenges during Remote Driving",
+   "abstract": "Remote driving of vehicles is gaining in importance in the transportation sector, especially when Automated Driving Systems (ADSs) reach the limits of their system boundaries. This study investigates the challenges faced by human Remote Drivers (RDs) during remote driving, particularly focusing on the identification and classification of human performance-related challenges through a comprehensive analysis of real-world remote driving data Las Vegas. For this purpose, a total of 183 RD performance-related Safety Driver (SD) interventions were analyzed and classified using an introduced severity classification. As it is essential to prevent the need for SD interventions, this study identified and analyzed harsh driving events to detect an increased likelihood of interventions by the SD. In addition, the results of the subjective RD questionnaire are used to evaluate whether the objective metrics from SD interventions and harsh driving events can also be confirmed by the RDs and whether additional challenges can be uncovered. The analysis reveals learning curves, showing a significant decrease in SD interventions as RD experience increases. Early phases of remote driving experience, especially below 200 km of experience, showed the highest frequency of safety-related events, including braking late for traffic signs and responding impatiently to other traffic participants. Over time, RDs follow defined rules for improving their control, with experience leading to less harsh braking, acceleration, and steering maneuvers. The study contributes to understanding the requirements of RDS, emphasizing the importance of targeted training to address human performance limitations. It further highlights the need for system improvements to address challenges like latency and the limited haptic feedback replaced by visual feedback, which affect the RDs' perception and vehicle control.",
+   "published": "2025-03-12",
+   "updated": "2025-03-26",
+   "authors": [
+    "Ole Hans",
+    "Jürgen Adamy"
+   ],
+   "primary_category": "eess.SY",
+   "categories": [
+    "eess.SY"
+   ],
+   "url": "https://arxiv.org/abs/2503.09865v3",
+   "pdf": "https://arxiv.org/pdf/2503.09865v3",
+   "comment": "This work has been submitted to the IEEE for possible publication"
+  },
+  {
+   "id": "2201.00995v3",
+   "title": "An Information-Theoretic Analysis of Continuous-Time Control and Filtering Limitations by the I-MMSE Relationships",
+   "abstract": "While information theory has been introduced to characterize the fundamental limitations of control and filtering for a few decades, the existing information-theoretic methods are indirect and cumbersome for analyzing the limitations of continuous-time systems. To answer this challenge, we lift the information-theoretic analysis to continuous function spaces by the I-MMSE relationships. Continuous-time control and filtering systems are modeled into the additive Gaussian channels with and without feedback, and the total information rate is identified as a control and filtering trade-off metric and calculated from the estimation error of channel inputs. Fundamental constraints for this trade-off metric are first derived in a general setup and then used to capture the limitations of various control and filtering systems subject to linear and nonlinear plant models. For linear scenarios, we show that the total information rate quantifies the performance limits, such as the minimum entropy cost and the lowest achievable mean-square estimation error, in the time domain. For nonlinear systems, we provide a direct method to calculate and interpret the total information rate and its lower bound by the Stratonovich-Kushner equation.",
+   "published": "2022-01-04",
+   "updated": "2026-02-01",
+   "authors": [
+    "Neng Wan",
+    "Dapeng Li",
+    "Naira Hovakimyan"
+   ],
+   "primary_category": "cs.IT",
+   "categories": [
+    "cs.IT",
+    "eess.SY",
+    "math.OC",
+    "math.PR"
+   ],
+   "url": "https://arxiv.org/abs/2201.00995v3",
+   "pdf": "https://arxiv.org/pdf/2201.00995v3",
+   "comment": "This paper is the extended version of an article with the same title accepted for publication in Automatica. Dapeng Li and Neng Wan contributed equally to this work"
+  },
+  {
+   "id": "1402.5468v1",
+   "title": "Uncertainty Principle in Control Theory, Part I: Analysis of Performance Limitations",
+   "abstract": "This paper investigates performance limitations and tradeoffs in the control design for linear time-invariant systems. It is shown that control specifications in time domain and in frequency domain are always mutually exclusive determined by uncertainty relations. The uncertainty principle from quantum mechanics and harmonic analysis therefore embeds itself inherently in control theory. The relations among transient specifications, system bandwidth and control energy are obtained within the framework of uncertainty principle. If the control system is provided with a large bandwidth or great control energy, then it can ensure transient specifications as good as it can be. Such a control system could be approximated by prolate spheroidal wave functions. The obtained results are also applicable to filter design due to the duality of filtering and control.",
+   "published": "2014-02-22",
+   "updated": "2014-02-22",
+   "authors": [
+    "Ji King"
+   ],
+   "primary_category": "eess.SY",
+   "categories": [
+    "eess.SY"
+   ],
+   "url": "https://arxiv.org/abs/1402.5468v1",
+   "pdf": "https://arxiv.org/pdf/1402.5468v1",
+   "comment": "20 pages, 6 figures"
+  },
+  {
+   "id": "2605.09699v2",
+   "title": "A Real-Calibrated Synthetic-First Data Engine",
+   "abstract": "Modern computer vision systems increasingly encounter performance limitations in data-scarce domains, where collecting large-scale, high-quality labeled data is costly or impractical. While controllable diffusion models enable scalable synthetic image generation, directly applying synthetic augmentation often leads to unstable performance gains due to dataset-level quality issues and insufficient feedback mechanisms. In this work, we present a Real-Calibrated Synthetic-First Data Engine, a modular data engineering framework that combines controllable diffusion generation and multi-stage curation/filtering within a unified pipeline, with optional support for uncertainty-driven selection and human verification. Instead of introducing new generative algorithms, our approach focuses on systematic dataset construction for improving the practical reliability of synthetic augmentation in low-data regimes. The framework is implemented as a modular CLI-based pipeline, where generation, filtering, selection, and validation components can be independently configured and replaced. This design emphasizes reproducibility, flexibility, and practical deployment in real-world data workflows. Through empirical evaluation centered on human pose estimation, we show that synthetic data improves a real-data baseline when used as near-zero-human-annotation-cost augmentation alongside real anchors, while synthetic-only training remains substantially below real-only performance. Supplementary segmentation diagnostics show the same domain-gap pattern. These results highlight the practical value of data-centric orchestration for low-data augmentation.",
+   "published": "2026-05-10",
+   "updated": "2026-09-03",
+   "authors": [
+    "Yukang Shen",
+    "Zhiguo Liu",
+    "Yingshu Li",
+    "Yan Huang"
+   ],
+   "primary_category": "eess.IV",
+   "categories": [
+    "eess.IV",
+    "cs.CV",
+    "cs.GR",
+    "cs.LG"
+   ],
+   "url": "https://arxiv.org/abs/2605.09699v2",
+   "pdf": "https://arxiv.org/pdf/2605.09699v2",
+   "comment": "16 pages, 5 figures"
+  },
+  {
+   "id": "1803.02182v2",
+   "title": "Input-Output Performance of Linear-Quadratic Saddle-Point Algorithms with Application to Distributed Resource Allocation Problems",
+   "abstract": "Saddle-point or primal-dual methods have recently attracted renewed interest as a systematic technique to design distributed algorithms which solve convex optimization problems. When implemented online for streaming data or as dynamic feedback controllers, these algorithms become subject to disturbances and noise; convergence rates provide incomplete performance information, and quantifying input-output performance becomes more important. We analyze the input-output performance of the continuous-time saddle-point method applied to linearly constrained quadratic programs, providing explicit expressions for the saddle-point H2 norm under a relevant input-output configuration. We then proceed to derive analogous results for regularized and augmented versions of the saddle-point algorithm. We observe some rather peculiar effects -- a modest amount of regularization significantly improves the transient performance, while augmentation does not necessarily offer improvement. We then propose a distributed dual version of the algorithm which overcomes some of the performance limitations imposed by augmentation. Finally, we apply our results to a resource allocation problem to compare the input-output performance of various centralized and distributed saddle-point implementations and show that distributed algorithms may perform as well as their centralized counterparts.",
+   "published": "2018-03-06",
+   "updated": "2018-11-07",
+   "authors": [
+    "John W. Simpson-Porco",
+    "Bala Kameshwar Poolla",
+    "Nima Monshizadeh",
+    "Florian Dorfler"
+   ],
+   "primary_category": "math.OC",
+   "categories": [
+    "math.OC"
+   ],
+   "url": "https://arxiv.org/abs/1803.02182v2",
+   "pdf": "https://arxiv.org/pdf/1803.02182v2",
+   "comment": ""
+  },
+  {
+   "id": "1904.01629v1",
+   "title": "Challenges in the Deployment of Visuo-Haptic Virtual Environments on the Internet",
+   "abstract": "Haptic sensory feedback has been shown to complement the visual and auditory senses, improve user performance and provide a greater sense of togetherness in collaborative and interactive virtual environments. However, we are faced with numerous challenges when deploying these systems over the present day Internet. The most significant of these challenges are the network performance limitations of the Wide Area Networks. In this paper, we offer a structured examination of the current challenges in the deployment of haptic-based distributed systems by analyzing the recent advances in the understanding of these challenges and the progress that has been made to overcome them.",
+   "published": "2019-03-08",
+   "updated": "2019-03-08",
+   "authors": [
+    "Jonathan Norman",
+    "Felix G. Hamza-Lup"
+   ],
+   "primary_category": "cs.HC",
+   "categories": [
+    "cs.HC",
+    "cs.NI"
+   ],
+   "url": "https://arxiv.org/abs/1904.01629v1",
+   "pdf": "https://arxiv.org/pdf/1904.01629v1",
+   "comment": ""
+  },
+  {
+   "id": "0711.4294v1",
+   "title": "Quantum dot cascade laser: Arguments in favor",
+   "abstract": "Quantum cascade lasers are recognized as propitious candidates for future terahertz optoelectronics. Here we demonstrate several definite advantages of quantum dot cascade structures over quantum well devices, which suffer fundamental performance limitations owing to continuous carrier spectrum. The discrete spectrum of quantum dots opens an opportunity to control the non-radiative relaxation and optical loss and also provides for more flexibility in the choice of an optical and electrical design of the laser.",
+   "published": "2007-11-27",
+   "updated": "2007-11-27",
+   "authors": [
+    "I. A. Dmitriev",
+    "R. A. Suris"
+   ],
+   "primary_category": "cond-mat.other",
+   "categories": [
+    "cond-mat.other"
+   ],
+   "url": "https://arxiv.org/abs/0711.4294v1",
+   "pdf": "https://arxiv.org/pdf/0711.4294v1",
+   "comment": "4 pages, 2 figures; Proceedings of MSS13 to be published in Physica E"
+  },
+  {
+   "id": "1703.03691v2",
+   "title": "On the Coherence of Large-Scale Networks with Distributed PI and PD Control",
+   "abstract": "We consider distributed control of double-integrator networks, where agents are subject to stochastic disturbances. We study performance of such networks in terms of coherence, defined through an H2 norm metric that represents the variance of nodal state fluctuations. Specifically, we address known performance limitations of the standard consensus protocol, which cause this variance to scale unboundedly with network size for a large class of networks. We propose distributed proportional integral (PI) and proportional derivative (PD) controllers that relax these limitations and achieve bounded variance, in cases where agents can access an absolute measurement of one of their states. This case applies to, for example, frequency control of power networks and vehicular formation control with limited sensing. We discuss optimal tuning of the controllers with respect to network coherence and demonstrate our results in simulations.",
+   "published": "2017-03-10",
+   "updated": "2017-05-17",
+   "authors": [
+    "Emma Tegling",
+    "Henrik Sandberg"
+   ],
+   "primary_category": "math.OC",
+   "categories": [
+    "math.OC"
+   ],
+   "url": "https://arxiv.org/abs/1703.03691v2",
+   "pdf": "https://arxiv.org/pdf/1703.03691v2",
+   "comment": "Submitted to IEEE Control Systems Letters"
+  },
+  {
+   "id": "1907.02045v1",
+   "title": "Generalized Proportional Allocation Policies for Robust Control of Dynamical Flow Networks",
+   "abstract": "We study a robust control problem for dynamical flow networks. In the considered dynamical models, traffic flows along the links of a transportation network --modeled as a capacited multigraph-- and queues up at the nodes, whereby control policies determine which incoming queues at a node are to be allocated service simultaneously, within some predetermined scheduling constraints. We first prove a fundamental performance limitation by showing that for a dynamical flow network to be stabilizable by some control policy it is necessary that the exogenous inflows belong to a certain stability region, that is determined by the network topology, link capacities, and scheduling constraints. Then, we introduce a family of distributed controls, referred to as Generalized Proportional Allocation (GPA) policies, and prove that they stabilize a dynamical transportation network whenever the exogenous inflows belong to such stability region. The proposed GPA control policies are decentralized and fully scalable as they rely on local feedback information only. Differently from previously studied maximally stabilizing control strategies, the GPA control policies do not require any global information about the network topology, the exogenous inflows, or the routing, which makes them robust to demand variations and unpredicted changes in the link capacities or the routing decisions. Moreover, the proposed GPA control policies also take into account the overhead time while switching between services. Our theoretical results find one application in the control of urban traffic networks with signalized intersections, where vehicles have to queue up at junctions and the traffic signal controls determine the green light allocation to the different incoming lanes.",
+   "published": "2019-07-03",
+   "updated": "2019-07-03",
+   "authors": [
+    "Gustav Nilsson",
+    "Giacomo Como"
+   ],
+   "primary_category": "eess.SY",
+   "categories": [
+    "eess.SY"
+   ],
+   "url": "https://arxiv.org/abs/1907.02045v1",
+   "pdf": "https://arxiv.org/pdf/1907.02045v1",
+   "comment": ""
+  }
+ ]
+}

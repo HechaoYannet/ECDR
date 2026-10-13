@@ -1,5 +1,10 @@
 # Finding 037 - The minimum-units bound is refuted before it was used
 
+**SUPERSEDED BY FINDING 044.** The refutation is redone on a corrected model: the fewest units
+attaining Q_H_min is **3**, not 2, against N - 1 = 4. The conclusion holds - and the argument is
+now clean, since a connected graph on 5 nodes needs 4 edges, so any 3-unit design is
+disconnected. The witness used below (2 units) was fictitious. Read 044.
+
 **INVALIDATED BY FINDING 043.** The networks this finding used to refute U >= N - 1 attained
 the optimum only because network_lp let pool heat reach a cold stream that no unit touched.
 With that barred, the 2-unit network needs 150 kW where the LP reported 142.5, so it is not a

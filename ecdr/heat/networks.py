@@ -1,39 +1,37 @@
-"""Heat-exchanger NETWORKS, and the stream-specific transshipment LP that scores them.
+"""Heat-exchanger NETWORKS, and the level-to-level transshipment LP that scores them.
 
-The problem-table cascade of streams.py works on AGGREGATE heat flows: it never asks which
-hot stream gives heat to which cold stream.  That is what makes it a bound over all networks
-at once, and it is also why it cannot by itself demonstrate that the bound is ACHIEVABLE.
+A NETWORK here is a set of allowed (hot, cold) matches. Scoring one means asking: given only
+these matches, what is the least hot utility any network can need?
 
-This module works at the level of a NETWORK: a set of allowed (hot, cold) matches.
+WHY HEAT IS CARRIED BY MATCHED PAIRS, NOT BY A FREE POOL
+-------------------------------------------------------
+Finding 043 recorded a model that carried unmatched heat down through pool variables
+RC[j, k] which were NOT constrained by the match set, so heat could reach a cold stream no
+unit touched. An LLM agent caught it: it was offered a two-unit network as a counterexample,
+pointed out that neither unit touches a particular cold stream, computed that stream's duty by
+hand, and produced the correct floor where my model produced a number 7.5 kW lower.
 
-WHY THERE ARE RESIDUAL VARIABLES
---------------------------------
-Finding 035 recorded a model that omitted them and was 35 to 53 percent too high.  The reason
-is physical.  With a minimum approach temperature, a hot stream at shifted level k can give
-heat to a cold stream at level k OR ANY LOWER LEVEL - that is what it means for a hot stream
-cooling from 200 to 100 to heat a cold stream from 50 to 150.  A model that forces every
-interval to balance on its own forbids exactly that, and overstates the utility needed.
+The physics is that heat released by hot stream i at shifted level k can be absorbed by cold
+stream j at shifted level k' whenever
 
-So heat not matched within an interval is CARRIED DOWN:
+    (i, j) is a match   and   k <= k'          (k is hotter; levels run hottest first)
 
-    Q_ik   hot stream i's duty in interval k
-    x_ijk  heat from hot i to cold j, matched inside interval k
-    RH_ik  heat from hot i in interval k carried down to k+1
-    RC_jk  heat delivered to cold j in interval k from the carried pool
-    qH_jk  hot utility into cold j at level k
-    qC_ik  cold utility out of hot i at level k
+because shifted temperatures already carry the half-pinch shift, so k <= k' is exactly
+T_hot - T_cold >= dt_min. Transfer is therefore indexed by the PAIR of levels, not by one
+level and an anonymous pool.
 
-    (hot)  sum_j x_ijk + qC_ik + RH_ik = Q_ik
-    (cold) sum_i x_ijk + RC_jk + qH_jk = Q_jk
-    (pool) sum_i RH_ik = sum_j RC_j,k+1        nothing carried out of the last interval
+    QH[i,k]   hot i's duty in interval k
+    QC[j,k']  cold j's need in interval k'
+    x[i,j,k,k']  heat from hot i at level k to cold j at level k'
+    qC[i,k]   cold utility taken from hot i at level k
+    qH[j,k']  hot utility given to cold j at level k'
+
+    (hot)  sum_{j, k' >= k} x[i,j,k,k'] + qC[i,k] = QH[i,k]
+    (cold) sum_{i, k <= k'} x[i,j,k,k'] + qH[j,k'] = QC[j,k']
     minimise sum qH
 
-Summing the first two over i and j and subtracting recovers the aggregate balance
-
-    R_{k-1} + H_k + qH_k = R_k + C_k + qC_k
-
-so with every match allowed this must reproduce the problem table, and restricting the
-matches can only make it worse.  That is the property the certificate needs.
+With every match allowed this reduces to the transshipment relaxation and must reproduce the
+problem table; restricting the matches can only raise the answer.
 """
 from __future__ import annotations
 
@@ -57,10 +55,9 @@ def _present(streams, dt_min, k, ivs):
 
 
 def network_lp(streams, dt_min: float, allowed=None):
-    """Minimum hot utility when only the pairs in the allowed set may exchange heat.
+    """Least hot utility achievable using only the matches in the allowed set.
 
-    allowed of None permits every compatible (hot, cold) pair, which must reproduce the
-    unconstrained minimum of problem_table.
+    allowed of None permits every compatible (hot, cold) pair.
     """
     ivs = _intervals(streams, dt_min)
     K = len(ivs)
@@ -68,74 +65,61 @@ def network_lp(streams, dt_min: float, allowed=None):
     cs = [j for j, s in enumerate(streams) if not s.hot]
     if allowed is None:
         allowed = set(itertools.product(hs, cs))
+    allowed = set(allowed)
     pres = {k: _present(streams, dt_min, k, ivs) for k in range(K)}
+    dT = [ivs[k][0] - ivs[k][1] for k in range(K)]
 
-    col = {}
-    n = 0
+    col, n = {}, 0
 
     def add(key):
         nonlocal n
         col[key] = n
         n += 1
 
+    for (i, j) in sorted(allowed):
+        for k in range(K):
+            if i not in pres[k]:
+                continue
+            for kp in range(k, K):
+                if j in pres[kp]:
+                    add(("x", i, j, k, kp))
     for k in range(K):
-        for (i, j) in sorted(allowed):
-            if i in pres[k] and j in pres[k]:
-                add(("x", i, j, k))
         for i in hs:
             if i in pres[k]:
                 add(("qC", i, k))
-                if k < K - 1:
-                    add(("RH", i, k))
         for j in cs:
             if j in pres[k]:
                 add(("qH", j, k))
-                if k > 0:
-                    add(("RC", j, k))
 
     A_eq, b_eq = [], []
-    for k in range(K):
-        top, bot = ivs[k]
-        dt = top - bot
-        for i in hs:
+    for i in hs:
+        for k in range(K):
             if i not in pres[k]:
                 continue
             row = np.zeros(n)
-            for (a, b) in sorted(allowed):
-                if a == i and ("x", a, b, k) in col:
-                    row[col[("x", a, b, k)]] = 1.0
+            for j in cs:
+                if (i, j) not in allowed:
+                    continue
+                for kp in range(k, K):
+                    if ("x", i, j, k, kp) in col:
+                        row[col[("x", i, j, k, kp)]] = 1.0
             row[col[("qC", i, k)]] = 1.0
-            if ("RH", i, k) in col:
-                row[col[("RH", i, k)]] = 1.0
             A_eq.append(row)
-            b_eq.append(streams[i].cp * dt)
-        for j in cs:
-            if j not in pres[k]:
+            b_eq.append(streams[i].cp * dT[k])
+    for j in cs:
+        for kp in range(K):
+            if j not in pres[kp]:
                 continue
             row = np.zeros(n)
-            for (a, b) in sorted(allowed):
-                if b == j and ("x", a, b, k) in col:
-                    row[col[("x", a, b, k)]] = 1.0
-            row[col[("qH", j, k)]] = 1.0
-            if ("RC", j, k) in col:
-                row[col[("RC", j, k)]] = 1.0
+            for i in hs:
+                if (i, j) not in allowed:
+                    continue
+                for k in range(0, kp + 1):
+                    if ("x", i, j, k, kp) in col:
+                        row[col[("x", i, j, k, kp)]] = 1.0
+            row[col[("qH", j, kp)]] = 1.0
             A_eq.append(row)
-            b_eq.append(streams[j].cp * dt)
-    # pool balance: what leaves interval k downward equals what interval k+1 receives
-    for k in range(K - 1):
-        row = np.zeros(n)
-        any_term = False
-        for i in hs:
-            if ("RH", i, k) in col:
-                row[col[("RH", i, k)]] += 1.0
-                any_term = True
-        for j in cs:
-            if ("RC", j, k + 1) in col:
-                row[col[("RC", j, k + 1)]] -= 1.0
-                any_term = True
-        if any_term:
-            A_eq.append(row)
-            b_eq.append(0.0)
+            b_eq.append(streams[j].cp * dT[kp])
 
     c = np.zeros(n)
     for key, idx in col.items():

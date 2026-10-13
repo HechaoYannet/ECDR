@@ -12,3 +12,4 @@
 - name: './src/derive.ts'
 - name: './src/audit.ts'
 - name: './src/selfaudit.ts'
+- name: './src/unitsbound.ts'

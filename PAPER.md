@@ -638,38 +638,67 @@ $$\underbrace{\text{常数覆盖率} \Rightarrow g(N)\to\infty}_{\text{库定律
 
 ## 参考文献
 
-**按项目的纪律，本节区分「工具依赖」与「思想来源」，并标注哪些引用不构成论证依据。**
+**按项目的纪律，本节分三类：工具依赖、真正作为技术依据、以及已降级不得立论者。** 第三类必须显式列出，否则读者会以为它们承担了论证责任。
 
-### 工具依赖（进入结论的可复现性链条）
+**语料位置**：docs/literature/（39 文件 / 2086 KiB）——arxiv/ 下 24 份检索结果 JSON、fulltext/ 下 13 份全文，去重后 **10 篇唯一论文**。**仓库根的 reference/ 与本节的文献无关**：它装的是三个上游代码克隆（见附录 D）。
 
-1. **Cordis** — Shi, Yifan; Zhang, Wei; Cui, Tianyi. *A Programming Paradigm for Spatiotemporal Composability.* arXiv:2608.25512, cs.PL, 2026. 参考实现 cordis@4.0.0-rc.10（MIT）。
+### 甲类 · 工具依赖（声明版本，不构成引用权威）
 
-   本项目对它的三个概念各有一处**具体落点**，而非泛泛引用：
+| 工具 | 版本 | 用在哪 |
+|---|---|---|
+| **Cordis**（软件） | cordis@4.0.0-rc.10（MIT），锁定无脱字符 | orchestrator/src 全部 13 个模块；ctx.effect() 全仓唯一一处（certificates.ts:59）；11 处 export const inject；cordis.yml 的 13 个插件条目 |
+| **Cordis**（论文） | arXiv:2608.25512，Shi / Zhang / Cui，2026，cs.PL。BibTeX key shi2026cordis | 三个概念各有一处落点，见下 |
+| **OpenModelica** | 1.27.1（镜像 openmodelica/openmodelica:v1.27.1-minimal） | L2 的仿真与线性化内核 |
+| **Modelica Standard Library** | 4.1.0+maint.om（exactMatch 为真） | L2 的元件库；**这是本文唯一的「建模独立」验证** |
+| **DeepSeek API** | deepseek-flash / deepseek-v4-pro | §9 的 LLM 实验 |
+| **BOCoDe** | arXiv:2608.15073 | **仅仿制**其 evaluate(x) 到 (obj, cons) 的评价接口（ecdr/bench/problem.py:3,53） |
+| **OEIS A001187** | — | 连通标号图数 c(n)，定义设计空间的规模轴 |
 
-   - **revertible effects**（时间可组合性）→ 证书的安装与撤销。全仓唯一一处 ctx.effect() 在 orchestrator/src/certificates.ts:59。**这是「可撤销」从一个文档约定变成运行时性质的地方。**
-   - **reactive coeffects**（空间可组合性）→ 11 处 export const inject，对应证书的适用域标签。
-   - **declarative component loader** → orchestrator/cordis.yml 的 13 个插件条目。
+**Cordis 的三处落点**（不是泛泛引用，每处都可指认）：
 
-   **注意**：reference/paper/ 只有 2725 字节的摘要页，**没有全文**。本文对 Cordis 的任何表述都只能追溯到该摘要，不能追溯到正文。
+- **revertible effects**（时间可组合性）→ 证书的安装与撤销，落在 certificates.ts:59 的 ctx.effect()。**这是「可撤销」从文档约定变成运行时性质的地方。**
+- **reactive coeffects**（空间可组合性）→ 11 处 export const inject，对应证书的适用域标签。
+- **declarative component loader** → cordis.yml 的 13 个插件条目。
 
-2. **OpenModelica 1.27.1**（Docker 镜像 openmodelica/openmodelica:v1.27.1-minimal）与 **Modelica Standard Library 4.1.0+maint.om**。
+**两条必须说清楚的**：orchestrator 依赖的是 **npm registry 上的 4.0.0-rc.10**，不是仓库里的 reference/cordis（那只是版本号逐字相同的阅读副本）；而 reference/paper/ **只有 2725 字节的摘要页，没有正文**——本文对 2608.25512 的任何表述都只能追溯到该摘要。
 
-   **这是本文唯一的「建模独立」验证**：L2 的方程不是作者写的，而是 MSL 元件由工具装配的。版本被显式 pin 在两处源码与一处 mos 脚本注释里。
+### 乙类 · 真正作为技术依据（9 项）
 
-3. **OEIS A001187** — 连通标号图的数目 c(n)。**设计空间的规模轴** N(n) = c(n)(2^n - 1) 由它定义。该表在仓库中只列到 n = 10。
+| 文献 | 用在哪 | 做了什么 |
+|---|---|---|
+| **CORE** arXiv:2609.39069 | 发现 003 的 P1 至 P9 九条证据纪律 | 三值验证器、可靠的冲突核、穷尽核 |
+| **2502.00271** | 发现 003 | 打分型剪枝的经验禁令：样本量 4 处交叉、77.1 至 88.6% 是**选择**失败 |
+| **Heuresis** arXiv:2606.25198 | 发现 003 与问题 Q1 | 命名机制与执行归因的分离；Q1 的否定结果 |
+| **AlphaEvolve** arXiv:2506.13131 | §7.2 的保真度阶梯 | 评价级联，是 L0 / L1 / L2 的来源 |
+| **2608.28639** | 发现 003 | 三级审计协议；pin-and-hash |
+| **2605.19717** | 发现 007 | 消融的形状 |
+| **2608.21976** | 竞争边界 | 拟合型代理证书，n = 1 |
+| **2502.05870** | 设计固着 | design fixation 的测量仪器 |
+| **BOCoDe** arXiv:2608.15073 | 定位 | 统计排名协议；**它没有 mechanism 轴，这正是本项目的切口** |
 
-### 接口仿制（不构成方法来源）
+### 丙类 · 已降级，**不得作为立论依据**
 
-4. **BOCoDe** — arXiv:2608.15073。仅仿制其 evaluate(x) -> (obj, cons) 评价接口（ecdr/bench/problem.py:3,53）。
+早期版本曾用 2502.00271 / CORE / Heuresis 的**结论**来支撑本方法。**这一用法已被明确撤回**（docs/CONSENSUS.md:277 的撤回表第 5 条；共识 13 至 15 见同文 :255、:257、:259）。
 
-### 已识别的相邻工作，**未核实**
+撤回的理由是三条：
 
-5. **EngiAI** — arXiv:2605.19743。其 capability 指 agent 能力，与本文的「结构能力」术语撞车；**只读了摘要页，边界未细读**。
-6. **VeriLoop E2** — 抓取失败，**未读到原文**。
+1. 这些文献里**给出测试的解空间往往相对小，因而启发式存在优势**，不能直接用来支撑一个主张「证明在大空间占优」的方法；
+2. 老旧文献有时代局限；
+3. 因此论证路线改为**从结构上论证**——启发式必须采样、代价随维度增长、结论可错；证书不需采样、可独立复核。
 
-**第 5、6 条在本文中不承担任何论证责任。** 按项目的纪律「不从引用权威立论」，本文的论证路线是**结构性的**：启发式必须采样、代价随维度增长、结论可错；证书不需采样、可独立复核。这一论证不依赖任何被引文献的结论。
+**本文的四条命题不依赖任何被引文献的结论。** 乙类的用途是**工具与先例**（某个接口、某条纪律、某个级联形状），不是**权威**。
 
----
+### 缺失原文、必须补全或删除的引用
+
+| 项 | 状态 |
+|---|---|
+| **SimulCost**（ICML 2026） | 只有名字，无语料、无 arXiv 号，**却承载「平台无关成本对齐」这一实质要求**——必须补原文或删除该要求 |
+| **EngiAI** arXiv:2605.19743 | 只读了摘要页；其 capability 指 agent 能力，与本文「结构能力」术语撞车，边界未细读 |
+| **VeriLoop E2** | 抓取失败，未读到原文 |
+| **Physics-in-the-Loop**（IJCAI 2026） | 与 2605.19717 是否同一工作未说明 |
+| **2608.25512 正文** | 未获取；只能追溯到摘要页 |
+
+**前四项在本文中不承担任何论证责任。** 列出它们是为了让读者知道缺口在哪。
 
 ## 附录 D：本次收网中核实的清点事实
 

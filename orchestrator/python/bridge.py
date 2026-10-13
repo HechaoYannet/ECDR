@@ -39,6 +39,32 @@ def handle(req):
             return {"ok": False, "error": res.get("message", "lp failed")}
         return {"ok": True, "Q_H": res["Q_H"], "n_pairs": res["n_pairs"],
                 "n_vars": res["n_vars"]}
+    if op == "unit_check":
+        # Claim: "no network using fewer than VALUE units can achieve hot utility <= Q*".
+        # The checker enumerates EVERY match set. Sound iff no network with fewer than VALUE
+        # units reaches Q*. A counterexample is returned when one exists, and it is a
+        # concrete network, not a verdict - the agent has to work out what to do with it.
+        sts = _streams(req["streams"])
+        dt = float(req["dt_min"])
+        qstar = float(req["requirement"])
+        value = float(req["value"])
+        best = None
+        qualifying_min_units = None
+        for ms in all_match_sets(sts):
+            r = network_lp(sts, dt, allowed=ms)
+            if not r["ok"]:
+                continue
+            n_units = len(ms)
+            if r["Q_H"] <= qstar + 1e-9:
+                if qualifying_min_units is None or n_units < qualifying_min_units:
+                    qualifying_min_units = n_units
+                if n_units < value - 1e-12:
+                    if best is None or n_units < len(best["matches"]):
+                        best = {"matches": sorted([list(m) for m in ms]),
+                                "units": n_units, "Q_H": r["Q_H"]}
+        return {"ok": True, "sound": best is None,
+                "counterexample": best,
+                "min_units_attaining": qualifying_min_units}
     if op == "enumerate":
         sts = _streams(req["streams"])
         dt = float(req["dt_min"])

@@ -9,3 +9,4 @@
 - name: './src/loop.ts'
 - name: './src/run.ts'
 - name: './src/random.ts'
+- name: './src/derive.ts'

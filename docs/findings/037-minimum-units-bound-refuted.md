@@ -1,5 +1,11 @@
 # Finding 037 - The minimum-units bound is refuted before it was used
 
+**INVALIDATED BY FINDING 043.** The networks this finding used to refute U >= N - 1 attained
+the optimum only because network_lp let pool heat reach a cold stream that no unit touched.
+With that barred, the 2-unit network needs 150 kW where the LP reported 142.5, so it is not a
+counterexample and the bound has NOT been refuted. The text below is kept as the record of the
+error; the question is open again.
+
 Status: the candidate second certificate for the heat-exchanger domain is **not sound**. It was
 refuted by exhaustive enumeration in all three cases, in the same round it was proposed.
 Reproduce: scripts/step67_heat_min_units.py.  Data: runs/heat_min_units.json

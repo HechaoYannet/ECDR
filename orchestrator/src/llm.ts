@@ -60,6 +60,14 @@ export class EmptyCompletionError extends Error {
   }
 }
 
+export interface LLMResult {
+  content: string
+  /** the model's chain of thought; empty when thinking is disabled */
+  reasoning: string
+  completionTokens: number
+  reasoningTokens: number
+}
+
 export class LLMService extends Service {
   private readonly apiKey: string
   // Declared and assigned explicitly: Node's type-stripping runs in strip-only mode and
@@ -76,13 +84,26 @@ export class LLMService extends Service {
 
   /** One completion. Throws EmptyCompletionError rather than returning an empty string. */
   async complete(system: string, user: string): Promise<string> {
+    return (await this.completeFull(system, user)).content
+  }
+
+  /**
+   * The same call, returning the reasoning as well.
+   *
+   * Finding 042 recorded that reasoning_content was not captured, so HOW the model reached an
+   * answer was unknown. When the question is whether it DERIVED something rather than
+   * recalled it, the path is part of the evidence, and capturing it costs nothing extra.
+   */
+  async completeFull(system: string, user: string,
+                     messages?: Array<Record<string, unknown>>): Promise<LLMResult> {
     const res = await fetch((this.config.baseUrl ?? 'https://api.deepseek.com')
       + '/chat/completions', {
       method: 'POST',
       headers: { Authorization: 'Bearer ' + this.apiKey, 'Content-Type': 'application/json' },
       body: JSON.stringify({
         model: this.config.model ?? 'deepseek-flash',
-        messages: [{ role: 'system', content: system }, { role: 'user', content: user }],
+        messages: messages ?? [{ role: 'system', content: system },
+                              { role: 'user', content: user }],
         // max_tokens is passed ONLY when configured. The API docs' own examples omit it, and
         // the default is the model's full output allowance. Capping it truncates the
         // reasoning and yields finish_reason "length" with EMPTY content - which is a
@@ -101,7 +122,12 @@ export class LLMService extends Service {
         (choice?.message?.reasoning_content ?? '').length,
         body.usage?.completion_tokens ?? 0)
     }
-    return content
+    return {
+      content,
+      reasoning: choice?.message?.reasoning_content ?? '',
+      completionTokens: body.usage?.completion_tokens ?? 0,
+      reasoningTokens: body.usage?.completion_tokens_details?.reasoning_tokens ?? 0,
+    }
   }
 }
 

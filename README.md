@@ -49,7 +49,9 @@
       ROADMAP.md     研究纲领（含里程碑与证伪条件）
       STATE.md       诚实清单：已证 / 已测 / 失败 / 不主张
       CONSENSUS.md   早期共识报告（发现 001 至 008 时期）
-      findings/      62 份发现文档
+      findings/      63 份发现文档
+      literature/    文献语料：24 份检索结果 + 10 篇唯一全文
+      _inventory_*.md  收网清点：代码库 / 脚本与产物 / 发现 / 外部材料
     orchestrator/    Cordis 编排器（TypeScript）+ Python 物理桥
     PAPER.md         论文
 

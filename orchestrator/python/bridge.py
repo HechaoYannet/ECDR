@@ -39,6 +39,26 @@ def handle(req):
             return {"ok": False, "error": res.get("message", "lp failed")}
         return {"ok": True, "Q_H": res["Q_H"], "n_pairs": res["n_pairs"],
                 "n_vars": res["n_vars"]}
+    if op == "search_units":
+        # What networks exist below a unit budget that meet the requirement? The agent asks
+        # for this; nothing here tells it what the answer means.
+        sts = _streams(req["streams"])
+        dt = float(req["dt_min"])
+        qstar = float(req["requirement"])
+        limit = int(req["max_units"])
+        found = []
+        for ms in all_match_sets(sts):
+            n_units = len(ms)
+            if n_units > limit:
+                continue
+            r = network_lp(sts, dt, allowed=ms)
+            if r["ok"] and r["Q_H"] <= qstar + 1e-9:
+                found.append({"units": n_units,
+                              "matches": sorted([list(m) for m in ms]),
+                              "Q_H": r["Q_H"]})
+        found.sort(key=lambda z: z["units"])
+        return {"ok": True, "networks": found, "count": len(found),
+                "max_units_searched": limit}
     if op == "unit_check":
         # Claim: "no network using fewer than VALUE units can achieve hot utility <= Q*".
         # The checker enumerates EVERY match set. Sound iff no network with fewer than VALUE

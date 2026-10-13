@@ -11,3 +11,4 @@
 - name: './src/random.ts'
 - name: './src/derive.ts'
 - name: './src/audit.ts'
+- name: './src/selfaudit.ts'

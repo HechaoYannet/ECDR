@@ -495,7 +495,7 @@ Design constraints:
 | M2 | a structure representation with a genuine size knob, emittable to Modelica | the space cannot grow combinatorially, or cannot be emitted |
 | M3 | the crossing at L0, measured, with the exponent | no crossing in reach, or the measured exponent contradicts section 5 |
 | M4 | the crossing reproduced at L1 and L2 with OpenModelica | it moves out of reach, or Modelica cannot express S |
-| M5 | the certificate names an invariant, and acting on that name constructs a working structure | the named invariant does not determine a useful repair |
+| M5 | the certificate names an invariant, and acting on that name constructs a working structure | the named invariant does not determine a useful repair - **ANSWERED IN THE NEGATIVE OF THE FALSIFIER, Finding 059**: the certificate named a cross-pinch exchanger, H1-C1 transfers 10 kW across the pinch in the 5-unit optimum, and acting on the name constructs the working design. **The name was right while the claim and the argument were wrong**, and testing the name refutes a false certificate for the cost of one enumeration - a check the harness was not running |
 | **M6** | **the real thing, below** | the method does not transfer to a scenario we did not author |
 
 ### M6 - a real orchestrator, a real scenario, the whole research flow

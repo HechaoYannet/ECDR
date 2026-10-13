@@ -103,7 +103,7 @@ def design_lp(streams, dt_min: float, process_matches, hot_util, cold_util):
                   bounds=[(0, None)] * n, method="highs")
     if not res.success:
         return {"ok": False, "reason": str(res.message)}
-    return {"ok": True, "Q_H": float(res.fun)}
+    return {"ok": True, "Q_H": float(res.fun), "x": res.x, "col": col, "ivs": ivs}
 
 
 def units_of(process_matches, hot_util, cold_util) -> int:

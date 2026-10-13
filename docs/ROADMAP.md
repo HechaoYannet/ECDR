@@ -187,6 +187,22 @@ from "cover a constant fraction" to "cover a constant, arbitrarily small, fracti
 step"**, and the thing to look for is a FAMILY of scale-free, mutually independent,
 physically sound invariants - not one deep theorem.
 
+**CORRECTED BY FINDING 051 - the separation above is not 2.6e6 and does not grow.** The
+comparison charges one certificate as one unit, but applying a certificate costs one check
+PER SURVIVING STRUCTURE, and the first certificate must be applied to all N of them:
+
+    certificate count        k = Theta( log N / log(1/(1-f)) )   additive per decade  correct
+    certificate APPLICATION      Theta( N * c_v1 / f )           linear in N          omitted
+    enumeration                  Theta( N * c_s )                linear in N
+
+Both routes are Theta(N), so the library buys a **constant** speedup of order
+c_s / (f * c_v) - measured at **360 times** on the four-certificate library, with c_v
+spanning a factor of 209 across the four members and the dearest check dominating 84
+percent of the total. Additive-against-multiplicative is a property of the certificate
+COUNT, which governs c_p, and c_p is paid once per certificate rather than per structure.
+**A 360-times constant is still worth having; it is a different claim from a separation
+that grows without bound, and only the first is measured.**
+
 | g(N) | absolute saving | relative saving | verdict |
 |---|---|---|---|
 | Theta(1) | bounded | -> 1 | **no crossing ever**; decoration |

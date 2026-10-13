@@ -1,6 +1,6 @@
 # reference/ 外部材料索引
 
-清点对象：`D:\\otherProject\\ECDR\\reference\\`（被 `.gitignore:7` 整体忽略）。
+清点对象：`D:\otherProject\ECDR\reference\`（被 `.gitignore:7` 整体忽略）。
 清点方式：只读遍历 + `read`/`grep`/`glob`，未修改 `reference/` 内任何字节。
 本文只写三件事：**里面是什么**、**本项目实际引用了什么**、**什么与本研究无关**。
 
@@ -250,7 +250,7 @@ README 是一个 25 字节的重定向：`reference/cordis/README.md` 内容即 
 | 论证路线 | `docs/CONSENSUS.md:259`（共识 15） | "应改为**从结构上论证**……而非引用权威结论" |
 | 自撰 benchmark 作为优越性证据 | `docs/ROADMAP.md:590`；`docs/STATE.md:203-212` | 禁止 |
 
-**写作含义**：乙类的 8 项在论文里的正确位置是"相关工作 / 我们据此改变了什么"，不是"因为有 X 所以我们成立"。CORE 提供的是**纪律**（三值、sound core、单调缓存），2502.00271 提供的是**禁令**，Heuresis 提供的是**问题命名**——三者都不是本项目命题的真值来源。命题的真值来源是 `docs/ROADMAP.md` 第 4–5 节的结构性论证。
+**写作含义**：乙类 9 项在论文里的正确位置是"相关工作 / 我们据此改变了什么"，不是"因为有 X 所以我们成立"。CORE 提供的是**纪律**（三值、sound core、单调缓存），2502.00271 提供的是**禁令**，Heuresis 提供的是**问题命名**——三者都不是本项目命题的真值来源。命题的真值来源是 `docs/ROADMAP.md` 第 4–5 节的结构性论证。
 
 ### 4.4 一个分类上的诚实提醒：Cordis 同时属于甲类和乙类
 
@@ -265,7 +265,7 @@ README 是一个 25 字节的重定向：`reference/cordis/README.md` 内容即 
 * `docs/literature/digest-core-vs-verifier-scaling.md`（10138 B）。
 
 10 篇全文清单：2502.00271、2502.05870、2506.13131、2605.19717、2606.13473（MaxProof）、2606.25198、2608.15073、2608.21976、2608.28639、2609.39069。
-**`docs/findings/003:3` 写的是 "9 full texts read in depth"**；第 10 篇（MaxProof，2606.13473）是 `docs/findings/005` 之后补入的，finding 003 的表头未随后更新。
+**`docs/findings/003:3` 写的是 "9 full texts read in depth"**；第 10 篇 MaxProof（2606.13473）在 `docs/findings/005:18` 被作为「决定性反例」引入，finding 003 的表头未随后更新；两篇文档都没有记录下载时间，先后顺序是据 finding 编号推断的。
 
 ### 4.6 缺原文的引用：必须在投稿前补齐或删除
 
@@ -314,7 +314,7 @@ README 是一个 25 字节的重定向：`reference/cordis/README.md` 内容即 
 
 ## 6. 交付物排除清单（一句话版）
 
-| 条目 | 页数/体积 | 是否进交付物 |
+| 条目 | 文件数 / 体积 | 是否进交付物 |
 |---|---|---|
 | `reference/cordis/` | 139 文件 / 0.38 MiB | **排除**文件，但引用其版本 `cordis@4.0.0-rc.10` 与提交 `c261dd2` |
 | `reference/paper/` | 2 文件 / 0.00 MiB | **排除**文件，引用 `arXiv:2608.25512` + `shi2026cordis` |

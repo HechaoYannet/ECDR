@@ -591,3 +591,55 @@ $$\underbrace{\text{常数覆盖率} \Rightarrow g(N)\to\infty}_{\text{库定律
 5. 绝不忽略数值警告；
 6. **空的或退化的区制既不是分离也不是失败**；
 7. **在一个它不再意味着它所说的东西的区制里产生的数字，不是结果。**
+---
+
+## 参考文献
+
+**按项目的纪律，本节区分「工具依赖」与「思想来源」，并标注哪些引用不构成论证依据。**
+
+### 工具依赖（进入结论的可复现性链条）
+
+1. **Cordis** — Shi, Yifan; Zhang, Wei; Cui, Tianyi. *A Programming Paradigm for Spatiotemporal Composability.* arXiv:2608.25512, cs.PL, 2026. 参考实现 cordis@4.0.0-rc.10（MIT）。
+
+   本项目对它的三个概念各有一处**具体落点**，而非泛泛引用：
+
+   - **revertible effects**（时间可组合性）→ 证书的安装与撤销。全仓唯一一处 ctx.effect() 在 orchestrator/src/certificates.ts:59。**这是「可撤销」从一个文档约定变成运行时性质的地方。**
+   - **reactive coeffects**（空间可组合性）→ 11 处 export const inject，对应证书的适用域标签。
+   - **declarative component loader** → orchestrator/cordis.yml 的 13 个插件条目。
+
+   **注意**：reference/paper/ 只有 2725 字节的摘要页，**没有全文**。本文对 Cordis 的任何表述都只能追溯到该摘要，不能追溯到正文。
+
+2. **OpenModelica 1.27.1**（Docker 镜像 openmodelica/openmodelica:v1.27.1-minimal）与 **Modelica Standard Library 4.1.0+maint.om**。
+
+   **这是本文唯一的「建模独立」验证**：L2 的方程不是作者写的，而是 MSL 元件由工具装配的。版本被显式 pin 在两处源码与一处 mos 脚本注释里。
+
+3. **OEIS A001187** — 连通标号图的数目 c(n)。**设计空间的规模轴** N(n) = c(n)(2^n - 1) 由它定义。该表在仓库中只列到 n = 10。
+
+### 接口仿制（不构成方法来源）
+
+4. **BOCoDe** — arXiv:2608.15073。仅仿制其 evaluate(x) -> (obj, cons) 评价接口（ecdr/bench/problem.py:3,53）。
+
+### 已识别的相邻工作，**未核实**
+
+5. **EngiAI** — arXiv:2605.19743。其 capability 指 agent 能力，与本文的「结构能力」术语撞车；**只读了摘要页，边界未细读**。
+6. **VeriLoop E2** — 抓取失败，**未读到原文**。
+
+**第 5、6 条在本文中不承担任何论证责任。** 按项目的纪律「不从引用权威立论」，本文的论证路线是**结构性的**：启发式必须采样、代价随维度增长、结论可错；证书不需采样、可独立复核。这一论证不依赖任何被引文献的结论。
+
+---
+
+## 附录 D：本次收网中核实的清点事实
+
+以下事实由独立清点得出，与正文有出入处以此为准：
+
+| 项 | 值 |
+|---|---|
+| finding 总数 | **63**（001 至 063 连续无缺号），不是 62 |
+| 步骤脚本 | 89 |
+| 运行产物 | 73 |
+| 外部材料 | reference/ 下三个浅克隆：cordis、paper、deepseek-harness；**无任何 PDF / tex / bib** |
+| 其中与本研究无关者 | reference/deepseek-harness（占 99.68% 体积，**全仓零引用**） |
+| 修复的格式残迹 | 12 份 finding 中 72 处标记残迹 |
+| 清理的磁盘占用 | 697.6 MB 游离 OpenModelica 暂存目录、106 个缓存目录 |
+
+**一条被本次收网修正的表述**：本仓库根的 reference/ 与 docs/reference/ 同名不同物——前者是三个上游克隆，后者是种子对话。早期的 README 指向错误，已修正。

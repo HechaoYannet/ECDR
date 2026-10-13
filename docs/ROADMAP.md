@@ -187,21 +187,23 @@ from "cover a constant fraction" to "cover a constant, arbitrarily small, fracti
 step"**, and the thing to look for is a FAMILY of scale-free, mutually independent,
 physically sound invariants - not one deep theorem.
 
-**CORRECTED BY FINDING 051 - the separation above is not 2.6e6 and does not grow.** The
-comparison charges one certificate as one unit, but applying a certificate costs one check
-PER SURVIVING STRUCTURE, and the first certificate must be applied to all N of them:
+**A correction to this paragraph was proposed by Finding 051 and WITHDRAWN by Finding 052.**
+The paragraph above stands. Finding 051 argued that applying a certificate costs one check
+per surviving structure, making both routes Theta(N); **that measured the procedure in which
+the predicate is applied to every member, which is this document's own section 2.1 line 60
+heuristic, and attributed its cost to the certificate.** A certificate is a statement about a
+class: it is derived once and its argument checked once, at cost c_p + c_v, with no N in it.
 
-    certificate count        k = Theta( log N / log(1/(1-f)) )   additive per decade  correct
-    certificate APPLICATION      Theta( N * c_v1 / f )           linear in N          omitted
-    enumeration                  Theta( N * c_s )                linear in N
+Measured (Finding 052): the certificate's cost is **2.2359e-03 s at n = 3 and identical at
+n = 10** - it does not contain N - while g * c_s rises from 8.94e-03 to 7.59e+10 s, a
+separation growing from 4.00 to **3.39e13** with the certificate side deliberately
+over-charged. So k = O(log N) certificates against N evaluations compares the right two
+quantities, and the separation does grow without bound.
 
-Both routes are Theta(N), so the library buys a **constant** speedup of order
-c_s / (f * c_v) - measured at **360 times** on the four-certificate library, with c_v
-spanning a factor of 209 across the four members and the dearest check dominating 84
-percent of the total. Additive-against-multiplicative is a property of the certificate
-COUNT, which governs c_p, and c_p is paid once per certificate rather than per structure.
-**A 360-times constant is still worth having; it is a different claim from a separation
-that grows without bound, and only the first is measured.**
+**What section 2.1 line 60 and section 5.2 now have that they lacked is a number.** The
+heuristic reading the same verdict prunes identically and costs 3.39e13 times more at n = 10.
+Section 5.2 says a heuristic cannot produce CERTAINTY; this says it also cannot produce it
+cheaply.
 
 | g(N) | absolute saving | relative saving | verdict |
 |---|---|---|---|

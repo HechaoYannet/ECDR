@@ -9,7 +9,7 @@ Reproduce: cd orchestrator && node node_modules/cordis/bin.js
 
 The physics is Python, which is where it was built and verified across 38 findings. Cordis is
 TypeScript. Rather than port either, the orchestrator is TypeScript and the physics is reached
-through a **process boundary**: `orchestrator/python/bridge.py[[/B]] takes one JSON request on
+through a **process boundary**: `orchestrator/python/bridge.py` takes one JSON request on
 argv and writes one JSON response on stdout.
 
 **The boundary is required by the project's own discipline, not chosen for convenience.** The
@@ -23,7 +23,7 @@ silent corruption.
 
 ## 2. What the reference taught, and the one thing it cost
 
-Cordis is driven by a **loader reading `cordis.yml[[/B]]**, not by programmatic composition. The
+Cordis is driven by a **loader reading `cordis.yml`**, not by programmatic composition. The
 launcher mounts the loader and everything else is configuration:
 
     - name: './src/physics.ts'
@@ -34,24 +34,24 @@ The concepts that mattered:
 
 | concept | what it gives ECDR |
 |---|---|
-| `Service[[/B]] subclass, `super(ctx, 'name')[[/B]] | a capability occupies `ctx.<key>[[/B]]; consumers look it up rather than import it |
-| `inject[[/B]] | declares a dependency; **load order is irrelevant**, Cordis starts a plugin when its services exist |
-| `ctx.effect()[[/B]] | **registrations are revertible effects** |
+| `Service` subclass, `super(ctx, 'name')` | a capability occupies `ctx.<key>`; consumers look it up rather than import it |
+| `inject` | declares a dependency; **load order is irrelevant**, Cordis starts a plugin when its services exist |
+| `ctx.effect()` | **registrations are revertible effects** |
 | declarative loader + HMR | the mechanism inventory is pluggable, which is roadmap item (3) at the orchestrator level |
-| `ctx.waterfall[[/B]] | policy interception that can delegate or short-circuit |
+| `ctx.waterfall` | policy interception that can delegate or short-circuit |
 
-**`ctx.effect()[[/B]] is the whole reason Cordis is the right base.** The paper's *revertible
+**`ctx.effect()` is the whole reason Cordis is the right base.** The paper's *revertible
 effects* mean every context transformation carries an inverse the runtime holds. A certificate
-is exactly that: `install()[[/B]] returns a disposer, `revoke()[[/B]] calls it, and **plugin
+is exactly that: `install()` returns a disposer, `revoke()` calls it, and **plugin
 unload does the same thing by construction**, so a certificate cannot outlive the component
 that asserted it. The project's rule that certificates are revocable statements rather than
 decisions is now enforced by the runtime rather than by care.
 
-**The cost**: the npm package `cordis@4.0.0-rc.10[[/B]] declares `@cordisjs/plugin-loader[[/B]] and
-`@cordisjs/plugin-include[[/B]] as peer dependencies, and its `bin.js[[/B]] fails with
-`ERR_MODULE_NOT_FOUND[[/B]] without them. They are not installed automatically.
+**The cost**: the npm package `cordis@4.0.0-rc.10` declares `@cordisjs/plugin-loader` and
+`@cordisjs/plugin-include` as peer dependencies, and its `bin.js` fails with
+`ERR_MODULE_NOT_FOUND` without them. They are not installed automatically.
 
-**And one silent failure, recorded because it will recur**: a plugin whose `inject[[/B]] is never
+**And one silent failure, recorded because it will recur**: a plugin whose `inject` is never
 satisfied stays PENDING, **does not keep Node's event loop alive, and causes the process to exit
 0 with no output at all**. The first smoke test of this round died that way. A composition that
 prints nothing is therefore ambiguous between "finished" and "never started", and the
@@ -85,7 +85,7 @@ certificate carries its domain tag, and install and revoke behave as effects.
 
 ## 5. Next
 
-  1. The LLM adapter as a service, with the `finish_reason == "length"[[/B]] and empty-content
+  1. The LLM adapter as a service, with the `finish_reason == "length"` and empty-content
      guard **inside the adapter** so no caller can forget it.
   2. The agent loop: propose a structure, ask the physics, install or revoke a certificate,
      repeat against a budget.

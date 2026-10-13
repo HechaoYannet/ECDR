@@ -18,7 +18,7 @@ C1 at L2 invalid, and both for the same reason:
   * a **pole count** on a base-excited model returns n + 1 oscillatory pairs, because the excitation
     source contributes a state; C1 as literally stated then fails 0 of 8.
 
-**The new `emit_free_model[[/B]] has no input at all.** The ground is an MSL Fixed component and the
+**The new `emit_free_model` has no input at all.** The ground is an MSL Fixed component and the
 motion comes from nonzero initial conditions on the masses. It still writes only declarations and
 connections. What OpenModelica integrates is a genuine free response.
 
@@ -97,7 +97,7 @@ the same defence that caught instance four.
 ## 6. Limits
 
   * **One ensemble, one initial condition per structure, eight structures.** The initial state
-    `s0 = linspace(1, 1+0.3(n-1), n)[[/B]] with zero velocity excites only some modes; a different
+    `s0 = linspace(1, 1+0.3(n-1), n)` with zero velocity excites only some modes; a different
     perturbation would excite others and could in principle reveal a peak that is not a mode.
   * **The peak detector merges peaks closer than 5 per cent** and thresholds at 1e-3 of the largest.
     Two genuinely distinct modes closer than that would be counted as one, so the "at most n" test

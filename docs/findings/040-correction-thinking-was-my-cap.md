@@ -9,7 +9,7 @@ Reproduce: the four calls below, in this finding.
 
 Finding 038 recorded that with thinking enabled deepseek-flash "can spend the entire budget
 reasoning and emit no content", that raising max_tokens from 300 to 3000 did not help, that
-reasoning_effort=low did not help, and that the fix is `"thinking": {"type": "disabled"}[[/B]].
+reasoning_effort=low did not help, and that the fix is `"thinking": {"type": "disabled"}`.
 
 **Every one of those observations was real; the diagnosis was not.** I capped max_tokens at 300,
 then 2000, then 3000. A reasoning model under a hard output cap spends the cap on reasoning
@@ -31,7 +31,7 @@ Same question, four configurations:
 | max_tokens=32000, effort=low | 16.1 s | 2,559 | 2,486 | stop | full answer |
 | max_tokens=32000, thinking disabled | 0.9 s | 105 | - | stop | answer, **direction wrong** |
 
-**The model terminates normally with `finish_reason: "stop"[[/B]] in every configuration that
+**The model terminates normally with `finish_reason: "stop"` in every configuration that
 gives it room.** It used 42,753 tokens of reasoning on the uncapped call - more than ten times
 the cap I had imposed and then interpreted as a model that would not stop.
 
@@ -57,13 +57,13 @@ Finding 038 recommended exactly that as the fix.
 
 ## 4. What the corrected guard is for
 
-The guard in `orchestrator/src/llm.ts[[/B]] stays, with its justification replaced:
+The guard in `orchestrator/src/llm.ts` stays, with its justification replaced:
 
   * A request whose max_tokens is too small for the reasoning returns **HTTP 200** with
-    `finish_reason: "length"[[/B]] and an **empty content string**.
+    `finish_reason: "length"` and an **empty content string**.
   * That is a **failure of the caller's budget**, not of the model, and the adapter raises
-    rather than returning `""[[/B]] so no caller can mistake truncation for an answer.
-  * `max_tokens[[/B]] is now passed only when configured. The default is the model's own
+    rather than returning `""` so no caller can mistake truncation for an answer.
+  * `max_tokens` is now passed only when configured. The default is the model's own
     allowance, which is what the API's examples use.
   * **Thinking is on unless explicitly disabled**, and the config field documents why.
 

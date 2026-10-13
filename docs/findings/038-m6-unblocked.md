@@ -50,14 +50,14 @@ prompt-dependent, which is worse, because it will appear intermittently in a lon
 
 **This is the ninth instance of the pattern this project keeps meeting**: a number - here a
 response - produced in a regime where it does not mean what it says. The orchestrator must
-therefore treat `finish_reason == "length"[[/B]] with empty content as a FAILURE and not as an
-answer, in the same way that `linearize.py[[/B]] refuses a dump whose B is identically zero. The
+therefore treat `finish_reason == "length"` with empty content as a FAILURE and not as an
+answer, in the same way that `linearize.py` refuses a dump whose B is identically zero. The
 guard belongs in the adapter, at the boundary, so that no caller can forget it.
 
 ## 3. The reference
 
-`github.com/cordiverse/cordis[[/B]] cloned to `reference/cordis[[/B]] (gitignored), paper at
-`reference/paper[[/B]]. Core is small enough to read in full:
+`github.com/cordiverse/cordis` cloned to `reference/cordis` (gitignored), paper at
+`reference/paper`. Core is small enough to read in full:
 
 | file | lines |
 |---|---|
@@ -71,8 +71,8 @@ guard belongs in the adapter, at the boundary, so that no caller can forget it.
 | service.ts | 70 |
 | index.ts | 7 |
 
-plus `loader/` (index 152, internal 118, resolve 61), and packages for `hmr[[/B]], `group[[/B]],
-`timer[[/B]], `include[[/B]].
+plus `loader/` (index 152, internal 118, resolve 61), and packages for `hmr`, `group`,
+`timer`, `include`.
 
 The paper's own framing matches what the certificate knowledge base needs: **revertible effects**
 - every context transformation carries an inverse the runtime holds - are temporal
@@ -86,8 +86,8 @@ inventory pluggable, which is roadmap item (3) at the orchestrator level.
 
   * **Nothing has been built.** No orchestrator, no Cordis integration, no agent loop. This
     round opened the door and identified the reference and the first failure mode.
-  * The exact request parameter for thinking is confirmed only for `deepseek-flash[[/B]]; the
-    behaviour of `deepseek-v4-pro[[/B]] was not tested.
+  * The exact request parameter for thinking is confirmed only for `deepseek-flash`; the
+    behaviour of `deepseek-v4-pro` was not tested.
   * Cost, rate limits and long-run reliability were not measured - one call at a time.
   * The key lives in a file under SECRETS/ and is read per run. It is not in any committed
     file, but it is also not encrypted at rest, and the repository has no secret-scanning.

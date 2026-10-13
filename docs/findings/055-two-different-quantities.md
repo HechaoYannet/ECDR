@@ -9,11 +9,11 @@ Reproduce: scripts/step78_utility_units.py.  Data: runs/utility_units.json
 
 ## 1. What the two counts are
 
-**`network_lp[[/B]]'s "units"** are the matches in the allowed set. Utility heat `qH[j,k][[/B]] is
+**`network_lp`'s "units"** are the matches in the allowed set. Utility heat `qH[j,k]` is
 delivered **at no unit cost** - a cold stream may be heated by hot utility in any interval without
 adding anything to the count.
 
-**The classical `U_min = N - 1[[/B]]** counts N as the process streams **plus the utilities**, and a
+**The classical `U_min = N - 1`** counts N as the process streams **plus the utilities**, and a
 utility exchanger **is a unit**. For the 4-stream case both utilities are needed
 (Q_H_min = 142.5 > 0 and Q_C_min = 150 > 0), so N = 6 and U_min = 5.
 
@@ -62,7 +62,7 @@ re-derivation closed, produced independently by a model with 99,661 tokens of re
 exchanger, and every component of the tree must be **balanced**. Finding 044's argument addressed
 only the first of these and only via connectivity.
 
-**`network_lp[[/B]] cannot answer this**, because it does not model utility exchangers as units at all.
+**`network_lp` cannot answer this**, because it does not model utility exchangers as units at all.
 Answering it needs a model whose node set includes the utilities and whose edges are all the
 exchangers.
 
@@ -73,7 +73,7 @@ substantially right about the existence of a problem:**
 
 | finding | what the model said | what was true |
 |---|---|---|
-| 043 | "the 2-unit network leaves C2 unheated" | `network_lp[[/B]] let pool heat reach an unmatched stream; corrected |
+| 043 | "the 2-unit network leaves C2 unheated" | `network_lp` let pool heat reach an unmatched stream; corrected |
 | 046/047 | (framing) it would not search if no reply could come | my protocol's fault; reversed on retest |
 | **054/055** | "minimum units = N - K with K balanced components" | **my count omits utility exchangers entirely** |
 

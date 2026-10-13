@@ -15,7 +15,7 @@ It is the sharpest question asked in this project, because the answer is partly 
 
 ## 2. The checker is an algorithm, not a lookup - that half is clean
 
-`unit_check[[/B]] and `checkUtilityBound[[/B]] accept ANY stream set and compute the bound from
+`unit_check` and `checkUtilityBound` accept ANY stream set and compute the bound from
 scratch. **Finding 042 is the evidence**: six scenarios drawn from a seeded generator during that
 session, whose Q_H_min did not exist before it ran. The checker judged those, and I did not know
 the numbers in advance.

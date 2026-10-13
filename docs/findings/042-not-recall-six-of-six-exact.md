@@ -18,9 +18,9 @@ temperatures of 5, 10, 15 and 20 C. Ground truth is the problem table of Finding
 verified against an independent LP and against **exhaustive enumeration of every network**. All
 six have a positive minimum, so no certificate is vacuous.
 
-**The prompt contains only the stream data.** `Q_H_min[[/B]] appears in `src/random.ts[[/B]] at lines
+**The prompt contains only the stream data.** `Q_H_min` appears in `src/random.ts` at lines
 82, 87 and 88 - all after the call - and the user message is assembled from
-`s.streams[[/B]] alone. No tools were provided, so there was no other route to the answers.
+`s.streams` alone. No tools were provided, so there was no other route to the answers.
 
 ## 2. The result
 
@@ -47,7 +47,7 @@ session. For M6 that matters: the premise that an LLM can do the domain work rat
 execute a script is now supported by a measurement rather than by hope.
 
 It is also economical. One call, 106 seconds, 168 characters of output. The reasoning is in
-`reasoning_content[[/B]] and is not counted in the response size.
+`reasoning_content` and is not counted in the response size.
 
 ## 4. What it does NOT establish, and this is the part that matters
 
@@ -80,6 +80,6 @@ precondition for M6, not M6.
   * The model was told what to compute. It was not asked whether a utility bound is the right
     certificate for the problem, which is the question an agent running a whole research flow
     would have to answer.
-  * **The reasoning was not inspected.** `reasoning_content[[/B]] was not captured or read, so
+  * **The reasoning was not inspected.** `reasoning_content` was not captured or read, so
     whether the model performed a problem table, a composite curve, or something else entirely
     is unknown. That is worth capturing next and costs nothing extra to record.

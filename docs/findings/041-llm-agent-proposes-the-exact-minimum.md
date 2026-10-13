@@ -55,15 +55,15 @@ certificate would have been unrecoverable, an unsound *proposal* is free.
 
 Per Finding 040 and the API documentation:
 
-  * `reasoning_effort: "max"[[/B]] - the strongest setting, mapping to the model's max effort
-  * **no `max_tokens[[/B]]** - the API's own examples omit it and the default is the model's
+  * `reasoning_effort: "max"` - the strongest setting, mapping to the model's max effort
+  * **no `max_tokens`** - the API's own examples omit it and the default is the model's
     full output allowance; capping it truncates the reasoning and yields an empty answer
   * thinking **on** (the default)
 
 ## 4. The silent-failure class recurred, twice, in the same debugging session
 
 Node runs TypeScript by stripping types, and it does so in **strip-only mode**: it rejects
-**TypeScript parameter properties** (`constructor(private readonly config: LLMConfig)[[/B]]).
+**TypeScript parameter properties** (`constructor(private readonly config: LLMConfig)`).
 
 When a module fails to parse, the Cordis loader **exits 0 and prints nothing at all.** There is
 no error, no stack, no diagnostic. The composition simply does not run.
@@ -87,9 +87,9 @@ that imports every configured plugin and reports parse failures**, because the l
 |---|---|
 | Cordis orchestrator, declarative plugin tree | works |
 | physics behind a process boundary | works, drives the verified values |
-| revocable, domain-tagged certificate store | works, `ctx.effect()[[/B]]-backed |
+| revocable, domain-tagged certificate store | works, `ctx.effect()`-backed |
 | a checker that decides rather than a caller that asserts | works, refutes unsound proposals |
-| a real LLM in the loop | works, `reasoning_effort: max[[/B]], no token cap |
+| a real LLM in the loop | works, `reasoning_effort: max`, no token cap |
 | one run costs | 3 model calls and 3 physics calls |
 
 ## 6. Limits

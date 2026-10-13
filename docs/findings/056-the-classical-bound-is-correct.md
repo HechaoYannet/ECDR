@@ -62,7 +62,7 @@ as a design**, and then comparing its edge count against a bound that counts the
 
 | finding | the model's objection | what was true |
 |---|---|---|
-| 043 | "the 2-unit network leaves C2 unheated" | `network_lp[[/B]] let pool heat reach an unmatched stream |
+| 043 | "the 2-unit network leaves C2 unheated" | `network_lp` let pool heat reach an unmatched stream |
 | 046/047 | it would not search because no reply could come | my protocol's fault, reversed on retest |
 | **054/056** | "minimum units = N - K with K balanced components" | **my count omitted the utility exchangers entirely** |
 

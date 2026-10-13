@@ -9,7 +9,7 @@ Log: runs/argue_log4.txt
 
 ## 1. What was built
 
-A certificate's `names[[/B]] field is no longer prose. It declares what the certificate **asserts**
+A certificate's `names` field is no longer prose. It declares what the certificate **asserts**
 about the remedy it names, from a controlled vocabulary:
 
     remedy   "cross-pinch"          the thing the certificate says is missing
@@ -74,12 +74,12 @@ a clean version would need a proper argument for V = 5 before the comparison mea
 ## 5. A silent-failure trap, which cost two runs
 
 The remedy test was built, run, and produced **nothing at all**: the header printed and Node exited
-0. The cause was **`STREAMS[[/B]] being undefined** in `argue.ts[[/B]]. A ReferenceError thrown inside an
+0. The cause was **`STREAMS` being undefined** in `argue.ts`. A ReferenceError thrown inside an
 async Cordis plugin is **swallowed**, and a pending fiber does not keep Node alive, so the process
 ends successfully with no output and no error.
 
 **The fix was wrapping the plugin body in try/catch**, and it surfaced the error immediately - and
-then surfaced a second, older bug (`v2 is not defined[[/B]]) at the very end of the same file.
+then surfaced a second, older bug (`v2 is not defined`) at the very end of the same file.
 
 **This is the third time in this project that a silent exit 0 hid a real failure**, and the pattern is
 worth recording as a property of the tool rather than an accident: **in Cordis, a throw in an async
@@ -94,7 +94,7 @@ failure must print something before and after its work.
     operationalisation - which is the same limit Finding 059 recorded.
   * **The enumeration is over the 4-stream design space**, 192 designs, complete and small.
   * **The reader comparison is confounded** by the weak argument text for the true case, as stated.
-  * **The assertion is only as good as the enumeration.** `max_units[[/B]] bounds the search; a design
+  * **The assertion is only as good as the enumeration.** `max_units` bounds the search; a design
     using the remedy above that bound would not be found.
   * **Nothing here is a third-party check.** Both the assertion test and the enumeration are the
     project's own code; the independence in this project is the L2 tool, not this.

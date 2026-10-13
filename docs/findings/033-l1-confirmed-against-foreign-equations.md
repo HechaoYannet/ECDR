@@ -92,16 +92,16 @@ Structure 1 at omega = 91.768 is the case Finding 031 could only bring to **2.2e
 ## 5. Three defects caught, and how
 
   * **emit_model still used `Position(exact = true)`** - the Finding 032 trap. The guard
-    added to `linearize.py[[/B]] in that same round rejected the dump outright: *"REJECTED: B is
+    added to `linearize.py` in that same round rejected the dump outright: *"REJECTED: B is
     identically zero"*. **The guard paid for itself on its first use.** Without it the passive
     networks would have come back as T identically 1 and looked like a modelling error.
-  * **`payload.v[[/B]] is a variable, not a connector.** `connect(payload.v, gain.u)[[/B]] fails with
-    "payload.v is not a valid connector"; it must be an equation, `gain.u = payload.v[[/B]].
-  * **`tf_mag[[/B]] returned the complex value, not the magnitude.** The name promised one thing
+  * **`payload.v` is a variable, not a connector.** `connect(payload.v, gain.u)` fails with
+    "payload.v is not a valid connector"; it must be an equation, `gain.u = payload.v`.
+  * **`tf_mag` returned the complex value, not the magnitude.** The name promised one thing
     and the function did another. Above resonance the real part of the transmissibility is
     NEGATIVE, so callers received negative numbers and ratios of 1.20, 2.00, 1.76 and 1.99 -
     apparently a total disagreement with L0, actually a naming defect. Split into
-    `tf_complex[[/B]] and `tf_mag[[/B]].
+    `tf_complex` and `tf_mag`.
 
 The third is the same class as the six identity traps and the inverted independence ratio: a
 number produced in a regime where it does not mean what its name says.
@@ -129,7 +129,7 @@ at L1.**
   * The Position filter is not removed, only pushed out of band; the growth of the residual
     with frequency in Finding 032 is the filter, and the same applies here.
   * The networks are four structures from one ensemble family at two frequencies each, all
-    with `f_crit = 1e5[[/B]] and one seed. Not a survey.
+    with `f_crit = 1e5` and one seed. Not a survey.
   * Agreement at 1e-08 is agreement on THIS model. That the model is the right one for a real
     isolator - no friction, no nonlinearity, linear springs and dampers - is a separate claim
     neither route tests.

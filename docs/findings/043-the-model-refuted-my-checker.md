@@ -39,13 +39,13 @@ the model's number and the corrected model's number are the same to six figures.
 
 ## 3. The bug, and why my own validation could not see it
 
-`network_lp[[/B]] carries heat down between temperature intervals through the pool variables
-`RC[j,k][[/B]], and **those variables are not constrained by the match set**. They deliver heat
+`network_lp` carries heat down between temperature intervals through the pool variables
+`RC[j,k]`, and **those variables are not constrained by the match set**. They deliver heat
 to any cold stream present at that level, whether or not any unit reaches it. So restricting the
 matches does not restrict the heat that can arrive, and the model happily reports a utility that
 no realisable network would need.
 
-**Finding 036 is not affected, and the reason is exact.** There, `network_lp[[/B]] was validated
+**Finding 036 is not affected, and the reason is exact.** There, `network_lp` was validated
 with **every match allowed** - and in that case every cold stream has a match, so the pool
 restriction is vacuous and the bug cannot appear. **That is why it reproduced the problem table
 to the last digit.** The model was validated in precisely the regime where it cannot fail.
@@ -80,7 +80,7 @@ independence is necessary and not sufficient.** The checker was independent and 
 nothing in the architecture could have caught it. **What caught it was an adversarial reader.**
 
 So the checker needs the same treatment as everything else in this project: **a validation of
-its own, in the regime where it is used.** `network_lp[[/B]] was validated with all matches
+its own, in the regime where it is used.** `network_lp` was validated with all matches
 allowed, which is not the regime the unit-count question uses.
 
 ## 6. What is not established

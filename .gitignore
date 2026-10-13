@@ -6,3 +6,4 @@ runs/
 !docs/**/*.png
 reference/
 node_modules/
+SECRETS/

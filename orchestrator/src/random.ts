@@ -31,6 +31,7 @@ interface Scenario {
  * reasoning tokens, so the question is made to carry as much as it can.
  */
 export async function apply(ctx: Context) {
+  if (!process.argv.includes('--random')) return
   const path = join(HERE, '..', '..', 'runs', 'llm_scenarios.json')
   const all: Scenario[] = JSON.parse(readFileSync(path, 'utf8'))
 

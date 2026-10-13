@@ -56,6 +56,10 @@ export class PhysicsService extends Service {
   enumerate(streams: StreamSpec[], dtMin: number) {
     return this.call({ op: 'enumerate', streams, dt_min: dtMin })
   }
+  falsifyUnits(streams: StreamSpec[], dtMin: number, requirement: number, V: number) {
+    return this.call({ op: 'falsify_units', streams, dt_min: dtMin,
+                       requirement, V })
+  }
   searchUnits(streams: StreamSpec[], dtMin: number, requirement: number, maxUnits: number) {
     return this.call({ op: 'search_units', streams, dt_min: dtMin,
                        requirement, max_units: maxUnits })

@@ -16,7 +16,8 @@ REPO = pathlib.Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(REPO))
 sys.path.insert(0, str(REPO / "scripts"))
 
-from ecdr.heat import Stream, all_match_sets, network_lp, problem_table  # noqa: E402
+from ecdr.heat import (Stream, all_match_sets, falsify_units, network_lp,  # noqa: E402
+                       problem_table)
 
 
 def _streams(spec):
@@ -39,6 +40,12 @@ def handle(req):
             return {"ok": False, "error": res.get("message", "lp failed")}
         return {"ok": True, "Q_H": res["Q_H"], "n_pairs": res["n_pairs"],
                 "n_vars": res["n_vars"]}
+    if op == "falsify_units":
+        # Try to refute "no design with fewer than V units attains the requirement", by
+        # enumerating designs with the UTILITIES AS NODES so that a utility exchanger is a unit.
+        r = falsify_units(_streams(req["streams"]), float(req["dt_min"]),
+                          float(req["requirement"]), int(req["V"]))
+        return {"ok": True, **r}
     if op == "search_units":
         # What networks exist below a unit budget that meet the requirement? The agent asks
         # for this; nothing here tells it what the answer means.

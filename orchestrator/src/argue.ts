@@ -76,26 +76,72 @@ export async function apply(ctx: Context) {
   console.log('')
   console.log('  the enumerated truth (not told to either party): ' + TRUTH)
 
-  // --- the reader judges the agent's certificate -------------------------------------
-  console.log('')
-  console.log('[reader] judging the agent\'s ARGUMENT - not its number')
-  const v1 = await ctx.argumentChecker.judge(PROBLEM, CLAIM_TEXT.replace('V', String(p.V)),
-    String(p.argument ?? ''), String(p.names ?? ''))
-  console.log('  status     : ' + v1.status + '   confidence ' + v1.confidence)
-  console.log('  objection  : ' + v1.objection)
-
-  // --- and a control whose argument is known to be flawed -----------------------------
+  // --- FALSIFICATION FIRST: a reader that can only read accepts falsehoods -----------
+  //
+  // Finding 057: given prose alone, the reader judged a false certificate sound at 0.95 and a
+  // deliberately flawed control at 0.88. Finding 045's reader found real defects because it had
+  // concrete cases to EVALUATE. So the harness now runs the falsification attempt and hands the
+  // reader the result - either a concrete counterexample design, or the count of designs searched
+  // with none attaining it.
   const BAD_ARG = 'Above the pinch, the subnetwork has nodes {H1, C1, C2, HU} and needs at least '
     + '3 units. Below the pinch, {H1, H2, C1, CU} needs at least 3. Since no feasible exchanger '
     + 'can serve both above and below the pinch, the two counts cannot share a unit, so the total '
     + 'is at least 6.'
+
+  // Three certificates are put to the reader, including the TRUE one so that the criterion does
+  // not depend on what the agent happens to say.
+  const CASES = [
+    { tag: 'TRUE  V=5', V: 5, argument: 'The optimal design is a spanning tree on the six nodes '
+      + '{H1, H2, C1, C2, HU, CU}: five edges, connected, acyclic. Its process part is H1-C1, '
+      + 'H1-C2, H2-C1, with a heater on C2 and a cooler on H2. No design with four units reaches '
+      + '142.5 kW.', names: 'a cross-pinch process exchanger', truth: true },
+    { tag: 'FALSE V=6', V: 6, argument: BAD_ARG,
+      names: 'more units above and below the pinch', truth: false },
+    { tag: 'AGENT V=' + p.V, V: Number(p.V), argument: String(p.argument ?? ''),
+      names: String(p.names ?? ''), truth: Number(p.V) === TRUTH },
+  ]
+
+  const results: Array<{ tag: string, V: number, truth: boolean, status: string,
+                         confidence: number, objection: string, evidence: string }> = []
+  for (const c of CASES) {
+    const f = ctx.physics.falsifyUnits(STREAMS, 10, 142.5, c.V)
+    const evidence = f.n_hits === 0
+      ? 'Searched all ' + f.searched + ' designs with at most ' + f.max_units_searched
+        + ' units. NONE attains 142.5 kW.'
+      : 'Searched all ' + f.searched + ' designs with at most ' + f.max_units_searched
+        + ' units. ' + f.n_hits + ' attain 142.5 kW. A concrete counterexample: '
+        + JSON.stringify(f.counterexamples[0])
+    console.log('')
+    console.log('[falsify] ' + c.tag + '  ->  ' + (f.n_hits === 0 ? 'no counterexample'
+      : f.n_hits + ' counterexample(s)'))
+    const v = await ctx.argumentChecker.judge(
+      PROBLEM + '\n\nFALSIFICATION EVIDENCE (a complete enumeration)\n' + evidence,
+      CLAIM_TEXT.replace('V', String(c.V)), c.argument, c.names)
+    console.log('  reader: ' + v.status + ' at ' + v.confidence
+      + (v.objection ? '   "' + v.objection.slice(0, 140) + '"' : ''))
+    results.push({ tag: c.tag, V: c.V, truth: c.truth, status: v.status,
+                   confidence: v.confidence, objection: v.objection, evidence })
+  }
+
+  const v1 = results[2]
   console.log('')
-  console.log('[reader] judging a CONTROL whose argument is known to be flawed (it claims 6)')
-  const v2 = await ctx.argumentChecker.judge(PROBLEM,
-    'No DESIGN using fewer than 6 heat exchanger units can attain hot utility <= 142.5 kW.',
-    BAD_ARG, 'more units above and below the pinch')
-  console.log('  status     : ' + v2.status + '   confidence ' + v2.confidence)
-  console.log('  objection  : ' + v2.objection)
+  console.log('[criterion] the reader must call the TRUE one sound and the FALSE one flawed')
+  const trueCase = results.find(r => r.truth)!
+  const falseCase = results.find(r => !r.truth)!
+  const passes = trueCase.status === 'sound' && falseCase.status === 'flawed'
+  console.log('  TRUE  V=' + trueCase.V + ' -> ' + trueCase.status
+    + '   (want sound)')
+  console.log('  FALSE V=' + falseCase.V + ' -> ' + falseCase.status
+    + '   (want flawed)')
+  console.log('')
+  if (passes) {
+    console.log('  PASS. With the falsification evidence in front of it the reader separates a')
+    console.log('  sound certificate from a false one, which is what Finding 057 said was missing.')
+  } else {
+    console.log('  FAIL. Even given a complete enumeration and a concrete counterexample the')
+    console.log('  reader did not separate them. The argument-checking mechanism does not work')
+    console.log('  in this domain and should be recorded as unusable rather than as partial.')
+  }
 
   // --- install on the reader's confidence, not on a gate ------------------------------
   console.log('')

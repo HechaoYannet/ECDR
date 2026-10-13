@@ -8,3 +8,4 @@
     reasoningEffort: max
 - name: './src/loop.ts'
 - name: './src/run.ts'
+- name: './src/random.ts'

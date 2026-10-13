@@ -18,6 +18,7 @@ const SCENARIO: Scenario = {
 }
 
 export async function apply(ctx: Context) {
+  if (process.argv.includes('--random')) return   // src/random.ts owns that mode
   const policy = process.argv.includes('--llm') ? new LLMPolicy(ctx) : new BisectionPolicy()
   console.log('[policy] ' + policy.kind)
   const log = await ctx.loop.run(SCENARIO, policy, 3)

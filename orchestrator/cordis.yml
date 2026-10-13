@@ -5,5 +5,6 @@
   config:
     keyFile: '../SECRETS/DEEPSEEK-API.txt'
     model: deepseek-flash
+    reasoningEffort: max
 - name: './src/loop.ts'
 - name: './src/run.ts'

@@ -1,9 +1,9 @@
 import type { Context } from 'cordis'
-import { BisectionPolicy } from './loop.ts'
+import { BisectionPolicy, LLMPolicy } from './loop.ts'
 import type { Scenario } from './loop.ts'
 
 export const name = 'ecdr-run'
-export const inject = ['loop', 'physics', 'checker', 'certificates']
+export const inject = ['loop', 'physics', 'checker', 'certificates', 'llm']
 
 const SCENARIO: Scenario = {
   name: 'textbook 4-stream',
@@ -18,6 +18,8 @@ const SCENARIO: Scenario = {
 }
 
 export async function apply(ctx: Context) {
-  const log = await ctx.loop.run(SCENARIO, new BisectionPolicy(), 12)
+  const policy = process.argv.includes('--llm') ? new LLMPolicy(ctx) : new BisectionPolicy()
+  console.log('[policy] ' + policy.kind)
+  const log = await ctx.loop.run(SCENARIO, policy, 3)
   for (const s of log) console.log('[' + s.kind.padEnd(9) + '] ' + s.detail)
 }

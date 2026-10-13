@@ -20,6 +20,12 @@ export interface LLMConfig {
   thinking?: boolean
   /** Omit to use the model's full output allowance. Capping it truncates the reasoning. */
   maxTokens?: number
+  /**
+   * low | high | max. Defaults to "max": the strongest setting, and the one worth paying for.
+   * Reasoning is not cheap - a max-effort call on a hard question took 206 s and 42,753
+   * reasoning tokens - so callers should ask few questions and make each one count.
+   */
+  reasoningEffort?: 'low' | 'high' | 'max'
 }
 
 /**
@@ -39,19 +45,31 @@ export interface LLMConfig {
  * an exception; they never receive "".
  */
 export class EmptyCompletionError extends Error {
-  constructor(readonly finishReason: string, readonly reasoningChars: number,
-              readonly completionTokens: number) {
+  // No parameter properties anywhere in this package: Node's type-stripping is strip-only.
+  readonly finishReason: string
+  readonly reasoningChars: number
+  readonly completionTokens: number
+
+  constructor(finishReason: string, reasoningChars: number, completionTokens: number) {
     super('LLM returned no content (finish_reason=' + finishReason + ', '
       + completionTokens + ' tokens, ' + reasoningChars + ' chars of reasoning)')
     this.name = 'EmptyCompletionError'
+    this.finishReason = finishReason
+    this.reasoningChars = reasoningChars
+    this.completionTokens = completionTokens
   }
 }
 
 export class LLMService extends Service {
   private readonly apiKey: string
+  // Declared and assigned explicitly: Node's type-stripping runs in strip-only mode and
+  // rejects TypeScript PARAMETER PROPERTIES, and a module that fails to parse makes the
+  // Cordis loader exit 0 with no output at all rather than reporting the error.
+  private readonly config: LLMConfig
 
-  constructor(ctx: Context, private readonly config: LLMConfig) {
+  constructor(ctx: Context, config: LLMConfig) {
     super(ctx, 'llm')
+    this.config = config
     this.apiKey = readFileSync(config.keyFile, 'utf8').match(/sk-[A-Za-z0-9_-]+/)?.[0]
       ?? (() => { throw new Error('no API key found in ' + config.keyFile) })()
   }
@@ -70,6 +88,7 @@ export class LLMService extends Service {
         // reasoning and yields finish_reason "length" with EMPTY content - which is a
         // failure of the caller's budget, not of the model. See Finding 040.
         ...(this.config.maxTokens ? { max_tokens: this.config.maxTokens } : {}),
+        reasoning_effort: this.config.reasoningEffort ?? 'max',
         ...(this.config.thinking === false ? { thinking: { type: 'disabled' } } : {}),
       }),
     })

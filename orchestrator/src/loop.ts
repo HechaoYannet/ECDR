@@ -1,4 +1,5 @@
 import { Service, type Context } from 'cordis'
+
 import type { StreamSpec } from './physics.ts'
 import type { CertificateProposal } from './checker.ts'
 
@@ -81,6 +82,74 @@ export class BisectionPolicy implements Policy {
         return { ...sc, dtMin: dt, name: sc.name + ' (dt_min ' + dt + ')' }
       }
     }
+    return null
+  }
+}
+
+/**
+ * The model proposes; the checker decides. One call per proposal, so the cost of a run is
+ * the number of proposals and nothing else. The prompt carries the ENTIRE scenario, because
+ * a call is expensive and a half-specified question wastes it.
+ */
+export class LLMPolicy implements Policy {
+  readonly kind = 'llm'
+  private readonly ctx: Context
+
+  constructor(ctx: Context) {
+    this.ctx = ctx
+  }
+
+  async proposeCertificate(sc: Scenario, budgetLeft: number,
+                           history: readonly Feedback[]): Promise<CertificateProposal> {
+    const streamLines = sc.streams.map(s =>
+      '  ' + s.name + ': ' + s.t_in + ' -> ' + s.t_out + ' C, cp = ' + s.cp + ' kW/K')
+      .join('\n')
+    const priorText = history.length === 0 ? '(none yet)'
+      : history.map(h => '  proposed ' + h.value.toFixed(4) + ' kW -> '
+        + (h.sound ? 'ACCEPTED as sound' : 'REFUTED as false')).join('\n')
+
+    const system = [
+      'You are a process engineer. A heat exchanger network must use no more than Q* kW of',
+      'hot utility. You may propose a LOWER BOUND certificate of the form "no network of any',
+      'size or topology needs less than V kW of hot utility".',
+      '',
+      'A proposal is SOUND only if V is at or below the true thermodynamic minimum utility',
+      'computable from the stream data. A proposal is USEFUL only if V is above Q*, because',
+      'only then does it exclude the requirement.',
+      '',
+      'Reply with ONE JSON object and nothing else:',
+      '{"value": <number in kW>, "reasoning": "<at most 30 words>"}',
+    ].join('\n')
+
+    const user = [
+      'Streams (hot must be cooled, cold must be heated):',
+      streamLines,
+      '',
+      'Minimum approach temperature dt_min = ' + sc.dtMin + ' C.',
+      'Requirement: hot utility <= Q* = ' + sc.requirement + ' kW.',
+      'Proposals left in budget: ' + budgetLeft + '.',
+      '',
+      'Values already proposed in this run:',
+      priorText,
+      '',
+      'Propose one value V.',
+    ].join('\n')
+
+    const text = await this.ctx.llm.complete(system, user)
+    const m = text.match(/\{[\s\S]*?\}/)
+    if (!m) throw new Error('LLM did not return JSON: ' + text.slice(0, 200))
+    const parsed = JSON.parse(m[0])
+    return {
+      claim: 'no network needs less than this much hot utility',
+      value: Number(parsed.value),
+      units: 'kW',
+      tag: { dt_min: sc.dtMin, streams: sc.streams.length, phase: 'single', cp: 'constant',
+             proposed_by: 'llm', note: String(parsed.reasoning ?? '').slice(0, 120) },
+    }
+  }
+
+  async proposeDomainChange(sc: Scenario, bound: number): Promise<Scenario | null> {
+    for (const dt of [5, 2, 1]) if (dt < sc.dtMin) return { ...sc, dtMin: dt }
     return null
   }
 }

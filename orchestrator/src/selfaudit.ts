@@ -55,6 +55,14 @@ export async function apply(ctx: Context) {
     'Reply with ONE JSON object and nothing else:',
     '{"V": <integer>, "search_below": <integer or null>, "why": "<25 words>"}',
     'Set search_below to an integer to spend your search, or null to finalise immediately.',
+    '',
+    // Finding 046: the only reason the agent gave for not searching was that it did not
+    // believe a result would ever arrive - "here as ChatGPT, I can't receive [tool output]".
+    // That was a defect in this protocol, not a property of the agent, and it is the single
+    // variable this rerun changes. Nothing else in this file differs from the previous run.
+    'If you set search_below to an integer, THE SEARCH WILL BE RUN AND ITS COMPLETE RESULTS',
+    'WILL BE RETURNED TO YOU AS THE NEXT MESSAGE. You will then reply once more to finalise',
+    'your certificate. Requesting a search costs you nothing but that one extra exchange.',
   ].join('\n')
 
   const base = [

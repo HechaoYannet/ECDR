@@ -129,3 +129,95 @@ Cordis-backed revertible effect store, and the demonstrated fact that an agent w
 when it believes checking is possible - all of that is infrastructure the corrected design needs.
 **What is wrong is the certificate representation and the accounting, and both are replaceable
 without touching the parts that were verified.**
+---
+
+## 7. The certificate-versus-heuristic question, answered from the roadmap
+
+This was asked and left unfinished. The roadmap settles it in two places, and the harness sits on
+the wrong side of both.
+
+### 7.1 What the roadmap already measured
+
+Section 2.1 records two results, both marked **measured**:
+
+> line 59: On small problems, score/streak/surrogate pruning is competitive with certification
+>
+> line 60: **Where a certificate can prune, a plain heuristic reading the same verdict prunes
+> identically**
+
+Taken alone these say certificates do not outperform heuristics. **That is the tension.**
+
+### 7.2 And the roadmap's resolution, which is easy to miss
+
+Section 5.2, lines 141 to 144:
+
+> Ruling out a region of K structures *with certainty* costs Omega(K) evaluations. **Escaping that
+> bound requires an argument about the class, not more observations.** So the real choice for the
+> negative conclusion is not "certificate versus heuristic" but **"certificate versus nothing"**.
+
+**Read line 60 carefully: "a plain heuristic READING THE SAME VERDICT".** A heuristic that reads the
+same verdict is reading **the certificate's own bound** - it is the certificate being applied, not a
+competitor to it. Of course the pruning is identical; it is the same pruning.
+
+**The competitor is a heuristic WITHOUT the certificate**, and Proposition 1 says it cannot produce
+certainty at any cost below Omega(K) evaluations. **So the certificate's contribution is not the
+pruning. It is the certainty**, and section 5.5 then delimits where certainty is worth paying for:
+
+> lines 317 to 323: In the regime where a *probabilistic* negative conclusion is acceptable, there is
+> no crossing at all and sampling is the correct tool. The method's domain is exactly the regime
+> where a **certain** negative conclusion is required: when the cost of a wrong "this structure
+> cannot do it" is high, when the space cannot be enumerated, or when the same conclusion must be
+> reused across many problems without re-sampling.
+
+### 7.3 So does the harness match the intent? On this question, no
+
+**Every M6 run so far measures the agent's VERDICT - whether it proposed the right bound, whether it
+accepted a valid witness, whether it searched.** That is the pruning. **Section 2.1 line 60 says,
+as a measured result, that the pruning is not where certificates differ from heuristics.**
+
+**And more decisively: the harness never runs the alternative.** There is no sampling route, no
+budget for one, and no cost axis on which the two could be compared. Section 6, Layer C, lines 368
+to 370 require proved and unproved regions to "live on one cost axis"; the harness has a flat
+counter of "physics calls" and one route. **Without the baseline, "the agent found the certificate"
+is a description, not a comparison.**
+
+### 7.4 A correction to the measurement made this round
+
+Step 73 measured the Proposition 2 constants on the real code paths:
+
+| | value | what it is |
+|---|---|---|
+| c_s | 9.164e-04 s | one transmissibility evaluation |
+| c_v | 3.975e-08 s | one certificate check (200,000 in a batch) |
+| c_p | 1.000e-06 s | deriving the certificate over the family |
+| **(c_p + c_v) / c_s** | **1.135e-03** | the threshold g(N) must exceed |
+
+**So the crossing condition of section 5.3 is satisfied at g(N) = 1.** Condition 1 of the Corollary -
+"a crossing exists iff g(N) -> infinity" - is therefore **nearly vacuous as stated**: any predicate
+excluding a single structure clears it, because a check is four orders of magnitude cheaper than an
+evaluation.
+
+**That does not show the crossing is real. It shows the stated condition is too weak to be
+informative.** The content is in the rest of section 5.4:
+
+  * **condition 2 (persistence)**: g(N) = Theta(N) gives a speedup that does not decay, capped at
+    1/(1-f) - so covering half the space buys a factor of two;
+  * **Finding 011's library**: k = O(log N / log(1/(1-f))) certificates, growing ADDITIVELY per
+    decade of N against sampling's multiplicative growth. At N = 6.4e10 and f = 0.001 that is
+    24,876 certificates against 6.4e10 evaluations.
+
+**Both of those are comparisons against SAMPLING, not against a heuristic.** They are the real
+content, and neither has a baseline in the harness.
+
+### 7.5 What this means concretely
+
+The harness needs one thing before any further M6 run is evidence for anything:
+
+**Two routes, one cost axis.** For a given problem, run the certificate route and the sampling route,
+charge both in the same unit, and report the comparison together with which regime the problem is
+in - because section 5.5 says that in the probabilistic regime sampling wins outright and there is
+no crossing to show.
+
+**Until that exists, the honest statement about M6 is the one section 2.2 already makes about the
+vibration benchmark**: it shows the machinery runs and the accounting is honest. It does not show
+superiority, because we chose the problem, the baseline - and, at present, the absence of one.

@@ -10,3 +10,4 @@
 - name: './src/run.ts'
 - name: './src/random.ts'
 - name: './src/derive.ts'
+- name: './src/audit.ts'

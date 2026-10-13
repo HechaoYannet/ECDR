@@ -548,20 +548,61 @@ $$\underbrace{\text{常数覆盖率} \Rightarrow g(N)\to\infty}_{\text{库定律
 
 ## 附录 A：复现清单
 
-全部脚本各自可独立运行，产物写入 runs/。
+全部脚本各自可独立运行，产物写入 runs/。**下面按依赖顺序给出重建全部结论的最短序列**；括号里说明为什么它必须在前。
 
-| 结论 | 脚本 | 产物 |
-|---|---|---|
-| 命题 4 与三条路线的代价 | step76_three_procedures.py、step77_proposition4.py | three_procedures.json、proposition4.json |
-| 代价轴与库的分类 | step74_three_routes.py、step75_library_cost.py | crossing_measured.json、library_cost.json |
-| 三臂曲线与指数 | step80_curve_b.py | curve_b.json |
-| 代价阶梯与 L2 核验 | step82_m4_ladder.py、step83_m4_free_response.py、step85_m4_l0_free.py | m4_ladder.json、m4_free_response.json、m4_l0_free.json |
-| 库的规模普查 | step87_m1_trend.py、step88_m1_verdict.py | m1_trend.json、m1_verdict.json |
-| 热工最少单元数 | step79_design_units.py | design_units.json |
-| 被命名的补救 | step81_m5_named_remedy.py；编排器 --argue | m5_named_remedy.json、argue_log4.txt |
-| 结构发射与 L2 保真度 | step58 至 step64 | 对应产物 |
+**阶段 0：L0 证书与判定例程**（约 1 分钟，无产物）
 
-环境：Python 3.14、NumPy / SciPy、Docker（镜像 openmodelica/openmodelica:v1.27.1-minimal）、Node 24（Cordis）。
+    step1_certificate.py       M1 闭式证书的三项独立检查
+    step7_exact_peak.py        精确峰值例程——后面所有「精确判定」都靠它
+    step14_l1.py               L1 复现 L0，且 L0 不可行蕴含 L1 不可行
+    step21_network_verify.py   通用网络求值器与手写 L0 机制一致
+
+**阶段 1：结构空间与 g(N)**
+
+    step19_gN_census.py        -> census_gN.json      模态不变量的 g 恒定
+    step20_library.py          -> library.json        库定律 k = O(log N / log(1/(1-f)))
+    step22_..._ensemble.py     -> coverage_ensemble.json
+    step24_calibration.py      -> calibration.json    非退化校准下的独立性
+
+**阶段 2：四张证书与库的组合**
+
+    step47_rayleigh_bound.py   -> rayleigh_bound.json     C3
+    step50_fourth_certificate.py -> fourth_certificate.json  C4
+    step49_conditionals.py     -> conditionals.json
+    step51_calibration_sweep.py -> calibration_sweep.json  f = 0.65 的出处
+
+**阶段 3：成本轴与命题 4**（第 5.2、6 节的证据）
+
+    step73_crossing_measured.py -> crossing_measured.json   c_s / c_v / c_p 与阈值
+    step74_two_routes.py        -> two_routes.json          三条路线同轴
+    step75_library_cost.py      -> library_cost.json        c_v 不是一个数
+    step76_three_procedures.py  -> three_procedures.json    三种程序
+    step77_proposition4.py      -> proposition4.json        命题 4，八个规模
+    step80_curve_b.py           -> curve_b.json             三臂指数与交点
+
+**阶段 4：保真度阶梯 M4**（第 5.3、5.4 节）
+
+    step58_modelica_smoke.py    -> modelica_smoke.json      需 ecdr/l2/modelica/smoke/ 的输入
+    step63_modelica_l1_full.py  -> modelica_l1_full.json
+    step64_modelica_tmd.py      -> modelica_tmd.json
+    step82_m4_ladder.py         -> m4_ladder.json           c_s(L0/L1/L2) 与三档分离度
+    step83_m4_free_response.py  -> m4_free_response.json    自由响应谱峰
+    step85_m4_l0_free.py        -> m4_l0_free.json          同一程序在 L0 上复测
+
+**阶段 5：M1 收口**（第 6.2、6.3 节）
+
+    step87_m1_trend.py          -> m1_trend.json            逐规模均匀抽样与指数
+    step88_m1_verdict.py        -> m1_verdict.json          只读上一步，给判决
+
+**阶段 6：热工与 M5**（第 6.4、8 节）
+
+    step79_design_units.py      -> design_units.json        219 个设计，最少单元数 5
+    step81_m5_named_remedy.py   -> m5_named_remedy.json     被命名的补救
+    编排器 --argue              -> argue_log4.txt           补救断言检验与读者对照
+
+**环境**：Python 3.14、NumPy / SciPy、Docker（镜像 openmodelica/openmodelica:v1.27.1-minimal）、Node 24（Cordis）。
+
+**一处操作提示**：阶段 4 的 step82 会在 runs/modelica_work/ 下重建约 0.7 GB 的 OpenModelica 编译中间件。该目录可再生且已被忽略；**它此前被错误地写进包内（ecdr/runs/），累计 697.6 MB、2522 个文件，本次收网已修复路径并清理。**
 
 ## 附录 B：符号表
 

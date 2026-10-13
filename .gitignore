@@ -7,3 +7,8 @@ runs/
 reference/
 node_modules/
 SECRETS/
+# OpenModelica build output (keep only the hand-written .mo/.mos and the result CSV)
+ecdr/l2/modelica/smoke/SdofIso
+*.o
+*.makefile
+*.libs

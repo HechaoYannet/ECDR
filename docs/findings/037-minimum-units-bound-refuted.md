@@ -1,5 +1,9 @@
 # Finding 037 - The minimum-units bound is refuted before it was used
 
+**INVALIDATED BY FINDING 055.** This finding's count is matches only, while U >= N - 1 counts
+utility exchangers as units and utilities in N. The comparison is between incommensurable
+quantities, so the bound was never refuted - here or in 044.
+
 **SUPERSEDED BY FINDING 044.** The refutation is redone on a corrected model: the fewest units
 attaining Q_H_min is **3**, not 2, against N - 1 = 4. The conclusion holds - and the argument is
 now clean, since a connected graph on 5 nodes needs 4 edges, so any 3-unit design is

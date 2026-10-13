@@ -1,6 +1,11 @@
 # Finding 044 - The corrected model, validated in both regimes, refutes U >= N - 1 by 3 units
 
-Status: `network_lp[[/B]] is corrected and validated where it previously failed. Finding 036 stands
+**INVALIDATED BY FINDING 055.** The refutation below compares a MATCHES-ONLY count against
+U >= N - 1, whose N includes the utilities and whose units include the utility exchangers. The two
+sides count different things, and the connectivity argument is sound graph theory applied to a
+graph that is missing two nodes.
+
+Status: `network_lp` is corrected and validated where it previously failed. Finding 036 stands
 untouched. **The minimum-units bound is refuted again - but by 3 units, not 2 - and the
 argument is now clean.** The agent's hand-computed floor of 150.0 is reproduced exactly.
 Reproduce: scripts/step70_network_model_validated.py.  Data: runs/network_model_validated.json

@@ -438,6 +438,13 @@ Design constraints:
 
 ### M6 - a real orchestrator, a real scenario, the whole research flow
 
+**SCOPE CORRECTED BY FINDING 048.** The heat-domain runs (Findings 039 to 047) test the PIPELINE -
+orchestrator, process boundary, revocable certificates, agent behaviour - and are **not** evidence
+for the crossing. In that domain the checker and the ground truth are the same algorithm (pinch
+analysis), so agreement between them is a consistency check between two implementations, not an
+independent verification. The crossing is measured in vibration, where certificates are derived
+bounds and checks are evaluations on instances. Read 048 before citing anything in that range.
+
 The vibration work is ours from end to end (section 2.2), so it can show that the theory
 stands up but not that the method works. M6 is where that changes:
 

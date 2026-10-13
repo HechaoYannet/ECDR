@@ -158,6 +158,49 @@ and certification is cheaper exactly when
 **This is where the design criterion comes from.** Everything depends on g(N), the NUMBER
 of structures the certificate rules out, and not at all on the fraction.
 
+**Proposition 4 (a heuristic is not the alternative).** Let P be a predicate on a family F
+with abs(F) = N, and let a certificate establish P = 0 on a subfamily C with abs(C) = g(N).
+Then
+
+  1. **the certificate, a heuristic reading the same verdict, and enumeration exclude
+     exactly C** - the pruning is identical;
+  2. their costs are
+
+         certificate   c_p + c_v                    contains no N
+         heuristic     g(N) * c_v_apply             Theta(g(N))
+         enumeration   g(N) * c_s                   Theta(g(N))
+
+  3. so the certificate's advantage over BOTH is Theta(g(N)) and unbounded, while the
+     heuristic's advantage over enumeration is the CONSTANT c_s / c_v_apply and nothing
+     more.
+
+*Proof.* (1) is immediate: all three apply the same predicate, so all three exclude the
+same members. (2) is the definition of each procedure - the certificate is derived and its
+argument checked once, the other two evaluate the predicate once per member. (3) follows by
+dividing. The only quantity in the three costs that can contain g(N) is g(N) itself, and it
+appears in exactly two of them.
+
+**Consequence.** A heuristic is enumeration with a better constant. It therefore inherits
+Proposition 1: no constant rescues a procedure that must examine every member, so a
+heuristic cannot certify an unexamined member at any price. **This is the precise content of
+section 2.1 line 60 and the reason section 5.2 can say the choice is "certificate versus
+nothing"** - the two alternatives differ from each other by a constant and from the
+certificate in kind.
+
+**Measured (Finding 052).** With c_s = 2.1528e-03, c_v_apply = 4.878e-08 and the certificate
+charged one full evaluation for checking its argument:
+
+| n | g = N(n-1) | certificate | heuristic | enumeration | cert/enum |
+|---|---|---|---|---|---|
+| 3 | 4.0e+00 | 2.1528e-03 | 1.950e-07 | 8.610e-03 | 4.000e+00 |
+| 5 | 6.02e+02 | 2.1528e-03 | 2.935e-05 | 1.296e+00 | 6.019e+02 |
+| 7 | 1.706e+06 | 2.1528e-03 | 8.314e-02 | 3.671e+03 | 1.705e+06 |
+| 10 | 3.394e+13 | 2.1528e-03 | 1.655e+06 | 7.306e+10 | **3.394e+13** |
+
+**The certificate's cost is identical at n = 3 and n = 10.** The formula
+g(N) * c_s / (c_p + c_v) reproduces the measured separation on all eight sizes exactly, and
+c_s / c_v_apply = 44155 is the whole of the heuristic's advantage over enumeration.
+
 ### 5.4 The coverage growth condition
 
 Two different quantities must not be confused:
@@ -347,6 +390,7 @@ of the contribution; a method that claims a regime it does not own is not credib
 | Proposition 1 (Omega(K) query lower bound) | provable, short adversary argument |
 | Proposition 2 (cost comparison given an invariant) | provable algebra |
 | Proposition 3 (statistical regime, no crossing) | provable from sampling theory |
+| **Proposition 4 (heuristic and enumeration are Theta(g(N)); only the certificate's cost lacks g(N))** | **provable, and measured: exact on eight sizes, certificate cost identical at n = 3 and n = 10** |
 | Corollary (g(N) -> infinity is necessary) | follows from Proposition 2 |
 | **Does a given physical requirement admit a certificate with g(N) -> infinity and c_p independent of N?** | **empirical, per invariant. This is the research.** |
 

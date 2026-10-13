@@ -102,6 +102,72 @@ def emit_model(structure, omega: float, name: str = "Net", amplitude: float = 1.
     return "\n".join(L) + "\n"
 
 
+def emit_free_model(structure, name: str = "Free", s0=None, v0=None) -> str:
+    """Modelica source for the FREE response of a grounded structure.
+
+    Finding 060: C1 asserts that an n-degree-of-freedom structure's free response is a sum of at
+    most n harmonics.  Every other emitter here is BASE-EXCITED, which makes the linearized model
+    carry the excitation's own state - so a pole count over-counts by one and a forced-response
+    magnitude says nothing about harmonic content at all.  **Two attempts to re-check C1 at L2
+    were invalid for exactly this reason.**
+
+    This model has NO input.  The ground is a Fixed component, and the motion comes entirely from
+    nonzero initial conditions on the masses.  What the tool then integrates is a genuine free
+    response, and the number of frequencies in it is a property of the structure alone.
+
+    The emitted file still contains no equations of motion: it states components and connections,
+    and MSL assembles the rest.
+    """
+    n = len(np.asarray(structure.masses, dtype=float))
+    if s0 is None:
+        s0 = np.linspace(1.0, 1.0 + 0.3 * (n - 1), n)      # distinct, excites every mode
+    if v0 is None:
+        v0 = np.zeros(n)
+    L = []
+    L.append("model " + name)
+    L.append('  "Free response of a grounded mechanical network emitted from ecdr.structure.')
+    L.append('   Declarations only: no equations of motion appear anywhere in this file."')
+    L.append("  import Modelica.Mechanics.Translational;")
+    L.append("")
+    L.append("  Real x_payload;")
+    L.append("")
+    L.append("  Translational.Components.Fixed ground;")
+    L.append("")
+    for i, m in enumerate(np.asarray(structure.masses, dtype=float)):
+        L.append("  Translational.Components.Mass mass" + str(i) + "(m = " + repr(float(m))
+                 + ", s(fixed = true, start = " + repr(float(s0[i]))
+                 + "), v(fixed = true, start = " + repr(float(v0[i])) + "));")
+    L.append("")
+    for (i, j), k in structure.springs.items():
+        tag = str(i) + "_" + str(j)
+        L.append("  Translational.Components.Spring spr" + tag + "(c = " + repr(float(k))
+                 + ", s_rel0 = 0);")
+        L.append("  Translational.Components.Damper dmp" + tag + "(d = "
+                 + repr(float(structure.dampers[(i, j)])) + ");")
+    L.append("")
+    for g, k in structure.ground_k.items():
+        L.append("  Translational.Components.Spring sprg" + str(g) + "(c = " + repr(float(k))
+                 + ", s_rel0 = 0);")
+        L.append("  Translational.Components.Damper dmpg" + str(g) + "(d = "
+                 + repr(float(structure.ground_c.get(g, 0.0))) + ");")
+    L.append("")
+    L.append("equation")
+    for (i, j) in structure.springs:
+        tag = str(i) + "_" + str(j)
+        L.append("  connect(mass" + str(i) + ".flange_a, spr" + tag + ".flange_a);")
+        L.append("  connect(spr" + tag + ".flange_b, mass" + str(j) + ".flange_a);")
+        L.append("  connect(mass" + str(i) + ".flange_a, dmp" + tag + ".flange_a);")
+        L.append("  connect(dmp" + tag + ".flange_b, mass" + str(j) + ".flange_a);")
+    for g in structure.ground_k:
+        L.append("  connect(ground.flange, sprg" + str(g) + ".flange_a);")
+        L.append("  connect(sprg" + str(g) + ".flange_b, mass" + str(g) + ".flange_a);")
+        L.append("  connect(ground.flange, dmpg" + str(g) + ".flange_a);")
+        L.append("  connect(dmpg" + str(g) + ".flange_b, mass" + str(g) + ".flange_a);")
+    L.append("  x_payload = mass0.s;")
+    L.append("end " + name + ";")
+    return "\n".join(L) + "\n"
+
+
 def emit_mos(name: str, stop_time: float, intervals: int = 4000,
              tolerance: float = 1e-8) -> str:
     return "\n".join([

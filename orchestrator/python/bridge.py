@@ -17,7 +17,7 @@ sys.path.insert(0, str(REPO))
 sys.path.insert(0, str(REPO / "scripts"))
 
 from ecdr.heat import (Stream, all_match_sets, falsify_units, network_lp,  # noqa: E402
-                       problem_table)
+                       problem_table, test_remedy)
 
 
 def _streams(spec):
@@ -40,6 +40,12 @@ def handle(req):
             return {"ok": False, "error": res.get("message", "lp failed")}
         return {"ok": True, "Q_H": res["Q_H"], "n_pairs": res["n_pairs"],
                 "n_vars": res["n_vars"]}
+    if op == "test_remedy":
+        # Test what a certificate ASSERTS about the remedy it names. Finding 059: the false
+        # certificate's own name said the repair was forbidden, and nothing ever checked.
+        return test_remedy(_streams(req["streams"]), float(req["dt_min"]),
+                           float(req["requirement"]), str(req["remedy"]),
+                           str(req["asserts"]))
     if op == "falsify_units":
         # Try to refute "no design with fewer than V units attains the requirement", by
         # enumerating designs with the UTILITIES AS NODES so that a utility exchanger is a unit.

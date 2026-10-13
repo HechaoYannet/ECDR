@@ -1,4 +1,6 @@
 import type { Context } from 'cordis'
+
+const line = '='.repeat(96)
 import { writeFileSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
 import { dirname, join } from 'node:path'
@@ -23,6 +25,16 @@ const PROBLEM = [
 const CLAIM_TEXT = 'No DESIGN using fewer than V heat exchanger units can attain hot utility '
   + '<= 142.5 kW.'
 
+// The stream data as the physics bridge wants it. A ReferenceError here is invisible: Cordis
+// swallows a throw inside an async plugin and Node exits 0 with no output, which is exactly what
+// happened twice before this constant existed.
+const STREAMS = [
+  { name: 'H1', t_in: 150, t_out: 60, cp: 2.0 },
+  { name: 'H2', t_in: 90, t_out: 60, cp: 8.0 },
+  { name: 'C1', t_in: 20, t_out: 125, cp: 2.5 },
+  { name: 'C2', t_in: 100, t_out: 150, cp: 3.0 },
+]
+
 /**
  * The certificate as the roadmap describes it: an OBJECT carrying its soundness argument and
  * naming the remedy, judged by a reader in a separate context.
@@ -41,6 +53,17 @@ const CLAIM_TEXT = 'No DESIGN using fewer than V heat exchanger units can attain
  */
 export async function apply(ctx: Context) {
   if (!process.argv.includes('--argue')) return
+  try {
+    await run(ctx)
+  } catch (e) {
+    // Without this, a throw inside an async plugin is swallowed and Node exits 0 silently -
+    // which is how the missing STREAMS constant hid for two runs.
+    console.log('[argue] FAILED: ' + (e as Error).message)
+    console.log((e as Error).stack?.split('\n').slice(0, 4).join('\n'))
+  }
+}
+
+async function run(ctx: Context) {
 
   console.log('[argue] the certificate is an OBJECT: claim + argument + named remedy + tag')
   console.log('[argue] the reader is a separate model call, told neither answer')
@@ -100,6 +123,54 @@ export async function apply(ctx: Context) {
     { tag: 'AGENT V=' + p.V, V: Number(p.V), argument: String(p.argument ?? ''),
       names: String(p.names ?? ''), truth: Number(p.V) === TRUTH },
   ]
+
+  // --- THE REMEDY TEST, run BEFORE the reader and independently of it ---------------
+  //
+  // Finding 059: the false certificate's own [[names]] field asserted that the repair it named
+  // was FORBIDDEN.  Finding 057: a reader given the argument and no way to test it judged that
+  // certificate sound at 0.95.  ** The architecture never asked whether the named thing is
+  // actually forbidden, and one enumeration answers it. **  So the assertion is a declared,
+  // checkable field, and it is tested first.
+  console.log('')
+  console.log(line)
+  console.log('THE REMEDY TEST - before any reader sees the argument')
+  console.log(line)
+  const REMEDY_CASES = [
+    { tag: 'FALSE V=6', remedy: 'cross-pinch', asserts: 'forbidden',
+      why: 'its own name says the repair is impossible' },
+    { tag: 'TRUE  V=5', remedy: 'cross-pinch', asserts: 'required',
+      why: 'the optimum uses a cross-pinch exchanger' },
+  ]
+  const remedyOut = []
+  for (const rc of REMEDY_CASES) {
+    const t = ctx.physics.testRemedy(STREAMS, 10, 142.5, rc.remedy, rc.asserts)
+    console.log('  ' + rc.tag + '  asserts "' + rc.remedy + '" is ' + rc.asserts
+      + '  (' + rc.why + ')')
+    console.log('    enumerated ' + t.searched + ' designs; ' + t.attaining
+      + ' attain 142.5 kW; ' + t.n_users + ' of them use the remedy')
+    if (t.witness) {
+      console.log('    witness: ' + t.witness.units + ' units, match H' + (t.witness.match[0] + 1)
+        + '-C' + (t.witness.match[1] - 1) + ', ' + t.witness.heat.toFixed(3)
+        + ' kW, Q_H = ' + t.witness.Q_H.toFixed(3))
+    }
+    console.log('    ** assertion_holds = ' + t.assertion_holds + ' **')
+    remedyOut.push({ ...rc, holds: t.assertion_holds, witness: t.witness,
+                     searched: t.searched, attaining: t.attaining })
+  }
+  const falseRemedy = remedyOut.find(r => r.tag.startsWith('FALSE'))!
+  const trueRemedy = remedyOut.find(r => r.tag.startsWith('TRUE'))!
+  console.log('')
+  if (!falseRemedy.holds && trueRemedy.holds) {
+    console.log('  ** The remedy test separates them WITHOUT a reader, an argument analysis or a')
+    console.log('  confidence score. ** The false certificate is refuted by its own declared field,')
+    console.log('  with a concrete witness: a 5-unit design attaining the requirement that USES the')
+    console.log('  exchanger it called impossible.')
+    console.log('')
+    console.log('  This is what Finding 057 said was missing. The check needs TEST ACCESS, and a')
+    console.log('  declared remedy assertion is a place to put it that costs one enumeration.')
+  } else {
+    console.log('  ** the remedy test did not separate them - recorded as a failure **')
+  }
 
   const results: Array<{ tag: string, V: number, truth: boolean, status: string,
                          confidence: number, objection: string, evidence: string }> = []

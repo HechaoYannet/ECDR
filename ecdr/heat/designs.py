@@ -139,6 +139,61 @@ def enumerate_designs(streams, dt_min: float, max_units: int, limit: int = 6):
     return searched, out[:limit], out
 
 
+def remedy_cross_pinch(streams, dt_min: float, requirement: float, max_units: int = 8):
+    """Test an assertion ABOUT A NAMED REMEDY, before any reader sees the argument.
+
+    Finding 059: a certificate claimed V = 6, and its own [[B]]names[[/B]] field said "a cross-pinch
+    exchanger is missing but forbidden".  Finding 057: a reader given that argument and no way to
+    test it judged the certificate SOUND at confidence 0.95 and a deliberately flawed control at
+    0.88.  **It never occurred to the architecture to ask whether the named thing is actually
+    forbidden.**  One enumeration answers it.
+
+    So the remedy is not prose.  A certificate must declare what it ASSERTS about the remedy it
+    names, from a controlled vocabulary, and the harness tests that assertion directly:
+
+        asserts = "required"   some design attaining the requirement USES the named remedy
+        asserts = "forbidden"  NO design attaining the requirement uses it
+
+    Returns the enumeration's answer and whether it contradicts the assertion.
+    """
+    from .streams import _intervals
+    ivs = _intervals(streams, dt_min)
+    qh = None
+    searched, sample, allf = enumerate_designs(streams, dt_min, max_units)
+    hits = [d for d in allf if d["Q_H"] <= requirement + 1e-6]
+    users = []
+    for d in hits:
+        r = design_lp(streams, dt_min, {tuple(m) for m in d["process"]},
+                      set(d["heaters"]), set(d["coolers"]))
+        if not r["ok"]:
+            continue
+        for key, idx in r["col"].items():
+            if key[0] != "x" or r["x"][idx] <= 1e-7:
+                continue
+            _, i, j, k, kp = key
+            if k != kp:                      # a transfer at two different levels spans the pinch
+                users.append({"units": d["units"], "match": [i, j],
+                              "heat": float(r["x"][idx]), "Q_H": d["Q_H"]})
+                break
+    return {"searched": searched, "attaining": len(hits), "uses_remedy": len(users) > 0,
+            "witness": users[0] if users else None, "n_users": len(users)}
+
+
+def test_remedy(streams, dt_min: float, requirement: float, remedy: str, asserts: str,
+                max_units: int = 8):
+    """Decide whether the certificate's assertion about its named remedy holds."""
+    if remedy != "cross-pinch":
+        return {"ok": False, "reason": "unknown remedy '" + remedy + "'"}
+    r = remedy_cross_pinch(streams, dt_min, requirement, max_units)
+    if asserts == "forbidden":
+        holds = not r["uses_remedy"]
+    elif asserts == "required":
+        holds = r["uses_remedy"]
+    else:
+        return {"ok": False, "reason": "unknown assertion '" + asserts + "'"}
+    return {"ok": True, "remedy": remedy, "asserts": asserts, "assertion_holds": holds, **r}
+
+
 def falsify_units(streams, dt_min: float, requirement: float, V: int):
     """Try to falsify: is there a design with FEWER than V units that attains the requirement?
 

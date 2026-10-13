@@ -9,7 +9,11 @@ import numpy as np
 
 IMAGE = "openmodelica/openmodelica:v1.27.1-minimal"
 VOLUME = "ecdr-oml"
-WORK = pathlib.Path(__file__).resolve().parents[2] / "runs" / "modelica_work"
+# parents[3] is the repository root: ecdr/l2/modelica/run.py -> ecdr/l2/modelica -> ecdr/l2 -> ecdr
+# -> repo.  parents[2] resolved to ecdr/, which put the OpenModelica scratch INSIDE the package: one
+# reconstruction of the L2 ladder wrote 697.6 MB and 2522 files into ecdr/runs/modelica_work.  The
+# top-level runs/ is the intended location and is already gitignored.
+WORK = pathlib.Path(__file__).resolve().parents[3] / "runs" / "modelica_work"
 
 
 def simulate(model_text: str, mos_text: str, name: str = "Net") -> dict:

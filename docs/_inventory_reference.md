@@ -174,7 +174,7 @@ README 是一个 25 字节的重定向：`reference/cordis/README.md` 内容即 
 | `ecdr/l2/modelica/run.py:10`、`ecdr/l2/modelica/linearize.py:18` | `IMAGE = "openmodelica/openmodelica:v1.27.1-minimal"` | 工具依赖（Docker 镜像 tag） |
 | `ecdr/l2/modelica/smoke/run.mos:1` | 注释即 pin 记录："OpenModelica 1.27.1 (image tag v1.27.1-minimal), MSL 4.1.0+maint.om" | 工具依赖 |
 | `ecdr/bench/problem.py:3,53` | BOCoDe（arXiv **2608.15073**） | 接口仿制：`evaluate(x) -> (obj, cons)` |
-| `README.md:163` | 仓库树里写 "`reference/` 种子对话原文、已核实的竞争格局" | **指向错误**：这些内容实际在 `docs/reference/`，而仓库根的 `reference/` 是本文清点的三个克隆。同名不同物，写论文时容易引错 |
+| 重写前的 `README.md:163`（commit `1594888` 版本） | 仓库树里写 "`reference/` 种子对话原文、已核实的竞争格局" | **曾指向错误**：这些内容实际在 `docs/reference/`，而仓库根的 `reference/` 是本文清点的三个克隆。参见 §5.4 |
 
 ### 3.2 零命中：`reference/deepseek-harness` 没有任何引用点
 
@@ -209,7 +209,7 @@ README 是一个 25 字节的重定向：`reference/cordis/README.md` 内容即 
 
 ## 4. 论文参考文献候选
 
-分三类，界线是**"我们依赖它运行"还是"我们借它立论"**。项目纪律见 `docs/ROADMAP.md:586`（"Argue from cited authority. The case for certification is structural"）与 `docs/CONSENSUS.md:255-259`（共识 13/14/15）。
+分三类，界线是**"我们依赖它运行"还是"我们借它立论"**。项目纪律见 `README.md:78`（"**不从引用权威立论**——论证是结构性的"）、`docs/ROADMAP.md:586`（"Argue from cited authority. The case for certification is structural"）与 `docs/CONSENSUS.md:255-259`（共识 13/14/15）。
 
 ### 4.1 甲类：工具依赖（不是思想来源，是运行/编译依赖）
 
@@ -223,6 +223,7 @@ README 是一个 25 字节的重定向：`reference/cordis/README.md` 内容即 
 | **DeepSeek API** | `https://api.deepseek.com/chat/completions`；`deepseek-flash`（DeepSeek-V4.1-Flash）、`deepseek-v4-pro` | `orchestrator/cordis.yml:7`、`orchestrator/src/llm.ts:99,104`；`docs/findings/038:12-14` | 被研究的 LLM 本体 |
 | **BOCoDe 问题接口** | arXiv `2608.15073`，`evaluate(x) -> (obj, cons)` | `ecdr/bench/problem.py:3,53`、`ecdr/bench/family.py:4-5`、`ecdr/l1/problem.py:1,21` | **协议依赖**（借接口，不借结论） |
 | **arXiv API / pypdf** | `tools/arxiv.py`、`tools/fetch_fulltext.py` | 语料获取管线 | 工具链 |
+| **Python 3.14 / NumPy / SciPy / Node 24** | 见 `requirements.txt`（12 B）与 `README.md:71`（"Python 3.14、NumPy、SciPy、Docker（镜像 openmodelica/openmodelica:v1.27.1-minimal）、Node 24"） | 全项目 | 工具链；`README.md:71` 是该清单在仓库内的唯一汇总处 |
 
 ### 4.2 乙类：真正作为技术依据被使用的外部工作（思想来源）
 
@@ -306,9 +307,23 @@ README 是一个 25 字节的重定向：`reference/cordis/README.md` 内容即 
 
 它只有 2 个文件、0.00 MiB。它的问题不是多余，而是**内容不在**（§2.2）。处置不是清理，是**在交付物里改成正式引用**：`arXiv:2608.25512`（cs.PL），BibTeX 直接取 `reference/paper/README.md` 中已有的 `shi2026cordis`，并在正文里明确"本文引用的是 arXiv 预印本，未能核对全文"（若在投稿前仍未下载全文）。
 
-### 5.4 `README.md:163` 的路径歧义（应修，属文档而非 reference/）
+### 5.4 `reference/` 的路径歧义（部分已被上游修掉）
 
-`README.md:163` 把 `reference/` 描述为"种子对话原文、已核实的竞争格局"，那实际是 `docs/reference/` 的内容（`competitive-landscape.md`、`seed-conversation.md`、`seed-conversation.messages.json`、`seed-conversation.raw.html.gz`）。仓库根的 `reference/` 是本文清点的三个克隆。两个 `reference/` 同名不同物，且其中一个被 gitignore——这是最容易在写作时引错的地方。
+文件系统里有两个 `reference/`，同名不同物：
+
+* 仓库根 `reference/`（**被 gitignore**，`D:\otherProject\ECDR\reference\`）：本文清点的三个 git 克隆，15129 个工作树文件 / 121.12 MiB。
+* `docs/reference/`（**受 git 跟踪**，4 个文件 / 293 KiB）：`competitive-landscape.md`、`seed-conversation.md`、`seed-conversation.messages.json`、`seed-conversation.raw.html.gz`。
+
+清点期间上游提交 `ea5fce4`（2026-10-13 09:43:43）把 `README.md` 从 232 行重写为 89 行（15518 B → 4228 B，新标题 "ECDR — 能力缺口认证"）。**重写前的 `README.md:163`** 在仓库树里把 `reference/` 描述为"种子对话原文、已核实的竞争格局"——那是 `docs/reference/` 的内容，属于指错。重写后 README 不再含该树（全文已无 `reference` 字样，grep 命中 0），歧义在文档层面消失，但**文件系统层面两个同名目录仍在**，写论文时仍应按绝对路径区分。
+
+### 5.5 清点期间工作区发生了并发写入（供交付时核对）
+
+本文档写作期间，同一工作区另有一个进程在提交。结果是：
+
+* `docs/_inventory_reference.md`（本文）被提交 `ea5fce4` 顺手收进 git，提交进去的是**中途版本**（30678 B / 351 行）；工作树里的当前版本比它多 4 处修订（4 insertions / 4 deletions），尚未提交。
+* 同一提交还新增了 `PAPER.md`（42109 B）、`requirements.txt`（12 B），重写了 `README.md`，并把 `.gitignore` 从 8 行扩到 9 行（新增 `SECRETS/`；`reference/` 仍在第 7 行，本文 §0 的引用不变）。
+* 同目录还有两份平行清点：`docs/_inventory_findings.md`（38109 B）与 `docs/_inventory_scripts.md`（54956 B）。本文是三者中的 `reference/` 部分。
+* 本文引用的 `docs/STATE.md`（14429 B）、`docs/ROADMAP.md`（34660 B）、`docs/CONSENSUS.md`（19570 B）、`docs/findings/`（63 个文件）、`docs/literature/`（arxiv 25 / fulltext 13）在本次清点期间**大小未变**，相关引用有效。
 
 ---
 

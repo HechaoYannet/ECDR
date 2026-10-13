@@ -1,5 +1,10 @@
 # Finding 054 - An unresolved dispute: the model's classical connectivity argument against my model
 
+**RESOLVED BY FINDING 056: THE MODEL WAS RIGHT.** With the utilities as nodes and utility
+exchangers counted as units, the fewest units attaining Q_H_min is 5 = N - 1, and the optimal design
+is a spanning tree on the six nodes. My apparatus was counting process-to-process matches only, so
+"3 units" was a fragment of a design rather than a design. Findings 037 and 044 are withdrawn.
+
 Status: **OPEN. Do not read this as "the model was wrong."** Asked to derive a minimum-units bound
 without being given the answer, the model produced the **classical connectivity argument** and a
 number that contradicts `network_lp` by 2 units. **Twice before, an LLM disputed my apparatus and
